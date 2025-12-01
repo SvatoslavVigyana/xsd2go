@@ -98,7 +98,12 @@ func (ext *Extension) compile(sch *Schema, parentElement *Element) {
 	if ext.typ == nil {
 		panic("Cannot build xsd:extension: unknown type: " + string(ext.Base))
 	}
-	ext.typ.compile(sch, parentElement)
+
+	if ext.typ.Schema() != nil {
+		ext.typ.compile(ext.typ.Schema(), parentElement)
+	} else {
+		ext.typ.compile(sch, parentElement)
+	}
 
 	for idx := range ext.AttributeGroups {
 		attrGroup := &ext.AttributeGroups[idx]

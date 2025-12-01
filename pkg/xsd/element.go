@@ -189,6 +189,6 @@ func (e *Element) prefixNameWithParent(parentElement *Element) {
 	// In case there are inlined xsd:elements within another xsd:elements, it may happen that two top-level xsd:elements
 	// define child xsd:element of a same name. In such case, we need to override children name to avoid name clashes.
 	if parentElement != nil {
-		e.nameOverride = fmt.Sprintf("%s-%s", parentElement.GoName(), e.GoName())
+		e.nameOverride = fmt.Sprintf("%s-%s", parentElement.GoName(), e.GoFieldName())
 	}
 }
