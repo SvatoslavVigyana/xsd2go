@@ -33,7 +33,39 @@ func (ext *Extension) Elements() []Element {
 		elements = append(elements, ext.Sequence.Elements()...)
 	}
 	if ext.typ != nil {
-		elements = append(elements, ext.typ.Elements()...)
+		if ext.Base.NsPrefix() != "" {
+			switch extType := ext.typ.(type) {
+			case *SimpleType:
+				simpleTypes := extType.Schema().ExportableSimpleTypes()
+				for _, ct := range simpleTypes {
+					if ct.Name == ext.Base.Name() {
+						elements = append(elements, Element{
+							refElm: &Element{
+								Name: ext.Base.Name(),
+							},
+							typ:    ext.typ,
+							schema: ext.typ.Schema(),
+						})
+					}
+				}
+			case *ComplexType:
+				complexTypes := extType.Schema().ExportableComplexTypes()
+				for _, ct := range complexTypes {
+					if ct.Name == ext.Base.Name() {
+						elements = append(elements, Element{
+							refElm: &Element{
+								Name: ext.Base.Name(),
+							},
+							typ:    ext.typ,
+							schema: ext.typ.Schema(),
+						})
+					}
+				}
+			}
+
+		}
+
+		//elements = append(elements, ext.typ.Elements()...)
 		elements = deduplicateElements(elements)
 	}
 

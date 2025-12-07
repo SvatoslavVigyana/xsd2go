@@ -4,8 +4,6 @@ import (
 	"bytes"
 	"encoding/xml"
 	"os"
-
-	"github.com/gocomply/xsd2go/Xsds/fcsExport"
 )
 
 func main() {

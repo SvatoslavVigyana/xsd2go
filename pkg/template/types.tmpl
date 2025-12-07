@@ -12,6 +12,7 @@ import (
 // {{ .Documentation }}
 {{- end}}
 
+// ExportableElements
 {{range .ExportableElements }}
   {{- if .ContainsDocumentation }}
   // {{ .GoName }}: {{ .Documentation }}

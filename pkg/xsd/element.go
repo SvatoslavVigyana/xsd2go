@@ -67,6 +67,10 @@ func (e *Element) GoFieldName() string {
 }
 
 func (e *Element) GoName() string {
+	if e == nil {
+		return ""
+	}
+
 	if e.nameOverride != "" {
 		return strcase.ToCamel(e.nameOverride)
 	}
