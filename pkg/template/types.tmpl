@@ -2,10 +2,14 @@
 // Models for {{ .TargetNamespace }}
 package {{ .GoPackageName }}
 
+{{ define "imports" }}
+{{- range .GoImportsNeeded }}
+"{{ . }}"
+{{- end }}
+{{ end }}
+
 import (
-    {{- range .GoImportsNeeded}}
-        "{{ . }}"
-    {{- end }}
+{{ template "imports" . }}
 )
 
 {{- if .ContainsDocumentation }}
@@ -32,7 +36,12 @@ import (
       {{- if .ContainsDocumentation }}
       // {{ .GoName }}: {{ .Documentation }}
       {{- end}}
+      {{- if .XmlTagNotExists }}
+      {{ .GoFieldName}} {{.GoMemLayout}}{{.GoForeignModule}}{{ .GoTypeName }}
+        {{ else }}
       {{ .GoFieldName}} {{.GoMemLayout}}{{.GoForeignModule}}{{ .GoTypeName }} `xml:"{{.XmlName}}{{.Modifiers}}"`
+      {{- end}}
+      
     {{ end }}
 
     {{- if .ContainsText }}
@@ -85,7 +94,11 @@ import (
 
   {{ $simpleType := . }}
   {{ range .Enums }}
-  const {{ $simpleType.GoName -}} {{- .GoName }} {{ $simpleType.GoName }} = "{{ .XmlName }}"
+    {{ if eq $simpleType.GoTypeName "string" }}
+      const {{ $simpleType.GoName -}}{{- .GoName }} {{ $simpleType.GoName }} = "{{ .XmlName }}"
+    {{ else }}
+      const {{ $simpleType.GoName -}}{{- .GoName }} {{ $simpleType.GoName }} = {{ .XmlName }}
+    {{ end }}
   {{end }}
 
 {{end}}

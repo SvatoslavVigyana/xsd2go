@@ -11,6 +11,7 @@ type Extension struct {
 	AttributeGroups  []AttributeGroup `xml:"attributeGroup"`
 	Sequence         *Sequence        `xml:"sequence"`
 	typ              Type
+	schema           *Schema
 }
 
 func (ext *Extension) Attributes() []Attribute {
@@ -36,28 +37,20 @@ func (ext *Extension) Elements() []Element {
 		if ext.Base.NsPrefix() != "" {
 			switch extType := ext.typ.(type) {
 			case *SimpleType:
-				simpleTypes := extType.Schema().ExportableSimpleTypes()
-				for _, ct := range simpleTypes {
-					if ct.Name == ext.Base.Name() {
-						elements = append(elements, Element{
-							refElm: &Element{
-								Name: ext.Base.Name(),
-							},
-							typ:    ext.typ,
-							schema: ext.typ.Schema(),
-						})
-					}
-				}
+				print("Not implemented simple extension type")
 			case *ComplexType:
 				complexTypes := extType.Schema().ExportableComplexTypes()
 				for _, ct := range complexTypes {
 					if ct.Name == ext.Base.Name() {
 						elements = append(elements, Element{
 							refElm: &Element{
-								Name: ext.Base.Name(),
+								nameNotExists: true,
+								schema:        ct.schema,
 							},
-							typ:    ext.typ,
-							schema: ext.typ.Schema(),
+							Type:            ext.Base,
+							typ:             ext.typ,
+							schema:          ext.schema,
+							XmlTagNotExists: true,
 						})
 					}
 				}
@@ -119,6 +112,8 @@ func (ext *Extension) ContainsText() bool {
 }
 
 func (ext *Extension) compile(sch *Schema, parentElement *Element) {
+	ext.schema = sch
+
 	if ext.Sequence != nil {
 		ext.Sequence.compile(sch, parentElement)
 	}

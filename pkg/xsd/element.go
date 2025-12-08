@@ -25,6 +25,8 @@ type Element struct {
 	SimpleType      *SimpleType  `xml:"simpleType"`
 	schema          *Schema
 	typ             Type
+	nameNotExists   bool
+	XmlTagNotExists bool
 }
 
 func (e *Element) Attributes() []Attribute {
@@ -130,6 +132,10 @@ func (e *Element) optional() bool {
 }
 
 func (e *Element) XmlName() string {
+	if e.nameNotExists {
+		return ""
+	}
+
 	if e.XmlNameOverride != "" {
 		return e.XmlNameOverride
 	}
