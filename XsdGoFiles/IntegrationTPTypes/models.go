@@ -50,7 +50,10 @@ type OutcomeIndicatorsKbksTotalsInfo struct {
 	XMLName xml.Name `xml:"KBKsTotalsInfo,omitempty"`
 
 	// ExtraBudgetFundsTotalsInfo: Итого из внебюджетных средств. Значения блока автоматически расчитывается как сумма соответствующих полей блока «Итого из внебюджетных средств» (positions/position/financeInfo/KBKsInfo/extraBudgetFundsTotalsInfo) всех позиций и сумма соответствующих полей блока «Итого из внебюджетных средств» (specialPurchasePositions/specialPurchasePosition/KBKsInfo/extraBudgetFundsTotalsInfo) всех позиций особых закупок
-	ExtraBudgetFundsTotalsInfo *TenderPlan2020FinanceResourcesType `xml:",any,omitempty"`
+	ExtraBudgetFundsTotalsInfo *TenderPlan2020FinanceResourcesType `xml:"extraBudgetFundsTotalsInfo,omitempty"`
+
+	// KbksTotalsInfoKbktotalsInfo: Итоговый показатель по коду бюджетной классификации
+	KbktotalsInfo []KbksTotalsInfoKbktotalsInfo `xml:"KBKTotalsInfo"`
 }
 
 // TargetArticlesTotalsInfoTargetArticleTotalsInfo: Итоговый показатель по целевой статье
@@ -154,7 +157,10 @@ type OutcomeIndicatorsKbksTotalsInfo1 struct {
 	XMLName xml.Name `xml:"KBKsTotalsInfo,omitempty"`
 
 	// ExtraBudgetFundsTotalsInfo: Итого из внебюджетных средств. Значения блока автоматически расчитывается как сумма соответствующих полей блока «Итого из внебюджетных средств» (positions/position/financeInfo/KBKsInfo/extraBudgetFundsTotalsInfo) всех позиций и сумма соответствующих полей блока «Итого из внебюджетных средств» (specialPurchasePositions/specialPurchasePosition/KBKsInfo/extraBudgetFundsTotalsInfo) всех позиций особых закупок
-	ExtraBudgetFundsTotalsInfo *TenderPlan2020FinanceResourcesType `xml:",any,omitempty"`
+	ExtraBudgetFundsTotalsInfo *TenderPlan2020FinanceResourcesType `xml:"extraBudgetFundsTotalsInfo,omitempty"`
+
+	// KbksTotalsInfoKbktotalsInfo: Итоговый показатель по коду бюджетной классификации
+	KbktotalsInfo []KbksTotalsInfoKbktotalsInfo `xml:"KBKTotalsInfo"`
 }
 
 // TargetArticlesTotalsInfoTargetArticleTotalsInfo1: Итоговый показатель по целевой статье
@@ -291,7 +297,10 @@ type OutcomeIndicatorsKbksTotalsInfo2 struct {
 	XMLName xml.Name `xml:"KBKsTotalsInfo,omitempty"`
 
 	// ExtraBudgetFundsTotalsInfo: Итого из внебюджетных средств. Значения блока автоматически расчитывается как сумма соответствующих полей блока «Итого из внебюджетных средств» (positions/position/financeInfo/KBKsInfo/extraBudgetFundsTotalsInfo) всех позиций и сумма соответствующих полей блока «Итого из внебюджетных средств» (specialPurchasePositions/specialPurchasePosition/KBKsInfo/extraBudgetFundsTotalsInfo) всех позиций особых закупок
-	ExtraBudgetFundsTotalsInfo *TenderPlan2020FinanceResourcesType `xml:",any,omitempty"`
+	ExtraBudgetFundsTotalsInfo *TenderPlan2020FinanceResourcesType `xml:"extraBudgetFundsTotalsInfo,omitempty"`
+
+	// KbksTotalsInfoKbktotalsInfo: Итоговый показатель по коду бюджетной классификации
+	KbktotalsInfo []KbksTotalsInfoKbktotalsInfo `xml:"KBKTotalsInfo"`
 }
 
 // OutcomeIndicatorsTargetArticlesTotalsInfoTargetArticleTotalsInfo: Итоговый показатель по целевой статье
@@ -395,7 +404,10 @@ type NotPublishedOnEisinfoOutcomeIndicatorsKbksTotalsInfo struct {
 	XMLName xml.Name `xml:"KBKsTotalsInfo,omitempty"`
 
 	// ExtraBudgetFundsTotalsInfo: Итого из внебюджетных средств. Значения блока автоматически расчитывается как сумма соответствующих полей блока «Итого из внебюджетных средств» (positions/position/financeInfo/KBKsInfo/extraBudgetFundsTotalsInfo) всех позиций и сумма соответствующих полей блока «Итого из внебюджетных средств» (specialPurchasePositions/specialPurchasePosition/KBKsInfo/extraBudgetFundsTotalsInfo) всех позиций особых закупок
-	ExtraBudgetFundsTotalsInfo *TenderPlan2020FinanceResourcesType `xml:",any,omitempty"`
+	ExtraBudgetFundsTotalsInfo *TenderPlan2020FinanceResourcesType `xml:"extraBudgetFundsTotalsInfo,omitempty"`
+
+	// KbksTotalsInfoKbktotalsInfo: Итоговый показатель по коду бюджетной классификации
+	KbktotalsInfo []KbksTotalsInfoKbktotalsInfo `xml:"KBKTotalsInfo"`
 }
 
 // OutcomeIndicatorsTargetArticlesTotalsInfoTargetArticleTotalsInfo1: Итоговый показатель по целевой статье
@@ -532,7 +544,10 @@ type OutcomeIndicatorsKbksTotalsInfo3 struct {
 	XMLName xml.Name `xml:"KBKsTotalsInfo,omitempty"`
 
 	// ExtraBudgetFundsTotalsInfo: Итого из внебюджетных средств. Значения блока автоматически расчитывается как сумма соответствующих полей блока «Итого из внебюджетных средств» (positions/position/financeInfo/KBKsInfo/extraBudgetFundsTotalsInfo) всех позиций и сумма соответствующих полей блока «Итого из внебюджетных средств» (specialPurchasePositions/specialPurchasePosition/KBKsInfo/extraBudgetFundsTotalsInfo) всех позиций особых закупок
-	ExtraBudgetFundsTotalsInfo *TenderPlan2020FinanceResourcesType `xml:",any,omitempty"`
+	ExtraBudgetFundsTotalsInfo *TenderPlan2020FinanceResourcesType `xml:"extraBudgetFundsTotalsInfo,omitempty"`
+
+	// KbksTotalsInfoKbktotalsInfo: Итоговый показатель по коду бюджетной классификации
+	KbktotalsInfo []KbksTotalsInfoKbktotalsInfo `xml:"KBKTotalsInfo"`
 }
 
 // KvrsTotalsInfoKvrtotalsInfo2: Итоговый показатель по коду вида расхода
@@ -625,7 +640,10 @@ type OutcomeIndicatorsKbksTotalsInfo4 struct {
 	XMLName xml.Name `xml:"KBKsTotalsInfo,omitempty"`
 
 	// ExtraBudgetFundsTotalsInfo: Итого из внебюджетных средств. Значения блока автоматически расчитывается как сумма соответствующих полей блока «Итого из внебюджетных средств» (positions/position/financeInfo/KBKsInfo/extraBudgetFundsTotalsInfo) всех позиций и сумма соответствующих полей блока «Итого из внебюджетных средств» (specialPurchasePositions/specialPurchasePosition/KBKsInfo/extraBudgetFundsTotalsInfo) всех позиций особых закупок
-	ExtraBudgetFundsTotalsInfo *TenderPlan2020FinanceResourcesType `xml:",any,omitempty"`
+	ExtraBudgetFundsTotalsInfo *TenderPlan2020FinanceResourcesType `xml:"extraBudgetFundsTotalsInfo,omitempty"`
+
+	// KbksTotalsInfoKbktotalsInfo: Итоговый показатель по коду бюджетной классификации
+	KbktotalsInfo []KbksTotalsInfoKbktotalsInfo `xml:"KBKTotalsInfo"`
 }
 
 // TargetArticlesTotalsInfoTargetArticleTotalsInfo3: Итоговый показатель по целевой статье
@@ -734,6 +752,36 @@ type CustomerInfo struct {
 
 	// Oktmoppo: Территориально-муниципальное образование публично-правового образования (ППО) организации. Необязательно для заполнения. Если длина кода=8 символов, при приеме осуществляется поиск по полю OKTMO_CODE справочника nsi_ppo. Если длина кода=11 символов, осуществляется поиск по полю CODE (код ОКАТО) справочника nsi_ppo
 	Oktmoppo *base.Oktmopporef `xml:"OKTMOPPO,omitempty"`
+
+	// RegNum: Код по СПЗ. В случае если организация идентифицируется по коду СвР, а код СПЗ неизвестен, необходимо заполнить данное поле значением 00000000000, и обязательно указать код СвР
+	RegNum base.SpzNumType `xml:"regNum"`
+
+	// ConsRegistryNum: Код по Сводному Реестру. Должен быть заполнен в случае, если в поле spzCode указано значение 00000000000
+	ConsRegistryNum *base.ConsRegistryNumType `xml:"consRegistryNum,omitempty"`
+
+	// FullName: Полное наименование организации. Игнорируется при приеме. Заполняется автоматически значением по Коду по СПЗ/Коду по СвР из справочника организаций ЕИС
+	FullName *base.Text2000Type `xml:"fullName,omitempty"`
+
+	// Inn: ИНН организации. Игнорируется при приеме. Заполняется автоматически значением по Коду по СПЗ/Коду по СвР из справочника организаций ЕИС
+	Inn *base.InnType `xml:"INN,omitempty"`
+
+	// Kpp: КПП организации. Игнорируется при приеме. Заполняется автоматически значением по Коду по СПЗ/Коду по СвР из справочника организаций ЕИС
+	Kpp *base.KppType `xml:"KPP,omitempty"`
+
+	// Oktmo: Территориально-муниципальное образование организации по ОКТМО
+	Oktmo *base.Oktmoref `xml:"OKTMO,omitempty"`
+
+	// FactAddress: Адрес местонахождения организации. Игнорируется при приеме. Заполняется автоматически значением по Коду по СПЗ/Коду по СвР из справочника организаций ЕИС
+	FactAddress *base.Text2000Type `xml:"factAddress,omitempty"`
+
+	// Phone: Телефон организации. Принимается в формате: Код страны-Код города-Номер телефона (7-495-8765985)
+	Phone *base.PhoneType `xml:"phone,omitempty"`
+
+	// Email: Адрес электронной почты организации
+	Email *base.EMailType `xml:"email,omitempty"`
+
+	// ControlAuthorityInfo: Орган контроля, осуществляющий контроль по части 5 статьи 99. Игнорируется при приеме, заполняется автоматически
+	ControlAuthorityInfo *base.OrganizationRef `xml:"controlAuthorityInfo,omitempty"`
 }
 
 // OwnerInfo: Сведения об организации-владельце версии плана-графика закупок. Значения полей и блоков "Территориально-муниципальное образование организации по ОКТМО"(OKTMO), "Телефон организации" (phone), "Адрес электронной почты организации" (email) в случае если не заполнены при приеме, то заполняются автоматически соответствующими значениями по Коду по СПЗ/Коду по СвР из справочника организаций ЕИС
@@ -741,7 +789,37 @@ type OwnerInfo struct {
 	XMLName xml.Name `xml:"ownerInfo"`
 
 	// OwnerRole: Роль организации-владельца версии плана-графика закупок: CU - Заказчик; OA - Организация, осуществляющая полномочия заказчика на осуществление закупок на основании договора (соглашения)
-	OwnerRole TenderPlan2020VersionOwnerRoleType `xml:",any"`
+	OwnerRole TenderPlan2020VersionOwnerRoleType `xml:"ownerRole"`
+
+	// RegNum: Код по СПЗ. В случае если организация идентифицируется по коду СвР, а код СПЗ неизвестен, необходимо заполнить данное поле значением 00000000000, и обязательно указать код СвР
+	RegNum base.SpzNumType `xml:"regNum"`
+
+	// ConsRegistryNum: Код по Сводному Реестру. Должен быть заполнен в случае, если в поле spzCode указано значение 00000000000
+	ConsRegistryNum *base.ConsRegistryNumType `xml:"consRegistryNum,omitempty"`
+
+	// FullName: Полное наименование организации. Игнорируется при приеме. Заполняется автоматически значением по Коду по СПЗ/Коду по СвР из справочника организаций ЕИС
+	FullName *base.Text2000Type `xml:"fullName,omitempty"`
+
+	// Inn: ИНН организации. Игнорируется при приеме. Заполняется автоматически значением по Коду по СПЗ/Коду по СвР из справочника организаций ЕИС
+	Inn *base.InnType `xml:"INN,omitempty"`
+
+	// Kpp: КПП организации. Игнорируется при приеме. Заполняется автоматически значением по Коду по СПЗ/Коду по СвР из справочника организаций ЕИС
+	Kpp *base.KppType `xml:"KPP,omitempty"`
+
+	// Oktmo: Территориально-муниципальное образование организации по ОКТМО
+	Oktmo *base.Oktmoref `xml:"OKTMO,omitempty"`
+
+	// FactAddress: Адрес местонахождения организации. Игнорируется при приеме. Заполняется автоматически значением по Коду по СПЗ/Коду по СвР из справочника организаций ЕИС
+	FactAddress *base.Text2000Type `xml:"factAddress,omitempty"`
+
+	// Phone: Телефон организации. Принимается в формате: Код страны-Код города-Номер телефона (7-495-8765985)
+	Phone *base.PhoneType `xml:"phone,omitempty"`
+
+	// Email: Адрес электронной почты организации
+	Email *base.EMailType `xml:"email,omitempty"`
+
+	// ControlAuthorityInfo: Орган контроля, осуществляющий контроль по части 5 статьи 99. Игнорируется при приеме, заполняется автоматически
+	ControlAuthorityInfo *base.OrganizationRef `xml:"controlAuthorityInfo,omitempty"`
 }
 
 // CommonInfoPositionModification: Основание внесения изменений в позицию плана-графика закупок. Обязателен для указания в случае если в поле positionModificationStatus указано значение "E"
@@ -894,7 +972,10 @@ type FinanceInfoKbksInfo struct {
 	XMLName xml.Name `xml:"KBKsInfo,omitempty"`
 
 	// ExtraBudgetFundsTotalsInfo: Итого из внебюджетных средств. При приеме контролируется, что блок может быть заполнен, только если для владельца версии плана закупок выполняются условия: код СПЗ организации = 09950000002 (Государственная корпорация по космической деятельности "Роскосмос") ИЛИ код СПЗ организации = 07731000003 (Государственная корпорация по атомной энергии "Росатом")
-	ExtraBudgetFundsTotalsInfo *TenderPlan2020FinanceResourcesType `xml:",any,omitempty"`
+	ExtraBudgetFundsTotalsInfo *TenderPlan2020FinanceResourcesType `xml:"extraBudgetFundsTotalsInfo,omitempty"`
+
+	// KbksInfoKbkinfo: Детализация по коду бюджетной классификации. При приеме контролируется, что суммы по всем КБК в полях (currentYeaк, firstYear, secondYear, subsecYears) равны значеням соответствующих полей в блоке "Финансовое обеспечение" (financeInfo)
+	Kbkinfo []KbksInfoKbkinfo `xml:"KBKInfo"`
 }
 
 // FinanceInfo: Финансовое обеспечение
@@ -902,7 +983,22 @@ type FinanceInfo struct {
 	XMLName xml.Name `xml:"financeInfo"`
 
 	// FinanceInfoKbksInfo: Детализировано по КБК. Блок может быть заполнен в случае, если для организации заказчика выполняются условия: тип организации = «01 - федеральный орган государственной власти, федеральный государственный орган, орган государственной власти субъекта Российской Федерации, государственный орган субъекта Российской Федерации, орган местного самоуправления, в том числе его территориальные органы» ИЛИ тип организации = «08 - казенное учреждение» ИЛИ тип = «02 - орган управления государственным внебюджетным фондом» ИЛИ Код СПЗ организации = 09950000002 (Государственная корпорация по космической деятельности "Роскосмос") ИЛИ Код СПЗ организации = 07731000003 (Государственная корпорация по атомной энергии "Росатом") Блок должен быть заполнен в случае, если выполняется одно из условий выше И уровень организации заказчика = 1 «Федеральный уровень»
-	KbksInfo *FinanceInfoKbksInfo `xml:",any,omitempty"`
+	KbksInfo *FinanceInfoKbksInfo `xml:"KBKsInfo,omitempty"`
+
+	// Total: Всего. Значение игнорируется при приеме. автоматически рассчитывается как сумма нижеследующих полей (т.е. total=currentYear+firstYear+secondYear+subsecYears).
+	Total *base.MoneyPosNegMaxLengthToPoint18Type `xml:"total,omitempty"`
+
+	// CurrentYear: Сумма на текущий плановый год
+	CurrentYear *base.MoneyPosNegMaxLengthToPoint18Type `xml:"currentYear,omitempty"`
+
+	// FirstYear: Сумма на первый плановый год
+	FirstYear *base.MoneyPosNegMaxLengthToPoint18Type `xml:"firstYear,omitempty"`
+
+	// SecondYear: Сумма на второй плановый год
+	SecondYear *base.MoneyPosNegMaxLengthToPoint18Type `xml:"secondYear,omitempty"`
+
+	// SubsecYears: Сумма на последующие годы
+	SubsecYears *base.MoneyPosNegMaxLengthToPoint18Type `xml:"subsecYears,omitempty"`
 }
 
 // KvrsInfo: Детализации по КВР. Контролируется обязательность заполнения, если тип организации заказчика Тип организации = «03 - бюджетное учреждение»; Тип организации = «10 – автономное учреждение». Для остальных типов организаций не допускается указание данного блока
@@ -1055,7 +1151,10 @@ type KbksInfo struct {
 	XMLName xml.Name `xml:"KBKsInfo,omitempty"`
 
 	// ExtraBudgetFundsTotalsInfo: Итого из внебюджетных средств. При приеме контролируется, что блок может быть заполнен, только если для владельца версии плана-графика закупок выполняются условия: код СПЗ организации = 09950000002 (Государственная корпорация по космической деятельности "Роскосмос") ИЛИ код СПЗ организации = 07731000003 (Государственная корпорация по атомной энергии "Росатом")
-	ExtraBudgetFundsTotalsInfo *TenderPlan2020FinanceResourcesType `xml:",any,omitempty"`
+	ExtraBudgetFundsTotalsInfo *TenderPlan2020FinanceResourcesType `xml:"extraBudgetFundsTotalsInfo,omitempty"`
+
+	// KbksInfoKbkinfo: Детализация по коду бюджетной классификации. При приеме контролируется, что суммы по всем КБК в полях (currentYeaк, firstYear, secondYear, subsecYears) равны значеням соответствующих полей в блоке "Финансовое обеспечение" (financeInfo)
+	Kbkinfo []KbksInfoKbkinfo `xml:"KBKInfo"`
 }
 
 // SpecialPurchaseModification: Обоснование внесения изменений в особую закупку плана-графика закупок. Обязателен для указания в случае если в поле specialPurchaseModificationStatus указано значение "E". Игнорируется в случае если особая закупка новая
@@ -1099,7 +1198,10 @@ type KbksInfo1 struct {
 	XMLName xml.Name `xml:"KBKsInfo,omitempty"`
 
 	// ExtraBudgetFundsTotalsInfo: Итого из внебюджетных средств. При приеме контролируется, что блок может быть заполнен, только если для владельца версии плана-графика закупок выполняются условия: код СПЗ организации = 09950000002 (Государственная корпорация по космической деятельности "Роскосмос") ИЛИ код СПЗ организации = 07731000003 (Государственная корпорация по атомной энергии "Росатом")
-	ExtraBudgetFundsTotalsInfo *TenderPlan2020FinanceResourcesType `xml:",any,omitempty"`
+	ExtraBudgetFundsTotalsInfo *TenderPlan2020FinanceResourcesType `xml:"extraBudgetFundsTotalsInfo,omitempty"`
+
+	// KbksInfoKbkinfo: Детализация по коду бюджетной классификации. При приеме контролируется, что суммы по всем КБК в полях (currentYeaк, firstYear, secondYear, subsecYears) равны значеням соответствующих полей в блоке "Финансовое обеспечение" (financeInfo)
+	Kbkinfo []KbksInfoKbkinfo `xml:"KBKInfo"`
 }
 
 // KvrsInfo1: Детализации по КВР. Контролируется обязательность заполнения, если тип организации заказчика: Тип организации = «03 - бюджетное учреждение»; Тип организации = «10 – автономное учреждение». Для остальных типов организаций не допускается указание данного блока
@@ -1217,7 +1319,7 @@ type CustomerInfo1 struct {
 	// Oktmoppo: ОКТМО публично-правового образования (ППО)
 	Oktmoppo *base.Oktmopporef `xml:"OKTMOPPO,omitempty"`
 
-	Control99CustomerInfoType string `xml:"control99CustomerInfoType"`
+	cmn.Control99CustomerInfoType
 }
 
 // Positions3: Позиции плана-графика закупок. Указание одного из блоков positions и/или specialPurchases обязательно
@@ -1233,7 +1335,22 @@ type SpecialPurchaseFinanceInfo struct {
 	XMLName xml.Name `xml:"financeInfo"`
 
 	// KbksInfo: Детализировано по КБК
-	KbksInfo *TenderPlan2020KbksInfoType `xml:",any,omitempty"`
+	KbksInfo *TenderPlan2020KbksInfoType `xml:"KBKsInfo,omitempty"`
+
+	// Total: Всего. Значение игнорируется при приеме. автоматически рассчитывается как сумма нижеследующих полей (т.е. total=currentYear+firstYear+secondYear+subsecYears).
+	Total *base.MoneyPosNegMaxLengthToPoint18Type `xml:"total,omitempty"`
+
+	// CurrentYear: Сумма на текущий плановый год
+	CurrentYear *base.MoneyPosNegMaxLengthToPoint18Type `xml:"currentYear,omitempty"`
+
+	// FirstYear: Сумма на первый плановый год
+	FirstYear *base.MoneyPosNegMaxLengthToPoint18Type `xml:"firstYear,omitempty"`
+
+	// SecondYear: Сумма на второй плановый год
+	SecondYear *base.MoneyPosNegMaxLengthToPoint18Type `xml:"secondYear,omitempty"`
+
+	// SubsecYears: Сумма на последующие годы
+	SubsecYears *base.MoneyPosNegMaxLengthToPoint18Type `xml:"subsecYears,omitempty"`
 }
 
 // SpecialPurchaseTargetArticlesInfo: Детализации по целевым статьям
@@ -1329,7 +1446,22 @@ type FinanceInfo1 struct {
 	XMLName xml.Name `xml:"financeInfo"`
 
 	// KbksInfo: Детализировано по КБК
-	KbksInfo *TenderPlan2020KbksInfoType `xml:",any,omitempty"`
+	KbksInfo *TenderPlan2020KbksInfoType `xml:"KBKsInfo,omitempty"`
+
+	// Total: Всего. Значение игнорируется при приеме. автоматически рассчитывается как сумма нижеследующих полей (т.е. total=currentYear+firstYear+secondYear+subsecYears).
+	Total *base.MoneyPosNegMaxLengthToPoint18Type `xml:"total,omitempty"`
+
+	// CurrentYear: Сумма на текущий плановый год
+	CurrentYear *base.MoneyPosNegMaxLengthToPoint18Type `xml:"currentYear,omitempty"`
+
+	// FirstYear: Сумма на первый плановый год
+	FirstYear *base.MoneyPosNegMaxLengthToPoint18Type `xml:"firstYear,omitempty"`
+
+	// SecondYear: Сумма на второй плановый год
+	SecondYear *base.MoneyPosNegMaxLengthToPoint18Type `xml:"secondYear,omitempty"`
+
+	// SubsecYears: Сумма на последующие годы
+	SubsecYears *base.MoneyPosNegMaxLengthToPoint18Type `xml:"subsecYears,omitempty"`
 }
 
 // TargetArticlesInfo2: Детализации по целевым статьям
@@ -1478,7 +1610,49 @@ type TenderPlan2020Control99Nctype struct {
 	SchemeVersion base.SchemeVersionType `xml:"schemeVersion,attr"`
 
 	// Control99NoticeCompliance: Уведомление о соответствии контролируемой информации
-	Control99NoticeCompliance cmn.Control99NoticeComplianceWithDocType `xml:",any"`
+	Control99NoticeCompliance cmn.Control99NoticeComplianceWithDocType `xml:"control99NoticeCompliance"`
+
+	// Id: Идентификатор ревизии плана-графика закупок в ЕИС
+	Id *int64 `xml:"id,omitempty"`
+
+	// ExternalId: Внешний идентификатор документа
+	ExternalId *base.ExternalIdType `xml:"externalId,omitempty"`
+
+	// PlanNumber: Реестровый номер плана-графика закупок в ЕИС
+	PlanNumber *TenderPlan2020NumberType `xml:"planNumber,omitempty"`
+
+	// VersionNumber: Номер версии плана-графика закупок
+	VersionNumber *base.VersionNumberType `xml:"versionNumber,omitempty"`
+
+	// CommonInfo: Общая информация плана-графика закупок
+	CommonInfo TenderPlan2020CommonInfoType `xml:"commonInfo"`
+
+	// Positions: Позиции плана-графика закупок. Указание одного из блоков positions или specialPurchasePositions или notPublishedOnEISInfo обязательно при приеме
+	Positions *Positions `xml:"positions,omitempty"`
+
+	// SpecialPurchases: Особые закупки. Устарело. Игнорируется при приеме, оставлено для обратной совместимости
+	SpecialPurchases *SpecialPurchases `xml:"specialPurchases,omitempty"`
+
+	// SpecialPurchasePositions: Позиции особой закупки. Указание одного из блоков positions или specialPurchasePositions или notPublishedOnEISInfo обязательно при приеме. При приеме изменений размещенного до выхода версии ЕИС 10.1 плана-графика закупок, необходимо один раз указать все закупки из особых закупок (в том числе отмененные)
+	SpecialPurchasePositions *SpecialPurchasePositions `xml:"specialPurchasePositions,omitempty"`
+
+	// OutcomeIndicators: Итоговые показатели
+	OutcomeIndicators *OutcomeIndicators `xml:"outcomeIndicators,omitempty"`
+
+	// Attachments: Информация о прикрепленных документах
+	Attachments *cmn.AttachmentListNotPublishedOnEistype `xml:"attachments,omitempty"`
+
+	// PrintForm: Печатная форма плана-графика закупок
+	PrintForm *cmn.PrintFormType `xml:"printForm,omitempty"`
+
+	// ExtPrintForm: Электронный документ, полученный из внешней системы
+	ExtPrintForm *cmn.ExtPrintFormType `xml:"extPrintForm,omitempty"`
+
+	// HasNotPublishedOnEispositions: План график содержит позиции, особые закупки с признаком «Информация, не подлежащая размещению». Игнорируется при приеме, автоматически заполняется при передаче в случае наличия в составе ПГ позиций и/или особых закупок с признаком «Информация, не подлежащая размещению»
+	HasNotPublishedOnEispositions *bool `xml:"hasNotPublishedOnEISPositions,omitempty"`
+
+	// NotPublishedOnEisinfo: Позиции с признаком «Информация, не подлежащая размещению». Итоговые показатели и электронный документ по "открытым" и "закрытым" позициям. Указание одного из блоков positions или specialPurchasePositions или notPublishedOnEISInfo обязательно при приеме
+	NotPublishedOnEisinfo *NotPublishedOnEisinfo `xml:"notPublishedOnEISInfo,omitempty"`
 }
 
 // TenderPlan2020ChangeType: Изменение плана-графика закупок в структурированной форме

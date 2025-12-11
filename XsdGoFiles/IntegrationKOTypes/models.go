@@ -156,7 +156,7 @@ type CommonInfoConsiderationKoinfo struct {
 	// Kpp: КПП. Игнорируется при приеме. При передаче заполняется значением из справочника "Сводный перечень заказчиков (СПЗ)" (nsiOrganizationList)
 	Kpp *base.KppType `xml:"KPP,omitempty"`
 
-	OrganizationRef string `xml:"organizationRef"`
+	base.OrganizationRef
 }
 
 // CommonInfoDecisionPlaceByGarinfo: Место рассмотрения жалобы по ГАР. Контролируется на обязательность заполнения, начиная с версии 15.2
@@ -228,7 +228,7 @@ type CommonInfoConsiderationKoinfo1 struct {
 	// Kpp: КПП. Игнорируется при приеме. При передаче заполняется значением из справочника "Сводный перечень заказчиков (СПЗ)" (nsiOrganizationList)
 	Kpp *base.KppType `xml:"KPP,omitempty"`
 
-	OrganizationRef string `xml:"organizationRef"`
+	base.OrganizationRef
 }
 
 // CommonInfo2: Общая информация об отказе в рассмотрении жалобы
@@ -551,6 +551,20 @@ type CustomerInfo struct {
 
 	// Email: Электронная почта
 	Email *base.EMailType `xml:"email,omitempty"`
+
+	// ShortName: Краткое наименование
+	ShortName *base.Text2000Type `xml:"shortName,omitempty"`
+
+	// Inn: ИНН организации
+	Inn base.InnOrganizationType `xml:"INN"`
+
+	// Kpp: КПП организации
+	Kpp base.KppType `xml:"KPP"`
+
+	// Address: Адрес места нахождения
+	Address base.Text2000Type `xml:"address"`
+
+	base.OrganizationRef
 }
 
 // PowersCustomerOrgInfo: Сведения об организации, действующей за заказчика (УО. УУ. ОПЗ)
@@ -562,6 +576,20 @@ type PowersCustomerOrgInfo struct {
 
 	// Email: Электронная почта
 	Email *base.EMailType `xml:"email,omitempty"`
+
+	// ShortName: Краткое наименование
+	ShortName *base.Text2000Type `xml:"shortName,omitempty"`
+
+	// Inn: ИНН организации
+	Inn base.InnOrganizationType `xml:"INN"`
+
+	// Kpp: КПП организации
+	Kpp base.KppType `xml:"KPP"`
+
+	// Address: Адрес места нахождения
+	Address base.Text2000Type `xml:"address"`
+
+	base.OrganizationRef
 }
 
 // SingleParContractApprovalInfoSingleParticipantInfo: Информация о единственном поставщике
@@ -1587,6 +1615,42 @@ type ClosedParElectronicComplaintType struct {
 
 	// SchemeVersion: Версия схемы
 	SchemeVersion base.SchemeVersionType `xml:"schemeVersion,attr"`
+
+	// LkpUuid: Уникальный идентификатор документа в ЛКП
+	LkpUuid base.GuidType `xml:"lkpUuid"`
+
+	// Uuid: Уникальный идентификатор документа в ЕИС. Не заполняется при подписании жалобы поставщиком. Заполняется при размещении
+	Uuid *base.GuidType `xml:"uuid,omitempty"`
+
+	// CommonInfo: Общая информация
+	CommonInfo CommonInfo `xml:"commonInfo"`
+
+	// ApplicantInfo: Заявитель
+	ApplicantInfo ApplicantInfoType `xml:"applicantInfo"`
+
+	// ObjectInfo: Предмет жалобы
+	ObjectInfo *ObjectInfo `xml:"objectInfo,omitempty"`
+
+	// SubjectsInfo: Информация о субъектах жалобы
+	SubjectsInfo SubjectsInfo `xml:"subjectsInfo"`
+
+	// Koinfo: Информация о контрольном органе в сфере закупок
+	Koinfo base.OrganizationRef `xml:"KOInfo"`
+
+	// ExperienceConfirmationInfo: Подтверждение опыта участника закупок
+	ExperienceConfirmationInfo *ExperienceConfirmationInfo `xml:"experienceConfirmationInfo,omitempty"`
+
+	// ContactInfo: Контактные данные участника закупок
+	ContactInfo ContactInfo `xml:"contactInfo"`
+
+	// AttachmentsInfo: Информация о прикрепленных документах
+	AttachmentsInfo *cmn.AttachmentListType `xml:"attachmentsInfo,omitempty"`
+
+	// ParPrintFormInfo: Печатная форма документа, подписанного поставщиком. При передаче заполняется поле "Содержимое файла электронного документа" (content)
+	ParPrintFormInfo *cmn.LkpPrintFormType `xml:"parPrintFormInfo,omitempty"`
+
+	// NoticeOrgsInfo: Организации, в адрес которых осуществляется рассылка уведомлений Игнорируется при приеме проекта из внешней системы
+	NoticeOrgsInfo *NoticeOrgsInfo `xml:"noticeOrgsInfo,omitempty"`
 }
 
 // ClosedParElectronicComplaintCancelType: Тип: Информация об отзыве сокрытой электронной жалобы, сформированной в ЛКП
@@ -1595,6 +1659,24 @@ type ClosedParElectronicComplaintCancelType struct {
 
 	// SchemeVersion: Версия схемы
 	SchemeVersion base.SchemeVersionType `xml:"schemeVersion,attr"`
+
+	// LkpUuid: Уникальный идентификатор документа в ЛКП
+	LkpUuid base.GuidType `xml:"lkpUuid"`
+
+	// Uuid: Уникальный идентификатор документа в ЕИС. Не заполняется при подписании отзыва жалобы поставщиком. Заполняется при размещении
+	Uuid *base.GuidType `xml:"uuid,omitempty"`
+
+	// RegNumber: Номер реестровой записи жалобы
+	RegNumber base.ControlRegistersRegNumberType `xml:"regNumber"`
+
+	// PublishDt: Дата размещения документа в ЕИС. Не заполняется при подписании отзыва жалобы поставщиком. Заполняется датой размещении отзыва жалобы в РЖ
+	PublishDt string `xml:"publishDT,omitempty"`
+
+	// ParPrintFormInfo: Печатная форма документа, подписанного поставщиком
+	ParPrintFormInfo *cmn.LkpPrintFormType `xml:"parPrintFormInfo,omitempty"`
+
+	// PrintFormFieldsInfo: Дополнительная информация для печатной формы
+	PrintFormFieldsInfo *PrintFormFieldsInfo `xml:"printFormFieldsInfo,omitempty"`
 }
 
 // ApprovalType: Тип: Обращение в контрольный орган
@@ -1864,7 +1946,34 @@ type UnfairSupplierIkztype struct {
 	SchemeVersion base.SchemeVersionType `xml:"schemeVersion,attr"`
 
 	// PurchaseInfo: Информация о закупке
-	PurchaseInfo *PurchaseInfo `xml:",any,omitempty"`
+	PurchaseInfo *PurchaseInfo `xml:"purchaseInfo,omitempty"`
+
+	// Uuid: Уникальный идентификатор документа в ЕИС
+	Uuid base.GuidType `xml:"uuid"`
+
+	// CommonInfo: Общая информация
+	CommonInfo CommonInfo `xml:"commonInfo"`
+
+	// ApproveOrgInfo: Уполномоченный орган, осуществивший включение информации и ведущий запись в Реестре
+	ApproveOrgInfo *cmn.OrganizationRefType `xml:"approveOrgInfo,omitempty"`
+
+	// CreateReasonInfo: Информация о причинах для внесения в Реестр
+	CreateReasonInfo CreateReasonInfo `xml:"createReasonInfo"`
+
+	// RefusalDueToCustSanctions: Отказ поставщика (подрядчика, исполнителя) от исполнения контракта по причине введения в отношении заказчика санкций и (или) мер ограничительного характера
+	RefusalDueToCustSanctions *bool `xml:"refusalDueToCustSanctions,omitempty"`
+
+	// UnfairSupplierInfo: Информация о недобросовестном поставщике (подрядчике, исполнителе)
+	UnfairSupplierInfo UnfairSupplierInfo `xml:"unfairSupplierInfo"`
+
+	// AutoExDateInfo: Информация о плановой дате автоматического исключения
+	AutoExDateInfo *AutoExDateInfo `xml:"autoExDateInfo,omitempty"`
+
+	// ModificationReason: Причина внесения изменений. Игнорируется при приеме, добавлено для печатной формы
+	ModificationReason *base.Text1000Type `xml:"modificationReason,omitempty"`
+
+	// PrintFormInfo: Печатная форма документа
+	PrintFormInfo *cmn.PrintFormType `xml:"printFormInfo,omitempty"`
 }
 
 // UnfairSupplier2022ExcludeType: Тип: Исключение записи Реестра недобросовестных поставщиков (РНП) с 01.04.2022 (Исключение записи РНПО по ПП РФ № 615)
@@ -1977,7 +2086,7 @@ type OrganizationInfoType struct {
 	// Address: Адрес места нахождения
 	Address base.Text2000Type `xml:"address"`
 
-	OrganizationRef string `xml:"organizationRef"`
+	base.OrganizationRef `xml:""`
 }
 
 // OrganizationShortInfoType: Тип: Краткие сведения об организации
@@ -1990,7 +2099,7 @@ type OrganizationShortInfoType struct {
 	// Kpp: КПП организации
 	Kpp base.KppType `xml:"KPP"`
 
-	OrganizationRef string `xml:"organizationRef"`
+	base.OrganizationRef `xml:""`
 }
 
 // SubjectInfoType: Тип: Информация о субъекте жалобы

@@ -56,7 +56,7 @@ type CustomerInfo struct {
 	// SeparateDepartmentAccountsDetailsInfo: Реквизиты счетов обособленного подразделения. Если блок заполнен, то: 1. Бизнес контролем проверяется, что организация, указанная в поле «Код по СПЗ» (customer/regNum) или поле «Код по сводному реестру» (customer/ consRegistryNum), НЕ входит в настройку «Настройка доступности формирования сведений о принятом бюджетном обязательстве» и НЕ входит в настройку «Настройка доступности формирования сведений о принятом бюджетном обязательстве для региональных/муниципальных заказчиков» 2. Бизнес контролем проверяется, что размещающая организация не относится к OA - Организация, осуществляющая полномочия заказчика на основании соглашения в соответствии с частью 6 статьи 15 Федерального закона № 44-ФЗ
 	SeparateDepartmentAccountsDetailsInfo *cmn.SeparateDepartmentAccountsDetailsType `xml:"separateDepartmentAccountsDetailsInfo,omitempty"`
 
-	OrganizationOptionalRegNumType string `xml:"organizationOptionalRegNumType"`
+	cmn.OrganizationOptionalRegNumType
 }
 
 // ProtocolAccountsDetailsInfoProtocolAccountDetailsInfo: Реквизиты счета поставщика из заявки участника (итогового протокола)
@@ -85,7 +85,7 @@ type ElectronicContractAccountsDetailsInfoElectronicContractAccountDetailsInfo s
 	// OrganizationType: Тип организации поставщика: L - Юридическое лицо РФ; F - Сведения об обособленном подразделении ЮЛ РФ. Принимается, только в случае, если поставщик (через или): Юридическое лицо РФ (legalEntityRFInfo); Обособленное подразделение юридического лица РФ (filialLegalEntityRFInfo)
 	OrganizationType *base.ParticipantType `xml:"organizationType,omitempty"`
 
-	AccountDetailsType string `xml:"accountDetailsType"`
+	cmn.AccountDetailsType
 }
 
 // ParticipantAccountsDetailsInfoElectronicContractAccountsDetailsInfo: Реквизиты счетов поставщика (добавлены в электронном контракте)
@@ -1253,7 +1253,7 @@ type CustomerInfo1 struct {
 	// SeparateDepartmentAccountsDetailsInfo: Реквизиты счетов обособленного подразделения. Если блок заполнен, то: 1. Бизнес контролем проверяется, что организация, указанная в поле «Код по СПЗ» (customer/regNum) или поле «Код по сводному реестру» (customer/ consRegistryNum), НЕ входит в настройку «Настройка доступности формирования сведений о принятом бюджетном обязательстве» и НЕ входит в настройку «Настройка доступности формирования сведений о принятом бюджетном обязательстве для региональных/муниципальных заказчиков» 2. Бизнес контролем проверяется, что размещающая организация не относится к OA - Организация, осуществляющая полномочия заказчика на основании соглашения в соответствии с частью 6 статьи 15 Федерального закона № 44-ФЗ
 	SeparateDepartmentAccountsDetailsInfo *cmn.SeparateDepartmentAccountsDetailsType `xml:"separateDepartmentAccountsDetailsInfo,omitempty"`
 
-	OrganizationOptionalRegNumType string `xml:"organizationOptionalRegNumType"`
+	cmn.OrganizationOptionalRegNumType
 }
 
 // PlacerInfo: Информация об организации, разместившей контракт
@@ -1293,7 +1293,7 @@ type ElectronicContractAccountsDetailsInfoElectronicContractAccountDetailsInfo1 
 	// OrganizationType: Тип организации поставщика: L - Юридическое лицо РФ; F - Сведения об обособленном подразделении ЮЛ РФ. Принимается, только в случае, если поставщик (через или): Юридическое лицо РФ (legalEntityRFInfo); Обособленное подразделение юридического лица РФ (filialLegalEntityRFInfo)
 	OrganizationType *base.ParticipantType `xml:"organizationType,omitempty"`
 
-	AccountDetailsType string `xml:"accountDetailsType"`
+	cmn.AccountDetailsType
 }
 
 // ParticipantAccountsDetailsInfoElectronicContractAccountsDetailsInfo1: Реквизиты счетов поставщика (добавлены в электронном контракте)
@@ -2428,8 +2428,6 @@ type ContractNumber struct {
 	// FieldName: 1 - изменено
 	FieldName string `xml:"fieldName,attr,omitempty"`
 
-	T100Type string `xml:",any"`
-
 	Text string `xml:",chardata"`
 }
 
@@ -2721,7 +2719,19 @@ type ParticipantInfo2 struct {
 	XMLName xml.Name `xml:"participantInfo"`
 
 	// ContractorRegistryNum: Номер реестровой записи в ЕРУЗ. Игнорируется при приеме. Заполняется при выгрузке из связанного итогового протокола при наличии
-	ContractorRegistryNum *base.EruzRegistryNumType `xml:",any,omitempty"`
+	ContractorRegistryNum *base.EruzRegistryNumType `xml:"contractorRegistryNum,omitempty"`
+
+	// ParticipantInfoLegalEntityRfinfo: Юридическое лицо РФ
+	LegalEntityRfinfo *ParticipantInfoLegalEntityRfinfo `xml:"legalEntityRFInfo,omitempty"`
+
+	// ParticipantInfoLegalEntityForeignStateInfo: Юридическое лицо иностранного государства
+	LegalEntityForeignStateInfo *ParticipantInfoLegalEntityForeignStateInfo `xml:"legalEntityForeignStateInfo,omitempty"`
+
+	// ParticipantInfoIndividualPersonRfinfo: Физическое лицо РФ
+	IndividualPersonRfinfo *ParticipantInfoIndividualPersonRfinfo `xml:"individualPersonRFInfo,omitempty"`
+
+	// ParticipantInfoIndividualPersonForeignStateInfo: Физическое лицо иностранного государства
+	IndividualPersonForeignStateInfo *ParticipantInfoIndividualPersonForeignStateInfo `xml:"individualPersonForeignStateInfo,omitempty"`
 }
 
 // ContractInfoChangePriceInfo: Цена контракта изменена относительно предложения поставщика в итоговом протоколе. При приеме блока контролируется отсутствие в итоговом протоколе (foundationInfo/protocolInfo/number) флага "Торги проводили на право заключения контракта" (concludeContractRight) с выставленным значением true
@@ -2773,6 +2783,18 @@ type CommonInfo1 struct {
 
 	// ContractIsNotPlaceByAct: В соответствии с актом Правительства Российской Федерации контракт не подлежит размещению на Официальном сайте ЕИС. В случае если признак уже установлен в true в документе «Пакет данных: Проект контракта без подписей (непубличные данные)» (cpClosedContractProject)для данного контракта, то игнорируется при приеме, автоматически устанавливается в true, иначе принимается из пакета. Может быть заполнен только при приеме первой версии документа, при приеме последующих версий документа автоматически подтягивается из первой версии. Может быть заполнен только при приеме документа «Пакет данных: Доработанный проект контракта на основании размещенного поставщиком протокола разногласий (непубличные данные)» (cpClosedContractProjectChange)
 	ContractIsNotPlaceByAct *bool `xml:"contractIsNotPlaceByAct,omitempty"`
+
+	// Number: Номер проекта контракта
+	Number base.ContractProjNumType `xml:"number"`
+
+	// DocNumber: Номер документа. Элемент игнорируется при приёме. Заполняется при передаче номером документа, присвоенным в ЕИС
+	DocNumber *base.ContractProjDocNumType `xml:"docNumber,omitempty"`
+
+	// PublishDtinEis: Дата размещения документа в ЕИС. Элемент игнорируется при приёме. При передаче заполняется датой размещения документа в ЕИС
+	PublishDtinEis string `xml:"publishDTInEIS,omitempty"`
+
+	// Href: Гиперссылка на размещённый в ЕИС документ. Элемент игнорируется при приёме. При передаче заполняется ссылкой на карточку размещенного документа
+	Href *base.HrefType `xml:"href,omitempty"`
 }
 
 // ContractProjectFilesInfo1: Файлы проекта контракта, направляемого поставщику. Если установлен признак "Проект контракта формируется в структурированном виде" (contractInfo/isStructuredForm), то игнорируется при приеме, не заполняется при передаче. Если не установлен признак "Проект контракта формируется в структурированном виде" (contractInfo/isStructuredForm), то контролируется обязательность указания файлов проекта контракта в неструктурированном виде
@@ -2947,7 +2969,19 @@ type ParticipantInfo3 struct {
 	XMLName xml.Name `xml:"participantInfo"`
 
 	// ContractorRegistryNum: Номер реестровой записи в ЕРУЗ. Игнорируется при приеме. Заполняется при выгрузке из связанного итогового протокола при наличии
-	ContractorRegistryNum *base.EruzRegistryNumType `xml:",any,omitempty"`
+	ContractorRegistryNum *base.EruzRegistryNumType `xml:"contractorRegistryNum,omitempty"`
+
+	// ParticipantInfoLegalEntityRfinfo: Юридическое лицо РФ
+	LegalEntityRfinfo *ParticipantInfoLegalEntityRfinfo `xml:"legalEntityRFInfo,omitempty"`
+
+	// ParticipantInfoLegalEntityForeignStateInfo: Юридическое лицо иностранного государства
+	LegalEntityForeignStateInfo *ParticipantInfoLegalEntityForeignStateInfo `xml:"legalEntityForeignStateInfo,omitempty"`
+
+	// ParticipantInfoIndividualPersonRfinfo: Физическое лицо РФ
+	IndividualPersonRfinfo *ParticipantInfoIndividualPersonRfinfo `xml:"individualPersonRFInfo,omitempty"`
+
+	// ParticipantInfoIndividualPersonForeignStateInfo: Физическое лицо иностранного государства
+	IndividualPersonForeignStateInfo *ParticipantInfoIndividualPersonForeignStateInfo `xml:"individualPersonForeignStateInfo,omitempty"`
 }
 
 // ContractInfoChangePriceInfo1: Цена контракта изменена относительно предложения поставщика в итоговом протоколе. При приеме блока контролируется отсутствие в итоговом протоколе (foundationInfo/protocolInfo/number) флага "Торги проводили на право заключения контракта" (concludeContractRight) с выставленным значением true
@@ -3064,7 +3098,34 @@ type ContractProjectFilesInfoContractProjectFileInfo struct {
 	XMLName xml.Name `xml:"contractProjectFileInfo"`
 
 	// SignatureCheckUrl: Ссылка на страницу проверки подписи на ЭП
-	SignatureCheckUrl base.HrefType `xml:",any"`
+	SignatureCheckUrl base.HrefType `xml:"signatureCheckUrl"`
+
+	// FileSize: Размер файла
+	FileSize base.FileSizeType `xml:"fileSize"`
+
+	// FileFingerPrint: Отпечаток файла
+	FileFingerPrint base.FileHashType `xml:"fileFingerPrint"`
+
+	// SupplierSignature: Электронная подпись поставщика
+	SupplierSignature cmn.SignatureType `xml:"supplierSignature"`
+
+	// PublishedContentId: Уникальный идентификатор контента прикрепленного документа на ЕИС. Элемент игнорируется при приёме, заполняется при передаче
+	PublishedContentId *base.GuidType `xml:"publishedContentId,omitempty"`
+
+	// FileName: Имя файла
+	FileName base.FileNameType `xml:"fileName"`
+
+	// DocDescription: Описание прикрепляемого документа
+	DocDescription *base.Text4000Type `xml:"docDescription,omitempty"`
+
+	// Url: Ссылка для скачивания прикрепленного документа
+	Url *base.HrefType `xml:"url,omitempty"`
+
+	// ContentId: Уникальный идентификатор контента прикрепленного документа на ЕИС
+	ContentId *base.GuidType `xml:"contentId,omitempty"`
+
+	// Content: Содержимое файла
+	Content string `xml:"content,omitempty"`
 }
 
 // ContractProjectFilesInfo2: Файлы проекта контракта, подписанные поставщиком. Если в проекте контракта не установлен признак "Проект контракта формируется в структурированном виде" (contractInfo/isStructuredForm), то в блоке должны быть указаны подписанные поставщиком вложения Если в проекте контракта установлен признак "Проект контракта формируется в структурированном виде" (contractInfo/isStructuredForm), то блок игнорируется при приеме
@@ -3080,7 +3141,34 @@ type ElectronicContractInfoPrintFormInfo struct {
 	XMLName xml.Name `xml:"printFormInfo"`
 
 	// SignatureCheckUrl: Ссылка на страницу проверки подписи на ЭП
-	SignatureCheckUrl base.HrefType `xml:",any"`
+	SignatureCheckUrl base.HrefType `xml:"signatureCheckUrl"`
+
+	// FileSize: Размер файла
+	FileSize base.FileSizeType `xml:"fileSize"`
+
+	// FileFingerPrint: Отпечаток файла
+	FileFingerPrint base.FileHashType `xml:"fileFingerPrint"`
+
+	// SupplierSignature: Электронная подпись поставщика
+	SupplierSignature cmn.SignatureType `xml:"supplierSignature"`
+
+	// PublishedContentId: Уникальный идентификатор контента прикрепленного документа на ЕИС. Элемент игнорируется при приёме, заполняется при передаче
+	PublishedContentId *base.GuidType `xml:"publishedContentId,omitempty"`
+
+	// FileName: Имя файла
+	FileName base.FileNameType `xml:"fileName"`
+
+	// DocDescription: Описание прикрепляемого документа
+	DocDescription *base.Text4000Type `xml:"docDescription,omitempty"`
+
+	// Url: Ссылка для скачивания прикрепленного документа
+	Url *base.HrefType `xml:"url,omitempty"`
+
+	// ContentId: Уникальный идентификатор контента прикрепленного документа на ЕИС
+	ContentId *base.GuidType `xml:"contentId,omitempty"`
+
+	// Content: Содержимое файла
+	Content string `xml:"content,omitempty"`
 }
 
 // AttachmentsInfoAttachmentInfo: Документ, прикрепленный к проекту электронного контракта
@@ -3088,7 +3176,34 @@ type AttachmentsInfoAttachmentInfo struct {
 	XMLName xml.Name `xml:"attachmentInfo"`
 
 	// SignatureCheckUrl: Ссылка на страницу проверки подписи на ЭП
-	SignatureCheckUrl base.HrefType `xml:",any"`
+	SignatureCheckUrl base.HrefType `xml:"signatureCheckUrl"`
+
+	// FileSize: Размер файла
+	FileSize base.FileSizeType `xml:"fileSize"`
+
+	// FileFingerPrint: Отпечаток файла
+	FileFingerPrint base.FileHashType `xml:"fileFingerPrint"`
+
+	// SupplierSignature: Электронная подпись поставщика
+	SupplierSignature cmn.SignatureType `xml:"supplierSignature"`
+
+	// PublishedContentId: Уникальный идентификатор контента прикрепленного документа на ЕИС. Элемент игнорируется при приёме, заполняется при передаче
+	PublishedContentId *base.GuidType `xml:"publishedContentId,omitempty"`
+
+	// FileName: Имя файла
+	FileName base.FileNameType `xml:"fileName"`
+
+	// DocDescription: Описание прикрепляемого документа
+	DocDescription *base.Text4000Type `xml:"docDescription,omitempty"`
+
+	// Url: Ссылка для скачивания прикрепленного документа
+	Url *base.HrefType `xml:"url,omitempty"`
+
+	// ContentId: Уникальный идентификатор контента прикрепленного документа на ЕИС
+	ContentId *base.GuidType `xml:"contentId,omitempty"`
+
+	// Content: Содержимое файла
+	Content string `xml:"content,omitempty"`
 }
 
 // ElectronicContractInfoAttachmentsInfo2: Документы, прикрепленные к проекту электронного контракта. При приёме в ЕИС в блоке контролируется наличие элемента "Уникальный идентификатор контента прикреплённого документа на ЕИС" (contentId). При приёме в ЕИС проверяется наличие у проекта электронного контракта файла с тем же именем (fileName), уникальным идентификатором контента прикреплённого документа в ЕИС (contentId), совпадающего по размеру (fileSize) и с совпадающим отпечатком файла (fileFingerPrint)
@@ -3151,7 +3266,19 @@ type CommonInfo3 struct {
 	XMLName xml.Name `xml:"commonInfo"`
 
 	// SignDate: Дата подписания контракта
-	SignDate string `xml:",any"`
+	SignDate string `xml:"signDate"`
+
+	// Number: Номер проекта контракта
+	Number base.ContractProjNumType `xml:"number"`
+
+	// DocNumber: Номер документа. Элемент игнорируется при приёме. Заполняется при передаче номером документа, присвоенным в ЕИС
+	DocNumber *base.ContractProjDocNumType `xml:"docNumber,omitempty"`
+
+	// PublishDtinEis: Дата размещения документа в ЕИС. Элемент игнорируется при приёме. При передаче заполняется датой размещения документа в ЕИС
+	PublishDtinEis string `xml:"publishDTInEIS,omitempty"`
+
+	// Href: Гиперссылка на размещённый в ЕИС документ. Элемент игнорируется при приёме. При передаче заполняется ссылкой на карточку размещенного документа
+	Href *base.HrefType `xml:"href,omitempty"`
 }
 
 // ContractProjectFilesInfo3: Файлы подписанного контракта. Заполняется при передаче, если не установлен признак "Проект контракта формируется в структурированном виде" (contractInfo/isStructuredForm)
@@ -3304,7 +3431,19 @@ type ParticipantInfo4 struct {
 	XMLName xml.Name `xml:"participantInfo"`
 
 	// ContractorRegistryNum: Номер реестровой записи в ЕРУЗ. Игнорируется при приеме. Заполняется при выгрузке из связанного итогового протокола при наличии
-	ContractorRegistryNum *base.EruzRegistryNumType `xml:",any,omitempty"`
+	ContractorRegistryNum *base.EruzRegistryNumType `xml:"contractorRegistryNum,omitempty"`
+
+	// ParticipantInfoLegalEntityRfinfo: Юридическое лицо РФ
+	LegalEntityRfinfo *ParticipantInfoLegalEntityRfinfo `xml:"legalEntityRFInfo,omitempty"`
+
+	// ParticipantInfoLegalEntityForeignStateInfo: Юридическое лицо иностранного государства
+	LegalEntityForeignStateInfo *ParticipantInfoLegalEntityForeignStateInfo `xml:"legalEntityForeignStateInfo,omitempty"`
+
+	// ParticipantInfoIndividualPersonRfinfo: Физическое лицо РФ
+	IndividualPersonRfinfo *ParticipantInfoIndividualPersonRfinfo `xml:"individualPersonRFInfo,omitempty"`
+
+	// ParticipantInfoIndividualPersonForeignStateInfo: Физическое лицо иностранного государства
+	IndividualPersonForeignStateInfo *ParticipantInfoIndividualPersonForeignStateInfo `xml:"individualPersonForeignStateInfo,omitempty"`
 }
 
 // ContractInfoChangePriceInfo2: Цена контракта изменена относительно предложения поставщика в итоговом протоколе. При приеме блока контролируется отсутствие в итоговом протоколе (foundationInfo/protocolInfo/number) флага "Торги проводили на право заключения контракта" (concludeContractRight) с выставленным значением true
@@ -3602,7 +3741,7 @@ type CustomerInfo2 struct {
 	// Oktmoppo: ОКТМО публично-правового образования (ППО)
 	Oktmoppo *base.Oktmopporef `xml:"OKTMOPPO,omitempty"`
 
-	Control99CustomerInfoType string `xml:"control99CustomerInfoType"`
+	cmn.Control99CustomerInfoType
 }
 
 // PlacerInfo5: Информация об организации, разместившей проект контракта
@@ -3888,7 +4027,34 @@ type ContractProjectFilesInfoContractProjectFileInfo1 struct {
 	XMLName xml.Name `xml:"contractProjectFileInfo"`
 
 	// SignatureCheckUrl: Ссылка на страницу проверки подписи на ЭП
-	SignatureCheckUrl base.HrefType `xml:",any"`
+	SignatureCheckUrl base.HrefType `xml:"signatureCheckUrl"`
+
+	// FileSize: Размер файла
+	FileSize base.FileSizeType `xml:"fileSize"`
+
+	// FileFingerPrint: Отпечаток файла
+	FileFingerPrint base.FileHashType `xml:"fileFingerPrint"`
+
+	// SupplierSignature: Электронная подпись поставщика
+	SupplierSignature cmn.SignatureType `xml:"supplierSignature"`
+
+	// PublishedContentId: Уникальный идентификатор контента прикрепленного документа на ЕИС. Элемент игнорируется при приёме, заполняется при передаче
+	PublishedContentId *base.GuidType `xml:"publishedContentId,omitempty"`
+
+	// FileName: Имя файла
+	FileName base.FileNameType `xml:"fileName"`
+
+	// DocDescription: Описание прикрепляемого документа
+	DocDescription *base.Text4000Type `xml:"docDescription,omitempty"`
+
+	// Url: Ссылка для скачивания прикрепленного документа
+	Url *base.HrefType `xml:"url,omitempty"`
+
+	// ContentId: Уникальный идентификатор контента прикрепленного документа на ЕИС
+	ContentId *base.GuidType `xml:"contentId,omitempty"`
+
+	// Content: Содержимое файла
+	Content string `xml:"content,omitempty"`
 }
 
 // ContractProjectFilesInfo5: Файлы проекта контракта, подписанные поставщиком. Если в проекте контракта не установлен признак "Проект контракта формируется в структурированном виде" (contractInfo/isStructuredForm), то в блоке должны быть указаны подписанные поставщиком вложения Если в проекте контракта установлен признак "Проект контракта формируется в структурированном виде" (contractInfo/isStructuredForm), то блок игнорируется при приеме
@@ -3904,7 +4070,34 @@ type ElectronicContractInfoPrintFormInfo1 struct {
 	XMLName xml.Name `xml:"printFormInfo"`
 
 	// SignatureCheckUrl: Ссылка на страницу проверки подписи на ЭП
-	SignatureCheckUrl base.HrefType `xml:",any"`
+	SignatureCheckUrl base.HrefType `xml:"signatureCheckUrl"`
+
+	// FileSize: Размер файла
+	FileSize base.FileSizeType `xml:"fileSize"`
+
+	// FileFingerPrint: Отпечаток файла
+	FileFingerPrint base.FileHashType `xml:"fileFingerPrint"`
+
+	// SupplierSignature: Электронная подпись поставщика
+	SupplierSignature cmn.SignatureType `xml:"supplierSignature"`
+
+	// PublishedContentId: Уникальный идентификатор контента прикрепленного документа на ЕИС. Элемент игнорируется при приёме, заполняется при передаче
+	PublishedContentId *base.GuidType `xml:"publishedContentId,omitempty"`
+
+	// FileName: Имя файла
+	FileName base.FileNameType `xml:"fileName"`
+
+	// DocDescription: Описание прикрепляемого документа
+	DocDescription *base.Text4000Type `xml:"docDescription,omitempty"`
+
+	// Url: Ссылка для скачивания прикрепленного документа
+	Url *base.HrefType `xml:"url,omitempty"`
+
+	// ContentId: Уникальный идентификатор контента прикрепленного документа на ЕИС
+	ContentId *base.GuidType `xml:"contentId,omitempty"`
+
+	// Content: Содержимое файла
+	Content string `xml:"content,omitempty"`
 }
 
 // ElectronicContractInfoAttachmentsInfoAttachmentInfo: Документ, прикрепленный к проекту электронного контракта
@@ -3912,7 +4105,34 @@ type ElectronicContractInfoAttachmentsInfoAttachmentInfo struct {
 	XMLName xml.Name `xml:"attachmentInfo"`
 
 	// SignatureCheckUrl: Ссылка на страницу проверки подписи на ЭП
-	SignatureCheckUrl base.HrefType `xml:",any"`
+	SignatureCheckUrl base.HrefType `xml:"signatureCheckUrl"`
+
+	// FileSize: Размер файла
+	FileSize base.FileSizeType `xml:"fileSize"`
+
+	// FileFingerPrint: Отпечаток файла
+	FileFingerPrint base.FileHashType `xml:"fileFingerPrint"`
+
+	// SupplierSignature: Электронная подпись поставщика
+	SupplierSignature cmn.SignatureType `xml:"supplierSignature"`
+
+	// PublishedContentId: Уникальный идентификатор контента прикрепленного документа на ЕИС. Элемент игнорируется при приёме, заполняется при передаче
+	PublishedContentId *base.GuidType `xml:"publishedContentId,omitempty"`
+
+	// FileName: Имя файла
+	FileName base.FileNameType `xml:"fileName"`
+
+	// DocDescription: Описание прикрепляемого документа
+	DocDescription *base.Text4000Type `xml:"docDescription,omitempty"`
+
+	// Url: Ссылка для скачивания прикрепленного документа
+	Url *base.HrefType `xml:"url,omitempty"`
+
+	// ContentId: Уникальный идентификатор контента прикрепленного документа на ЕИС
+	ContentId *base.GuidType `xml:"contentId,omitempty"`
+
+	// Content: Содержимое файла
+	Content string `xml:"content,omitempty"`
 }
 
 // ElectronicContractInfoAttachmentsInfo4: Документы, прикрепленные к проекту электронного контракта. При приёме в ЕИС в блоке контролируется наличие элемента "Уникальный идентификатор контента прикреплённого документа на ЕИС" (contentId). При приёме в ЕИС проверяется наличие у проекта электронного контракта файла с тем же именем (fileName), уникальным идентификатором контента прикреплённого документа в ЕИС (contentId), совпадающего по размеру (fileSize) и с совпадающим отпечатком файла (fileFingerPrint)
@@ -4144,7 +4364,19 @@ type ParticipantInfo5 struct {
 	XMLName xml.Name `xml:"participantInfo"`
 
 	// ContractorRegistryNum: Номер реестровой записи в ЕРУЗ. Игнорируется при приеме. Заполняется при выгрузке из связанного итогового протокола при наличии
-	ContractorRegistryNum *base.EruzRegistryNumType `xml:",any,omitempty"`
+	ContractorRegistryNum *base.EruzRegistryNumType `xml:"contractorRegistryNum,omitempty"`
+
+	// ParticipantInfoLegalEntityRfinfo: Юридическое лицо РФ
+	LegalEntityRfinfo *ParticipantInfoLegalEntityRfinfo `xml:"legalEntityRFInfo,omitempty"`
+
+	// ParticipantInfoLegalEntityForeignStateInfo: Юридическое лицо иностранного государства
+	LegalEntityForeignStateInfo *ParticipantInfoLegalEntityForeignStateInfo `xml:"legalEntityForeignStateInfo,omitempty"`
+
+	// ParticipantInfoIndividualPersonRfinfo: Физическое лицо РФ
+	IndividualPersonRfinfo *ParticipantInfoIndividualPersonRfinfo `xml:"individualPersonRFInfo,omitempty"`
+
+	// ParticipantInfoIndividualPersonForeignStateInfo: Физическое лицо иностранного государства
+	IndividualPersonForeignStateInfo *ParticipantInfoIndividualPersonForeignStateInfo `xml:"individualPersonForeignStateInfo,omitempty"`
 }
 
 // ContractInfoChangePriceInfo3: Цена контракта изменена относительно предложения поставщика в итоговом протоколе. При приеме блока контролируется отсутствие в итоговом протоколе (foundationInfo/protocolInfo/number) флага "Торги проводили на право заключения контракта" (concludeContractRight) с выставленным значением true
@@ -4238,8 +4470,6 @@ type RelativeTermsInfoStart struct {
 	// FieldName: 1 - изменено
 	FieldName string `xml:"fieldName,attr,omitempty"`
 
-	Count5Type string `xml:",any"`
-
 	Text string `xml:",chardata"`
 }
 
@@ -4251,8 +4481,6 @@ type RelativeTermsInfoStartDayType struct {
 
 	// FieldName: 1 - изменено
 	FieldName string `xml:"fieldName,attr,omitempty"`
-
-	DayType string `xml:",any"`
 
 	Text string `xml:",chardata"`
 }
@@ -4266,8 +4494,6 @@ type RelativeTermsInfoTerm struct {
 	// FieldName: 1 - изменено
 	FieldName string `xml:"fieldName,attr,omitempty"`
 
-	Count5Type string `xml:",any"`
-
 	Text string `xml:",chardata"`
 }
 
@@ -4279,8 +4505,6 @@ type RelativeTermsInfoTermDayType struct {
 
 	// FieldName: 1 - изменено
 	FieldName string `xml:"fieldName,attr,omitempty"`
-
-	DayType string `xml:",any"`
 
 	Text string `xml:",chardata"`
 }
@@ -4499,7 +4723,7 @@ type Okpd2Info struct {
 	// ProductInfoOkpd2InfoCharacteristics: Характеристики товара, работы, услуги позиции ОКПД2
 	Characteristics *ProductInfoOkpd2InfoCharacteristics `xml:"characteristics,omitempty"`
 
-	Okpd2Ref string `xml:"OKPD2Ref"`
+	base.Okpd2Ref
 }
 
 // KtruinfoCharacteristics: Характеристики товара, работы, услуги позиции КТРУ. Для родительского объекта закупки: Игнорируется при приеме, не заполняется при передаче
@@ -4520,7 +4744,7 @@ type Ktruinfo struct {
 	// ProductInfoKtruinfoCharacteristics: Характеристики товара, работы, услуги позиции КТРУ. Для родительского объекта закупки: Игнорируется при приеме, не заполняется при передаче
 	Characteristics *ProductInfoKtruinfoCharacteristics `xml:"characteristics,omitempty"`
 
-	Ktruref string `xml:"KTRURef"`
+	base.Ktruref
 }
 
 // ProductInfoMedicalProductInfo: Номенклатурная классификация медицинских изделий по видам (НКМИ) по КТРУ
@@ -4577,7 +4801,7 @@ type ProductInfoOkpd2Info struct {
 	// ProductInfoOkpd2InfoCharacteristics: Характеристики товара, работы, услуги позиции ОКПД2
 	Characteristics *ProductInfoOkpd2InfoCharacteristics `xml:"characteristics,omitempty"`
 
-	Okpd2Ref string `xml:"OKPD2Ref"`
+	base.Okpd2Ref
 }
 
 // KtruinfoCharacteristics1: Характеристики товара, работы, услуги позиции КТРУ. Для родительского объекта закупки: Игнорируется при приеме, не заполняется при передаче
@@ -4598,7 +4822,7 @@ type ProductInfoKtruinfo struct {
 	// ProductInfoKtruinfoCharacteristics: Характеристики товара, работы, услуги позиции КТРУ. Для родительского объекта закупки: Игнорируется при приеме, не заполняется при передаче
 	Characteristics *ProductInfoKtruinfoCharacteristics `xml:"characteristics,omitempty"`
 
-	Ktruref string `xml:"KTRURef"`
+	base.Ktruref
 }
 
 // ProductInfo: Объект закупки
@@ -4643,6 +4867,51 @@ type ProductInfo struct {
 
 	// VolumeTextForm: Объем работы, услуги (указание объема в текстовом виде)
 	VolumeTextForm *base.Text500Type `xml:"volumeTextForm,omitempty"`
+
+	// Sid: Уникальный идентификатор объекта закупки. Игнорируется при приеме первой версии проекта электронного контракта (ПЭК). Назначается в ЕИС и заполняется при передаче. При приеме изменений, если поле заполнено, то контролируется, что в предыдущей версии документа найден объект закупки с указанным значением sid. При этом, если для объекта закупки, найденного по sid, в размещенной версии ПЭК: 1. задан externalSid, то в принимаемой версии для данного объекта закупки должно быть указано то же значение externalSid; 2. не задан externalSid, то в принимаемой версии допускается указание externalSid
+	Sid *base.SIdType `xml:"sid,omitempty"`
+
+	// ExternalSid: Внешний идентификатор объекта закупки
+	ExternalSid *base.ExternalIdType `xml:"externalSid,omitempty"`
+
+	// ProtocolObjectSid: Уникальный идентификатор объекта закупки в протоколе-основании. При приеме в ЕИС в этом поле ожидается значение поля "Уникальный идентификатор объекта закупки в протоколе-основании. Для ЛП идентификатор МНН" (applications/application/customersInfo/customerInfo/customerQuantities/customersQuantity/protocolSid) документа "Результат проведения процедуры определения поставщика c информацией по объектам закупки" (fcsProposalsResult)
+	ProtocolObjectSid *base.SIdType `xml:"protocolObjectSid,omitempty"`
+
+	// ProtocolObjectExternalSid: Внешний идентификатор объекта закупки в протоколе-основании
+	ProtocolObjectExternalSid *base.ExternalIdType `xml:"protocolObjectExternalSid,omitempty"`
+
+	// PurchaseObjectSid: Уникальный идентификатор объекта закупки в извещении-основании
+	PurchaseObjectSid string `xml:"purchaseObjectSid,omitempty"`
+
+	// PurchaseObjectExternalSid: Внешний идентификатор объекта закупки в извещении-основании
+	PurchaseObjectExternalSid *base.ExternalIdType `xml:"purchaseObjectExternalSid,omitempty"`
+
+	// IndexNum: Порядковый номер объекта закупки
+	IndexNum *base.QuantityContractSubjectNumType `xml:"indexNum,omitempty"`
+
+	// Name: Наименование объекта закупки
+	Name *base.Text2000Type `xml:"name,omitempty"`
+
+	// IsNameProductChanged: Наименование объекта закупки изменено
+	IsNameProductChanged *bool `xml:"isNameProductChanged,omitempty"`
+
+	// ParentProductInfoOkpd2Info: Классификация по ОКПД2
+	Okpd2Info *ParentProductInfoOkpd2Info `xml:"OKPD2Info,omitempty"`
+
+	// ParentProductInfoKtruinfo: Классификация по КТРУ
+	Ktruinfo *ParentProductInfoKtruinfo `xml:"KTRUInfo,omitempty"`
+
+	// HierarchyType: Тип объекта закупки в иерархии
+	HierarchyType *base.ProductHierarchyTypeEnumType `xml:"hierarchyType,omitempty"`
+
+	// Type: Тип объекта закупки. Допустимые значения: PRODUCT - товар; WORK - работа; SERVICE - услуга.
+	Type *base.ProductTypeEnumType `xml:"type,omitempty"`
+
+	// IsTypeEdited: Тип объекта закупки принят из пакета Игнорируется при приеме, заполняется автоматически, в случае, если сработали блокирующе бизнесовые контроли и поле type было принято из пакета
+	IsTypeEdited *bool `xml:"isTypeEdited,omitempty"`
+
+	// Sum: Сумма
+	Sum *base.MoneyPositiveType `xml:"sum,omitempty"`
 }
 
 // ProductInfoOkpd2InfoCharacteristics: Характеристики товара, работы, услуги позиции ОКПД2
@@ -4660,7 +4929,7 @@ type ParentProductInfoOkpd2Info struct {
 	// ProductInfoOkpd2InfoCharacteristics: Характеристики товара, работы, услуги позиции ОКПД2
 	Characteristics *ProductInfoOkpd2InfoCharacteristics `xml:"characteristics,omitempty"`
 
-	Okpd2Ref string `xml:"OKPD2Ref"`
+	base.Okpd2Ref
 }
 
 // ProductInfoKtruinfoCharacteristics: Характеристики товара, работы, услуги позиции КТРУ. Для родительского объекта закупки: Игнорируется при приеме, не заполняется при передаче
@@ -4681,7 +4950,7 @@ type ParentProductInfoKtruinfo struct {
 	// ProductInfoKtruinfoCharacteristics: Характеристики товара, работы, услуги позиции КТРУ. Для родительского объекта закупки: Игнорируется при приеме, не заполняется при передаче
 	Characteristics *ProductInfoKtruinfoCharacteristics `xml:"characteristics,omitempty"`
 
-	Ktruref string `xml:"KTRURef"`
+	base.Ktruref
 }
 
 // ParentProductInfo: Родительский объект закупки
@@ -4689,7 +4958,52 @@ type ParentProductInfo struct {
 	XMLName xml.Name `xml:"parentProductInfo,omitempty"`
 
 	// IsDuplicated: Позиция является продублированной
-	IsDuplicated *bool `xml:",any,omitempty"`
+	IsDuplicated *bool `xml:"isDuplicated,omitempty"`
+
+	// Sid: Уникальный идентификатор объекта закупки. Игнорируется при приеме первой версии проекта электронного контракта (ПЭК). Назначается в ЕИС и заполняется при передаче. При приеме изменений, если поле заполнено, то контролируется, что в предыдущей версии документа найден объект закупки с указанным значением sid. При этом, если для объекта закупки, найденного по sid, в размещенной версии ПЭК: 1. задан externalSid, то в принимаемой версии для данного объекта закупки должно быть указано то же значение externalSid; 2. не задан externalSid, то в принимаемой версии допускается указание externalSid
+	Sid *base.SIdType `xml:"sid,omitempty"`
+
+	// ExternalSid: Внешний идентификатор объекта закупки
+	ExternalSid *base.ExternalIdType `xml:"externalSid,omitempty"`
+
+	// ProtocolObjectSid: Уникальный идентификатор объекта закупки в протоколе-основании. При приеме в ЕИС в этом поле ожидается значение поля "Уникальный идентификатор объекта закупки в протоколе-основании. Для ЛП идентификатор МНН" (applications/application/customersInfo/customerInfo/customerQuantities/customersQuantity/protocolSid) документа "Результат проведения процедуры определения поставщика c информацией по объектам закупки" (fcsProposalsResult)
+	ProtocolObjectSid *base.SIdType `xml:"protocolObjectSid,omitempty"`
+
+	// ProtocolObjectExternalSid: Внешний идентификатор объекта закупки в протоколе-основании
+	ProtocolObjectExternalSid *base.ExternalIdType `xml:"protocolObjectExternalSid,omitempty"`
+
+	// PurchaseObjectSid: Уникальный идентификатор объекта закупки в извещении-основании
+	PurchaseObjectSid string `xml:"purchaseObjectSid,omitempty"`
+
+	// PurchaseObjectExternalSid: Внешний идентификатор объекта закупки в извещении-основании
+	PurchaseObjectExternalSid *base.ExternalIdType `xml:"purchaseObjectExternalSid,omitempty"`
+
+	// IndexNum: Порядковый номер объекта закупки
+	IndexNum *base.QuantityContractSubjectNumType `xml:"indexNum,omitempty"`
+
+	// Name: Наименование объекта закупки
+	Name *base.Text2000Type `xml:"name,omitempty"`
+
+	// IsNameProductChanged: Наименование объекта закупки изменено
+	IsNameProductChanged *bool `xml:"isNameProductChanged,omitempty"`
+
+	// ParentProductInfoOkpd2Info: Классификация по ОКПД2
+	Okpd2Info *ParentProductInfoOkpd2Info `xml:"OKPD2Info,omitempty"`
+
+	// ParentProductInfoKtruinfo: Классификация по КТРУ
+	Ktruinfo *ParentProductInfoKtruinfo `xml:"KTRUInfo,omitempty"`
+
+	// HierarchyType: Тип объекта закупки в иерархии
+	HierarchyType *base.ProductHierarchyTypeEnumType `xml:"hierarchyType,omitempty"`
+
+	// Type: Тип объекта закупки. Допустимые значения: PRODUCT - товар; WORK - работа; SERVICE - услуга.
+	Type *base.ProductTypeEnumType `xml:"type,omitempty"`
+
+	// IsTypeEdited: Тип объекта закупки принят из пакета Игнорируется при приеме, заполняется автоматически, в случае, если сработали блокирующе бизнесовые контроли и поле type было принято из пакета
+	IsTypeEdited *bool `xml:"isTypeEdited,omitempty"`
+
+	// Sum: Сумма
+	Sum *base.MoneyPositiveType `xml:"sum,omitempty"`
 }
 
 // ChangePriceInfo: Цена единиц товаров, работ, услуг изменена относительно предложения поставщика в итоговом протоколе (извещении). Принимается если указан признак quantityUndefined и не указан concludeContractRightPrice, иначе игнорируется
@@ -4712,7 +5026,7 @@ type ChangePriceInfo1 struct {
 type Ktruinfo1 struct {
 	XMLName xml.Name `xml:"KTRUInfo,omitempty"`
 
-	Ktruref string `xml:",any"`
+	base.Ktruref
 }
 
 // ResponsibleDecisionInfo: По решению заказчика (организации, осуществляющей определение поставщика для заказчика)
@@ -4776,8 +5090,6 @@ type DrugProductInfoSum struct {
 	// FieldName: 1 - изменено
 	FieldName string `xml:"fieldName,attr,omitempty"`
 
-	MoneyPositiveType string `xml:",any"`
-
 	Text string `xml:",chardata"`
 }
 
@@ -4789,8 +5101,6 @@ type DrugProductInfoIndexNum struct {
 
 	// FieldName: 1 - изменено
 	FieldName string `xml:"fieldName,attr,omitempty"`
-
-	QuantityContractSubjectNumType string `xml:",any"`
 
 	Text string `xml:",chardata"`
 }
@@ -4835,8 +5145,6 @@ type RegNum struct {
 	// FieldName: 1 - изменено
 	FieldName string `xml:"fieldName,attr,omitempty"`
 
-	SpzNumType string `xml:",any"`
-
 	Text string `xml:",chardata"`
 }
 
@@ -4848,8 +5156,6 @@ type ConsRegistryNum struct {
 
 	// FieldName: 1 - изменено
 	FieldName string `xml:"fieldName,attr,omitempty"`
-
-	ConsRegistryNumType string `xml:",any"`
 
 	Text string `xml:",chardata"`
 }
@@ -4863,8 +5169,6 @@ type FullName struct {
 	// FieldName: 1 - изменено
 	FieldName string `xml:"fieldName,attr,omitempty"`
 
-	T2000Type string `xml:",any"`
-
 	Text string `xml:",chardata"`
 }
 
@@ -4876,8 +5180,6 @@ type ShortName struct {
 
 	// FieldName: 1 - изменено
 	FieldName string `xml:"fieldName,attr,omitempty"`
-
-	T2000Type string `xml:",any"`
 
 	Text string `xml:",chardata"`
 }
@@ -4891,8 +5193,6 @@ type PostAddress struct {
 	// FieldName: 1 - изменено
 	FieldName string `xml:"fieldName,attr,omitempty"`
 
-	T2000Type string `xml:",any"`
-
 	Text string `xml:",chardata"`
 }
 
@@ -4904,8 +5204,6 @@ type FactAddress struct {
 
 	// FieldName: 1 - изменено
 	FieldName string `xml:"fieldName,attr,omitempty"`
-
-	T2000Type string `xml:",any"`
 
 	Text string `xml:",chardata"`
 }
@@ -4919,8 +5217,6 @@ type Inn struct {
 	// FieldName: 1 - изменено
 	FieldName string `xml:"fieldName,attr,omitempty"`
 
-	Len0Or10Type string `xml:",any"`
-
 	Text string `xml:",chardata"`
 }
 
@@ -4932,8 +5228,6 @@ type Kpp struct {
 
 	// FieldName: 1 - изменено
 	FieldName string `xml:"fieldName,attr,omitempty"`
-
-	Len0Or9Type string `xml:",any"`
 
 	Text string `xml:",chardata"`
 }
@@ -4958,7 +5252,7 @@ type ContactPersonInfo struct {
 	// FieldName: 1 - изменено
 	FieldName string `xml:"fieldName,attr,omitempty"`
 
-	PersonWithoutOblType string `xml:",any"`
+	cmn.PersonWithoutOblType
 }
 
 // Email: Адрес электронной почты. Заполняется, если указан признак "Проект доп.соглашения формируется в структурированном виде" (isStructuredForm)
@@ -4969,8 +5263,6 @@ type Email struct {
 
 	// FieldName: 1 - изменено
 	FieldName string `xml:"fieldName,attr,omitempty"`
-
-	T256Type string `xml:",any"`
 
 	Text string `xml:",chardata"`
 }
@@ -4984,8 +5276,6 @@ type ContactPhone struct {
 	// FieldName: 1 - изменено
 	FieldName string `xml:"fieldName,attr,omitempty"`
 
-	T30Type string `xml:",any"`
-
 	Text string `xml:",chardata"`
 }
 
@@ -4998,7 +5288,7 @@ type SpecializedOrgContactPersonInfo struct {
 	// FieldName: 1 - изменено
 	FieldName string `xml:"fieldName,attr,omitempty"`
 
-	PersonWithoutOblType string `xml:",any"`
+	cmn.PersonWithoutOblType
 }
 
 // CustomerMainOrgInfoRegNum: Код по СПЗ
@@ -5009,8 +5299,6 @@ type CustomerMainOrgInfoRegNum struct {
 
 	// FieldName: 1 - изменено
 	FieldName string `xml:"fieldName,attr,omitempty"`
-
-	SpzNumType string `xml:",any"`
 
 	Text string `xml:",chardata"`
 }
@@ -5024,8 +5312,6 @@ type CustomerMainOrgInfoConsRegistryNum struct {
 	// FieldName: 1 - изменено
 	FieldName string `xml:"fieldName,attr,omitempty"`
 
-	ConsRegistryNumType string `xml:",any"`
-
 	Text string `xml:",chardata"`
 }
 
@@ -5037,8 +5323,6 @@ type CustomerMainOrgInfoFullName struct {
 
 	// FieldName: 1 - изменено
 	FieldName string `xml:"fieldName,attr,omitempty"`
-
-	T2000Type string `xml:",any"`
 
 	Text string `xml:",chardata"`
 }
@@ -5052,8 +5336,6 @@ type CustomerMainOrgInfoShortName struct {
 	// FieldName: 1 - изменено
 	FieldName string `xml:"fieldName,attr,omitempty"`
 
-	T2000Type string `xml:",any"`
-
 	Text string `xml:",chardata"`
 }
 
@@ -5065,8 +5347,6 @@ type CustomerMainOrgInfoPostAddress struct {
 
 	// FieldName: 1 - изменено
 	FieldName string `xml:"fieldName,attr,omitempty"`
-
-	T2000Type string `xml:",any"`
 
 	Text string `xml:",chardata"`
 }
@@ -5080,8 +5360,6 @@ type CustomerMainOrgInfoFactAddress struct {
 	// FieldName: 1 - изменено
 	FieldName string `xml:"fieldName,attr,omitempty"`
 
-	T2000Type string `xml:",any"`
-
 	Text string `xml:",chardata"`
 }
 
@@ -5094,8 +5372,6 @@ type CustomerMainOrgInfoInn struct {
 	// FieldName: 1 - изменено
 	FieldName string `xml:"fieldName,attr,omitempty"`
 
-	Len0Or10Type string `xml:",any"`
-
 	Text string `xml:",chardata"`
 }
 
@@ -5107,8 +5383,6 @@ type CustomerMainOrgInfoKpp struct {
 
 	// FieldName: 1 - изменено
 	FieldName string `xml:"fieldName,attr,omitempty"`
-
-	Len0Or9Type string `xml:",any"`
 
 	Text string `xml:",chardata"`
 }
@@ -5151,8 +5425,6 @@ type PriceType struct {
 	// FieldName: 1 - изменено
 	FieldName string `xml:"fieldName,attr,omitempty"`
 
-	ElectronicContractPriceType string `xml:",any"`
-
 	Text string `xml:",chardata"`
 }
 
@@ -5164,8 +5436,6 @@ type Price struct {
 
 	// FieldName: 1 - изменено
 	FieldName string `xml:"fieldName,attr,omitempty"`
-
-	MoneyMaxLengthFrom0To18Type string `xml:",any"`
 
 	Text string `xml:",chardata"`
 }
@@ -5179,8 +5449,6 @@ type PriceVat struct {
 	// FieldName: 1 - изменено
 	FieldName string `xml:"fieldName,attr,omitempty"`
 
-	MoneyMaxLengthFrom0To18Type string `xml:",any"`
-
 	Text string `xml:",chardata"`
 }
 
@@ -5192,8 +5460,6 @@ type PriceTreasurySupportContract struct {
 
 	// FieldName: 1 - изменено
 	FieldName string `xml:"fieldName,attr,omitempty"`
-
-	MoneyMaxLengthFrom0To18Type string `xml:",any"`
 
 	Text string `xml:",chardata"`
 }
@@ -5207,8 +5473,6 @@ type PriceFormula struct {
 	// FieldName: 1 - изменено
 	FieldName string `xml:"fieldName,attr,omitempty"`
 
-	T2000Type string `xml:",any"`
-
 	Text string `xml:",chardata"`
 }
 
@@ -5221,7 +5485,7 @@ type CurrencyInfo struct {
 	// FieldName: 1 - изменено
 	FieldName string `xml:"fieldName,attr,omitempty"`
 
-	CurrencyRef string `xml:",any"`
+	base.CurrencyRef
 }
 
 // ConcludeContractRightPrice: Цена за право заключения контракта. Заполняется, если указан признак "Проект доп.соглашения формируется в структурированном виде" (isStructuredForm)
@@ -5232,8 +5496,6 @@ type ConcludeContractRightPrice struct {
 
 	// FieldName: 1 - изменено
 	FieldName string `xml:"fieldName,attr,omitempty"`
-
-	MoneyMaxLengthFrom0To18Type string `xml:",any"`
 
 	Text string `xml:",chardata"`
 }
@@ -5247,8 +5509,6 @@ type RelativeTermsInfoStart1 struct {
 	// FieldName: 1 - изменено
 	FieldName string `xml:"fieldName,attr,omitempty"`
 
-	Count5Type string `xml:",any"`
-
 	Text string `xml:",chardata"`
 }
 
@@ -5260,8 +5520,6 @@ type RelativeTermsInfoStartDayType1 struct {
 
 	// FieldName: 1 - изменено
 	FieldName string `xml:"fieldName,attr,omitempty"`
-
-	DayType string `xml:",any"`
 
 	Text string `xml:",chardata"`
 }
@@ -5275,8 +5533,6 @@ type RelativeTermsInfoTerm1 struct {
 	// FieldName: 1 - изменено
 	FieldName string `xml:"fieldName,attr,omitempty"`
 
-	Count5Type string `xml:",any"`
-
 	Text string `xml:",chardata"`
 }
 
@@ -5288,8 +5544,6 @@ type RelativeTermsInfoTermDayType1 struct {
 
 	// FieldName: 1 - изменено
 	FieldName string `xml:"fieldName,attr,omitempty"`
-
-	DayType string `xml:",any"`
 
 	Text string `xml:",chardata"`
 }
@@ -5396,8 +5650,6 @@ type PaymentsSumInfoPaymentsSum struct {
 	// FieldName: 1 - изменено
 	FieldName string `xml:"fieldName,attr,omitempty"`
 
-	MoneyMaxLengthToPoint18Type string `xml:",any"`
-
 	Text string `xml:",chardata"`
 }
 
@@ -5410,8 +5662,6 @@ type AdvancePaymentSumInfoSum struct {
 	// FieldName: 1 - изменено
 	FieldName string `xml:"fieldName,attr,omitempty"`
 
-	MoneyMaxLengthToPoint18Type string `xml:",any"`
-
 	Text string `xml:",chardata"`
 }
 
@@ -5423,8 +5673,6 @@ type AdvancePaymentSumInfoSumInPercents struct {
 
 	// FieldName: 1 - изменено
 	FieldName string `xml:"fieldName,attr,omitempty"`
-
-	PercentRestr0100Type string `xml:",any"`
 
 	Text string `xml:",chardata"`
 }
@@ -5449,8 +5697,6 @@ type BudgetFinancingsInfoKbk struct {
 	// FieldName: 1 - изменено
 	FieldName string `xml:"fieldName,attr,omitempty"`
 
-	KbkType string `xml:",any"`
-
 	Text string `xml:",chardata"`
 }
 
@@ -5463,8 +5709,6 @@ type KokscodeInfoCode struct {
 	// FieldName: 1 - изменено
 	FieldName string `xml:"fieldName,attr,omitempty"`
 
-	KokscodeType string `xml:",any"`
-
 	Text string `xml:",chardata"`
 }
 
@@ -5476,8 +5720,6 @@ type KokscodeInfoName struct {
 
 	// FieldName: 1 - изменено
 	FieldName string `xml:"fieldName,attr,omitempty"`
-
-	Text2000Type string `xml:",any"`
 
 	Text string `xml:",chardata"`
 }
@@ -5514,8 +5756,6 @@ type PaymentYearInfoPaymentYear struct {
 	// FieldName: 1 - изменено
 	FieldName string `xml:"fieldName,attr,omitempty"`
 
-	YearNewType string `xml:",any"`
-
 	Text string `xml:",chardata"`
 }
 
@@ -5527,8 +5767,6 @@ type PaymentYearInfoPaymentSum struct {
 
 	// FieldName: 1 - изменено
 	FieldName string `xml:"fieldName,attr,omitempty"`
-
-	MoneyMaxLengthToPoint18Type string `xml:",any"`
 
 	Text string `xml:",chardata"`
 }
@@ -5596,8 +5834,6 @@ type PaymentYearInfoPaymentYear1 struct {
 	// FieldName: 1 - изменено
 	FieldName string `xml:"fieldName,attr,omitempty"`
 
-	YearNewType string `xml:",any"`
-
 	Text string `xml:",chardata"`
 }
 
@@ -5609,8 +5845,6 @@ type PaymentYearInfoPaymentSum1 struct {
 
 	// FieldName: 1 - изменено
 	FieldName string `xml:"fieldName,attr,omitempty"`
-
-	MoneyMaxLengthToPoint18Type string `xml:",any"`
 
 	Text string `xml:",chardata"`
 }
@@ -5643,8 +5877,6 @@ type NonbudgetFinancingsInfoKbk struct {
 	// FieldName: 1 - изменено
 	FieldName string `xml:"fieldName,attr,omitempty"`
 
-	KbkType string `xml:",any"`
-
 	Text string `xml:",chardata"`
 }
 
@@ -5657,8 +5889,6 @@ type NonbudgetFinancingsInfoTargetArticle struct {
 	// FieldName: 1 - изменено
 	FieldName string `xml:"fieldName,attr,omitempty"`
 
-	TargetArticleType string `xml:",any"`
-
 	Text string `xml:",chardata"`
 }
 
@@ -5670,8 +5900,6 @@ type NonbudgetFinancingsInfoKoks struct {
 
 	// FieldName: 1 - изменено
 	FieldName string `xml:"fieldName,attr,omitempty"`
-
-	KokscodeType string `xml:",any"`
 
 	Text string `xml:",chardata"`
 }
@@ -5696,8 +5924,6 @@ type NonbudgetFinancingsInfoKvr struct {
 
 	// FieldName: 1 - изменено
 	FieldName string `xml:"fieldName,attr,omitempty"`
-
-	KvrcodeType string `xml:",any"`
 
 	Text string `xml:",chardata"`
 }
@@ -5816,8 +6042,6 @@ type GarinfoGarguid struct {
 	// FieldName: 1 - изменено
 	FieldName string `xml:"fieldName,attr,omitempty"`
 
-	GuidType string `xml:",any"`
-
 	Text string `xml:",chardata"`
 }
 
@@ -5829,8 +6053,6 @@ type GarinfoGaraddress struct {
 
 	// FieldName: 1 - изменено
 	FieldName string `xml:"fieldName,attr,omitempty"`
-
-	Text1000Type string `xml:",any"`
 
 	Text string `xml:",chardata"`
 }
@@ -5854,8 +6076,6 @@ type ByOktmoinfoDeliveryPlace struct {
 
 	// FieldName: 1 - изменено
 	FieldName string `xml:"fieldName,attr,omitempty"`
-
-	T2000Type string `xml:",any"`
 
 	Text string `xml:",chardata"`
 }
@@ -5889,8 +6109,6 @@ type ByKladrinfoDeliveryPlace struct {
 	// FieldName: 1 - изменено
 	FieldName string `xml:"fieldName,attr,omitempty"`
 
-	T2000Type string `xml:",any"`
-
 	Text string `xml:",chardata"`
 }
 
@@ -5903,8 +6121,6 @@ type NoKladrForRegionSettlementInfoRegion struct {
 	// FieldName: 1 - изменено
 	FieldName string `xml:"fieldName,attr,omitempty"`
 
-	T100Type string `xml:",any"`
-
 	Text string `xml:",chardata"`
 }
 
@@ -5916,8 +6132,6 @@ type NoKladrForRegionSettlementInfoSettlement struct {
 
 	// FieldName: 1 - изменено
 	FieldName string `xml:"fieldName,attr,omitempty"`
-
-	T100Type string `xml:",any"`
 
 	Text string `xml:",chardata"`
 }
@@ -5959,8 +6173,6 @@ type CountryInfoCountryCode struct {
 	// FieldName: 1 - изменено
 	FieldName string `xml:"fieldName,attr,omitempty"`
 
-	CountryCodeType string `xml:",any"`
-
 	Text string `xml:",chardata"`
 }
 
@@ -5972,8 +6184,6 @@ type CountryInfoCountryFullName struct {
 
 	// FieldName: 1 - изменено
 	FieldName string `xml:"fieldName,attr,omitempty"`
-
-	Text200Type string `xml:",any"`
 
 	Text string `xml:",chardata"`
 }
@@ -5998,8 +6208,6 @@ type GarinfoGarguid1 struct {
 	// FieldName: 1 - изменено
 	FieldName string `xml:"fieldName,attr,omitempty"`
 
-	GuidType string `xml:",any"`
-
 	Text string `xml:",chardata"`
 }
 
@@ -6011,8 +6219,6 @@ type GarinfoGaraddress1 struct {
 
 	// FieldName: 1 - изменено
 	FieldName string `xml:"fieldName,attr,omitempty"`
-
-	Text1000Type string `xml:",any"`
 
 	Text string `xml:",chardata"`
 }
@@ -6036,8 +6242,6 @@ type ByGarinfoDeliveryPlace struct {
 
 	// FieldName: 1 - изменено
 	FieldName string `xml:"fieldName,attr,omitempty"`
-
-	T2000Type string `xml:",any"`
 
 	Text string `xml:",chardata"`
 }
@@ -6097,8 +6301,6 @@ type ContractGuaranteePart struct {
 	// FieldName: 1 - изменено
 	FieldName string `xml:"fieldName,attr,omitempty"`
 
-	PercentRestr0100D2TextType string `xml:",any"`
-
 	Text string `xml:",chardata"`
 }
 
@@ -6110,8 +6312,6 @@ type ContractGuaranteeAmount struct {
 
 	// FieldName: 1 - изменено
 	FieldName string `xml:"fieldName,attr,omitempty"`
-
-	MoneyMaxLengthFrom0To18Type string `xml:",any"`
 
 	Text string `xml:",chardata"`
 }
@@ -6136,8 +6336,6 @@ type DeliveryGuaranteeInfoPart struct {
 	// FieldName: 1 - изменено
 	FieldName string `xml:"fieldName,attr,omitempty"`
 
-	PercentRestr0100D2TextType string `xml:",any"`
-
 	Text string `xml:",chardata"`
 }
 
@@ -6149,8 +6347,6 @@ type DeliveryGuaranteeInfoAmount struct {
 
 	// FieldName: 1 - изменено
 	FieldName string `xml:"fieldName,attr,omitempty"`
-
-	MoneyMaxLengthFrom0To18Type string `xml:",any"`
 
 	Text string `xml:",chardata"`
 }
@@ -6175,8 +6371,6 @@ type ServiceGuaranteeInfoPart struct {
 	// FieldName: 1 - изменено
 	FieldName string `xml:"fieldName,attr,omitempty"`
 
-	PercentRestr0100D2TextType string `xml:",any"`
-
 	Text string `xml:",chardata"`
 }
 
@@ -6188,8 +6382,6 @@ type ServiceGuaranteeInfoAmount struct {
 
 	// FieldName: 1 - изменено
 	FieldName string `xml:"fieldName,attr,omitempty"`
-
-	MoneyMaxLengthFrom0To18Type string `xml:",any"`
 
 	Text string `xml:",chardata"`
 }
@@ -6213,8 +6405,6 @@ type ContractGuaranteeInfoProcedureInfo struct {
 
 	// FieldName: 1 - изменено
 	FieldName string `xml:"fieldName,attr,omitempty"`
-
-	T2000Type string `xml:",any"`
 
 	Text string `xml:",chardata"`
 }
@@ -6283,8 +6473,6 @@ type SubcontractorsAttractionConditionsInfoSubcontractorsAttractionVolume struct
 	// FieldName: 1 - изменено
 	FieldName string `xml:"fieldName,attr,omitempty"`
 
-	PercentRestr0100D2Type string `xml:",any"`
-
 	Text string `xml:",chardata"`
 }
 
@@ -6296,8 +6484,6 @@ type SubcontractorsAttractionConditionsInfoResponsibility struct {
 
 	// FieldName: 1 - изменено
 	FieldName string `xml:"fieldName,attr,omitempty"`
-
-	T2000Type string `xml:",any"`
 
 	Text string `xml:",chardata"`
 }
@@ -6423,8 +6609,6 @@ type BudgetFinancingsInfoBudgetLevel struct {
 	// FieldName: 1 - изменено
 	FieldName string `xml:"fieldName,attr,omitempty"`
 
-	BudgetLevelElectronicContractType string `xml:",any"`
-
 	Text string `xml:",chardata"`
 }
 
@@ -6509,8 +6693,6 @@ type TreasurySupportContractInfoTreasurySupportContractType struct {
 	// FieldName: 1 - изменено
 	FieldName string `xml:"fieldName,attr,omitempty"`
 
-	TreasurySupportContractEnum string `xml:",any"`
-
 	Text string `xml:",chardata"`
 }
 
@@ -6583,8 +6765,6 @@ type AdvancePaymentSumInfoSumInPercents1 struct {
 	// FieldName: 1 - изменено
 	FieldName string `xml:"fieldName,attr,omitempty"`
 
-	T100Type string `xml:",any"`
-
 	Text string `xml:",chardata"`
 }
 
@@ -6596,8 +6776,6 @@ type AdvancePaymentSumInfoPriceValue struct {
 
 	// FieldName: 1 - изменено
 	FieldName string `xml:"fieldName,attr,omitempty"`
-
-	MoneyMaxLengthFrom0To18Type string `xml:",any"`
 
 	Text string `xml:",chardata"`
 }
@@ -6702,8 +6880,6 @@ type PaymentYearInfoPaymentYear2 struct {
 	// FieldName: 1 - изменено
 	FieldName string `xml:"fieldName,attr,omitempty"`
 
-	YearNewType string `xml:",any"`
-
 	Text string `xml:",chardata"`
 }
 
@@ -6715,8 +6891,6 @@ type PaymentYearInfoPaymentSum2 struct {
 
 	// FieldName: 1 - изменено
 	FieldName string `xml:"fieldName,attr,omitempty"`
-
-	MoneyMaxLengthToPoint18Type string `xml:",any"`
 
 	Text string `xml:",chardata"`
 }
@@ -6772,8 +6946,6 @@ type PaymentYearInfoPaymentYear3 struct {
 	// FieldName: 1 - изменено
 	FieldName string `xml:"fieldName,attr,omitempty"`
 
-	YearNewType string `xml:",any"`
-
 	Text string `xml:",chardata"`
 }
 
@@ -6785,8 +6957,6 @@ type PaymentYearInfoPaymentSum3 struct {
 
 	// FieldName: 1 - изменено
 	FieldName string `xml:"fieldName,attr,omitempty"`
-
-	MoneyMaxLengthToPoint18Type string `xml:",any"`
 
 	Text string `xml:",chardata"`
 }
@@ -6830,8 +7000,6 @@ type PaymentTargetArticleInfoTargetArticle struct {
 	// FieldName: 1 - изменено
 	FieldName string `xml:"fieldName,attr,omitempty"`
 
-	TargetArticleType string `xml:",any"`
-
 	Text string `xml:",chardata"`
 }
 
@@ -6856,8 +7024,6 @@ type PaymentYearInfoPaymentYear4 struct {
 	// FieldName: 1 - изменено
 	FieldName string `xml:"fieldName,attr,omitempty"`
 
-	YearNewType string `xml:",any"`
-
 	Text string `xml:",chardata"`
 }
 
@@ -6869,8 +7035,6 @@ type PaymentYearInfoPaymentSum4 struct {
 
 	// FieldName: 1 - изменено
 	FieldName string `xml:"fieldName,attr,omitempty"`
-
-	MoneyMaxLengthToPoint18Type string `xml:",any"`
 
 	Text string `xml:",chardata"`
 }
@@ -6917,8 +7081,6 @@ type PaymentKoksinfoKoks struct {
 	// FieldName: 1 - изменено
 	FieldName string `xml:"fieldName,attr,omitempty"`
 
-	KokscodeType string `xml:",any"`
-
 	Text string `xml:",chardata"`
 }
 
@@ -6943,8 +7105,6 @@ type PaymentYearInfoPaymentYear5 struct {
 	// FieldName: 1 - изменено
 	FieldName string `xml:"fieldName,attr,omitempty"`
 
-	YearNewType string `xml:",any"`
-
 	Text string `xml:",chardata"`
 }
 
@@ -6956,8 +7116,6 @@ type PaymentYearInfoPaymentSum5 struct {
 
 	// FieldName: 1 - изменено
 	FieldName string `xml:"fieldName,attr,omitempty"`
-
-	MoneyMaxLengthToPoint18Type string `xml:",any"`
 
 	Text string `xml:",chardata"`
 }
@@ -7028,8 +7186,6 @@ type PaymentYearInfoPaymentYear6 struct {
 	// FieldName: 1 - изменено
 	FieldName string `xml:"fieldName,attr,omitempty"`
 
-	YearNewType string `xml:",any"`
-
 	Text string `xml:",chardata"`
 }
 
@@ -7041,8 +7197,6 @@ type PaymentYearInfoPaymentSum6 struct {
 
 	// FieldName: 1 - изменено
 	FieldName string `xml:"fieldName,attr,omitempty"`
-
-	MoneyMaxLengthToPoint18Type string `xml:",any"`
 
 	Text string `xml:",chardata"`
 }
@@ -7123,8 +7277,6 @@ type ContractorRegistryNum struct {
 	// FieldName: 1 - изменено
 	FieldName string `xml:"fieldName,attr,omitempty"`
 
-	EruzRegistryNumType string `xml:",any"`
-
 	Text string `xml:",chardata"`
 }
 
@@ -7137,7 +7289,7 @@ type Status struct {
 	// FieldName: 1 - изменено
 	FieldName string `xml:"fieldName,attr,omitempty"`
 
-	SupplierStatusRef string `xml:",any"`
+	base.SupplierStatusRef
 }
 
 // ProtocolAccountsDetailsInfoProtocolAccountDetailsInfo2: Реквизиты счета поставщика из заявки участника (итогового протокола)
@@ -7168,8 +7320,6 @@ type ElectronicContractAccountDetailsInfoOrganizationType struct {
 	// FieldName: 1 - изменено
 	FieldName string `xml:"fieldName,attr,omitempty"`
 
-	ParticipantType string `xml:",any"`
-
 	Text string `xml:",chardata"`
 }
 
@@ -7180,7 +7330,7 @@ type ElectronicContractAccountsDetailsInfoElectronicContractAccountDetailsInfo2 
 	// ElectronicContractAccountDetailsInfoOrganizationType: Тип организации поставщика: L - Юридическое лицо РФ; F - Сведения об обособленном подразделении ЮЛ РФ. Принимается, только в случае, если поставщик (через или): Юридическое лицо РФ (legalEntityRFInfo); Обособленное подразделение юридического лица РФ (filialLegalEntityRFInfo)
 	OrganizationType *ElectronicContractAccountDetailsInfoOrganizationType `xml:"organizationType,omitempty"`
 
-	AccountDetailsForDeltaType string `xml:"accountDetailsForDeltaType"`
+	cmn.AccountDetailsForDeltaType
 }
 
 // ParticipantAccountsDetailsInfoElectronicContractAccountsDetailsInfo2: Реквизиты счетов поставщика (добавлены в электронном контракте)
@@ -7211,8 +7361,6 @@ type LegalEntityRfinfoFullName struct {
 	// FieldName: 1 - изменено
 	FieldName string `xml:"fieldName,attr,omitempty"`
 
-	T2000Type string `xml:",any"`
-
 	Text string `xml:",chardata"`
 }
 
@@ -7224,8 +7372,6 @@ type LegalEntityRfinfoShortName struct {
 
 	// FieldName: 1 - изменено
 	FieldName string `xml:"fieldName,attr,omitempty"`
-
-	T510Type string `xml:",any"`
 
 	Text string `xml:",chardata"`
 }
@@ -7239,8 +7385,6 @@ type LegalEntityRfinfoOgrn struct {
 	// FieldName: 1 - изменено
 	FieldName string `xml:"fieldName,attr,omitempty"`
 
-	Len0Or13Or15Type string `xml:",any"`
-
 	Text string `xml:",chardata"`
 }
 
@@ -7252,8 +7396,6 @@ type LegalEntityRfinfoInn struct {
 
 	// FieldName: 1 - изменено
 	FieldName string `xml:"fieldName,attr,omitempty"`
-
-	Len0Or10Type string `xml:",any"`
 
 	Text string `xml:",chardata"`
 }
@@ -7267,8 +7409,6 @@ type LegalEntityRfinfoKpp struct {
 	// FieldName: 1 - изменено
 	FieldName string `xml:"fieldName,attr,omitempty"`
 
-	Len0Or9Type string `xml:",any"`
-
 	Text string `xml:",chardata"`
 }
 
@@ -7280,8 +7420,6 @@ type LegalEntityRfinfoMajorTaxPayerKpp struct {
 
 	// FieldName: 1 - изменено
 	FieldName string `xml:"fieldName,attr,omitempty"`
-
-	Len0Or9Type string `xml:",any"`
 
 	Text string `xml:",chardata"`
 }
@@ -7295,8 +7433,6 @@ type LegalEntityRfinfoFactAddress struct {
 	// FieldName: 1 - изменено
 	FieldName string `xml:"fieldName,attr,omitempty"`
 
-	T2000Type string `xml:",any"`
-
 	Text string `xml:",chardata"`
 }
 
@@ -7308,8 +7444,6 @@ type LegalEntityRfinfoPostAddress struct {
 
 	// FieldName: 1 - изменено
 	FieldName string `xml:"fieldName,attr,omitempty"`
-
-	T2000Type string `xml:",any"`
 
 	Text string `xml:",chardata"`
 }
@@ -7323,8 +7457,6 @@ type LegalEntityRfinfoEmail struct {
 	// FieldName: 1 - изменено
 	FieldName string `xml:"fieldName,attr,omitempty"`
 
-	T256Type string `xml:",any"`
-
 	Text string `xml:",chardata"`
 }
 
@@ -7336,8 +7468,6 @@ type LegalEntityRfinfoContactPhone struct {
 
 	// FieldName: 1 - изменено
 	FieldName string `xml:"fieldName,attr,omitempty"`
-
-	T30Type string `xml:",any"`
 
 	Text string `xml:",chardata"`
 }
@@ -7351,7 +7481,7 @@ type InformationPersonInfoNameInfo struct {
 	// FieldName: 1 - изменено
 	FieldName string `xml:"fieldName,attr,omitempty"`
 
-	PersonWithoutOblType string `xml:",any"`
+	cmn.PersonWithoutOblType
 }
 
 // InformationPersonInfoInn: ИНН
@@ -7362,8 +7492,6 @@ type InformationPersonInfoInn struct {
 
 	// FieldName: 1 - изменено
 	FieldName string `xml:"fieldName,attr,omitempty"`
-
-	Len0Or12Type string `xml:",any"`
 
 	Text string `xml:",chardata"`
 }
@@ -7376,8 +7504,6 @@ type InformationPersonInfoPosition struct {
 
 	// FieldName: 1 - изменено
 	FieldName string `xml:"fieldName,attr,omitempty"`
-
-	T256Type string `xml:",any"`
 
 	Text string `xml:",chardata"`
 }
@@ -7413,8 +7539,6 @@ type FilialInfoKpp struct {
 	// FieldName: 1 - изменено
 	FieldName string `xml:"fieldName,attr,omitempty"`
 
-	Len0Or9Type string `xml:",any"`
-
 	Text string `xml:",chardata"`
 }
 
@@ -7427,8 +7551,6 @@ type FilialInfoFullName struct {
 	// FieldName: 1 - изменено
 	FieldName string `xml:"fieldName,attr,omitempty"`
 
-	T2000Type string `xml:",any"`
-
 	Text string `xml:",chardata"`
 }
 
@@ -7440,8 +7562,6 @@ type FilialInfoFactAddress struct {
 
 	// FieldName: 1 - изменено
 	FieldName string `xml:"fieldName,attr,omitempty"`
-
-	T2000Type string `xml:",any"`
 
 	Text string `xml:",chardata"`
 }
@@ -7510,8 +7630,6 @@ type LegalEntityInfoFullName struct {
 	// FieldName: 1 - изменено
 	FieldName string `xml:"fieldName,attr,omitempty"`
 
-	T1000Type string `xml:",any"`
-
 	Text string `xml:",chardata"`
 }
 
@@ -7523,8 +7641,6 @@ type LegalEntityInfoShortName struct {
 
 	// FieldName: 1 - изменено
 	FieldName string `xml:"fieldName,attr,omitempty"`
-
-	T510Type string `xml:",any"`
 
 	Text string `xml:",chardata"`
 }
@@ -7538,8 +7654,6 @@ type LegalEntityInfoOgrn struct {
 	// FieldName: 1 - изменено
 	FieldName string `xml:"fieldName,attr,omitempty"`
 
-	Len0Or13Or15Type string `xml:",any"`
-
 	Text string `xml:",chardata"`
 }
 
@@ -7551,8 +7665,6 @@ type LegalEntityInfoInn struct {
 
 	// FieldName: 1 - изменено
 	FieldName string `xml:"fieldName,attr,omitempty"`
-
-	Len0Or10Type string `xml:",any"`
 
 	Text string `xml:",chardata"`
 }
@@ -7566,8 +7678,6 @@ type LegalEntityInfoKpp struct {
 	// FieldName: 1 - изменено
 	FieldName string `xml:"fieldName,attr,omitempty"`
 
-	Len0Or9Type string `xml:",any"`
-
 	Text string `xml:",chardata"`
 }
 
@@ -7580,8 +7690,6 @@ type LegalEntityInfoMajorTaxPayerKpp struct {
 	// FieldName: 1 - изменено
 	FieldName string `xml:"fieldName,attr,omitempty"`
 
-	Len0Or9Type string `xml:",any"`
-
 	Text string `xml:",chardata"`
 }
 
@@ -7593,8 +7701,6 @@ type LegalEntityInfoFactAddress struct {
 
 	// FieldName: 1 - изменено
 	FieldName string `xml:"fieldName,attr,omitempty"`
-
-	T2000Type string `xml:",any"`
 
 	Text string `xml:",chardata"`
 }
@@ -7634,8 +7740,6 @@ type FilialInfoFullName1 struct {
 	// FieldName: 1 - изменено
 	FieldName string `xml:"fieldName,attr,omitempty"`
 
-	T2000Type string `xml:",any"`
-
 	Text string `xml:",chardata"`
 }
 
@@ -7647,8 +7751,6 @@ type FilialInfoInn struct {
 
 	// FieldName: 1 - изменено
 	FieldName string `xml:"fieldName,attr,omitempty"`
-
-	Len0Or10Type string `xml:",any"`
 
 	Text string `xml:",chardata"`
 }
@@ -7662,8 +7764,6 @@ type FilialInfoKpp1 struct {
 	// FieldName: 1 - изменено
 	FieldName string `xml:"fieldName,attr,omitempty"`
 
-	Len0Or9Type string `xml:",any"`
-
 	Text string `xml:",chardata"`
 }
 
@@ -7675,8 +7775,6 @@ type FilialInfoFactAddress1 struct {
 
 	// FieldName: 1 - изменено
 	FieldName string `xml:"fieldName,attr,omitempty"`
-
-	T2000Type string `xml:",any"`
 
 	Text string `xml:",chardata"`
 }
@@ -7690,8 +7788,6 @@ type FilialInfoPostAddress struct {
 	// FieldName: 1 - изменено
 	FieldName string `xml:"fieldName,attr,omitempty"`
 
-	T2000Type string `xml:",any"`
-
 	Text string `xml:",chardata"`
 }
 
@@ -7703,8 +7799,6 @@ type FilialInfoEmail struct {
 
 	// FieldName: 1 - изменено
 	FieldName string `xml:"fieldName,attr,omitempty"`
-
-	T256Type string `xml:",any"`
 
 	Text string `xml:",chardata"`
 }
@@ -7718,8 +7812,6 @@ type FilialInfoContactPhone struct {
 	// FieldName: 1 - изменено
 	FieldName string `xml:"fieldName,attr,omitempty"`
 
-	T30Type string `xml:",any"`
-
 	Text string `xml:",chardata"`
 }
 
@@ -7732,7 +7824,7 @@ type InformationPersonInfoNameInfo1 struct {
 	// FieldName: 1 - изменено
 	FieldName string `xml:"fieldName,attr,omitempty"`
 
-	PersonWithoutOblType string `xml:",any"`
+	cmn.PersonWithoutOblType
 }
 
 // InformationPersonInfoInn1: ИНН
@@ -7743,8 +7835,6 @@ type InformationPersonInfoInn1 struct {
 
 	// FieldName: 1 - изменено
 	FieldName string `xml:"fieldName,attr,omitempty"`
-
-	Len0Or12Type string `xml:",any"`
 
 	Text string `xml:",chardata"`
 }
@@ -7757,8 +7847,6 @@ type InformationPersonInfoPosition1 struct {
 
 	// FieldName: 1 - изменено
 	FieldName string `xml:"fieldName,attr,omitempty"`
-
-	T256Type string `xml:",any"`
 
 	Text string `xml:",chardata"`
 }
@@ -7834,7 +7922,7 @@ type IndividualPersonRfinfoNameInfo struct {
 	// FieldName: 1 - изменено
 	FieldName string `xml:"fieldName,attr,omitempty"`
 
-	PersonWithoutOblType string `xml:",any"`
+	cmn.PersonWithoutOblType
 }
 
 // IndividualPersonRfinfoIsIp: Индивидуальный предприниматель
@@ -7858,8 +7946,6 @@ type IpinfoOgrnip struct {
 	// FieldName: 1 - изменено
 	FieldName string `xml:"fieldName,attr,omitempty"`
 
-	Len0Or15Type string `xml:",any"`
-
 	Text string `xml:",chardata"`
 }
 
@@ -7880,8 +7966,6 @@ type IndividualPersonRfinfoInn struct {
 	// FieldName: 1 - изменено
 	FieldName string `xml:"fieldName,attr,omitempty"`
 
-	Len0Or12Type string `xml:",any"`
-
 	Text string `xml:",chardata"`
 }
 
@@ -7893,8 +7977,6 @@ type IndividualPersonRfinfoFactAddress struct {
 
 	// FieldName: 1 - изменено
 	FieldName string `xml:"fieldName,attr,omitempty"`
-
-	T2000Type string `xml:",any"`
 
 	Text string `xml:",chardata"`
 }
@@ -7908,8 +7990,6 @@ type IndividualPersonRfinfoPostAddress struct {
 	// FieldName: 1 - изменено
 	FieldName string `xml:"fieldName,attr,omitempty"`
 
-	T2000Type string `xml:",any"`
-
 	Text string `xml:",chardata"`
 }
 
@@ -7922,8 +8002,6 @@ type IndividualPersonRfinfoEmail struct {
 	// FieldName: 1 - изменено
 	FieldName string `xml:"fieldName,attr,omitempty"`
 
-	T256Type string `xml:",any"`
-
 	Text string `xml:",chardata"`
 }
 
@@ -7935,8 +8013,6 @@ type IndividualPersonRfinfoContactPhone struct {
 
 	// FieldName: 1 - изменено
 	FieldName string `xml:"fieldName,attr,omitempty"`
-
-	T30Type string `xml:",any"`
 
 	Text string `xml:",chardata"`
 }
@@ -7979,8 +8055,6 @@ type LegalEntityForeignStateDataInfoFullName struct {
 	// FieldName: 1 - изменено
 	FieldName string `xml:"fieldName,attr,omitempty"`
 
-	T1000Type string `xml:",any"`
-
 	Text string `xml:",chardata"`
 }
 
@@ -7992,8 +8066,6 @@ type LegalEntityForeignStateDataInfoShortName struct {
 
 	// FieldName: 1 - изменено
 	FieldName string `xml:"fieldName,attr,omitempty"`
-
-	T510Type string `xml:",any"`
 
 	Text string `xml:",chardata"`
 }
@@ -8007,7 +8079,7 @@ type LegalEntityForeignStateDataInfoCountryInfo struct {
 	// FieldName: 1 - изменено
 	FieldName string `xml:"fieldName,attr,omitempty"`
 
-	Oksmref string `xml:",any"`
+	base.Oksmref
 }
 
 // LegalEntityForeignStateInRafpinfoLegalEntityForeignStateDataInfo2: Сведения об юридическом лице иностранного государства. Заполняется, если указан признак "Проект доп.соглашения формируется в структурированном виде" (isStructuredForm)
@@ -8033,8 +8105,6 @@ type FilialLegalEntityForeignStateInfoFullName struct {
 	// FieldName: 1 - изменено
 	FieldName string `xml:"fieldName,attr,omitempty"`
 
-	T2000Type string `xml:",any"`
-
 	Text string `xml:",chardata"`
 }
 
@@ -8046,8 +8116,6 @@ type FilialLegalEntityForeignStateInfoShortName struct {
 
 	// FieldName: 1 - изменено
 	FieldName string `xml:"fieldName,attr,omitempty"`
-
-	T510Type string `xml:",any"`
 
 	Text string `xml:",chardata"`
 }
@@ -8061,8 +8129,6 @@ type FilialLegalEntityForeignStateInfoInn struct {
 	// FieldName: 1 - изменено
 	FieldName string `xml:"fieldName,attr,omitempty"`
 
-	Len0Or10Type string `xml:",any"`
-
 	Text string `xml:",chardata"`
 }
 
@@ -8074,8 +8140,6 @@ type FilialLegalEntityForeignStateInfoKpp struct {
 
 	// FieldName: 1 - изменено
 	FieldName string `xml:"fieldName,attr,omitempty"`
-
-	Len0Or9Type string `xml:",any"`
 
 	Text string `xml:",chardata"`
 }
@@ -8089,8 +8153,6 @@ type FilialLegalEntityForeignStateInfoFactAddress struct {
 	// FieldName: 1 - изменено
 	FieldName string `xml:"fieldName,attr,omitempty"`
 
-	T2000Type string `xml:",any"`
-
 	Text string `xml:",chardata"`
 }
 
@@ -8102,8 +8164,6 @@ type FilialLegalEntityForeignStateInfoPostAddress struct {
 
 	// FieldName: 1 - изменено
 	FieldName string `xml:"fieldName,attr,omitempty"`
-
-	T2000Type string `xml:",any"`
 
 	Text string `xml:",chardata"`
 }
@@ -8117,8 +8177,6 @@ type FilialLegalEntityForeignStateInfoEmail struct {
 	// FieldName: 1 - изменено
 	FieldName string `xml:"fieldName,attr,omitempty"`
 
-	T256Type string `xml:",any"`
-
 	Text string `xml:",chardata"`
 }
 
@@ -8130,8 +8188,6 @@ type FilialLegalEntityForeignStateInfoContactPhone struct {
 
 	// FieldName: 1 - изменено
 	FieldName string `xml:"fieldName,attr,omitempty"`
-
-	T30Type string `xml:",any"`
 
 	Text string `xml:",chardata"`
 }
@@ -8145,7 +8201,7 @@ type HeadInfoNameInfo struct {
 	// FieldName: 1 - изменено
 	FieldName string `xml:"fieldName,attr,omitempty"`
 
-	PersonWithoutOblType string `xml:",any"`
+	cmn.PersonWithoutOblType
 }
 
 // HeadInfoPosition: Должность
@@ -8156,8 +8212,6 @@ type HeadInfoPosition struct {
 
 	// FieldName: 1 - изменено
 	FieldName string `xml:"fieldName,attr,omitempty"`
-
-	T256Type string `xml:",any"`
 
 	Text string `xml:",chardata"`
 }
@@ -8170,8 +8224,6 @@ type HeadInfoInn struct {
 
 	// FieldName: 1 - изменено
 	FieldName string `xml:"fieldName,attr,omitempty"`
-
-	Len0Or12Type string `xml:",any"`
 
 	Text string `xml:",chardata"`
 }
@@ -8242,8 +8294,6 @@ type LegalEntityForeignStateNotInRafpinfoFullName struct {
 	// FieldName: 1 - изменено
 	FieldName string `xml:"fieldName,attr,omitempty"`
 
-	T2000Type string `xml:",any"`
-
 	Text string `xml:",chardata"`
 }
 
@@ -8255,8 +8305,6 @@ type LegalEntityForeignStateNotInRafpinfoShortName struct {
 
 	// FieldName: 1 - изменено
 	FieldName string `xml:"fieldName,attr,omitempty"`
-
-	T510Type string `xml:",any"`
 
 	Text string `xml:",chardata"`
 }
@@ -8270,8 +8318,6 @@ type LegalEntityForeignStateNotInRafpinfoTaxPayerCode struct {
 	// FieldName: 1 - изменено
 	FieldName string `xml:"fieldName,attr,omitempty"`
 
-	T100Type string `xml:",any"`
-
 	Text string `xml:",chardata"`
 }
 
@@ -8284,7 +8330,7 @@ type LegalEntityForeignStateNotInRafpinfoCountryInfo struct {
 	// FieldName: 1 - изменено
 	FieldName string `xml:"fieldName,attr,omitempty"`
 
-	Oksmref string `xml:",any"`
+	base.Oksmref
 }
 
 // LegalEntityForeignStateNotInRafpinfoFactAddress: Место нахождения
@@ -8295,8 +8341,6 @@ type LegalEntityForeignStateNotInRafpinfoFactAddress struct {
 
 	// FieldName: 1 - изменено
 	FieldName string `xml:"fieldName,attr,omitempty"`
-
-	T2000Type string `xml:",any"`
 
 	Text string `xml:",chardata"`
 }
@@ -8310,8 +8354,6 @@ type LegalEntityForeignStateNotInRafpinfoPostAddress struct {
 	// FieldName: 1 - изменено
 	FieldName string `xml:"fieldName,attr,omitempty"`
 
-	T2000Type string `xml:",any"`
-
 	Text string `xml:",chardata"`
 }
 
@@ -8323,8 +8365,6 @@ type LegalEntityForeignStateNotInRafpinfoEmail struct {
 
 	// FieldName: 1 - изменено
 	FieldName string `xml:"fieldName,attr,omitempty"`
-
-	T256Type string `xml:",any"`
 
 	Text string `xml:",chardata"`
 }
@@ -8338,8 +8378,6 @@ type LegalEntityForeignStateNotInRafpinfoContactPhone struct {
 	// FieldName: 1 - изменено
 	FieldName string `xml:"fieldName,attr,omitempty"`
 
-	T30Type string `xml:",any"`
-
 	Text string `xml:",chardata"`
 }
 
@@ -8352,7 +8390,7 @@ type InformationPersonInfoNameInfo2 struct {
 	// FieldName: 1 - изменено
 	FieldName string `xml:"fieldName,attr,omitempty"`
 
-	PersonWithoutOblType string `xml:",any"`
+	cmn.PersonWithoutOblType
 }
 
 // InformationPersonInfoInn2: ИНН
@@ -8363,8 +8401,6 @@ type InformationPersonInfoInn2 struct {
 
 	// FieldName: 1 - изменено
 	FieldName string `xml:"fieldName,attr,omitempty"`
-
-	Len0Or12Type string `xml:",any"`
 
 	Text string `xml:",chardata"`
 }
@@ -8377,8 +8413,6 @@ type InformationPersonInfoPosition2 struct {
 
 	// FieldName: 1 - изменено
 	FieldName string `xml:"fieldName,attr,omitempty"`
-
-	T256Type string `xml:",any"`
 
 	Text string `xml:",chardata"`
 }
@@ -8446,7 +8480,7 @@ type IndividualPersonForeignStateInfoNameInfo struct {
 	// FieldName: 1 - изменено
 	FieldName string `xml:"fieldName,attr,omitempty"`
 
-	PersonWithoutOblType string `xml:",any"`
+	cmn.PersonWithoutOblType
 }
 
 // IndividualPersonForeignStateInfoNameLatInfo: ФИО (латинскими буквами). Заполняется, если указан признак "Проект доп.соглашения формируется в структурированном виде" (isStructuredForm)
@@ -8458,7 +8492,7 @@ type IndividualPersonForeignStateInfoNameLatInfo struct {
 	// FieldName: 1 - изменено
 	FieldName string `xml:"fieldName,attr,omitempty"`
 
-	PersonWithoutOblType string `xml:",any"`
+	cmn.PersonWithoutOblType
 }
 
 // IndividualPersonForeignStateInfoIsIp: Индивидуальный предприниматель
@@ -8482,8 +8516,6 @@ type IpinfoOgrnip1 struct {
 	// FieldName: 1 - изменено
 	FieldName string `xml:"fieldName,attr,omitempty"`
 
-	Len0Or15Type string `xml:",any"`
-
 	Text string `xml:",chardata"`
 }
 
@@ -8504,8 +8536,6 @@ type IndividualPersonForeignStateInfoInn struct {
 	// FieldName: 1 - изменено
 	FieldName string `xml:"fieldName,attr,omitempty"`
 
-	Len0Or12Type string `xml:",any"`
-
 	Text string `xml:",chardata"`
 }
 
@@ -8517,8 +8547,6 @@ type IndividualPersonForeignStateInfoTaxPayerCode struct {
 
 	// FieldName: 1 - изменено
 	FieldName string `xml:"fieldName,attr,omitempty"`
-
-	T100Type string `xml:",any"`
 
 	Text string `xml:",chardata"`
 }
@@ -8532,7 +8560,7 @@ type IndividualPersonForeignStateInfoCountryInfo struct {
 	// FieldName: 1 - изменено
 	FieldName string `xml:"fieldName,attr,omitempty"`
 
-	Oksmref string `xml:",any"`
+	base.Oksmref
 }
 
 // IndividualPersonForeignStateInfoFactAddress: Место жительства. Заполняется, если указан признак "Проект доп.соглашения формируется в структурированном виде" (isStructuredForm)
@@ -8543,8 +8571,6 @@ type IndividualPersonForeignStateInfoFactAddress struct {
 
 	// FieldName: 1 - изменено
 	FieldName string `xml:"fieldName,attr,omitempty"`
-
-	T2000Type string `xml:",any"`
 
 	Text string `xml:",chardata"`
 }
@@ -8558,8 +8584,6 @@ type IndividualPersonForeignStateInfoPostAddress struct {
 	// FieldName: 1 - изменено
 	FieldName string `xml:"fieldName,attr,omitempty"`
 
-	T2000Type string `xml:",any"`
-
 	Text string `xml:",chardata"`
 }
 
@@ -8572,8 +8596,6 @@ type IndividualPersonForeignStateInfoEmail struct {
 	// FieldName: 1 - изменено
 	FieldName string `xml:"fieldName,attr,omitempty"`
 
-	T256Type string `xml:",any"`
-
 	Text string `xml:",chardata"`
 }
 
@@ -8585,8 +8607,6 @@ type IndividualPersonForeignStateInfoContactPhone struct {
 
 	// FieldName: 1 - изменено
 	FieldName string `xml:"fieldName,attr,omitempty"`
-
-	T30Type string `xml:",any"`
 
 	Text string `xml:",chardata"`
 }
@@ -8638,8 +8658,6 @@ type IndexNum struct {
 	// FieldName: 1 - изменено
 	FieldName string `xml:"fieldName,attr,omitempty"`
 
-	QuantityContractSubjectNumType string `xml:",any"`
-
 	Text string `xml:",chardata"`
 }
 
@@ -8651,8 +8669,6 @@ type Name struct {
 
 	// FieldName: 1 - изменено
 	FieldName string `xml:"fieldName,attr,omitempty"`
-
-	Text2000Type string `xml:",any"`
 
 	Text string `xml:",chardata"`
 }
@@ -8666,8 +8682,6 @@ type HierarchyType struct {
 	// FieldName: 1 - изменено
 	FieldName string `xml:"fieldName,attr,omitempty"`
 
-	ProductHierarchyTypeEnumType string `xml:",any"`
-
 	Text string `xml:",chardata"`
 }
 
@@ -8680,8 +8694,6 @@ type Type struct {
 	// FieldName: 1 - изменено
 	FieldName string `xml:"fieldName,attr,omitempty"`
 
-	ProductTypeEnumType string `xml:",any"`
-
 	Text string `xml:",chardata"`
 }
 
@@ -8693,8 +8705,6 @@ type Sum struct {
 
 	// FieldName: 1 - изменено
 	FieldName string `xml:"fieldName,attr,omitempty"`
-
-	MoneyPositiveType string `xml:",any"`
 
 	Text string `xml:",chardata"`
 }
@@ -8710,16 +8720,12 @@ type MedicalProductInfoIsMedicalProductInfo struct {
 type MedicalProductInfoMedicalProductCode struct {
 	XMLName xml.Name `xml:"medicalProductCode,omitempty"`
 
-	KtruClassifierCodeType string `xml:",any"`
-
 	Text string `xml:",chardata"`
 }
 
 // MedicalProductInfoCertificateNameMedicalProduct: Наименование медицинского изделия в соответствии с регистрационным удостоверением
 type MedicalProductInfoCertificateNameMedicalProduct struct {
 	XMLName xml.Name `xml:"certificateNameMedicalProduct,omitempty"`
-
-	Text2000Type string `xml:",any"`
 
 	Text string `xml:",chardata"`
 }
@@ -8761,8 +8767,6 @@ type ProductInfoServiceMarks struct {
 	// FieldName: 1 - изменено
 	FieldName string `xml:"fieldName,attr,omitempty"`
 
-	Text500Type string `xml:",any"`
-
 	Text string `xml:",chardata"`
 }
 
@@ -8775,8 +8779,6 @@ type ProductInfoIndicationSubjects struct {
 	// FieldName: 1 - изменено
 	FieldName string `xml:"fieldName,attr,omitempty"`
 
-	IndicationSubjectsType string `xml:",any"`
-
 	Text string `xml:",chardata"`
 }
 
@@ -8788,8 +8790,6 @@ type ProductInfoPrice struct {
 
 	// FieldName: 1 - изменено
 	FieldName string `xml:"fieldName,attr,omitempty"`
-
-	Quantity18P11Type string `xml:",any"`
 
 	Text string `xml:",chardata"`
 }
@@ -8848,8 +8848,6 @@ type ProductInfoQuantity struct {
 	// FieldName: 1 - изменено
 	FieldName string `xml:"fieldName,attr,omitempty"`
 
-	Quantity18P11Type string `xml:",any"`
-
 	Text string `xml:",chardata"`
 }
 
@@ -8861,8 +8859,6 @@ type ProductInfoVolumeTextForm struct {
 
 	// FieldName: 1 - изменено
 	FieldName string `xml:"fieldName,attr,omitempty"`
-
-	Text500Type string `xml:",any"`
 
 	Text string `xml:",chardata"`
 }
@@ -8876,8 +8872,6 @@ type ProductInfoIndexNum struct {
 	// FieldName: 1 - изменено
 	FieldName string `xml:"fieldName,attr,omitempty"`
 
-	QuantityContractSubjectNumType string `xml:",any"`
-
 	Text string `xml:",chardata"`
 }
 
@@ -8889,8 +8883,6 @@ type ProductInfoName struct {
 
 	// FieldName: 1 - изменено
 	FieldName string `xml:"fieldName,attr,omitempty"`
-
-	Text2000Type string `xml:",any"`
 
 	Text string `xml:",chardata"`
 }
@@ -8904,8 +8896,6 @@ type ProductInfoHierarchyType struct {
 	// FieldName: 1 - изменено
 	FieldName string `xml:"fieldName,attr,omitempty"`
 
-	ProductHierarchyTypeEnumType string `xml:",any"`
-
 	Text string `xml:",chardata"`
 }
 
@@ -8918,8 +8908,6 @@ type ProductInfoType struct {
 	// FieldName: 1 - изменено
 	FieldName string `xml:"fieldName,attr,omitempty"`
 
-	ProductTypeEnumType string `xml:",any"`
-
 	Text string `xml:",chardata"`
 }
 
@@ -8931,8 +8919,6 @@ type ProductInfoSum struct {
 
 	// FieldName: 1 - изменено
 	FieldName string `xml:"fieldName,attr,omitempty"`
-
-	MoneyPositiveType string `xml:",any"`
 
 	Text string `xml:",chardata"`
 }
@@ -8976,6 +8962,33 @@ type ProductInfo1 struct {
 
 	// ProductInfoVolumeTextForm: Объем работы, услуги (указание объема в текстовом виде)
 	VolumeTextForm *ProductInfoVolumeTextForm `xml:"volumeTextForm,omitempty"`
+
+	// Sid: Уникальный идентификатор объекта закупки
+	Sid *base.SIdType `xml:"sid,omitempty"`
+
+	// ExternalSid: Внешний идентификатор объекта закупки
+	ExternalSid *base.ExternalIdType `xml:"externalSid,omitempty"`
+
+	// ParentProductInfoIndexNum: Порядковый номер объекта закупки
+	IndexNum *ParentProductInfoIndexNum `xml:"indexNum,omitempty"`
+
+	// ParentProductInfoName: Наименование объекта закупки
+	Name *ParentProductInfoName `xml:"name,omitempty"`
+
+	// Okpd2Info: Классификация по ОКПД2
+	Okpd2Info *DlOkpd2InfoType `xml:"OKPD2Info,omitempty"`
+
+	// Ktruinfo: Классификация по КТРУ
+	Ktruinfo *DlKtruinfoType `xml:"KTRUInfo,omitempty"`
+
+	// ParentProductInfoHierarchyType: Тип объекта закупки в иерархии
+	HierarchyType *ParentProductInfoHierarchyType `xml:"hierarchyType,omitempty"`
+
+	// ParentProductInfoType: Тип объекта закупки. Допустимые значения: PRODUCT - товар; WORK - работа; SERVICE - услуга.
+	Type *ParentProductInfoType `xml:"type,omitempty"`
+
+	// ParentProductInfoSum: Сумма
+	Sum *ParentProductInfoSum `xml:"sum,omitempty"`
 }
 
 // ParentProductInfoIsDuplicated: Позиция является продублированной
@@ -8999,8 +9012,6 @@ type ParentProductInfoIndexNum struct {
 	// FieldName: 1 - изменено
 	FieldName string `xml:"fieldName,attr,omitempty"`
 
-	QuantityContractSubjectNumType string `xml:",any"`
-
 	Text string `xml:",chardata"`
 }
 
@@ -9012,8 +9023,6 @@ type ParentProductInfoName struct {
 
 	// FieldName: 1 - изменено
 	FieldName string `xml:"fieldName,attr,omitempty"`
-
-	Text2000Type string `xml:",any"`
 
 	Text string `xml:",chardata"`
 }
@@ -9027,8 +9036,6 @@ type ParentProductInfoHierarchyType struct {
 	// FieldName: 1 - изменено
 	FieldName string `xml:"fieldName,attr,omitempty"`
 
-	ProductHierarchyTypeEnumType string `xml:",any"`
-
 	Text string `xml:",chardata"`
 }
 
@@ -9040,8 +9047,6 @@ type ParentProductInfoType struct {
 
 	// FieldName: 1 - изменено
 	FieldName string `xml:"fieldName,attr,omitempty"`
-
-	ProductTypeEnumType string `xml:",any"`
 
 	Text string `xml:",chardata"`
 }
@@ -9055,8 +9060,6 @@ type ParentProductInfoSum struct {
 	// FieldName: 1 - изменено
 	FieldName string `xml:"fieldName,attr,omitempty"`
 
-	MoneyPositiveType string `xml:",any"`
-
 	Text string `xml:",chardata"`
 }
 
@@ -9065,7 +9068,34 @@ type ParentProductInfo1 struct {
 	XMLName xml.Name `xml:"parentProductInfo,omitempty"`
 
 	// ParentProductInfoIsDuplicated: Позиция является продублированной
-	IsDuplicated *ParentProductInfoIsDuplicated `xml:",any,omitempty"`
+	IsDuplicated *ParentProductInfoIsDuplicated `xml:"isDuplicated,omitempty"`
+
+	// Sid: Уникальный идентификатор объекта закупки
+	Sid *base.SIdType `xml:"sid,omitempty"`
+
+	// ExternalSid: Внешний идентификатор объекта закупки
+	ExternalSid *base.ExternalIdType `xml:"externalSid,omitempty"`
+
+	// ParentProductInfoIndexNum: Порядковый номер объекта закупки
+	IndexNum *ParentProductInfoIndexNum `xml:"indexNum,omitempty"`
+
+	// ParentProductInfoName: Наименование объекта закупки
+	Name *ParentProductInfoName `xml:"name,omitempty"`
+
+	// Okpd2Info: Классификация по ОКПД2
+	Okpd2Info *DlOkpd2InfoType `xml:"OKPD2Info,omitempty"`
+
+	// Ktruinfo: Классификация по КТРУ
+	Ktruinfo *DlKtruinfoType `xml:"KTRUInfo,omitempty"`
+
+	// ParentProductInfoHierarchyType: Тип объекта закупки в иерархии
+	HierarchyType *ParentProductInfoHierarchyType `xml:"hierarchyType,omitempty"`
+
+	// ParentProductInfoType: Тип объекта закупки. Допустимые значения: PRODUCT - товар; WORK - работа; SERVICE - услуга.
+	Type *ParentProductInfoType `xml:"type,omitempty"`
+
+	// ParentProductInfoSum: Сумма
+	Sum *ParentProductInfoSum `xml:"sum,omitempty"`
 }
 
 // QuantityUndefined: Невозможно определить количество товара, объем подлежащих выполнению работ, оказанию услуг
@@ -9105,8 +9135,6 @@ type LegalEntityRfinfoFullName1 struct {
 	// FieldName: 1 - изменено
 	FieldName string `xml:"fieldName,attr,omitempty"`
 
-	T2000Type string `xml:",any"`
-
 	Text string `xml:",chardata"`
 }
 
@@ -9118,8 +9146,6 @@ type LegalEntityRfinfoInn1 struct {
 
 	// FieldName: 1 - изменено
 	FieldName string `xml:"fieldName,attr,omitempty"`
-
-	Len0Or10Type string `xml:",any"`
 
 	Text string `xml:",chardata"`
 }
@@ -9133,8 +9159,6 @@ type LegalEntityRfinfoKpp1 struct {
 	// FieldName: 1 - изменено
 	FieldName string `xml:"fieldName,attr,omitempty"`
 
-	Len0Or9Type string `xml:",any"`
-
 	Text string `xml:",chardata"`
 }
 
@@ -9146,8 +9170,6 @@ type LegalEntityRfinfoMajorTaxPayerKpp1 struct {
 
 	// FieldName: 1 - изменено
 	FieldName string `xml:"fieldName,attr,omitempty"`
-
-	Len0Or9Type string `xml:",any"`
 
 	Text string `xml:",chardata"`
 }
@@ -9178,7 +9200,7 @@ type IndividualPersonRfinfoNameInfo1 struct {
 	// FieldName: 1 - изменено
 	FieldName string `xml:"fieldName,attr,omitempty"`
 
-	PersonWithoutOblType string `xml:",any"`
+	cmn.PersonWithoutOblType
 }
 
 // IndividualPersonRfinfoIsIp1: Индивидуальный предприниматель
@@ -9201,8 +9223,6 @@ type IndividualPersonRfinfoInn1 struct {
 
 	// FieldName: 1 - изменено
 	FieldName string `xml:"fieldName,attr,omitempty"`
-
-	Len0Or12Type string `xml:",any"`
 
 	Text string `xml:",chardata"`
 }
@@ -9265,8 +9285,6 @@ type QualityDescription struct {
 	// FieldName: 1 - изменено
 	FieldName string `xml:"fieldName,attr,omitempty"`
 
-	ManualCharacteristicNameType string `xml:",any"`
-
 	Text string `xml:",chardata"`
 }
 
@@ -9293,8 +9311,6 @@ type ValueFormat struct {
 	// FieldName: 1 - изменено
 	FieldName string `xml:"fieldName,attr,omitempty"`
 
-	KtruCharacteristicValueFormatType string `xml:",any"`
-
 	Text string `xml:",chardata"`
 }
 
@@ -9318,8 +9334,6 @@ type ValueSetConcreteValue struct {
 	// FieldName: 1 - изменено
 	FieldName string `xml:"fieldName,attr,omitempty"`
 
-	DecimalKtrucharacteristicValue18P11Type string `xml:",any"`
-
 	Text string `xml:",chardata"`
 }
 
@@ -9340,8 +9354,6 @@ type Name1 struct {
 	// FieldName: 1 - изменено
 	FieldName string `xml:"fieldName,attr,omitempty"`
 
-	ManualCharacteristicNameType string `xml:",any"`
-
 	Text string `xml:",chardata"`
 }
 
@@ -9353,8 +9365,6 @@ type Type1 struct {
 
 	// FieldName: 1 - изменено
 	FieldName string `xml:"fieldName,attr,omitempty"`
-
-	KtruCharacteristicTypeType string `xml:",any"`
 
 	Text string `xml:",chardata"`
 }
@@ -9371,16 +9381,12 @@ type Values struct {
 type Okpdcode struct {
 	XMLName xml.Name `xml:"OKPDCode"`
 
-	OkpdCodeType string `xml:",any"`
-
 	Text string `xml:",chardata"`
 }
 
 // Okpdname: Наименование товара, работы или услуги. Заполняется значением из справочника Общероссийский классификатор продукции по видам экономической деятельности ОК 034-2014 (nsiOKPD2)
 type Okpdname struct {
 	XMLName xml.Name `xml:"OKPDName,omitempty"`
-
-	OkpdNameType string `xml:",any"`
 
 	Text string `xml:",chardata"`
 }
@@ -9402,8 +9408,6 @@ type CodeCharacteristicValue struct {
 	// FieldName: 1 - изменено
 	FieldName string `xml:"fieldName,attr,omitempty"`
 
-	KtruDictCodeType string `xml:",any"`
-
 	Text string `xml:",chardata"`
 }
 
@@ -9415,8 +9419,6 @@ type QualityDescription1 struct {
 
 	// FieldName: 1 - изменено
 	FieldName string `xml:"fieldName,attr,omitempty"`
-
-	ManualCharacteristicNameType string `xml:",any"`
 
 	Text string `xml:",chardata"`
 }
@@ -9444,8 +9446,6 @@ type ValueFormat1 struct {
 	// FieldName: 1 - изменено
 	FieldName string `xml:"fieldName,attr,omitempty"`
 
-	KtruCharacteristicValueFormatType string `xml:",any"`
-
 	Text string `xml:",chardata"`
 }
 
@@ -9465,8 +9465,6 @@ type ValueSetConcreteValue1 struct {
 
 	// FieldName: 1 - изменено
 	FieldName string `xml:"fieldName,attr,omitempty"`
-
-	DecimalKtrucharacteristicValueType string `xml:",any"`
 
 	Text string `xml:",chardata"`
 }
@@ -9488,8 +9486,6 @@ type Code struct {
 	// FieldName: 1 - изменено
 	FieldName string `xml:"fieldName,attr,omitempty"`
 
-	KtruDictCodeType string `xml:",any"`
-
 	Text string `xml:",chardata"`
 }
 
@@ -9501,8 +9497,6 @@ type Name2 struct {
 
 	// FieldName: 1 - изменено
 	FieldName string `xml:"fieldName,attr,omitempty"`
-
-	KtruDictNameType string `xml:",any"`
 
 	Text string `xml:",chardata"`
 }
@@ -9516,8 +9510,6 @@ type Type2 struct {
 	// FieldName: 1 - изменено
 	FieldName string `xml:"fieldName,attr,omitempty"`
 
-	KtruCharacteristicTypeType string `xml:",any"`
-
 	Text string `xml:",chardata"`
 }
 
@@ -9529,8 +9521,6 @@ type Kind struct {
 
 	// FieldName: 1 - изменено
 	FieldName string `xml:"fieldName,attr,omitempty"`
-
-	KtruCharacteristicKindType string `xml:",any"`
 
 	Text string `xml:",chardata"`
 }
@@ -9547,16 +9537,12 @@ type Values1 struct {
 type Code1 struct {
 	XMLName xml.Name `xml:"code"`
 
-	KtruCodeType string `xml:",any"`
-
 	Text string `xml:",chardata"`
 }
 
 // Name3: Наименование товара, работы или услуги в справочнике Каталог товаров, работ, услуг (КТРУ) (nsiKTRU). Заполняется значением из справочника Каталог товаров, работ, услуг (КТРУ) (nsiKTRU)
 type Name3 struct {
 	XMLName xml.Name `xml:"name,omitempty"`
-
-	Text2000Type string `xml:",any"`
 
 	Text string `xml:",chardata"`
 }
@@ -9588,8 +9574,6 @@ type ConsumerDrugQuantity struct {
 	// FieldName: 1 - изменено
 	FieldName string `xml:"fieldName,attr,omitempty"`
 
-	Quantity18P11Type string `xml:",any"`
-
 	Text string `xml:",chardata"`
 }
 
@@ -9614,8 +9598,6 @@ type ConsumerPackagingQuantity struct {
 	// FieldName: 1 - изменено
 	FieldName string `xml:"fieldName,attr,omitempty"`
 
-	Count18Type string `xml:",any"`
-
 	Text string `xml:",chardata"`
 }
 
@@ -9628,8 +9610,6 @@ type TotalQuantity struct {
 	// FieldName: 1 - изменено
 	FieldName string `xml:"fieldName,attr,omitempty"`
 
-	DrugTotalQuantityType string `xml:",any"`
-
 	Text string `xml:",chardata"`
 }
 
@@ -9641,8 +9621,6 @@ type PriceConsumerPackage struct {
 
 	// FieldName: 1 - изменено
 	FieldName string `xml:"fieldName,attr,omitempty"`
-
-	Quantity27P11Type string `xml:",any"`
 
 	Text string `xml:",chardata"`
 }
@@ -9667,8 +9645,6 @@ type DrugChangeInfoCommentOrRequestNumber struct {
 	// FieldName: 1 - изменено
 	FieldName string `xml:"fieldName,attr,omitempty"`
 
-	Text2000Type string `xml:",any"`
-
 	Text string `xml:",chardata"`
 }
 
@@ -9680,8 +9656,6 @@ type DrugChangeInfoDrugRef struct {
 
 	// FieldName: 1 - изменено
 	FieldName string `xml:"fieldName,attr,omitempty"`
-
-	Text2000Type string `xml:",any"`
 
 	Text string `xml:",chardata"`
 }
@@ -9709,8 +9683,6 @@ type MnnnormName struct {
 	// FieldName: 1 - изменено
 	FieldName string `xml:"fieldName,attr,omitempty"`
 
-	DrugName2000Type string `xml:",any"`
-
 	Text string `xml:",chardata"`
 }
 
@@ -9722,8 +9694,6 @@ type DosageNormName struct {
 
 	// FieldName: 1 - изменено
 	FieldName string `xml:"fieldName,attr,omitempty"`
-
-	DrugName2000Type string `xml:",any"`
 
 	Text string `xml:",chardata"`
 }
@@ -9737,8 +9707,6 @@ type MedicamentalFormNormName struct {
 	// FieldName: 1 - изменено
 	FieldName string `xml:"fieldName,attr,omitempty"`
 
-	DrugName2000Type string `xml:",any"`
-
 	Text string `xml:",chardata"`
 }
 
@@ -9750,8 +9718,6 @@ type CertificateNumber struct {
 
 	// FieldName: 1 - изменено
 	FieldName string `xml:"fieldName,attr,omitempty"`
-
-	Text50Type string `xml:",any"`
 
 	Text string `xml:",chardata"`
 }
@@ -9765,8 +9731,6 @@ type EditedCertificateNumber struct {
 	// FieldName: 1 - изменено
 	FieldName string `xml:"fieldName,attr,omitempty"`
 
-	Text50Type string `xml:",any"`
-
 	Text string `xml:",chardata"`
 }
 
@@ -9778,8 +9742,6 @@ type CertificateKeeperName struct {
 
 	// FieldName: 1 - изменено
 	FieldName string `xml:"fieldName,attr,omitempty"`
-
-	DrugNameType string `xml:",any"`
 
 	Text string `xml:",chardata"`
 }
@@ -9793,8 +9755,6 @@ type EditedCertificateKeeperName struct {
 	// FieldName: 1 - изменено
 	FieldName string `xml:"fieldName,attr,omitempty"`
 
-	DrugNameType string `xml:",any"`
-
 	Text string `xml:",chardata"`
 }
 
@@ -9806,8 +9766,6 @@ type MedicamentalFormInfoMedicamentalFormName struct {
 
 	// FieldName: 1 - изменено
 	FieldName string `xml:"fieldName,attr,omitempty"`
-
-	DrugNameType string `xml:",any"`
 
 	Text string `xml:",chardata"`
 }
@@ -9829,8 +9787,6 @@ type EditedMedicamentalFormInfoMedicamentalFormName struct {
 	// FieldName: 1 - изменено
 	FieldName string `xml:"fieldName,attr,omitempty"`
 
-	DrugNameType string `xml:",any"`
-
 	Text string `xml:",chardata"`
 }
 
@@ -9850,8 +9806,6 @@ type EditedDosageInfoDosageGrlsvalue struct {
 
 	// FieldName: 1 - изменено
 	FieldName string `xml:"fieldName,attr,omitempty"`
-
-	DrugNameType string `xml:",any"`
 
 	Text string `xml:",chardata"`
 }
@@ -9873,8 +9827,6 @@ type PrimaryPackagingInfoPrimaryPackagingName struct {
 	// FieldName: 1 - изменено
 	FieldName string `xml:"fieldName,attr,omitempty"`
 
-	DrugNameType string `xml:",any"`
-
 	Text string `xml:",chardata"`
 }
 
@@ -9895,8 +9847,6 @@ type PackagingInfoPackaging1Quantity struct {
 	// FieldName: 1 - изменено
 	FieldName string `xml:"fieldName,attr,omitempty"`
 
-	DrugPackaging1QuantityType string `xml:",any"`
-
 	Text string `xml:",chardata"`
 }
 
@@ -9908,8 +9858,6 @@ type PackagingInfoPackaging2Quantity struct {
 
 	// FieldName: 1 - изменено
 	FieldName string `xml:"fieldName,attr,omitempty"`
-
-	DrugPackaging2QuantityType string `xml:",any"`
 
 	Text string `xml:",chardata"`
 }
@@ -9923,8 +9871,6 @@ type PackagingInfoSumaryPackagingQuantity struct {
 	// FieldName: 1 - изменено
 	FieldName string `xml:"fieldName,attr,omitempty"`
 
-	Quantity14P11Type string `xml:",any"`
-
 	Text string `xml:",chardata"`
 }
 
@@ -9936,8 +9882,6 @@ type PackagingInfoCompleteness struct {
 
 	// FieldName: 1 - изменено
 	FieldName string `xml:"fieldName,attr,omitempty"`
-
-	Text500Type string `xml:",any"`
 
 	Text string `xml:",chardata"`
 }
@@ -9971,8 +9915,6 @@ type PrimaryPackagingInfoPrimaryPackagingName1 struct {
 	// FieldName: 1 - изменено
 	FieldName string `xml:"fieldName,attr,omitempty"`
 
-	DrugNameType string `xml:",any"`
-
 	Text string `xml:",chardata"`
 }
 
@@ -9993,8 +9935,6 @@ type PackagingInfoPackaging1Quantity1 struct {
 	// FieldName: 1 - изменено
 	FieldName string `xml:"fieldName,attr,omitempty"`
 
-	DrugPackaging1QuantityType string `xml:",any"`
-
 	Text string `xml:",chardata"`
 }
 
@@ -10006,8 +9946,6 @@ type PackagingInfoPackaging2Quantity1 struct {
 
 	// FieldName: 1 - изменено
 	FieldName string `xml:"fieldName,attr,omitempty"`
-
-	DrugPackaging2QuantityType string `xml:",any"`
 
 	Text string `xml:",chardata"`
 }
@@ -10021,8 +9959,6 @@ type PackagingInfoSumaryPackagingQuantity1 struct {
 	// FieldName: 1 - изменено
 	FieldName string `xml:"fieldName,attr,omitempty"`
 
-	DrugSumaryPackagingQuantityType string `xml:",any"`
-
 	Text string `xml:",chardata"`
 }
 
@@ -10035,8 +9971,6 @@ type PackagingInfoCompleteness1 struct {
 	// FieldName: 1 - изменено
 	FieldName string `xml:"fieldName,attr,omitempty"`
 
-	Text500Type string `xml:",any"`
-
 	Text string `xml:",chardata"`
 }
 
@@ -10048,8 +9982,6 @@ type PackagingInfoDrugQuantity struct {
 
 	// FieldName: 1 - изменено
 	FieldName string `xml:"fieldName,attr,omitempty"`
-
-	Quantity18P11Type string `xml:",any"`
 
 	Text string `xml:",chardata"`
 }
@@ -10105,8 +10037,6 @@ type ManufacturerInfoManufacturerName struct {
 	// FieldName: 1 - изменено
 	FieldName string `xml:"fieldName,attr,omitempty"`
 
-	DrugNameType string `xml:",any"`
-
 	Text string `xml:",chardata"`
 }
 
@@ -10141,8 +10071,6 @@ type EditedManufacturerInfoManufacturerName struct {
 	// FieldName: 1 - изменено
 	FieldName string `xml:"fieldName,attr,omitempty"`
 
-	DrugNameType string `xml:",any"`
-
 	Text string `xml:",chardata"`
 }
 
@@ -10166,8 +10094,6 @@ type TradeInfoTradeName struct {
 	// FieldName: 1 - изменено
 	FieldName string `xml:"fieldName,attr,omitempty"`
 
-	DrugNameType string `xml:",any"`
-
 	Text string `xml:",chardata"`
 }
 
@@ -10188,8 +10114,6 @@ type CertificateNumber1 struct {
 	// FieldName: 1 - изменено
 	FieldName string `xml:"fieldName,attr,omitempty"`
 
-	Text50Type string `xml:",any"`
-
 	Text string `xml:",chardata"`
 }
 
@@ -10201,8 +10125,6 @@ type CertificateKeeperName1 struct {
 
 	// FieldName: 1 - изменено
 	FieldName string `xml:"fieldName,attr,omitempty"`
-
-	DrugNameType string `xml:",any"`
 
 	Text string `xml:",chardata"`
 }
@@ -10227,8 +10149,6 @@ type DosageInfoDosageGrlsvalue struct {
 	// FieldName: 1 - изменено
 	FieldName string `xml:"fieldName,attr,omitempty"`
 
-	DrugNameType string `xml:",any"`
-
 	Text string `xml:",chardata"`
 }
 
@@ -10249,8 +10169,6 @@ type PackagingInfoPrimaryPackagingName struct {
 	// FieldName: 1 - изменено
 	FieldName string `xml:"fieldName,attr,omitempty"`
 
-	DrugNameType string `xml:",any"`
-
 	Text string `xml:",chardata"`
 }
 
@@ -10262,8 +10180,6 @@ type PackagingInfoPackaging1Quantity2 struct {
 
 	// FieldName: 1 - изменено
 	FieldName string `xml:"fieldName,attr,omitempty"`
-
-	DrugPackaging1QuantityType string `xml:",any"`
 
 	Text string `xml:",chardata"`
 }
@@ -10277,8 +10193,6 @@ type PackagingInfoPackaging2Quantity2 struct {
 	// FieldName: 1 - изменено
 	FieldName string `xml:"fieldName,attr,omitempty"`
 
-	DrugPackaging2QuantityType string `xml:",any"`
-
 	Text string `xml:",chardata"`
 }
 
@@ -10291,8 +10205,6 @@ type PackagingInfoSumaryPackagingQuantity2 struct {
 	// FieldName: 1 - изменено
 	FieldName string `xml:"fieldName,attr,omitempty"`
 
-	DrugSumaryPackagingQuantityType string `xml:",any"`
-
 	Text string `xml:",chardata"`
 }
 
@@ -10304,8 +10216,6 @@ type PackagingInfoCompleteness2 struct {
 
 	// FieldName: 1 - изменено
 	FieldName string `xml:"fieldName,attr,omitempty"`
-
-	Text500Type string `xml:",any"`
 
 	Text string `xml:",chardata"`
 }
@@ -10339,8 +10249,6 @@ type ConsumerDrugQuantity1 struct {
 	// FieldName: 1 - изменено
 	FieldName string `xml:"fieldName,attr,omitempty"`
 
-	Quantity18P11Type string `xml:",any"`
-
 	Text string `xml:",chardata"`
 }
 
@@ -10365,8 +10273,6 @@ type ConsumerPackagingQuantity1 struct {
 	// FieldName: 1 - изменено
 	FieldName string `xml:"fieldName,attr,omitempty"`
 
-	Count18Type string `xml:",any"`
-
 	Text string `xml:",chardata"`
 }
 
@@ -10378,8 +10284,6 @@ type TotalQuantity1 struct {
 
 	// FieldName: 1 - изменено
 	FieldName string `xml:"fieldName,attr,omitempty"`
-
-	DrugTotalQuantityType string `xml:",any"`
 
 	Text string `xml:",chardata"`
 }
@@ -10403,8 +10307,6 @@ type ManufacturerOksminfoManufacturerName struct {
 
 	// FieldName: 1 - изменено
 	FieldName string `xml:"fieldName,attr,omitempty"`
-
-	DrugNameType string `xml:",any"`
 
 	Text string `xml:",chardata"`
 }
@@ -10440,8 +10342,6 @@ type DrugChangeInfoCommentOrRequestNumber1 struct {
 	// FieldName: 1 - изменено
 	FieldName string `xml:"fieldName,attr,omitempty"`
 
-	Text2000Type string `xml:",any"`
-
 	Text string `xml:",chardata"`
 }
 
@@ -10453,8 +10353,6 @@ type DrugChangeInfoDrugRef1 struct {
 
 	// FieldName: 1 - изменено
 	FieldName string `xml:"fieldName,attr,omitempty"`
-
-	Text2000Type string `xml:",any"`
 
 	Text string `xml:",chardata"`
 }
@@ -10482,8 +10380,6 @@ type DosageNormName1 struct {
 	// FieldName: 1 - изменено
 	FieldName string `xml:"fieldName,attr,omitempty"`
 
-	DrugName2000Type string `xml:",any"`
-
 	Text string `xml:",chardata"`
 }
 
@@ -10495,8 +10391,6 @@ type MedicamentalFormNormName1 struct {
 
 	// FieldName: 1 - изменено
 	FieldName string `xml:"fieldName,attr,omitempty"`
-
-	DrugName2000Type string `xml:",any"`
 
 	Text string `xml:",chardata"`
 }
@@ -10510,8 +10404,6 @@ type MnnnormName1 struct {
 	// FieldName: 1 - изменено
 	FieldName string `xml:"fieldName,attr,omitempty"`
 
-	DrugName2000Type string `xml:",any"`
-
 	Text string `xml:",chardata"`
 }
 
@@ -10523,8 +10415,6 @@ type DosageName struct {
 
 	// FieldName: 1 - изменено
 	FieldName string `xml:"fieldName,attr,omitempty"`
-
-	DrugNameType string `xml:",any"`
 
 	Text string `xml:",chardata"`
 }
@@ -10552,8 +10442,6 @@ type DosageValue struct {
 	// FieldName: 1 - изменено
 	FieldName string `xml:"fieldName,attr,omitempty"`
 
-	DrugDecimalCodeType string `xml:",any"`
-
 	Text string `xml:",chardata"`
 }
 
@@ -10565,8 +10453,6 @@ type DosageGrlsvalue struct {
 
 	// FieldName: 1 - изменено
 	FieldName string `xml:"fieldName,attr,omitempty"`
-
-	DrugNameType string `xml:",any"`
 
 	Text string `xml:",chardata"`
 }
@@ -10590,8 +10476,6 @@ type NameDrugProduct struct {
 
 	// FieldName: 1 - изменено
 	FieldName string `xml:"fieldName,attr,omitempty"`
-
-	Text2000Type string `xml:",any"`
 
 	Text string `xml:",chardata"`
 }
@@ -10630,8 +10514,6 @@ type MedicamentalFormInfoMedicamentalFormName1 struct {
 	// FieldName: 1 - изменено
 	FieldName string `xml:"fieldName,attr,omitempty"`
 
-	DrugNameType string `xml:",any"`
-
 	Text string `xml:",chardata"`
 }
 
@@ -10652,8 +10534,6 @@ type DrugQuantity struct {
 	// FieldName: 1 - изменено
 	FieldName string `xml:"fieldName,attr,omitempty"`
 
-	Quantity18P11Type string `xml:",any"`
-
 	Text string `xml:",chardata"`
 }
 
@@ -10665,8 +10545,6 @@ type Price1 struct {
 
 	// FieldName: 1 - изменено
 	FieldName string `xml:"fieldName,attr,omitempty"`
-
-	Quantity12P11Type string `xml:",any"`
 
 	Text string `xml:",chardata"`
 }
@@ -10691,8 +10569,6 @@ type ExpirationDateMonthYearMonth struct {
 	// FieldName: 1 - изменено
 	FieldName string `xml:"fieldName,attr,omitempty"`
 
-	MonthType string `xml:",any"`
-
 	Text string `xml:",chardata"`
 }
 
@@ -10704,8 +10580,6 @@ type ExpirationDateMonthYearYear struct {
 
 	// FieldName: 1 - изменено
 	FieldName string `xml:"fieldName,attr,omitempty"`
-
-	YearType string `xml:",any"`
 
 	Text string `xml:",chardata"`
 }
@@ -10765,8 +10639,6 @@ type MnninfoMnnname struct {
 	// FieldName: 1 - изменено
 	FieldName string `xml:"fieldName,attr,omitempty"`
 
-	DrugName2000Type string `xml:",any"`
-
 	Text string `xml:",chardata"`
 }
 
@@ -10790,8 +10662,6 @@ type DrugChangeInfoCommentOrRequestNumber2 struct {
 	// FieldName: 1 - изменено
 	FieldName string `xml:"fieldName,attr,omitempty"`
 
-	Text2000Type string `xml:",any"`
-
 	Text string `xml:",chardata"`
 }
 
@@ -10803,8 +10673,6 @@ type DrugChangeInfoDrugRef2 struct {
 
 	// FieldName: 1 - изменено
 	FieldName string `xml:"fieldName,attr,omitempty"`
-
-	Text2000Type string `xml:",any"`
 
 	Text string `xml:",chardata"`
 }
@@ -10843,8 +10711,6 @@ type Name4 struct {
 	// FieldName: 1 - изменено
 	FieldName string `xml:"fieldName,attr,omitempty"`
 
-	Text2000Type string `xml:",any"`
-
 	Text string `xml:",chardata"`
 }
 
@@ -10879,8 +10745,6 @@ type DosageInfoDosageGrlsvalue1 struct {
 	// FieldName: 1 - изменено
 	FieldName string `xml:"fieldName,attr,omitempty"`
 
-	DrugNameType string `xml:",any"`
-
 	Text string `xml:",chardata"`
 }
 
@@ -10901,8 +10765,6 @@ type DrugQuantity1 struct {
 	// FieldName: 1 - изменено
 	FieldName string `xml:"fieldName,attr,omitempty"`
 
-	Quantity18P11Type string `xml:",any"`
-
 	Text string `xml:",chardata"`
 }
 
@@ -10914,8 +10776,6 @@ type Price2 struct {
 
 	// FieldName: 1 - изменено
 	FieldName string `xml:"fieldName,attr,omitempty"`
-
-	Quantity12P11Type string `xml:",any"`
 
 	Text string `xml:",chardata"`
 }
@@ -10940,8 +10800,6 @@ type ExpirationDateMonthYearMonth1 struct {
 	// FieldName: 1 - изменено
 	FieldName string `xml:"fieldName,attr,omitempty"`
 
-	MonthType string `xml:",any"`
-
 	Text string `xml:",chardata"`
 }
 
@@ -10953,8 +10811,6 @@ type ExpirationDateMonthYearYear1 struct {
 
 	// FieldName: 1 - изменено
 	FieldName string `xml:"fieldName,attr,omitempty"`
-
-	YearType string `xml:",any"`
 
 	Text string `xml:",chardata"`
 }
@@ -11256,6 +11112,45 @@ type ContractProjectType struct {
 
 	// PrintFormFieldsInfo: Дополнительная информация для печатной формы
 	PrintFormFieldsInfo *PrintFormFieldsInfo `xml:"printFormFieldsInfo,omitempty"`
+
+	// Id: Идентификатор документа ЕИС
+	Id *int64 `xml:"id,omitempty"`
+
+	// ExternalId: Внешний идентификатор документа
+	ExternalId *base.ExternalIdType `xml:"externalId,omitempty"`
+
+	// VersionNumber: Номер версии документа
+	VersionNumber *base.VersionNumberType `xml:"versionNumber,omitempty"`
+
+	// FoundationInfo: Основание заключения контракта
+	FoundationInfo FoundationInfo `xml:"foundationInfo"`
+
+	// CustomerInfo: Заказчик. - В случае если в связанном извещении (foundationInfo/purchaseNumber) указан один заказчик, блок игнорируется при приёме, заполняется из связанного извещения; - В случае если в связанном извещении (foundationInfo/purchaseNumber) указано более одного заказчика, требуется обязательное заполнение и проверяется наличие заказчика в связанном извещении
+	CustomerInfo *cmn.OrganizationType `xml:"customerInfo,omitempty"`
+
+	// PlacerInfo: Информация об организации, разместившей контракт
+	PlacerInfo PlacerInfo `xml:"placerInfo"`
+
+	// ParticipantInfo: Поставщик. При приёме проверяется - Наличие указанного поставщика в связанном итоговом протоколе (foundationInfo/protocolInfo/number); - Отсутствие по закупке с номером указанным в поле (foundationInfo/purchaseNumber) для указанного поставщика размещенного протокола отказа от заключения контратка (fcsProtocolEvasion), или протокола о признании участника уклонившимся от заключения контракта (fcsProtocolDeviation)
+	ParticipantInfo ParticipantInfo `xml:"participantInfo"`
+
+	// IsSecondParticipant: Контракт заключается с участником, которому по результатам процедуры определения поставщика присвоен воторой номер. Элемент игнорируется при приёме. Заполняется из связанного итогового протокола (foundationInfo/protocolInfo/number). Устарело, не применяется
+	IsSecondParticipant *bool `xml:"isSecondParticipant,omitempty"`
+
+	// QuantityUndefined: Невозможно определить количество товара, объем подлежащих выполнению работ, оказанию услуг. Игнорируется при приеме. Заполняется автоматически на основании извещения (foundationInfo/purchaseNumber)
+	QuantityUndefined *bool `xml:"quantityUndefined,omitempty"`
+
+	// ContractInfo: Информация о контракте
+	ContractInfo ContractInfo `xml:"contractInfo"`
+
+	// PrintFormInfo: Печатная форма документа. Элемент игнорируется при приёме. При передаче заполняется ссылкой на печатную форму и электронную подпись размещенного в ЕИС документа
+	PrintFormInfo *cmn.PrintFormType `xml:"printFormInfo,omitempty"`
+
+	// IsContractPriceFormula: Указана формула цены и максимальное значение цены контракта
+	IsContractPriceFormula *bool `xml:"isContractPriceFormula,omitempty"`
+
+	// AppNumber: Порядковый номер заявки участника в итоговом протоколе. Контракт заключается с участником закупки, которому присвоен данный номер заявки
+	AppNumber *base.JournalNumberType `xml:"appNumber,omitempty"`
 }
 
 // ContractProjectChangeType: Тип: Доработанный проект контракта на основании размещенного поставщиком протокола разногласий
@@ -11291,6 +11186,45 @@ type ContractProjectChangeType struct {
 
 	// PrintFormFieldsInfo: Дополнительная информация для печатной формы
 	PrintFormFieldsInfo *PrintFormFieldsInfo `xml:"printFormFieldsInfo,omitempty"`
+
+	// Id: Идентификатор документа ЕИС
+	Id *int64 `xml:"id,omitempty"`
+
+	// ExternalId: Внешний идентификатор документа
+	ExternalId *base.ExternalIdType `xml:"externalId,omitempty"`
+
+	// VersionNumber: Номер версии документа
+	VersionNumber *base.VersionNumberType `xml:"versionNumber,omitempty"`
+
+	// FoundationInfo: Основание заключения контракта
+	FoundationInfo FoundationInfo `xml:"foundationInfo"`
+
+	// CustomerInfo: Заказчик. - В случае если в связанном извещении (foundationInfo/purchaseNumber) указан один заказчик, блок игнорируется при приёме, заполняется из связанного извещения; - В случае если в связанном извещении (foundationInfo/purchaseNumber) указано более одного заказчика, требуется обязательное заполнение и проверяется наличие заказчика в связанном извещении
+	CustomerInfo *cmn.OrganizationType `xml:"customerInfo,omitempty"`
+
+	// PlacerInfo: Информация об организации, разместившей контракт
+	PlacerInfo PlacerInfo `xml:"placerInfo"`
+
+	// ParticipantInfo: Поставщик. При приёме проверяется - Наличие указанного поставщика в связанном итоговом протоколе (foundationInfo/protocolInfo/number); - Отсутствие по закупке с номером указанным в поле (foundationInfo/purchaseNumber) для указанного поставщика размещенного протокола отказа от заключения контратка (fcsProtocolEvasion), или протокола о признании участника уклонившимся от заключения контракта (fcsProtocolDeviation)
+	ParticipantInfo ParticipantInfo `xml:"participantInfo"`
+
+	// IsSecondParticipant: Контракт заключается с участником, которому по результатам процедуры определения поставщика присвоен воторой номер. Элемент игнорируется при приёме. Заполняется из связанного итогового протокола (foundationInfo/protocolInfo/number). Устарело, не применяется
+	IsSecondParticipant *bool `xml:"isSecondParticipant,omitempty"`
+
+	// QuantityUndefined: Невозможно определить количество товара, объем подлежащих выполнению работ, оказанию услуг. Игнорируется при приеме. Заполняется автоматически на основании извещения (foundationInfo/purchaseNumber)
+	QuantityUndefined *bool `xml:"quantityUndefined,omitempty"`
+
+	// ContractInfo: Информация о контракте
+	ContractInfo ContractInfo `xml:"contractInfo"`
+
+	// PrintFormInfo: Печатная форма документа. Элемент игнорируется при приёме. При передаче заполняется ссылкой на печатную форму и электронную подпись размещенного в ЕИС документа
+	PrintFormInfo *cmn.PrintFormType `xml:"printFormInfo,omitempty"`
+
+	// IsContractPriceFormula: Указана формула цены и максимальное значение цены контракта
+	IsContractPriceFormula *bool `xml:"isContractPriceFormula,omitempty"`
+
+	// AppNumber: Порядковый номер заявки участника в итоговом протоколе. Контракт заключается с участником закупки, которому присвоен данный номер заявки
+	AppNumber *base.JournalNumberType `xml:"appNumber,omitempty"`
 }
 
 // ContractProjectSignType: Тип: Проект контракта, подписанный поставщиком
@@ -11301,7 +11235,46 @@ type ContractProjectSignType struct {
 	SchemeVersion base.SchemeVersionType `xml:"schemeVersion,attr"`
 
 	// PrintFormFieldsInfo: Дополнительная информация для печатной формы
-	PrintFormFieldsInfo *PrintFormFieldsInfo `xml:",any,omitempty"`
+	PrintFormFieldsInfo *PrintFormFieldsInfo `xml:"printFormFieldsInfo,omitempty"`
+
+	// Id: Идентификатор документа ЕИС
+	Id *int64 `xml:"id,omitempty"`
+
+	// ExternalId: Внешний идентификатор документа
+	ExternalId *base.ExternalIdType `xml:"externalId,omitempty"`
+
+	// VersionNumber: Номер версии документа
+	VersionNumber *base.VersionNumberType `xml:"versionNumber,omitempty"`
+
+	// ParentVersionNumber: Номер версии документа основания. Проверяется наличие размещенного и не отменённого документа основания с указанной версией
+	ParentVersionNumber base.VersionNumberType `xml:"parentVersionNumber"`
+
+	// CommonInfo: Общая информация
+	CommonInfo CommonInfo `xml:"commonInfo"`
+
+	// RequirementsDocInfo: Документы, подтверждающие обеспечение исполнения контракта
+	RequirementsDocInfo *RequirementsDocInfo `xml:"requirementsDocInfo,omitempty"`
+
+	// ConscientiousnessDocsInfo: Документы, подтверждающие добросовестность участника
+	ConscientiousnessDocsInfo *ConscientiousnessDocsInfo `xml:"conscientiousnessDocsInfo,omitempty"`
+
+	// ContractPriceFoundationDocInfo: Обоснование предлагаемой цены
+	ContractPriceFoundationDocInfo *cmn.AttachmentListSignCheckUrlType `xml:"contractPriceFoundationDocInfo,omitempty"`
+
+	// ContractProjectFilesInfo: Файлы проекта контракта, подписанные поставщиком. Если в проекте контракта не установлен признак "Проект контракта формируется в структурированном виде" (contractInfo/isStructuredForm), то в блоке должны быть указаны подписанные поставщиком вложения Если в проекте контракта установлен признак "Проект контракта формируется в структурированном виде" (contractInfo/isStructuredForm), то блок игнорируется при приеме
+	ContractProjectFilesInfo *ContractProjectFilesInfo `xml:"contractProjectFilesInfo,omitempty"`
+
+	// ElectronicContractInfo: Проект электронного контракта в структурированной форме. Если в проекте контракта установлен признак "Проект контракта формируется в структурированном виде" (contractInfo/isStructuredForm), то в блоке указывается проект электронного контракта и приложенные к нему вложения, подписанные поставщиком. Если в проекте контракта не установлен признак "Проект контракта формируется в структурированном виде" (contractInfo/isStructuredForm), , то блок игнорируется при приеме
+	ElectronicContractInfo *ElectronicContractInfo `xml:"electronicContractInfo,omitempty"`
+
+	// ModificationInfo: Основание внесения изменений
+	ModificationInfo *ModificationInfo `xml:"modificationInfo,omitempty"`
+
+	// ExtPrintFormInfo: Электронный документ, полученный из внешней системы. Элемент игнорируется при приёме, оставлен для обратной совместимости
+	ExtPrintFormInfo *cmn.ExtPrintFormType `xml:"extPrintFormInfo,omitempty"`
+
+	// PowerOfAttorney: Сведения о доверенности. Блок "Сведения о доверенности заказчика" (customerPOAInfo) игнорируется при приеме. Блок "Сведения о доверенности поставщика" (participantPOAInfo) принимается и сохраняется
+	PowerOfAttorney *cmn.WithFirstPoattorneyListType `xml:"powerOfAttorney,omitempty"`
 }
 
 // ContractSignType: Тип: Подписанный контракт
@@ -11325,6 +11298,45 @@ type ContractSignType struct {
 
 	// PrintFormFieldsInfo: Дополнительная информация для печатной формы
 	PrintFormFieldsInfo *PrintFormFieldsInfo `xml:"printFormFieldsInfo,omitempty"`
+
+	// Id: Идентификатор документа ЕИС
+	Id *int64 `xml:"id,omitempty"`
+
+	// ExternalId: Внешний идентификатор документа
+	ExternalId *base.ExternalIdType `xml:"externalId,omitempty"`
+
+	// VersionNumber: Номер версии документа
+	VersionNumber *base.VersionNumberType `xml:"versionNumber,omitempty"`
+
+	// FoundationInfo: Основание заключения контракта
+	FoundationInfo FoundationInfo `xml:"foundationInfo"`
+
+	// CustomerInfo: Заказчик. - В случае если в связанном извещении (foundationInfo/purchaseNumber) указан один заказчик, блок игнорируется при приёме, заполняется из связанного извещения; - В случае если в связанном извещении (foundationInfo/purchaseNumber) указано более одного заказчика, требуется обязательное заполнение и проверяется наличие заказчика в связанном извещении
+	CustomerInfo *cmn.OrganizationType `xml:"customerInfo,omitempty"`
+
+	// PlacerInfo: Информация об организации, разместившей контракт
+	PlacerInfo PlacerInfo `xml:"placerInfo"`
+
+	// ParticipantInfo: Поставщик. При приёме проверяется - Наличие указанного поставщика в связанном итоговом протоколе (foundationInfo/protocolInfo/number); - Отсутствие по закупке с номером указанным в поле (foundationInfo/purchaseNumber) для указанного поставщика размещенного протокола отказа от заключения контратка (fcsProtocolEvasion), или протокола о признании участника уклонившимся от заключения контракта (fcsProtocolDeviation)
+	ParticipantInfo ParticipantInfo `xml:"participantInfo"`
+
+	// IsSecondParticipant: Контракт заключается с участником, которому по результатам процедуры определения поставщика присвоен воторой номер. Элемент игнорируется при приёме. Заполняется из связанного итогового протокола (foundationInfo/protocolInfo/number). Устарело, не применяется
+	IsSecondParticipant *bool `xml:"isSecondParticipant,omitempty"`
+
+	// QuantityUndefined: Невозможно определить количество товара, объем подлежащих выполнению работ, оказанию услуг. Игнорируется при приеме. Заполняется автоматически на основании извещения (foundationInfo/purchaseNumber)
+	QuantityUndefined *bool `xml:"quantityUndefined,omitempty"`
+
+	// ContractInfo: Информация о контракте
+	ContractInfo ContractInfo `xml:"contractInfo"`
+
+	// PrintFormInfo: Печатная форма документа. Элемент игнорируется при приёме. При передаче заполняется ссылкой на печатную форму и электронную подпись размещенного в ЕИС документа
+	PrintFormInfo *cmn.PrintFormType `xml:"printFormInfo,omitempty"`
+
+	// IsContractPriceFormula: Указана формула цены и максимальное значение цены контракта
+	IsContractPriceFormula *bool `xml:"isContractPriceFormula,omitempty"`
+
+	// AppNumber: Порядковый номер заявки участника в итоговом протоколе. Контракт заключается с участником закупки, которому присвоен данный номер заявки
+	AppNumber *base.JournalNumberType `xml:"appNumber,omitempty"`
 }
 
 // ProtocolDisagreementsType: Тип: Протокол разногласий
@@ -11380,6 +11392,33 @@ type NoticeDeviationType struct {
 
 	// SchemeVersion: Версия схемы
 	SchemeVersion base.SchemeVersionType `xml:"schemeVersion,attr"`
+
+	// Id: Идентификатор документа ЕИС. Элемент игнорируется при приёме. Заполняется при передаче идентификатором документа в ЕИС
+	Id *int64 `xml:"id,omitempty"`
+
+	// ExternalId: Внешний идентификатор документа
+	ExternalId *base.ExternalIdType `xml:"externalId,omitempty"`
+
+	// ParentVersionNumber: Номер версии документа основания. Проверяется наличие размещенного и не отменённого документа основания с указанной версией
+	ParentVersionNumber base.VersionNumberType `xml:"parentVersionNumber"`
+
+	// CommonInfo: Общая информация
+	CommonInfo CommonInfo `xml:"commonInfo"`
+
+	// ParticipantInfo: Поставщик
+	ParticipantInfo ParticipantType `xml:"participantInfo"`
+
+	// NoticeText: Текст уведомления
+	NoticeText base.Text2000Type `xml:"noticeText"`
+
+	// PrintFormInfo: Печатная форма документа. Элемент игнорируется при приёме. При передаче заполняется ссылкой на печатную форму и электронную подпись размещенного в ЕИС документа
+	PrintFormInfo *cmn.PrintFormType `xml:"printFormInfo,omitempty"`
+
+	// ExtPrintFormInfo: Электронный документ, полученный из внешней системы
+	ExtPrintFormInfo cmn.ExtPrintFormType `xml:"extPrintFormInfo"`
+
+	// PrintFormFieldsInfo: Дополнительная информация для печатной формы. Игнорируется при приёме, заполняется при передаче из проекта контракта
+	PrintFormFieldsInfo *PrintFormFieldsInfo `xml:"printFormFieldsInfo,omitempty"`
 }
 
 // NoticeEvasionType: Тип: Уведомление об отказе от заключения контракта. Устарело, не применяется
@@ -11388,6 +11427,33 @@ type NoticeEvasionType struct {
 
 	// SchemeVersion: Версия схемы
 	SchemeVersion base.SchemeVersionType `xml:"schemeVersion,attr"`
+
+	// Id: Идентификатор документа ЕИС. Элемент игнорируется при приёме. Заполняется при передаче идентификатором документа в ЕИС
+	Id *int64 `xml:"id,omitempty"`
+
+	// ExternalId: Внешний идентификатор документа
+	ExternalId *base.ExternalIdType `xml:"externalId,omitempty"`
+
+	// ParentVersionNumber: Номер версии документа основания. Проверяется наличие размещенного и не отменённого документа основания с указанной версией
+	ParentVersionNumber base.VersionNumberType `xml:"parentVersionNumber"`
+
+	// CommonInfo: Общая информация
+	CommonInfo CommonInfo `xml:"commonInfo"`
+
+	// ParticipantInfo: Поставщик
+	ParticipantInfo ParticipantType `xml:"participantInfo"`
+
+	// NoticeText: Текст уведомления
+	NoticeText base.Text2000Type `xml:"noticeText"`
+
+	// PrintFormInfo: Печатная форма документа. Элемент игнорируется при приёме. При передаче заполняется ссылкой на печатную форму и электронную подпись размещенного в ЕИС документа
+	PrintFormInfo *cmn.PrintFormType `xml:"printFormInfo,omitempty"`
+
+	// ExtPrintFormInfo: Электронный документ, полученный из внешней системы
+	ExtPrintFormInfo cmn.ExtPrintFormType `xml:"extPrintFormInfo"`
+
+	// PrintFormFieldsInfo: Дополнительная информация для печатной формы. Игнорируется при приёме, заполняется при передаче из проекта контракта
+	PrintFormFieldsInfo *PrintFormFieldsInfo `xml:"printFormFieldsInfo,omitempty"`
 }
 
 // RefusalConcludeContractType: Тип: Отказ участника закупки от заключения контракта
@@ -11606,7 +11672,52 @@ type ContractProjectChangeLkptype struct {
 	SchemeVersion base.SchemeVersionType `xml:"schemeVersion,attr"`
 
 	// ChangeInfo: Информация об изменении в проекте контракта, направляемого участнику
-	ChangeInfo cmn.ChangeType `xml:",any"`
+	ChangeInfo cmn.ChangeType `xml:"changeInfo"`
+
+	// Id: Идентификатор документа ЕИС
+	Id *int64 `xml:"id,omitempty"`
+
+	// LkpGuid: GUID информации о проекте контракта в ЛКП
+	LkpGuid *base.GuidType `xml:"lkpGUID,omitempty"`
+
+	// ExternalId: Внешний идентификатор документа
+	ExternalId *base.ExternalIdType `xml:"externalId,omitempty"`
+
+	// VersionNumber: Номер версии документа
+	VersionNumber *base.VersionNumberType `xml:"versionNumber,omitempty"`
+
+	// CommonProjectInfo: Общая информация о контракте
+	CommonProjectInfo CommonProjectInfoType `xml:"commonProjectInfo"`
+
+	// CustomerInfo: Заказчик. Контролируется обязательное заполнение только для прямого ед. поставщика (commonProjectInfo/singleSupplier, в остальных случаях игнорируется и заполняется автоматически
+	CustomerInfo *cmn.OrganizationType `xml:"customerInfo,omitempty"`
+
+	// PlacerInfo: Информация об организации, разместившей контракт
+	PlacerInfo cmn.PlacerProjectInfoType `xml:"placerInfo"`
+
+	// ComplianceInfo: Требования к информации, предоставляемой поставщиков для заключения контракта
+	ComplianceInfo *cmn.ComplianceContractProjectInfoType `xml:"complianceInfo,omitempty"`
+
+	// PrintFormInfo: Печатная форма документа. Элемент игнорируется при приёме. При передаче заполняется ссылкой на печатную форму и электронную подпись размещенного в ЕИС документа
+	PrintFormInfo *cmn.CpPrintFormType `xml:"printFormInfo,omitempty"`
+
+	// ContractProjectFilesInfo: Файлы проекта контракта, направляемого поставщику. Если установлен признак "Проект контракта формируется в структурированном виде" (isStructuredForm), то игнорируется при приеме, не заполняется при передаче. Если не установлен признак "Проект контракта формируется в структурированном виде" (isStructuredForm), то контролируется обязательность указания файлов проекта контракта в неструктурированном виде
+	ContractProjectFilesInfo *cmn.AttachmentWithStoreListType `xml:"contractProjectFilesInfo,omitempty"`
+
+	// ElectronicContractInfo: Проект электронного контракта в структурированной форме. Игнорируется при приеме. Если установлен признак "Проект контракта формируется в структурированном виде" (isStructuredForm), то заполняется при передаче
+	ElectronicContractInfo *cmn.ElectronicContractInfoType `xml:"electronicContractInfo,omitempty"`
+
+	// DeltaInfo: Дельта доп.соглашения. Игнорируется при приеме, вычисляется автоматически для доп соглашения на изменение контракта(commonProjectInfo/additionalAgreement/additionalAgreementInfo/changeInfo). Если установлен признак "Проект контракта формируется в структурированном виде" (isStructuredForm), то всегда заполняется из РЭК при передаче доп.соглашения в ЛКП. Если НЕ установлен признак "Проект контракта формируется в структурированном виде" (isStructuredForm), то заполняется из ПЗК только при передаче в ЛКП подписанного не структурированного доп.соглашения(cpContractSignLKP/cpClosedContractSignLKP)
+	DeltaInfo *cmn.DeltaPrintFormInfoType `xml:"deltaInfo,omitempty"`
+
+	// ApprovalAttachmentsInfo: Лист согласования. Если установлен признак "Проект контракта формируется в структурированном виде" (isStructuredForm), то принимается и заполняется при передаче. Если не установлен признак "Проект контракта формируется в структурированном виде" (isStructuredForm), то игнорируется при приеме. Не заполняется при выгрузке "Подписанного контракта/доп. соглашения" (cpContractSignLKP/cpClosedContractSignLKP)
+	ApprovalAttachmentsInfo *cmn.AttachmentWithStoreListType `xml:"approvalAttachmentsInfo,omitempty"`
+
+	// ExtPrintFormInfo: Электронный документ, полученный из внешней системы
+	ExtPrintFormInfo *cmn.LkpPrintFormType `xml:"extPrintFormInfo,omitempty"`
+
+	// PrintFormFieldsInfo: Дополнительная информация для печатной формы
+	PrintFormFieldsInfo *PrintFormFieldsInfo `xml:"printFormFieldsInfo,omitempty"`
 }
 
 // ContractProjectSignLkptype: Тип: Проект контракта, подписанный поставщиком (ЛКП)
@@ -11668,6 +11779,51 @@ type ContractSignLkptype struct {
 
 	// PowerOfAttorney: Сведения о доверенности
 	PowerOfAttorney *cmn.WithFirstPoattorneyListType `xml:"powerOfAttorney,omitempty"`
+
+	// Id: Идентификатор документа ЕИС
+	Id *int64 `xml:"id,omitempty"`
+
+	// LkpGuid: GUID информации о проекте контракта в ЛКП
+	LkpGuid *base.GuidType `xml:"lkpGUID,omitempty"`
+
+	// ExternalId: Внешний идентификатор документа
+	ExternalId *base.ExternalIdType `xml:"externalId,omitempty"`
+
+	// VersionNumber: Номер версии документа
+	VersionNumber *base.VersionNumberType `xml:"versionNumber,omitempty"`
+
+	// CommonProjectInfo: Общая информация о контракте
+	CommonProjectInfo CommonProjectInfoType `xml:"commonProjectInfo"`
+
+	// CustomerInfo: Заказчик. Контролируется обязательное заполнение только для прямого ед. поставщика (commonProjectInfo/singleSupplier, в остальных случаях игнорируется и заполняется автоматически
+	CustomerInfo *cmn.OrganizationType `xml:"customerInfo,omitempty"`
+
+	// PlacerInfo: Информация об организации, разместившей контракт
+	PlacerInfo cmn.PlacerProjectInfoType `xml:"placerInfo"`
+
+	// ComplianceInfo: Требования к информации, предоставляемой поставщиков для заключения контракта
+	ComplianceInfo *cmn.ComplianceContractProjectInfoType `xml:"complianceInfo,omitempty"`
+
+	// PrintFormInfo: Печатная форма документа. Элемент игнорируется при приёме. При передаче заполняется ссылкой на печатную форму и электронную подпись размещенного в ЕИС документа
+	PrintFormInfo *cmn.CpPrintFormType `xml:"printFormInfo,omitempty"`
+
+	// ContractProjectFilesInfo: Файлы проекта контракта, направляемого поставщику. Если установлен признак "Проект контракта формируется в структурированном виде" (isStructuredForm), то игнорируется при приеме, не заполняется при передаче. Если не установлен признак "Проект контракта формируется в структурированном виде" (isStructuredForm), то контролируется обязательность указания файлов проекта контракта в неструктурированном виде
+	ContractProjectFilesInfo *cmn.AttachmentWithStoreListType `xml:"contractProjectFilesInfo,omitempty"`
+
+	// ElectronicContractInfo: Проект электронного контракта в структурированной форме. Игнорируется при приеме. Если установлен признак "Проект контракта формируется в структурированном виде" (isStructuredForm), то заполняется при передаче
+	ElectronicContractInfo *cmn.ElectronicContractInfoType `xml:"electronicContractInfo,omitempty"`
+
+	// DeltaInfo: Дельта доп.соглашения. Игнорируется при приеме, вычисляется автоматически для доп соглашения на изменение контракта(commonProjectInfo/additionalAgreement/additionalAgreementInfo/changeInfo). Если установлен признак "Проект контракта формируется в структурированном виде" (isStructuredForm), то всегда заполняется из РЭК при передаче доп.соглашения в ЛКП. Если НЕ установлен признак "Проект контракта формируется в структурированном виде" (isStructuredForm), то заполняется из ПЗК только при передаче в ЛКП подписанного не структурированного доп.соглашения(cpContractSignLKP/cpClosedContractSignLKP)
+	DeltaInfo *cmn.DeltaPrintFormInfoType `xml:"deltaInfo,omitempty"`
+
+	// ApprovalAttachmentsInfo: Лист согласования. Если установлен признак "Проект контракта формируется в структурированном виде" (isStructuredForm), то принимается и заполняется при передаче. Если не установлен признак "Проект контракта формируется в структурированном виде" (isStructuredForm), то игнорируется при приеме. Не заполняется при выгрузке "Подписанного контракта/доп. соглашения" (cpContractSignLKP/cpClosedContractSignLKP)
+	ApprovalAttachmentsInfo *cmn.AttachmentWithStoreListType `xml:"approvalAttachmentsInfo,omitempty"`
+
+	// ExtPrintFormInfo: Электронный документ, полученный из внешней системы
+	ExtPrintFormInfo *cmn.LkpPrintFormType `xml:"extPrintFormInfo,omitempty"`
+
+	// PrintFormFieldsInfo: Дополнительная информация для печатной формы
+	PrintFormFieldsInfo *PrintFormFieldsInfo `xml:"printFormFieldsInfo,omitempty"`
 }
 
 // ProtocolDisagreementsLkptype: Тип: Протокол разногласий (ЛКП)
@@ -12502,7 +12658,7 @@ type CpParticipantInfoType struct {
 	// ContractorRegistryNum: Номер реестровой записи в ЕРУЗ. При приеме из внешней системы игнорируется и заполняется автоматически из ЕРУЗ на основании заполненного блока: • «Юридическое лицо» РФ (legalEntityRFInfo) по коду ИНН (INN) и КПП (KPP); • «Юридическое лицо иностранного государства» (legalEntityForeignStateInfo) по коду налогоплательщика в стране регистрации или его аналог (taxPayerCode); • «Физическое лицо РФ» (individualPersonRFInfo) по коду ИНН (INN); • «Физическое лицо иностранного государства» (individualPersonForeignStateInfo) по коду налогоплательщика в стране регистрации или его аналог (taxPayerCode); • «Аккредитованный филиал или представительство иностранного юридического лица» (legalEntityForeignStateInRAFPInfo) по коду ИНН (INN) и КПП (KPP); • «Обособленное подразделение юридического лица РФ» (filialLegalEntityRFInfo) по коду ИНН (INN) и КПП (KPP). При взаимодействии с ЛКП обязателен для заполнения.
 	ContractorRegistryNum *base.EruzRegistryNumType `xml:"contractorRegistryNum,omitempty"`
 
-	ParticipantType string `xml:"participantType"`
+	cmn.ParticipantType `xml:""`
 }
 
 // CpContractInfoType: Тип: Информация о контракте по конкурентной процедуре
@@ -13437,6 +13593,24 @@ type ContractProjectFileType struct {
 
 	// FileFingerPrint: Отпечаток файла. Элемент игнорируется при приёме, автоматически заполняется при передаче hash файла.
 	FileFingerPrint *base.FileHashType `xml:"fileFingerPrint,omitempty"`
+
+	// PublishedContentId: Уникальный идентификатор контента прикрепленного документа на ЕИС. Элемент игнорируется при приёме, заполняется при передаче
+	PublishedContentId *base.GuidType `xml:"publishedContentId,omitempty"`
+
+	// FileName: Имя файла
+	FileName base.FileNameType `xml:"fileName"`
+
+	// DocDescription: Описание прикрепляемого документа
+	DocDescription *base.Text4000Type `xml:"docDescription,omitempty"`
+
+	// Url: Ссылка для скачивания прикрепленного документа
+	Url *base.HrefType `xml:"url,omitempty"`
+
+	// ContentId: Уникальный идентификатор контента прикрепленного документа на ЕИС
+	ContentId *base.GuidType `xml:"contentId,omitempty"`
+
+	// Content: Содержимое файла
+	Content string `xml:"content,omitempty"`
 }
 
 // ContractProjectSignFileType: Тип: Файл проекта контрактов подписанный поставщиком
@@ -13451,6 +13625,24 @@ type ContractProjectSignFileType struct {
 
 	// SupplierSignature: Электронная подпись поставщика
 	SupplierSignature cmn.SignatureType `xml:"supplierSignature"`
+
+	// PublishedContentId: Уникальный идентификатор контента прикрепленного документа на ЕИС. Элемент игнорируется при приёме, заполняется при передаче
+	PublishedContentId *base.GuidType `xml:"publishedContentId,omitempty"`
+
+	// FileName: Имя файла
+	FileName base.FileNameType `xml:"fileName"`
+
+	// DocDescription: Описание прикрепляемого документа
+	DocDescription *base.Text4000Type `xml:"docDescription,omitempty"`
+
+	// Url: Ссылка для скачивания прикрепленного документа
+	Url *base.HrefType `xml:"url,omitempty"`
+
+	// ContentId: Уникальный идентификатор контента прикрепленного документа на ЕИС
+	ContentId *base.GuidType `xml:"contentId,omitempty"`
+
+	// Content: Содержимое файла
+	Content string `xml:"content,omitempty"`
 }
 
 // ContractFileType: Тип: Файл контракта
@@ -13468,6 +13660,24 @@ type ContractFileType struct {
 
 	// SupplierSignature: Электронная подпись поставщика
 	SupplierSignature *cmn.SignatureType `xml:"supplierSignature,omitempty"`
+
+	// PublishedContentId: Уникальный идентификатор контента прикрепленного документа на ЕИС. Элемент игнорируется при приёме, заполняется при передаче
+	PublishedContentId *base.GuidType `xml:"publishedContentId,omitempty"`
+
+	// FileName: Имя файла
+	FileName base.FileNameType `xml:"fileName"`
+
+	// DocDescription: Описание прикрепляемого документа
+	DocDescription *base.Text4000Type `xml:"docDescription,omitempty"`
+
+	// Url: Ссылка для скачивания прикрепленного документа
+	Url *base.HrefType `xml:"url,omitempty"`
+
+	// ContentId: Уникальный идентификатор контента прикрепленного документа на ЕИС
+	ContentId *base.GuidType `xml:"contentId,omitempty"`
+
+	// Content: Содержимое файла
+	Content string `xml:"content,omitempty"`
 }
 
 // XSD SimpleType declarations

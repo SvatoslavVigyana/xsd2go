@@ -754,9 +754,9 @@ type MinRusRejectReasonRef struct {
 // AppleadCanPostType: Тип: Возможность размещения с такими обжалуемыми действиями: 1 - дает возможность создавать жалобу с такими обжалуемыми действиями, 0 - нельзя создавать жалобу с таким обжалуемыми действиями, можно только просматривать уже размещенные
 type AppleadCanPostType int
 
-const AppleadCanPostType1 AppleadCanPostType = "1"
+const AppleadCanPostType1 AppleadCanPostType = 1
 
-const AppleadCanPostType0 AppleadCanPostType = "0"
+const AppleadCanPostType0 AppleadCanPostType = 0
 
 // RateValueFarmDrugInterchangeGroupType: Тип: Тип коэффициента приведения в справочнике "Группы взаимозаменяемости лекарственных препаратов"
 type RateValueFarmDrugInterchangeGroupType float64
@@ -2317,15 +2317,15 @@ const PrintFormFileType7Z PrintFormFileType = "7z"
 // PriorityType: Тип: Приоритет отдачи документа. 1 - минимальный приоритет, 5 - максимальный. Приоритет по умолчанию - 3
 type PriorityType int
 
-const PriorityType1 PriorityType = "1"
+const PriorityType1 PriorityType = 1
 
-const PriorityType2 PriorityType = "2"
+const PriorityType2 PriorityType = 2
 
-const PriorityType3 PriorityType = "3"
+const PriorityType3 PriorityType = 3
 
-const PriorityType4 PriorityType = "4"
+const PriorityType4 PriorityType = 4
 
-const PriorityType5 PriorityType = "5"
+const PriorityType5 PriorityType = 5
 
 // PublicDiscussionNumType: Тип: Реестровый номер общественного обсуждения
 type PublicDiscussionNumType string
@@ -3141,9 +3141,9 @@ type KtrunotUsingReasonCodeType string
 // CombinationEnumType: Тип: Признак комбинации 1-препараты составляют комбинацию (многокомпонентный препарат); 0-препарат не входит в состав комбинации (однокомпонентный препарат)
 type CombinationEnumType int
 
-const CombinationEnumType0 CombinationEnumType = "0"
+const CombinationEnumType0 CombinationEnumType = 0
 
-const CombinationEnumType1 CombinationEnumType = "1"
+const CombinationEnumType1 CombinationEnumType = 1
 
 // NationalProjectCode: Тип: Код национального проекта
 type NationalProjectCode string
@@ -3310,13 +3310,13 @@ const KokssecretLevelTypeL3 KokssecretLevelType = "L3"
 // KoksfpcodeType: Код формы собственности КОКС : 1 - федеральная собственность; 2 - собственность субъекта Российской Федерации; 3 - муниципальная собственность; 4 - частная собственность.
 type KoksfpcodeType int
 
-const KoksfpcodeType1 KoksfpcodeType = "1"
+const KoksfpcodeType1 KoksfpcodeType = 1
 
-const KoksfpcodeType2 KoksfpcodeType = "2"
+const KoksfpcodeType2 KoksfpcodeType = 2
 
-const KoksfpcodeType3 KoksfpcodeType = "3"
+const KoksfpcodeType3 KoksfpcodeType = 3
 
-const KoksfpcodeType4 KoksfpcodeType = "4"
+const KoksfpcodeType4 KoksfpcodeType = 4
 
 // ApprovalRegNumType: Тип: Реестровый номер обращения в контрольный орган
 type ApprovalRegNumType string

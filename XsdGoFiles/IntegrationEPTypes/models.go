@@ -68,7 +68,31 @@ type CancelFailureInfoNotificationCancelFailureOrgInfo struct {
 	XMLName xml.Name `xml:"notificationCancelFailureOrgInfo"`
 
 	// ResponsibleRole: Роль организации, осуществляющей закупку CU - Заказчик; OCU - Заказчик в качестве организатора совместного аукциона; RA - Уполномоченный орган; ORA- Уполномоченный орган в качестве организатора совместного конкурса (аукциона) согласно ст. 25 №44ФЗ; AI - Уполномоченное учреждение; OAI- Уполномоченное учреждение в качестве организатора совместного конкурса (аукциона) согласно ст. 25 №44ФЗ; OA - Организация, осуществляющая полномочия заказчика на основании соглашения в соответствии с частью 6 статьи 15 Федерального закона № 44-ФЗ; OOA- Организация, осуществляющая полномочия заказчика на осуществление закупок на основании договора (соглашения) в качестве организатора совместного конкурса (аукциона) согласно ст. 25 №44ФЗ; CS - Организация, осуществляющая закупки в соответствии с частью 5 статьи 15 Федерального закона № 44-ФЗ; OCS - Заказчик, осуществляющий закупки в соответствии с частью 5 статьи 15 Федерального закона № 44-ФЗ, в качестве организатора совместного конкурса (аукциона) согласно ст. 25 №44ФЗ; CC - Заказчик по Федеральному закону 223-ФЗ, осуществляющий закупки в соответствии с Федеральным законом № 44-ФЗ, в случаях, предусмотренных Федеральным законом № 223-ФЗ; OCC - Заказчик, осуществляющий закупки в соответствии с Федеральным законом № 44-ФЗ, в связи с неразмещением положения о закупке в соответствии с положениями Федерального закона № 223-ФЗ, в качестве организатора совместного конкурса (аукциона) согласно ст. 25 №44ФЗ; AU - Юридическое лицо, осуществляющее закупку в соответствии с частью 4 статьи 5 Федерального закона от 30.12.2008 № 307-ФЗ «Об аудиторской деятельности»; OAU - Заказчик, осуществляющий закупку на проведение обязательного аудита (код AU), в качестве организатора совместного конкурса (аукциона) согласно ст. 25 №44ФЗ; RO - Специализированная некоммерческая организация, которая осуществляет деятельность, направленную на обеспечение проведения капитального ремонта общего имущества в многоквартирных домах в соответствии с Постановлением № 615 (региональный оператор); CN - Организация, осуществляющая закупки в соответствии с частью 4.1 или 4.3 статьи 15 Федерального закона N 44-ФЗ; OCN - Заказчик, осуществляющий закупки в соответствии с частью 4.1 статьи 15 Федерального закона № 44-ФЗ в качестве организатора совместного конкурса (аукциона) согласно ст. 25 №44ФЗ; CU5CH26 - Заказчик как орган исполнительной власти по ч.5 ст.26 Закона № 44-ФЗ.
-	ResponsibleRole *base.ResponsibleRoleEptype `xml:",any,omitempty"`
+	ResponsibleRole *base.ResponsibleRoleEptype `xml:"responsibleRole,omitempty"`
+
+	// RegNum: Код по СПЗ. В случае если организация идентифицируется по коду СвР, а код СПЗ неизвестен, необходимо заполнить данное поле значением 00000000000, и обязательно указать код СвР
+	RegNum base.SpzNumType `xml:"regNum"`
+
+	// ConsRegistryNum: Код по Сводному Реестру. Должен быть заполнен в случае, если в поле spzCode указано значение 00000000000
+	ConsRegistryNum *base.ConsRegistryNumType `xml:"consRegistryNum,omitempty"`
+
+	// FullName: Полное наименование. Игнорируется при приеме, автоматически заполняется при передаче по коду организации из справочника "Организации" (nsiOrganization)
+	FullName *base.Text2000Type `xml:"fullName,omitempty"`
+
+	// ShortName: Сокращенное наименование. Игнорируется при приеме, автоматически заполняется при передаче по коду организации из справочника "Организации" (nsiOrganization)
+	ShortName *base.Text2000Type `xml:"shortName,omitempty"`
+
+	// PostAddress: Почтовый адрес организации. Игнорируется при приеме, автоматически заполняется при передаче по коду организации из справочника "Организации" (nsiOrganization)
+	PostAddress *base.Text2000Type `xml:"postAddress,omitempty"`
+
+	// FactAddress: Адрес местонахождения организации. Игнорируется при приеме, автоматически заполняется при передаче по коду организации из справочника "Организации" (nsiOrganization)
+	FactAddress *base.Text2000Type `xml:"factAddress,omitempty"`
+
+	// Inn: ИНН организации. Игнорируется при приеме, автоматически заполняется при передаче по коду организации из справочника "Организации" (nsiOrganization)
+	Inn *base.InnOrganizationType `xml:"INN,omitempty"`
+
+	// Kpp: КПП организации. Игнорируется при приеме, автоматически заполняется при передаче по коду организации из справочника "Организации" (nsiOrganization)
+	Kpp *base.KppType `xml:"KPP,omitempty"`
 }
 
 // CancelFailureInfo: Информация об отмене извещения об отмене определения поставщика (подрядчика, исполнителя)
@@ -204,7 +228,7 @@ type NotificationInfoPurchaseResponsibleInfo struct {
 	// ResponsibleRole: Роль организации, осуществляющей закупку: CU - Заказчик; OCU - Заказчик в качестве организатора совместного аукциона; RA - Уполномоченный орган; ORA- Уполномоченный орган в качестве организатора совместного конкурса (аукциона) согласно ст. 25 №44ФЗ; AI - Уполномоченное учреждение; OAI- Уполномоченное учреждение в качестве организатора совместного конкурса (аукциона) согласно ст. 25 №44ФЗ; OA - Организация, осуществляющая полномочия заказчика на основании соглашения в соответствии с частью 6 статьи 15 Федерального закона № 44-ФЗ; OOA- Организация, осуществляющая полномочия заказчика на осуществление закупок на основании договора (соглашения) в качестве организатора совместного конкурса (аукциона) согласно ст. 25 №44ФЗ; CS - Организация, осуществляющая закупки в соответствии с частью 5 статьи 15 Федерального закона № 44-ФЗ; OCS - Заказчик, осуществляющий закупки в соответствии с частью 5 статьи 15 Федерального закона № 44-ФЗ, в качестве организатора совместного конкурса (аукциона) согласно ст. 25 №44ФЗ; CC - Заказчик по Федеральному закону 223-ФЗ, осуществляющий закупки в соответствии с Федеральным законом № 44-ФЗ, в случаях, предусмотренных Федеральным законом № 223-ФЗ; OCC - Заказчик, осуществляющий закупки в соответствии с Федеральным законом № 44-ФЗ, в связи с неразмещением положения о закупке в соответствии с положениями Федерального закона № 223-ФЗ, в качестве организатора совместного конкурса (аукциона) согласно ст. 25 №44ФЗ; AU - Юридическое лицо, осуществляющее закупку в соответствии с частью 4 статьи 5 Федерального закона от 30.12.2008 № 307-ФЗ «Об аудиторской деятельности»; OAU - Заказчик, осуществляющий закупку на проведение обязательного аудита (код AU), в качестве организатора совместного конкурса (аукциона) согласно ст. 25 №44ФЗ; RO - Специализированная некоммерческая организация, которая осуществляет деятельность, направленную на обеспечение проведения капитального ремонта общего имущества в многоквартирных домах в соответствии с Постановлением № 615 (региональный оператор); CN - Организация, осуществляющая закупки в соответствии с частью 4.1 или 4.3 статьи 15 Федерального закона N 44-ФЗ; OCN - Заказчик, осуществляющий закупки в соответствии с частью 4.1 статьи 15 Федерального закона № 44-ФЗ в качестве организатора совместного конкурса (аукциона) согласно ст. 25 №44ФЗ; CU5CH26 - Заказчик как орган исполнительной власти по ч.5 ст.26 Закона № 44-ФЗ.
 	ResponsibleRole *base.ResponsibleRoleEptype `xml:"responsibleRole,omitempty"`
 
-	OrganizationRef string `xml:"organizationRef"`
+	base.OrganizationRef
 }
 
 // PrintFormFieldsInfoNotificationInfo1: Информация из извещения
@@ -325,7 +349,7 @@ type PrintFormFieldsInfoNotificationInfoPurchaseResponsibleInfo struct {
 	// ResponsibleRole: Роль организации, осуществляющей закупку: CU - Заказчик; OCU - Заказчик в качестве организатора совместного аукциона; RA - Уполномоченный орган; ORA- Уполномоченный орган в качестве организатора совместного конкурса (аукциона) согласно ст. 25 №44ФЗ; AI - Уполномоченное учреждение; OAI- Уполномоченное учреждение в качестве организатора совместного конкурса (аукциона) согласно ст. 25 №44ФЗ; OA - Организация, осуществляющая полномочия заказчика на основании соглашения в соответствии с частью 6 статьи 15 Федерального закона № 44-ФЗ; OOA- Организация, осуществляющая полномочия заказчика на осуществление закупок на основании договора (соглашения) в качестве организатора совместного конкурса (аукциона) согласно ст. 25 №44ФЗ; CS - Организация, осуществляющая закупки в соответствии с частью 5 статьи 15 Федерального закона № 44-ФЗ; OCS - Заказчик, осуществляющий закупки в соответствии с частью 5 статьи 15 Федерального закона № 44-ФЗ, в качестве организатора совместного конкурса (аукциона) согласно ст. 25 №44ФЗ; CC - Заказчик по Федеральному закону 223-ФЗ, осуществляющий закупки в соответствии с Федеральным законом № 44-ФЗ, в случаях, предусмотренных Федеральным законом № 223-ФЗ; OCC - Заказчик, осуществляющий закупки в соответствии с Федеральным законом № 44-ФЗ, в связи с неразмещением положения о закупке в соответствии с положениями Федерального закона № 223-ФЗ, в качестве организатора совместного конкурса (аукциона) согласно ст. 25 №44ФЗ; AU - Юридическое лицо, осуществляющее закупку в соответствии с частью 4 статьи 5 Федерального закона от 30.12.2008 № 307-ФЗ «Об аудиторской деятельности»; OAU - Заказчик, осуществляющий закупку на проведение обязательного аудита (код AU), в качестве организатора совместного конкурса (аукциона) согласно ст. 25 №44ФЗ; RO - Специализированная некоммерческая организация, которая осуществляет деятельность, направленную на обеспечение проведения капитального ремонта общего имущества в многоквартирных домах в соответствии с Постановлением № 615 (региональный оператор); CN - Организация, осуществляющая закупки в соответствии с частью 4.1 или 4.3 статьи 15 Федерального закона N 44-ФЗ; OCN - Заказчик, осуществляющий закупки в соответствии с частью 4.1 статьи 15 Федерального закона № 44-ФЗ в качестве организатора совместного конкурса (аукциона) согласно ст. 25 №44ФЗ; CU5CH26 - Заказчик как орган исполнительной власти по ч.5 ст.26 Закона № 44-ФЗ.
 	ResponsibleRole *base.ResponsibleRoleEptype `xml:"responsibleRole,omitempty"`
 
-	OrganizationRef string `xml:"organizationRef"`
+	base.OrganizationRef
 }
 
 // PrintFormFieldsInfoNotificationInfo3: Информация из извещения
@@ -482,7 +506,16 @@ type ModificationInfo struct {
 	XMLName xml.Name `xml:"modificationInfo,omitempty"`
 
 	// ParentProtocolNumber: Номер родительского (изменяемого) протокола, сформированный в ЕИС. Соотвествует элементу "Номер документа" (commonInfo/docNumber) изменяемого протокола
-	ParentProtocolNumber base.DocumentNumberType `xml:",any"`
+	ParentProtocolNumber base.DocumentNumberType `xml:"parentProtocolNumber"`
+
+	// Info: Краткое описание
+	Info base.Text2000Type `xml:"info"`
+
+	// AddInfo: Дополнительная информация
+	AddInfo *base.Text2000Type `xml:"addInfo,omitempty"`
+
+	// ReasonInfo: Основание
+	ReasonInfo ChangeReasonType `xml:"reasonInfo"`
 }
 
 // PurchaseInfoPurchaseResponsible: Информация об организации, осуществляющей закупку
@@ -543,7 +576,13 @@ type PrintFormFieldsInfoFoundationDocInfo struct {
 	XMLName xml.Name `xml:"foundationDocInfo,omitempty"`
 
 	// FoundationProtocolName: Наименование предыдущего протокола
-	FoundationProtocolName *base.Text2000Type `xml:",any,omitempty"`
+	FoundationProtocolName *base.Text2000Type `xml:"foundationProtocolName,omitempty"`
+
+	// FoundationDocNumber: Номер документа-основания. Игнорируется при приеме, автоматически заполняется при передаче
+	FoundationDocNumber *base.DocumentNumberType `xml:"foundationDocNumber,omitempty"`
+
+	// FoundationDocNumberExternal: Номер документа-основания, сформированный во внешней системе. Игнорируется при приеме, автоматически заполняется при передаче
+	FoundationDocNumberExternal *base.DocumentNumberType `xml:"foundationDocNumberExternal,omitempty"`
 }
 
 // PrintFormFieldsInfoMaxPriceInfo: Информация о начальной (максимальной) цене контракта
@@ -751,7 +790,16 @@ type ModificationInfo1 struct {
 	XMLName xml.Name `xml:"modificationInfo,omitempty"`
 
 	// ParentProtocolNumber: Номер родительского (изменяемого) протокола, сформированный в ЕИС. Соотвествует элементу "Номер документа" (commonInfo/docNumber) изменяемого протокола
-	ParentProtocolNumber base.DocumentNumberType `xml:",any"`
+	ParentProtocolNumber base.DocumentNumberType `xml:"parentProtocolNumber"`
+
+	// Info: Краткое описание
+	Info base.Text2000Type `xml:"info"`
+
+	// AddInfo: Дополнительная информация
+	AddInfo *base.Text2000Type `xml:"addInfo,omitempty"`
+
+	// ReasonInfo: Основание
+	ReasonInfo ChangeReasonType `xml:"reasonInfo"`
 }
 
 // PrintFormFieldsInfoPurchaseInfoPurchaseResponsible: Информация об организации, осуществляющей закупку
@@ -812,7 +860,13 @@ type PrintFormFieldsInfoFoundationDocInfo1 struct {
 	XMLName xml.Name `xml:"foundationDocInfo,omitempty"`
 
 	// FoundationProtocolName: Наименование предыдущего протокола
-	FoundationProtocolName *base.Text2000Type `xml:",any,omitempty"`
+	FoundationProtocolName *base.Text2000Type `xml:"foundationProtocolName,omitempty"`
+
+	// FoundationDocNumber: Номер документа-основания. Игнорируется при приеме, автоматически заполняется при передаче
+	FoundationDocNumber *base.DocumentNumberType `xml:"foundationDocNumber,omitempty"`
+
+	// FoundationDocNumberExternal: Номер документа-основания, сформированный во внешней системе. Игнорируется при приеме, автоматически заполняется при передаче
+	FoundationDocNumberExternal *base.DocumentNumberType `xml:"foundationDocNumberExternal,omitempty"`
 }
 
 // PrintFormFieldsInfoMaxPriceInfo1: Информация о начальной (максимальной) цене контракта
@@ -1016,7 +1070,7 @@ type PurchaseObjectsInfoNotDrugPurchaseObjectsInfo struct {
 	// QuantityUndefined: Невозможно определить количество товара, объем подлежащих выполнению работ, оказанию услуг
 	QuantityUndefined bool `xml:"quantityUndefined"`
 
-	PurchaseObjectsType string `xml:"purchaseObjectsType"`
+	cmn.PurchaseObjectsType
 }
 
 // PurchaseObjectsInfoDrugPurchaseObjectsInfo: Сведения об объектах закупки в том случае, когда объектами закупки являются лекарственные препараты. Контролируется обязательность заполнения, если извещение сформировано на основании позиции плана-графика с 01.01.2020 и в такой позиции указан код ОКПД2 21.20
@@ -1026,7 +1080,7 @@ type PurchaseObjectsInfoDrugPurchaseObjectsInfo struct {
 	// QuantityUndefined: Невозможно определить количество товара, объем подлежащих выполнению работ, оказанию услуг
 	QuantityUndefined *bool `xml:"quantityUndefined,omitempty"`
 
-	PurchaseDrugObjectsInfoType string `xml:"purchaseDrugObjectsInfoType"`
+	cmn.PurchaseDrugObjectsInfoType
 }
 
 // NotificationInfoPurchaseObjectsInfo: Объекты закупки
@@ -1136,7 +1190,7 @@ type NotificationInfoPurchaseObjectsInfoNotDrugPurchaseObjectsInfo struct {
 	// QuantityUndefined: Невозможно определить количество товара, объем подлежащих выполнению работ, оказанию услуг
 	QuantityUndefined bool `xml:"quantityUndefined"`
 
-	PurchaseObjectsType string `xml:"purchaseObjectsType"`
+	cmn.PurchaseObjectsType
 }
 
 // NotificationInfoPurchaseObjectsInfoDrugPurchaseObjectsInfo: Сведения об объектах закупки в том случае, когда объектами закупки являются лекарственные препараты. Контролируется обязательность заполнения, если извещение сформировано на основании позиции плана-графика с 01.01.2020 и в такой позиции указан код ОКПД2 21.20
@@ -1146,7 +1200,7 @@ type NotificationInfoPurchaseObjectsInfoDrugPurchaseObjectsInfo struct {
 	// QuantityUndefined: Невозможно определить количество товара, объем подлежащих выполнению работ, оказанию услуг
 	QuantityUndefined *bool `xml:"quantityUndefined,omitempty"`
 
-	PurchaseDrugObjectsInfoType string `xml:"purchaseDrugObjectsInfoType"`
+	cmn.PurchaseDrugObjectsInfoType
 }
 
 // NotificationInfoPurchaseObjectsInfo1: Объекты закупки
@@ -1476,7 +1530,7 @@ type PurchaseObjectsInfoNotDrugPurchaseObjectsInfo1 struct {
 	// QuantityUndefined: Невозможно определить количество товара, объем подлежащих выполнению работ, оказанию услуг
 	QuantityUndefined bool `xml:"quantityUndefined"`
 
-	PurchaseObjectsType string `xml:"purchaseObjectsType"`
+	cmn.PurchaseObjectsType
 }
 
 // PurchaseObjectsInfoDrugPurchaseObjectsInfo1: Сведения об объектах закупки в том случае, когда объектами закупки являются лекарственные препараты. Контролируется обязательность заполнения, если извещение сформировано на основании позиции плана-графика с 01.01.2020 и в такой ППГ указан код ОКПД2 21.20
@@ -1486,7 +1540,7 @@ type PurchaseObjectsInfoDrugPurchaseObjectsInfo1 struct {
 	// QuantityUndefined: Невозможно определить количество товара, объем подлежащих выполнению работ, оказанию услуг
 	QuantityUndefined *bool `xml:"quantityUndefined,omitempty"`
 
-	PurchaseDrugObjectsInfoType string `xml:"purchaseDrugObjectsInfoType"`
+	cmn.PurchaseDrugObjectsInfoType
 }
 
 // NotificationInfoPurchaseObjectsInfo2: Объекты закупки
@@ -1596,7 +1650,7 @@ type NotificationInfoPurchaseObjectsInfoNotDrugPurchaseObjectsInfo1 struct {
 	// QuantityUndefined: Невозможно определить количество товара, объем подлежащих выполнению работ, оказанию услуг
 	QuantityUndefined bool `xml:"quantityUndefined"`
 
-	PurchaseObjectsType string `xml:"purchaseObjectsType"`
+	cmn.PurchaseObjectsType
 }
 
 // NotificationInfoPurchaseObjectsInfoDrugPurchaseObjectsInfo1: Сведения об объектах закупки в том случае, когда объектами закупки являются лекарственные препараты. Контролируется обязательность заполнения, если извещение сформировано на основании позиции плана-графика с 01.01.2020 и в такой ППГ указан код ОКПД2 21.20
@@ -1606,7 +1660,7 @@ type NotificationInfoPurchaseObjectsInfoDrugPurchaseObjectsInfo1 struct {
 	// QuantityUndefined: Невозможно определить количество товара, объем подлежащих выполнению работ, оказанию услуг
 	QuantityUndefined *bool `xml:"quantityUndefined,omitempty"`
 
-	PurchaseDrugObjectsInfoType string `xml:"purchaseDrugObjectsInfoType"`
+	cmn.PurchaseDrugObjectsInfoType
 }
 
 // NotificationInfoPurchaseObjectsInfo3: Объекты закупки
@@ -1936,7 +1990,7 @@ type PurchaseObjectsInfoNotDrugPurchaseObjectsInfo2 struct {
 	// QuantityUndefined: Невозможно определить количество товара, объем подлежащих выполнению работ, оказанию услуг
 	QuantityUndefined bool `xml:"quantityUndefined"`
 
-	PurchaseObjectsType string `xml:"purchaseObjectsType"`
+	cmn.PurchaseObjectsType
 }
 
 // PurchaseObjectsInfoDrugPurchaseObjectsInfo2: Сведения об объектах закупки в том случае, когда объектами закупки являются лекарственные препараты. Контролируется обязательность заполнения, если извещение сформировано на основании позиции плана-графика с 01.01.2020 и в такой ППГ указан код ОКПД2 21.20
@@ -1946,7 +2000,7 @@ type PurchaseObjectsInfoDrugPurchaseObjectsInfo2 struct {
 	// QuantityUndefined: Невозможно определить количество товара, объем подлежащих выполнению работ, оказанию услуг
 	QuantityUndefined *bool `xml:"quantityUndefined,omitempty"`
 
-	PurchaseDrugObjectsInfoType string `xml:"purchaseDrugObjectsInfoType"`
+	cmn.PurchaseDrugObjectsInfoType
 }
 
 // NotificationInfoPurchaseObjectsInfo4: Объекты закупки
@@ -1980,7 +2034,7 @@ type NotificationInfoRequirementsInfo4 struct {
 type RestrictionsInfoRestrictionInfo struct {
 	XMLName xml.Name `xml:"restrictionInfo"`
 
-	RestrictionType string `xml:",any"`
+	cmn.RestrictionType
 }
 
 // NotificationInfoRestrictionsInfo4: Ограничения
@@ -2063,7 +2117,7 @@ type NotificationInfoPurchaseObjectsInfoNotDrugPurchaseObjectsInfo2 struct {
 	// QuantityUndefined: Невозможно определить количество товара, объем подлежащих выполнению работ, оказанию услуг
 	QuantityUndefined bool `xml:"quantityUndefined"`
 
-	PurchaseObjectsType string `xml:"purchaseObjectsType"`
+	cmn.PurchaseObjectsType
 }
 
 // NotificationInfoPurchaseObjectsInfoDrugPurchaseObjectsInfo2: Сведения об объектах закупки в том случае, когда объектами закупки являются лекарственные препараты. Контролируется обязательность заполнения, если извещение сформировано на основании позиции плана-графика с 01.01.2020 и в такой ППГ указан код ОКПД2 21.20
@@ -2073,7 +2127,7 @@ type NotificationInfoPurchaseObjectsInfoDrugPurchaseObjectsInfo2 struct {
 	// QuantityUndefined: Невозможно определить количество товара, объем подлежащих выполнению работ, оказанию услуг
 	QuantityUndefined *bool `xml:"quantityUndefined,omitempty"`
 
-	PurchaseDrugObjectsInfoType string `xml:"purchaseDrugObjectsInfoType"`
+	cmn.PurchaseDrugObjectsInfoType
 }
 
 // NotificationInfoPurchaseObjectsInfo5: Объекты закупки
@@ -2107,7 +2161,7 @@ type NotificationInfoRequirementsInfo5 struct {
 type NotificationInfoRestrictionsInfoRestrictionInfo struct {
 	XMLName xml.Name `xml:"restrictionInfo"`
 
-	RestrictionType string `xml:",any"`
+	cmn.RestrictionType
 }
 
 // NotificationInfoRestrictionsInfo5: Ограничения
@@ -2590,7 +2644,16 @@ type NotificationInfoContractConditionsInfo struct {
 	XMLName xml.Name `xml:"contractConditionsInfo"`
 
 	// MaxPriceJustification: Обоснование начальной (максимальной) цены контракта
-	MaxPriceJustification base.Text2000Type `xml:",any"`
+	MaxPriceJustification base.Text2000Type `xml:"maxPriceJustification"`
+
+	// ContractConditionsInfoMaxPriceInfo: Информация о начальной (максимальной) цене контракта
+	MaxPriceInfo ContractConditionsInfoMaxPriceInfo `xml:"maxPriceInfo"`
+
+	// StandardContractNumber: Номер типового контракта, типовых условий контракта
+	StandardContractNumber *base.StandardContractNumberType `xml:"standardContractNumber,omitempty"`
+
+	// ContractConditionsInfoContractLifeCycleInfo: Информация о заключении с поставщиком (подрядчиком, исполнителем) контракта жизненного цикла
+	ContractLifeCycleInfo *ContractConditionsInfoContractLifeCycleInfo `xml:"contractLifeCycleInfo,omitempty"`
 }
 
 // NotificationInfoCustomerRequirementsInfo6: Требования заказчиков
@@ -2608,7 +2671,7 @@ type PurchaseObjectsInfoNotDrugPurchaseObjectsInfo3 struct {
 	// QuantityUndefined: Невозможно определить количество товара, объем подлежащих выполнению работ, оказанию услуг
 	QuantityUndefined bool `xml:"quantityUndefined"`
 
-	PurchaseObjectsType string `xml:"purchaseObjectsType"`
+	cmn.PurchaseObjectsType
 }
 
 // PurchaseObjectsInfoDrugPurchaseObjectsInfo3: Сведения об объектах закупки в том случае, когда объектами закупки являются лекарственные препараты. Контролируется обязательность заполнения, если извещение сформировано на основании позиции плана-графика с 01.01.2020 и в такой позиции указан код ОКПД2 21.20
@@ -2618,7 +2681,7 @@ type PurchaseObjectsInfoDrugPurchaseObjectsInfo3 struct {
 	// QuantityUndefined: Невозможно определить количество товара, объем подлежащих выполнению работ, оказанию услуг
 	QuantityUndefined *bool `xml:"quantityUndefined,omitempty"`
 
-	PurchaseDrugObjectsInfoType string `xml:"purchaseDrugObjectsInfoType"`
+	cmn.PurchaseDrugObjectsInfoType
 }
 
 // NotificationInfoPurchaseObjectsInfo6: Объекты закупки
@@ -2975,14 +3038,14 @@ type PurchaseObjectsInfoNotDrugPurchaseObjectsInfo4 struct {
 	// QuantityUndefined: Невозможно определить количество товара, объем подлежащих выполнению работ, оказанию услуг
 	QuantityUndefined bool `xml:"quantityUndefined"`
 
-	PurchaseObjectsType string `xml:"purchaseObjectsType"`
+	cmn.PurchaseObjectsType
 }
 
 // PurchaseObjectsInfoDrugPurchaseObjectsInfo4: Сведения об объектах закупки в том случае, когда объектами закупки являются лекарственные препараты. Контролируется обязательность заполнения, если извещение сформировано на основании позиции плана-графика с 01.01.2020 и в такой позиции указан код ОКПД2 21.20
 type PurchaseObjectsInfoDrugPurchaseObjectsInfo4 struct {
 	XMLName xml.Name `xml:"drugPurchaseObjectsInfo"`
 
-	PurchaseDrugObjectsInfoType string `xml:",any"`
+	cmn.PurchaseDrugObjectsInfoType
 }
 
 // NotificationInfoPurchaseObjectsInfo7: Объекты закупки
@@ -3086,14 +3149,14 @@ type NotificationInfoPurchaseObjectsInfoNotDrugPurchaseObjectsInfo3 struct {
 	// QuantityUndefined: Невозможно определить количество товара, объем подлежащих выполнению работ, оказанию услуг
 	QuantityUndefined bool `xml:"quantityUndefined"`
 
-	PurchaseObjectsType string `xml:"purchaseObjectsType"`
+	cmn.PurchaseObjectsType
 }
 
 // NotificationInfoPurchaseObjectsInfoDrugPurchaseObjectsInfo3: Сведения об объектах закупки в том случае, когда объектами закупки являются лекарственные препараты. Контролируется обязательность заполнения, если извещение сформировано на основании позиции плана-графика с 01.01.2020 и в такой позиции указан код ОКПД2 21.20
 type NotificationInfoPurchaseObjectsInfoDrugPurchaseObjectsInfo3 struct {
 	XMLName xml.Name `xml:"drugPurchaseObjectsInfo,omitempty"`
 
-	PurchaseDrugObjectsInfoType string `xml:",any"`
+	cmn.PurchaseDrugObjectsInfoType
 }
 
 // NotificationInfoPurchaseObjectsInfo8: Объекты закупки
@@ -3562,14 +3625,14 @@ type PurchaseObjectsInfoNotDrugPurchaseObjectsInfo5 struct {
 	// QuantityUndefined: Невозможно определить количество товара, объем подлежащих выполнению работ, оказанию услуг
 	QuantityUndefined bool `xml:"quantityUndefined"`
 
-	PurchaseObjectsType string `xml:"purchaseObjectsType"`
+	cmn.PurchaseObjectsType
 }
 
 // PurchaseObjectsInfoDrugPurchaseObjectsInfo5: Сведения об объектах закупки в том случае, когда объектами закупки являются лекарственные препараты. Контролируется обязательность заполнения, если извещение сформировано на основании позиции плана-графика с 01.01.2020 и в такой позиции указан код ОКПД2 21.20
 type PurchaseObjectsInfoDrugPurchaseObjectsInfo5 struct {
 	XMLName xml.Name `xml:"drugPurchaseObjectsInfo"`
 
-	PurchaseDrugObjectsInfoType string `xml:",any"`
+	cmn.PurchaseDrugObjectsInfoType
 }
 
 // NotificationInfoPurchaseObjectsInfo9: Объекты закупки
@@ -3673,14 +3736,14 @@ type PurchaseObjectsInfoNotDrugPurchaseObjectsInfo6 struct {
 	// QuantityUndefined: Невозможно определить количество товара, объем подлежащих выполнению работ, оказанию услуг
 	QuantityUndefined bool `xml:"quantityUndefined"`
 
-	PurchaseObjectsType string `xml:"purchaseObjectsType"`
+	cmn.PurchaseObjectsType
 }
 
 // PurchaseObjectsInfoDrugPurchaseObjectsInfo6: Сведения об объектах закупки в том случае, когда объектами закупки являются лекарственные препараты. Контролируется обязательность заполнения, если извещение сформировано на основании позиции плана-графика с 01.01.2020 и в такой позиции указан код ОКПД2 21.20
 type PurchaseObjectsInfoDrugPurchaseObjectsInfo6 struct {
 	XMLName xml.Name `xml:"drugPurchaseObjectsInfo"`
 
-	PurchaseDrugObjectsInfoType string `xml:",any"`
+	cmn.PurchaseDrugObjectsInfoType
 }
 
 // NotificationInfoPurchaseObjectsInfo10: Объекты закупки
@@ -3784,14 +3847,14 @@ type PurchaseObjectsInfoNotDrugPurchaseObjectsInfo7 struct {
 	// QuantityUndefined: Невозможно определить количество товара, объем подлежащих выполнению работ, оказанию услуг
 	QuantityUndefined bool `xml:"quantityUndefined"`
 
-	PurchaseObjectsType string `xml:"purchaseObjectsType"`
+	cmn.PurchaseObjectsType
 }
 
 // PurchaseObjectsInfoDrugPurchaseObjectsInfo7: Сведения об объектах закупки в том случае, когда объектами закупки являются лекарственные препараты. Контролируется обязательность заполнения, если извещение сформировано на основании позиции плана-графика с 01.01.2020 и в такой позиции указан код ОКПД2 21.20
 type PurchaseObjectsInfoDrugPurchaseObjectsInfo7 struct {
 	XMLName xml.Name `xml:"drugPurchaseObjectsInfo"`
 
-	PurchaseDrugObjectsInfoType string `xml:",any"`
+	cmn.PurchaseDrugObjectsInfoType
 }
 
 // NotificationInfoPurchaseObjectsInfo11: Объекты закупки
@@ -3895,14 +3958,14 @@ type PurchaseObjectsInfoNotDrugPurchaseObjectsInfo8 struct {
 	// QuantityUndefined: Невозможно определить количество товара, объем подлежащих выполнению работ, оказанию услуг
 	QuantityUndefined bool `xml:"quantityUndefined"`
 
-	PurchaseObjectsType string `xml:"purchaseObjectsType"`
+	cmn.PurchaseObjectsType
 }
 
 // PurchaseObjectsInfoDrugPurchaseObjectsInfo8: Сведения об объектах закупки в том случае, когда объектами закупки являются лекарственные препараты. Контролируется обязательность заполнения, если извещение сформировано на основании позиции плана-графика с 01.01.2020 и в такой позиции указан код ОКПД2 21.20
 type PurchaseObjectsInfoDrugPurchaseObjectsInfo8 struct {
 	XMLName xml.Name `xml:"drugPurchaseObjectsInfo"`
 
-	PurchaseDrugObjectsInfoType string `xml:",any"`
+	cmn.PurchaseDrugObjectsInfoType
 }
 
 // NotificationInfoPurchaseObjectsInfo12: Объекты закупки
@@ -4041,6 +4104,15 @@ type ContractConditionsInfoContractLifeCycleInfo1 struct {
 // NotificationInfoContractConditionsInfo1: Условия контракта
 type NotificationInfoContractConditionsInfo1 struct {
 	XMLName xml.Name `xml:"contractConditionsInfo"`
+
+	// ContractConditionsInfoMaxPriceInfo: Информация о начальной (максимальной) цене контракта
+	MaxPriceInfo ContractConditionsInfoMaxPriceInfo `xml:"maxPriceInfo"`
+
+	// StandardContractNumber: Номер типового контракта, типовых условий контракта
+	StandardContractNumber *base.StandardContractNumberType `xml:"standardContractNumber,omitempty"`
+
+	// ContractConditionsInfoContractLifeCycleInfo: Информация о заключении с поставщиком (подрядчиком, исполнителем) контракта жизненного цикла
+	ContractLifeCycleInfo *ContractConditionsInfoContractLifeCycleInfo `xml:"contractLifeCycleInfo,omitempty"`
 }
 
 // NotificationInfoCustomerRequirementsInfo13: Требования заказчиков
@@ -4061,7 +4133,7 @@ type PurchaseObjectsInfoDrugPurchaseObjectsInfo9 struct {
 	// IsStructuredForm: По закупке предусмотрена подача заявки в структурированном виде и заключение структурированного электронного контракта. Устарело. Не применяется, начиная с версии 13.3 ЕИС
 	IsStructuredForm *bool `xml:"isStructuredForm,omitempty"`
 
-	PurchaseDrugObjectsInfoType string `xml:"purchaseDrugObjectsInfoType"`
+	cmn.PurchaseDrugObjectsInfoType
 }
 
 // PurchaseObjectsInfoNotDrugPurchaseObjectsInfo9: Сведения об объектах закупки в том случае, когда объектами закупки являются нелекарственные препараты. Не все позиции ТРУ по ОКПД2 из базовой позиции плана-графика закупок с 01.01.2020 должны быть представлены в полном объеме. Позиция ТРУ по ОКПД2 из базовой позиции плана-графика может иметь несколько потомков Если заполнен блок «По решению заказчика (организации, осуществляющей определение поставщика для заказчика)» (modificationInfo/reasonInfo/responsibleDecisionInfo), игнорируется при приеме и заполняется из предыдущей версии извещения за исключением: o поля «Общая сумма позиций/Начальная сумма цен единиц товара, работы, услуги» (totalSum); o поля «Общая сумма позиций/Начальная сумма цен единиц товара, работы, услуги в валюте контракт»( totalSumCurrency); o блока «Единица измерения» (OKEI); o блока «Общее количество по объекту закупки» (quantity); o поля «Количество для заказчика» (customerQuantities/customerQuantity/quantity); o поля «Объем работы, услуги (указание объема в текстовом виде)» (customerQuantities/customerQuantity/volumeTextForm); o поля «Количество для заказчика» (customerQuantitiesCH/customerQuantityCH/quantity); o поля «Объем работы, услуги (указание объема в текстовом виде)» (customerQuantitiesCH/customerQuantityCH/volumeTextForm); o поля «Цена за единицу измерения» (price); o блока «Информация о товарном знаке» (trademarkInfo); o поля «Знаки обслуживания, фирменные наименования, патенты, полезные модели, промышленные образцы» (serviceMarks); o поля «Стоимость позиции» (sum); o блока «Характеристики товара, работы, услуги позиции ОКПД2» (OKPD2/characteristics); o блока «Характеристики товара, работы, услуги позиции КТРУ» (KTRU/characteristics); o поля «Уникальный идентификатор в ЕИС» (sid) o поля «Внешний идентификатор объекта закупки» (externalSid)
@@ -4074,7 +4146,7 @@ type PurchaseObjectsInfoNotDrugPurchaseObjectsInfo9 struct {
 	// IsStructuredForm: По закупке предусмотрена подача заявки в структурированном виде и заключение структурированного электронного контракта. Устарело. Не применяется, начиная с версии 13.3 ЕИС
 	IsStructuredForm *bool `xml:"isStructuredForm,omitempty"`
 
-	PurchaseObjects2020Type string `xml:"purchaseObjects2020Type"`
+	cmn.PurchaseObjects2020Type
 }
 
 // NotificationInfoPurchaseObjectsInfo13: Объекты закупки
@@ -4164,6 +4236,42 @@ type CommonInfo10 struct {
 
 	// IsAntiCompetitiveAgreement: Антиконкурентные соглашения Игнорируется при приеме, всегда установлен
 	IsAntiCompetitiveAgreement *bool `xml:"isAntiCompetitiveAgreement,omitempty"`
+
+	// PurchaseNumber: Реестровый номер закупки. Элемент не заполняется при приёме первой версии документа. Присваивается автоматически после размещения. Должен быть заполнен при приёме изменения документа
+	PurchaseNumber *base.PurchaseNumberType `xml:"purchaseNumber,omitempty"`
+
+	// DocNumber: Номер документа. Элемент игнорируется при приёме. Заполняется при передаче номером документа, присвоенным в ЕИС
+	DocNumber *base.DocumentNumberType `xml:"docNumber,omitempty"`
+
+	// DirectDt: Дата направления на размещение документа. Игнорируется при приеме. Заполняется автоматически датой направления на размещение текущей версии
+	DirectDt string `xml:"directDT,omitempty"`
+
+	// PlannedPublishDate: Планируемая дата размещения документа в ЕИС
+	PlannedPublishDate string `xml:"plannedPublishDate"`
+
+	// PublishDtinEis: Дата размещения документа в ЕИС. Элемент игнорируется при приёме. При передаче заполняется датой размещения документа в ЕИС
+	PublishDtinEis string `xml:"publishDTInEIS,omitempty"`
+
+	// Href: Гиперссылка на размещённый в ЕИС документ. Элемент игнорируется при приёме. При передаче заполняется ссылкой на карточку размещенного документа
+	Href *base.HrefType `xml:"href,omitempty"`
+
+	// PlacingWay: Подспособ определения поставщика. При приеме код контролируется на присутствие в справочнике "Способы размещения заказа (определения поставщика)" (nsiPlacingWay). Если при приеме был указан код способа определения поставщика, то при размещении он будет заменен на код подспособа, равный коду способа с добавлением суффикса "p"
+	PlacingWay base.PlacingWayRef `xml:"placingWay"`
+
+	// Etp: Электронная торговая площадка. При приеме код контролируется на присутствие в справочнике "Справочник: Электронные торговые площадки" (nsiETP)
+	Etp base.Etpref `xml:"ETP"`
+
+	// Article15FeaturesInfo: Информация об особенностях осуществления закупки в соответствии с ч. 4-6 ст. 15 Закона № 44-ФЗ: P4 - В соответствии с ч. 4 ст. 15 Закона № 44-ФЗ; P5 - В соответствии с ч. 5 ст. 15 Закона № 44-ФЗ; P6 - В соответствии с ч. 6 ст. 15 Закона № 44-ФЗ; P41 - В соответствии с ч. 4.1 ст. 15 Закона № 44-ФЗ P43 - В соответствии с ч. 4.3 ст. 15 Закона № 44-ФЗ; P44 - В соответствии с ч. 4.4 ст. 15 Закона № 44-ФЗ. Значения "P5" (В соответствии с ч. 5 ст. 15 Закона № 44-ФЗ) и "P41" (В соответствии с ч. 4.1 ст. 15 Закона № 44-ФЗ) не используются, начиная с выхода версии 15.0
+	Article15FeaturesInfo *base.Article15PartsType `xml:"article15FeaturesInfo,omitempty"`
+
+	// ContractConclusionOnSt83Ch2: Заключение контракта по статье 83 ч. 2. Игнорируется при приёме, заполняется при выгрузке. Если признак не заполнен или заполнен false, то по данной закупке от электронной площадки в ЕИС передается документ CоntractSign, протоколы ПОК и ППУ формируются на площадке и передаются в ЕИС. Если признак заполнен в true, то по данной закупке будет формироваться проект контракта, документ CоntractSign от площадки в ЕИС не передается, протоколы ПОК и ППУ формируются в ЕИС
+	ContractConclusionOnSt83Ch2 *bool `xml:"contractConclusionOnSt83Ch2,omitempty"`
+
+	// IsGoz: Закупка товар, работ, услуг по государственному оборонному заказу в соответствии с ФЗ № 275-ФЗ от 29 декабря 2012 г. Не может быть задан одновременно с признаком "Закупка за счет средств бюджета Союзного государства" (isBudgetUnionState). Проверяется принадлежность всех Заказчиков к перечню настройки "Настройка дополнительного перечня организаций для ГОЗ" или "Настройка перечня кодов ОКФС для ГОЗ"
+	IsGoz *bool `xml:"isGOZ,omitempty"`
+
+	// NotPublishedOnEis: Информация о признаке isGOZ не размещается на официальном сайте ЕИС согласно ст. 6 Федерального закона № 275-ФЗ. Не может быть заполнен при приеме, заполняется при передаче
+	NotPublishedOnEis *bool `xml:"notPublishedOnEIS,omitempty"`
 }
 
 // PurchaseResponsibleInfo14: Информация об организации, осуществляющей размещение
@@ -4386,7 +4494,7 @@ type AppParticipantInfoParticipantInfo struct {
 	// ContractorRegistryNum: Номер реестровой записи в ЕРУЗ. Начиная с версии 12.1 поле обязательно для заполнения при приеме в ЕИС
 	ContractorRegistryNum *base.EruzRegistryNumType `xml:"contractorRegistryNum,omitempty"`
 
-	ParticipantType string `xml:"participantType"`
+	cmn.ParticipantType
 }
 
 // AppParticipantInfoProposalsInfo: Сведения о предложениях участника закупки. Блок может быть заполнен только в том случае, если первая версия извещения размещена после выхода версии ЕИС 13.3 ИЛИ одновременно выполняются следующие условия: 1. первая версия извещения размещена после выхода версии ЕИС 13.1; 2. размещающая извещение организация, заданная в блоке "Организация, осуществляющая размещение" (purchaseResponsibleInfo/responsibleOrgInfo), указана в настройке ЕИС "Настройка формирования сведений по характеристикам объекта закупки". В других случаях игнорируется при приеме
@@ -4580,7 +4688,16 @@ type NotificationInfoContractConditionsInfo2 struct {
 	XMLName xml.Name `xml:"contractConditionsInfo"`
 
 	// ContractMultiInfo: Право заключения контрактов с несколькими участниками закупки в случаях, указанных в ч. 10 ст. 34 Федерального закона 44-ФЗ
-	ContractMultiInfo ContractMultiType `xml:",any"`
+	ContractMultiInfo ContractMultiType `xml:"contractMultiInfo"`
+
+	// ContractConditionsInfoMaxPriceInfo: Информация о начальной (максимальной) цене контракта
+	MaxPriceInfo ContractConditionsInfoMaxPriceInfo `xml:"maxPriceInfo"`
+
+	// StandardContractNumber: Номер типового контракта, типовых условий контракта
+	StandardContractNumber *base.StandardContractNumberType `xml:"standardContractNumber,omitempty"`
+
+	// ContractConditionsInfoContractLifeCycleInfo: Информация о заключении с поставщиком (подрядчиком, исполнителем) контракта жизненного цикла
+	ContractLifeCycleInfo *ContractConditionsInfoContractLifeCycleInfo `xml:"contractLifeCycleInfo,omitempty"`
 }
 
 // NotificationInfoCustomerRequirementsInfo14: Требования заказчиков
@@ -4601,7 +4718,7 @@ type PurchaseObjectsInfoDrugPurchaseObjectsInfo10 struct {
 	// IsStructuredForm: По закупке предусмотрена подача заявки в структурированном виде и заключение структурированного электронного контракта. Устарело. Не применяется, начиная с версии 13.3 ЕИС
 	IsStructuredForm *bool `xml:"isStructuredForm,omitempty"`
 
-	PurchaseDrugObjectsInfoType string `xml:"purchaseDrugObjectsInfoType"`
+	cmn.PurchaseDrugObjectsInfoType
 }
 
 // PurchaseObjectsInfoNotDrugPurchaseObjectsInfo10: Сведения об объектах закупки в том случае, когда объектами закупки являются нелекарственные препараты. Не все позиции ТРУ по ОКПД2 из базовой позиции плана-графика закупок с 01.01.2020 должны быть представлены в полном объеме. Позиция ТРУ по ОКПД2 из базовой позиции плана-графика может иметь несколько потомков Если заполнен блок «По решению заказчика (организации, осуществляющей определение поставщика для заказчика)» (modificationInfo/reasonInfo/responsibleDecisionInfo), игнорируется при приеме и заполняется из предыдущей версии извещения за исключением: o поля «Общая сумма позиций/Начальная сумма цен единиц товара, работы, услуги» (totalSum); o поля «Общая сумма позиций/Начальная сумма цен единиц товара, работы, услуги в валюте контракт»( totalSumCurrency); o блока «Единица измерения» (OKEI); o блока «Общее количество по объекту закупки» (quantity); o поля «Количество для заказчика» (customerQuantities/customerQuantity/quantity); o поля «Объем работы, услуги (указание объема в текстовом виде)» (customerQuantities/customerQuantity/volumeTextForm); o поля «Количество для заказчика» (customerQuantitiesCH/customerQuantityCH/quantity); o поля «Объем работы, услуги (указание объема в текстовом виде)» (customerQuantitiesCH/customerQuantityCH/volumeTextForm); o поля «Цена за единицу измерения» (price); o блока «Информация о товарном знаке» (trademarkInfo); o поля «Знаки обслуживания, фирменные наименования, патенты, полезные модели, промышленные образцы» (serviceMarks); o поля «Стоимость позиции» (sum); o блока «Характеристики товара, работы, услуги позиции ОКПД2» (OKPD2/characteristics); o блока «Характеристики товара, работы, услуги позиции КТРУ» (KTRU/characteristics); o поля «Уникальный идентификатор в ЕИС» (sid) o поля «Внешний идентификатор объекта закупки» (externalSid)
@@ -4614,7 +4731,7 @@ type PurchaseObjectsInfoNotDrugPurchaseObjectsInfo10 struct {
 	// IsStructuredForm: По закупке предусмотрена подача заявки в структурированном виде и заключение структурированного электронного контракта. Устарело. Не применяется, начиная с версии 13.3 ЕИС
 	IsStructuredForm *bool `xml:"isStructuredForm,omitempty"`
 
-	PurchaseObjects2020Type string `xml:"purchaseObjects2020Type"`
+	cmn.PurchaseObjects2020Type
 }
 
 // NotificationInfoPurchaseObjectsInfo14: Объекты закупки
@@ -4721,6 +4838,42 @@ type CommonInfo11 struct {
 
 	// IsAntiCompetitiveAgreement: Антиконкурентные соглашения Игнорируется при приеме, всегда установлен
 	IsAntiCompetitiveAgreement *bool `xml:"isAntiCompetitiveAgreement,omitempty"`
+
+	// PurchaseNumber: Реестровый номер закупки. Элемент не заполняется при приёме первой версии документа. Присваивается автоматически после размещения. Должен быть заполнен при приёме изменения документа
+	PurchaseNumber *base.PurchaseNumberType `xml:"purchaseNumber,omitempty"`
+
+	// DocNumber: Номер документа. Элемент игнорируется при приёме. Заполняется при передаче номером документа, присвоенным в ЕИС
+	DocNumber *base.DocumentNumberType `xml:"docNumber,omitempty"`
+
+	// DirectDt: Дата направления на размещение документа. Игнорируется при приеме. Заполняется автоматически датой направления на размещение текущей версии
+	DirectDt string `xml:"directDT,omitempty"`
+
+	// PlannedPublishDate: Планируемая дата размещения документа в ЕИС
+	PlannedPublishDate string `xml:"plannedPublishDate"`
+
+	// PublishDtinEis: Дата размещения документа в ЕИС. Элемент игнорируется при приёме. При передаче заполняется датой размещения документа в ЕИС
+	PublishDtinEis string `xml:"publishDTInEIS,omitempty"`
+
+	// Href: Гиперссылка на размещённый в ЕИС документ. Элемент игнорируется при приёме. При передаче заполняется ссылкой на карточку размещенного документа
+	Href *base.HrefType `xml:"href,omitempty"`
+
+	// PlacingWay: Подспособ определения поставщика. При приеме код контролируется на присутствие в справочнике "Способы размещения заказа (определения поставщика)" (nsiPlacingWay). Если при приеме был указан код способа определения поставщика, то при размещении он будет заменен на код подспособа, равный коду способа с добавлением суффикса "p"
+	PlacingWay base.PlacingWayRef `xml:"placingWay"`
+
+	// Etp: Электронная торговая площадка. При приеме код контролируется на присутствие в справочнике "Справочник: Электронные торговые площадки" (nsiETP)
+	Etp base.Etpref `xml:"ETP"`
+
+	// Article15FeaturesInfo: Информация об особенностях осуществления закупки в соответствии с ч. 4-6 ст. 15 Закона № 44-ФЗ: P4 - В соответствии с ч. 4 ст. 15 Закона № 44-ФЗ; P5 - В соответствии с ч. 5 ст. 15 Закона № 44-ФЗ; P6 - В соответствии с ч. 6 ст. 15 Закона № 44-ФЗ; P41 - В соответствии с ч. 4.1 ст. 15 Закона № 44-ФЗ P43 - В соответствии с ч. 4.3 ст. 15 Закона № 44-ФЗ; P44 - В соответствии с ч. 4.4 ст. 15 Закона № 44-ФЗ. Значения "P5" (В соответствии с ч. 5 ст. 15 Закона № 44-ФЗ) и "P41" (В соответствии с ч. 4.1 ст. 15 Закона № 44-ФЗ) не используются, начиная с выхода версии 15.0
+	Article15FeaturesInfo *base.Article15PartsType `xml:"article15FeaturesInfo,omitempty"`
+
+	// ContractConclusionOnSt83Ch2: Заключение контракта по статье 83 ч. 2. Игнорируется при приёме, заполняется при выгрузке. Если признак не заполнен или заполнен false, то по данной закупке от электронной площадки в ЕИС передается документ CоntractSign, протоколы ПОК и ППУ формируются на площадке и передаются в ЕИС. Если признак заполнен в true, то по данной закупке будет формироваться проект контракта, документ CоntractSign от площадки в ЕИС не передается, протоколы ПОК и ППУ формируются в ЕИС
+	ContractConclusionOnSt83Ch2 *bool `xml:"contractConclusionOnSt83Ch2,omitempty"`
+
+	// IsGoz: Закупка товар, работ, услуг по государственному оборонному заказу в соответствии с ФЗ № 275-ФЗ от 29 декабря 2012 г. Не может быть задан одновременно с признаком "Закупка за счет средств бюджета Союзного государства" (isBudgetUnionState). Проверяется принадлежность всех Заказчиков к перечню настройки "Настройка дополнительного перечня организаций для ГОЗ" или "Настройка перечня кодов ОКФС для ГОЗ"
+	IsGoz *bool `xml:"isGOZ,omitempty"`
+
+	// NotPublishedOnEis: Информация о признаке isGOZ не размещается на официальном сайте ЕИС согласно ст. 6 Федерального закона № 275-ФЗ. Не может быть заполнен при приеме, заполняется при передаче
+	NotPublishedOnEis *bool `xml:"notPublishedOnEIS,omitempty"`
 }
 
 // PurchaseResponsibleInfo15: Информация об организации, осуществляющей размещение
@@ -4967,7 +5120,7 @@ type AppParticipantInfoParticipantInfo1 struct {
 	// ContractorRegistryNum: Номер реестровой записи в ЕРУЗ. Начиная с версии 12.1 поле обязательно для заполнения при приеме в ЕИС
 	ContractorRegistryNum *base.EruzRegistryNumType `xml:"contractorRegistryNum,omitempty"`
 
-	ParticipantType string `xml:"participantType"`
+	cmn.ParticipantType
 }
 
 // AppParticipantsInfoAppParticipantInfo1: Сведения об участнике закупки в привязке к заявке
@@ -5273,7 +5426,7 @@ type AppParticipantInfoParticipantInfo2 struct {
 	// ContractorRegistryNum: Номер реестровой записи в ЕРУЗ. Начиная с версии 12.1 поле обязательно для заполнения при приеме в ЕИС
 	ContractorRegistryNum *base.EruzRegistryNumType `xml:"contractorRegistryNum,omitempty"`
 
-	ParticipantType string `xml:"participantType"`
+	cmn.ParticipantType
 }
 
 // AppParticipantInfoProposalsInfo1: Сведения о предложениях участника закупки. Блок может быть заполнен только в том случае, если первая версия извещения размещена после выхода версии ЕИС 13.3 ИЛИ одновременно выполняются следующие условия: 1. первая версия извещения размещена после выхода версии ЕИС 13.1; 2. размещающая извещение организация, заданная в блоке "Организация, осуществляющая размещение" (purchaseResponsibleInfo/responsibleOrgInfo), указана в настройке ЕИС "Настройка формирования сведений по характеристикам объекта закупки". В других случаях игнорируется при приеме
@@ -5489,7 +5642,7 @@ type PurchaseObjectsInfoDrugPurchaseObjectsInfo11 struct {
 	// IsStructuredForm: По закупке предусмотрена подача заявки в структурированном виде и заключение структурированного электронного контракта. Устарело. Не применяется, начиная с версии 13.3 ЕИС
 	IsStructuredForm *bool `xml:"isStructuredForm,omitempty"`
 
-	PurchaseDrugObjectsInfoType string `xml:"purchaseDrugObjectsInfoType"`
+	cmn.PurchaseDrugObjectsInfoType
 }
 
 // PurchaseObjectsInfoNotDrugPurchaseObjectsInfo11: Сведения об объектах закупки в том случае, когда объектами закупки являются нелекарственные препараты. Не все позиции ТРУ по ОКПД2 из базовой позиции плана-графика закупок с 01.01.2020 должны быть представлены в полном объеме. Позиция ТРУ по ОКПД2 из базовой позиции плана-графика может иметь несколько потомков Если заполнен блок «По решению заказчика (организации, осуществляющей определение поставщика для заказчика)» (modificationInfo/reasonInfo/responsibleDecisionInfo), игнорируется при приеме и заполняется из предыдущей версии извещения за исключением: o поля «Общая сумма позиций/Начальная сумма цен единиц товара, работы, услуги» (totalSum); o поля «Общая сумма позиций/Начальная сумма цен единиц товара, работы, услуги в валюте контракт»( totalSumCurrency); o блока «Единица измерения» (OKEI); o блока «Общее количество по объекту закупки» (quantity); поля «Количество для заказчика» (customerQuantities/customerQuantity/quantity); o поля «Объем работы, услуги (указание объема в текстовом виде)» (customerQuantities/customerQuantity/volumeTextForm); o поля «Количество для заказчика» (customerQuantitiesCH/customerQuantityCH/quantity); o поля «Объем работы, услуги (указание объема в текстовом виде)» (customerQuantitiesCH/customerQuantityCH/volumeTextForm); o поля «Цена за единицу измерения» (price); o блока «Информация о товарном знаке» (trademarkInfo); o поля «Знаки обслуживания, фирменные наименования, патенты, полезные модели, промышленные образцы» (serviceMarks); o поля «Стоимость позиции» (sum); o блока «Характеристики товара, работы, услуги позиции ОКПД2» (OKPD2/characteristics); o блока «Характеристики товара, работы, услуги позиции КТРУ» (KTRU/characteristics); o поля «Уникальный идентификатор в ЕИС» (sid) o поля «Внешний идентификатор объекта закупки» (externalSid)
@@ -5502,7 +5655,7 @@ type PurchaseObjectsInfoNotDrugPurchaseObjectsInfo11 struct {
 	// IsStructuredForm: По закупке предусмотрена подача заявки в структурированном виде и заключение структурированного электронного контракта. Устарело. Не применяется, начиная с версии 13.3 ЕИС
 	IsStructuredForm *bool `xml:"isStructuredForm,omitempty"`
 
-	PurchaseObjects2020Type string `xml:"purchaseObjects2020Type"`
+	cmn.PurchaseObjects2020Type
 }
 
 // NotificationInfoPurchaseObjectsInfo15: Объекты закупки
@@ -5589,6 +5742,42 @@ type CommonInfo12 struct {
 
 	// IsAntiCompetitiveAgreement: Антиконкурентные соглашения Игнорируется при приеме, всегда установлен
 	IsAntiCompetitiveAgreement *bool `xml:"isAntiCompetitiveAgreement,omitempty"`
+
+	// PurchaseNumber: Реестровый номер закупки. Элемент не заполняется при приёме первой версии документа. Присваивается автоматически после размещения. Должен быть заполнен при приёме изменения документа
+	PurchaseNumber *base.PurchaseNumberType `xml:"purchaseNumber,omitempty"`
+
+	// DocNumber: Номер документа. Элемент игнорируется при приёме. Заполняется при передаче номером документа, присвоенным в ЕИС
+	DocNumber *base.DocumentNumberType `xml:"docNumber,omitempty"`
+
+	// DirectDt: Дата направления на размещение документа. Игнорируется при приеме. Заполняется автоматически датой направления на размещение текущей версии
+	DirectDt string `xml:"directDT,omitempty"`
+
+	// PlannedPublishDate: Планируемая дата размещения документа в ЕИС
+	PlannedPublishDate string `xml:"plannedPublishDate"`
+
+	// PublishDtinEis: Дата размещения документа в ЕИС. Элемент игнорируется при приёме. При передаче заполняется датой размещения документа в ЕИС
+	PublishDtinEis string `xml:"publishDTInEIS,omitempty"`
+
+	// Href: Гиперссылка на размещённый в ЕИС документ. Элемент игнорируется при приёме. При передаче заполняется ссылкой на карточку размещенного документа
+	Href *base.HrefType `xml:"href,omitempty"`
+
+	// PlacingWay: Подспособ определения поставщика. При приеме код контролируется на присутствие в справочнике "Способы размещения заказа (определения поставщика)" (nsiPlacingWay). Если при приеме был указан код способа определения поставщика, то при размещении он будет заменен на код подспособа, равный коду способа с добавлением суффикса "p"
+	PlacingWay base.PlacingWayRef `xml:"placingWay"`
+
+	// Etp: Электронная торговая площадка. При приеме код контролируется на присутствие в справочнике "Справочник: Электронные торговые площадки" (nsiETP)
+	Etp base.Etpref `xml:"ETP"`
+
+	// Article15FeaturesInfo: Информация об особенностях осуществления закупки в соответствии с ч. 4-6 ст. 15 Закона № 44-ФЗ: P4 - В соответствии с ч. 4 ст. 15 Закона № 44-ФЗ; P5 - В соответствии с ч. 5 ст. 15 Закона № 44-ФЗ; P6 - В соответствии с ч. 6 ст. 15 Закона № 44-ФЗ; P41 - В соответствии с ч. 4.1 ст. 15 Закона № 44-ФЗ P43 - В соответствии с ч. 4.3 ст. 15 Закона № 44-ФЗ; P44 - В соответствии с ч. 4.4 ст. 15 Закона № 44-ФЗ. Значения "P5" (В соответствии с ч. 5 ст. 15 Закона № 44-ФЗ) и "P41" (В соответствии с ч. 4.1 ст. 15 Закона № 44-ФЗ) не используются, начиная с выхода версии 15.0
+	Article15FeaturesInfo *base.Article15PartsType `xml:"article15FeaturesInfo,omitempty"`
+
+	// ContractConclusionOnSt83Ch2: Заключение контракта по статье 83 ч. 2. Игнорируется при приёме, заполняется при выгрузке. Если признак не заполнен или заполнен false, то по данной закупке от электронной площадки в ЕИС передается документ CоntractSign, протоколы ПОК и ППУ формируются на площадке и передаются в ЕИС. Если признак заполнен в true, то по данной закупке будет формироваться проект контракта, документ CоntractSign от площадки в ЕИС не передается, протоколы ПОК и ППУ формируются в ЕИС
+	ContractConclusionOnSt83Ch2 *bool `xml:"contractConclusionOnSt83Ch2,omitempty"`
+
+	// IsGoz: Закупка товар, работ, услуг по государственному оборонному заказу в соответствии с ФЗ № 275-ФЗ от 29 декабря 2012 г. Не может быть задан одновременно с признаком "Закупка за счет средств бюджета Союзного государства" (isBudgetUnionState). Проверяется принадлежность всех Заказчиков к перечню настройки "Настройка дополнительного перечня организаций для ГОЗ" или "Настройка перечня кодов ОКФС для ГОЗ"
+	IsGoz *bool `xml:"isGOZ,omitempty"`
+
+	// NotPublishedOnEis: Информация о признаке isGOZ не размещается на официальном сайте ЕИС согласно ст. 6 Федерального закона № 275-ФЗ. Не может быть заполнен при приеме, заполняется при передаче
+	NotPublishedOnEis *bool `xml:"notPublishedOnEIS,omitempty"`
 }
 
 // PurchaseResponsibleInfo16: Информация об организации, осуществляющей размещение
@@ -5748,7 +5937,7 @@ type AppParticipantInfoParticipantInfo3 struct {
 	// ContractorRegistryNum: Номер реестровой записи в ЕРУЗ. Начиная с версии 12.1 поле обязательно для заполнения при приеме в ЕИС
 	ContractorRegistryNum *base.EruzRegistryNumType `xml:"contractorRegistryNum,omitempty"`
 
-	ParticipantType string `xml:"participantType"`
+	cmn.ParticipantType
 }
 
 // AppParticipantInfoProposalsInfo2: Сведения о предложениях участника закупки. Блок может быть заполнен только в том случае, если первая версия извещения размещена после выхода версии ЕИС 13.3 ИЛИ одновременно выполняются следующие условия: 1. первая версия извещения размещена после выхода версии ЕИС 13.1; 2. размещающая извещение организация, заданная в блоке "Организация, осуществляющая размещение" (purchaseResponsibleInfo/responsibleOrgInfo), указана в настройке ЕИС "Настройка формирования сведений по характеристикам объекта закупки". В других случаях игнорируется при приеме
@@ -5910,6 +6099,42 @@ type CommonInfo13 struct {
 
 	// IsAntiCompetitiveAgreement: Антиконкурентные соглашения Игнорируется при приеме, всегда установлен
 	IsAntiCompetitiveAgreement *bool `xml:"isAntiCompetitiveAgreement,omitempty"`
+
+	// PurchaseNumber: Реестровый номер закупки. Элемент не заполняется при приёме первой версии документа. Присваивается автоматически после размещения. Должен быть заполнен при приёме изменения документа
+	PurchaseNumber *base.PurchaseNumberType `xml:"purchaseNumber,omitempty"`
+
+	// DocNumber: Номер документа. Элемент игнорируется при приёме. Заполняется при передаче номером документа, присвоенным в ЕИС
+	DocNumber *base.DocumentNumberType `xml:"docNumber,omitempty"`
+
+	// DirectDt: Дата направления на размещение документа. Игнорируется при приеме. Заполняется автоматически датой направления на размещение текущей версии
+	DirectDt string `xml:"directDT,omitempty"`
+
+	// PlannedPublishDate: Планируемая дата размещения документа в ЕИС
+	PlannedPublishDate string `xml:"plannedPublishDate"`
+
+	// PublishDtinEis: Дата размещения документа в ЕИС. Элемент игнорируется при приёме. При передаче заполняется датой размещения документа в ЕИС
+	PublishDtinEis string `xml:"publishDTInEIS,omitempty"`
+
+	// Href: Гиперссылка на размещённый в ЕИС документ. Элемент игнорируется при приёме. При передаче заполняется ссылкой на карточку размещенного документа
+	Href *base.HrefType `xml:"href,omitempty"`
+
+	// PlacingWay: Подспособ определения поставщика. При приеме код контролируется на присутствие в справочнике "Способы размещения заказа (определения поставщика)" (nsiPlacingWay). Если при приеме был указан код способа определения поставщика, то при размещении он будет заменен на код подспособа, равный коду способа с добавлением суффикса "p"
+	PlacingWay base.PlacingWayRef `xml:"placingWay"`
+
+	// Etp: Электронная торговая площадка. При приеме код контролируется на присутствие в справочнике "Справочник: Электронные торговые площадки" (nsiETP)
+	Etp base.Etpref `xml:"ETP"`
+
+	// Article15FeaturesInfo: Информация об особенностях осуществления закупки в соответствии с ч. 4-6 ст. 15 Закона № 44-ФЗ: P4 - В соответствии с ч. 4 ст. 15 Закона № 44-ФЗ; P5 - В соответствии с ч. 5 ст. 15 Закона № 44-ФЗ; P6 - В соответствии с ч. 6 ст. 15 Закона № 44-ФЗ; P41 - В соответствии с ч. 4.1 ст. 15 Закона № 44-ФЗ P43 - В соответствии с ч. 4.3 ст. 15 Закона № 44-ФЗ; P44 - В соответствии с ч. 4.4 ст. 15 Закона № 44-ФЗ. Значения "P5" (В соответствии с ч. 5 ст. 15 Закона № 44-ФЗ) и "P41" (В соответствии с ч. 4.1 ст. 15 Закона № 44-ФЗ) не используются, начиная с выхода версии 15.0
+	Article15FeaturesInfo *base.Article15PartsType `xml:"article15FeaturesInfo,omitempty"`
+
+	// ContractConclusionOnSt83Ch2: Заключение контракта по статье 83 ч. 2. Игнорируется при приёме, заполняется при выгрузке. Если признак не заполнен или заполнен false, то по данной закупке от электронной площадки в ЕИС передается документ CоntractSign, протоколы ПОК и ППУ формируются на площадке и передаются в ЕИС. Если признак заполнен в true, то по данной закупке будет формироваться проект контракта, документ CоntractSign от площадки в ЕИС не передается, протоколы ПОК и ППУ формируются в ЕИС
+	ContractConclusionOnSt83Ch2 *bool `xml:"contractConclusionOnSt83Ch2,omitempty"`
+
+	// IsGoz: Закупка товар, работ, услуг по государственному оборонному заказу в соответствии с ФЗ № 275-ФЗ от 29 декабря 2012 г. Не может быть задан одновременно с признаком "Закупка за счет средств бюджета Союзного государства" (isBudgetUnionState). Проверяется принадлежность всех Заказчиков к перечню настройки "Настройка дополнительного перечня организаций для ГОЗ" или "Настройка перечня кодов ОКФС для ГОЗ"
+	IsGoz *bool `xml:"isGOZ,omitempty"`
+
+	// NotPublishedOnEis: Информация о признаке isGOZ не размещается на официальном сайте ЕИС согласно ст. 6 Федерального закона № 275-ФЗ. Не может быть заполнен при приеме, заполняется при передаче
+	NotPublishedOnEis *bool `xml:"notPublishedOnEIS,omitempty"`
 }
 
 // PurchaseResponsibleInfo17: Информация об организации, осуществляющей размещение
@@ -6025,14 +6250,14 @@ type NotificationInfoPurchaseObjectsInfo16 struct {
 	// QuantityUndefined: Невозможно определить количество товара, объем подлежащих выполнению работ, оказанию услуг Игнорируется при приеме если не указан признак «Закупка, по результатам которой заключается контракт, предусматривающий предоставление права на использование программы для электронной вычислительной машины и (или) базы данных» (commonInfo/useProgramRights) Не применяется, добавлено на развитие
 	QuantityUndefined *bool `xml:"quantityUndefined,omitempty"`
 
-	PurchaseObjectsType string `xml:"purchaseObjectsType"`
+	cmn.PurchaseObjectsType
 }
 
 // NotificationInfoDrugPurchaseObjectsInfo: Сведения об объектах закупки в том случае, когда объектами закупки являются лекарственные препараты
 type NotificationInfoDrugPurchaseObjectsInfo struct {
 	XMLName xml.Name `xml:"drugPurchaseObjectsInfo"`
 
-	PurchaseDrugObjectsEztinfoType string `xml:",any"`
+	cmn.PurchaseDrugObjectsEztinfoType
 }
 
 // NotificationInfo16: Информация о проведении ЭЗТ (Закупка товаров согласно ч.12 ст. 93 № 44-ФЗ)
@@ -6095,7 +6320,7 @@ type Ktruinfo struct {
 	// KtruinfoCharacteristicsInfo: Характеристики товара, работы, услуги
 	CharacteristicsInfo *KtruinfoCharacteristicsInfo `xml:"characteristicsInfo,omitempty"`
 
-	Ktruref string `xml:"KTRURef"`
+	base.Ktruref
 }
 
 // ExpirationPreliminaryOfferInfo: Срок действия предложения
@@ -6168,7 +6393,7 @@ type DeliveryRegionsInfo struct {
 type MnninfoUsingReferenceInfoMnninfo struct {
 	XMLName xml.Name `xml:"MNNInfo"`
 
-	MnninfoType string `xml:",any"`
+	cmn.MnninfoType
 }
 
 // TradeNamesInfoUsingReferenceInfoMedicamentalFormInfo: Лекарственная форма.
@@ -6542,7 +6767,7 @@ type AppParticipantInfoParticipantInfo4 struct {
 	// ContractorRegistryNum: Номер реестровой записи в ЕРУЗ. Начиная с версии 12.1 поле обязательно для заполнения при приеме в ЕИС
 	ContractorRegistryNum *base.EruzRegistryNumType `xml:"contractorRegistryNum,omitempty"`
 
-	ParticipantType string `xml:"participantType"`
+	cmn.ParticipantType
 }
 
 // AppParticipantInfoProposalsInfo3: Сведения о предложениях участника закупки. Блок может быть заполнен только в том случае, если первая версия извещения размещена после выхода версии ЕИС 13.3 ИЛИ одновременно выполняются следующие условия: 1. первая версия извещения размещена после выхода версии ЕИС 13.1; 2. размещающая извещение организация, заданная в блоке "Организация, осуществляющая размещение" (purchaseResponsibleInfo/responsibleOrgInfo), указана в настройке ЕИС "Настройка формирования сведений по характеристикам объекта закупки". В других случаях игнорируется при приеме
@@ -6743,7 +6968,7 @@ type PurchaseObjectsInfoDrugPurchaseObjectsInfo12 struct {
 	// IsStructuredForm: По закупке предусмотрена подача заявки в структурированном виде и заключение структурированного электронного контракта. Устарело. Не применяется, начиная с версии 13.3 ЕИС
 	IsStructuredForm *bool `xml:"isStructuredForm,omitempty"`
 
-	PurchaseDrugObjectsClosedInfoType string `xml:"purchaseDrugObjectsClosedInfoType"`
+	cmn.PurchaseDrugObjectsClosedInfoType
 }
 
 // PurchaseObjectsInfoNotDrugPurchaseObjectsInfo12: Сведения об объектах закупки в том случае, когда объектами закупки являются нелекарственные препараты. Не все позиции ТРУ по ОКПД2 из базовой позиции плана-графика закупок с 01.01.2020 должны быть представлены в полном объеме. Позиция ТРУ по ОКПД2 из базовой позиции плана-графика может иметь несколько потомков Если заполнен блок «По решению заказчика (организации, осуществляющей определение поставщика для заказчика)» (modificationInfo/reasonInfo/responsibleDecisionInfo), игнорируется при приеме и заполняется из предыдущей версии извещения за исключением: o поля «Общая сумма позиций/Начальная сумма цен единиц товара, работы, услуги» (totalSum); o поля «Общая сумма позиций/Начальная сумма цен единиц товара, работы, услуги в валюте контракт»( totalSumCurrency); o блока «Единица измерения» (OKEI); o блока «Общее количество по объекту закупки» (quantity); o поля «Количество для заказчика» (customerQuantities/customerQuantity/quantity); o поля «Объем работы, услуги (указание объема в текстовом виде)» (customerQuantities/customerQuantity/volumeTextForm); o поля «Количество для заказчика» (customerQuantitiesCH/customerQuantityCH/quantity); o поля «Объем работы, услуги (указание объема в текстовом виде)» (customerQuantitiesCH/customerQuantityCH/volumeTextForm); o поля «Цена за единицу измерения» (price); o блока «Информация о товарном знаке» (trademarkInfo); o поля «Знаки обслуживания, фирменные наименования, патенты, полезные модели, промышленные образцы» (serviceMarks); o поля «Стоимость позиции» (sum); o блока «Характеристики товара, работы, услуги позиции ОКПД2» (OKPD2/characteristics); o блока «Характеристики товара, работы, услуги позиции КТРУ» (KTRU/characteristics); o поля «Уникальный идентификатор в ЕИС» (sid) o поля «Внешний идентификатор объекта закупки» (externalSid)
@@ -6756,7 +6981,7 @@ type PurchaseObjectsInfoNotDrugPurchaseObjectsInfo12 struct {
 	// IsStructuredForm: По закупке предусмотрена подача заявки в структурированном виде и заключение структурированного электронного контракта. Устарело. Не применяется, начиная с версии 13.3 ЕИС
 	IsStructuredForm *bool `xml:"isStructuredForm,omitempty"`
 
-	PurchaseObjectsClosed2020Type string `xml:"purchaseObjectsClosed2020Type"`
+	cmn.PurchaseObjectsClosed2020Type
 }
 
 // NotificationInfoPurchaseObjectsInfo17: Объекты закупки
@@ -6929,7 +7154,7 @@ type RequestInfoParticipantInfo struct {
 	// ContractorRegistryNum: Номер реестровой записи в ЕРУЗ. Начиная с версии 12.1 поле обязательно для заполнения при приеме в ЕИС
 	ContractorRegistryNum *base.EruzRegistryNumType `xml:"contractorRegistryNum,omitempty"`
 
-	ParticipantType string `xml:"participantType"`
+	cmn.ParticipantType
 }
 
 // AdmittedInfoReqAdmittedInfo: Информация о запросах, по которым предоставлен доступ к документации о закупке
@@ -7046,7 +7271,7 @@ type ApplicationInfoParticipantInfo struct {
 	// ContractorRegistryNum: Номер реестровой записи в ЕРУЗ. Начиная с версии 12.1 поле обязательно для заполнения при приеме в ЕИС
 	ContractorRegistryNum *base.EruzRegistryNumType `xml:"contractorRegistryNum,omitempty"`
 
-	ParticipantType string `xml:"participantType"`
+	cmn.ParticipantType
 }
 
 // ApplicationInfoProposalsInfo: Сведения о предложениях участника закупки. Блок может быть заполнен только в том случае, если первая версия извещения размещена после выхода версии ЕИС 13.3 ИЛИ одновременно выполняются следующие условия: 1. первая версия извещения размещена после выхода версии ЕИС 13.1; 2. размещающая извещение организация, заданная в блоке "Организация, осуществляющая размещение" (purchaseResponsibleInfo/responsibleOrgInfo), указана в настройке ЕИС "Настройка формирования сведений по характеристикам объекта закупки". В других случаях игнорируется при приеме
@@ -7240,7 +7465,16 @@ type NotificationInfoContractConditionsInfo4 struct {
 	XMLName xml.Name `xml:"contractConditionsInfo"`
 
 	// ContractMultiInfo: Право заключения контрактов с несколькими участниками закупки в случаях, указанных в ч. 10 ст. 34 Федерального закона 44-ФЗ
-	ContractMultiInfo ContractMultiType `xml:",any"`
+	ContractMultiInfo ContractMultiType `xml:"contractMultiInfo"`
+
+	// ContractConditionsInfoMaxPriceInfo: Информация о начальной (максимальной) цене контракта
+	MaxPriceInfo ContractConditionsInfoMaxPriceInfo `xml:"maxPriceInfo"`
+
+	// StandardContractNumber: Номер типового контракта, типовых условий контракта
+	StandardContractNumber *base.StandardContractNumberType `xml:"standardContractNumber,omitempty"`
+
+	// ContractConditionsInfoContractLifeCycleInfo: Информация о заключении с поставщиком (подрядчиком, исполнителем) контракта жизненного цикла
+	ContractLifeCycleInfo *ContractConditionsInfoContractLifeCycleInfo `xml:"contractLifeCycleInfo,omitempty"`
 }
 
 // PurchaseObjectsInfoDrugPurchaseObjectsInfo13: Сведения об объектах закупки в том случае, когда объектами закупки являются лекарственные препараты. Контролируется обязательность заполнения, если извещение сформировано на основании позиции плана-графика с 01.01.2020 и в такой позиции указан код ОКПД2 21.20 Если заполнен блок «По решению заказчика (организации, осуществляющей определение поставщика для заказчика)» (modificationInfo/reasonInfo/responsibleDecisionInfo), игнорируется при приеме и заполняется из предыдущей версии извещения за исключением: o поля «Всего» (total); o поля «Общая сумма позиций в валюте контракта» (totalSumCurrency); o поля «Цена за единицу в основном варианте поставки» (pricePerUnit); o поля «Стоимость позиции в основном варианте поставки» (positionPrice); o поля «Всего» (drugQuantityCustomersInfo/total); o поля «Количество» (quantity); o поля «Уникальный идентификатор в ЕИС» (sid) o поля «Внешний идентификатор объекта закупки» (externalSid)
@@ -7253,7 +7487,7 @@ type PurchaseObjectsInfoDrugPurchaseObjectsInfo13 struct {
 	// IsStructuredForm: По закупке предусмотрена подача заявки в структурированном виде и заключение структурированного электронного контракта. Устарело. Не применяется, начиная с версии 13.3 ЕИС
 	IsStructuredForm *bool `xml:"isStructuredForm,omitempty"`
 
-	PurchaseDrugObjectsClosedInfoType string `xml:"purchaseDrugObjectsClosedInfoType"`
+	cmn.PurchaseDrugObjectsClosedInfoType
 }
 
 // PurchaseObjectsInfoNotDrugPurchaseObjectsInfo13: Сведения об объектах закупки в том случае, когда объектами закупки являются нелекарственные препараты. Не все позиции ТРУ по ОКПД2 из базовой позиции плана-графика закупок с 01.01.2020 должны быть представлены в полном объеме. Позиция ТРУ по ОКПД2 из базовой позиции плана-графика может иметь несколько потомков Если заполнен блок «По решению заказчика (организации, осуществляющей определение поставщика для заказчика)» (modificationInfo/reasonInfo/responsibleDecisionInfo), игнорируется при приеме и заполняется из предыдущей версии извещения за исключением: o поля «Общая сумма позиций/Начальная сумма цен единиц товара, работы, услуги» (totalSum); o поля «Общая сумма позиций/Начальная сумма цен единиц товара, работы, услуги в валюте контракт»( totalSumCurrency); o блока «Единица измерения» (OKEI); o блока «Общее количество по объекту закупки» (quantity); o поля «Количество для заказчика» (customerQuantities/customerQuantity/quantity); o поля «Объем работы, услуги (указание объема в текстовом виде)» (customerQuantities/customerQuantity/volumeTextForm); o поля «Количество для заказчика» (customerQuantitiesCH/customerQuantityCH/quantity); o поля «Объем работы, услуги (указание объема в текстовом виде)» (customerQuantitiesCH/customerQuantityCH/volumeTextForm); o поля «Цена за единицу измерения» (price); o блока «Информация о товарном знаке» (trademarkInfo); o поля «Знаки обслуживания, фирменные наименования, патенты, полезные модели, промышленные образцы» (serviceMarks); o поля «Стоимость позиции» (sum); o блока «Характеристики товара, работы, услуги позиции ОКПД2» (OKPD2/characteristics); o блока «Характеристики товара, работы, услуги позиции КТРУ» (KTRU/characteristics); o поля «Уникальный идентификатор в ЕИС» (sid) o поля «Внешний идентификатор объекта закупки» (externalSid)
@@ -7266,7 +7500,7 @@ type PurchaseObjectsInfoNotDrugPurchaseObjectsInfo13 struct {
 	// IsStructuredForm: По закупке предусмотрена подача заявки в структурированном виде и заключение структурированного электронного контракта. Устарело. Не применяется, начиная с версии 13.3 ЕИС
 	IsStructuredForm *bool `xml:"isStructuredForm,omitempty"`
 
-	PurchaseObjectsClosed2020Type string `xml:"purchaseObjectsClosed2020Type"`
+	cmn.PurchaseObjectsClosed2020Type
 }
 
 // NotificationInfoPurchaseObjectsInfo18: Объекты закупки
@@ -7453,7 +7687,7 @@ type RequestInfoParticipantInfo1 struct {
 	// ContractorRegistryNum: Номер реестровой записи в ЕРУЗ. Начиная с версии 12.1 поле обязательно для заполнения при приеме в ЕИС
 	ContractorRegistryNum *base.EruzRegistryNumType `xml:"contractorRegistryNum,omitempty"`
 
-	ParticipantType string `xml:"participantType"`
+	cmn.ParticipantType
 }
 
 // AdmittedInfoReqAdmittedInfo1: Информация о запросах, по которым предоставлен доступ к документации о закупке
@@ -7570,7 +7804,7 @@ type ApplicationInfoParticipantInfo1 struct {
 	// ContractorRegistryNum: Номер реестровой записи в ЕРУЗ. Начиная с версии 12.1 поле обязательно для заполнения при приеме в ЕИС
 	ContractorRegistryNum *base.EruzRegistryNumType `xml:"contractorRegistryNum,omitempty"`
 
-	ParticipantType string `xml:"participantType"`
+	cmn.ParticipantType
 }
 
 // ApplicationInfoProposalsInfo1: Сведения о предложениях участника закупки. Блок может быть заполнен только в том случае, если первая версия извещения размещена после выхода версии ЕИС 13.3 ИЛИ одновременно выполняются следующие условия: 1. первая версия извещения размещена после выхода версии ЕИС 13.1; 2. размещающая извещение организация, заданная в блоке "Организация, осуществляющая размещение" (purchaseResponsibleInfo/responsibleOrgInfo), указана в настройке ЕИС "Настройка формирования сведений по характеристикам объекта закупки". В других случаях игнорируется при приеме
@@ -7854,6 +8088,42 @@ type CommonInfo17 struct {
 
 	// IsAntiCompetitiveAgreement: Антиконкурентные соглашения Игнорируется при приеме, всегда установлен
 	IsAntiCompetitiveAgreement *bool `xml:"isAntiCompetitiveAgreement,omitempty"`
+
+	// PurchaseNumber: Реестровый номер закупки. Элемент не заполняется при приёме первой версии документа. Присваивается автоматически после размещения. Должен быть заполнен при приёме изменения документа
+	PurchaseNumber *base.PurchaseNumberType `xml:"purchaseNumber,omitempty"`
+
+	// DocNumber: Номер документа. Элемент игнорируется при приёме. Заполняется при передаче номером документа, присвоенным в ЕИС
+	DocNumber *base.DocumentNumberType `xml:"docNumber,omitempty"`
+
+	// DirectDt: Дата направления на размещение документа. Игнорируется при приеме. Заполняется автоматически датой направления на размещение текущей версии
+	DirectDt string `xml:"directDT,omitempty"`
+
+	// PlannedPublishDate: Планируемая дата размещения документа в ЕИС
+	PlannedPublishDate string `xml:"plannedPublishDate"`
+
+	// PublishDtinEis: Дата размещения документа в ЕИС. Элемент игнорируется при приёме. При передаче заполняется датой размещения документа в ЕИС
+	PublishDtinEis string `xml:"publishDTInEIS,omitempty"`
+
+	// Href: Гиперссылка на размещённый в ЕИС документ. Элемент игнорируется при приёме. При передаче заполняется ссылкой на карточку размещенного документа
+	Href *base.HrefType `xml:"href,omitempty"`
+
+	// PlacingWay: Подспособ определения поставщика. При приеме код контролируется на присутствие в справочнике "Способы размещения заказа (определения поставщика)" (nsiPlacingWay). Если при приеме был указан код способа определения поставщика, то при размещении он будет заменен на код подспособа, равный коду способа с добавлением суффикса "p"
+	PlacingWay base.PlacingWayRef `xml:"placingWay"`
+
+	// Etp: Электронная торговая площадка. При приеме код контролируется на присутствие в справочнике "Справочник: Электронные торговые площадки" (nsiETP)
+	Etp base.Etpref `xml:"ETP"`
+
+	// Article15FeaturesInfo: Информация об особенностях осуществления закупки в соответствии с ч. 4-6 ст. 15 Закона № 44-ФЗ: P4 - В соответствии с ч. 4 ст. 15 Закона № 44-ФЗ; P5 - В соответствии с ч. 5 ст. 15 Закона № 44-ФЗ; P6 - В соответствии с ч. 6 ст. 15 Закона № 44-ФЗ; P41 - В соответствии с ч. 4.1 ст. 15 Закона № 44-ФЗ P43 - В соответствии с ч. 4.3 ст. 15 Закона № 44-ФЗ; P44 - В соответствии с ч. 4.4 ст. 15 Закона № 44-ФЗ. Значения "P5" (В соответствии с ч. 5 ст. 15 Закона № 44-ФЗ) и "P41" (В соответствии с ч. 4.1 ст. 15 Закона № 44-ФЗ) не используются, начиная с выхода версии 15.0
+	Article15FeaturesInfo *base.Article15PartsType `xml:"article15FeaturesInfo,omitempty"`
+
+	// ContractConclusionOnSt83Ch2: Заключение контракта по статье 83 ч. 2. Игнорируется при приёме, заполняется при выгрузке. Если признак не заполнен или заполнен false, то по данной закупке от электронной площадки в ЕИС передается документ CоntractSign, протоколы ПОК и ППУ формируются на площадке и передаются в ЕИС. Если признак заполнен в true, то по данной закупке будет формироваться проект контракта, документ CоntractSign от площадки в ЕИС не передается, протоколы ПОК и ППУ формируются в ЕИС
+	ContractConclusionOnSt83Ch2 *bool `xml:"contractConclusionOnSt83Ch2,omitempty"`
+
+	// IsGoz: Закупка товар, работ, услуг по государственному оборонному заказу в соответствии с ФЗ № 275-ФЗ от 29 декабря 2012 г. Не может быть задан одновременно с признаком "Закупка за счет средств бюджета Союзного государства" (isBudgetUnionState). Проверяется принадлежность всех Заказчиков к перечню настройки "Настройка дополнительного перечня организаций для ГОЗ" или "Настройка перечня кодов ОКФС для ГОЗ"
+	IsGoz *bool `xml:"isGOZ,omitempty"`
+
+	// NotPublishedOnEis: Информация о признаке isGOZ не размещается на официальном сайте ЕИС согласно ст. 6 Федерального закона № 275-ФЗ. Не может быть заполнен при приеме, заполняется при передаче
+	NotPublishedOnEis *bool `xml:"notPublishedOnEIS,omitempty"`
 }
 
 // PurchaseResponsibleInfo21: Информация об организации, осуществляющей размещение
@@ -8028,7 +8298,16 @@ type ScoringInfo struct {
 	XMLName xml.Name `xml:"scoringInfo,omitempty"`
 
 	// AddInfo: Дополнительная информация
-	AddInfo *base.Text2000Type `xml:",any,omitempty"`
+	AddInfo *base.Text2000Type `xml:"addInfo,omitempty"`
+
+	// FirstPartsDt: Дата и время рассмотрения и оценки первых частей заявок на участие в конкурсе
+	FirstPartsDt string `xml:"firstPartsDT,omitempty"`
+
+	// FinalOfferDate: Дата подачи окончательных предложений
+	FinalOfferDate string `xml:"finalOfferDate,omitempty"`
+
+	// SecondPartsDt: Дата и время рассмотрения и оценки вторых частей заявок на участие в конкурсе
+	SecondPartsDt string `xml:"secondPartsDT,omitempty"`
 }
 
 // FirstStageInfoScoringInfo: Информация о процедуре рассмотрения и оценки заявок
@@ -8058,7 +8337,16 @@ type SecondStageInfoScoringInfo struct {
 	XMLName xml.Name `xml:"scoringInfo"`
 
 	// AddInfo: Дополнительная информация
-	AddInfo *base.Text2000Type `xml:",any,omitempty"`
+	AddInfo *base.Text2000Type `xml:"addInfo,omitempty"`
+
+	// FirstPartsDt: Дата и время рассмотрения и оценки первых частей заявок на участие в конкурсе
+	FirstPartsDt string `xml:"firstPartsDT,omitempty"`
+
+	// FinalOfferDate: Дата подачи окончательных предложений
+	FinalOfferDate string `xml:"finalOfferDate,omitempty"`
+
+	// SecondPartsDt: Дата и время рассмотрения и оценки вторых частей заявок на участие в конкурсе
+	SecondPartsDt string `xml:"secondPartsDT,omitempty"`
 }
 
 // SecondStageInfo: Информация по второму этапу
@@ -8104,7 +8392,7 @@ type AttachmentsAttachment struct {
 	// PlacingDate: Дата размещения документа. Элемент не используется при приеме данных.
 	PlacingDate string `xml:"placingDate,omitempty"`
 
-	AttachmentType string `xml:"attachmentType"`
+	cmn.AttachmentType
 }
 
 // PublicDiscussionLargePurchasePhase2Attachments: Протокол этапа
@@ -8401,7 +8689,7 @@ type PrintFormFieldsInfoNotificationInfoPurchaseResponsibleInfo1 struct {
 	// ResponsibleRole: Роль организации, осуществляющей закупку: CU - Заказчик; OCU - Заказчик в качестве организатора совместного аукциона; RA - Уполномоченный орган; ORA- Уполномоченный орган в качестве организатора совместного конкурса (аукциона) согласно ст. 25 №44ФЗ; AI - Уполномоченное учреждение; OAI- Уполномоченное учреждение в качестве организатора совместного конкурса (аукциона) согласно ст. 25 №44ФЗ; OA - Организация, осуществляющая полномочия заказчика на основании соглашения в соответствии с частью 6 статьи 15 Федерального закона № 44-ФЗ; OOA- Организация, осуществляющая полномочия заказчика на осуществление закупок на основании договора (соглашения) в качестве организатора совместного конкурса (аукциона) согласно ст. 25 №44ФЗ; CS - Организация, осуществляющая закупки в соответствии с частью 5 статьи 15 Федерального закона № 44-ФЗ; OCS - Заказчик, осуществляющий закупки в соответствии с частью 5 статьи 15 Федерального закона № 44-ФЗ, в качестве организатора совместного конкурса (аукциона) согласно ст. 25 №44ФЗ; CC - Заказчик по Федеральному закону 223-ФЗ, осуществляющий закупки в соответствии с Федеральным законом № 44-ФЗ, в случаях, предусмотренных Федеральным законом № 223-ФЗ; OCC - Заказчик, осуществляющий закупки в соответствии с Федеральным законом № 44-ФЗ, в связи с неразмещением положения о закупке в соответствии с положениями Федерального закона № 223-ФЗ, в качестве организатора совместного конкурса (аукциона) согласно ст. 25 №44ФЗ; AU - Юридическое лицо, осуществляющее закупку в соответствии с частью 4 статьи 5 Федерального закона от 30.12.2008 № 307-ФЗ «Об аудиторской деятельности»; OAU - Заказчик, осуществляющий закупку на проведение обязательного аудита (код AU), в качестве организатора совместного конкурса (аукциона) согласно ст. 25 №44ФЗ; RO - Специализированная некоммерческая организация, которая осуществляет деятельность, направленную на обеспечение проведения капитального ремонта общего имущества в многоквартирных домах в соответствии с Постановлением № 615 (региональный оператор); CN - Организация, осуществляющая закупки в соответствии с частью 4.1 или 4.3 статьи 15 Федерального закона N 44-ФЗ; OCN - Заказчик, осуществляющий закупки в соответствии с частью 4.1 статьи 15 Федерального закона № 44-ФЗ в качестве организатора совместного конкурса (аукциона) согласно ст. 25 №44ФЗ; CU5CH26 - Заказчик как орган исполнительной власти по ч.5 ст.26 Закона № 44-ФЗ.
 	ResponsibleRole *base.ResponsibleRoleEptype `xml:"responsibleRole,omitempty"`
 
-	OrganizationRef string `xml:"organizationRef"`
+	base.OrganizationRef
 }
 
 // PrintFormFieldsInfoNotificationInfo5: Информация из извещения
@@ -8441,7 +8729,7 @@ type AdmissionResultInfoCommissionMemberInfo struct {
 	// ProtocolMemberNumber: Протокол участника комиссии. При приеме документов "Протокол рассмотрения и оценки вторых частей заявок на участие в ЭOK20" (epProtocolEOK2020SecondSectionsPart) и "Протокол подведения итогов ЭOK20" (epProtocolEOK2020FinalPart): Если поле не заполнено, то проверяется наличие участника с порядковым номером memberNumber в блоке "Участники комиссии" (protocolInfo/commissionInfo/commissionMembers) принимаемого документа. Если поле заполнено, то проверяется наличие участника с порядковым номером memberNumber в блоке "Участники комиссии" (protocolInfo/commissionInfo/commissionMembers) в соответствующем протоколе: 1 - протокол оценки первых частей заявок 2 - протокол оценки вторых частей заявок
 	ProtocolMemberNumber string `xml:"protocolMemberNumber,omitempty"`
 
-	CommissionMemberType string `xml:"commissionMemberType"`
+	cmn.CommissionMemberType
 }
 
 // AdmissionResultInfo1: Результат допуска заявки
@@ -8459,7 +8747,7 @@ type AdmissionResultInfo1 struct {
 type PreferenseInfo struct {
 	XMLName xml.Name `xml:"preferenseInfo"`
 
-	PreferenseType string `xml:",any"`
+	cmn.PreferenseType
 }
 
 // AccountBudgetAccountBudgetCustomer: Реквизиты заказчика как администратора дохода бюджета. При приеме контролируется: 1) Что заказчик с кодом по Сводному реестру (СвР), указанным в блоке "Организация заказчика данных требований" (customer) присутствует в справочнике "Сводный реестр" (СвР, NSI_SVR) в актуальном (IS_ACTUAL = 1) и неархивном состоянии (IS_ARCHIVE = 0) 2) У заказчика присутствует полномочие «Администратор доходов бюджета» (полномочие с кодом 107 в справочнике полномочий (NSI_SVR_AUTHORITY)) 3) Что у заказчика с кодом по СвР, указанным в блоке "Организация заказчика данных требований" (customer) в справочнике "Книга регистрации казначейских счетов" (КРКС, NSI_KRKS) присутствует как минимум один актуальный (IS_ACTUAL=1), незакрытый (KS_Status = "KS1" («Открыт»)) казначейский счет с типом "02" - "Доходы, распределяемые ОрФК между бюджетами бюджетной системы РФ" (KS_TYPE_CODE = "02") В случае, если у заказчика более одного такого счета, при автоматической подстановке используются реквизиты первого встреченного в справочнике КРКС (NSI_KRKS) счета
@@ -10416,7 +10704,7 @@ type ProductInfoOkpd2Info struct {
 	// ProductInfoOkpd2InfoCharacteristics: Характеристики товара, работы, услуги позиции ОКПД2. Для дочернего или недетализированного объекта закупки принимается и сохраняется, если одновременно выполняются условия: • в поле "Тип объекта закупки" (productInfo/type) указано значение PRODUCT; • в извещении в поле "Код подспособа определения поставщика" (commonInfo/placingWay/code) НЕ указано значение EAB20, EZKB20 или OKB20. В других случаях игнорируется при приеме. Для родительского объекта закупки: Игнорируется при приеме, не заполняется при передаче. Выполняется контроль относительно номера версии связанного извещения, указанного в поле «Номер версии связанного извещения»
 	Characteristics *ProductInfoOkpd2InfoCharacteristics `xml:"characteristics,omitempty"`
 
-	Okpd2Ref string `xml:"OKPD2Ref"`
+	base.Okpd2Ref
 }
 
 // KtruinfoCharacteristics: Характеристики товара, работы, услуги позиции КТРУ. Для дочернего или недетализированного объекта закупки принимается и сохраняется, если одновременно выполняются условия: • в поле "Тип объекта закупки" (productInfo/type) указано значение PRODUCT; • в извещении в поле "Код подспособа определения поставщика" (commonInfo/placingWay/code) НЕ указано значение EAB20, EZKB20 или OKB20. В других случаях игнорируется при приеме. Для родительского объекта закупки: Игнорируется при приеме, не заполняется при передаче. Выполняется контроль относительно номера версии связанного извещения, указанного в поле «Номер версии связанного извещения»
@@ -10443,7 +10731,7 @@ type ProductInfoKtruinfo struct {
 	// ProductInfoKtruinfoCharacteristics: Характеристики товара, работы, услуги позиции КТРУ. Для дочернего или недетализированного объекта закупки принимается и сохраняется, если одновременно выполняются условия: • в поле "Тип объекта закупки" (productInfo/type) указано значение PRODUCT; • в извещении в поле "Код подспособа определения поставщика" (commonInfo/placingWay/code) НЕ указано значение EAB20, EZKB20 или OKB20. В других случаях игнорируется при приеме. Для родительского объекта закупки: Игнорируется при приеме, не заполняется при передаче. Выполняется контроль относительно номера версии связанного извещения, указанного в поле «Номер версии связанного извещения»
 	Characteristics *ProductInfoKtruinfoCharacteristics `xml:"characteristics,omitempty"`
 
-	Ktruref string `xml:"KTRURef"`
+	base.Ktruref
 }
 
 // ProductInfo: Объект закупки (предложение участника)
@@ -10485,6 +10773,39 @@ type ProductInfo struct {
 
 	// VolumeTextForm: Объем работы, услуги (указание объема в текстовом виде) При приеме проверяется, что поле заполнено, если: 1. В поле "Способ указания объема выполнения работы, оказания услуги" (productInfo/ indicationSubjects) указано значение "NQ". Выполняется контроль относительно номера версии связанного извещения, указанного в поле «Номер версии связанного извещения» (notificationVersionNumber)
 	VolumeTextForm *base.Text500Type `xml:"volumeTextForm,omitempty"`
+
+	// Sid: Уникальный идентификатор объекта закупки. Игнорируется при приеме первой версии документа. Назначается в ЕИС и заполняется при передаче. При приеме изменений размещенной версии документа, если поле заполнено, то контролируется, что в предыдущей версии документа найден объект закупки с указанным значением sid. При этом, если для объекта закупки, найденного по sid, в размещенной версии: 1. задан externalSid, то в принимаемой версии для данного объекта закупки должно быть указано то же значение externalSid; 2. не задан externalSid, то в принимаемой версии допускается указание externalSid
+	Sid *base.SIdType `xml:"sid,omitempty"`
+
+	// ExternalSid: Внешний идентификатор объекта закупки. При приеме проверяется на уникальность в рамках документа
+	ExternalSid *base.ExternalIdType `xml:"externalSid,omitempty"`
+
+	// NotificationSid: Уникальный идентификатор объекта закупки в извещении-основании. Проверяется, что в извещении (приглашении) с указанным номером в поле "Реестровый номер закупки" (commonInfo/purchaseNumber), существует дочерний/родительский объект закупки с таким же значением в поле "Уникальный идентификатор объекта закупки" (purchaseObject/sid)
+	NotificationSid base.SIdType `xml:"notificationSid"`
+
+	// NotificationExternalSid: Внешний идентификатор объекта закупки в извещении-основании. Игнорируется при приеме, заполняется при передаче значением из связанного извещения (приглашения)
+	NotificationExternalSid *base.ExternalIdType `xml:"notificationExternalSId,omitempty"`
+
+	// Name: Наименование товара, работы, услуги. Игнорируется при приеме, заполняется при передаче значением из связанного извещения (приглашения)
+	Name *base.Text2000Type `xml:"name,omitempty"`
+
+	// ProductInfoOkpd2Info: Классификация по ОКПД2
+	Okpd2Info *ProductInfoOkpd2Info `xml:"OKPD2Info,omitempty"`
+
+	// ProductInfoKtruinfo: Классификация по КТРУ
+	Ktruinfo *ProductInfoKtruinfo `xml:"KTRUInfo,omitempty"`
+
+	// HierarchyType: Тип объекта закупки в иерархии. Игнорируется при приеме. Если позиция задана в блоке "Объект закупки" (notDrugProposalsInfo/productInfo), то: 1. Если заполнен блок "Родительский объект закупки" (productInfo/parentProductInfo), то заполняется при передаче значением "CH" - Дочерний 2. Иначе заполняется значением "ND" - Недетализированный объект закупки Если позиция задана в блоке "Родительский объект закупки" (notDrugProposalsInfo/parentProductInfo), то заполняется при передаче значением "P" - Родитель
+	HierarchyType *base.ProductHierarchyTypeEnumType `xml:"hierarchyType,omitempty"`
+
+	// Type: Тип объекта закупки. Допустимые значения: PRODUCT - товар; WORK - работа; SERVICE - услуга. Тип PRODUCT не может быть указан для родительского объекта закупки • Если при приеме поле заполнено значением PRODUCT, то принимается и сохраняется • В других случаях игнорируется при приеме, заполняется из связанного извещения (приглашения)
+	Type *base.ProductTypeEnumType `xml:"type,omitempty"`
+
+	// IsSoftware: Предустановлено программное обеспечение. Игнорируется при приеме, заполняется из связанного извещения
+	IsSoftware *bool `xml:"isSoftware,omitempty"`
+
+	// RegistrationNumbersInfo: Реестровые номера
+	RegistrationNumbersInfo *cmn.RegistrationNumbersInfoType `xml:"registrationNumbersInfo,omitempty"`
 }
 
 // ProductInfoOkpd2InfoCharacteristics: Характеристики товара, работы, услуги позиции ОКПД2. Для дочернего или недетализированного объекта закупки принимается и сохраняется, если одновременно выполняются условия: • в поле "Тип объекта закупки" (productInfo/type) указано значение PRODUCT; • в извещении в поле "Код подспособа определения поставщика" (commonInfo/placingWay/code) НЕ указано значение EAB20, EZKB20 или OKB20. В других случаях игнорируется при приеме. Для родительского объекта закупки: Игнорируется при приеме, не заполняется при передаче. Выполняется контроль относительно номера версии связанного извещения, указанного в поле «Номер версии связанного извещения»
@@ -10505,7 +10826,7 @@ type ProductInfoOkpd2Info1 struct {
 	// ProductInfoOkpd2InfoCharacteristics: Характеристики товара, работы, услуги позиции ОКПД2. Для дочернего или недетализированного объекта закупки принимается и сохраняется, если одновременно выполняются условия: • в поле "Тип объекта закупки" (productInfo/type) указано значение PRODUCT; • в извещении в поле "Код подспособа определения поставщика" (commonInfo/placingWay/code) НЕ указано значение EAB20, EZKB20 или OKB20. В других случаях игнорируется при приеме. Для родительского объекта закупки: Игнорируется при приеме, не заполняется при передаче. Выполняется контроль относительно номера версии связанного извещения, указанного в поле «Номер версии связанного извещения»
 	Characteristics *ProductInfoOkpd2InfoCharacteristics `xml:"characteristics,omitempty"`
 
-	Okpd2Ref string `xml:"OKPD2Ref"`
+	base.Okpd2Ref
 }
 
 // ProductInfoKtruinfoCharacteristics: Характеристики товара, работы, услуги позиции КТРУ. Для дочернего или недетализированного объекта закупки принимается и сохраняется, если одновременно выполняются условия: • в поле "Тип объекта закупки" (productInfo/type) указано значение PRODUCT; • в извещении в поле "Код подспособа определения поставщика" (commonInfo/placingWay/code) НЕ указано значение EAB20, EZKB20 или OKB20. В других случаях игнорируется при приеме. Для родительского объекта закупки: Игнорируется при приеме, не заполняется при передаче. Выполняется контроль относительно номера версии связанного извещения, указанного в поле «Номер версии связанного извещения»
@@ -10532,7 +10853,7 @@ type ProductInfoKtruinfo1 struct {
 	// ProductInfoKtruinfoCharacteristics: Характеристики товара, работы, услуги позиции КТРУ. Для дочернего или недетализированного объекта закупки принимается и сохраняется, если одновременно выполняются условия: • в поле "Тип объекта закупки" (productInfo/type) указано значение PRODUCT; • в извещении в поле "Код подспособа определения поставщика" (commonInfo/placingWay/code) НЕ указано значение EAB20, EZKB20 или OKB20. В других случаях игнорируется при приеме. Для родительского объекта закупки: Игнорируется при приеме, не заполняется при передаче. Выполняется контроль относительно номера версии связанного извещения, указанного в поле «Номер версии связанного извещения»
 	Characteristics *ProductInfoKtruinfoCharacteristics `xml:"characteristics,omitempty"`
 
-	Ktruref string `xml:"KTRURef"`
+	base.Ktruref
 }
 
 // DeliveryGuarantee: Обеспечение исполнения обязательств по поставке товара или выполнению работы. Если первая версия извещения размещена до даты начала действия оптимизационного законопроекта 44-ФЗ или проект первой версии принимается до даты начала действия оптимизационного законопроекта 44-ФЗ, то блок игнорируется при приеме, иначе контролируется обязательность и допускается указание, если «С поставщиком (подрядчиком, исполнителем) будет заключен контракт жизненного цикла» (notificationInfo/contractConditionsInfo/contractLifeCycleInfo) = TRUE Условие по игнорированию распространяется только при приеме извещений ЭЗК20
@@ -10646,7 +10967,16 @@ type ModificationInfo2 struct {
 	XMLName xml.Name `xml:"modificationInfo,omitempty"`
 
 	// ParentProtocolNumber: Номер родительского (изменяемого) протокола, сформированный в ЕИС. Соотвествует элементу "Номер документа" (commonInfo/docNumber) изменяемого протокола
-	ParentProtocolNumber base.DocumentNumberType `xml:",any"`
+	ParentProtocolNumber base.DocumentNumberType `xml:"parentProtocolNumber"`
+
+	// Info: Краткое описание
+	Info base.Text2000Type `xml:"info"`
+
+	// AddInfo: Дополнительная информация
+	AddInfo *base.Text2000Type `xml:"addInfo,omitempty"`
+
+	// ReasonInfo: Основание
+	ReasonInfo ChangeReasonType `xml:"reasonInfo"`
 }
 
 // PrintFormFieldsInfoPurchaseInfoPurchaseResponsible1: Информация об организации, осуществляющей закупку
@@ -10707,7 +11037,13 @@ type PrintFormFieldsInfoFoundationDocInfo2 struct {
 	XMLName xml.Name `xml:"foundationDocInfo,omitempty"`
 
 	// FoundationProtocolName: Наименование предыдущего протокола
-	FoundationProtocolName *base.Text2000Type `xml:",any,omitempty"`
+	FoundationProtocolName *base.Text2000Type `xml:"foundationProtocolName,omitempty"`
+
+	// FoundationDocNumber: Номер документа-основания. Игнорируется при приеме, автоматически заполняется при передаче
+	FoundationDocNumber *base.DocumentNumberType `xml:"foundationDocNumber,omitempty"`
+
+	// FoundationDocNumberExternal: Номер документа-основания, сформированный во внешней системе. Игнорируется при приеме, автоматически заполняется при передаче
+	FoundationDocNumberExternal *base.DocumentNumberType `xml:"foundationDocNumberExternal,omitempty"`
 }
 
 // PrintFormFieldsInfoMaxPriceInfo2: Информация о начальной (максимальной) цене контракта
@@ -11244,7 +11580,7 @@ type CommissionMemberInfo struct {
 	// ProtocolMemberNumber: Протокол участника комиссии. При приеме документов "Протокол рассмотрения и оценки вторых частей заявок на участие в ЭOK20" (epProtocolEOK2020SecondSectionsPart) и "Протокол подведения итогов ЭOK20" (epProtocolEOK2020FinalPart): Если поле не заполнено, то проверяется наличие участника с порядковым номером memberNumber в блоке "Участники комиссии" (protocolInfo/commissionInfo/commissionMembers) принимаемого документа. Если поле заполнено, то проверяется наличие участника с порядковым номером memberNumber в блоке "Участники комиссии" (protocolInfo/commissionInfo/commissionMembers) в соответствующем протоколе: 1 - протокол оценки первых частей заявок 2 - протокол оценки вторых частей заявок
 	ProtocolMemberNumber string `xml:"protocolMemberNumber,omitempty"`
 
-	CommissionMemberType string `xml:"commissionMemberType"`
+	cmn.CommissionMemberType
 }
 
 // ResponsibleDecisionInfo2: По решению заказчика (организации, осуществляющей определение поставщика для заказчика) Для документа «Отмена извещения об отмене определения поставщика (подрядчика, исполнителя) в электронной форме» (epNotificationCancelFailure) контролируется недопустимость заполнения, начиная с выхода версии 14.2
@@ -11312,6 +11648,24 @@ type NotificationCancelType struct {
 
 	// ServiceSigns: Служебные признаки
 	ServiceSigns *ServiceSigns `xml:"serviceSigns,omitempty"`
+
+	// Id: Идентификатор документа ЕИС. Игнорируется при приеме-передаче. Добавлено на развитие
+	Id *int64 `xml:"id,omitempty"`
+
+	// ExternalId: Внешний идентификатор документа. При приеме контролируется уникальность номера в рамках организации, размещающей закупку
+	ExternalId *base.ExternalIdType `xml:"externalId,omitempty"`
+
+	// CommonInfo: Общая информация
+	CommonInfo PurchaseDocumentCommonInfoType `xml:"commonInfo"`
+
+	// PrintFormInfo: Печатная форма документа
+	PrintFormInfo *cmn.PrintFormType `xml:"printFormInfo,omitempty"`
+
+	// ExtPrintFormInfo: Электронный документ, полученный из внешней системы. Игнорируется при приеме-передаче, добавлено на развитие
+	ExtPrintFormInfo *cmn.ExtPrintFormType `xml:"extPrintFormInfo,omitempty"`
+
+	// AttachmentsInfo: Прикрепленные документы. Игнорируется при приеме извещения о продлении срока подачи заявок. Игнорируется при приеме уведомления об отзыве заявки участником. Требуется обязательное заполнение при приеме отмены извещения о продлении срока подачи заявок
+	AttachmentsInfo *cmn.AttachmentListType `xml:"attachmentsInfo,omitempty"`
 }
 
 // NotificationCancelFailureType: Тип: Отмена извещения об отмене определения поставщика (подрядчика, исполнителя)
@@ -11326,6 +11680,24 @@ type NotificationCancelFailureType struct {
 
 	// ServiceSigns: Служебные признаки
 	ServiceSigns *ServiceSigns `xml:"serviceSigns,omitempty"`
+
+	// Id: Идентификатор документа ЕИС. Игнорируется при приеме-передаче. Добавлено на развитие
+	Id *int64 `xml:"id,omitempty"`
+
+	// ExternalId: Внешний идентификатор документа. При приеме контролируется уникальность номера в рамках организации, размещающей закупку
+	ExternalId *base.ExternalIdType `xml:"externalId,omitempty"`
+
+	// CommonInfo: Общая информация
+	CommonInfo PurchaseDocumentCommonInfoType `xml:"commonInfo"`
+
+	// PrintFormInfo: Печатная форма документа
+	PrintFormInfo *cmn.PrintFormType `xml:"printFormInfo,omitempty"`
+
+	// ExtPrintFormInfo: Электронный документ, полученный из внешней системы. Игнорируется при приеме-передаче, добавлено на развитие
+	ExtPrintFormInfo *cmn.ExtPrintFormType `xml:"extPrintFormInfo,omitempty"`
+
+	// AttachmentsInfo: Прикрепленные документы. Игнорируется при приеме извещения о продлении срока подачи заявок. Игнорируется при приеме уведомления об отзыве заявки участником. Требуется обязательное заполнение при приеме отмены извещения о продлении срока подачи заявок
+	AttachmentsInfo *cmn.AttachmentListType `xml:"attachmentsInfo,omitempty"`
 }
 
 // ClarificationDocRequestType: Тип: Запрос о даче разъяснений положений извещения об осуществлении закупки
@@ -11334,6 +11706,18 @@ type ClarificationDocRequestType struct {
 
 	// SchemeVersion: Версия схемы
 	SchemeVersion base.SchemeVersionType `xml:"schemeVersion,attr"`
+
+	// ExternalId: Внешний идентификатор документа/ При приеме контролируется уникальность номера в рамках организации, размещающей закупку
+	ExternalId *base.ExternalIdType `xml:"externalId,omitempty"`
+
+	// CommonInfo: Общая информация
+	CommonInfo CommonInfo `xml:"commonInfo"`
+
+	// AttachmentsInfo: Информация о прикрепленных документах
+	AttachmentsInfo *cmn.AttachmentListType `xml:"attachmentsInfo,omitempty"`
+
+	// PrintFormFieldsInfo: Дополнительная информация для печатной формы. Игнорируется при приёме, заполняется при передаче
+	PrintFormFieldsInfo *PrintFormFieldsInfo `xml:"printFormFieldsInfo,omitempty"`
 }
 
 // ClarificationDocType: Тип:Разъяснения положений извещения об осуществлении закупки
@@ -11342,6 +11726,30 @@ type ClarificationDocType struct {
 
 	// SchemeVersion: Версия схемы
 	SchemeVersion base.SchemeVersionType `xml:"schemeVersion,attr"`
+
+	// Id: Идентификатор объекта ЕИС. Обязателен для заполнения при приеме проекта изменения размещенного документа
+	Id *int64 `xml:"id,omitempty"`
+
+	// ExternalId: Внешний идентификатор документа. При приеме контролируется уникальность номера в рамках организации, размещающей закупку
+	ExternalId *base.ExternalIdType `xml:"externalId,omitempty"`
+
+	// CommonInfo: Общая информация
+	CommonInfo CommonInfo `xml:"commonInfo"`
+
+	// RequestInfo: Информация о запросе на разъяснение
+	RequestInfo *RequestInfo `xml:"requestInfo,omitempty"`
+
+	// PrintFormInfo: Печатная форма документа в ЕИС. Элемент игнорируется при приёме. При передаче заполняется ссылкой на печатную форму и электронную подпись размещенного в ЕИС документа
+	PrintFormInfo *cmn.PrintFormType `xml:"printFormInfo,omitempty"`
+
+	// ExtPrintFormInfo: Электронный документ, полученный из внешней системы. Игнорируется при приеме-передаче, добавлено на развитие
+	ExtPrintFormInfo *cmn.ExtPrintFormType `xml:"extPrintFormInfo,omitempty"`
+
+	// AttachmentsInfo: Информация о прикрепленных документах
+	AttachmentsInfo *cmn.AttachmentListType `xml:"attachmentsInfo,omitempty"`
+
+	// PrintFormFieldsInfo: Дополнительная информация для печатной формы. Игнорируется при приёме, заполняется при передаче
+	PrintFormFieldsInfo *PrintFormFieldsInfo `xml:"printFormFieldsInfo,omitempty"`
 }
 
 // ClarificationResultRequestType: Тип: Запрос о даче разъяснений результатов (не применяется для СОП EF2020, EOK2020, EZK2020, EZT)
@@ -11350,6 +11758,18 @@ type ClarificationResultRequestType struct {
 
 	// SchemeVersion: Версия схемы
 	SchemeVersion base.SchemeVersionType `xml:"schemeVersion,attr"`
+
+	// ExternalId: Внешний идентификатор документа/ При приеме контролируется уникальность номера в рамках организации, размещающей закупку
+	ExternalId *base.ExternalIdType `xml:"externalId,omitempty"`
+
+	// CommonInfo: Общая информация
+	CommonInfo CommonInfo `xml:"commonInfo"`
+
+	// AttachmentsInfo: Информация о прикрепленных документах
+	AttachmentsInfo *cmn.AttachmentListType `xml:"attachmentsInfo,omitempty"`
+
+	// PrintFormFieldsInfo: Дополнительная информация для печатной формы. Игнорируется при приёме, заполняется при передаче
+	PrintFormFieldsInfo *PrintFormFieldsInfo `xml:"printFormFieldsInfo,omitempty"`
 }
 
 // ClarificationResultType: Тип: Разъяснение результатов (не применяется для СОП EF2020, EOK2020, EZK2020, EZT)
@@ -11358,6 +11778,30 @@ type ClarificationResultType struct {
 
 	// SchemeVersion: Версия схемы
 	SchemeVersion base.SchemeVersionType `xml:"schemeVersion,attr"`
+
+	// Id: Идентификатор объекта ЕИС. Обязателен для заполнения при приеме проекта изменения размещенного документа
+	Id *int64 `xml:"id,omitempty"`
+
+	// ExternalId: Внешний идентификатор документа. При приеме контролируется уникальность номера в рамках организации, размещающей закупку
+	ExternalId *base.ExternalIdType `xml:"externalId,omitempty"`
+
+	// CommonInfo: Общая информация
+	CommonInfo CommonInfo `xml:"commonInfo"`
+
+	// RequestInfo: Информация о запросе на разъяснение
+	RequestInfo *RequestInfo `xml:"requestInfo,omitempty"`
+
+	// PrintFormInfo: Печатная форма документа в ЕИС. Элемент игнорируется при приёме. При передаче заполняется ссылкой на печатную форму и электронную подпись размещенного в ЕИС документа
+	PrintFormInfo *cmn.PrintFormType `xml:"printFormInfo,omitempty"`
+
+	// ExtPrintFormInfo: Электронный документ, полученный из внешней системы. Игнорируется при приеме-передаче, добавлено на развитие
+	ExtPrintFormInfo *cmn.ExtPrintFormType `xml:"extPrintFormInfo,omitempty"`
+
+	// AttachmentsInfo: Информация о прикрепленных документах
+	AttachmentsInfo *cmn.AttachmentListType `xml:"attachmentsInfo,omitempty"`
+
+	// PrintFormFieldsInfo: Дополнительная информация для печатной формы. Игнорируется при приёме, заполняется при передаче
+	PrintFormFieldsInfo *PrintFormFieldsInfo `xml:"printFormFieldsInfo,omitempty"`
 }
 
 // ProtocolCancelType: Тип: Информация об отмене протокола, принятого от ЭТП
@@ -11406,7 +11850,40 @@ type ProtocolEvasionType struct {
 	SchemeVersion base.SchemeVersionType `xml:"schemeVersion,attr"`
 
 	// ProtocolInfo: Повестка дня
-	ProtocolInfo ProtocolInfo `xml:",any"`
+	ProtocolInfo ProtocolInfo `xml:"protocolInfo"`
+
+	// Id: Идентификатор документа ЕИС. Обязателен для заполнения при приеме изменения проекта документа
+	Id *int64 `xml:"id,omitempty"`
+
+	// ExternalId: Внешний идентификатор документа. При приеме контролируется уникальность номера в рамках организации, размещающей закупку
+	ExternalId *base.ExternalIdType `xml:"externalId,omitempty"`
+
+	// VersionNumber: Номер версии документа. В случае если значение поля не указано или в поле указано 1, считается, что это первоначальная версия документа, иначе – изменение существующей версии. При приеме изменений документа контролируется последовательность нумерации
+	VersionNumber *base.VersionNumberType `xml:"versionNumber,omitempty"`
+
+	// CommonInfo: Общая информация
+	CommonInfo CommonInfo `xml:"commonInfo"`
+
+	// ContractsInfo: Информация о связанных контрактах
+	ContractsInfo *ContractsInfo `xml:"contractsInfo,omitempty"`
+
+	// ProtocolPublisherInfo: Информация об организации, разместившей протокол
+	ProtocolPublisherInfo ProtocolPublisherInfo `xml:"protocolPublisherInfo"`
+
+	// PrintFormInfo: Печатная форма документа в ЕИС. Элемент игнорируется при приёме. При передаче заполняется ссылкой на печатную форму и электронную подпись размещенного в ЕИС документа
+	PrintFormInfo *cmn.PrintFormType `xml:"printFormInfo,omitempty"`
+
+	// ExtPrintFormInfo: Электронный документ, полученный из внешней системы
+	ExtPrintFormInfo *cmn.ExtPrintFormType `xml:"extPrintFormInfo,omitempty"`
+
+	// AttachmentsInfo: Информация о прикрепленных документах
+	AttachmentsInfo *cmn.AttachmentListType `xml:"attachmentsInfo,omitempty"`
+
+	// ModificationInfo: Основание внесения изменений
+	ModificationInfo *ModificationInfo `xml:"modificationInfo,omitempty"`
+
+	// PrintFormFieldsInfo: Дополнительная информация для печатной формы. Игнорируется при приёме, заполняется при передаче
+	PrintFormFieldsInfo *PrintFormFieldsInfo `xml:"printFormFieldsInfo,omitempty"`
 }
 
 // ProtocolDeviationType: Тип: Протокол признания участника уклонившимся от заключения контракта с 01.04.2021
@@ -11417,7 +11894,40 @@ type ProtocolDeviationType struct {
 	SchemeVersion base.SchemeVersionType `xml:"schemeVersion,attr"`
 
 	// ProtocolInfo: Повестка дня
-	ProtocolInfo ProtocolInfo `xml:",any"`
+	ProtocolInfo ProtocolInfo `xml:"protocolInfo"`
+
+	// Id: Идентификатор документа ЕИС. Обязателен для заполнения при приеме изменения проекта документа
+	Id *int64 `xml:"id,omitempty"`
+
+	// ExternalId: Внешний идентификатор документа. При приеме контролируется уникальность номера в рамках организации, размещающей закупку
+	ExternalId *base.ExternalIdType `xml:"externalId,omitempty"`
+
+	// VersionNumber: Номер версии документа. В случае если значение поля не указано или в поле указано 1, считается, что это первоначальная версия документа, иначе – изменение существующей версии. При приеме изменений документа контролируется последовательность нумерации
+	VersionNumber *base.VersionNumberType `xml:"versionNumber,omitempty"`
+
+	// CommonInfo: Общая информация
+	CommonInfo CommonInfo `xml:"commonInfo"`
+
+	// ContractsInfo: Информация о связанных контрактах
+	ContractsInfo *ContractsInfo `xml:"contractsInfo,omitempty"`
+
+	// ProtocolPublisherInfo: Информация об организации, разместившей протокол
+	ProtocolPublisherInfo ProtocolPublisherInfo `xml:"protocolPublisherInfo"`
+
+	// PrintFormInfo: Печатная форма документа в ЕИС. Элемент игнорируется при приёме. При передаче заполняется ссылкой на печатную форму и электронную подпись размещенного в ЕИС документа
+	PrintFormInfo *cmn.PrintFormType `xml:"printFormInfo,omitempty"`
+
+	// ExtPrintFormInfo: Электронный документ, полученный из внешней системы
+	ExtPrintFormInfo *cmn.ExtPrintFormType `xml:"extPrintFormInfo,omitempty"`
+
+	// AttachmentsInfo: Информация о прикрепленных документах
+	AttachmentsInfo *cmn.AttachmentListType `xml:"attachmentsInfo,omitempty"`
+
+	// ModificationInfo: Основание внесения изменений
+	ModificationInfo *ModificationInfo `xml:"modificationInfo,omitempty"`
+
+	// PrintFormFieldsInfo: Дополнительная информация для печатной формы. Игнорируется при приёме, заполняется при передаче
+	PrintFormFieldsInfo *PrintFormFieldsInfo `xml:"printFormFieldsInfo,omitempty"`
 }
 
 // ProtocolEvDevCancelType: Тип: Информация об отмене протокола ПОК/ППУ с 01.04.2021
@@ -11490,6 +12000,33 @@ type NotificationEokpftype struct {
 
 	// ModificationInfo: Основание внесения изменений
 	ModificationInfo *NotificationModificationType `xml:"modificationInfo,omitempty"`
+
+	// Id: Идентификатор документа ЕИС. Обязателен для заполнения при приеме изменения проекта документа
+	Id *int64 `xml:"id,omitempty"`
+
+	// ExternalId: Внешний идентификатор документа. При приеме контролируется уникальность номера в рамках организации, размещающей закупку
+	ExternalId *base.ExternalIdType `xml:"externalId,omitempty"`
+
+	// VersionNumber: Номер версии документа. В случае если значение поля не указано или в поле указано 1, считается, что это первоначальная версия документа, иначе – изменение существующей версии. При приеме изменений документа контролируется последовательность нумерации
+	VersionNumber *base.VersionNumberType `xml:"versionNumber,omitempty"`
+
+	// CommonInfo: Общая информация
+	CommonInfo NotificationCommonInfoType `xml:"commonInfo"`
+
+	// PurchaseResponsibleInfo: Информация об организации, осуществляющей размещение
+	PurchaseResponsibleInfo PurchaseResponsibleInfo `xml:"purchaseResponsibleInfo"`
+
+	// PrintFormInfo: Печатная форма документа. Элемент игнорируется при приёме. При передаче заполняется ссылкой на печатную форму и электронную подпись размещенного в ЕИС документа
+	PrintFormInfo *cmn.PrintFormType `xml:"printFormInfo,omitempty"`
+
+	// ExtPrintFormInfo: Электронный документ, полученный из внешней системы. Игнорируется при приеме-передаче, добавлено на развитие
+	ExtPrintFormInfo *cmn.ExtPrintFormType `xml:"extPrintFormInfo,omitempty"`
+
+	// AttachmentsInfo: Вложенные файлы
+	AttachmentsInfo *cmn.AttachmentListType `xml:"attachmentsInfo,omitempty"`
+
+	// ServiceSigns: Служебные признаки
+	ServiceSigns *ServiceSigns `xml:"serviceSigns,omitempty"`
 }
 
 // NotificationEoktype: Тип: Извещение о проведении ЭOK (открытый конкурс в электронной форме) с конкурсной документацией; внесение изменений
@@ -11500,7 +12037,40 @@ type NotificationEoktype struct {
 	SchemeVersion base.SchemeVersionType `xml:"schemeVersion,attr"`
 
 	// Documentation: Конкурсная документация
-	Documentation DocumentationOktype `xml:",any"`
+	Documentation DocumentationOktype `xml:"documentation"`
+
+	// NotificationInfo: Информация о проведении ЭОК (открытый конкурс в электронной форме)
+	NotificationInfo NotificationInfo `xml:"notificationInfo"`
+
+	// ModificationInfo: Основание внесения изменений
+	ModificationInfo *NotificationModificationType `xml:"modificationInfo,omitempty"`
+
+	// Id: Идентификатор документа ЕИС. Обязателен для заполнения при приеме изменения проекта документа
+	Id *int64 `xml:"id,omitempty"`
+
+	// ExternalId: Внешний идентификатор документа. При приеме контролируется уникальность номера в рамках организации, размещающей закупку
+	ExternalId *base.ExternalIdType `xml:"externalId,omitempty"`
+
+	// VersionNumber: Номер версии документа. В случае если значение поля не указано или в поле указано 1, считается, что это первоначальная версия документа, иначе – изменение существующей версии. При приеме изменений документа контролируется последовательность нумерации
+	VersionNumber *base.VersionNumberType `xml:"versionNumber,omitempty"`
+
+	// CommonInfo: Общая информация
+	CommonInfo NotificationCommonInfoType `xml:"commonInfo"`
+
+	// PurchaseResponsibleInfo: Информация об организации, осуществляющей размещение
+	PurchaseResponsibleInfo PurchaseResponsibleInfo `xml:"purchaseResponsibleInfo"`
+
+	// PrintFormInfo: Печатная форма документа. Элемент игнорируется при приёме. При передаче заполняется ссылкой на печатную форму и электронную подпись размещенного в ЕИС документа
+	PrintFormInfo *cmn.PrintFormType `xml:"printFormInfo,omitempty"`
+
+	// ExtPrintFormInfo: Электронный документ, полученный из внешней системы. Игнорируется при приеме-передаче, добавлено на развитие
+	ExtPrintFormInfo *cmn.ExtPrintFormType `xml:"extPrintFormInfo,omitempty"`
+
+	// AttachmentsInfo: Вложенные файлы
+	AttachmentsInfo *cmn.AttachmentListType `xml:"attachmentsInfo,omitempty"`
+
+	// ServiceSigns: Служебные признаки
+	ServiceSigns *ServiceSigns `xml:"serviceSigns,omitempty"`
 }
 
 // ProtocolEok1Type: Тип: Протокол рассмотрения и оценки первых частей заявок на участие в ЭOK (открытый конкурс в электронной форме); внесение изменений
@@ -11511,7 +12081,46 @@ type ProtocolEok1Type struct {
 	SchemeVersion base.SchemeVersionType `xml:"schemeVersion,attr"`
 
 	// ProtocolInfo: Информация о проведении ЭОК (открытый конкурс в электронной форме). В рамках блока должен быть заполнен блок applicationsInfo и/или abandonedReason
-	ProtocolInfo ProtocolInfo `xml:",any"`
+	ProtocolInfo ProtocolInfo `xml:"protocolInfo"`
+
+	// Id: Идентификатор документа ЕИС. Игнорируется при приеме-передаче. Добавлено на развитие
+	Id *int64 `xml:"id,omitempty"`
+
+	// ExternalId: Внешний идентификатор документа. При приеме контролируется уникальность номера в рамках организации, размещающей закупку
+	ExternalId *base.ExternalIdType `xml:"externalId,omitempty"`
+
+	// VersionNumber: Номер версии документа. В случае если значение поля не указано или в поле указано 1, считается, что это первоначальная версия документа, иначе – изменение существующей версии. При приеме изменений документа контролируется последовательность нумерации
+	VersionNumber *base.VersionNumberType `xml:"versionNumber,omitempty"`
+
+	// FoundationDocInfo: Документ-основание. Блок игнорируется при приеме, автоматически заполняется при передаче
+	FoundationDocInfo *FoundationDocInfoType `xml:"foundationDocInfo,omitempty"`
+
+	// CommonInfo: Общая информация
+	CommonInfo ProtocolCommonInfoType `xml:"commonInfo"`
+
+	// ProtocolPublisherInfo: Информация об организации, разместившей протокол
+	ProtocolPublisherInfo ProtocolPublisherInfo `xml:"protocolPublisherInfo"`
+
+	// CommissionInfo: Информация о комиссии
+	CommissionInfo cmn.CommissionType `xml:"commissionInfo"`
+
+	// PrintFormInfo: Печатная форма документа в ЕИС. Элемент игнорируется при приёме. При передаче заполняется ссылкой на печатную форму и электронную подпись размещенного в ЕИС документа
+	PrintFormInfo *cmn.PrintFormType `xml:"printFormInfo,omitempty"`
+
+	// ExtPrintFormInfo: Электронный документ, полученный из внешней системы
+	ExtPrintFormInfo cmn.ExtPrintFormType `xml:"extPrintFormInfo"`
+
+	// AttachmentsInfo: Информация о прикрепленных документах
+	AttachmentsInfo *cmn.AttachmentListType `xml:"attachmentsInfo,omitempty"`
+
+	// ModificationInfo: Основание внесения изменений. При приеме изменений протоколов fcsProtocolEOK1, fcsProtocolEOK2, fcsProtocolEOKSingleApp, fcsProtocolEOKSinglePart, fcsProtocolEOKOU1, fcsProtocolEOKOU2, fcsProtocolEOKOUSingleApp, fcsProtocolEOOUKSinglePart, fcsProtocolEOKD1, fcsProtocolEOKD2, fcsProtocolEOKD3, fcsProtocolEOKDSingleApp, fcsProtocolEOKDSinglePart, fcsProtocolEZP1Extract если: 1) в ЕИС размещена действующая версия дочернего протокола; 2) основание исправления «По решению судебного органа»/«По решению контролирующего органа» (т.е. заполнен блок modification/reason/courtDecision или modification/reason/authorityPrescription), то допускается изменение полей: - "Место проведения процедуры" (place) - "Дата и время проведения процедуры" (procedureDT) - "Информация о прикрепленных документах" (attachments) - "Название комиссии" (commission/commissionName) (за исключением протокола fcsProtocolEZP1Extract)
+	ModificationInfo *ModificationType `xml:"modificationInfo,omitempty"`
+
+	// AfterProlongation: Протокол после продления. Для протоколов, принимаемых после того, как по закупке размещен документ "Извещение о продлении срока подачи заявок" должно быть указано значение true, в остальных случаях указывается значение false
+	AfterProlongation bool `xml:"afterProlongation"`
+
+	// PrintFormFieldsInfo: Дополнительная информация для печатной формы. Игнорируется при приёме, заполняется при передаче
+	PrintFormFieldsInfo *PrintFormFieldsInfo `xml:"printFormFieldsInfo,omitempty"`
 }
 
 // ProtocolEok2Type: Тип: Протокол рассмотрения и оценки вторых частей заявок на участие в ЭOK (открытый конкурс в электронной форме); внесение изменений
@@ -11522,7 +12131,46 @@ type ProtocolEok2Type struct {
 	SchemeVersion base.SchemeVersionType `xml:"schemeVersion,attr"`
 
 	// ProtocolInfo: Информация о проведении ЭОК (открытый конкурс в электронной форме)
-	ProtocolInfo ProtocolInfo `xml:",any"`
+	ProtocolInfo ProtocolInfo `xml:"protocolInfo"`
+
+	// Id: Идентификатор документа ЕИС. Игнорируется при приеме-передаче. Добавлено на развитие
+	Id *int64 `xml:"id,omitempty"`
+
+	// ExternalId: Внешний идентификатор документа. При приеме контролируется уникальность номера в рамках организации, размещающей закупку
+	ExternalId *base.ExternalIdType `xml:"externalId,omitempty"`
+
+	// VersionNumber: Номер версии документа. В случае если значение поля не указано или в поле указано 1, считается, что это первоначальная версия документа, иначе – изменение существующей версии. При приеме изменений документа контролируется последовательность нумерации
+	VersionNumber *base.VersionNumberType `xml:"versionNumber,omitempty"`
+
+	// FoundationDocInfo: Документ-основание. Блок игнорируется при приеме, автоматически заполняется при передаче
+	FoundationDocInfo *FoundationDocInfoType `xml:"foundationDocInfo,omitempty"`
+
+	// CommonInfo: Общая информация
+	CommonInfo ProtocolCommonInfoType `xml:"commonInfo"`
+
+	// ProtocolPublisherInfo: Информация об организации, разместившей протокол
+	ProtocolPublisherInfo ProtocolPublisherInfo `xml:"protocolPublisherInfo"`
+
+	// CommissionInfo: Информация о комиссии
+	CommissionInfo cmn.CommissionType `xml:"commissionInfo"`
+
+	// PrintFormInfo: Печатная форма документа в ЕИС. Элемент игнорируется при приёме. При передаче заполняется ссылкой на печатную форму и электронную подпись размещенного в ЕИС документа
+	PrintFormInfo *cmn.PrintFormType `xml:"printFormInfo,omitempty"`
+
+	// ExtPrintFormInfo: Электронный документ, полученный из внешней системы
+	ExtPrintFormInfo cmn.ExtPrintFormType `xml:"extPrintFormInfo"`
+
+	// AttachmentsInfo: Информация о прикрепленных документах
+	AttachmentsInfo *cmn.AttachmentListType `xml:"attachmentsInfo,omitempty"`
+
+	// ModificationInfo: Основание внесения изменений. При приеме изменений протоколов fcsProtocolEOK1, fcsProtocolEOK2, fcsProtocolEOKSingleApp, fcsProtocolEOKSinglePart, fcsProtocolEOKOU1, fcsProtocolEOKOU2, fcsProtocolEOKOUSingleApp, fcsProtocolEOOUKSinglePart, fcsProtocolEOKD1, fcsProtocolEOKD2, fcsProtocolEOKD3, fcsProtocolEOKDSingleApp, fcsProtocolEOKDSinglePart, fcsProtocolEZP1Extract если: 1) в ЕИС размещена действующая версия дочернего протокола; 2) основание исправления «По решению судебного органа»/«По решению контролирующего органа» (т.е. заполнен блок modification/reason/courtDecision или modification/reason/authorityPrescription), то допускается изменение полей: - "Место проведения процедуры" (place) - "Дата и время проведения процедуры" (procedureDT) - "Информация о прикрепленных документах" (attachments) - "Название комиссии" (commission/commissionName) (за исключением протокола fcsProtocolEZP1Extract)
+	ModificationInfo *ModificationType `xml:"modificationInfo,omitempty"`
+
+	// AfterProlongation: Протокол после продления. Для протоколов, принимаемых после того, как по закупке размещен документ "Извещение о продлении срока подачи заявок" должно быть указано значение true, в остальных случаях указывается значение false
+	AfterProlongation bool `xml:"afterProlongation"`
+
+	// PrintFormFieldsInfo: Дополнительная информация для печатной формы. Игнорируется при приёме, заполняется при передаче
+	PrintFormFieldsInfo *PrintFormFieldsInfo `xml:"printFormFieldsInfo,omitempty"`
 }
 
 // ProtocolEok3Type: Тип: Протокол подведения итогов ЭOK (открытый конкурс в электронной форме); внесение изменений
@@ -11533,7 +12181,46 @@ type ProtocolEok3Type struct {
 	SchemeVersion base.SchemeVersionType `xml:"schemeVersion,attr"`
 
 	// ProtocolInfo: Информация о проведении ЭОК (открытый конкурс в электронной форме)
-	ProtocolInfo ProtocolInfo `xml:",any"`
+	ProtocolInfo ProtocolInfo `xml:"protocolInfo"`
+
+	// Id: Идентификатор документа ЕИС. Игнорируется при приеме-передаче. Добавлено на развитие
+	Id *int64 `xml:"id,omitempty"`
+
+	// ExternalId: Внешний идентификатор документа. При приеме контролируется уникальность номера в рамках организации, размещающей закупку
+	ExternalId *base.ExternalIdType `xml:"externalId,omitempty"`
+
+	// VersionNumber: Номер версии документа. В случае если значение поля не указано или в поле указано 1, считается, что это первоначальная версия документа, иначе – изменение существующей версии. При приеме изменений документа контролируется последовательность нумерации
+	VersionNumber *base.VersionNumberType `xml:"versionNumber,omitempty"`
+
+	// FoundationDocInfo: Документ-основание. Блок игнорируется при приеме, автоматически заполняется при передаче
+	FoundationDocInfo *FoundationDocInfoType `xml:"foundationDocInfo,omitempty"`
+
+	// CommonInfo: Общая информация
+	CommonInfo ProtocolCommonInfoType `xml:"commonInfo"`
+
+	// ProtocolPublisherInfo: Информация об организации, разместившей протокол
+	ProtocolPublisherInfo ProtocolPublisherInfo `xml:"protocolPublisherInfo"`
+
+	// CommissionInfo: Информация о комиссии
+	CommissionInfo cmn.CommissionType `xml:"commissionInfo"`
+
+	// PrintFormInfo: Печатная форма документа в ЕИС. Элемент игнорируется при приёме. При передаче заполняется ссылкой на печатную форму и электронную подпись размещенного в ЕИС документа
+	PrintFormInfo *cmn.PrintFormType `xml:"printFormInfo,omitempty"`
+
+	// ExtPrintFormInfo: Электронный документ, полученный из внешней системы
+	ExtPrintFormInfo cmn.ExtPrintFormType `xml:"extPrintFormInfo"`
+
+	// AttachmentsInfo: Информация о прикрепленных документах
+	AttachmentsInfo *cmn.AttachmentListType `xml:"attachmentsInfo,omitempty"`
+
+	// ModificationInfo: Основание внесения изменений. При приеме изменений протоколов fcsProtocolEOK1, fcsProtocolEOK2, fcsProtocolEOKSingleApp, fcsProtocolEOKSinglePart, fcsProtocolEOKOU1, fcsProtocolEOKOU2, fcsProtocolEOKOUSingleApp, fcsProtocolEOOUKSinglePart, fcsProtocolEOKD1, fcsProtocolEOKD2, fcsProtocolEOKD3, fcsProtocolEOKDSingleApp, fcsProtocolEOKDSinglePart, fcsProtocolEZP1Extract если: 1) в ЕИС размещена действующая версия дочернего протокола; 2) основание исправления «По решению судебного органа»/«По решению контролирующего органа» (т.е. заполнен блок modification/reason/courtDecision или modification/reason/authorityPrescription), то допускается изменение полей: - "Место проведения процедуры" (place) - "Дата и время проведения процедуры" (procedureDT) - "Информация о прикрепленных документах" (attachments) - "Название комиссии" (commission/commissionName) (за исключением протокола fcsProtocolEZP1Extract)
+	ModificationInfo *ModificationType `xml:"modificationInfo,omitempty"`
+
+	// AfterProlongation: Протокол после продления. Для протоколов, принимаемых после того, как по закупке размещен документ "Извещение о продлении срока подачи заявок" должно быть указано значение true, в остальных случаях указывается значение false
+	AfterProlongation bool `xml:"afterProlongation"`
+
+	// PrintFormFieldsInfo: Дополнительная информация для печатной формы. Игнорируется при приёме, заполняется при передаче
+	PrintFormFieldsInfo *PrintFormFieldsInfo `xml:"printFormFieldsInfo,omitempty"`
 }
 
 // ProtocolEoksingleAppType: Тип: Протокол рассмотрения единственной заявки на участие ЭOK (открытый конкурс в электронной форме); внесение изменений
@@ -11544,7 +12231,46 @@ type ProtocolEoksingleAppType struct {
 	SchemeVersion base.SchemeVersionType `xml:"schemeVersion,attr"`
 
 	// ProtocolInfo: Информация в протоколе о рассмотрении единственной заявки ЭOK (открытый конкурс в электронной форме)
-	ProtocolInfo ProtocolInfo `xml:",any"`
+	ProtocolInfo ProtocolInfo `xml:"protocolInfo"`
+
+	// Id: Идентификатор документа ЕИС. Игнорируется при приеме-передаче. Добавлено на развитие
+	Id *int64 `xml:"id,omitempty"`
+
+	// ExternalId: Внешний идентификатор документа. При приеме контролируется уникальность номера в рамках организации, размещающей закупку
+	ExternalId *base.ExternalIdType `xml:"externalId,omitempty"`
+
+	// VersionNumber: Номер версии документа. В случае если значение поля не указано или в поле указано 1, считается, что это первоначальная версия документа, иначе – изменение существующей версии. При приеме изменений документа контролируется последовательность нумерации
+	VersionNumber *base.VersionNumberType `xml:"versionNumber,omitempty"`
+
+	// FoundationDocInfo: Документ-основание. Блок игнорируется при приеме, автоматически заполняется при передаче
+	FoundationDocInfo *FoundationDocInfoType `xml:"foundationDocInfo,omitempty"`
+
+	// CommonInfo: Общая информация
+	CommonInfo ProtocolCommonInfoType `xml:"commonInfo"`
+
+	// ProtocolPublisherInfo: Информация об организации, разместившей протокол
+	ProtocolPublisherInfo ProtocolPublisherInfo `xml:"protocolPublisherInfo"`
+
+	// CommissionInfo: Информация о комиссии
+	CommissionInfo cmn.CommissionType `xml:"commissionInfo"`
+
+	// PrintFormInfo: Печатная форма документа в ЕИС. Элемент игнорируется при приёме. При передаче заполняется ссылкой на печатную форму и электронную подпись размещенного в ЕИС документа
+	PrintFormInfo *cmn.PrintFormType `xml:"printFormInfo,omitempty"`
+
+	// ExtPrintFormInfo: Электронный документ, полученный из внешней системы
+	ExtPrintFormInfo cmn.ExtPrintFormType `xml:"extPrintFormInfo"`
+
+	// AttachmentsInfo: Информация о прикрепленных документах
+	AttachmentsInfo *cmn.AttachmentListType `xml:"attachmentsInfo,omitempty"`
+
+	// ModificationInfo: Основание внесения изменений. При приеме изменений протоколов fcsProtocolEOK1, fcsProtocolEOK2, fcsProtocolEOKSingleApp, fcsProtocolEOKSinglePart, fcsProtocolEOKOU1, fcsProtocolEOKOU2, fcsProtocolEOKOUSingleApp, fcsProtocolEOOUKSinglePart, fcsProtocolEOKD1, fcsProtocolEOKD2, fcsProtocolEOKD3, fcsProtocolEOKDSingleApp, fcsProtocolEOKDSinglePart, fcsProtocolEZP1Extract если: 1) в ЕИС размещена действующая версия дочернего протокола; 2) основание исправления «По решению судебного органа»/«По решению контролирующего органа» (т.е. заполнен блок modification/reason/courtDecision или modification/reason/authorityPrescription), то допускается изменение полей: - "Место проведения процедуры" (place) - "Дата и время проведения процедуры" (procedureDT) - "Информация о прикрепленных документах" (attachments) - "Название комиссии" (commission/commissionName) (за исключением протокола fcsProtocolEZP1Extract)
+	ModificationInfo *ModificationType `xml:"modificationInfo,omitempty"`
+
+	// AfterProlongation: Протокол после продления. Для протоколов, принимаемых после того, как по закупке размещен документ "Извещение о продлении срока подачи заявок" должно быть указано значение true, в остальных случаях указывается значение false
+	AfterProlongation bool `xml:"afterProlongation"`
+
+	// PrintFormFieldsInfo: Дополнительная информация для печатной формы. Игнорируется при приёме, заполняется при передаче
+	PrintFormFieldsInfo *PrintFormFieldsInfo `xml:"printFormFieldsInfo,omitempty"`
 }
 
 // ProtocolEoksinglePartType: Тип: Протокол рассмотрения заявки единственного участника ЭOK (открытый конкурс в электронной форме); внесение изменений
@@ -11555,7 +12281,46 @@ type ProtocolEoksinglePartType struct {
 	SchemeVersion base.SchemeVersionType `xml:"schemeVersion,attr"`
 
 	// ProtocolInfo: Информация протокола рассмотрения заявки единственного участника ЭOK (открытый конкурс в электронной форме)
-	ProtocolInfo ProtocolInfo `xml:",any"`
+	ProtocolInfo ProtocolInfo `xml:"protocolInfo"`
+
+	// Id: Идентификатор документа ЕИС. Игнорируется при приеме-передаче. Добавлено на развитие
+	Id *int64 `xml:"id,omitempty"`
+
+	// ExternalId: Внешний идентификатор документа. При приеме контролируется уникальность номера в рамках организации, размещающей закупку
+	ExternalId *base.ExternalIdType `xml:"externalId,omitempty"`
+
+	// VersionNumber: Номер версии документа. В случае если значение поля не указано или в поле указано 1, считается, что это первоначальная версия документа, иначе – изменение существующей версии. При приеме изменений документа контролируется последовательность нумерации
+	VersionNumber *base.VersionNumberType `xml:"versionNumber,omitempty"`
+
+	// FoundationDocInfo: Документ-основание. Блок игнорируется при приеме, автоматически заполняется при передаче
+	FoundationDocInfo *FoundationDocInfoType `xml:"foundationDocInfo,omitempty"`
+
+	// CommonInfo: Общая информация
+	CommonInfo ProtocolCommonInfoType `xml:"commonInfo"`
+
+	// ProtocolPublisherInfo: Информация об организации, разместившей протокол
+	ProtocolPublisherInfo ProtocolPublisherInfo `xml:"protocolPublisherInfo"`
+
+	// CommissionInfo: Информация о комиссии
+	CommissionInfo cmn.CommissionType `xml:"commissionInfo"`
+
+	// PrintFormInfo: Печатная форма документа в ЕИС. Элемент игнорируется при приёме. При передаче заполняется ссылкой на печатную форму и электронную подпись размещенного в ЕИС документа
+	PrintFormInfo *cmn.PrintFormType `xml:"printFormInfo,omitempty"`
+
+	// ExtPrintFormInfo: Электронный документ, полученный из внешней системы
+	ExtPrintFormInfo cmn.ExtPrintFormType `xml:"extPrintFormInfo"`
+
+	// AttachmentsInfo: Информация о прикрепленных документах
+	AttachmentsInfo *cmn.AttachmentListType `xml:"attachmentsInfo,omitempty"`
+
+	// ModificationInfo: Основание внесения изменений. При приеме изменений протоколов fcsProtocolEOK1, fcsProtocolEOK2, fcsProtocolEOKSingleApp, fcsProtocolEOKSinglePart, fcsProtocolEOKOU1, fcsProtocolEOKOU2, fcsProtocolEOKOUSingleApp, fcsProtocolEOOUKSinglePart, fcsProtocolEOKD1, fcsProtocolEOKD2, fcsProtocolEOKD3, fcsProtocolEOKDSingleApp, fcsProtocolEOKDSinglePart, fcsProtocolEZP1Extract если: 1) в ЕИС размещена действующая версия дочернего протокола; 2) основание исправления «По решению судебного органа»/«По решению контролирующего органа» (т.е. заполнен блок modification/reason/courtDecision или modification/reason/authorityPrescription), то допускается изменение полей: - "Место проведения процедуры" (place) - "Дата и время проведения процедуры" (procedureDT) - "Информация о прикрепленных документах" (attachments) - "Название комиссии" (commission/commissionName) (за исключением протокола fcsProtocolEZP1Extract)
+	ModificationInfo *ModificationType `xml:"modificationInfo,omitempty"`
+
+	// AfterProlongation: Протокол после продления. Для протоколов, принимаемых после того, как по закупке размещен документ "Извещение о продлении срока подачи заявок" должно быть указано значение true, в остальных случаях указывается значение false
+	AfterProlongation bool `xml:"afterProlongation"`
+
+	// PrintFormFieldsInfo: Дополнительная информация для печатной формы. Игнорируется при приёме, заполняется при передаче
+	PrintFormFieldsInfo *PrintFormFieldsInfo `xml:"printFormFieldsInfo,omitempty"`
 }
 
 // ProlongationEoktype: Тип: Извещение о продлении срока подачи заявок на участие в ЭOK (открытый конкурс в электронной форме)
@@ -11566,7 +12331,25 @@ type ProlongationEoktype struct {
 	SchemeVersion base.SchemeVersionType `xml:"schemeVersion,attr"`
 
 	// ProlongationInfo: Информацияо продлении срока подачи заявок ЭОК (открытый конкурс в электронной форме)
-	ProlongationInfo ProlongationInfoType `xml:",any"`
+	ProlongationInfo ProlongationInfoType `xml:"prolongationInfo"`
+
+	// Id: Идентификатор документа ЕИС. Игнорируется при приеме-передаче. Добавлено на развитие
+	Id *int64 `xml:"id,omitempty"`
+
+	// ExternalId: Внешний идентификатор документа. При приеме контролируется уникальность номера в рамках организации, размещающей закупку
+	ExternalId *base.ExternalIdType `xml:"externalId,omitempty"`
+
+	// CommonInfo: Общая информация
+	CommonInfo PurchaseDocumentCommonInfoType `xml:"commonInfo"`
+
+	// PrintFormInfo: Печатная форма документа
+	PrintFormInfo *cmn.PrintFormType `xml:"printFormInfo,omitempty"`
+
+	// ExtPrintFormInfo: Электронный документ, полученный из внешней системы. Игнорируется при приеме-передаче, добавлено на развитие
+	ExtPrintFormInfo *cmn.ExtPrintFormType `xml:"extPrintFormInfo,omitempty"`
+
+	// AttachmentsInfo: Прикрепленные документы. Игнорируется при приеме извещения о продлении срока подачи заявок. Игнорируется при приеме уведомления об отзыве заявки участником. Требуется обязательное заполнение при приеме отмены извещения о продлении срока подачи заявок
+	AttachmentsInfo *cmn.AttachmentListType `xml:"attachmentsInfo,omitempty"`
 }
 
 // ProlongationCancelEoktype: Тип: Отмена извещения о продлении срока подачи заявок на участие в ЭOK (открытый конкурс в электронной форме)
@@ -11581,6 +12364,24 @@ type ProlongationCancelEoktype struct {
 
 	// PrintFormFieldsInfo: Дополнительная информация для печатной формы. Игнорируется при приёме, заполняется при передаче
 	PrintFormFieldsInfo *PrintFormFieldsInfo `xml:"printFormFieldsInfo,omitempty"`
+
+	// Id: Идентификатор документа ЕИС. Игнорируется при приеме-передаче. Добавлено на развитие
+	Id *int64 `xml:"id,omitempty"`
+
+	// ExternalId: Внешний идентификатор документа. При приеме контролируется уникальность номера в рамках организации, размещающей закупку
+	ExternalId *base.ExternalIdType `xml:"externalId,omitempty"`
+
+	// CommonInfo: Общая информация
+	CommonInfo PurchaseDocumentCommonInfoType `xml:"commonInfo"`
+
+	// PrintFormInfo: Печатная форма документа
+	PrintFormInfo *cmn.PrintFormType `xml:"printFormInfo,omitempty"`
+
+	// ExtPrintFormInfo: Электронный документ, полученный из внешней системы. Игнорируется при приеме-передаче, добавлено на развитие
+	ExtPrintFormInfo *cmn.ExtPrintFormType `xml:"extPrintFormInfo,omitempty"`
+
+	// AttachmentsInfo: Прикрепленные документы. Игнорируется при приеме извещения о продлении срока подачи заявок. Игнорируется при приеме уведомления об отзыве заявки участником. Требуется обязательное заполнение при приеме отмены извещения о продлении срока подачи заявок
+	AttachmentsInfo *cmn.AttachmentListType `xml:"attachmentsInfo,omitempty"`
 }
 
 // NotificationEokoupftype: Тип: Извещение о проведении ЭOK-ОУ (открытый конкурс с ограниченным участием в электронной форме) для печатной формы Извещения
@@ -11595,6 +12396,33 @@ type NotificationEokoupftype struct {
 
 	// ModificationInfo: Основание внесения изменений
 	ModificationInfo *NotificationModificationType `xml:"modificationInfo,omitempty"`
+
+	// Id: Идентификатор документа ЕИС. Обязателен для заполнения при приеме изменения проекта документа
+	Id *int64 `xml:"id,omitempty"`
+
+	// ExternalId: Внешний идентификатор документа. При приеме контролируется уникальность номера в рамках организации, размещающей закупку
+	ExternalId *base.ExternalIdType `xml:"externalId,omitempty"`
+
+	// VersionNumber: Номер версии документа. В случае если значение поля не указано или в поле указано 1, считается, что это первоначальная версия документа, иначе – изменение существующей версии. При приеме изменений документа контролируется последовательность нумерации
+	VersionNumber *base.VersionNumberType `xml:"versionNumber,omitempty"`
+
+	// CommonInfo: Общая информация
+	CommonInfo NotificationCommonInfoType `xml:"commonInfo"`
+
+	// PurchaseResponsibleInfo: Информация об организации, осуществляющей размещение
+	PurchaseResponsibleInfo PurchaseResponsibleInfo `xml:"purchaseResponsibleInfo"`
+
+	// PrintFormInfo: Печатная форма документа. Элемент игнорируется при приёме. При передаче заполняется ссылкой на печатную форму и электронную подпись размещенного в ЕИС документа
+	PrintFormInfo *cmn.PrintFormType `xml:"printFormInfo,omitempty"`
+
+	// ExtPrintFormInfo: Электронный документ, полученный из внешней системы. Игнорируется при приеме-передаче, добавлено на развитие
+	ExtPrintFormInfo *cmn.ExtPrintFormType `xml:"extPrintFormInfo,omitempty"`
+
+	// AttachmentsInfo: Вложенные файлы
+	AttachmentsInfo *cmn.AttachmentListType `xml:"attachmentsInfo,omitempty"`
+
+	// ServiceSigns: Служебные признаки
+	ServiceSigns *ServiceSigns `xml:"serviceSigns,omitempty"`
 }
 
 // NotificationEokoutype: Тип: Извещение о проведении ЭOK-ОУ (открытый конкурс с ограниченным участием в электронной форме) с конкурсной документацией; внесение изменений
@@ -11605,7 +12433,40 @@ type NotificationEokoutype struct {
 	SchemeVersion base.SchemeVersionType `xml:"schemeVersion,attr"`
 
 	// Documentation: Конкурсная документация
-	Documentation DocumentationOktype `xml:",any"`
+	Documentation DocumentationOktype `xml:"documentation"`
+
+	// NotificationInfo: Информация о проведении ЭОК-ОУ (открытый конкурс с ограниченным участием в электронной форме)
+	NotificationInfo NotificationInfo `xml:"notificationInfo"`
+
+	// ModificationInfo: Основание внесения изменений
+	ModificationInfo *NotificationModificationType `xml:"modificationInfo,omitempty"`
+
+	// Id: Идентификатор документа ЕИС. Обязателен для заполнения при приеме изменения проекта документа
+	Id *int64 `xml:"id,omitempty"`
+
+	// ExternalId: Внешний идентификатор документа. При приеме контролируется уникальность номера в рамках организации, размещающей закупку
+	ExternalId *base.ExternalIdType `xml:"externalId,omitempty"`
+
+	// VersionNumber: Номер версии документа. В случае если значение поля не указано или в поле указано 1, считается, что это первоначальная версия документа, иначе – изменение существующей версии. При приеме изменений документа контролируется последовательность нумерации
+	VersionNumber *base.VersionNumberType `xml:"versionNumber,omitempty"`
+
+	// CommonInfo: Общая информация
+	CommonInfo NotificationCommonInfoType `xml:"commonInfo"`
+
+	// PurchaseResponsibleInfo: Информация об организации, осуществляющей размещение
+	PurchaseResponsibleInfo PurchaseResponsibleInfo `xml:"purchaseResponsibleInfo"`
+
+	// PrintFormInfo: Печатная форма документа. Элемент игнорируется при приёме. При передаче заполняется ссылкой на печатную форму и электронную подпись размещенного в ЕИС документа
+	PrintFormInfo *cmn.PrintFormType `xml:"printFormInfo,omitempty"`
+
+	// ExtPrintFormInfo: Электронный документ, полученный из внешней системы. Игнорируется при приеме-передаче, добавлено на развитие
+	ExtPrintFormInfo *cmn.ExtPrintFormType `xml:"extPrintFormInfo,omitempty"`
+
+	// AttachmentsInfo: Вложенные файлы
+	AttachmentsInfo *cmn.AttachmentListType `xml:"attachmentsInfo,omitempty"`
+
+	// ServiceSigns: Служебные признаки
+	ServiceSigns *ServiceSigns `xml:"serviceSigns,omitempty"`
 }
 
 // ProtocolEokou1Type: Тип: Протокол рассмотрения и оценки первых частей заявок на участие в ЭOK-ОУ (открытый конкурс с ограниченным участием в электронной форме); внесение изменений
@@ -11616,7 +12477,46 @@ type ProtocolEokou1Type struct {
 	SchemeVersion base.SchemeVersionType `xml:"schemeVersion,attr"`
 
 	// ProtocolInfo: Информация о проведении ЭОК-ОУ (открытый конкурс с ограниченным участием в электронной форме). В рамках блока должен быть заполнен блок applicationsInfo и/или abandonedReason
-	ProtocolInfo ProtocolInfo `xml:",any"`
+	ProtocolInfo ProtocolInfo `xml:"protocolInfo"`
+
+	// Id: Идентификатор документа ЕИС. Игнорируется при приеме-передаче. Добавлено на развитие
+	Id *int64 `xml:"id,omitempty"`
+
+	// ExternalId: Внешний идентификатор документа. При приеме контролируется уникальность номера в рамках организации, размещающей закупку
+	ExternalId *base.ExternalIdType `xml:"externalId,omitempty"`
+
+	// VersionNumber: Номер версии документа. В случае если значение поля не указано или в поле указано 1, считается, что это первоначальная версия документа, иначе – изменение существующей версии. При приеме изменений документа контролируется последовательность нумерации
+	VersionNumber *base.VersionNumberType `xml:"versionNumber,omitempty"`
+
+	// FoundationDocInfo: Документ-основание. Блок игнорируется при приеме, автоматически заполняется при передаче
+	FoundationDocInfo *FoundationDocInfoType `xml:"foundationDocInfo,omitempty"`
+
+	// CommonInfo: Общая информация
+	CommonInfo ProtocolCommonInfoType `xml:"commonInfo"`
+
+	// ProtocolPublisherInfo: Информация об организации, разместившей протокол
+	ProtocolPublisherInfo ProtocolPublisherInfo `xml:"protocolPublisherInfo"`
+
+	// CommissionInfo: Информация о комиссии
+	CommissionInfo cmn.CommissionType `xml:"commissionInfo"`
+
+	// PrintFormInfo: Печатная форма документа в ЕИС. Элемент игнорируется при приёме. При передаче заполняется ссылкой на печатную форму и электронную подпись размещенного в ЕИС документа
+	PrintFormInfo *cmn.PrintFormType `xml:"printFormInfo,omitempty"`
+
+	// ExtPrintFormInfo: Электронный документ, полученный из внешней системы
+	ExtPrintFormInfo cmn.ExtPrintFormType `xml:"extPrintFormInfo"`
+
+	// AttachmentsInfo: Информация о прикрепленных документах
+	AttachmentsInfo *cmn.AttachmentListType `xml:"attachmentsInfo,omitempty"`
+
+	// ModificationInfo: Основание внесения изменений. При приеме изменений протоколов fcsProtocolEOK1, fcsProtocolEOK2, fcsProtocolEOKSingleApp, fcsProtocolEOKSinglePart, fcsProtocolEOKOU1, fcsProtocolEOKOU2, fcsProtocolEOKOUSingleApp, fcsProtocolEOOUKSinglePart, fcsProtocolEOKD1, fcsProtocolEOKD2, fcsProtocolEOKD3, fcsProtocolEOKDSingleApp, fcsProtocolEOKDSinglePart, fcsProtocolEZP1Extract если: 1) в ЕИС размещена действующая версия дочернего протокола; 2) основание исправления «По решению судебного органа»/«По решению контролирующего органа» (т.е. заполнен блок modification/reason/courtDecision или modification/reason/authorityPrescription), то допускается изменение полей: - "Место проведения процедуры" (place) - "Дата и время проведения процедуры" (procedureDT) - "Информация о прикрепленных документах" (attachments) - "Название комиссии" (commission/commissionName) (за исключением протокола fcsProtocolEZP1Extract)
+	ModificationInfo *ModificationType `xml:"modificationInfo,omitempty"`
+
+	// AfterProlongation: Протокол после продления. Для протоколов, принимаемых после того, как по закупке размещен документ "Извещение о продлении срока подачи заявок" должно быть указано значение true, в остальных случаях указывается значение false
+	AfterProlongation bool `xml:"afterProlongation"`
+
+	// PrintFormFieldsInfo: Дополнительная информация для печатной формы. Игнорируется при приёме, заполняется при передаче
+	PrintFormFieldsInfo *PrintFormFieldsInfo `xml:"printFormFieldsInfo,omitempty"`
 }
 
 // ProtocolEokou2Type: Тип: Протокол рассмотрения и оценки вторых частей заявок на участие в ЭOK-ОУ (открытый конкурс с ограниченным участием в электронной форме); внесение изменений
@@ -11627,7 +12527,46 @@ type ProtocolEokou2Type struct {
 	SchemeVersion base.SchemeVersionType `xml:"schemeVersion,attr"`
 
 	// ProtocolInfo: Информация о проведении ЭОК-ОУ (открытый конкурс с ограниченным участием в электронной форме)
-	ProtocolInfo ProtocolInfo `xml:",any"`
+	ProtocolInfo ProtocolInfo `xml:"protocolInfo"`
+
+	// Id: Идентификатор документа ЕИС. Игнорируется при приеме-передаче. Добавлено на развитие
+	Id *int64 `xml:"id,omitempty"`
+
+	// ExternalId: Внешний идентификатор документа. При приеме контролируется уникальность номера в рамках организации, размещающей закупку
+	ExternalId *base.ExternalIdType `xml:"externalId,omitempty"`
+
+	// VersionNumber: Номер версии документа. В случае если значение поля не указано или в поле указано 1, считается, что это первоначальная версия документа, иначе – изменение существующей версии. При приеме изменений документа контролируется последовательность нумерации
+	VersionNumber *base.VersionNumberType `xml:"versionNumber,omitempty"`
+
+	// FoundationDocInfo: Документ-основание. Блок игнорируется при приеме, автоматически заполняется при передаче
+	FoundationDocInfo *FoundationDocInfoType `xml:"foundationDocInfo,omitempty"`
+
+	// CommonInfo: Общая информация
+	CommonInfo ProtocolCommonInfoType `xml:"commonInfo"`
+
+	// ProtocolPublisherInfo: Информация об организации, разместившей протокол
+	ProtocolPublisherInfo ProtocolPublisherInfo `xml:"protocolPublisherInfo"`
+
+	// CommissionInfo: Информация о комиссии
+	CommissionInfo cmn.CommissionType `xml:"commissionInfo"`
+
+	// PrintFormInfo: Печатная форма документа в ЕИС. Элемент игнорируется при приёме. При передаче заполняется ссылкой на печатную форму и электронную подпись размещенного в ЕИС документа
+	PrintFormInfo *cmn.PrintFormType `xml:"printFormInfo,omitempty"`
+
+	// ExtPrintFormInfo: Электронный документ, полученный из внешней системы
+	ExtPrintFormInfo cmn.ExtPrintFormType `xml:"extPrintFormInfo"`
+
+	// AttachmentsInfo: Информация о прикрепленных документах
+	AttachmentsInfo *cmn.AttachmentListType `xml:"attachmentsInfo,omitempty"`
+
+	// ModificationInfo: Основание внесения изменений. При приеме изменений протоколов fcsProtocolEOK1, fcsProtocolEOK2, fcsProtocolEOKSingleApp, fcsProtocolEOKSinglePart, fcsProtocolEOKOU1, fcsProtocolEOKOU2, fcsProtocolEOKOUSingleApp, fcsProtocolEOOUKSinglePart, fcsProtocolEOKD1, fcsProtocolEOKD2, fcsProtocolEOKD3, fcsProtocolEOKDSingleApp, fcsProtocolEOKDSinglePart, fcsProtocolEZP1Extract если: 1) в ЕИС размещена действующая версия дочернего протокола; 2) основание исправления «По решению судебного органа»/«По решению контролирующего органа» (т.е. заполнен блок modification/reason/courtDecision или modification/reason/authorityPrescription), то допускается изменение полей: - "Место проведения процедуры" (place) - "Дата и время проведения процедуры" (procedureDT) - "Информация о прикрепленных документах" (attachments) - "Название комиссии" (commission/commissionName) (за исключением протокола fcsProtocolEZP1Extract)
+	ModificationInfo *ModificationType `xml:"modificationInfo,omitempty"`
+
+	// AfterProlongation: Протокол после продления. Для протоколов, принимаемых после того, как по закупке размещен документ "Извещение о продлении срока подачи заявок" должно быть указано значение true, в остальных случаях указывается значение false
+	AfterProlongation bool `xml:"afterProlongation"`
+
+	// PrintFormFieldsInfo: Дополнительная информация для печатной формы. Игнорируется при приёме, заполняется при передаче
+	PrintFormFieldsInfo *PrintFormFieldsInfo `xml:"printFormFieldsInfo,omitempty"`
 }
 
 // ProtocolEokou3Type: Тип: Протокол подведения итогов ЭOK-ОУ (открытый конкурс с ограниченным участием в электронной форме); внесение изменений
@@ -11638,7 +12577,46 @@ type ProtocolEokou3Type struct {
 	SchemeVersion base.SchemeVersionType `xml:"schemeVersion,attr"`
 
 	// ProtocolInfo: Информация о проведении ЭОК-ОУ (открытый конкурс с ограниченным участием в электронной форме)
-	ProtocolInfo ProtocolInfo `xml:",any"`
+	ProtocolInfo ProtocolInfo `xml:"protocolInfo"`
+
+	// Id: Идентификатор документа ЕИС. Игнорируется при приеме-передаче. Добавлено на развитие
+	Id *int64 `xml:"id,omitempty"`
+
+	// ExternalId: Внешний идентификатор документа. При приеме контролируется уникальность номера в рамках организации, размещающей закупку
+	ExternalId *base.ExternalIdType `xml:"externalId,omitempty"`
+
+	// VersionNumber: Номер версии документа. В случае если значение поля не указано или в поле указано 1, считается, что это первоначальная версия документа, иначе – изменение существующей версии. При приеме изменений документа контролируется последовательность нумерации
+	VersionNumber *base.VersionNumberType `xml:"versionNumber,omitempty"`
+
+	// FoundationDocInfo: Документ-основание. Блок игнорируется при приеме, автоматически заполняется при передаче
+	FoundationDocInfo *FoundationDocInfoType `xml:"foundationDocInfo,omitempty"`
+
+	// CommonInfo: Общая информация
+	CommonInfo ProtocolCommonInfoType `xml:"commonInfo"`
+
+	// ProtocolPublisherInfo: Информация об организации, разместившей протокол
+	ProtocolPublisherInfo ProtocolPublisherInfo `xml:"protocolPublisherInfo"`
+
+	// CommissionInfo: Информация о комиссии
+	CommissionInfo cmn.CommissionType `xml:"commissionInfo"`
+
+	// PrintFormInfo: Печатная форма документа в ЕИС. Элемент игнорируется при приёме. При передаче заполняется ссылкой на печатную форму и электронную подпись размещенного в ЕИС документа
+	PrintFormInfo *cmn.PrintFormType `xml:"printFormInfo,omitempty"`
+
+	// ExtPrintFormInfo: Электронный документ, полученный из внешней системы
+	ExtPrintFormInfo cmn.ExtPrintFormType `xml:"extPrintFormInfo"`
+
+	// AttachmentsInfo: Информация о прикрепленных документах
+	AttachmentsInfo *cmn.AttachmentListType `xml:"attachmentsInfo,omitempty"`
+
+	// ModificationInfo: Основание внесения изменений. При приеме изменений протоколов fcsProtocolEOK1, fcsProtocolEOK2, fcsProtocolEOKSingleApp, fcsProtocolEOKSinglePart, fcsProtocolEOKOU1, fcsProtocolEOKOU2, fcsProtocolEOKOUSingleApp, fcsProtocolEOOUKSinglePart, fcsProtocolEOKD1, fcsProtocolEOKD2, fcsProtocolEOKD3, fcsProtocolEOKDSingleApp, fcsProtocolEOKDSinglePart, fcsProtocolEZP1Extract если: 1) в ЕИС размещена действующая версия дочернего протокола; 2) основание исправления «По решению судебного органа»/«По решению контролирующего органа» (т.е. заполнен блок modification/reason/courtDecision или modification/reason/authorityPrescription), то допускается изменение полей: - "Место проведения процедуры" (place) - "Дата и время проведения процедуры" (procedureDT) - "Информация о прикрепленных документах" (attachments) - "Название комиссии" (commission/commissionName) (за исключением протокола fcsProtocolEZP1Extract)
+	ModificationInfo *ModificationType `xml:"modificationInfo,omitempty"`
+
+	// AfterProlongation: Протокол после продления. Для протоколов, принимаемых после того, как по закупке размещен документ "Извещение о продлении срока подачи заявок" должно быть указано значение true, в остальных случаях указывается значение false
+	AfterProlongation bool `xml:"afterProlongation"`
+
+	// PrintFormFieldsInfo: Дополнительная информация для печатной формы. Игнорируется при приёме, заполняется при передаче
+	PrintFormFieldsInfo *PrintFormFieldsInfo `xml:"printFormFieldsInfo,omitempty"`
 }
 
 // ProtocolEokousingleAppType: Тип: Протокол рассмотрения единственной заявки на участие ЭOK-ОУ (открытый конкурс с ограниченным участием в электронной форме); внесение изменений
@@ -11649,7 +12627,46 @@ type ProtocolEokousingleAppType struct {
 	SchemeVersion base.SchemeVersionType `xml:"schemeVersion,attr"`
 
 	// ProtocolInfo: Информация в протоколе о рассмотрении единственной заявки ЭOK-ОУ (открытый конкурс с ограниченным участием в электронной форме)
-	ProtocolInfo ProtocolInfo `xml:",any"`
+	ProtocolInfo ProtocolInfo `xml:"protocolInfo"`
+
+	// Id: Идентификатор документа ЕИС. Игнорируется при приеме-передаче. Добавлено на развитие
+	Id *int64 `xml:"id,omitempty"`
+
+	// ExternalId: Внешний идентификатор документа. При приеме контролируется уникальность номера в рамках организации, размещающей закупку
+	ExternalId *base.ExternalIdType `xml:"externalId,omitempty"`
+
+	// VersionNumber: Номер версии документа. В случае если значение поля не указано или в поле указано 1, считается, что это первоначальная версия документа, иначе – изменение существующей версии. При приеме изменений документа контролируется последовательность нумерации
+	VersionNumber *base.VersionNumberType `xml:"versionNumber,omitempty"`
+
+	// FoundationDocInfo: Документ-основание. Блок игнорируется при приеме, автоматически заполняется при передаче
+	FoundationDocInfo *FoundationDocInfoType `xml:"foundationDocInfo,omitempty"`
+
+	// CommonInfo: Общая информация
+	CommonInfo ProtocolCommonInfoType `xml:"commonInfo"`
+
+	// ProtocolPublisherInfo: Информация об организации, разместившей протокол
+	ProtocolPublisherInfo ProtocolPublisherInfo `xml:"protocolPublisherInfo"`
+
+	// CommissionInfo: Информация о комиссии
+	CommissionInfo cmn.CommissionType `xml:"commissionInfo"`
+
+	// PrintFormInfo: Печатная форма документа в ЕИС. Элемент игнорируется при приёме. При передаче заполняется ссылкой на печатную форму и электронную подпись размещенного в ЕИС документа
+	PrintFormInfo *cmn.PrintFormType `xml:"printFormInfo,omitempty"`
+
+	// ExtPrintFormInfo: Электронный документ, полученный из внешней системы
+	ExtPrintFormInfo cmn.ExtPrintFormType `xml:"extPrintFormInfo"`
+
+	// AttachmentsInfo: Информация о прикрепленных документах
+	AttachmentsInfo *cmn.AttachmentListType `xml:"attachmentsInfo,omitempty"`
+
+	// ModificationInfo: Основание внесения изменений. При приеме изменений протоколов fcsProtocolEOK1, fcsProtocolEOK2, fcsProtocolEOKSingleApp, fcsProtocolEOKSinglePart, fcsProtocolEOKOU1, fcsProtocolEOKOU2, fcsProtocolEOKOUSingleApp, fcsProtocolEOOUKSinglePart, fcsProtocolEOKD1, fcsProtocolEOKD2, fcsProtocolEOKD3, fcsProtocolEOKDSingleApp, fcsProtocolEOKDSinglePart, fcsProtocolEZP1Extract если: 1) в ЕИС размещена действующая версия дочернего протокола; 2) основание исправления «По решению судебного органа»/«По решению контролирующего органа» (т.е. заполнен блок modification/reason/courtDecision или modification/reason/authorityPrescription), то допускается изменение полей: - "Место проведения процедуры" (place) - "Дата и время проведения процедуры" (procedureDT) - "Информация о прикрепленных документах" (attachments) - "Название комиссии" (commission/commissionName) (за исключением протокола fcsProtocolEZP1Extract)
+	ModificationInfo *ModificationType `xml:"modificationInfo,omitempty"`
+
+	// AfterProlongation: Протокол после продления. Для протоколов, принимаемых после того, как по закупке размещен документ "Извещение о продлении срока подачи заявок" должно быть указано значение true, в остальных случаях указывается значение false
+	AfterProlongation bool `xml:"afterProlongation"`
+
+	// PrintFormFieldsInfo: Дополнительная информация для печатной формы. Игнорируется при приёме, заполняется при передаче
+	PrintFormFieldsInfo *PrintFormFieldsInfo `xml:"printFormFieldsInfo,omitempty"`
 }
 
 // ProtocolEokousinglePartType: Тип: Протокол рассмотрения заявки единственного участника ЭOK-ОУ (открытый конкурс с ограниченным участием в электронной форме); внесение изменений
@@ -11660,7 +12677,46 @@ type ProtocolEokousinglePartType struct {
 	SchemeVersion base.SchemeVersionType `xml:"schemeVersion,attr"`
 
 	// ProtocolInfo: Информация протокола рассмотрения заявки единственного участника ЭOK-ОУ (открытый конкурс с ограниченным участием в электронной форме)
-	ProtocolInfo ProtocolInfo `xml:",any"`
+	ProtocolInfo ProtocolInfo `xml:"protocolInfo"`
+
+	// Id: Идентификатор документа ЕИС. Игнорируется при приеме-передаче. Добавлено на развитие
+	Id *int64 `xml:"id,omitempty"`
+
+	// ExternalId: Внешний идентификатор документа. При приеме контролируется уникальность номера в рамках организации, размещающей закупку
+	ExternalId *base.ExternalIdType `xml:"externalId,omitempty"`
+
+	// VersionNumber: Номер версии документа. В случае если значение поля не указано или в поле указано 1, считается, что это первоначальная версия документа, иначе – изменение существующей версии. При приеме изменений документа контролируется последовательность нумерации
+	VersionNumber *base.VersionNumberType `xml:"versionNumber,omitempty"`
+
+	// FoundationDocInfo: Документ-основание. Блок игнорируется при приеме, автоматически заполняется при передаче
+	FoundationDocInfo *FoundationDocInfoType `xml:"foundationDocInfo,omitempty"`
+
+	// CommonInfo: Общая информация
+	CommonInfo ProtocolCommonInfoType `xml:"commonInfo"`
+
+	// ProtocolPublisherInfo: Информация об организации, разместившей протокол
+	ProtocolPublisherInfo ProtocolPublisherInfo `xml:"protocolPublisherInfo"`
+
+	// CommissionInfo: Информация о комиссии
+	CommissionInfo cmn.CommissionType `xml:"commissionInfo"`
+
+	// PrintFormInfo: Печатная форма документа в ЕИС. Элемент игнорируется при приёме. При передаче заполняется ссылкой на печатную форму и электронную подпись размещенного в ЕИС документа
+	PrintFormInfo *cmn.PrintFormType `xml:"printFormInfo,omitempty"`
+
+	// ExtPrintFormInfo: Электронный документ, полученный из внешней системы
+	ExtPrintFormInfo cmn.ExtPrintFormType `xml:"extPrintFormInfo"`
+
+	// AttachmentsInfo: Информация о прикрепленных документах
+	AttachmentsInfo *cmn.AttachmentListType `xml:"attachmentsInfo,omitempty"`
+
+	// ModificationInfo: Основание внесения изменений. При приеме изменений протоколов fcsProtocolEOK1, fcsProtocolEOK2, fcsProtocolEOKSingleApp, fcsProtocolEOKSinglePart, fcsProtocolEOKOU1, fcsProtocolEOKOU2, fcsProtocolEOKOUSingleApp, fcsProtocolEOOUKSinglePart, fcsProtocolEOKD1, fcsProtocolEOKD2, fcsProtocolEOKD3, fcsProtocolEOKDSingleApp, fcsProtocolEOKDSinglePart, fcsProtocolEZP1Extract если: 1) в ЕИС размещена действующая версия дочернего протокола; 2) основание исправления «По решению судебного органа»/«По решению контролирующего органа» (т.е. заполнен блок modification/reason/courtDecision или modification/reason/authorityPrescription), то допускается изменение полей: - "Место проведения процедуры" (place) - "Дата и время проведения процедуры" (procedureDT) - "Информация о прикрепленных документах" (attachments) - "Название комиссии" (commission/commissionName) (за исключением протокола fcsProtocolEZP1Extract)
+	ModificationInfo *ModificationType `xml:"modificationInfo,omitempty"`
+
+	// AfterProlongation: Протокол после продления. Для протоколов, принимаемых после того, как по закупке размещен документ "Извещение о продлении срока подачи заявок" должно быть указано значение true, в остальных случаях указывается значение false
+	AfterProlongation bool `xml:"afterProlongation"`
+
+	// PrintFormFieldsInfo: Дополнительная информация для печатной формы. Игнорируется при приёме, заполняется при передаче
+	PrintFormFieldsInfo *PrintFormFieldsInfo `xml:"printFormFieldsInfo,omitempty"`
 }
 
 // ProlongationEokoutype: Тип: Извещение о продлении срока подачи заявок в ЭOK-ОУ (открытый конкурс с ограниченным участием в электронной форме)
@@ -11671,7 +12727,25 @@ type ProlongationEokoutype struct {
 	SchemeVersion base.SchemeVersionType `xml:"schemeVersion,attr"`
 
 	// ProlongationInfo: Информация о продлении срока рассмотрения и оценки заявок в ЭОК-ОУ (открытый конкурс с ограниченным участием в электронной форме)
-	ProlongationInfo ProlongationInfoType `xml:",any"`
+	ProlongationInfo ProlongationInfoType `xml:"prolongationInfo"`
+
+	// Id: Идентификатор документа ЕИС. Игнорируется при приеме-передаче. Добавлено на развитие
+	Id *int64 `xml:"id,omitempty"`
+
+	// ExternalId: Внешний идентификатор документа. При приеме контролируется уникальность номера в рамках организации, размещающей закупку
+	ExternalId *base.ExternalIdType `xml:"externalId,omitempty"`
+
+	// CommonInfo: Общая информация
+	CommonInfo PurchaseDocumentCommonInfoType `xml:"commonInfo"`
+
+	// PrintFormInfo: Печатная форма документа
+	PrintFormInfo *cmn.PrintFormType `xml:"printFormInfo,omitempty"`
+
+	// ExtPrintFormInfo: Электронный документ, полученный из внешней системы. Игнорируется при приеме-передаче, добавлено на развитие
+	ExtPrintFormInfo *cmn.ExtPrintFormType `xml:"extPrintFormInfo,omitempty"`
+
+	// AttachmentsInfo: Прикрепленные документы. Игнорируется при приеме извещения о продлении срока подачи заявок. Игнорируется при приеме уведомления об отзыве заявки участником. Требуется обязательное заполнение при приеме отмены извещения о продлении срока подачи заявок
+	AttachmentsInfo *cmn.AttachmentListType `xml:"attachmentsInfo,omitempty"`
 }
 
 // ProlongationCancelEokoutype: Тип: Отмена извещения о продлении срока подачи заявок на участие в ЭOK-ОУ (открытый конкурс с ограниченным участием в электронной форме); внесение изменений
@@ -11686,6 +12760,24 @@ type ProlongationCancelEokoutype struct {
 
 	// PrintFormFieldsInfo: Дополнительная информация для печатной формы. Игнорируется при приёме, заполняется при передаче
 	PrintFormFieldsInfo *PrintFormFieldsInfo `xml:"printFormFieldsInfo,omitempty"`
+
+	// Id: Идентификатор документа ЕИС. Игнорируется при приеме-передаче. Добавлено на развитие
+	Id *int64 `xml:"id,omitempty"`
+
+	// ExternalId: Внешний идентификатор документа. При приеме контролируется уникальность номера в рамках организации, размещающей закупку
+	ExternalId *base.ExternalIdType `xml:"externalId,omitempty"`
+
+	// CommonInfo: Общая информация
+	CommonInfo PurchaseDocumentCommonInfoType `xml:"commonInfo"`
+
+	// PrintFormInfo: Печатная форма документа
+	PrintFormInfo *cmn.PrintFormType `xml:"printFormInfo,omitempty"`
+
+	// ExtPrintFormInfo: Электронный документ, полученный из внешней системы. Игнорируется при приеме-передаче, добавлено на развитие
+	ExtPrintFormInfo *cmn.ExtPrintFormType `xml:"extPrintFormInfo,omitempty"`
+
+	// AttachmentsInfo: Прикрепленные документы. Игнорируется при приеме извещения о продлении срока подачи заявок. Игнорируется при приеме уведомления об отзыве заявки участником. Требуется обязательное заполнение при приеме отмены извещения о продлении срока подачи заявок
+	AttachmentsInfo *cmn.AttachmentListType `xml:"attachmentsInfo,omitempty"`
 }
 
 // NotificationEokdpftype: Тип: Извещение о проведении ЭOKД (двухэтапный конкурс в электронной форме) для печатной формы Извещения
@@ -11700,6 +12792,33 @@ type NotificationEokdpftype struct {
 
 	// ModificationInfo: Основание внесения изменений
 	ModificationInfo *NotificationModificationType `xml:"modificationInfo,omitempty"`
+
+	// Id: Идентификатор документа ЕИС. Обязателен для заполнения при приеме изменения проекта документа
+	Id *int64 `xml:"id,omitempty"`
+
+	// ExternalId: Внешний идентификатор документа. При приеме контролируется уникальность номера в рамках организации, размещающей закупку
+	ExternalId *base.ExternalIdType `xml:"externalId,omitempty"`
+
+	// VersionNumber: Номер версии документа. В случае если значение поля не указано или в поле указано 1, считается, что это первоначальная версия документа, иначе – изменение существующей версии. При приеме изменений документа контролируется последовательность нумерации
+	VersionNumber *base.VersionNumberType `xml:"versionNumber,omitempty"`
+
+	// CommonInfo: Общая информация
+	CommonInfo NotificationCommonInfoType `xml:"commonInfo"`
+
+	// PurchaseResponsibleInfo: Информация об организации, осуществляющей размещение
+	PurchaseResponsibleInfo PurchaseResponsibleInfo `xml:"purchaseResponsibleInfo"`
+
+	// PrintFormInfo: Печатная форма документа. Элемент игнорируется при приёме. При передаче заполняется ссылкой на печатную форму и электронную подпись размещенного в ЕИС документа
+	PrintFormInfo *cmn.PrintFormType `xml:"printFormInfo,omitempty"`
+
+	// ExtPrintFormInfo: Электронный документ, полученный из внешней системы. Игнорируется при приеме-передаче, добавлено на развитие
+	ExtPrintFormInfo *cmn.ExtPrintFormType `xml:"extPrintFormInfo,omitempty"`
+
+	// AttachmentsInfo: Вложенные файлы
+	AttachmentsInfo *cmn.AttachmentListType `xml:"attachmentsInfo,omitempty"`
+
+	// ServiceSigns: Служебные признаки
+	ServiceSigns *ServiceSigns `xml:"serviceSigns,omitempty"`
 }
 
 // NotificationEokdtype: Тип: Извещение о проведении ЭOKД (двухэтапный конкурс в электронной форме) с конкурсной документацией; внесение изменений
@@ -11710,7 +12829,40 @@ type NotificationEokdtype struct {
 	SchemeVersion base.SchemeVersionType `xml:"schemeVersion,attr"`
 
 	// Documentation: Конкурсная документация
-	Documentation DocumentationOktype `xml:",any"`
+	Documentation DocumentationOktype `xml:"documentation"`
+
+	// NotificationInfo: Информация о проведении ЭOKД (двухэтапный конкурс в электронной форме)
+	NotificationInfo NotificationInfo `xml:"notificationInfo"`
+
+	// ModificationInfo: Основание внесения изменений
+	ModificationInfo *NotificationModificationType `xml:"modificationInfo,omitempty"`
+
+	// Id: Идентификатор документа ЕИС. Обязателен для заполнения при приеме изменения проекта документа
+	Id *int64 `xml:"id,omitempty"`
+
+	// ExternalId: Внешний идентификатор документа. При приеме контролируется уникальность номера в рамках организации, размещающей закупку
+	ExternalId *base.ExternalIdType `xml:"externalId,omitempty"`
+
+	// VersionNumber: Номер версии документа. В случае если значение поля не указано или в поле указано 1, считается, что это первоначальная версия документа, иначе – изменение существующей версии. При приеме изменений документа контролируется последовательность нумерации
+	VersionNumber *base.VersionNumberType `xml:"versionNumber,omitempty"`
+
+	// CommonInfo: Общая информация
+	CommonInfo NotificationCommonInfoType `xml:"commonInfo"`
+
+	// PurchaseResponsibleInfo: Информация об организации, осуществляющей размещение
+	PurchaseResponsibleInfo PurchaseResponsibleInfo `xml:"purchaseResponsibleInfo"`
+
+	// PrintFormInfo: Печатная форма документа. Элемент игнорируется при приёме. При передаче заполняется ссылкой на печатную форму и электронную подпись размещенного в ЕИС документа
+	PrintFormInfo *cmn.PrintFormType `xml:"printFormInfo,omitempty"`
+
+	// ExtPrintFormInfo: Электронный документ, полученный из внешней системы. Игнорируется при приеме-передаче, добавлено на развитие
+	ExtPrintFormInfo *cmn.ExtPrintFormType `xml:"extPrintFormInfo,omitempty"`
+
+	// AttachmentsInfo: Вложенные файлы
+	AttachmentsInfo *cmn.AttachmentListType `xml:"attachmentsInfo,omitempty"`
+
+	// ServiceSigns: Служебные признаки
+	ServiceSigns *ServiceSigns `xml:"serviceSigns,omitempty"`
 }
 
 // ProtocolEokd1Type: Тип: Протокол первого этапа ЭOKД (двухэтапный конкурс в электронной форме); внесение изменений
@@ -11721,7 +12873,46 @@ type ProtocolEokd1Type struct {
 	SchemeVersion base.SchemeVersionType `xml:"schemeVersion,attr"`
 
 	// ProtocolInfo: Информация о проведении ЭOKД (двухэтапный конкурс в электронной форме). В рамках блока должен быть заполнен блок applicationsInfo и/или abandonedReason
-	ProtocolInfo ProtocolInfo `xml:",any"`
+	ProtocolInfo ProtocolInfo `xml:"protocolInfo"`
+
+	// Id: Идентификатор документа ЕИС. Игнорируется при приеме-передаче. Добавлено на развитие
+	Id *int64 `xml:"id,omitempty"`
+
+	// ExternalId: Внешний идентификатор документа. При приеме контролируется уникальность номера в рамках организации, размещающей закупку
+	ExternalId *base.ExternalIdType `xml:"externalId,omitempty"`
+
+	// VersionNumber: Номер версии документа. В случае если значение поля не указано или в поле указано 1, считается, что это первоначальная версия документа, иначе – изменение существующей версии. При приеме изменений документа контролируется последовательность нумерации
+	VersionNumber *base.VersionNumberType `xml:"versionNumber,omitempty"`
+
+	// FoundationDocInfo: Документ-основание. Блок игнорируется при приеме, автоматически заполняется при передаче
+	FoundationDocInfo *FoundationDocInfoType `xml:"foundationDocInfo,omitempty"`
+
+	// CommonInfo: Общая информация
+	CommonInfo ProtocolCommonInfoType `xml:"commonInfo"`
+
+	// ProtocolPublisherInfo: Информация об организации, разместившей протокол
+	ProtocolPublisherInfo ProtocolPublisherInfo `xml:"protocolPublisherInfo"`
+
+	// CommissionInfo: Информация о комиссии
+	CommissionInfo cmn.CommissionType `xml:"commissionInfo"`
+
+	// PrintFormInfo: Печатная форма документа в ЕИС. Элемент игнорируется при приёме. При передаче заполняется ссылкой на печатную форму и электронную подпись размещенного в ЕИС документа
+	PrintFormInfo *cmn.PrintFormType `xml:"printFormInfo,omitempty"`
+
+	// ExtPrintFormInfo: Электронный документ, полученный из внешней системы
+	ExtPrintFormInfo cmn.ExtPrintFormType `xml:"extPrintFormInfo"`
+
+	// AttachmentsInfo: Информация о прикрепленных документах
+	AttachmentsInfo *cmn.AttachmentListType `xml:"attachmentsInfo,omitempty"`
+
+	// ModificationInfo: Основание внесения изменений. При приеме изменений протоколов fcsProtocolEOK1, fcsProtocolEOK2, fcsProtocolEOKSingleApp, fcsProtocolEOKSinglePart, fcsProtocolEOKOU1, fcsProtocolEOKOU2, fcsProtocolEOKOUSingleApp, fcsProtocolEOOUKSinglePart, fcsProtocolEOKD1, fcsProtocolEOKD2, fcsProtocolEOKD3, fcsProtocolEOKDSingleApp, fcsProtocolEOKDSinglePart, fcsProtocolEZP1Extract если: 1) в ЕИС размещена действующая версия дочернего протокола; 2) основание исправления «По решению судебного органа»/«По решению контролирующего органа» (т.е. заполнен блок modification/reason/courtDecision или modification/reason/authorityPrescription), то допускается изменение полей: - "Место проведения процедуры" (place) - "Дата и время проведения процедуры" (procedureDT) - "Информация о прикрепленных документах" (attachments) - "Название комиссии" (commission/commissionName) (за исключением протокола fcsProtocolEZP1Extract)
+	ModificationInfo *ModificationType `xml:"modificationInfo,omitempty"`
+
+	// AfterProlongation: Протокол после продления. Для протоколов, принимаемых после того, как по закупке размещен документ "Извещение о продлении срока подачи заявок" должно быть указано значение true, в остальных случаях указывается значение false
+	AfterProlongation bool `xml:"afterProlongation"`
+
+	// PrintFormFieldsInfo: Дополнительная информация для печатной формы. Игнорируется при приёме, заполняется при передаче
+	PrintFormFieldsInfo *PrintFormFieldsInfo `xml:"printFormFieldsInfo,omitempty"`
 }
 
 // ProtocolEokd2Type: Тип: Протокол рассмотрения и оценки первых частей заявок на участие в ЭOKД (двухэтапный конкурс в электронной форме); внесение изменений
@@ -11732,7 +12923,46 @@ type ProtocolEokd2Type struct {
 	SchemeVersion base.SchemeVersionType `xml:"schemeVersion,attr"`
 
 	// ProtocolInfo: Информация о проведении ЭOKД (двухэтапный конкурс в электронной форме). В рамках блока должен быть заполнен блок applicationsInfo и/или abandonedReason
-	ProtocolInfo ProtocolInfo `xml:",any"`
+	ProtocolInfo ProtocolInfo `xml:"protocolInfo"`
+
+	// Id: Идентификатор документа ЕИС. Игнорируется при приеме-передаче. Добавлено на развитие
+	Id *int64 `xml:"id,omitempty"`
+
+	// ExternalId: Внешний идентификатор документа. При приеме контролируется уникальность номера в рамках организации, размещающей закупку
+	ExternalId *base.ExternalIdType `xml:"externalId,omitempty"`
+
+	// VersionNumber: Номер версии документа. В случае если значение поля не указано или в поле указано 1, считается, что это первоначальная версия документа, иначе – изменение существующей версии. При приеме изменений документа контролируется последовательность нумерации
+	VersionNumber *base.VersionNumberType `xml:"versionNumber,omitempty"`
+
+	// FoundationDocInfo: Документ-основание. Блок игнорируется при приеме, автоматически заполняется при передаче
+	FoundationDocInfo *FoundationDocInfoType `xml:"foundationDocInfo,omitempty"`
+
+	// CommonInfo: Общая информация
+	CommonInfo ProtocolCommonInfoType `xml:"commonInfo"`
+
+	// ProtocolPublisherInfo: Информация об организации, разместившей протокол
+	ProtocolPublisherInfo ProtocolPublisherInfo `xml:"protocolPublisherInfo"`
+
+	// CommissionInfo: Информация о комиссии
+	CommissionInfo cmn.CommissionType `xml:"commissionInfo"`
+
+	// PrintFormInfo: Печатная форма документа в ЕИС. Элемент игнорируется при приёме. При передаче заполняется ссылкой на печатную форму и электронную подпись размещенного в ЕИС документа
+	PrintFormInfo *cmn.PrintFormType `xml:"printFormInfo,omitempty"`
+
+	// ExtPrintFormInfo: Электронный документ, полученный из внешней системы
+	ExtPrintFormInfo cmn.ExtPrintFormType `xml:"extPrintFormInfo"`
+
+	// AttachmentsInfo: Информация о прикрепленных документах
+	AttachmentsInfo *cmn.AttachmentListType `xml:"attachmentsInfo,omitempty"`
+
+	// ModificationInfo: Основание внесения изменений. При приеме изменений протоколов fcsProtocolEOK1, fcsProtocolEOK2, fcsProtocolEOKSingleApp, fcsProtocolEOKSinglePart, fcsProtocolEOKOU1, fcsProtocolEOKOU2, fcsProtocolEOKOUSingleApp, fcsProtocolEOOUKSinglePart, fcsProtocolEOKD1, fcsProtocolEOKD2, fcsProtocolEOKD3, fcsProtocolEOKDSingleApp, fcsProtocolEOKDSinglePart, fcsProtocolEZP1Extract если: 1) в ЕИС размещена действующая версия дочернего протокола; 2) основание исправления «По решению судебного органа»/«По решению контролирующего органа» (т.е. заполнен блок modification/reason/courtDecision или modification/reason/authorityPrescription), то допускается изменение полей: - "Место проведения процедуры" (place) - "Дата и время проведения процедуры" (procedureDT) - "Информация о прикрепленных документах" (attachments) - "Название комиссии" (commission/commissionName) (за исключением протокола fcsProtocolEZP1Extract)
+	ModificationInfo *ModificationType `xml:"modificationInfo,omitempty"`
+
+	// AfterProlongation: Протокол после продления. Для протоколов, принимаемых после того, как по закупке размещен документ "Извещение о продлении срока подачи заявок" должно быть указано значение true, в остальных случаях указывается значение false
+	AfterProlongation bool `xml:"afterProlongation"`
+
+	// PrintFormFieldsInfo: Дополнительная информация для печатной формы. Игнорируется при приёме, заполняется при передаче
+	PrintFormFieldsInfo *PrintFormFieldsInfo `xml:"printFormFieldsInfo,omitempty"`
 }
 
 // ProtocolEokd3Type: Тип: Протокол рассмотрения и оценки вторых частей заявок на участие в ЭOKД (двухэтапный конкурс в электронной форме); внесение изменений
@@ -11743,7 +12973,46 @@ type ProtocolEokd3Type struct {
 	SchemeVersion base.SchemeVersionType `xml:"schemeVersion,attr"`
 
 	// ProtocolInfo: Информация о проведении ЭOKД (двухэтапный конкурс в электронной форме)
-	ProtocolInfo ProtocolInfo `xml:",any"`
+	ProtocolInfo ProtocolInfo `xml:"protocolInfo"`
+
+	// Id: Идентификатор документа ЕИС. Игнорируется при приеме-передаче. Добавлено на развитие
+	Id *int64 `xml:"id,omitempty"`
+
+	// ExternalId: Внешний идентификатор документа. При приеме контролируется уникальность номера в рамках организации, размещающей закупку
+	ExternalId *base.ExternalIdType `xml:"externalId,omitempty"`
+
+	// VersionNumber: Номер версии документа. В случае если значение поля не указано или в поле указано 1, считается, что это первоначальная версия документа, иначе – изменение существующей версии. При приеме изменений документа контролируется последовательность нумерации
+	VersionNumber *base.VersionNumberType `xml:"versionNumber,omitempty"`
+
+	// FoundationDocInfo: Документ-основание. Блок игнорируется при приеме, автоматически заполняется при передаче
+	FoundationDocInfo *FoundationDocInfoType `xml:"foundationDocInfo,omitempty"`
+
+	// CommonInfo: Общая информация
+	CommonInfo ProtocolCommonInfoType `xml:"commonInfo"`
+
+	// ProtocolPublisherInfo: Информация об организации, разместившей протокол
+	ProtocolPublisherInfo ProtocolPublisherInfo `xml:"protocolPublisherInfo"`
+
+	// CommissionInfo: Информация о комиссии
+	CommissionInfo cmn.CommissionType `xml:"commissionInfo"`
+
+	// PrintFormInfo: Печатная форма документа в ЕИС. Элемент игнорируется при приёме. При передаче заполняется ссылкой на печатную форму и электронную подпись размещенного в ЕИС документа
+	PrintFormInfo *cmn.PrintFormType `xml:"printFormInfo,omitempty"`
+
+	// ExtPrintFormInfo: Электронный документ, полученный из внешней системы
+	ExtPrintFormInfo cmn.ExtPrintFormType `xml:"extPrintFormInfo"`
+
+	// AttachmentsInfo: Информация о прикрепленных документах
+	AttachmentsInfo *cmn.AttachmentListType `xml:"attachmentsInfo,omitempty"`
+
+	// ModificationInfo: Основание внесения изменений. При приеме изменений протоколов fcsProtocolEOK1, fcsProtocolEOK2, fcsProtocolEOKSingleApp, fcsProtocolEOKSinglePart, fcsProtocolEOKOU1, fcsProtocolEOKOU2, fcsProtocolEOKOUSingleApp, fcsProtocolEOOUKSinglePart, fcsProtocolEOKD1, fcsProtocolEOKD2, fcsProtocolEOKD3, fcsProtocolEOKDSingleApp, fcsProtocolEOKDSinglePart, fcsProtocolEZP1Extract если: 1) в ЕИС размещена действующая версия дочернего протокола; 2) основание исправления «По решению судебного органа»/«По решению контролирующего органа» (т.е. заполнен блок modification/reason/courtDecision или modification/reason/authorityPrescription), то допускается изменение полей: - "Место проведения процедуры" (place) - "Дата и время проведения процедуры" (procedureDT) - "Информация о прикрепленных документах" (attachments) - "Название комиссии" (commission/commissionName) (за исключением протокола fcsProtocolEZP1Extract)
+	ModificationInfo *ModificationType `xml:"modificationInfo,omitempty"`
+
+	// AfterProlongation: Протокол после продления. Для протоколов, принимаемых после того, как по закупке размещен документ "Извещение о продлении срока подачи заявок" должно быть указано значение true, в остальных случаях указывается значение false
+	AfterProlongation bool `xml:"afterProlongation"`
+
+	// PrintFormFieldsInfo: Дополнительная информация для печатной формы. Игнорируется при приёме, заполняется при передаче
+	PrintFormFieldsInfo *PrintFormFieldsInfo `xml:"printFormFieldsInfo,omitempty"`
 }
 
 // ProtocolEokd4Type: Тип: Протокол подведения итогов ЭOKД (двухэтапный конкурс в электронной форме); внесение изменений
@@ -11754,7 +13023,46 @@ type ProtocolEokd4Type struct {
 	SchemeVersion base.SchemeVersionType `xml:"schemeVersion,attr"`
 
 	// ProtocolInfo: Информация о проведении ЭOKД (двухэтапный конкурс в электронной форме)
-	ProtocolInfo ProtocolInfo `xml:",any"`
+	ProtocolInfo ProtocolInfo `xml:"protocolInfo"`
+
+	// Id: Идентификатор документа ЕИС. Игнорируется при приеме-передаче. Добавлено на развитие
+	Id *int64 `xml:"id,omitempty"`
+
+	// ExternalId: Внешний идентификатор документа. При приеме контролируется уникальность номера в рамках организации, размещающей закупку
+	ExternalId *base.ExternalIdType `xml:"externalId,omitempty"`
+
+	// VersionNumber: Номер версии документа. В случае если значение поля не указано или в поле указано 1, считается, что это первоначальная версия документа, иначе – изменение существующей версии. При приеме изменений документа контролируется последовательность нумерации
+	VersionNumber *base.VersionNumberType `xml:"versionNumber,omitempty"`
+
+	// FoundationDocInfo: Документ-основание. Блок игнорируется при приеме, автоматически заполняется при передаче
+	FoundationDocInfo *FoundationDocInfoType `xml:"foundationDocInfo,omitempty"`
+
+	// CommonInfo: Общая информация
+	CommonInfo ProtocolCommonInfoType `xml:"commonInfo"`
+
+	// ProtocolPublisherInfo: Информация об организации, разместившей протокол
+	ProtocolPublisherInfo ProtocolPublisherInfo `xml:"protocolPublisherInfo"`
+
+	// CommissionInfo: Информация о комиссии
+	CommissionInfo cmn.CommissionType `xml:"commissionInfo"`
+
+	// PrintFormInfo: Печатная форма документа в ЕИС. Элемент игнорируется при приёме. При передаче заполняется ссылкой на печатную форму и электронную подпись размещенного в ЕИС документа
+	PrintFormInfo *cmn.PrintFormType `xml:"printFormInfo,omitempty"`
+
+	// ExtPrintFormInfo: Электронный документ, полученный из внешней системы
+	ExtPrintFormInfo cmn.ExtPrintFormType `xml:"extPrintFormInfo"`
+
+	// AttachmentsInfo: Информация о прикрепленных документах
+	AttachmentsInfo *cmn.AttachmentListType `xml:"attachmentsInfo,omitempty"`
+
+	// ModificationInfo: Основание внесения изменений. При приеме изменений протоколов fcsProtocolEOK1, fcsProtocolEOK2, fcsProtocolEOKSingleApp, fcsProtocolEOKSinglePart, fcsProtocolEOKOU1, fcsProtocolEOKOU2, fcsProtocolEOKOUSingleApp, fcsProtocolEOOUKSinglePart, fcsProtocolEOKD1, fcsProtocolEOKD2, fcsProtocolEOKD3, fcsProtocolEOKDSingleApp, fcsProtocolEOKDSinglePart, fcsProtocolEZP1Extract если: 1) в ЕИС размещена действующая версия дочернего протокола; 2) основание исправления «По решению судебного органа»/«По решению контролирующего органа» (т.е. заполнен блок modification/reason/courtDecision или modification/reason/authorityPrescription), то допускается изменение полей: - "Место проведения процедуры" (place) - "Дата и время проведения процедуры" (procedureDT) - "Информация о прикрепленных документах" (attachments) - "Название комиссии" (commission/commissionName) (за исключением протокола fcsProtocolEZP1Extract)
+	ModificationInfo *ModificationType `xml:"modificationInfo,omitempty"`
+
+	// AfterProlongation: Протокол после продления. Для протоколов, принимаемых после того, как по закупке размещен документ "Извещение о продлении срока подачи заявок" должно быть указано значение true, в остальных случаях указывается значение false
+	AfterProlongation bool `xml:"afterProlongation"`
+
+	// PrintFormFieldsInfo: Дополнительная информация для печатной формы. Игнорируется при приёме, заполняется при передаче
+	PrintFormFieldsInfo *PrintFormFieldsInfo `xml:"printFormFieldsInfo,omitempty"`
 }
 
 // ProtocolEokdsingleAppType: Тип: Протокол рассмотрения единственной заявки на участие ЭOKД (двухэтапный конкурс в электронной форме); внесение изменений
@@ -11765,7 +13073,46 @@ type ProtocolEokdsingleAppType struct {
 	SchemeVersion base.SchemeVersionType `xml:"schemeVersion,attr"`
 
 	// ProtocolInfo: Информация в протоколе о рассмотрении единственной заявки ЭOKД (двухэтапный конкурс в электронной форме)
-	ProtocolInfo ProtocolInfo `xml:",any"`
+	ProtocolInfo ProtocolInfo `xml:"protocolInfo"`
+
+	// Id: Идентификатор документа ЕИС. Игнорируется при приеме-передаче. Добавлено на развитие
+	Id *int64 `xml:"id,omitempty"`
+
+	// ExternalId: Внешний идентификатор документа. При приеме контролируется уникальность номера в рамках организации, размещающей закупку
+	ExternalId *base.ExternalIdType `xml:"externalId,omitempty"`
+
+	// VersionNumber: Номер версии документа. В случае если значение поля не указано или в поле указано 1, считается, что это первоначальная версия документа, иначе – изменение существующей версии. При приеме изменений документа контролируется последовательность нумерации
+	VersionNumber *base.VersionNumberType `xml:"versionNumber,omitempty"`
+
+	// FoundationDocInfo: Документ-основание. Блок игнорируется при приеме, автоматически заполняется при передаче
+	FoundationDocInfo *FoundationDocInfoType `xml:"foundationDocInfo,omitempty"`
+
+	// CommonInfo: Общая информация
+	CommonInfo ProtocolCommonInfoType `xml:"commonInfo"`
+
+	// ProtocolPublisherInfo: Информация об организации, разместившей протокол
+	ProtocolPublisherInfo ProtocolPublisherInfo `xml:"protocolPublisherInfo"`
+
+	// CommissionInfo: Информация о комиссии
+	CommissionInfo cmn.CommissionType `xml:"commissionInfo"`
+
+	// PrintFormInfo: Печатная форма документа в ЕИС. Элемент игнорируется при приёме. При передаче заполняется ссылкой на печатную форму и электронную подпись размещенного в ЕИС документа
+	PrintFormInfo *cmn.PrintFormType `xml:"printFormInfo,omitempty"`
+
+	// ExtPrintFormInfo: Электронный документ, полученный из внешней системы
+	ExtPrintFormInfo cmn.ExtPrintFormType `xml:"extPrintFormInfo"`
+
+	// AttachmentsInfo: Информация о прикрепленных документах
+	AttachmentsInfo *cmn.AttachmentListType `xml:"attachmentsInfo,omitempty"`
+
+	// ModificationInfo: Основание внесения изменений. При приеме изменений протоколов fcsProtocolEOK1, fcsProtocolEOK2, fcsProtocolEOKSingleApp, fcsProtocolEOKSinglePart, fcsProtocolEOKOU1, fcsProtocolEOKOU2, fcsProtocolEOKOUSingleApp, fcsProtocolEOOUKSinglePart, fcsProtocolEOKD1, fcsProtocolEOKD2, fcsProtocolEOKD3, fcsProtocolEOKDSingleApp, fcsProtocolEOKDSinglePart, fcsProtocolEZP1Extract если: 1) в ЕИС размещена действующая версия дочернего протокола; 2) основание исправления «По решению судебного органа»/«По решению контролирующего органа» (т.е. заполнен блок modification/reason/courtDecision или modification/reason/authorityPrescription), то допускается изменение полей: - "Место проведения процедуры" (place) - "Дата и время проведения процедуры" (procedureDT) - "Информация о прикрепленных документах" (attachments) - "Название комиссии" (commission/commissionName) (за исключением протокола fcsProtocolEZP1Extract)
+	ModificationInfo *ModificationType `xml:"modificationInfo,omitempty"`
+
+	// AfterProlongation: Протокол после продления. Для протоколов, принимаемых после того, как по закупке размещен документ "Извещение о продлении срока подачи заявок" должно быть указано значение true, в остальных случаях указывается значение false
+	AfterProlongation bool `xml:"afterProlongation"`
+
+	// PrintFormFieldsInfo: Дополнительная информация для печатной формы. Игнорируется при приёме, заполняется при передаче
+	PrintFormFieldsInfo *PrintFormFieldsInfo `xml:"printFormFieldsInfo,omitempty"`
 }
 
 // ProtocolEokdsinglePartType: Тип: Протокол рассмотрения заявки единственного участника ЭOKД (двухэтапный конкурс в электронной форме); внесение изменений
@@ -11776,7 +13123,46 @@ type ProtocolEokdsinglePartType struct {
 	SchemeVersion base.SchemeVersionType `xml:"schemeVersion,attr"`
 
 	// ProtocolInfo: Информация протокола рассмотрения заявки единственного участника ЭOKД (двухэтапный конкурс в электронной форме)
-	ProtocolInfo ProtocolInfo `xml:",any"`
+	ProtocolInfo ProtocolInfo `xml:"protocolInfo"`
+
+	// Id: Идентификатор документа ЕИС. Игнорируется при приеме-передаче. Добавлено на развитие
+	Id *int64 `xml:"id,omitempty"`
+
+	// ExternalId: Внешний идентификатор документа. При приеме контролируется уникальность номера в рамках организации, размещающей закупку
+	ExternalId *base.ExternalIdType `xml:"externalId,omitempty"`
+
+	// VersionNumber: Номер версии документа. В случае если значение поля не указано или в поле указано 1, считается, что это первоначальная версия документа, иначе – изменение существующей версии. При приеме изменений документа контролируется последовательность нумерации
+	VersionNumber *base.VersionNumberType `xml:"versionNumber,omitempty"`
+
+	// FoundationDocInfo: Документ-основание. Блок игнорируется при приеме, автоматически заполняется при передаче
+	FoundationDocInfo *FoundationDocInfoType `xml:"foundationDocInfo,omitempty"`
+
+	// CommonInfo: Общая информация
+	CommonInfo ProtocolCommonInfoType `xml:"commonInfo"`
+
+	// ProtocolPublisherInfo: Информация об организации, разместившей протокол
+	ProtocolPublisherInfo ProtocolPublisherInfo `xml:"protocolPublisherInfo"`
+
+	// CommissionInfo: Информация о комиссии
+	CommissionInfo cmn.CommissionType `xml:"commissionInfo"`
+
+	// PrintFormInfo: Печатная форма документа в ЕИС. Элемент игнорируется при приёме. При передаче заполняется ссылкой на печатную форму и электронную подпись размещенного в ЕИС документа
+	PrintFormInfo *cmn.PrintFormType `xml:"printFormInfo,omitempty"`
+
+	// ExtPrintFormInfo: Электронный документ, полученный из внешней системы
+	ExtPrintFormInfo cmn.ExtPrintFormType `xml:"extPrintFormInfo"`
+
+	// AttachmentsInfo: Информация о прикрепленных документах
+	AttachmentsInfo *cmn.AttachmentListType `xml:"attachmentsInfo,omitempty"`
+
+	// ModificationInfo: Основание внесения изменений. При приеме изменений протоколов fcsProtocolEOK1, fcsProtocolEOK2, fcsProtocolEOKSingleApp, fcsProtocolEOKSinglePart, fcsProtocolEOKOU1, fcsProtocolEOKOU2, fcsProtocolEOKOUSingleApp, fcsProtocolEOOUKSinglePart, fcsProtocolEOKD1, fcsProtocolEOKD2, fcsProtocolEOKD3, fcsProtocolEOKDSingleApp, fcsProtocolEOKDSinglePart, fcsProtocolEZP1Extract если: 1) в ЕИС размещена действующая версия дочернего протокола; 2) основание исправления «По решению судебного органа»/«По решению контролирующего органа» (т.е. заполнен блок modification/reason/courtDecision или modification/reason/authorityPrescription), то допускается изменение полей: - "Место проведения процедуры" (place) - "Дата и время проведения процедуры" (procedureDT) - "Информация о прикрепленных документах" (attachments) - "Название комиссии" (commission/commissionName) (за исключением протокола fcsProtocolEZP1Extract)
+	ModificationInfo *ModificationType `xml:"modificationInfo,omitempty"`
+
+	// AfterProlongation: Протокол после продления. Для протоколов, принимаемых после того, как по закупке размещен документ "Извещение о продлении срока подачи заявок" должно быть указано значение true, в остальных случаях указывается значение false
+	AfterProlongation bool `xml:"afterProlongation"`
+
+	// PrintFormFieldsInfo: Дополнительная информация для печатной формы. Игнорируется при приёме, заполняется при передаче
+	PrintFormFieldsInfo *PrintFormFieldsInfo `xml:"printFormFieldsInfo,omitempty"`
 }
 
 // ProlongationEokdtype: Тип: Извещение о продлении срока подачи заявок на участие в ЭOKД (двухэтапный конкурс в электронной форме)
@@ -11787,7 +13173,25 @@ type ProlongationEokdtype struct {
 	SchemeVersion base.SchemeVersionType `xml:"schemeVersion,attr"`
 
 	// ProlongationInfo: Информация о продлении срока подачи заявок ЭOKД (двухэтапный конкурс в электронной форме)
-	ProlongationInfo ProlongationInfo `xml:",any"`
+	ProlongationInfo ProlongationInfo `xml:"prolongationInfo"`
+
+	// Id: Идентификатор документа ЕИС. Игнорируется при приеме-передаче. Добавлено на развитие
+	Id *int64 `xml:"id,omitempty"`
+
+	// ExternalId: Внешний идентификатор документа. При приеме контролируется уникальность номера в рамках организации, размещающей закупку
+	ExternalId *base.ExternalIdType `xml:"externalId,omitempty"`
+
+	// CommonInfo: Общая информация
+	CommonInfo PurchaseDocumentCommonInfoType `xml:"commonInfo"`
+
+	// PrintFormInfo: Печатная форма документа
+	PrintFormInfo *cmn.PrintFormType `xml:"printFormInfo,omitempty"`
+
+	// ExtPrintFormInfo: Электронный документ, полученный из внешней системы. Игнорируется при приеме-передаче, добавлено на развитие
+	ExtPrintFormInfo *cmn.ExtPrintFormType `xml:"extPrintFormInfo,omitempty"`
+
+	// AttachmentsInfo: Прикрепленные документы. Игнорируется при приеме извещения о продлении срока подачи заявок. Игнорируется при приеме уведомления об отзыве заявки участником. Требуется обязательное заполнение при приеме отмены извещения о продлении срока подачи заявок
+	AttachmentsInfo *cmn.AttachmentListType `xml:"attachmentsInfo,omitempty"`
 }
 
 // ProlongationCancelEokdtype: Тип: Отмена извещения о продлении срока подачи заявок на участие в ЭOKД (двухэтапный конкурс в электронной форме); внесение изменений
@@ -11802,6 +13206,24 @@ type ProlongationCancelEokdtype struct {
 
 	// PrintFormFieldsInfo: Дополнительная информация для печатной формы. Игнорируется при приёме, заполняется при передаче
 	PrintFormFieldsInfo *PrintFormFieldsInfo `xml:"printFormFieldsInfo,omitempty"`
+
+	// Id: Идентификатор документа ЕИС. Игнорируется при приеме-передаче. Добавлено на развитие
+	Id *int64 `xml:"id,omitempty"`
+
+	// ExternalId: Внешний идентификатор документа. При приеме контролируется уникальность номера в рамках организации, размещающей закупку
+	ExternalId *base.ExternalIdType `xml:"externalId,omitempty"`
+
+	// CommonInfo: Общая информация
+	CommonInfo PurchaseDocumentCommonInfoType `xml:"commonInfo"`
+
+	// PrintFormInfo: Печатная форма документа
+	PrintFormInfo *cmn.PrintFormType `xml:"printFormInfo,omitempty"`
+
+	// ExtPrintFormInfo: Электронный документ, полученный из внешней системы. Игнорируется при приеме-передаче, добавлено на развитие
+	ExtPrintFormInfo *cmn.ExtPrintFormType `xml:"extPrintFormInfo,omitempty"`
+
+	// AttachmentsInfo: Прикрепленные документы. Игнорируется при приеме извещения о продлении срока подачи заявок. Игнорируется при приеме уведомления об отзыве заявки участником. Требуется обязательное заполнение при приеме отмены извещения о продлении срока подачи заявок
+	AttachmentsInfo *cmn.AttachmentListType `xml:"attachmentsInfo,omitempty"`
 }
 
 // NotificationEzktype: Тип: Извещение о проведении ЭЗК (запрос котировок в электронной форме); изменение извещения
@@ -11816,6 +13238,33 @@ type NotificationEzktype struct {
 
 	// ModificationInfo: Основание внесения изменений
 	ModificationInfo *NotificationModificationType `xml:"modificationInfo,omitempty"`
+
+	// Id: Идентификатор документа ЕИС. Обязателен для заполнения при приеме изменения проекта документа
+	Id *int64 `xml:"id,omitempty"`
+
+	// ExternalId: Внешний идентификатор документа. При приеме контролируется уникальность номера в рамках организации, размещающей закупку
+	ExternalId *base.ExternalIdType `xml:"externalId,omitempty"`
+
+	// VersionNumber: Номер версии документа. В случае если значение поля не указано или в поле указано 1, считается, что это первоначальная версия документа, иначе – изменение существующей версии. При приеме изменений документа контролируется последовательность нумерации
+	VersionNumber *base.VersionNumberType `xml:"versionNumber,omitempty"`
+
+	// CommonInfo: Общая информация
+	CommonInfo NotificationCommonInfoType `xml:"commonInfo"`
+
+	// PurchaseResponsibleInfo: Информация об организации, осуществляющей размещение
+	PurchaseResponsibleInfo PurchaseResponsibleInfo `xml:"purchaseResponsibleInfo"`
+
+	// PrintFormInfo: Печатная форма документа. Элемент игнорируется при приёме. При передаче заполняется ссылкой на печатную форму и электронную подпись размещенного в ЕИС документа
+	PrintFormInfo *cmn.PrintFormType `xml:"printFormInfo,omitempty"`
+
+	// ExtPrintFormInfo: Электронный документ, полученный из внешней системы. Игнорируется при приеме-передаче, добавлено на развитие
+	ExtPrintFormInfo *cmn.ExtPrintFormType `xml:"extPrintFormInfo,omitempty"`
+
+	// AttachmentsInfo: Вложенные файлы
+	AttachmentsInfo *cmn.AttachmentListType `xml:"attachmentsInfo,omitempty"`
+
+	// ServiceSigns: Служебные признаки
+	ServiceSigns *ServiceSigns `xml:"serviceSigns,omitempty"`
 }
 
 // ProtocolEzk1Type: Тип: Протокол рассмотрения заявок на участие в ЭЗК (запрос котировок в электронной форме)
@@ -11826,7 +13275,46 @@ type ProtocolEzk1Type struct {
 	SchemeVersion base.SchemeVersionType `xml:"schemeVersion,attr"`
 
 	// ProtocolInfo: Информация о проведении ЭЗК (запрос котировок в электронной форме). В рамках блока должен быть заполнен блок applicationsInfo и/или abandonedReason
-	ProtocolInfo ProtocolInfo `xml:",any"`
+	ProtocolInfo ProtocolInfo `xml:"protocolInfo"`
+
+	// Id: Идентификатор документа ЕИС. Игнорируется при приеме-передаче. Добавлено на развитие
+	Id *int64 `xml:"id,omitempty"`
+
+	// ExternalId: Внешний идентификатор документа. При приеме контролируется уникальность номера в рамках организации, размещающей закупку
+	ExternalId *base.ExternalIdType `xml:"externalId,omitempty"`
+
+	// VersionNumber: Номер версии документа. В случае если значение поля не указано или в поле указано 1, считается, что это первоначальная версия документа, иначе – изменение существующей версии. При приеме изменений документа контролируется последовательность нумерации
+	VersionNumber *base.VersionNumberType `xml:"versionNumber,omitempty"`
+
+	// FoundationDocInfo: Документ-основание. Блок игнорируется при приеме, автоматически заполняется при передаче
+	FoundationDocInfo *FoundationDocInfoType `xml:"foundationDocInfo,omitempty"`
+
+	// CommonInfo: Общая информация
+	CommonInfo ProtocolCommonInfoType `xml:"commonInfo"`
+
+	// ProtocolPublisherInfo: Информация об организации, разместившей протокол
+	ProtocolPublisherInfo ProtocolPublisherInfo `xml:"protocolPublisherInfo"`
+
+	// CommissionInfo: Информация о комиссии
+	CommissionInfo cmn.CommissionType `xml:"commissionInfo"`
+
+	// PrintFormInfo: Печатная форма документа в ЕИС. Элемент игнорируется при приёме. При передаче заполняется ссылкой на печатную форму и электронную подпись размещенного в ЕИС документа
+	PrintFormInfo *cmn.PrintFormType `xml:"printFormInfo,omitempty"`
+
+	// ExtPrintFormInfo: Электронный документ, полученный из внешней системы
+	ExtPrintFormInfo cmn.ExtPrintFormType `xml:"extPrintFormInfo"`
+
+	// AttachmentsInfo: Информация о прикрепленных документах
+	AttachmentsInfo *cmn.AttachmentListType `xml:"attachmentsInfo,omitempty"`
+
+	// ModificationInfo: Основание внесения изменений. При приеме изменений протоколов fcsProtocolEOK1, fcsProtocolEOK2, fcsProtocolEOKSingleApp, fcsProtocolEOKSinglePart, fcsProtocolEOKOU1, fcsProtocolEOKOU2, fcsProtocolEOKOUSingleApp, fcsProtocolEOOUKSinglePart, fcsProtocolEOKD1, fcsProtocolEOKD2, fcsProtocolEOKD3, fcsProtocolEOKDSingleApp, fcsProtocolEOKDSinglePart, fcsProtocolEZP1Extract если: 1) в ЕИС размещена действующая версия дочернего протокола; 2) основание исправления «По решению судебного органа»/«По решению контролирующего органа» (т.е. заполнен блок modification/reason/courtDecision или modification/reason/authorityPrescription), то допускается изменение полей: - "Место проведения процедуры" (place) - "Дата и время проведения процедуры" (procedureDT) - "Информация о прикрепленных документах" (attachments) - "Название комиссии" (commission/commissionName) (за исключением протокола fcsProtocolEZP1Extract)
+	ModificationInfo *ModificationType `xml:"modificationInfo,omitempty"`
+
+	// AfterProlongation: Протокол после продления. Для протоколов, принимаемых после того, как по закупке размещен документ "Извещение о продлении срока подачи заявок" должно быть указано значение true, в остальных случаях указывается значение false
+	AfterProlongation bool `xml:"afterProlongation"`
+
+	// PrintFormFieldsInfo: Дополнительная информация для печатной формы. Игнорируется при приёме, заполняется при передаче
+	PrintFormFieldsInfo *PrintFormFieldsInfo `xml:"printFormFieldsInfo,omitempty"`
 }
 
 // ProtocolEzk2Type: Тип: Протокол рассмотрения и оценки заявок на участие в ЭЗК (запрос котировок в электронной форме)
@@ -11837,7 +13325,46 @@ type ProtocolEzk2Type struct {
 	SchemeVersion base.SchemeVersionType `xml:"schemeVersion,attr"`
 
 	// ProtocolInfo: Информация о проведении ЭЗК (запрос котировок в электронной форме)
-	ProtocolInfo ProtocolInfo `xml:",any"`
+	ProtocolInfo ProtocolInfo `xml:"protocolInfo"`
+
+	// Id: Идентификатор документа ЕИС. Игнорируется при приеме-передаче. Добавлено на развитие
+	Id *int64 `xml:"id,omitempty"`
+
+	// ExternalId: Внешний идентификатор документа. При приеме контролируется уникальность номера в рамках организации, размещающей закупку
+	ExternalId *base.ExternalIdType `xml:"externalId,omitempty"`
+
+	// VersionNumber: Номер версии документа. В случае если значение поля не указано или в поле указано 1, считается, что это первоначальная версия документа, иначе – изменение существующей версии. При приеме изменений документа контролируется последовательность нумерации
+	VersionNumber *base.VersionNumberType `xml:"versionNumber,omitempty"`
+
+	// FoundationDocInfo: Документ-основание. Блок игнорируется при приеме, автоматически заполняется при передаче
+	FoundationDocInfo *FoundationDocInfoType `xml:"foundationDocInfo,omitempty"`
+
+	// CommonInfo: Общая информация
+	CommonInfo ProtocolCommonInfoType `xml:"commonInfo"`
+
+	// ProtocolPublisherInfo: Информация об организации, разместившей протокол
+	ProtocolPublisherInfo ProtocolPublisherInfo `xml:"protocolPublisherInfo"`
+
+	// CommissionInfo: Информация о комиссии
+	CommissionInfo cmn.CommissionType `xml:"commissionInfo"`
+
+	// PrintFormInfo: Печатная форма документа в ЕИС. Элемент игнорируется при приёме. При передаче заполняется ссылкой на печатную форму и электронную подпись размещенного в ЕИС документа
+	PrintFormInfo *cmn.PrintFormType `xml:"printFormInfo,omitempty"`
+
+	// ExtPrintFormInfo: Электронный документ, полученный из внешней системы
+	ExtPrintFormInfo cmn.ExtPrintFormType `xml:"extPrintFormInfo"`
+
+	// AttachmentsInfo: Информация о прикрепленных документах
+	AttachmentsInfo *cmn.AttachmentListType `xml:"attachmentsInfo,omitempty"`
+
+	// ModificationInfo: Основание внесения изменений. При приеме изменений протоколов fcsProtocolEOK1, fcsProtocolEOK2, fcsProtocolEOKSingleApp, fcsProtocolEOKSinglePart, fcsProtocolEOKOU1, fcsProtocolEOKOU2, fcsProtocolEOKOUSingleApp, fcsProtocolEOOUKSinglePart, fcsProtocolEOKD1, fcsProtocolEOKD2, fcsProtocolEOKD3, fcsProtocolEOKDSingleApp, fcsProtocolEOKDSinglePart, fcsProtocolEZP1Extract если: 1) в ЕИС размещена действующая версия дочернего протокола; 2) основание исправления «По решению судебного органа»/«По решению контролирующего органа» (т.е. заполнен блок modification/reason/courtDecision или modification/reason/authorityPrescription), то допускается изменение полей: - "Место проведения процедуры" (place) - "Дата и время проведения процедуры" (procedureDT) - "Информация о прикрепленных документах" (attachments) - "Название комиссии" (commission/commissionName) (за исключением протокола fcsProtocolEZP1Extract)
+	ModificationInfo *ModificationType `xml:"modificationInfo,omitempty"`
+
+	// AfterProlongation: Протокол после продления. Для протоколов, принимаемых после того, как по закупке размещен документ "Извещение о продлении срока подачи заявок" должно быть указано значение true, в остальных случаях указывается значение false
+	AfterProlongation bool `xml:"afterProlongation"`
+
+	// PrintFormFieldsInfo: Дополнительная информация для печатной формы. Игнорируется при приёме, заполняется при передаче
+	PrintFormFieldsInfo *PrintFormFieldsInfo `xml:"printFormFieldsInfo,omitempty"`
 }
 
 // ProlongationEzktype: Тип: Извещение о продлении срока подачи заявок на участие в ЭЗК (запрос котировок в электронной форме)
@@ -11848,7 +13375,25 @@ type ProlongationEzktype struct {
 	SchemeVersion base.SchemeVersionType `xml:"schemeVersion,attr"`
 
 	// ProlongationInfo: Новые сроки проведения ЭЗК (запрос котировок в электронной форме) после продления
-	ProlongationInfo ProlongationInfo `xml:",any"`
+	ProlongationInfo ProlongationInfo `xml:"prolongationInfo"`
+
+	// Id: Идентификатор документа ЕИС. Игнорируется при приеме-передаче. Добавлено на развитие
+	Id *int64 `xml:"id,omitempty"`
+
+	// ExternalId: Внешний идентификатор документа. При приеме контролируется уникальность номера в рамках организации, размещающей закупку
+	ExternalId *base.ExternalIdType `xml:"externalId,omitempty"`
+
+	// CommonInfo: Общая информация
+	CommonInfo PurchaseDocumentCommonInfoType `xml:"commonInfo"`
+
+	// PrintFormInfo: Печатная форма документа
+	PrintFormInfo *cmn.PrintFormType `xml:"printFormInfo,omitempty"`
+
+	// ExtPrintFormInfo: Электронный документ, полученный из внешней системы. Игнорируется при приеме-передаче, добавлено на развитие
+	ExtPrintFormInfo *cmn.ExtPrintFormType `xml:"extPrintFormInfo,omitempty"`
+
+	// AttachmentsInfo: Прикрепленные документы. Игнорируется при приеме извещения о продлении срока подачи заявок. Игнорируется при приеме уведомления об отзыве заявки участником. Требуется обязательное заполнение при приеме отмены извещения о продлении срока подачи заявок
+	AttachmentsInfo *cmn.AttachmentListType `xml:"attachmentsInfo,omitempty"`
 }
 
 // ProlongationCancelEzktype: Тип: Отмена извещения о продлении срока подачи заявок на участие в ЭЗК (запрос котировок в электронной форме)
@@ -11863,6 +13408,24 @@ type ProlongationCancelEzktype struct {
 
 	// PrintFormFieldsInfo: Дополнительная информация для печатной формы. Игнорируется при приёме, заполняется при передаче
 	PrintFormFieldsInfo *PrintFormFieldsInfo `xml:"printFormFieldsInfo,omitempty"`
+
+	// Id: Идентификатор документа ЕИС. Игнорируется при приеме-передаче. Добавлено на развитие
+	Id *int64 `xml:"id,omitempty"`
+
+	// ExternalId: Внешний идентификатор документа. При приеме контролируется уникальность номера в рамках организации, размещающей закупку
+	ExternalId *base.ExternalIdType `xml:"externalId,omitempty"`
+
+	// CommonInfo: Общая информация
+	CommonInfo PurchaseDocumentCommonInfoType `xml:"commonInfo"`
+
+	// PrintFormInfo: Печатная форма документа
+	PrintFormInfo *cmn.PrintFormType `xml:"printFormInfo,omitempty"`
+
+	// ExtPrintFormInfo: Электронный документ, полученный из внешней системы. Игнорируется при приеме-передаче, добавлено на развитие
+	ExtPrintFormInfo *cmn.ExtPrintFormType `xml:"extPrintFormInfo,omitempty"`
+
+	// AttachmentsInfo: Прикрепленные документы. Игнорируется при приеме извещения о продлении срока подачи заявок. Игнорируется при приеме уведомления об отзыве заявки участником. Требуется обязательное заполнение при приеме отмены извещения о продлении срока подачи заявок
+	AttachmentsInfo *cmn.AttachmentListType `xml:"attachmentsInfo,omitempty"`
 }
 
 // NotificationEzppftype: Тип: Извещение о проведении ЭЗП (запрос предложений в электронной форме) для печатной формы Извещения
@@ -11877,6 +13440,33 @@ type NotificationEzppftype struct {
 
 	// ModificationInfo: Основание внесения изменений
 	ModificationInfo *ModificationWithoutCustomerDecisionType `xml:"modificationInfo,omitempty"`
+
+	// Id: Идентификатор документа ЕИС. Обязателен для заполнения при приеме изменения проекта документа
+	Id *int64 `xml:"id,omitempty"`
+
+	// ExternalId: Внешний идентификатор документа. При приеме контролируется уникальность номера в рамках организации, размещающей закупку
+	ExternalId *base.ExternalIdType `xml:"externalId,omitempty"`
+
+	// VersionNumber: Номер версии документа. В случае если значение поля не указано или в поле указано 1, считается, что это первоначальная версия документа, иначе – изменение существующей версии. При приеме изменений документа контролируется последовательность нумерации
+	VersionNumber *base.VersionNumberType `xml:"versionNumber,omitempty"`
+
+	// CommonInfo: Общая информация
+	CommonInfo NotificationCommonInfoType `xml:"commonInfo"`
+
+	// PurchaseResponsibleInfo: Информация об организации, осуществляющей размещение
+	PurchaseResponsibleInfo PurchaseResponsibleInfo `xml:"purchaseResponsibleInfo"`
+
+	// PrintFormInfo: Печатная форма документа. Элемент игнорируется при приёме. При передаче заполняется ссылкой на печатную форму и электронную подпись размещенного в ЕИС документа
+	PrintFormInfo *cmn.PrintFormType `xml:"printFormInfo,omitempty"`
+
+	// ExtPrintFormInfo: Электронный документ, полученный из внешней системы. Игнорируется при приеме-передаче, добавлено на развитие
+	ExtPrintFormInfo *cmn.ExtPrintFormType `xml:"extPrintFormInfo,omitempty"`
+
+	// AttachmentsInfo: Вложенные файлы
+	AttachmentsInfo *cmn.AttachmentListType `xml:"attachmentsInfo,omitempty"`
+
+	// ServiceSigns: Служебные признаки
+	ServiceSigns *ServiceSigns `xml:"serviceSigns,omitempty"`
 }
 
 // NotificationEzptype: Тип: Извещение о проведении ЭЗП (запрос предложений в электронной форме) с конкурсной документацией; внесение изменений
@@ -11887,7 +13477,40 @@ type NotificationEzptype struct {
 	SchemeVersion base.SchemeVersionType `xml:"schemeVersion,attr"`
 
 	// Documentation: Конкурсная документация
-	Documentation DocumentationZptype `xml:",any"`
+	Documentation DocumentationZptype `xml:"documentation"`
+
+	// NotificationInfo: Информация о проведении ЭЗП (Запрос предложений в электронной форме)
+	NotificationInfo NotificationInfo `xml:"notificationInfo"`
+
+	// ModificationInfo: Основание внесения изменений
+	ModificationInfo *ModificationWithoutCustomerDecisionType `xml:"modificationInfo,omitempty"`
+
+	// Id: Идентификатор документа ЕИС. Обязателен для заполнения при приеме изменения проекта документа
+	Id *int64 `xml:"id,omitempty"`
+
+	// ExternalId: Внешний идентификатор документа. При приеме контролируется уникальность номера в рамках организации, размещающей закупку
+	ExternalId *base.ExternalIdType `xml:"externalId,omitempty"`
+
+	// VersionNumber: Номер версии документа. В случае если значение поля не указано или в поле указано 1, считается, что это первоначальная версия документа, иначе – изменение существующей версии. При приеме изменений документа контролируется последовательность нумерации
+	VersionNumber *base.VersionNumberType `xml:"versionNumber,omitempty"`
+
+	// CommonInfo: Общая информация
+	CommonInfo NotificationCommonInfoType `xml:"commonInfo"`
+
+	// PurchaseResponsibleInfo: Информация об организации, осуществляющей размещение
+	PurchaseResponsibleInfo PurchaseResponsibleInfo `xml:"purchaseResponsibleInfo"`
+
+	// PrintFormInfo: Печатная форма документа. Элемент игнорируется при приёме. При передаче заполняется ссылкой на печатную форму и электронную подпись размещенного в ЕИС документа
+	PrintFormInfo *cmn.PrintFormType `xml:"printFormInfo,omitempty"`
+
+	// ExtPrintFormInfo: Электронный документ, полученный из внешней системы. Игнорируется при приеме-передаче, добавлено на развитие
+	ExtPrintFormInfo *cmn.ExtPrintFormType `xml:"extPrintFormInfo,omitempty"`
+
+	// AttachmentsInfo: Вложенные файлы
+	AttachmentsInfo *cmn.AttachmentListType `xml:"attachmentsInfo,omitempty"`
+
+	// ServiceSigns: Служебные признаки
+	ServiceSigns *ServiceSigns `xml:"serviceSigns,omitempty"`
 }
 
 // ProtocolEzp1ExtractType: Тип: Выписка из протокола проведения ЭЗП (запрос предложений в электронной форме); внесение изменений
@@ -11942,7 +13565,40 @@ type ProtocolEzp1Type struct {
 	SchemeVersion base.SchemeVersionType `xml:"schemeVersion,attr"`
 
 	// ProtocolInfo: Информация о проведении ЭЗП (Запрос предложений в электронной форме). В рамках блока должен быть заполнен блок applicationsInfo и/или abandonedReason
-	ProtocolInfo ProtocolInfo `xml:",any"`
+	ProtocolInfo ProtocolInfo `xml:"protocolInfo"`
+
+	// Id: Идентификатор документа ЕИС. Игнорируется при приеме-передаче. Добавлено на развитие
+	Id *int64 `xml:"id,omitempty"`
+
+	// ExternalId: Внешний идентификатор документа. При приеме контролируется уникальность номера в рамках организации, размещающей закупку
+	ExternalId *base.ExternalIdType `xml:"externalId,omitempty"`
+
+	// VersionNumber: Номер версии документа. В случае если значение поля не указано или в поле указано 1, считается, что это первоначальная версия документа, иначе – изменение существующей версии. При приеме изменений документа контролируется последовательность нумерации
+	VersionNumber *base.VersionNumberType `xml:"versionNumber,omitempty"`
+
+	// FoundationDocInfo: Документ-основание. Блок игнорируется при приеме, автоматически заполняется при передаче
+	FoundationDocInfo *FoundationDocInfoType `xml:"foundationDocInfo,omitempty"`
+
+	// CommonInfo: Общая информация
+	CommonInfo ProtocolCommonInfoType `xml:"commonInfo"`
+
+	// ProtocolPublisherInfo: Информация об организации, разместившей протокол
+	ProtocolPublisherInfo ProtocolPublisherInfo `xml:"protocolPublisherInfo"`
+
+	// CommissionInfo: Информация о комиссии
+	CommissionInfo cmn.CommissionType `xml:"commissionInfo"`
+
+	// PrintFormInfo: Печатная форма документа в ЕИС. Элемент игнорируется при приёме. При передаче заполняется ссылкой на печатную форму и электронную подпись размещенного в ЕИС документа
+	PrintFormInfo *cmn.PrintFormType `xml:"printFormInfo,omitempty"`
+
+	// ExtPrintFormInfo: Электронный документ, полученный из внешней системы
+	ExtPrintFormInfo cmn.ExtPrintFormType `xml:"extPrintFormInfo"`
+
+	// AttachmentsInfo: Информация о прикрепленных документах
+	AttachmentsInfo *cmn.AttachmentListType `xml:"attachmentsInfo,omitempty"`
+
+	// ModificationInfo: Основание внесения изменений
+	ModificationInfo *ModificationType `xml:"modificationInfo,omitempty"`
 }
 
 // ProtocolEzp2Type: Тип: Итоговый протокол ЭЗП (запрос предложений в электронной форме); внесение изменений
@@ -11953,7 +13609,40 @@ type ProtocolEzp2Type struct {
 	SchemeVersion base.SchemeVersionType `xml:"schemeVersion,attr"`
 
 	// ProtocolInfo: Информация о проведении ЭЗП (Запрос предложений в электронной форме)
-	ProtocolInfo ProtocolInfo `xml:",any"`
+	ProtocolInfo ProtocolInfo `xml:"protocolInfo"`
+
+	// Id: Идентификатор документа ЕИС. Игнорируется при приеме-передаче. Добавлено на развитие
+	Id *int64 `xml:"id,omitempty"`
+
+	// ExternalId: Внешний идентификатор документа. При приеме контролируется уникальность номера в рамках организации, размещающей закупку
+	ExternalId *base.ExternalIdType `xml:"externalId,omitempty"`
+
+	// VersionNumber: Номер версии документа. В случае если значение поля не указано или в поле указано 1, считается, что это первоначальная версия документа, иначе – изменение существующей версии. При приеме изменений документа контролируется последовательность нумерации
+	VersionNumber *base.VersionNumberType `xml:"versionNumber,omitempty"`
+
+	// FoundationDocInfo: Документ-основание. Блок игнорируется при приеме, автоматически заполняется при передаче
+	FoundationDocInfo *FoundationDocInfoType `xml:"foundationDocInfo,omitempty"`
+
+	// CommonInfo: Общая информация
+	CommonInfo ProtocolCommonInfoType `xml:"commonInfo"`
+
+	// ProtocolPublisherInfo: Информация об организации, разместившей протокол
+	ProtocolPublisherInfo ProtocolPublisherInfo `xml:"protocolPublisherInfo"`
+
+	// CommissionInfo: Информация о комиссии
+	CommissionInfo cmn.CommissionType `xml:"commissionInfo"`
+
+	// PrintFormInfo: Печатная форма документа в ЕИС. Элемент игнорируется при приёме. При передаче заполняется ссылкой на печатную форму и электронную подпись размещенного в ЕИС документа
+	PrintFormInfo *cmn.PrintFormType `xml:"printFormInfo,omitempty"`
+
+	// ExtPrintFormInfo: Электронный документ, полученный из внешней системы
+	ExtPrintFormInfo cmn.ExtPrintFormType `xml:"extPrintFormInfo"`
+
+	// AttachmentsInfo: Информация о прикрепленных документах
+	AttachmentsInfo *cmn.AttachmentListType `xml:"attachmentsInfo,omitempty"`
+
+	// ModificationInfo: Основание внесения изменений
+	ModificationInfo *ModificationType `xml:"modificationInfo,omitempty"`
 }
 
 // NotificationEzakKtype: Тип: Извещение о проведении закрытого конкурса в электронном виде (ЭЗакК); внесение изменений
@@ -11968,6 +13657,33 @@ type NotificationEzakKtype struct {
 
 	// ModificationInfo: Основание внесения изменений
 	ModificationInfo *NotificationModificationType `xml:"modificationInfo,omitempty"`
+
+	// Id: Идентификатор документа ЕИС. Обязателен для заполнения при приеме изменения проекта документа
+	Id *int64 `xml:"id,omitempty"`
+
+	// ExternalId: Внешний идентификатор документа. При приеме контролируется уникальность номера в рамках организации, размещающей закупку
+	ExternalId *base.ExternalIdType `xml:"externalId,omitempty"`
+
+	// VersionNumber: Номер версии документа. В случае если значение поля не указано или в поле указано 1, считается, что это первоначальная версия документа, иначе – изменение существующей версии. При приеме изменений документа контролируется последовательность нумерации
+	VersionNumber *base.VersionNumberType `xml:"versionNumber,omitempty"`
+
+	// CommonInfo: Общая информация
+	CommonInfo NotificationCommonInfoType `xml:"commonInfo"`
+
+	// PurchaseResponsibleInfo: Информация об организации, осуществляющей размещение
+	PurchaseResponsibleInfo PurchaseResponsibleInfo `xml:"purchaseResponsibleInfo"`
+
+	// PrintFormInfo: Печатная форма документа. Элемент игнорируется при приёме. При передаче заполняется ссылкой на печатную форму и электронную подпись размещенного в ЕИС документа
+	PrintFormInfo *cmn.PrintFormType `xml:"printFormInfo,omitempty"`
+
+	// ExtPrintFormInfo: Электронный документ, полученный из внешней системы. Игнорируется при приеме-передаче, добавлено на развитие
+	ExtPrintFormInfo *cmn.ExtPrintFormType `xml:"extPrintFormInfo,omitempty"`
+
+	// AttachmentsInfo: Вложенные файлы
+	AttachmentsInfo *cmn.AttachmentListType `xml:"attachmentsInfo,omitempty"`
+
+	// ServiceSigns: Служебные признаки
+	ServiceSigns *ServiceSigns `xml:"serviceSigns,omitempty"`
 }
 
 // NotificationEzakKoutype: Тип: Извещение о проведении закрытого конкурса с ограниченным участием в электронном виде (ЭЗакК-ОУ); внесение изменений
@@ -11982,6 +13698,33 @@ type NotificationEzakKoutype struct {
 
 	// ModificationInfo: Основание внесения изменений
 	ModificationInfo *NotificationModificationType `xml:"modificationInfo,omitempty"`
+
+	// Id: Идентификатор документа ЕИС. Обязателен для заполнения при приеме изменения проекта документа
+	Id *int64 `xml:"id,omitempty"`
+
+	// ExternalId: Внешний идентификатор документа. При приеме контролируется уникальность номера в рамках организации, размещающей закупку
+	ExternalId *base.ExternalIdType `xml:"externalId,omitempty"`
+
+	// VersionNumber: Номер версии документа. В случае если значение поля не указано или в поле указано 1, считается, что это первоначальная версия документа, иначе – изменение существующей версии. При приеме изменений документа контролируется последовательность нумерации
+	VersionNumber *base.VersionNumberType `xml:"versionNumber,omitempty"`
+
+	// CommonInfo: Общая информация
+	CommonInfo NotificationCommonInfoType `xml:"commonInfo"`
+
+	// PurchaseResponsibleInfo: Информация об организации, осуществляющей размещение
+	PurchaseResponsibleInfo PurchaseResponsibleInfo `xml:"purchaseResponsibleInfo"`
+
+	// PrintFormInfo: Печатная форма документа. Элемент игнорируется при приёме. При передаче заполняется ссылкой на печатную форму и электронную подпись размещенного в ЕИС документа
+	PrintFormInfo *cmn.PrintFormType `xml:"printFormInfo,omitempty"`
+
+	// ExtPrintFormInfo: Электронный документ, полученный из внешней системы. Игнорируется при приеме-передаче, добавлено на развитие
+	ExtPrintFormInfo *cmn.ExtPrintFormType `xml:"extPrintFormInfo,omitempty"`
+
+	// AttachmentsInfo: Вложенные файлы
+	AttachmentsInfo *cmn.AttachmentListType `xml:"attachmentsInfo,omitempty"`
+
+	// ServiceSigns: Служебные признаки
+	ServiceSigns *ServiceSigns `xml:"serviceSigns,omitempty"`
 }
 
 // NotificationEzakKdtype: Тип: Извещение о проведении двухэтапного закрытого конкурса в электронном виде (ЭЗакКД); внесение изменений
@@ -11996,6 +13739,33 @@ type NotificationEzakKdtype struct {
 
 	// ModificationInfo: Основание внесения изменений
 	ModificationInfo *NotificationModificationType `xml:"modificationInfo,omitempty"`
+
+	// Id: Идентификатор документа ЕИС. Обязателен для заполнения при приеме изменения проекта документа
+	Id *int64 `xml:"id,omitempty"`
+
+	// ExternalId: Внешний идентификатор документа. При приеме контролируется уникальность номера в рамках организации, размещающей закупку
+	ExternalId *base.ExternalIdType `xml:"externalId,omitempty"`
+
+	// VersionNumber: Номер версии документа. В случае если значение поля не указано или в поле указано 1, считается, что это первоначальная версия документа, иначе – изменение существующей версии. При приеме изменений документа контролируется последовательность нумерации
+	VersionNumber *base.VersionNumberType `xml:"versionNumber,omitempty"`
+
+	// CommonInfo: Общая информация
+	CommonInfo NotificationCommonInfoType `xml:"commonInfo"`
+
+	// PurchaseResponsibleInfo: Информация об организации, осуществляющей размещение
+	PurchaseResponsibleInfo PurchaseResponsibleInfo `xml:"purchaseResponsibleInfo"`
+
+	// PrintFormInfo: Печатная форма документа. Элемент игнорируется при приёме. При передаче заполняется ссылкой на печатную форму и электронную подпись размещенного в ЕИС документа
+	PrintFormInfo *cmn.PrintFormType `xml:"printFormInfo,omitempty"`
+
+	// ExtPrintFormInfo: Электронный документ, полученный из внешней системы. Игнорируется при приеме-передаче, добавлено на развитие
+	ExtPrintFormInfo *cmn.ExtPrintFormType `xml:"extPrintFormInfo,omitempty"`
+
+	// AttachmentsInfo: Вложенные файлы
+	AttachmentsInfo *cmn.AttachmentListType `xml:"attachmentsInfo,omitempty"`
+
+	// ServiceSigns: Служебные признаки
+	ServiceSigns *ServiceSigns `xml:"serviceSigns,omitempty"`
 }
 
 // NotificationEzakAtype: Тип: Извещение о проведении закрытого аукциона в электронном виде (ЭЗакА); внесение изменений
@@ -12010,6 +13780,33 @@ type NotificationEzakAtype struct {
 
 	// ModificationInfo: Основание внесения изменений
 	ModificationInfo *NotificationModificationType `xml:"modificationInfo,omitempty"`
+
+	// Id: Идентификатор документа ЕИС. Обязателен для заполнения при приеме изменения проекта документа
+	Id *int64 `xml:"id,omitempty"`
+
+	// ExternalId: Внешний идентификатор документа. При приеме контролируется уникальность номера в рамках организации, размещающей закупку
+	ExternalId *base.ExternalIdType `xml:"externalId,omitempty"`
+
+	// VersionNumber: Номер версии документа. В случае если значение поля не указано или в поле указано 1, считается, что это первоначальная версия документа, иначе – изменение существующей версии. При приеме изменений документа контролируется последовательность нумерации
+	VersionNumber *base.VersionNumberType `xml:"versionNumber,omitempty"`
+
+	// CommonInfo: Общая информация
+	CommonInfo NotificationCommonInfoType `xml:"commonInfo"`
+
+	// PurchaseResponsibleInfo: Информация об организации, осуществляющей размещение
+	PurchaseResponsibleInfo PurchaseResponsibleInfo `xml:"purchaseResponsibleInfo"`
+
+	// PrintFormInfo: Печатная форма документа. Элемент игнорируется при приёме. При передаче заполняется ссылкой на печатную форму и электронную подпись размещенного в ЕИС документа
+	PrintFormInfo *cmn.PrintFormType `xml:"printFormInfo,omitempty"`
+
+	// ExtPrintFormInfo: Электронный документ, полученный из внешней системы. Игнорируется при приеме-передаче, добавлено на развитие
+	ExtPrintFormInfo *cmn.ExtPrintFormType `xml:"extPrintFormInfo,omitempty"`
+
+	// AttachmentsInfo: Вложенные файлы
+	AttachmentsInfo *cmn.AttachmentListType `xml:"attachmentsInfo,omitempty"`
+
+	// ServiceSigns: Служебные признаки
+	ServiceSigns *ServiceSigns `xml:"serviceSigns,omitempty"`
 }
 
 // NotificationEf2020Type: Тип: Извещение о проведении ЭА20 (аукцион в электронной форме с даты начала действия оптимизационного законопроекта 44-ФЗ); изменение извещения
@@ -12024,6 +13821,33 @@ type NotificationEf2020Type struct {
 
 	// ModificationInfo: Основание внесения изменений
 	ModificationInfo *Notification2020ModificationType `xml:"modificationInfo,omitempty"`
+
+	// Id: Идентификатор документа ЕИС. Обязателен для заполнения при приеме изменения проекта документа
+	Id *int64 `xml:"id,omitempty"`
+
+	// ExternalId: Внешний идентификатор документа. При приеме контролируется уникальность номера в рамках организации, размещающей закупку
+	ExternalId *base.ExternalIdType `xml:"externalId,omitempty"`
+
+	// VersionNumber: Номер версии документа. В случае если значение поля не указано или в поле указано 1, считается, что это первоначальная версия документа, иначе – изменение существующей версии. При приеме изменений документа контролируется последовательность нумерации
+	VersionNumber *base.VersionNumberType `xml:"versionNumber,omitempty"`
+
+	// CommonInfo: Общая информация
+	CommonInfo CommonInfo `xml:"commonInfo"`
+
+	// PurchaseResponsibleInfo: Информация об организации, осуществляющей размещение
+	PurchaseResponsibleInfo PurchaseResponsibleInfo `xml:"purchaseResponsibleInfo"`
+
+	// PrintFormInfo: Печатная форма документа. Элемент игнорируется при приёме. При передаче заполняется ссылкой на печатную форму и электронную подпись размещенного в ЕИС документа
+	PrintFormInfo *cmn.PrintFormType `xml:"printFormInfo,omitempty"`
+
+	// ExtPrintFormInfo: Электронный документ, полученный из внешней системы. Игнорируется при приеме-передаче, добавлено на развитие
+	ExtPrintFormInfo *cmn.ExtPrintFormType `xml:"extPrintFormInfo,omitempty"`
+
+	// AttachmentsInfo: Вложенные файлы
+	AttachmentsInfo *cmn.AttachmentListWithKindType `xml:"attachmentsInfo,omitempty"`
+
+	// ServiceSigns: Служебные признаки
+	ServiceSigns *ServiceSigns `xml:"serviceSigns,omitempty"`
 }
 
 // ProtocolEf2020SubmitOffersType: Тип: Протокол подачи ценовых предложений ЭА20 (аукцион в электронной форме с даты начала действия оптимизационного законопроекта 44-ФЗ)
@@ -12034,7 +13858,34 @@ type ProtocolEf2020SubmitOffersType struct {
 	SchemeVersion base.SchemeVersionType `xml:"schemeVersion,attr"`
 
 	// ProtocolInfo: Информация о торгах ЭА20 (аукцион в электронной форме с даты начала действия оптимизационного законопроекта 44-ФЗ)
-	ProtocolInfo ProtocolInfo `xml:",any"`
+	ProtocolInfo ProtocolInfo `xml:"protocolInfo"`
+
+	// Id: Идентификатор документа ЕИС. Игнорируется при приеме-передаче. Добавлено на развитие
+	Id *int64 `xml:"id,omitempty"`
+
+	// ExternalId: Внешний идентификатор документа. При приеме контролируется уникальность номера в рамках организации, размещающей закупку
+	ExternalId *base.ExternalIdType `xml:"externalId,omitempty"`
+
+	// VersionNumber: Номер версии документа. В случае если значение поля не указано или в поле указано 1, считается, что это первоначальная версия документа, иначе – изменение существующей версии. При приеме изменений документа контролируется последовательность нумерации
+	VersionNumber *base.VersionNumberType `xml:"versionNumber,omitempty"`
+
+	// FoundationDocInfo: Документ-основание. Блок игнорируется при приеме, автоматически заполняется при передаче
+	FoundationDocInfo *FoundationDocInfoType `xml:"foundationDocInfo,omitempty"`
+
+	// CommonInfo: Общая информация
+	CommonInfo Protocol2020CommonInfoType `xml:"commonInfo"`
+
+	// ProtocolPublisherInfo: Информация об организации, разместившей протокол
+	ProtocolPublisherInfo ProtocolPublisherInfo `xml:"protocolPublisherInfo"`
+
+	// ExtPrintFormInfo: Электронный документ, полученный из внешней системы. В составе блока на стороне ЕИС принимается сформированная на площадке печатная форма протокола без сведений об участниках закупки
+	ExtPrintFormInfo cmn.ExtPrintFormProtocolType `xml:"extPrintFormInfo"`
+
+	// AttachmentsInfo: Информация о прикрепленных документах Игнорируется при приеме, начиная с версии 15.1
+	AttachmentsInfo *cmn.AttachmentListWithMandatoryCstype `xml:"attachmentsInfo,omitempty"`
+
+	// ModificationInfo: Основание внесения изменений. При приеме изменений протоколов epProtocolEOK2020FirstSections, epProtocolEOK2020SecondSectionsPart если: 1) в ЕИС размещена действующая версия дочернего протокола; 2) основание исправления «По решению судебного органа»/«По решению контролирующего органа» (т.е. заполнен блок modification/reason/courtDecision или modification/reason/authorityPrescription), то допускается изменение следующих полей без отмены дочернего протокола: - "Дата и время проведения процедуры" (procedureDT) - "Информация о прикрепленных документах" (attachments) - "Название комиссии" (protocolInfo/commission/commissionName)
+	ModificationInfo *ModificationType `xml:"modificationInfo,omitempty"`
 }
 
 // ProtocolEf2020FinalType: Тип: Протокол подведения итогов определения поставщика (подрядчика, исполнителя) ЭА20 (аукцион в электронной форме с даты начала действия оптимизационного законопроекта 44-ФЗ)
@@ -12045,7 +13896,34 @@ type ProtocolEf2020FinalType struct {
 	SchemeVersion base.SchemeVersionType `xml:"schemeVersion,attr"`
 
 	// ProtocolInfo: Информация о проведении ЭА20 (аукцион в электронной форме с даты начала действия оптимизационного законопроекта 44-ФЗ)
-	ProtocolInfo ProtocolInfo `xml:",any"`
+	ProtocolInfo ProtocolInfo `xml:"protocolInfo"`
+
+	// Id: Идентификатор документа ЕИС. Игнорируется при приеме-передаче. Добавлено на развитие
+	Id *int64 `xml:"id,omitempty"`
+
+	// ExternalId: Внешний идентификатор документа. При приеме контролируется уникальность номера в рамках организации, размещающей закупку
+	ExternalId *base.ExternalIdType `xml:"externalId,omitempty"`
+
+	// VersionNumber: Номер версии документа. В случае если значение поля не указано или в поле указано 1, считается, что это первоначальная версия документа, иначе – изменение существующей версии. При приеме изменений документа контролируется последовательность нумерации
+	VersionNumber *base.VersionNumberType `xml:"versionNumber,omitempty"`
+
+	// FoundationDocInfo: Документ-основание. Блок игнорируется при приеме, автоматически заполняется при передаче
+	FoundationDocInfo *FoundationDocInfoType `xml:"foundationDocInfo,omitempty"`
+
+	// CommonInfo: Общая информация
+	CommonInfo Protocol2020CommonInfoType `xml:"commonInfo"`
+
+	// ProtocolPublisherInfo: Информация об организации, разместившей протокол
+	ProtocolPublisherInfo ProtocolPublisherInfo `xml:"protocolPublisherInfo"`
+
+	// ExtPrintFormInfo: Электронный документ, полученный из внешней системы. В составе блока на стороне ЕИС принимается сформированная на площадке печатная форма протокола без сведений об участниках закупки
+	ExtPrintFormInfo cmn.ExtPrintFormProtocolType `xml:"extPrintFormInfo"`
+
+	// AttachmentsInfo: Информация о прикрепленных документах Игнорируется при приеме, начиная с версии 15.1
+	AttachmentsInfo *cmn.AttachmentListWithMandatoryCstype `xml:"attachmentsInfo,omitempty"`
+
+	// ModificationInfo: Основание внесения изменений. При приеме изменений протоколов epProtocolEOK2020FirstSections, epProtocolEOK2020SecondSectionsPart если: 1) в ЕИС размещена действующая версия дочернего протокола; 2) основание исправления «По решению судебного органа»/«По решению контролирующего органа» (т.е. заполнен блок modification/reason/courtDecision или modification/reason/authorityPrescription), то допускается изменение следующих полей без отмены дочернего протокола: - "Дата и время проведения процедуры" (procedureDT) - "Информация о прикрепленных документах" (attachments) - "Название комиссии" (protocolInfo/commission/commissionName)
+	ModificationInfo *ModificationType `xml:"modificationInfo,omitempty"`
 }
 
 // ProtocolEf2020FinalPartType: Тип: Протокол подведения итогов определения поставщика (подрядчика, исполнителя) ЭА20 (аукцион в электронной форме с даты начала действия оптимизационного законопроекта 44-ФЗ) с информацией об участниках
@@ -12056,7 +13934,37 @@ type ProtocolEf2020FinalPartType struct {
 	SchemeVersion base.SchemeVersionType `xml:"schemeVersion,attr"`
 
 	// AppParticipantsInfo: Сведения об участниках закупки
-	AppParticipantsInfo *AppParticipantsInfo `xml:",any,omitempty"`
+	AppParticipantsInfo *AppParticipantsInfo `xml:"appParticipantsInfo,omitempty"`
+
+	// ProtocolInfo: Информация о проведении ЭА20 (аукцион в электронной форме с даты начала действия оптимизационного законопроекта 44-ФЗ)
+	ProtocolInfo ProtocolInfo `xml:"protocolInfo"`
+
+	// Id: Идентификатор документа ЕИС. Игнорируется при приеме-передаче. Добавлено на развитие
+	Id *int64 `xml:"id,omitempty"`
+
+	// ExternalId: Внешний идентификатор документа. При приеме контролируется уникальность номера в рамках организации, размещающей закупку
+	ExternalId *base.ExternalIdType `xml:"externalId,omitempty"`
+
+	// VersionNumber: Номер версии документа. В случае если значение поля не указано или в поле указано 1, считается, что это первоначальная версия документа, иначе – изменение существующей версии. При приеме изменений документа контролируется последовательность нумерации
+	VersionNumber *base.VersionNumberType `xml:"versionNumber,omitempty"`
+
+	// FoundationDocInfo: Документ-основание. Блок игнорируется при приеме, автоматически заполняется при передаче
+	FoundationDocInfo *FoundationDocInfoType `xml:"foundationDocInfo,omitempty"`
+
+	// CommonInfo: Общая информация
+	CommonInfo Protocol2020CommonInfoType `xml:"commonInfo"`
+
+	// ProtocolPublisherInfo: Информация об организации, разместившей протокол
+	ProtocolPublisherInfo ProtocolPublisherInfo `xml:"protocolPublisherInfo"`
+
+	// ExtPrintFormInfo: Электронный документ, полученный из внешней системы. В составе блока на стороне ЕИС принимается сформированная на площадке печатная форма протокола без сведений об участниках закупки
+	ExtPrintFormInfo cmn.ExtPrintFormProtocolType `xml:"extPrintFormInfo"`
+
+	// AttachmentsInfo: Информация о прикрепленных документах Игнорируется при приеме, начиная с версии 15.1
+	AttachmentsInfo *cmn.AttachmentListWithMandatoryCstype `xml:"attachmentsInfo,omitempty"`
+
+	// ModificationInfo: Основание внесения изменений. При приеме изменений протоколов epProtocolEOK2020FirstSections, epProtocolEOK2020SecondSectionsPart если: 1) в ЕИС размещена действующая версия дочернего протокола; 2) основание исправления «По решению судебного органа»/«По решению контролирующего органа» (т.е. заполнен блок modification/reason/courtDecision или modification/reason/authorityPrescription), то допускается изменение следующих полей без отмены дочернего протокола: - "Дата и время проведения процедуры" (procedureDT) - "Информация о прикрепленных документах" (attachments) - "Название комиссии" (protocolInfo/commission/commissionName)
+	ModificationInfo *ModificationType `xml:"modificationInfo,omitempty"`
 }
 
 // NotificationEok2020Type: Тип: Извещение о проведении ЭОК20 (открытый конкурс в электронной форме с даты начала действия оптимизационного законопроекта 44-ФЗ); изменение извещения
@@ -12071,6 +13979,33 @@ type NotificationEok2020Type struct {
 
 	// ModificationInfo: Основание внесения изменений
 	ModificationInfo *Notification2020ModificationType `xml:"modificationInfo,omitempty"`
+
+	// Id: Идентификатор документа ЕИС. Обязателен для заполнения при приеме изменения проекта документа
+	Id *int64 `xml:"id,omitempty"`
+
+	// ExternalId: Внешний идентификатор документа. При приеме контролируется уникальность номера в рамках организации, размещающей закупку
+	ExternalId *base.ExternalIdType `xml:"externalId,omitempty"`
+
+	// VersionNumber: Номер версии документа. В случае если значение поля не указано или в поле указано 1, считается, что это первоначальная версия документа, иначе – изменение существующей версии. При приеме изменений документа контролируется последовательность нумерации
+	VersionNumber *base.VersionNumberType `xml:"versionNumber,omitempty"`
+
+	// CommonInfo: Общая информация
+	CommonInfo CommonInfo `xml:"commonInfo"`
+
+	// PurchaseResponsibleInfo: Информация об организации, осуществляющей размещение
+	PurchaseResponsibleInfo PurchaseResponsibleInfo `xml:"purchaseResponsibleInfo"`
+
+	// PrintFormInfo: Печатная форма документа. Элемент игнорируется при приёме. При передаче заполняется ссылкой на печатную форму и электронную подпись размещенного в ЕИС документа
+	PrintFormInfo *cmn.PrintFormType `xml:"printFormInfo,omitempty"`
+
+	// ExtPrintFormInfo: Электронный документ, полученный из внешней системы. Игнорируется при приеме-передаче, добавлено на развитие
+	ExtPrintFormInfo *cmn.ExtPrintFormType `xml:"extPrintFormInfo,omitempty"`
+
+	// AttachmentsInfo: Вложенные файлы
+	AttachmentsInfo *cmn.AttachmentListWithKindType `xml:"attachmentsInfo,omitempty"`
+
+	// ServiceSigns: Служебные признаки
+	ServiceSigns *ServiceSigns `xml:"serviceSigns,omitempty"`
 }
 
 // ProtocolEok2020FirstSectionsType: Тип: Протокол рассмотрения и оценки первых частей заявок на участие в ЭOK20 (открытый конкурс в электронной форме с даты начала действия оптимизационного законопроекта 44-ФЗ)
@@ -12081,7 +14016,34 @@ type ProtocolEok2020FirstSectionsType struct {
 	SchemeVersion base.SchemeVersionType `xml:"schemeVersion,attr"`
 
 	// ProtocolInfo: Информация о проведении ЭОК20 (открытый конкурс в электронной форме с даты начала действия оптимизационного законопроекта 44-ФЗ). В рамках блока должен быть заполнен блок applicationsInfo и/или abandonedReason
-	ProtocolInfo ProtocolInfo `xml:",any"`
+	ProtocolInfo ProtocolInfo `xml:"protocolInfo"`
+
+	// Id: Идентификатор документа ЕИС. Игнорируется при приеме-передаче. Добавлено на развитие
+	Id *int64 `xml:"id,omitempty"`
+
+	// ExternalId: Внешний идентификатор документа. При приеме контролируется уникальность номера в рамках организации, размещающей закупку
+	ExternalId *base.ExternalIdType `xml:"externalId,omitempty"`
+
+	// VersionNumber: Номер версии документа. В случае если значение поля не указано или в поле указано 1, считается, что это первоначальная версия документа, иначе – изменение существующей версии. При приеме изменений документа контролируется последовательность нумерации
+	VersionNumber *base.VersionNumberType `xml:"versionNumber,omitempty"`
+
+	// FoundationDocInfo: Документ-основание. Блок игнорируется при приеме, автоматически заполняется при передаче
+	FoundationDocInfo *FoundationDocInfoType `xml:"foundationDocInfo,omitempty"`
+
+	// CommonInfo: Общая информация
+	CommonInfo Protocol2020CommonInfoType `xml:"commonInfo"`
+
+	// ProtocolPublisherInfo: Информация об организации, разместившей протокол
+	ProtocolPublisherInfo ProtocolPublisherInfo `xml:"protocolPublisherInfo"`
+
+	// ExtPrintFormInfo: Электронный документ, полученный из внешней системы. В составе блока на стороне ЕИС принимается сформированная на площадке печатная форма протокола без сведений об участниках закупки
+	ExtPrintFormInfo cmn.ExtPrintFormProtocolType `xml:"extPrintFormInfo"`
+
+	// AttachmentsInfo: Информация о прикрепленных документах Игнорируется при приеме, начиная с версии 15.1
+	AttachmentsInfo *cmn.AttachmentListWithMandatoryCstype `xml:"attachmentsInfo,omitempty"`
+
+	// ModificationInfo: Основание внесения изменений. При приеме изменений протоколов epProtocolEOK2020FirstSections, epProtocolEOK2020SecondSectionsPart если: 1) в ЕИС размещена действующая версия дочернего протокола; 2) основание исправления «По решению судебного органа»/«По решению контролирующего органа» (т.е. заполнен блок modification/reason/courtDecision или modification/reason/authorityPrescription), то допускается изменение следующих полей без отмены дочернего протокола: - "Дата и время проведения процедуры" (procedureDT) - "Информация о прикрепленных документах" (attachments) - "Название комиссии" (protocolInfo/commission/commissionName)
+	ModificationInfo *ModificationType `xml:"modificationInfo,omitempty"`
 }
 
 // ProtocolEok2020SecondSectionsType: Тип: Протокол рассмотрения и оценки вторых частей заявок на участие в ЭOK20 (открытый конкурс в электронной форме с даты начала действия оптимизационного законопроекта 44-ФЗ)
@@ -12092,7 +14054,34 @@ type ProtocolEok2020SecondSectionsType struct {
 	SchemeVersion base.SchemeVersionType `xml:"schemeVersion,attr"`
 
 	// ProtocolInfo: Информация о проведении ЭОК20 (открытый конкурс в электронной форме с даты начала действия оптимизационного законопроекта 44-ФЗ). В рамках блока должен быть заполнен блок applicationsInfo и/или abandonedReason
-	ProtocolInfo ProtocolInfo `xml:",any"`
+	ProtocolInfo ProtocolInfo `xml:"protocolInfo"`
+
+	// Id: Идентификатор документа ЕИС. Игнорируется при приеме-передаче. Добавлено на развитие
+	Id *int64 `xml:"id,omitempty"`
+
+	// ExternalId: Внешний идентификатор документа. При приеме контролируется уникальность номера в рамках организации, размещающей закупку
+	ExternalId *base.ExternalIdType `xml:"externalId,omitempty"`
+
+	// VersionNumber: Номер версии документа. В случае если значение поля не указано или в поле указано 1, считается, что это первоначальная версия документа, иначе – изменение существующей версии. При приеме изменений документа контролируется последовательность нумерации
+	VersionNumber *base.VersionNumberType `xml:"versionNumber,omitempty"`
+
+	// FoundationDocInfo: Документ-основание. Блок игнорируется при приеме, автоматически заполняется при передаче
+	FoundationDocInfo *FoundationDocInfoType `xml:"foundationDocInfo,omitempty"`
+
+	// CommonInfo: Общая информация
+	CommonInfo Protocol2020CommonInfoType `xml:"commonInfo"`
+
+	// ProtocolPublisherInfo: Информация об организации, разместившей протокол
+	ProtocolPublisherInfo ProtocolPublisherInfo `xml:"protocolPublisherInfo"`
+
+	// ExtPrintFormInfo: Электронный документ, полученный из внешней системы. В составе блока на стороне ЕИС принимается сформированная на площадке печатная форма протокола без сведений об участниках закупки
+	ExtPrintFormInfo cmn.ExtPrintFormProtocolType `xml:"extPrintFormInfo"`
+
+	// AttachmentsInfo: Информация о прикрепленных документах Игнорируется при приеме, начиная с версии 15.1
+	AttachmentsInfo *cmn.AttachmentListWithMandatoryCstype `xml:"attachmentsInfo,omitempty"`
+
+	// ModificationInfo: Основание внесения изменений. При приеме изменений протоколов epProtocolEOK2020FirstSections, epProtocolEOK2020SecondSectionsPart если: 1) в ЕИС размещена действующая версия дочернего протокола; 2) основание исправления «По решению судебного органа»/«По решению контролирующего органа» (т.е. заполнен блок modification/reason/courtDecision или modification/reason/authorityPrescription), то допускается изменение следующих полей без отмены дочернего протокола: - "Дата и время проведения процедуры" (procedureDT) - "Информация о прикрепленных документах" (attachments) - "Название комиссии" (protocolInfo/commission/commissionName)
+	ModificationInfo *ModificationType `xml:"modificationInfo,omitempty"`
 }
 
 // ProtocolEok2020SecondSectionsPartType: Тип: Протокол рассмотрения и оценки вторых частей заявок на участие в ЭOK20 (открытый конкурс в электронной форме с даты начала действия оптимизационного законопроекта 44-ФЗ) с информацией об участниках
@@ -12103,7 +14092,37 @@ type ProtocolEok2020SecondSectionsPartType struct {
 	SchemeVersion base.SchemeVersionType `xml:"schemeVersion,attr"`
 
 	// AppParticipantsInfo: Сведения об участниках закупки
-	AppParticipantsInfo *AppParticipantsInfo `xml:",any,omitempty"`
+	AppParticipantsInfo *AppParticipantsInfo `xml:"appParticipantsInfo,omitempty"`
+
+	// ProtocolInfo: Информация о проведении ЭОК20 (открытый конкурс в электронной форме с даты начала действия оптимизационного законопроекта 44-ФЗ). В рамках блока должен быть заполнен блок applicationsInfo и/или abandonedReason
+	ProtocolInfo ProtocolInfo `xml:"protocolInfo"`
+
+	// Id: Идентификатор документа ЕИС. Игнорируется при приеме-передаче. Добавлено на развитие
+	Id *int64 `xml:"id,omitempty"`
+
+	// ExternalId: Внешний идентификатор документа. При приеме контролируется уникальность номера в рамках организации, размещающей закупку
+	ExternalId *base.ExternalIdType `xml:"externalId,omitempty"`
+
+	// VersionNumber: Номер версии документа. В случае если значение поля не указано или в поле указано 1, считается, что это первоначальная версия документа, иначе – изменение существующей версии. При приеме изменений документа контролируется последовательность нумерации
+	VersionNumber *base.VersionNumberType `xml:"versionNumber,omitempty"`
+
+	// FoundationDocInfo: Документ-основание. Блок игнорируется при приеме, автоматически заполняется при передаче
+	FoundationDocInfo *FoundationDocInfoType `xml:"foundationDocInfo,omitempty"`
+
+	// CommonInfo: Общая информация
+	CommonInfo Protocol2020CommonInfoType `xml:"commonInfo"`
+
+	// ProtocolPublisherInfo: Информация об организации, разместившей протокол
+	ProtocolPublisherInfo ProtocolPublisherInfo `xml:"protocolPublisherInfo"`
+
+	// ExtPrintFormInfo: Электронный документ, полученный из внешней системы. В составе блока на стороне ЕИС принимается сформированная на площадке печатная форма протокола без сведений об участниках закупки
+	ExtPrintFormInfo cmn.ExtPrintFormProtocolType `xml:"extPrintFormInfo"`
+
+	// AttachmentsInfo: Информация о прикрепленных документах Игнорируется при приеме, начиная с версии 15.1
+	AttachmentsInfo *cmn.AttachmentListWithMandatoryCstype `xml:"attachmentsInfo,omitempty"`
+
+	// ModificationInfo: Основание внесения изменений. При приеме изменений протоколов epProtocolEOK2020FirstSections, epProtocolEOK2020SecondSectionsPart если: 1) в ЕИС размещена действующая версия дочернего протокола; 2) основание исправления «По решению судебного органа»/«По решению контролирующего органа» (т.е. заполнен блок modification/reason/courtDecision или modification/reason/authorityPrescription), то допускается изменение следующих полей без отмены дочернего протокола: - "Дата и время проведения процедуры" (procedureDT) - "Информация о прикрепленных документах" (attachments) - "Название комиссии" (protocolInfo/commission/commissionName)
+	ModificationInfo *ModificationType `xml:"modificationInfo,omitempty"`
 }
 
 // ProtocolEok2020FinalType: Тип: Протокол подведения итогов ЭOK20 (открытый конкурс в электронной форме с даты начала действия оптимизационного законопроекта 44-ФЗ)
@@ -12114,7 +14133,34 @@ type ProtocolEok2020FinalType struct {
 	SchemeVersion base.SchemeVersionType `xml:"schemeVersion,attr"`
 
 	// ProtocolInfo: Информация о проведении ЭОК20 (открытый конкурс в электронной форме с даты начала действия оптимизационного законопроекта 44-ФЗ). В рамках блока должен быть заполнен блок applicationsInfo и/или abandonedReason
-	ProtocolInfo ProtocolInfo `xml:",any"`
+	ProtocolInfo ProtocolInfo `xml:"protocolInfo"`
+
+	// Id: Идентификатор документа ЕИС. Игнорируется при приеме-передаче. Добавлено на развитие
+	Id *int64 `xml:"id,omitempty"`
+
+	// ExternalId: Внешний идентификатор документа. При приеме контролируется уникальность номера в рамках организации, размещающей закупку
+	ExternalId *base.ExternalIdType `xml:"externalId,omitempty"`
+
+	// VersionNumber: Номер версии документа. В случае если значение поля не указано или в поле указано 1, считается, что это первоначальная версия документа, иначе – изменение существующей версии. При приеме изменений документа контролируется последовательность нумерации
+	VersionNumber *base.VersionNumberType `xml:"versionNumber,omitempty"`
+
+	// FoundationDocInfo: Документ-основание. Блок игнорируется при приеме, автоматически заполняется при передаче
+	FoundationDocInfo *FoundationDocInfoType `xml:"foundationDocInfo,omitempty"`
+
+	// CommonInfo: Общая информация
+	CommonInfo Protocol2020CommonInfoType `xml:"commonInfo"`
+
+	// ProtocolPublisherInfo: Информация об организации, разместившей протокол
+	ProtocolPublisherInfo ProtocolPublisherInfo `xml:"protocolPublisherInfo"`
+
+	// ExtPrintFormInfo: Электронный документ, полученный из внешней системы. В составе блока на стороне ЕИС принимается сформированная на площадке печатная форма протокола без сведений об участниках закупки
+	ExtPrintFormInfo cmn.ExtPrintFormProtocolType `xml:"extPrintFormInfo"`
+
+	// AttachmentsInfo: Информация о прикрепленных документах Игнорируется при приеме, начиная с версии 15.1
+	AttachmentsInfo *cmn.AttachmentListWithMandatoryCstype `xml:"attachmentsInfo,omitempty"`
+
+	// ModificationInfo: Основание внесения изменений. При приеме изменений протоколов epProtocolEOK2020FirstSections, epProtocolEOK2020SecondSectionsPart если: 1) в ЕИС размещена действующая версия дочернего протокола; 2) основание исправления «По решению судебного органа»/«По решению контролирующего органа» (т.е. заполнен блок modification/reason/courtDecision или modification/reason/authorityPrescription), то допускается изменение следующих полей без отмены дочернего протокола: - "Дата и время проведения процедуры" (procedureDT) - "Информация о прикрепленных документах" (attachments) - "Название комиссии" (protocolInfo/commission/commissionName)
+	ModificationInfo *ModificationType `xml:"modificationInfo,omitempty"`
 }
 
 // ProtocolEok2020FinalPartType: Тип: Протокол подведения итогов ЭOK20 (открытый конкурс в электронной форме с даты начала действия оптимизационного законопроекта 44-ФЗ) с информацией об участниках
@@ -12125,7 +14171,37 @@ type ProtocolEok2020FinalPartType struct {
 	SchemeVersion base.SchemeVersionType `xml:"schemeVersion,attr"`
 
 	// AppParticipantsInfo: Сведения об участниках закупки
-	AppParticipantsInfo *AppParticipantsInfo `xml:",any,omitempty"`
+	AppParticipantsInfo *AppParticipantsInfo `xml:"appParticipantsInfo,omitempty"`
+
+	// ProtocolInfo: Информация о проведении ЭОК20 (открытый конкурс в электронной форме с даты начала действия оптимизационного законопроекта 44-ФЗ). В рамках блока должен быть заполнен блок applicationsInfo и/или abandonedReason
+	ProtocolInfo ProtocolInfo `xml:"protocolInfo"`
+
+	// Id: Идентификатор документа ЕИС. Игнорируется при приеме-передаче. Добавлено на развитие
+	Id *int64 `xml:"id,omitempty"`
+
+	// ExternalId: Внешний идентификатор документа. При приеме контролируется уникальность номера в рамках организации, размещающей закупку
+	ExternalId *base.ExternalIdType `xml:"externalId,omitempty"`
+
+	// VersionNumber: Номер версии документа. В случае если значение поля не указано или в поле указано 1, считается, что это первоначальная версия документа, иначе – изменение существующей версии. При приеме изменений документа контролируется последовательность нумерации
+	VersionNumber *base.VersionNumberType `xml:"versionNumber,omitempty"`
+
+	// FoundationDocInfo: Документ-основание. Блок игнорируется при приеме, автоматически заполняется при передаче
+	FoundationDocInfo *FoundationDocInfoType `xml:"foundationDocInfo,omitempty"`
+
+	// CommonInfo: Общая информация
+	CommonInfo Protocol2020CommonInfoType `xml:"commonInfo"`
+
+	// ProtocolPublisherInfo: Информация об организации, разместившей протокол
+	ProtocolPublisherInfo ProtocolPublisherInfo `xml:"protocolPublisherInfo"`
+
+	// ExtPrintFormInfo: Электронный документ, полученный из внешней системы. В составе блока на стороне ЕИС принимается сформированная на площадке печатная форма протокола без сведений об участниках закупки
+	ExtPrintFormInfo cmn.ExtPrintFormProtocolType `xml:"extPrintFormInfo"`
+
+	// AttachmentsInfo: Информация о прикрепленных документах Игнорируется при приеме, начиная с версии 15.1
+	AttachmentsInfo *cmn.AttachmentListWithMandatoryCstype `xml:"attachmentsInfo,omitempty"`
+
+	// ModificationInfo: Основание внесения изменений. При приеме изменений протоколов epProtocolEOK2020FirstSections, epProtocolEOK2020SecondSectionsPart если: 1) в ЕИС размещена действующая версия дочернего протокола; 2) основание исправления «По решению судебного органа»/«По решению контролирующего органа» (т.е. заполнен блок modification/reason/courtDecision или modification/reason/authorityPrescription), то допускается изменение следующих полей без отмены дочернего протокола: - "Дата и время проведения процедуры" (procedureDT) - "Информация о прикрепленных документах" (attachments) - "Название комиссии" (protocolInfo/commission/commissionName)
+	ModificationInfo *ModificationType `xml:"modificationInfo,omitempty"`
 }
 
 // NotificationEzk2020Type: Тип: Извещение о проведении ЭЗК20 (запрос котировок в электронной форме с 01.04.2021 года); изменение извещения
@@ -12143,6 +14219,33 @@ type NotificationEzk2020Type struct {
 
 	// PrintFormFieldsInfo: Дополнительная информация для печатной формы. Игнорируется при приёме, заполняется при передаче
 	PrintFormFieldsInfo *PrintFormFieldsInfo `xml:"printFormFieldsInfo,omitempty"`
+
+	// Id: Идентификатор документа ЕИС. Обязателен для заполнения при приеме изменения проекта документа
+	Id *int64 `xml:"id,omitempty"`
+
+	// ExternalId: Внешний идентификатор документа. При приеме контролируется уникальность номера в рамках организации, размещающей закупку
+	ExternalId *base.ExternalIdType `xml:"externalId,omitempty"`
+
+	// VersionNumber: Номер версии документа. В случае если значение поля не указано или в поле указано 1, считается, что это первоначальная версия документа, иначе – изменение существующей версии. При приеме изменений документа контролируется последовательность нумерации
+	VersionNumber *base.VersionNumberType `xml:"versionNumber,omitempty"`
+
+	// CommonInfo: Общая информация
+	CommonInfo CommonInfo `xml:"commonInfo"`
+
+	// PurchaseResponsibleInfo: Информация об организации, осуществляющей размещение
+	PurchaseResponsibleInfo PurchaseResponsibleInfo `xml:"purchaseResponsibleInfo"`
+
+	// PrintFormInfo: Печатная форма документа. Элемент игнорируется при приёме. При передаче заполняется ссылкой на печатную форму и электронную подпись размещенного в ЕИС документа
+	PrintFormInfo *cmn.PrintFormType `xml:"printFormInfo,omitempty"`
+
+	// ExtPrintFormInfo: Электронный документ, полученный из внешней системы. Игнорируется при приеме-передаче, добавлено на развитие
+	ExtPrintFormInfo *cmn.ExtPrintFormType `xml:"extPrintFormInfo,omitempty"`
+
+	// AttachmentsInfo: Вложенные файлы
+	AttachmentsInfo *cmn.AttachmentListWithKindType `xml:"attachmentsInfo,omitempty"`
+
+	// ServiceSigns: Служебные признаки
+	ServiceSigns *ServiceSigns `xml:"serviceSigns,omitempty"`
 }
 
 // ProtocolEzk2020FinalType: Тип: Протокол подведения итогов определения поставщика (подрядчика, исполнителя) ЭЗК20 (запрос котировок в электронной форме c 01.04.2021 года)
@@ -12153,7 +14256,34 @@ type ProtocolEzk2020FinalType struct {
 	SchemeVersion base.SchemeVersionType `xml:"schemeVersion,attr"`
 
 	// ProtocolInfo: Информация о проведении ЭЗК (запрос котировок в электронной форме)
-	ProtocolInfo ProtocolInfo `xml:",any"`
+	ProtocolInfo ProtocolInfo `xml:"protocolInfo"`
+
+	// Id: Идентификатор документа ЕИС. Игнорируется при приеме-передаче. Добавлено на развитие
+	Id *int64 `xml:"id,omitempty"`
+
+	// ExternalId: Внешний идентификатор документа. При приеме контролируется уникальность номера в рамках организации, размещающей закупку
+	ExternalId *base.ExternalIdType `xml:"externalId,omitempty"`
+
+	// VersionNumber: Номер версии документа. В случае если значение поля не указано или в поле указано 1, считается, что это первоначальная версия документа, иначе – изменение существующей версии. При приеме изменений документа контролируется последовательность нумерации
+	VersionNumber *base.VersionNumberType `xml:"versionNumber,omitempty"`
+
+	// FoundationDocInfo: Документ-основание. Блок игнорируется при приеме, автоматически заполняется при передаче
+	FoundationDocInfo *FoundationDocInfoType `xml:"foundationDocInfo,omitempty"`
+
+	// CommonInfo: Общая информация
+	CommonInfo Protocol2020CommonInfoType `xml:"commonInfo"`
+
+	// ProtocolPublisherInfo: Информация об организации, разместившей протокол
+	ProtocolPublisherInfo ProtocolPublisherInfo `xml:"protocolPublisherInfo"`
+
+	// ExtPrintFormInfo: Электронный документ, полученный из внешней системы. В составе блока на стороне ЕИС принимается сформированная на площадке печатная форма протокола без сведений об участниках закупки
+	ExtPrintFormInfo cmn.ExtPrintFormProtocolType `xml:"extPrintFormInfo"`
+
+	// AttachmentsInfo: Информация о прикрепленных документах Игнорируется при приеме, начиная с версии 15.1
+	AttachmentsInfo *cmn.AttachmentListWithMandatoryCstype `xml:"attachmentsInfo,omitempty"`
+
+	// ModificationInfo: Основание внесения изменений. При приеме изменений протоколов epProtocolEOK2020FirstSections, epProtocolEOK2020SecondSectionsPart если: 1) в ЕИС размещена действующая версия дочернего протокола; 2) основание исправления «По решению судебного органа»/«По решению контролирующего органа» (т.е. заполнен блок modification/reason/courtDecision или modification/reason/authorityPrescription), то допускается изменение следующих полей без отмены дочернего протокола: - "Дата и время проведения процедуры" (procedureDT) - "Информация о прикрепленных документах" (attachments) - "Название комиссии" (protocolInfo/commission/commissionName)
+	ModificationInfo *ModificationType `xml:"modificationInfo,omitempty"`
 }
 
 // ProtocolEzk2020FinalPartType: Тип: Протокол подведения итогов определения поставщика (подрядчика, исполнителя) ЭЗК20 (запрос котировок в электронной форме c 01.04.2021 года) с информацией об участниках
@@ -12164,7 +14294,37 @@ type ProtocolEzk2020FinalPartType struct {
 	SchemeVersion base.SchemeVersionType `xml:"schemeVersion,attr"`
 
 	// AppParticipantsInfo: Сведения об участниках закупки
-	AppParticipantsInfo *AppParticipantsInfo `xml:",any,omitempty"`
+	AppParticipantsInfo *AppParticipantsInfo `xml:"appParticipantsInfo,omitempty"`
+
+	// ProtocolInfo: Информация о проведении ЭЗК (запрос котировок в электронной форме)
+	ProtocolInfo ProtocolInfo `xml:"protocolInfo"`
+
+	// Id: Идентификатор документа ЕИС. Игнорируется при приеме-передаче. Добавлено на развитие
+	Id *int64 `xml:"id,omitempty"`
+
+	// ExternalId: Внешний идентификатор документа. При приеме контролируется уникальность номера в рамках организации, размещающей закупку
+	ExternalId *base.ExternalIdType `xml:"externalId,omitempty"`
+
+	// VersionNumber: Номер версии документа. В случае если значение поля не указано или в поле указано 1, считается, что это первоначальная версия документа, иначе – изменение существующей версии. При приеме изменений документа контролируется последовательность нумерации
+	VersionNumber *base.VersionNumberType `xml:"versionNumber,omitempty"`
+
+	// FoundationDocInfo: Документ-основание. Блок игнорируется при приеме, автоматически заполняется при передаче
+	FoundationDocInfo *FoundationDocInfoType `xml:"foundationDocInfo,omitempty"`
+
+	// CommonInfo: Общая информация
+	CommonInfo Protocol2020CommonInfoType `xml:"commonInfo"`
+
+	// ProtocolPublisherInfo: Информация об организации, разместившей протокол
+	ProtocolPublisherInfo ProtocolPublisherInfo `xml:"protocolPublisherInfo"`
+
+	// ExtPrintFormInfo: Электронный документ, полученный из внешней системы. В составе блока на стороне ЕИС принимается сформированная на площадке печатная форма протокола без сведений об участниках закупки
+	ExtPrintFormInfo cmn.ExtPrintFormProtocolType `xml:"extPrintFormInfo"`
+
+	// AttachmentsInfo: Информация о прикрепленных документах Игнорируется при приеме, начиная с версии 15.1
+	AttachmentsInfo *cmn.AttachmentListWithMandatoryCstype `xml:"attachmentsInfo,omitempty"`
+
+	// ModificationInfo: Основание внесения изменений. При приеме изменений протоколов epProtocolEOK2020FirstSections, epProtocolEOK2020SecondSectionsPart если: 1) в ЕИС размещена действующая версия дочернего протокола; 2) основание исправления «По решению судебного органа»/«По решению контролирующего органа» (т.е. заполнен блок modification/reason/courtDecision или modification/reason/authorityPrescription), то допускается изменение следующих полей без отмены дочернего протокола: - "Дата и время проведения процедуры" (procedureDT) - "Информация о прикрепленных документах" (attachments) - "Название комиссии" (protocolInfo/commission/commissionName)
+	ModificationInfo *ModificationType `xml:"modificationInfo,omitempty"`
 }
 
 // NotificationEzt2020Type: Тип: Извещение о проведении ЭЗТ (закупка товаров согласно ч.12 ст. 93 № 44-ФЗ); изменение извещения
@@ -12260,7 +14420,34 @@ type ProtocolEzt2020FinalType struct {
 	SchemeVersion base.SchemeVersionType `xml:"schemeVersion,attr"`
 
 	// ProtocolInfo: Информация о проведении ЭЗТ (Закупка товаров согласно ч.12 ст. 93 № 44-ФЗ)
-	ProtocolInfo ProtocolInfo `xml:",any"`
+	ProtocolInfo ProtocolInfo `xml:"protocolInfo"`
+
+	// Id: Идентификатор документа ЕИС. Игнорируется при приеме-передаче. Добавлено на развитие
+	Id *int64 `xml:"id,omitempty"`
+
+	// ExternalId: Внешний идентификатор документа. При приеме контролируется уникальность номера в рамках организации, размещающей закупку
+	ExternalId *base.ExternalIdType `xml:"externalId,omitempty"`
+
+	// VersionNumber: Номер версии документа. В случае если значение поля не указано или в поле указано 1, считается, что это первоначальная версия документа, иначе – изменение существующей версии. При приеме изменений документа контролируется последовательность нумерации
+	VersionNumber *base.VersionNumberType `xml:"versionNumber,omitempty"`
+
+	// FoundationDocInfo: Документ-основание. Блок игнорируется при приеме, автоматически заполняется при передаче
+	FoundationDocInfo *FoundationDocInfoType `xml:"foundationDocInfo,omitempty"`
+
+	// CommonInfo: Общая информация
+	CommonInfo Protocol2020CommonInfoType `xml:"commonInfo"`
+
+	// ProtocolPublisherInfo: Информация об организации, разместившей протокол
+	ProtocolPublisherInfo ProtocolPublisherInfo `xml:"protocolPublisherInfo"`
+
+	// ExtPrintFormInfo: Электронный документ, полученный из внешней системы. В составе блока на стороне ЕИС принимается сформированная на площадке печатная форма протокола без сведений об участниках закупки
+	ExtPrintFormInfo cmn.ExtPrintFormProtocolType `xml:"extPrintFormInfo"`
+
+	// AttachmentsInfo: Информация о прикрепленных документах Игнорируется при приеме, начиная с версии 15.1
+	AttachmentsInfo *cmn.AttachmentListWithMandatoryCstype `xml:"attachmentsInfo,omitempty"`
+
+	// ModificationInfo: Основание внесения изменений. При приеме изменений протоколов epProtocolEOK2020FirstSections, epProtocolEOK2020SecondSectionsPart если: 1) в ЕИС размещена действующая версия дочернего протокола; 2) основание исправления «По решению судебного органа»/«По решению контролирующего органа» (т.е. заполнен блок modification/reason/courtDecision или modification/reason/authorityPrescription), то допускается изменение следующих полей без отмены дочернего протокола: - "Дата и время проведения процедуры" (procedureDT) - "Информация о прикрепленных документах" (attachments) - "Название комиссии" (protocolInfo/commission/commissionName)
+	ModificationInfo *ModificationType `xml:"modificationInfo,omitempty"`
 }
 
 // ProtocolEzt2020FinalPartType: Тип: Протокол подведения итогов определения поставщика ЭЗТ (закупка товаров согласно ч.12 ст. 93 № 44-ФЗ) с информацией об участниках
@@ -12271,7 +14458,37 @@ type ProtocolEzt2020FinalPartType struct {
 	SchemeVersion base.SchemeVersionType `xml:"schemeVersion,attr"`
 
 	// AppParticipantsInfo: Сведения об участниках закупки
-	AppParticipantsInfo AppParticipantsInfo `xml:",any"`
+	AppParticipantsInfo AppParticipantsInfo `xml:"appParticipantsInfo"`
+
+	// ProtocolInfo: Информация о проведении ЭЗТ (Закупка товаров согласно ч.12 ст. 93 № 44-ФЗ)
+	ProtocolInfo ProtocolInfo `xml:"protocolInfo"`
+
+	// Id: Идентификатор документа ЕИС. Игнорируется при приеме-передаче. Добавлено на развитие
+	Id *int64 `xml:"id,omitempty"`
+
+	// ExternalId: Внешний идентификатор документа. При приеме контролируется уникальность номера в рамках организации, размещающей закупку
+	ExternalId *base.ExternalIdType `xml:"externalId,omitempty"`
+
+	// VersionNumber: Номер версии документа. В случае если значение поля не указано или в поле указано 1, считается, что это первоначальная версия документа, иначе – изменение существующей версии. При приеме изменений документа контролируется последовательность нумерации
+	VersionNumber *base.VersionNumberType `xml:"versionNumber,omitempty"`
+
+	// FoundationDocInfo: Документ-основание. Блок игнорируется при приеме, автоматически заполняется при передаче
+	FoundationDocInfo *FoundationDocInfoType `xml:"foundationDocInfo,omitempty"`
+
+	// CommonInfo: Общая информация
+	CommonInfo Protocol2020CommonInfoType `xml:"commonInfo"`
+
+	// ProtocolPublisherInfo: Информация об организации, разместившей протокол
+	ProtocolPublisherInfo ProtocolPublisherInfo `xml:"protocolPublisherInfo"`
+
+	// ExtPrintFormInfo: Электронный документ, полученный из внешней системы. В составе блока на стороне ЕИС принимается сформированная на площадке печатная форма протокола без сведений об участниках закупки
+	ExtPrintFormInfo cmn.ExtPrintFormProtocolType `xml:"extPrintFormInfo"`
+
+	// AttachmentsInfo: Информация о прикрепленных документах Игнорируется при приеме, начиная с версии 15.1
+	AttachmentsInfo *cmn.AttachmentListWithMandatoryCstype `xml:"attachmentsInfo,omitempty"`
+
+	// ModificationInfo: Основание внесения изменений. При приеме изменений протоколов epProtocolEOK2020FirstSections, epProtocolEOK2020SecondSectionsPart если: 1) в ЕИС размещена действующая версия дочернего протокола; 2) основание исправления «По решению судебного органа»/«По решению контролирующего органа» (т.е. заполнен блок modification/reason/courtDecision или modification/reason/authorityPrescription), то допускается изменение следующих полей без отмены дочернего протокола: - "Дата и время проведения процедуры" (procedureDT) - "Информация о прикрепленных документах" (attachments) - "Название комиссии" (protocolInfo/commission/commissionName)
+	ModificationInfo *ModificationType `xml:"modificationInfo,omitempty"`
 }
 
 // NoticeApplicationsAbsenceType: Тип: Уведомление об отсутствии заявок
@@ -12282,7 +14499,34 @@ type NoticeApplicationsAbsenceType struct {
 	SchemeVersion base.SchemeVersionType `xml:"schemeVersion,attr"`
 
 	// AbandonedReason: Признание ЭЗТ несостоявшимся. При приеме содержимое контролируется на присутствие в справочнике "Справочник оснований признания процедуры несостоявшейся" (nsiAbandonedReason). Запись должна иметь значение "epNoticeApplicationsAbsence" в поле objectName. При этом запись не должна быть помечена как устаревшая (в поле IS_OUTDATED не должно быть указано 1) для закупок, первая версия извещений которых размещена после начала действия оптимизационного законопроекта 44-ФЗ
-	AbandonedReason base.AbandonedReasonRef `xml:",any"`
+	AbandonedReason base.AbandonedReasonRef `xml:"abandonedReason"`
+
+	// Id: Идентификатор документа ЕИС. Игнорируется при приеме-передаче. Добавлено на развитие
+	Id *int64 `xml:"id,omitempty"`
+
+	// ExternalId: Внешний идентификатор документа. При приеме контролируется уникальность номера в рамках организации, размещающей закупку
+	ExternalId *base.ExternalIdType `xml:"externalId,omitempty"`
+
+	// VersionNumber: Номер версии документа. В случае если значение поля не указано или в поле указано 1, считается, что это первоначальная версия документа, иначе – изменение существующей версии. При приеме изменений документа контролируется последовательность нумерации
+	VersionNumber *base.VersionNumberType `xml:"versionNumber,omitempty"`
+
+	// FoundationDocInfo: Документ-основание. Блок игнорируется при приеме, автоматически заполняется при передаче
+	FoundationDocInfo *FoundationDocInfoType `xml:"foundationDocInfo,omitempty"`
+
+	// CommonInfo: Общая информация
+	CommonInfo Protocol2020CommonInfoType `xml:"commonInfo"`
+
+	// ProtocolPublisherInfo: Информация об организации, разместившей протокол
+	ProtocolPublisherInfo ProtocolPublisherInfo `xml:"protocolPublisherInfo"`
+
+	// ExtPrintFormInfo: Электронный документ, полученный из внешней системы. В составе блока на стороне ЕИС принимается сформированная на площадке печатная форма протокола без сведений об участниках закупки
+	ExtPrintFormInfo cmn.ExtPrintFormProtocolType `xml:"extPrintFormInfo"`
+
+	// AttachmentsInfo: Информация о прикрепленных документах Игнорируется при приеме, начиная с версии 15.1
+	AttachmentsInfo *cmn.AttachmentListWithMandatoryCstype `xml:"attachmentsInfo,omitempty"`
+
+	// ModificationInfo: Основание внесения изменений. При приеме изменений протоколов epProtocolEOK2020FirstSections, epProtocolEOK2020SecondSectionsPart если: 1) в ЕИС размещена действующая версия дочернего протокола; 2) основание исправления «По решению судебного органа»/«По решению контролирующего органа» (т.е. заполнен блок modification/reason/courtDecision или modification/reason/authorityPrescription), то допускается изменение следующих полей без отмены дочернего протокола: - "Дата и время проведения процедуры" (procedureDT) - "Информация о прикрепленных документах" (attachments) - "Название комиссии" (protocolInfo/commission/commissionName)
+	ModificationInfo *ModificationType `xml:"modificationInfo,omitempty"`
 }
 
 // InvitationEzakA2020Type: Тип: Приглашение принять участие в закупке ЭЗакА20 (закрытый аукцион в электронной форме с даты начала действия оптимизационного законопроекта 44-ФЗ); изменение приглашения
@@ -12297,6 +14541,36 @@ type InvitationEzakA2020Type struct {
 
 	// ModificationInfo: Основание внесения изменений
 	ModificationInfo *Notification2020ModificationType `xml:"modificationInfo,omitempty"`
+
+	// Id: Идентификатор документа ЕИС. Обязателен для заполнения при приеме изменения проекта документа
+	Id *int64 `xml:"id,omitempty"`
+
+	// ExternalId: Внешний идентификатор документа. При приеме контролируется уникальность номера в рамках организации, размещающей закупку
+	ExternalId *base.ExternalIdType `xml:"externalId,omitempty"`
+
+	// VersionNumber: Номер версии документа. В случае если значение поля не указано или в поле указано 1, считается, что это первоначальная версия документа, иначе – изменение существующей версии. При приеме изменений документа контролируется последовательность нумерации
+	VersionNumber *base.VersionNumberType `xml:"versionNumber,omitempty"`
+
+	// CommonInfo: Общая информация
+	CommonInfo CommonInfo `xml:"commonInfo"`
+
+	// PurchaseFeatures: Особенности закупки
+	PurchaseFeatures *PurchaseFeatures `xml:"purchaseFeatures,omitempty"`
+
+	// PurchaseResponsibleInfo: Информация об организации, осуществляющей размещение
+	PurchaseResponsibleInfo PurchaseResponsibleInfo `xml:"purchaseResponsibleInfo"`
+
+	// PrintFormInfo: Печатная форма документа. Элемент игнорируется при приёме. При передаче заполняется ссылкой на печатную форму и электронную подпись размещенного в ЕИС документа
+	PrintFormInfo *cmn.PrintFormType `xml:"printFormInfo,omitempty"`
+
+	// ExtPrintFormInfo: Электронный документ, полученный из внешней системы. Игнорируется при приеме-передаче, добавлено на развитие
+	ExtPrintFormInfo *cmn.ExtPrintFormType `xml:"extPrintFormInfo,omitempty"`
+
+	// AttachmentsInfo: Вложенные файлы
+	AttachmentsInfo *cmn.AttachmentListWithKindType `xml:"attachmentsInfo,omitempty"`
+
+	// ServiceSigns: Служебные признаки
+	ServiceSigns *ServiceSigns `xml:"serviceSigns,omitempty"`
 }
 
 // ProtocolEzakA2020DocRequestType: Тип: Протокол рассмотрения запросов на представление документации о закупке в ЭЗакА20 (закрытый аукцион в электронной форме с даты начала действия оптимизационного законопроекта 44-ФЗ)
@@ -12307,7 +14581,34 @@ type ProtocolEzakA2020DocRequestType struct {
 	SchemeVersion base.SchemeVersionType `xml:"schemeVersion,attr"`
 
 	// ProtocolInfo: Информация о проведении ЭЗакА20. В рамках блока должен быть заполнен блок requestsInfo и/или abandonedReason
-	ProtocolInfo ProtocolInfo `xml:",any"`
+	ProtocolInfo ProtocolInfo `xml:"protocolInfo"`
+
+	// Id: Идентификатор документа ЕИС. Игнорируется при приеме-передаче. Добавлено на развитие
+	Id *int64 `xml:"id,omitempty"`
+
+	// ExternalId: Внешний идентификатор документа. При приеме контролируется уникальность номера в рамках организации, размещающей закупку
+	ExternalId *base.ExternalIdType `xml:"externalId,omitempty"`
+
+	// VersionNumber: Номер версии документа. В случае если значение поля не указано или в поле указано 1, считается, что это первоначальная версия документа, иначе – изменение существующей версии. При приеме изменений документа контролируется последовательность нумерации
+	VersionNumber *base.VersionNumberType `xml:"versionNumber,omitempty"`
+
+	// FoundationDocInfo: Документ-основание. Блок игнорируется при приеме, автоматически заполняется при передаче
+	FoundationDocInfo *FoundationDocInfoType `xml:"foundationDocInfo,omitempty"`
+
+	// CommonInfo: Общая информация
+	CommonInfo Protocol2020CommonInfoType `xml:"commonInfo"`
+
+	// ProtocolPublisherInfo: Информация об организации, разместившей протокол
+	ProtocolPublisherInfo ProtocolPublisherInfo `xml:"protocolPublisherInfo"`
+
+	// ExtPrintFormInfo: Электронный документ, полученный из внешней системы. В составе блока на стороне ЕИС принимается сформированная на площадке печатная форма протокола без сведений об участниках закупки
+	ExtPrintFormInfo cmn.ExtPrintFormProtocolType `xml:"extPrintFormInfo"`
+
+	// AttachmentsInfo: Информация о прикрепленных документах Игнорируется при приеме, начиная с версии 15.1
+	AttachmentsInfo *cmn.AttachmentListWithMandatoryCstype `xml:"attachmentsInfo,omitempty"`
+
+	// ModificationInfo: Основание внесения изменений. При приеме изменений протоколов epProtocolEOK2020FirstSections, epProtocolEOK2020SecondSectionsPart если: 1) в ЕИС размещена действующая версия дочернего протокола; 2) основание исправления «По решению судебного органа»/«По решению контролирующего органа» (т.е. заполнен блок modification/reason/courtDecision или modification/reason/authorityPrescription), то допускается изменение следующих полей без отмены дочернего протокола: - "Дата и время проведения процедуры" (procedureDT) - "Информация о прикрепленных документах" (attachments) - "Название комиссии" (protocolInfo/commission/commissionName)
+	ModificationInfo *ModificationType `xml:"modificationInfo,omitempty"`
 }
 
 // ProtocolEzakA2020FinalType: Тип: Протокол подведения итогов определения поставщика (подрядчика, исполнителя) в ЭЗакА20 (закрытый аукцион в электронной форме с даты начала действия оптимизационного законопроекта 44-ФЗ)
@@ -12318,7 +14619,34 @@ type ProtocolEzakA2020FinalType struct {
 	SchemeVersion base.SchemeVersionType `xml:"schemeVersion,attr"`
 
 	// ProtocolInfo: Информация о проведении ЭЗакА20. В рамках блока должен быть заполнен блок applicationsInfo и/или abandonedReason
-	ProtocolInfo ProtocolInfo `xml:",any"`
+	ProtocolInfo ProtocolInfo `xml:"protocolInfo"`
+
+	// Id: Идентификатор документа ЕИС. Игнорируется при приеме-передаче. Добавлено на развитие
+	Id *int64 `xml:"id,omitempty"`
+
+	// ExternalId: Внешний идентификатор документа. При приеме контролируется уникальность номера в рамках организации, размещающей закупку
+	ExternalId *base.ExternalIdType `xml:"externalId,omitempty"`
+
+	// VersionNumber: Номер версии документа. В случае если значение поля не указано или в поле указано 1, считается, что это первоначальная версия документа, иначе – изменение существующей версии. При приеме изменений документа контролируется последовательность нумерации
+	VersionNumber *base.VersionNumberType `xml:"versionNumber,omitempty"`
+
+	// FoundationDocInfo: Документ-основание. Блок игнорируется при приеме, автоматически заполняется при передаче
+	FoundationDocInfo *FoundationDocInfoType `xml:"foundationDocInfo,omitempty"`
+
+	// CommonInfo: Общая информация
+	CommonInfo Protocol2020CommonInfoType `xml:"commonInfo"`
+
+	// ProtocolPublisherInfo: Информация об организации, разместившей протокол
+	ProtocolPublisherInfo ProtocolPublisherInfo `xml:"protocolPublisherInfo"`
+
+	// ExtPrintFormInfo: Электронный документ, полученный из внешней системы. В составе блока на стороне ЕИС принимается сформированная на площадке печатная форма протокола без сведений об участниках закупки
+	ExtPrintFormInfo cmn.ExtPrintFormProtocolType `xml:"extPrintFormInfo"`
+
+	// AttachmentsInfo: Информация о прикрепленных документах Игнорируется при приеме, начиная с версии 15.1
+	AttachmentsInfo *cmn.AttachmentListWithMandatoryCstype `xml:"attachmentsInfo,omitempty"`
+
+	// ModificationInfo: Основание внесения изменений. При приеме изменений протоколов epProtocolEOK2020FirstSections, epProtocolEOK2020SecondSectionsPart если: 1) в ЕИС размещена действующая версия дочернего протокола; 2) основание исправления «По решению судебного органа»/«По решению контролирующего органа» (т.е. заполнен блок modification/reason/courtDecision или modification/reason/authorityPrescription), то допускается изменение следующих полей без отмены дочернего протокола: - "Дата и время проведения процедуры" (procedureDT) - "Информация о прикрепленных документах" (attachments) - "Название комиссии" (protocolInfo/commission/commissionName)
+	ModificationInfo *ModificationType `xml:"modificationInfo,omitempty"`
 }
 
 // InvitationEzakK2020Type: Тип: Приглашение принять участие в закупке ЭЗакК20 (закрытый конкурс в электронной форме с даты начала действия оптимизационного законопроекта 44-ФЗ); изменение приглашения
@@ -12333,6 +14661,36 @@ type InvitationEzakK2020Type struct {
 
 	// ModificationInfo: Основание внесения изменений
 	ModificationInfo *Notification2020ModificationType `xml:"modificationInfo,omitempty"`
+
+	// Id: Идентификатор документа ЕИС. Обязателен для заполнения при приеме изменения проекта документа
+	Id *int64 `xml:"id,omitempty"`
+
+	// ExternalId: Внешний идентификатор документа. При приеме контролируется уникальность номера в рамках организации, размещающей закупку
+	ExternalId *base.ExternalIdType `xml:"externalId,omitempty"`
+
+	// VersionNumber: Номер версии документа. В случае если значение поля не указано или в поле указано 1, считается, что это первоначальная версия документа, иначе – изменение существующей версии. При приеме изменений документа контролируется последовательность нумерации
+	VersionNumber *base.VersionNumberType `xml:"versionNumber,omitempty"`
+
+	// CommonInfo: Общая информация
+	CommonInfo CommonInfo `xml:"commonInfo"`
+
+	// PurchaseFeatures: Особенности закупки
+	PurchaseFeatures *PurchaseFeatures `xml:"purchaseFeatures,omitempty"`
+
+	// PurchaseResponsibleInfo: Информация об организации, осуществляющей размещение
+	PurchaseResponsibleInfo PurchaseResponsibleInfo `xml:"purchaseResponsibleInfo"`
+
+	// PrintFormInfo: Печатная форма документа. Элемент игнорируется при приёме. При передаче заполняется ссылкой на печатную форму и электронную подпись размещенного в ЕИС документа
+	PrintFormInfo *cmn.PrintFormType `xml:"printFormInfo,omitempty"`
+
+	// ExtPrintFormInfo: Электронный документ, полученный из внешней системы. Игнорируется при приеме-передаче, добавлено на развитие
+	ExtPrintFormInfo *cmn.ExtPrintFormType `xml:"extPrintFormInfo,omitempty"`
+
+	// AttachmentsInfo: Вложенные файлы
+	AttachmentsInfo *cmn.AttachmentListWithKindType `xml:"attachmentsInfo,omitempty"`
+
+	// ServiceSigns: Служебные признаки
+	ServiceSigns *ServiceSigns `xml:"serviceSigns,omitempty"`
 }
 
 // ProtocolEzakK2020DocRequestType: Тип: Протокол рассмотрения запросов на представление документации о закупке в ЭЗакК20 (закрытый конкурс в электронной форме с даты начала действия оптимизационного законопроекта 44-ФЗ)
@@ -12343,7 +14701,34 @@ type ProtocolEzakK2020DocRequestType struct {
 	SchemeVersion base.SchemeVersionType `xml:"schemeVersion,attr"`
 
 	// ProtocolInfo: Информация о проведении ЭЗакК20. В рамках блока должен быть заполнен блок applicationsInfo и/или abandonedReason
-	ProtocolInfo ProtocolInfo `xml:",any"`
+	ProtocolInfo ProtocolInfo `xml:"protocolInfo"`
+
+	// Id: Идентификатор документа ЕИС. Игнорируется при приеме-передаче. Добавлено на развитие
+	Id *int64 `xml:"id,omitempty"`
+
+	// ExternalId: Внешний идентификатор документа. При приеме контролируется уникальность номера в рамках организации, размещающей закупку
+	ExternalId *base.ExternalIdType `xml:"externalId,omitempty"`
+
+	// VersionNumber: Номер версии документа. В случае если значение поля не указано или в поле указано 1, считается, что это первоначальная версия документа, иначе – изменение существующей версии. При приеме изменений документа контролируется последовательность нумерации
+	VersionNumber *base.VersionNumberType `xml:"versionNumber,omitempty"`
+
+	// FoundationDocInfo: Документ-основание. Блок игнорируется при приеме, автоматически заполняется при передаче
+	FoundationDocInfo *FoundationDocInfoType `xml:"foundationDocInfo,omitempty"`
+
+	// CommonInfo: Общая информация
+	CommonInfo Protocol2020CommonInfoType `xml:"commonInfo"`
+
+	// ProtocolPublisherInfo: Информация об организации, разместившей протокол
+	ProtocolPublisherInfo ProtocolPublisherInfo `xml:"protocolPublisherInfo"`
+
+	// ExtPrintFormInfo: Электронный документ, полученный из внешней системы. В составе блока на стороне ЕИС принимается сформированная на площадке печатная форма протокола без сведений об участниках закупки
+	ExtPrintFormInfo cmn.ExtPrintFormProtocolType `xml:"extPrintFormInfo"`
+
+	// AttachmentsInfo: Информация о прикрепленных документах Игнорируется при приеме, начиная с версии 15.1
+	AttachmentsInfo *cmn.AttachmentListWithMandatoryCstype `xml:"attachmentsInfo,omitempty"`
+
+	// ModificationInfo: Основание внесения изменений. При приеме изменений протоколов epProtocolEOK2020FirstSections, epProtocolEOK2020SecondSectionsPart если: 1) в ЕИС размещена действующая версия дочернего протокола; 2) основание исправления «По решению судебного органа»/«По решению контролирующего органа» (т.е. заполнен блок modification/reason/courtDecision или modification/reason/authorityPrescription), то допускается изменение следующих полей без отмены дочернего протокола: - "Дата и время проведения процедуры" (procedureDT) - "Информация о прикрепленных документах" (attachments) - "Название комиссии" (protocolInfo/commission/commissionName)
+	ModificationInfo *ModificationType `xml:"modificationInfo,omitempty"`
 }
 
 // ProtocolEzakK2020FinalType: Тип: Протокол подведения итогов определения поставщика (подрядчика, исполнителя) в ЭЗакК20 (закрытый конкурс в электронной форме с даты начала действия оптимизационного законопроекта 44-ФЗ)
@@ -12354,7 +14739,34 @@ type ProtocolEzakK2020FinalType struct {
 	SchemeVersion base.SchemeVersionType `xml:"schemeVersion,attr"`
 
 	// ProtocolInfo: Информация о проведении ЭЗакК20. В рамках блока должен быть заполнен блок applicationsInfo и/или abandonedReason
-	ProtocolInfo ProtocolInfo `xml:",any"`
+	ProtocolInfo ProtocolInfo `xml:"protocolInfo"`
+
+	// Id: Идентификатор документа ЕИС. Игнорируется при приеме-передаче. Добавлено на развитие
+	Id *int64 `xml:"id,omitempty"`
+
+	// ExternalId: Внешний идентификатор документа. При приеме контролируется уникальность номера в рамках организации, размещающей закупку
+	ExternalId *base.ExternalIdType `xml:"externalId,omitempty"`
+
+	// VersionNumber: Номер версии документа. В случае если значение поля не указано или в поле указано 1, считается, что это первоначальная версия документа, иначе – изменение существующей версии. При приеме изменений документа контролируется последовательность нумерации
+	VersionNumber *base.VersionNumberType `xml:"versionNumber,omitempty"`
+
+	// FoundationDocInfo: Документ-основание. Блок игнорируется при приеме, автоматически заполняется при передаче
+	FoundationDocInfo *FoundationDocInfoType `xml:"foundationDocInfo,omitempty"`
+
+	// CommonInfo: Общая информация
+	CommonInfo Protocol2020CommonInfoType `xml:"commonInfo"`
+
+	// ProtocolPublisherInfo: Информация об организации, разместившей протокол
+	ProtocolPublisherInfo ProtocolPublisherInfo `xml:"protocolPublisherInfo"`
+
+	// ExtPrintFormInfo: Электронный документ, полученный из внешней системы. В составе блока на стороне ЕИС принимается сформированная на площадке печатная форма протокола без сведений об участниках закупки
+	ExtPrintFormInfo cmn.ExtPrintFormProtocolType `xml:"extPrintFormInfo"`
+
+	// AttachmentsInfo: Информация о прикрепленных документах Игнорируется при приеме, начиная с версии 15.1
+	AttachmentsInfo *cmn.AttachmentListWithMandatoryCstype `xml:"attachmentsInfo,omitempty"`
+
+	// ModificationInfo: Основание внесения изменений. При приеме изменений протоколов epProtocolEOK2020FirstSections, epProtocolEOK2020SecondSectionsPart если: 1) в ЕИС размещена действующая версия дочернего протокола; 2) основание исправления «По решению судебного органа»/«По решению контролирующего органа» (т.е. заполнен блок modification/reason/courtDecision или modification/reason/authorityPrescription), то допускается изменение следующих полей без отмены дочернего протокола: - "Дата и время проведения процедуры" (procedureDT) - "Информация о прикрепленных документах" (attachments) - "Название комиссии" (protocolInfo/commission/commissionName)
+	ModificationInfo *ModificationType `xml:"modificationInfo,omitempty"`
 }
 
 // InvitationType: Тип: Общие поля приглашения
@@ -14458,6 +16870,21 @@ type SingleAppType struct {
 
 	// RightConcludeContractPrice: Цена за право заключения контракта. Обязательно и допустимо указание значения true при отрицательном значении ценового предложения участника
 	RightConcludeContractPrice *bool `xml:"rightConcludeContractPrice,omitempty"`
+
+	// CommonInfo: Общая информация
+	CommonInfo AppCommonInfoType `xml:"commonInfo"`
+
+	// AppParticipantInfo: Сведения об участнике
+	AppParticipantInfo cmn.ParticipantType `xml:"appParticipantInfo"`
+
+	// DocumentRequirementsInfo: Требования к информации и документам для предоставления участниками
+	DocumentRequirementsInfo DocumentRequirementsInfo `xml:"documentRequirementsInfo"`
+
+	// CorrespondenciesInfo: Соответствие участника преимуществам
+	CorrespondenciesInfo *CorrespondenciesInfo `xml:"correspondenciesInfo,omitempty"`
+
+	// AdmittedInfo: Информация о допуске заявки
+	AdmittedInfo AdmittedInfo `xml:"admittedInfo"`
 }
 
 // SinglePartType: Тип: Общий тип для завки, в случае указания в протоколе рассмотрения заявки единственного участника

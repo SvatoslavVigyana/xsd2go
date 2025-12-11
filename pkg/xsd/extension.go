@@ -55,10 +55,10 @@ func (ext *Extension) Elements() []Element {
 					}
 				}
 			}
-
+		} else {
+			elements = append(elements, ext.typ.Elements()...)
 		}
 
-		//elements = append(elements, ext.typ.Elements()...)
 		elements = deduplicateElements(elements)
 	}
 

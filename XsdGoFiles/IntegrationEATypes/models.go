@@ -68,7 +68,7 @@ type CommonInfoCustomerInfo struct {
 	// Address: Адрес организации
 	Address base.Text2000Type `xml:"address"`
 
-	OrganizationRefType string `xml:"organizationRefType"`
+	cmn.OrganizationRefType
 }
 
 // CommonInfo: Общая информация

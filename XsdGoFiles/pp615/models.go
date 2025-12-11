@@ -44,6 +44,21 @@ type ProtocolPublisherInfo struct {
 // CommonInfo: Общая информация
 type CommonInfo struct {
 	XMLName xml.Name `xml:"commonInfo"`
+
+	// RegistryNum: Номер реестровой записи. Игнорируется при приёме первой версии, заполняется при передаче. Требуется заполнение при приёме изменений
+	RegistryNum *base.QualifiedContractorCodeType `xml:"registryNum,omitempty"`
+
+	// DocNumber: Номер документа. Элемент ингорируется при приёме. Заполняется при передаче номером документа, присвоенным в ЕИС
+	DocNumber *base.DocumentNumberRegistryType `xml:"docNumber,omitempty"`
+
+	// DocPublishDate: Дата размещения документа. Игнорируется при приёме, заполняется при передаче
+	DocPublishDate string `xml:"docPublishDate,omitempty"`
+
+	// FirstVersionPublishDate: Дата размещения первой версии документа Игнорируется при приеме, заполняется при передаче
+	FirstVersionPublishDate string `xml:"firstVersionPublishDate,omitempty"`
+
+	// Href: Гиперссылка на размещённый документ. Игнорируется при приёме. Заполняется при передаче
+	Href *base.HrefType `xml:"href,omitempty"`
 }
 
 // LegalEntityRfinfoPhones: Дополнительные номера телефонов организации
@@ -84,6 +99,18 @@ type ContractorInfoLegalEntityRfinfo struct {
 
 	// LegalEntityRfinfoPhones: Дополнительные номера телефонов организации
 	Phones *LegalEntityRfinfoPhones `xml:"phones,omitempty"`
+
+	// FullName: Полное наименование организации
+	FullName base.Text2000Type `xml:"fullName"`
+
+	// Inn: ИНН
+	Inn base.InnType `xml:"INN"`
+
+	// Kpp: КПП
+	Kpp base.KppType `xml:"KPP"`
+
+	// OrgFactAddress: Адрес местонахождения организации
+	OrgFactAddress base.Text2000Type `xml:"orgFactAddress"`
 }
 
 // LegalEntityForeignStateInfoPhones: Дополнительные номера телефонов организации
@@ -121,6 +148,30 @@ type ContractorInfoLegalEntityForeignStateInfo struct {
 
 	// LegalEntityForeignStateInfoPhones: Дополнительные номера телефонов организации
 	Phones *LegalEntityForeignStateInfoPhones `xml:"phones,omitempty"`
+
+	// FullName: Полное наименование организации
+	FullName base.Text2000Type `xml:"fullName"`
+
+	// FullNameLat: Полное наименование организации (латинскими буквами)
+	FullNameLat *base.Text2000Type `xml:"fullNameLat,omitempty"`
+
+	// Inn: ИНН
+	Inn *base.InnType `xml:"INN,omitempty"`
+
+	// TaxPayerCode: Код налогоплательщика в стране регистрации или его аналог
+	TaxPayerCode *base.TaxPayerCode `xml:"taxPayerCode,omitempty"`
+
+	// Kpp: КПП
+	Kpp *base.KppType `xml:"KPP,omitempty"`
+
+	// CountryInfo: Страна регистрации. При приеме содержимое контролируется на присутствие в справочнике "Общероссийский классификатор стран мира (ОКСМ)" (nsiOKSM)
+	CountryInfo base.Oksmref `xml:"countryInfo"`
+
+	// Address: Адрес места нахождения в стране регистрации
+	Address base.Text2000Type `xml:"address"`
+
+	// PlaceOfStayInRf: Адрес места нахождения на территории РФ
+	PlaceOfStayInRf *base.Text2000Type `xml:"placeOfStayInRF,omitempty"`
 }
 
 // IndividualPersonInfoPhones: Дополнительные номера телефонов организации
@@ -146,6 +197,15 @@ type ContractorInfoIndividualPersonInfo struct {
 
 	// IndividualPersonInfoPhones: Дополнительные номера телефонов организации
 	Phones *IndividualPersonInfoPhones `xml:"phones,omitempty"`
+
+	// NameInfo: Фамилия, имя, отчество индивидуального предпринимателя
+	NameInfo PersonType `xml:"nameInfo"`
+
+	// Inn: ИНН
+	Inn base.InnType `xml:"INN"`
+
+	// FactAddress: Адрес места жительства
+	FactAddress *base.Text2000Type `xml:"factAddress,omitempty"`
 }
 
 // ContractorInfo: Сведения о подрядной организации
@@ -205,6 +265,21 @@ type CommonInfo1 struct {
 
 	// ProtocolSignDate: Дата подписания протокола
 	ProtocolSignDate string `xml:"protocolSignDate,omitempty"`
+
+	// RegistryNum: Номер реестровой записи. Игнорируется при приёме первой версии, заполняется при передаче. Требуется заполнение при приёме изменений
+	RegistryNum *base.QualifiedContractorCodeType `xml:"registryNum,omitempty"`
+
+	// DocNumber: Номер документа. Элемент ингорируется при приёме. Заполняется при передаче номером документа, присвоенным в ЕИС
+	DocNumber *base.DocumentNumberRegistryType `xml:"docNumber,omitempty"`
+
+	// DocPublishDate: Дата размещения документа. Игнорируется при приёме, заполняется при передаче
+	DocPublishDate string `xml:"docPublishDate,omitempty"`
+
+	// FirstVersionPublishDate: Дата размещения первой версии документа Игнорируется при приеме, заполняется при передаче
+	FirstVersionPublishDate string `xml:"firstVersionPublishDate,omitempty"`
+
+	// Href: Гиперссылка на размещённый документ. Игнорируется при приёме. Заполняется при передаче
+	Href *base.HrefType `xml:"href,omitempty"`
 }
 
 // ExclusionReasons: Основания для исключения сведений квалифицированной подрядной организации из РКПО
@@ -249,6 +324,21 @@ type CommonInfo2 struct {
 
 	// CanceledDocPublishDate: Дата размещения отменяемого документа. Игнорируется при приёме, заполняется при передаче
 	CanceledDocPublishDate string `xml:"canceledDocPublishDate,omitempty"`
+
+	// RegistryNum: Номер реестровой записи. Игнорируется при приёме первой версии, заполняется при передаче. Требуется заполнение при приёме изменений
+	RegistryNum *base.QualifiedContractorCodeType `xml:"registryNum,omitempty"`
+
+	// DocNumber: Номер документа. Элемент ингорируется при приёме. Заполняется при передаче номером документа, присвоенным в ЕИС
+	DocNumber *base.DocumentNumberRegistryType `xml:"docNumber,omitempty"`
+
+	// DocPublishDate: Дата размещения документа. Игнорируется при приёме, заполняется при передаче
+	DocPublishDate string `xml:"docPublishDate,omitempty"`
+
+	// FirstVersionPublishDate: Дата размещения первой версии документа Игнорируется при приеме, заполняется при передаче
+	FirstVersionPublishDate string `xml:"firstVersionPublishDate,omitempty"`
+
+	// Href: Гиперссылка на размещённый документ. Игнорируется при приёме. Заполняется при передаче
+	Href *base.HrefType `xml:"href,omitempty"`
 }
 
 // ReasonAuthorityPrescriptionInfo: Предписание органа, уполномоченного на осуществление контроля
@@ -356,7 +446,7 @@ type PurchaseResponsibleInfo1 struct {
 type PrintFormFieldsInfoCustomerInfo struct {
 	XMLName xml.Name `xml:"customerInfo,omitempty"`
 
-	OrganizationRef string `xml:",any"`
+	base.OrganizationRef
 }
 
 // PrintFormFieldsInfo2: Дополнительная информация для печатной формы. Игнорируется при приёме, заполняется при передаче
@@ -401,6 +491,24 @@ type CommonInfo3 struct {
 
 	// Place: Место составления акта
 	Place base.Text2000Type `xml:"place"`
+
+	// CreateDate: Дата составления документа. Игнорируется при приёме. Заполняется при передаче
+	CreateDate string `xml:"createDate,omitempty"`
+
+	// SignDate: Дата подписания документа. Для документов actEvasion, actDeviation содержимое поля принимается в ЕИС, для документа actCancel игнорируется при приёме в ЕИС, заполняется при передаче
+	SignDate string `xml:"signDate,omitempty"`
+
+	// PurchaseNumber: Номер закупки
+	PurchaseNumber base.PurchaseNumber615Type `xml:"purchaseNumber"`
+
+	// DocNumber: Номер документа в ЕИС. Элемент не заполняется при приёме первой версии документа. Присваивается автоматически после размещения. Должен быть заполнен при приёме изменения
+	DocNumber *base.DocumentNumber615Type `xml:"docNumber,omitempty"`
+
+	// DocPublishDate: Дата размещения документа в ЕИС. Элемент игнорируется при приёме. При передаче заполняется датой размещения документа в ЕИС
+	DocPublishDate string `xml:"docPublishDate,omitempty"`
+
+	// Href: Гиперссылка на размещённый документ. Игнорируется при приёме. Заполняется при передаче
+	Href *base.HrefType `xml:"href,omitempty"`
 }
 
 // ParticipantInfoLegalEntityRfinfo: Юридическое лицо РФ. При приёме проверяется наличие участника с указанным ИНН, КПП (при наличии) в протоколе проведения электронного аукциона protocolEF2
@@ -495,6 +603,24 @@ type CommonInfo4 struct {
 
 	// Place: Место составления акта
 	Place base.Text2000Type `xml:"place"`
+
+	// CreateDate: Дата составления документа. Игнорируется при приёме. Заполняется при передаче
+	CreateDate string `xml:"createDate,omitempty"`
+
+	// SignDate: Дата подписания документа. Для документов actEvasion, actDeviation содержимое поля принимается в ЕИС, для документа actCancel игнорируется при приёме в ЕИС, заполняется при передаче
+	SignDate string `xml:"signDate,omitempty"`
+
+	// PurchaseNumber: Номер закупки
+	PurchaseNumber base.PurchaseNumber615Type `xml:"purchaseNumber"`
+
+	// DocNumber: Номер документа в ЕИС. Элемент не заполняется при приёме первой версии документа. Присваивается автоматически после размещения. Должен быть заполнен при приёме изменения
+	DocNumber *base.DocumentNumber615Type `xml:"docNumber,omitempty"`
+
+	// DocPublishDate: Дата размещения документа в ЕИС. Элемент игнорируется при приёме. При передаче заполняется датой размещения документа в ЕИС
+	DocPublishDate string `xml:"docPublishDate,omitempty"`
+
+	// Href: Гиперссылка на размещённый документ. Игнорируется при приёме. Заполняется при передаче
+	Href *base.HrefType `xml:"href,omitempty"`
 }
 
 // ParticipantInfoLegalEntityRfinfo1: Юридическое лицо РФ. При приёме проверяется наличие участника с указанным ИНН, КПП (при наличии) в протоколе проведения электронного аукциона protocolEF2
@@ -585,7 +711,25 @@ type CommonInfo5 struct {
 	XMLName xml.Name `xml:"commonInfo"`
 
 	// ActNumber: Номер отменяемого акта. При приёме контролируется наличие опубликованного акта с указанным номером
-	ActNumber base.DocumentNumber615Type `xml:",any"`
+	ActNumber base.DocumentNumber615Type `xml:"actNumber"`
+
+	// CreateDate: Дата составления документа. Игнорируется при приёме. Заполняется при передаче
+	CreateDate string `xml:"createDate,omitempty"`
+
+	// SignDate: Дата подписания документа. Для документов actEvasion, actDeviation содержимое поля принимается в ЕИС, для документа actCancel игнорируется при приёме в ЕИС, заполняется при передаче
+	SignDate string `xml:"signDate,omitempty"`
+
+	// PurchaseNumber: Номер закупки
+	PurchaseNumber base.PurchaseNumber615Type `xml:"purchaseNumber"`
+
+	// DocNumber: Номер документа в ЕИС. Элемент не заполняется при приёме первой версии документа. Присваивается автоматически после размещения. Должен быть заполнен при приёме изменения
+	DocNumber *base.DocumentNumber615Type `xml:"docNumber,omitempty"`
+
+	// DocPublishDate: Дата размещения документа в ЕИС. Элемент игнорируется при приёме. При передаче заполняется датой размещения документа в ЕИС
+	DocPublishDate string `xml:"docPublishDate,omitempty"`
+
+	// Href: Гиперссылка на размещённый документ. Игнорируется при приёме. Заполняется при передаче
+	Href *base.HrefType `xml:"href,omitempty"`
 }
 
 // PrintFormFieldsInfo3: Дополнительная информация для печатной формы. Игнорируется при приёме, заполняется при передаче
@@ -737,6 +881,12 @@ type StagesInfoStageInfo struct {
 
 	// StageInfoFundingSourcesInfo: Источники финансирования
 	FundingSourcesInfo StageInfoFundingSourcesInfo `xml:"fundingSourcesInfo"`
+
+	// StartDate: Дата начала исполнения этапа
+	StartDate string `xml:"startDate"`
+
+	// EndDate: Дата окончания исполнения этапа
+	EndDate string `xml:"endDate"`
 }
 
 // FinancesInfoStagesInfo: Этапы исполнения договора
@@ -825,6 +975,21 @@ type PrintFormFieldsInfo4 struct {
 // CommonInfo6: Общая информация. Первичным ключом при приеме как первоначальной версии, так и изменений, является сочетание полей: "Номер договора" (commonInfo\regNum) + procedure\executions\stage\startDate + procedure\executions\stage\endDate + procedure\executions\ordinalNumber
 type CommonInfo6 struct {
 	XMLName xml.Name `xml:"commonInfo"`
+
+	// RegNum: Номер договора
+	RegNum base.ContractRegNum615Type `xml:"regNum"`
+
+	// DocNumber: Номер документа по договору о проведении капитального ремонта. Игнорируется при приёме. Заполняется при передаче
+	DocNumber *base.ContractDocRegNum615Type `xml:"docNumber,omitempty"`
+
+	// DocPublishDate: Дата размещения документа. Игнорируется при приёме. Заполняется при передаче
+	DocPublishDate string `xml:"docPublishDate,omitempty"`
+
+	// DocDate: Дата заполнения документа
+	DocDate string `xml:"docDate,omitempty"`
+
+	// Href: Гиперссылка на размещённый документ. Игнорируется при приёме. Заполняется при передаче
+	Href *base.HrefType `xml:"href,omitempty"`
 }
 
 // ExecutionsExecution: Детализация информации об исполнении контракта
@@ -1051,6 +1216,21 @@ type CommonInfo7 struct {
 
 	// PrescriptionProperty: Реквизиты документа, подтверждающие основание отмены
 	PrescriptionProperty *cmn.DocPropertyType `xml:"prescriptionProperty,omitempty"`
+
+	// RegNum: Номер договора
+	RegNum base.ContractRegNum615Type `xml:"regNum"`
+
+	// DocNumber: Номер документа по договору о проведении капитального ремонта. Игнорируется при приёме. Заполняется при передаче
+	DocNumber *base.ContractDocRegNum615Type `xml:"docNumber,omitempty"`
+
+	// DocPublishDate: Дата размещения документа. Игнорируется при приёме. Заполняется при передаче
+	DocPublishDate string `xml:"docPublishDate,omitempty"`
+
+	// DocDate: Дата заполнения документа
+	DocDate string `xml:"docDate,omitempty"`
+
+	// Href: Гиперссылка на размещённый документ. Игнорируется при приёме. Заполняется при передаче
+	Href *base.HrefType `xml:"href,omitempty"`
 }
 
 // CommonInfo8: Общая информация
@@ -1353,6 +1533,18 @@ type LegalEntityRfinfo struct {
 
 	// Phone: Номер телефона организации
 	Phone *base.PhoneType `xml:"phone,omitempty"`
+
+	// FullName: Полное наименование организации
+	FullName base.Text2000Type `xml:"fullName"`
+
+	// Inn: ИНН
+	Inn base.InnType `xml:"INN"`
+
+	// Kpp: КПП
+	Kpp base.KppType `xml:"KPP"`
+
+	// OrgFactAddress: Адрес местонахождения организации
+	OrgFactAddress base.Text2000Type `xml:"orgFactAddress"`
 }
 
 // LegalEntityForeignStateInfo: Юридическое лицо иностранного государства
@@ -1370,6 +1562,30 @@ type LegalEntityForeignStateInfo struct {
 
 	// Phone: Номер телефона организации
 	Phone *base.PhoneType `xml:"phone,omitempty"`
+
+	// FullName: Полное наименование организации
+	FullName base.Text2000Type `xml:"fullName"`
+
+	// FullNameLat: Полное наименование организации (латинскими буквами)
+	FullNameLat *base.Text2000Type `xml:"fullNameLat,omitempty"`
+
+	// Inn: ИНН
+	Inn *base.InnType `xml:"INN,omitempty"`
+
+	// TaxPayerCode: Код налогоплательщика в стране регистрации или его аналог
+	TaxPayerCode *base.TaxPayerCode `xml:"taxPayerCode,omitempty"`
+
+	// Kpp: КПП
+	Kpp *base.KppType `xml:"KPP,omitempty"`
+
+	// CountryInfo: Страна регистрации. При приеме содержимое контролируется на присутствие в справочнике "Общероссийский классификатор стран мира (ОКСМ)" (nsiOKSM)
+	CountryInfo base.Oksmref `xml:"countryInfo"`
+
+	// Address: Адрес места нахождения в стране регистрации
+	Address base.Text2000Type `xml:"address"`
+
+	// PlaceOfStayInRf: Адрес места нахождения на территории РФ
+	PlaceOfStayInRf *base.Text2000Type `xml:"placeOfStayInRF,omitempty"`
 }
 
 // IndividualPersonInfo: Индивидуальный предприниматель
@@ -1496,7 +1712,31 @@ type CommonInfo12 struct {
 	XMLName xml.Name `xml:"commonInfo"`
 
 	// CanceledProtocolNumber: Сформирорванный во внешней системе номер отменяемого протокола. При приёме контролируется наличие опубликованного протокола с указанным номером
-	CanceledProtocolNumber base.DocumentNumberType `xml:",any"`
+	CanceledProtocolNumber base.DocumentNumberType `xml:"canceledProtocolNumber"`
+
+	// DocNumberExternal: Номер документа, сформированный во внешней системе
+	DocNumberExternal base.DocumentNumberType `xml:"docNumberExternal"`
+
+	// CreateDate: Дата и время размещения документа на ЭП
+	CreateDate string `xml:"createDate"`
+
+	// SignDate: Дата подписания документа на ЭП
+	SignDate string `xml:"signDate"`
+
+	// HrefExternal: Гиперссылка на размещённый документ во внешней системе
+	HrefExternal base.HrefType `xml:"hrefExternal"`
+
+	// PurchaseNumber: Номер закупки
+	PurchaseNumber base.PurchaseNumber615Type `xml:"purchaseNumber"`
+
+	// DocNumber: Номер документа в ЕИС. Элемент не заполняется при приёме первой версии документа. Присваивается автоматически после размещения. Должен быть заполнен при приёме изменения
+	DocNumber *base.DocumentNumber615Type `xml:"docNumber,omitempty"`
+
+	// DocPublishDate: Дата размещения документа в ЕИС. Элемент игнорируется при приёме. При передаче заполняется датой размещения документа в ЕИС
+	DocPublishDate string `xml:"docPublishDate,omitempty"`
+
+	// Href: Гиперссылка на размещённый документ. Игнорируется при приёме. Заполняется при передаче
+	Href *base.HrefType `xml:"href,omitempty"`
 }
 
 // PrintFormFieldsInfoProtocolPublisherInfo: Информация об организации, разместившей отмену протокола
@@ -1739,6 +1979,18 @@ type AppParticipantInfoLegalEntityRfinfo struct {
 
 	// PersonWithRight: Лицо, имеющее право действовать без доверенности от имени юридического лица
 	PersonWithRight *PersonType `xml:"personWithRight,omitempty"`
+
+	// FullName: Полное наименование организации
+	FullName base.Text2000Type `xml:"fullName"`
+
+	// Inn: ИНН
+	Inn base.InnType `xml:"INN"`
+
+	// Kpp: КПП
+	Kpp base.KppType `xml:"KPP"`
+
+	// OrgFactAddress: Адрес местонахождения организации
+	OrgFactAddress base.Text2000Type `xml:"orgFactAddress"`
 }
 
 // AppParticipantInfoLegalEntityForeignStateInfo: Юридическое лицо иностранного государства
@@ -1753,6 +2005,30 @@ type AppParticipantInfoLegalEntityForeignStateInfo struct {
 
 	// PersonWithRight: Лицо, имеющее право действовать без доверенности от имени юридического лица
 	PersonWithRight *PersonType `xml:"personWithRight,omitempty"`
+
+	// FullName: Полное наименование организации
+	FullName base.Text2000Type `xml:"fullName"`
+
+	// FullNameLat: Полное наименование организации (латинскими буквами)
+	FullNameLat *base.Text2000Type `xml:"fullNameLat,omitempty"`
+
+	// Inn: ИНН
+	Inn *base.InnType `xml:"INN,omitempty"`
+
+	// TaxPayerCode: Код налогоплательщика в стране регистрации или его аналог
+	TaxPayerCode *base.TaxPayerCode `xml:"taxPayerCode,omitempty"`
+
+	// Kpp: КПП
+	Kpp *base.KppType `xml:"KPP,omitempty"`
+
+	// CountryInfo: Страна регистрации. При приеме содержимое контролируется на присутствие в справочнике "Общероссийский классификатор стран мира (ОКСМ)" (nsiOKSM)
+	CountryInfo base.Oksmref `xml:"countryInfo"`
+
+	// Address: Адрес места нахождения в стране регистрации
+	Address base.Text2000Type `xml:"address"`
+
+	// PlaceOfStayInRf: Адрес места нахождения на территории РФ
+	PlaceOfStayInRf *base.Text2000Type `xml:"placeOfStayInRF,omitempty"`
 }
 
 // AppParticipantInfoIndividualPersonInfo: Индивидуальный предприниматель
@@ -1764,6 +2040,15 @@ type AppParticipantInfoIndividualPersonInfo struct {
 
 	// Phone: Номер телефона организации
 	Phone *base.PhoneType `xml:"phone,omitempty"`
+
+	// NameInfo: Фамилия, имя, отчество индивидуального предпринимателя
+	NameInfo PersonType `xml:"nameInfo"`
+
+	// Inn: ИНН
+	Inn base.InnType `xml:"INN"`
+
+	// FactAddress: Адрес места жительства
+	FactAddress *base.Text2000Type `xml:"factAddress,omitempty"`
 }
 
 // ApplicationAppParticipantInfo: Сведения об участнике
@@ -1940,6 +2225,24 @@ type CommonInfo14 struct {
 
 	// Place: Место составления акта
 	Place base.Text2000Type `xml:"place"`
+
+	// CreateDate: Дата составления документа. Игнорируется при приёме. Заполняется при передаче
+	CreateDate string `xml:"createDate,omitempty"`
+
+	// SignDate: Дата подписания документа. Для документов actEvasion, actDeviation содержимое поля принимается в ЕИС, для документа actCancel игнорируется при приёме в ЕИС, заполняется при передаче
+	SignDate string `xml:"signDate,omitempty"`
+
+	// PurchaseNumber: Номер закупки
+	PurchaseNumber base.PurchaseNumber615Type `xml:"purchaseNumber"`
+
+	// DocNumber: Номер документа в ЕИС. Элемент не заполняется при приёме первой версии документа. Присваивается автоматически после размещения. Должен быть заполнен при приёме изменения
+	DocNumber *base.DocumentNumber615Type `xml:"docNumber,omitempty"`
+
+	// DocPublishDate: Дата размещения документа в ЕИС. Элемент игнорируется при приёме. При передаче заполняется датой размещения документа в ЕИС
+	DocPublishDate string `xml:"docPublishDate,omitempty"`
+
+	// Href: Гиперссылка на размещённый документ. Игнорируется при приёме. Заполняется при передаче
+	Href *base.HrefType `xml:"href,omitempty"`
 }
 
 // ParticipantInfoLegalEntityRfinfo2: Юридическое лицо РФ. При приёме проверяется наличие участника с указанным ИНН, КПП (при наличии) в протоколе проведения электронного аукциона protocolEF2
@@ -2037,6 +2340,18 @@ type LegalEntityRfinfo1 struct {
 
 	// QualifiedContractorInfo: Запись реестра квалифицированных подрядных организаций. При приёме содержимое проверяется на присутствие в реестре квалифицированных подрядных организаций (pprf615QualifiedContractor)
 	QualifiedContractorInfo *base.QualifiedContractorRef `xml:"qualifiedContractorInfo,omitempty"`
+
+	// FullName: Полное наименование организации
+	FullName base.Text2000Type `xml:"fullName"`
+
+	// Inn: ИНН
+	Inn base.InnType `xml:"INN"`
+
+	// Kpp: КПП
+	Kpp base.KppType `xml:"KPP"`
+
+	// OrgFactAddress: Адрес местонахождения организации
+	OrgFactAddress base.Text2000Type `xml:"orgFactAddress"`
 }
 
 // LegalEntityForeignStateInfo1: Юридическое лицо иностранного государства
@@ -2051,6 +2366,30 @@ type LegalEntityForeignStateInfo1 struct {
 
 	// QualifiedContractorInfo: Запись реестра квалифицированных подрядных организаций. При приёме содержимое проверяется на присутствие в реестре квалифицированных подрядных организаций (pprf615QualifiedContractor)
 	QualifiedContractorInfo *base.QualifiedContractorRef `xml:"qualifiedContractorInfo,omitempty"`
+
+	// FullName: Полное наименование организации
+	FullName base.Text2000Type `xml:"fullName"`
+
+	// FullNameLat: Полное наименование организации (латинскими буквами)
+	FullNameLat *base.Text2000Type `xml:"fullNameLat,omitempty"`
+
+	// Inn: ИНН
+	Inn *base.InnType `xml:"INN,omitempty"`
+
+	// TaxPayerCode: Код налогоплательщика в стране регистрации или его аналог
+	TaxPayerCode *base.TaxPayerCode `xml:"taxPayerCode,omitempty"`
+
+	// Kpp: КПП
+	Kpp *base.KppType `xml:"KPP,omitempty"`
+
+	// CountryInfo: Страна регистрации. При приеме содержимое контролируется на присутствие в справочнике "Общероссийский классификатор стран мира (ОКСМ)" (nsiOKSM)
+	CountryInfo base.Oksmref `xml:"countryInfo"`
+
+	// Address: Адрес места нахождения в стране регистрации
+	Address base.Text2000Type `xml:"address"`
+
+	// PlaceOfStayInRf: Адрес места нахождения на территории РФ
+	PlaceOfStayInRf *base.Text2000Type `xml:"placeOfStayInRF,omitempty"`
 }
 
 // IndividualPersonInfo1: Индивидуальный предприниматель
@@ -2065,13 +2404,22 @@ type IndividualPersonInfo1 struct {
 
 	// QualifiedContractorInfo: Запись реестра квалифицированных подрядных организаций. При приёме содержимое проверяется на присутствие в реестре квалифицированных подрядных организаций (pprf615QualifiedContractor)
 	QualifiedContractorInfo *base.QualifiedContractorRef `xml:"qualifiedContractorInfo,omitempty"`
+
+	// NameInfo: Фамилия, имя, отчество индивидуального предпринимателя
+	NameInfo PersonType `xml:"nameInfo"`
+
+	// Inn: ИНН
+	Inn base.InnType `xml:"INN"`
+
+	// FactAddress: Адрес места жительства
+	FactAddress *base.Text2000Type `xml:"factAddress,omitempty"`
 }
 
 // PrintFormFieldsInfoCustomerInfo1: Заказчик
 type PrintFormFieldsInfoCustomerInfo1 struct {
 	XMLName xml.Name `xml:"customerInfo,omitempty"`
 
-	OrganizationRef string `xml:",any"`
+	base.OrganizationRef
 }
 
 // PrintFormFieldsInfo10: Дополнительная информация для печатной формы. Игнорируется при приёме, заполняется при передаче
@@ -2175,6 +2523,33 @@ type NotificationPotype struct {
 
 	// NotificationInfo: Информация о проведении ПО (предварительный отбор)
 	NotificationInfo NotificationPoinfoType `xml:"notificationInfo"`
+
+	// Id: Идентификатор документа ЕИС
+	Id *int64 `xml:"id,omitempty"`
+
+	// ExternalId: Внешний идентификатор документа.
+	ExternalId *base.ExternalIdType `xml:"externalId,omitempty"`
+
+	// VersionNumber: Номер версии документа
+	VersionNumber *base.VersionNumberType `xml:"versionNumber,omitempty"`
+
+	// CommonInfo: Общая информация
+	CommonInfo NotificationCommonInfoType `xml:"commonInfo"`
+
+	// PlacingWayInfo: Подспособ определения поставщика. При приеме содержимое контролируется на присутствие в справочнике "Справочник: Способы определения поставщика" (nsiPlacingWay)
+	PlacingWayInfo PlacingWayType `xml:"placingWayInfo"`
+
+	// PrintFormInfo: Печатная форма документа в ЕИС. Элемент игнорируется при приёме. При передаче заполняется ссылкой на печатную форму и электронную подпись размещенного в ЕИС документа
+	PrintFormInfo *PrintFormType `xml:"printFormInfo,omitempty"`
+
+	// ExtPrintFormInfo: Электронный документ, полученный из внешней системы
+	ExtPrintFormInfo *ExtPrintFormType `xml:"extPrintFormInfo,omitempty"`
+
+	// AttachmentsInfo: Документация
+	AttachmentsInfo AttachmentListType `xml:"attachmentsInfo"`
+
+	// ModificationInfo: Основание внесения изменений
+	ModificationInfo *PurchaseModificationType `xml:"modificationInfo,omitempty"`
 }
 
 // ProtocolPotype: Протокол предварительного отбора в ПО
@@ -2189,6 +2564,30 @@ type ProtocolPotype struct {
 
 	// ProtocolInfo: Информация о проведении предварительного отбора
 	ProtocolInfo ProtocolPoinfoType `xml:"protocolInfo"`
+
+	// Id: Идентификатор документа ЕИС. Игнорируется при приеме-передаче. Добавлено на развитие
+	Id *int64 `xml:"id,omitempty"`
+
+	// ExternalId: Внешний идентификатор документа
+	ExternalId *base.ExternalIdType `xml:"externalId,omitempty"`
+
+	// VersionNumber: Номер версии документа. Если значение поля не указано, то считается, что версия документа 1
+	VersionNumber *base.VersionNumberType `xml:"versionNumber,omitempty"`
+
+	// CommonInfo: Общая информация о протоколе
+	CommonInfo ProtocolCommonInfoType `xml:"commonInfo"`
+
+	// PrintFormInfo: Печатная форма документа в ЕИС. Элемент игнорируется при приёме. При передаче заполняется ссылкой на печатную форму и электронную подпись размещенного в ЕИС документа
+	PrintFormInfo *PrintFormType `xml:"printFormInfo,omitempty"`
+
+	// ExtPrintFormInfo: Электронный документ, полученный из внешней системы
+	ExtPrintFormInfo ExtPrintFormType `xml:"extPrintFormInfo"`
+
+	// AttachmentsInfo: Информация о прикрепленных документах
+	AttachmentsInfo *AttachmentListType `xml:"attachmentsInfo,omitempty"`
+
+	// ModificationInfo: Основание внесения изменений
+	ModificationInfo *PurchaseModificationType `xml:"modificationInfo,omitempty"`
 }
 
 // QualifiedContractorType: Сведения о квалифицированной подрядной организации для включения в РКПО по ПП РФ № 615
@@ -2305,6 +2704,33 @@ type NotificationEftype struct {
 
 	// NotificationInfo: Информация о проведении ЭА (электронный аукцион)
 	NotificationInfo NotificationEfinfoType `xml:"notificationInfo"`
+
+	// Id: Идентификатор документа ЕИС
+	Id *int64 `xml:"id,omitempty"`
+
+	// ExternalId: Внешний идентификатор документа.
+	ExternalId *base.ExternalIdType `xml:"externalId,omitempty"`
+
+	// VersionNumber: Номер версии документа
+	VersionNumber *base.VersionNumberType `xml:"versionNumber,omitempty"`
+
+	// CommonInfo: Общая информация
+	CommonInfo NotificationCommonInfoType `xml:"commonInfo"`
+
+	// PlacingWayInfo: Подспособ определения поставщика. При приеме содержимое контролируется на присутствие в справочнике "Справочник: Способы определения поставщика" (nsiPlacingWay)
+	PlacingWayInfo PlacingWayType `xml:"placingWayInfo"`
+
+	// PrintFormInfo: Печатная форма документа в ЕИС. Элемент игнорируется при приёме. При передаче заполняется ссылкой на печатную форму и электронную подпись размещенного в ЕИС документа
+	PrintFormInfo *PrintFormType `xml:"printFormInfo,omitempty"`
+
+	// ExtPrintFormInfo: Электронный документ, полученный из внешней системы
+	ExtPrintFormInfo *ExtPrintFormType `xml:"extPrintFormInfo,omitempty"`
+
+	// AttachmentsInfo: Документация
+	AttachmentsInfo AttachmentListType `xml:"attachmentsInfo"`
+
+	// ModificationInfo: Основание внесения изменений
+	ModificationInfo *PurchaseModificationType `xml:"modificationInfo,omitempty"`
 }
 
 // NotificationCancelType: Извещение об отказе от проведения закупки
@@ -2315,7 +2741,28 @@ type NotificationCancelType struct {
 	SchemeVersion base.SchemeVersionType `xml:"schemeVersion,attr"`
 
 	// CancelReasonInfo: Причина отмены
-	CancelReasonInfo PurchaseCancelType `xml:",any"`
+	CancelReasonInfo PurchaseCancelType `xml:"cancelReasonInfo"`
+
+	// Id: Идентификатор документа ЕИС
+	Id *int64 `xml:"id,omitempty"`
+
+	// ExternalId: Внешний идентификатор документа
+	ExternalId *base.ExternalIdType `xml:"externalId,omitempty"`
+
+	// CommonInfo: Общая информация документа закупки
+	CommonInfo PurchaseCommonInfoType `xml:"commonInfo"`
+
+	// PrintForm: Печатная форма документа в ЕИС. Элемент игнорируется при приёме. При передаче заполняется ссылкой на печатную форму и электронную подпись размещенного в ЕИС документа
+	PrintForm *PrintFormType `xml:"printForm,omitempty"`
+
+	// ExtPrintForm: Электронный документ, полученный из внешней системы. При приеме в ЕИС контролируется наличие в указанном блоке подписанного электронного документа, сформированного согласно схеме fcsPrintForm.xsd
+	ExtPrintForm *ExtPrintFormType `xml:"extPrintForm,omitempty"`
+
+	// AttachmentsInfo: Документация
+	AttachmentsInfo *AttachmentListType `xml:"attachmentsInfo,omitempty"`
+
+	// PrintFormFieldsInfo: Дополнительная информация для печатной формы. Игнорируется при приёме, заполняется при передаче
+	PrintFormFieldsInfo *PrintFormFieldsInfo `xml:"printFormFieldsInfo,omitempty"`
 }
 
 // TimeEftype: Время проведения электронного аукциона
@@ -2350,6 +2797,30 @@ type ProtocolEf1Type struct {
 
 	// ProtocolInfo: Информацио о рассмотрении заявок на участие в электронном аукционе
 	ProtocolInfo ProtocolEf1InfoType `xml:"protocolInfo"`
+
+	// Id: Идентификатор документа ЕИС. Игнорируется при приеме-передаче. Добавлено на развитие
+	Id *int64 `xml:"id,omitempty"`
+
+	// ExternalId: Внешний идентификатор документа
+	ExternalId *base.ExternalIdType `xml:"externalId,omitempty"`
+
+	// VersionNumber: Номер версии документа. Если значение поля не указано, то считается, что версия документа 1
+	VersionNumber *base.VersionNumberType `xml:"versionNumber,omitempty"`
+
+	// CommonInfo: Общая информация о протоколе
+	CommonInfo ProtocolCommonInfoType `xml:"commonInfo"`
+
+	// PrintFormInfo: Печатная форма документа в ЕИС. Элемент игнорируется при приёме. При передаче заполняется ссылкой на печатную форму и электронную подпись размещенного в ЕИС документа
+	PrintFormInfo *PrintFormType `xml:"printFormInfo,omitempty"`
+
+	// ExtPrintFormInfo: Электронный документ, полученный из внешней системы
+	ExtPrintFormInfo ExtPrintFormType `xml:"extPrintFormInfo"`
+
+	// AttachmentsInfo: Информация о прикрепленных документах
+	AttachmentsInfo *AttachmentListType `xml:"attachmentsInfo,omitempty"`
+
+	// ModificationInfo: Основание внесения изменений
+	ModificationInfo *PurchaseModificationType `xml:"modificationInfo,omitempty"`
 }
 
 // ProtocolEf2Type: Протокол проведения электронного аукциона
@@ -2364,6 +2835,30 @@ type ProtocolEf2Type struct {
 
 	// ProtocolInfo: Информация о проведении электронного аукциона
 	ProtocolInfo ProtocolEf2InfoType `xml:"protocolInfo"`
+
+	// Id: Идентификатор документа ЕИС. Игнорируется при приеме-передаче. Добавлено на развитие
+	Id *int64 `xml:"id,omitempty"`
+
+	// ExternalId: Внешний идентификатор документа
+	ExternalId *base.ExternalIdType `xml:"externalId,omitempty"`
+
+	// VersionNumber: Номер версии документа. Если значение поля не указано, то считается, что версия документа 1
+	VersionNumber *base.VersionNumberType `xml:"versionNumber,omitempty"`
+
+	// CommonInfo: Общая информация о протоколе
+	CommonInfo ProtocolCommonInfoType `xml:"commonInfo"`
+
+	// PrintFormInfo: Печатная форма документа в ЕИС. Элемент игнорируется при приёме. При передаче заполняется ссылкой на печатную форму и электронную подпись размещенного в ЕИС документа
+	PrintFormInfo *PrintFormType `xml:"printFormInfo,omitempty"`
+
+	// ExtPrintFormInfo: Электронный документ, полученный из внешней системы
+	ExtPrintFormInfo ExtPrintFormType `xml:"extPrintFormInfo"`
+
+	// AttachmentsInfo: Информация о прикрепленных документах
+	AttachmentsInfo *AttachmentListType `xml:"attachmentsInfo,omitempty"`
+
+	// ModificationInfo: Основание внесения изменений
+	ModificationInfo *PurchaseModificationType `xml:"modificationInfo,omitempty"`
 }
 
 // ActEvasionType: Акт об отказе от заключения договора о проведении капитального ремонта с победителем ЭА
@@ -2372,6 +2867,36 @@ type ActEvasionType struct {
 
 	// SchemeVersion: Версия схемы
 	SchemeVersion base.SchemeVersionType `xml:"schemeVersion,attr"`
+
+	// Id: Идентификатор документа ЕИС. При приёме необходимо указывать в случае внесения изменения в проект документа. Заполняется при выгрузке
+	Id *int64 `xml:"id,omitempty"`
+
+	// ExternalId: Внешний идентификатор документа
+	ExternalId *base.ExternalIdType `xml:"externalId,omitempty"`
+
+	// VersionNumber: Номер версии документа
+	VersionNumber *base.VersionNumberType `xml:"versionNumber,omitempty"`
+
+	// CommonInfo: Информация о документе
+	CommonInfo CommonInfo `xml:"commonInfo"`
+
+	// RefusalFactInfo: Основание принятия решения
+	RefusalFactInfo RefusalFact `xml:"refusalFactInfo"`
+
+	// ParticipantInfo: Сведения об участнике
+	ParticipantInfo ParticipantInfo `xml:"participantInfo"`
+
+	// PrintFormInfo: Печатная форма документа в ЕИС. Элемент игнорируется при приёме. При передаче заполняется ссылкой на печатную форму и электронную подпись размещенного в ЕИС документа
+	PrintFormInfo *PrintFormType `xml:"printFormInfo,omitempty"`
+
+	// ExtPrintFormInfo: Электронный документ, полученный из внешней системы
+	ExtPrintFormInfo *ExtPrintFormType `xml:"extPrintFormInfo,omitempty"`
+
+	// AttachmentsInfo: Информация о прикрепленных документах
+	AttachmentsInfo *AttachmentListType `xml:"attachmentsInfo,omitempty"`
+
+	// ModificationInfo: Основание внесения изменений
+	ModificationInfo *PurchaseModificationType `xml:"modificationInfo,omitempty"`
 }
 
 // ActDeviationType: Акт об уклонении победителя ЭА от заключения договора
@@ -2380,6 +2905,36 @@ type ActDeviationType struct {
 
 	// SchemeVersion: Версия схемы
 	SchemeVersion base.SchemeVersionType `xml:"schemeVersion,attr"`
+
+	// Id: Идентификатор документа ЕИС. При приёме необходимо указывать в случае внесения изменения в проект документа. Заполняется при выгрузке
+	Id *int64 `xml:"id,omitempty"`
+
+	// ExternalId: Внешний идентификатор документа
+	ExternalId *base.ExternalIdType `xml:"externalId,omitempty"`
+
+	// VersionNumber: Номер версии документа
+	VersionNumber *base.VersionNumberType `xml:"versionNumber,omitempty"`
+
+	// CommonInfo: Информация о документе
+	CommonInfo CommonInfo `xml:"commonInfo"`
+
+	// RefusalFactInfo: Основание принятия решения
+	RefusalFactInfo RefusalFact `xml:"refusalFactInfo"`
+
+	// ParticipantInfo: Сведения об участнике
+	ParticipantInfo ParticipantInfo `xml:"participantInfo"`
+
+	// PrintFormInfo: Печатная форма документа в ЕИС. Элемент игнорируется при приёме. При передаче заполняется ссылкой на печатную форму и электронную подпись размещенного в ЕИС документа
+	PrintFormInfo *PrintFormType `xml:"printFormInfo,omitempty"`
+
+	// ExtPrintFormInfo: Электронный документ, полученный из внешней системы
+	ExtPrintFormInfo *ExtPrintFormType `xml:"extPrintFormInfo,omitempty"`
+
+	// AttachmentsInfo: Информация о прикрепленных документах
+	AttachmentsInfo *AttachmentListType `xml:"attachmentsInfo,omitempty"`
+
+	// ModificationInfo: Основание внесения изменений
+	ModificationInfo *PurchaseModificationType `xml:"modificationInfo,omitempty"`
 }
 
 // ActCancelType: Информация об отмене акта
@@ -2976,6 +3531,18 @@ type ActCommonInfoType struct {
 
 	// SignDate: Дата подписания документа. Для документов actEvasion, actDeviation содержимое поля принимается в ЕИС, для документа actCancel игнорируется при приёме в ЕИС, заполняется при передаче
 	SignDate string `xml:"signDate,omitempty"`
+
+	// PurchaseNumber: Номер закупки
+	PurchaseNumber base.PurchaseNumber615Type `xml:"purchaseNumber"`
+
+	// DocNumber: Номер документа в ЕИС. Элемент не заполняется при приёме первой версии документа. Присваивается автоматически после размещения. Должен быть заполнен при приёме изменения
+	DocNumber *base.DocumentNumber615Type `xml:"docNumber,omitempty"`
+
+	// DocPublishDate: Дата размещения документа в ЕИС. Элемент игнорируется при приёме. При передаче заполняется датой размещения документа в ЕИС
+	DocPublishDate string `xml:"docPublishDate,omitempty"`
+
+	// Href: Гиперссылка на размещённый документ. Игнорируется при приёме. Заполняется при передаче
+	Href *base.HrefType `xml:"href,omitempty"`
 }
 
 // AppRejectedReasonType: Тип: Причины отказа рассмотрения заявки
@@ -3338,6 +3905,18 @@ type ProtocolCommonInfoType struct {
 
 	// HrefExternal: Гиперссылка на размещённый документ во внешней системе
 	HrefExternal base.HrefType `xml:"hrefExternal"`
+
+	// PurchaseNumber: Номер закупки
+	PurchaseNumber base.PurchaseNumber615Type `xml:"purchaseNumber"`
+
+	// DocNumber: Номер документа в ЕИС. Элемент не заполняется при приёме первой версии документа. Присваивается автоматически после размещения. Должен быть заполнен при приёме изменения
+	DocNumber *base.DocumentNumber615Type `xml:"docNumber,omitempty"`
+
+	// DocPublishDate: Дата размещения документа в ЕИС. Элемент игнорируется при приёме. При передаче заполняется датой размещения документа в ЕИС
+	DocPublishDate string `xml:"docPublishDate,omitempty"`
+
+	// Href: Гиперссылка на размещённый документ. Игнорируется при приёме. Заполняется при передаче
+	Href *base.HrefType `xml:"href,omitempty"`
 }
 
 // PurchaseActType: Тип: Общая информация о актах
