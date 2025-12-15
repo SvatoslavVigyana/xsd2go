@@ -9,6 +9,7 @@ type Sequence struct {
 	ElementList []Element `xml:"element"`
 	Choices     []Choice  `xml:"choice"`
 	allElements []Element
+	Sequences   []Sequence `xml:"sequence"`
 }
 
 func (s *Sequence) Elements() []Element {
@@ -27,6 +28,12 @@ func (s *Sequence) compile(sch *Schema, parentElement *Element) {
 		c.compile(sch, parentElement)
 
 		s.allElements = append(s.allElements, c.Elements()...)
+	}
+
+	for idx := range s.Sequences {
+		sInner := &s.Sequences[idx]
+		sInner.compile(sch, parentElement)
+
 	}
 }
 

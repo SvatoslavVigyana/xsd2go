@@ -2439,8 +2439,8 @@ type MainDocInfo1 struct {
 	Id int64 `xml:",any"`
 }
 
-// PrintFormFieldsInfoAttachmentsInfo: Документы, сформированные без использования ЕИС
-type PrintFormFieldsInfoAttachmentsInfo struct {
+// AttachmentsInfo2: Документы, сформированные без использования ЕИС
+type AttachmentsInfo2 struct {
 	XMLName xml.Name `xml:"attachmentsInfo,omitempty"`
 
 	// AttachmentInfo: Информация о прикрепленном документе
@@ -2451,8 +2451,8 @@ type PrintFormFieldsInfoAttachmentsInfo struct {
 type PrintFormFieldsInfo2 struct {
 	XMLName xml.Name `xml:"printFormFieldsInfo,omitempty"`
 
-	// PrintFormFieldsInfoAttachmentsInfo: Документы, сформированные без использования ЕИС
-	AttachmentsInfo *PrintFormFieldsInfoAttachmentsInfo `xml:",any,omitempty"`
+	// AttachmentsInfo2: Документы, сформированные без использования ЕИС
+	AttachmentsInfo *AttachmentsInfo2 `xml:",any,omitempty"`
 }
 
 // ChangeInfoReason: Причина изменения условий контракта из справочника "Справочник: Матрица соответствия оснований изменения условий контракта редактируемым полям ПЭК" (nsiContractStructureChageCauseLink)
@@ -2569,8 +2569,8 @@ type ContractProjectFilesInfo struct {
 	ContractProjectFileInfo []ContractProjectFileType `xml:",any"`
 }
 
-// ElectronicContractInfoAttachmentsInfo: Документы, прикрепленные к проекту электронного контракта
-type ElectronicContractInfoAttachmentsInfo struct {
+// AttachmentsInfo3: Документы, прикрепленные к проекту электронного контракта
+type AttachmentsInfo3 struct {
 	XMLName xml.Name `xml:"attachmentsInfo"`
 
 	// AttachmentInfo: Документ, прикрепленный к проекту электронного контракта
@@ -2587,8 +2587,8 @@ type ElectronicContractInfo struct {
 	// PrintFormHtmlinfo: Печатная форма проекта электронного контракта в HTML-представлении
 	PrintFormHtmlinfo cmn.AttachmentType `xml:"printFormHTMLInfo"`
 
-	// ElectronicContractInfoAttachmentsInfo: Документы, прикрепленные к проекту электронного контракта
-	AttachmentsInfo ElectronicContractInfoAttachmentsInfo `xml:"attachmentsInfo"`
+	// AttachmentsInfo3: Документы, прикрепленные к проекту электронного контракта
+	AttachmentsInfo AttachmentsInfo3 `xml:"attachmentsInfo"`
 }
 
 // ApprovalAttachmentsInfo: Лист согласования. Если установлен признак "Проект контракта формируется в структурированном виде" (isStructuredForm), то принимается и заполняется при передаче. Если не установлен признак "Проект контракта формируется в структурированном виде" (isStructuredForm), то игнорируется при приеме. Не заполняется при выгрузке "Подписанного контракта" (cpContractSign/cpClosedContractSign).
@@ -2637,8 +2637,8 @@ type FoundationInfo2 struct {
 	// PurchaseCode: Идентификационный код закупки. Элемент игнорируется при приёме. Заполняется при передаче из связанного извещения (foundationInfo/purchaseNumber)
 	PurchaseCode *base.IkzCodeType `xml:"purchaseCode,omitempty"`
 
-	// FoundationInfoProtocolInfo: Реквизиты документа, подтверждающего основание заключения контракта. Блок игнорируется при приёме. Заполняется при передаче из связанного извещения (foundationInfo/purchaseNumber)
-	ProtocolInfo *FoundationInfoProtocolInfo `xml:"protocolInfo,omitempty"`
+	// FoundationInfo4ProtocolInfo: Реквизиты документа, подтверждающего основание заключения контракта. Блок игнорируется при приёме. Заполняется при передаче из связанного извещения (foundationInfo/purchaseNumber)
+	ProtocolInfo *FoundationInfo4ProtocolInfo `xml:"protocolInfo,omitempty"`
 }
 
 // PlacerInfo1: Информация об организации, разместившей контракт
@@ -2721,17 +2721,17 @@ type ParticipantInfo2 struct {
 	// ContractorRegistryNum: Номер реестровой записи в ЕРУЗ. Игнорируется при приеме. Заполняется при выгрузке из связанного итогового протокола при наличии
 	ContractorRegistryNum *base.EruzRegistryNumType `xml:"contractorRegistryNum,omitempty"`
 
-	// ParticipantInfoLegalEntityRfinfo: Юридическое лицо РФ
-	LegalEntityRfinfo *ParticipantInfoLegalEntityRfinfo `xml:"legalEntityRFInfo,omitempty"`
+	// ParticipantInfo4LegalEntityRfinfo: Юридическое лицо РФ
+	LegalEntityRfinfo *ParticipantInfo4LegalEntityRfinfo `xml:"legalEntityRFInfo,omitempty"`
 
-	// ParticipantInfoLegalEntityForeignStateInfo: Юридическое лицо иностранного государства
-	LegalEntityForeignStateInfo *ParticipantInfoLegalEntityForeignStateInfo `xml:"legalEntityForeignStateInfo,omitempty"`
+	// ParticipantInfo4LegalEntityForeignStateInfo: Юридическое лицо иностранного государства
+	LegalEntityForeignStateInfo *ParticipantInfo4LegalEntityForeignStateInfo `xml:"legalEntityForeignStateInfo,omitempty"`
 
-	// ParticipantInfoIndividualPersonRfinfo: Физическое лицо РФ
-	IndividualPersonRfinfo *ParticipantInfoIndividualPersonRfinfo `xml:"individualPersonRFInfo,omitempty"`
+	// ParticipantInfo4IndividualPersonRfinfo: Физическое лицо РФ
+	IndividualPersonRfinfo *ParticipantInfo4IndividualPersonRfinfo `xml:"individualPersonRFInfo,omitempty"`
 
-	// ParticipantInfoIndividualPersonForeignStateInfo: Физическое лицо иностранного государства
-	IndividualPersonForeignStateInfo *ParticipantInfoIndividualPersonForeignStateInfo `xml:"individualPersonForeignStateInfo,omitempty"`
+	// ParticipantInfo4IndividualPersonForeignStateInfo: Физическое лицо иностранного государства
+	IndividualPersonForeignStateInfo *ParticipantInfo4IndividualPersonForeignStateInfo `xml:"individualPersonForeignStateInfo,omitempty"`
 }
 
 // ContractInfoChangePriceInfo: Цена контракта изменена относительно предложения поставщика в итоговом протоколе. При приеме блока контролируется отсутствие в итоговом протоколе (foundationInfo/protocolInfo/number) флага "Торги проводили на право заключения контракта" (concludeContractRight) с выставленным значением true
@@ -2758,8 +2758,8 @@ type ContractInfo struct {
 	// ConcludeContractRight: Торги проводили на право заключения контракта. Элемент игнорируется при приёме. Заполняется из связанного итогового протокола (foundationInfo/protocolInfo/number)
 	ConcludeContractRight *bool `xml:"concludeContractRight,omitempty"`
 
-	// ContractInfoChangePriceInfo: Цена контракта изменена относительно предложения поставщика в итоговом протоколе. При приеме блока контролируется отсутствие в итоговом протоколе (foundationInfo/protocolInfo/number) флага "Торги проводили на право заключения контракта" (concludeContractRight) с выставленным значением true
-	ChangePriceInfo *ContractInfoChangePriceInfo `xml:"changePriceInfo,omitempty"`
+	// ContractInfo2ChangePriceInfo: Цена контракта изменена относительно предложения поставщика в итоговом протоколе. При приеме блока контролируется отсутствие в итоговом протоколе (foundationInfo/protocolInfo/number) флага "Торги проводили на право заключения контракта" (concludeContractRight) с выставленным значением true
+	ChangePriceInfo *ContractInfo2ChangePriceInfo `xml:"changePriceInfo,omitempty"`
 
 	// Price: Цена контракта (в валюте контракта)/Максимальное значение цены контракта/Цена за право заключения контракта. Элемент игнорируется при приёме. Заполняется из поля "Измененная цена контракта" (contractInfo/changePriceInfo/changePrice) при наличии, иначе из связанного итогового протокола (foundationInfo/protocolInfo/number)
 	Price *base.MoneyPositiveType `xml:"price,omitempty"`
@@ -2805,8 +2805,8 @@ type ContractProjectFilesInfo1 struct {
 	ContractProjectFileInfo []ContractProjectFileType `xml:",any"`
 }
 
-// ElectronicContractInfoAttachmentsInfo1: Документы, прикрепленные к проекту электронного контракта
-type ElectronicContractInfoAttachmentsInfo1 struct {
+// AttachmentsInfo4: Документы, прикрепленные к проекту электронного контракта
+type AttachmentsInfo4 struct {
 	XMLName xml.Name `xml:"attachmentsInfo"`
 
 	// AttachmentInfo: Документ, прикрепленный к проекту электронного контракта
@@ -2823,8 +2823,8 @@ type ElectronicContractInfo1 struct {
 	// PrintFormHtmlinfo: Печатная форма проекта электронного контракта в HTML-представлении
 	PrintFormHtmlinfo cmn.AttachmentType `xml:"printFormHTMLInfo"`
 
-	// ElectronicContractInfoAttachmentsInfo: Документы, прикрепленные к проекту электронного контракта
-	AttachmentsInfo ElectronicContractInfoAttachmentsInfo `xml:"attachmentsInfo"`
+	// AttachmentsInfo4: Документы, прикрепленные к проекту электронного контракта
+	AttachmentsInfo AttachmentsInfo4 `xml:"attachmentsInfo"`
 }
 
 // ApprovalAttachmentsInfo1: Лист согласования. Если установлен признак "Проект контракта формируется в структурированном виде" (isStructuredForm), то принимается и заполняется при передаче. Если не установлен признак "Проект контракта формируется в структурированном виде" (isStructuredForm), то игнорируется при приеме. Не заполняется при выгрузке "Подписанного контракта" (cpContractSign/cpClosedContractSign).
@@ -2857,8 +2857,8 @@ type PrintFormFieldsInfo4 struct {
 	IsControlP1Ch5St99 *bool `xml:",any,omitempty"`
 }
 
-// FoundationInfoProtocolInfo3: Реквизиты документа, подтверждающего основание заключения контракта. Блок игнорируется при приёме. Заполняется при передаче из связанного извещения (foundationInfo/purchaseNumber)
-type FoundationInfoProtocolInfo3 struct {
+// FoundationInfo2ProtocolInfo: Реквизиты документа, подтверждающего основание заключения контракта. Блок игнорируется при приёме. Заполняется при передаче из связанного извещения (foundationInfo/purchaseNumber)
+type FoundationInfo2ProtocolInfo struct {
 	XMLName xml.Name `xml:"protocolInfo,omitempty"`
 
 	// Name: Наименование протокола-основаня
@@ -2887,8 +2887,8 @@ type FoundationInfo3 struct {
 	// PurchaseCode: Идентификационный код закупки. Элемент игнорируется при приёме. Заполняется при передаче из связанного извещения (foundationInfo/purchaseNumber)
 	PurchaseCode *base.IkzCodeType `xml:"purchaseCode,omitempty"`
 
-	// FoundationInfoProtocolInfo: Реквизиты документа, подтверждающего основание заключения контракта. Блок игнорируется при приёме. Заполняется при передаче из связанного извещения (foundationInfo/purchaseNumber)
-	ProtocolInfo *FoundationInfoProtocolInfo `xml:"protocolInfo,omitempty"`
+	// FoundationInfo4ProtocolInfo: Реквизиты документа, подтверждающего основание заключения контракта. Блок игнорируется при приёме. Заполняется при передаче из связанного извещения (foundationInfo/purchaseNumber)
+	ProtocolInfo *FoundationInfo4ProtocolInfo `xml:"protocolInfo,omitempty"`
 }
 
 // PlacerInfo2: Информация об организации, разместившей контракт
@@ -2902,8 +2902,8 @@ type PlacerInfo2 struct {
 	ResponsibleRole base.PlacerRoleContractProjectEnum `xml:"responsibleRole"`
 }
 
-// ParticipantInfoLegalEntityRfinfo3: Юридическое лицо РФ
-type ParticipantInfoLegalEntityRfinfo3 struct {
+// ParticipantInfo2LegalEntityRfinfo: Юридическое лицо РФ
+type ParticipantInfo2LegalEntityRfinfo struct {
 	XMLName xml.Name `xml:"legalEntityRFInfo,omitempty"`
 
 	// FullName: Полное наименование. Игнорируется при приёме. Заполняется при выгрузке из связанного итогового протокола (foundationInfo/protocolInfo/number) поставщиком с указанными ИНН КПП
@@ -2916,8 +2916,8 @@ type ParticipantInfoLegalEntityRfinfo3 struct {
 	Kpp base.KppType `xml:"KPP"`
 }
 
-// ParticipantInfoLegalEntityForeignStateInfo1: Юридическое лицо иностранного государства
-type ParticipantInfoLegalEntityForeignStateInfo1 struct {
+// ParticipantInfo2LegalEntityForeignStateInfo: Юридическое лицо иностранного государства
+type ParticipantInfo2LegalEntityForeignStateInfo struct {
 	XMLName xml.Name `xml:"legalEntityForeignStateInfo,omitempty"`
 
 	// FullName: Полное наименование. Игнорируется при приёме. Заполняется при выгрузке из связанного итогового протокола со значениями, указанными в полях INN\taxPayerCode (проверяется точное соответствие пары полей INN и\или taxPayerCode)
@@ -2933,8 +2933,8 @@ type ParticipantInfoLegalEntityForeignStateInfo1 struct {
 	Country *base.Oksmref `xml:"country,omitempty"`
 }
 
-// ParticipantInfoIndividualPersonRfinfo3: Физическое лицо РФ
-type ParticipantInfoIndividualPersonRfinfo3 struct {
+// ParticipantInfo2IndividualPersonRfinfo: Физическое лицо РФ
+type ParticipantInfo2IndividualPersonRfinfo struct {
 	XMLName xml.Name `xml:"individualPersonRFInfo,omitempty"`
 
 	// NameInfo: ФИО. Игнорируется при приёме. Заполняется при выгрузке из связанного итогового протокола (foundationInfo/protocolInfo/number) поставщиком с указанным ИНН
@@ -2947,8 +2947,8 @@ type ParticipantInfoIndividualPersonRfinfo3 struct {
 	IsIp *bool `xml:"isIP,omitempty"`
 }
 
-// ParticipantInfoIndividualPersonForeignStateInfo3: Физическое лицо иностранного государства
-type ParticipantInfoIndividualPersonForeignStateInfo3 struct {
+// ParticipantInfo2IndividualPersonForeignStateInfo: Физическое лицо иностранного государства
+type ParticipantInfo2IndividualPersonForeignStateInfo struct {
 	XMLName xml.Name `xml:"individualPersonForeignStateInfo,omitempty"`
 
 	// NameInfo: ФИО. Игнорируется при приёме. Заполняется при выгрузке из связанного итогового протокола (foundationInfo/protocolInfo/number) поставщиком со значением указанным в поле "Код налогоплательщика в стране регистрации или его аналог" (taxPayerCode)
@@ -2971,17 +2971,17 @@ type ParticipantInfo3 struct {
 	// ContractorRegistryNum: Номер реестровой записи в ЕРУЗ. Игнорируется при приеме. Заполняется при выгрузке из связанного итогового протокола при наличии
 	ContractorRegistryNum *base.EruzRegistryNumType `xml:"contractorRegistryNum,omitempty"`
 
-	// ParticipantInfoLegalEntityRfinfo: Юридическое лицо РФ
-	LegalEntityRfinfo *ParticipantInfoLegalEntityRfinfo `xml:"legalEntityRFInfo,omitempty"`
+	// ParticipantInfo4LegalEntityRfinfo: Юридическое лицо РФ
+	LegalEntityRfinfo *ParticipantInfo4LegalEntityRfinfo `xml:"legalEntityRFInfo,omitempty"`
 
-	// ParticipantInfoLegalEntityForeignStateInfo: Юридическое лицо иностранного государства
-	LegalEntityForeignStateInfo *ParticipantInfoLegalEntityForeignStateInfo `xml:"legalEntityForeignStateInfo,omitempty"`
+	// ParticipantInfo4LegalEntityForeignStateInfo: Юридическое лицо иностранного государства
+	LegalEntityForeignStateInfo *ParticipantInfo4LegalEntityForeignStateInfo `xml:"legalEntityForeignStateInfo,omitempty"`
 
-	// ParticipantInfoIndividualPersonRfinfo: Физическое лицо РФ
-	IndividualPersonRfinfo *ParticipantInfoIndividualPersonRfinfo `xml:"individualPersonRFInfo,omitempty"`
+	// ParticipantInfo4IndividualPersonRfinfo: Физическое лицо РФ
+	IndividualPersonRfinfo *ParticipantInfo4IndividualPersonRfinfo `xml:"individualPersonRFInfo,omitempty"`
 
-	// ParticipantInfoIndividualPersonForeignStateInfo: Физическое лицо иностранного государства
-	IndividualPersonForeignStateInfo *ParticipantInfoIndividualPersonForeignStateInfo `xml:"individualPersonForeignStateInfo,omitempty"`
+	// ParticipantInfo4IndividualPersonForeignStateInfo: Физическое лицо иностранного государства
+	IndividualPersonForeignStateInfo *ParticipantInfo4IndividualPersonForeignStateInfo `xml:"individualPersonForeignStateInfo,omitempty"`
 }
 
 // ContractInfoChangePriceInfo1: Цена контракта изменена относительно предложения поставщика в итоговом протоколе. При приеме блока контролируется отсутствие в итоговом протоколе (foundationInfo/protocolInfo/number) флага "Торги проводили на право заключения контракта" (concludeContractRight) с выставленным значением true
@@ -3008,8 +3008,8 @@ type ContractInfo1 struct {
 	// ConcludeContractRight: Торги проводили на право заключения контракта. Элемент игнорируется при приёме. Заполняется из связанного итогового протокола (foundationInfo/protocolInfo/number)
 	ConcludeContractRight *bool `xml:"concludeContractRight,omitempty"`
 
-	// ContractInfoChangePriceInfo: Цена контракта изменена относительно предложения поставщика в итоговом протоколе. При приеме блока контролируется отсутствие в итоговом протоколе (foundationInfo/protocolInfo/number) флага "Торги проводили на право заключения контракта" (concludeContractRight) с выставленным значением true
-	ChangePriceInfo *ContractInfoChangePriceInfo `xml:"changePriceInfo,omitempty"`
+	// ContractInfo2ChangePriceInfo: Цена контракта изменена относительно предложения поставщика в итоговом протоколе. При приеме блока контролируется отсутствие в итоговом протоколе (foundationInfo/protocolInfo/number) флага "Торги проводили на право заключения контракта" (concludeContractRight) с выставленным значением true
+	ChangePriceInfo *ContractInfo2ChangePriceInfo `xml:"changePriceInfo,omitempty"`
 
 	// Price: Цена контракта (в валюте контракта)/Максимальное значение цены контракта/Цена за право заключения контракта. Элемент игнорируется при приёме. Заполняется из поля "Измененная цена контракта" (contractInfo/changePriceInfo/changePrice) при наличии, иначе из связанного итогового протокола (foundationInfo/protocolInfo/number)
 	Price *base.MoneyPositiveType `xml:"price,omitempty"`
@@ -3132,8 +3132,8 @@ type ContractProjectFilesInfoContractProjectFileInfo struct {
 type ContractProjectFilesInfo2 struct {
 	XMLName xml.Name `xml:"contractProjectFilesInfo,omitempty"`
 
-	// ContractProjectFilesInfoContractProjectFileInfo: Файл проекта контракта, подписанный поставщиком. При приёме в ЕИС в блоке контролируется наличие элемента "Уникальный идентификатор контента прикреплённого документа на ЕИС" (contentId). При приёме в ЕИС проверяется наличие у проекта контракта (доработанного проекта контракта при наличии) с номером, указанным в поле "Номер проекта контракта" (commonInfo/number), файла с тем же именем (fileName), уникальным идентификатором контента прикреплённого документа в ЕИС (contentId), совпадающего по размеру (fileSize) и с совпадающим отпечатком файла (fileFingerPrint)
-	ContractProjectFileInfo []ContractProjectFilesInfoContractProjectFileInfo `xml:",any"`
+	// ContractProjectFilesInfo2ContractProjectFileInfo: Файл проекта контракта, подписанный поставщиком. При приёме в ЕИС в блоке контролируется наличие элемента "Уникальный идентификатор контента прикреплённого документа на ЕИС" (contentId). При приёме в ЕИС проверяется наличие у проекта контракта (доработанного проекта контракта при наличии) с номером, указанным в поле "Номер проекта контракта" (commonInfo/number), файла с тем же именем (fileName), уникальным идентификатором контента прикреплённого документа в ЕИС (contentId), совпадающего по размеру (fileSize) и с совпадающим отпечатком файла (fileFingerPrint)
+	ContractProjectFileInfo []ContractProjectFilesInfo2ContractProjectFileInfo `xml:",any"`
 }
 
 // ElectronicContractInfoPrintFormInfo: Печатная форма проекта электронного контракта в XML-представлении, сформированная по элементу "Электронный контракт" (cpElectronicContract) схемы fcsPrintForm. При приёме в ЕИС в блоке контролируется наличие элемента "Уникальный идентификатор контента прикреплённого документа на ЕИС" (contentId). При приёме в ЕИС проверяется наличие у проекта контракта (доработанного проекта контракта при наличии) с номером, указанным в поле "Номер проекта контракта" (commonInfo/number), проекта электронного контракта с тем же именем (fileName), уникальным идентификатором контента прикреплённого документа в ЕИС (contentId), совпадающего по размеру (fileSize) и с совпадающим отпечатком файла (fileFingerPrint)
@@ -3206,23 +3206,23 @@ type AttachmentsInfoAttachmentInfo struct {
 	Content string `xml:"content,omitempty"`
 }
 
-// ElectronicContractInfoAttachmentsInfo2: Документы, прикрепленные к проекту электронного контракта. При приёме в ЕИС в блоке контролируется наличие элемента "Уникальный идентификатор контента прикреплённого документа на ЕИС" (contentId). При приёме в ЕИС проверяется наличие у проекта электронного контракта файла с тем же именем (fileName), уникальным идентификатором контента прикреплённого документа в ЕИС (contentId), совпадающего по размеру (fileSize) и с совпадающим отпечатком файла (fileFingerPrint)
-type ElectronicContractInfoAttachmentsInfo2 struct {
+// AttachmentsInfo5: Документы, прикрепленные к проекту электронного контракта. При приёме в ЕИС в блоке контролируется наличие элемента "Уникальный идентификатор контента прикреплённого документа на ЕИС" (contentId). При приёме в ЕИС проверяется наличие у проекта электронного контракта файла с тем же именем (fileName), уникальным идентификатором контента прикреплённого документа в ЕИС (contentId), совпадающего по размеру (fileSize) и с совпадающим отпечатком файла (fileFingerPrint)
+type AttachmentsInfo5 struct {
 	XMLName xml.Name `xml:"attachmentsInfo"`
 
-	// ElectronicContractInfoAttachmentsInfoAttachmentInfo: Документ, прикрепленный к проекту электронного контракта
-	AttachmentInfo []ElectronicContractInfoAttachmentsInfoAttachmentInfo `xml:",any"`
+	// AttachmentsInfo5AttachmentInfo: Документ, прикрепленный к проекту электронного контракта
+	AttachmentInfo []AttachmentsInfo5AttachmentInfo `xml:",any"`
 }
 
 // ElectronicContractInfo2: Проект электронного контракта в структурированной форме. Если в проекте контракта установлен признак "Проект контракта формируется в структурированном виде" (contractInfo/isStructuredForm), то в блоке указывается проект электронного контракта и приложенные к нему вложения, подписанные поставщиком. Если в проекте контракта не установлен признак "Проект контракта формируется в структурированном виде" (contractInfo/isStructuredForm), , то блок игнорируется при приеме
 type ElectronicContractInfo2 struct {
 	XMLName xml.Name `xml:"electronicContractInfo,omitempty"`
 
-	// ElectronicContractInfoPrintFormInfo: Печатная форма проекта электронного контракта в XML-представлении, сформированная по элементу "Электронный контракт" (cpElectronicContract) схемы fcsPrintForm. При приёме в ЕИС в блоке контролируется наличие элемента "Уникальный идентификатор контента прикреплённого документа на ЕИС" (contentId). При приёме в ЕИС проверяется наличие у проекта контракта (доработанного проекта контракта при наличии) с номером, указанным в поле "Номер проекта контракта" (commonInfo/number), проекта электронного контракта с тем же именем (fileName), уникальным идентификатором контента прикреплённого документа в ЕИС (contentId), совпадающего по размеру (fileSize) и с совпадающим отпечатком файла (fileFingerPrint)
-	PrintFormInfo ElectronicContractInfoPrintFormInfo `xml:"printFormInfo"`
+	// ElectronicContractInfo2PrintFormInfo: Печатная форма проекта электронного контракта в XML-представлении, сформированная по элементу "Электронный контракт" (cpElectronicContract) схемы fcsPrintForm. При приёме в ЕИС в блоке контролируется наличие элемента "Уникальный идентификатор контента прикреплённого документа на ЕИС" (contentId). При приёме в ЕИС проверяется наличие у проекта контракта (доработанного проекта контракта при наличии) с номером, указанным в поле "Номер проекта контракта" (commonInfo/number), проекта электронного контракта с тем же именем (fileName), уникальным идентификатором контента прикреплённого документа в ЕИС (contentId), совпадающего по размеру (fileSize) и с совпадающим отпечатком файла (fileFingerPrint)
+	PrintFormInfo ElectronicContractInfo2PrintFormInfo `xml:"printFormInfo"`
 
-	// ElectronicContractInfoAttachmentsInfo: Документы, прикрепленные к проекту электронного контракта. При приёме в ЕИС в блоке контролируется наличие элемента "Уникальный идентификатор контента прикреплённого документа на ЕИС" (contentId). При приёме в ЕИС проверяется наличие у проекта электронного контракта файла с тем же именем (fileName), уникальным идентификатором контента прикреплённого документа в ЕИС (contentId), совпадающего по размеру (fileSize) и с совпадающим отпечатком файла (fileFingerPrint)
-	AttachmentsInfo ElectronicContractInfoAttachmentsInfo `xml:"attachmentsInfo"`
+	// AttachmentsInfo8: Документы, прикрепленные к проекту электронного контракта. При приёме в ЕИС в блоке контролируется наличие элемента "Уникальный идентификатор контента прикреплённого документа на ЕИС" (contentId). При приёме в ЕИС проверяется наличие у проекта электронного контракта файла с тем же именем (fileName), уникальным идентификатором контента прикреплённого документа в ЕИС (contentId), совпадающего по размеру (fileSize) и с совпадающим отпечатком файла (fileFingerPrint)
+	AttachmentsInfo AttachmentsInfo8 `xml:"attachmentsInfo"`
 }
 
 // ReasonInfoResponsibleDecisionInfo: По решению поставщика
@@ -3289,8 +3289,8 @@ type ContractProjectFilesInfo3 struct {
 	ContractProjectFileInfo []ContractFileType `xml:",any"`
 }
 
-// ElectronicContractInfoAttachmentsInfo3: Документы, прикрепленные к проекту электронного контракта
-type ElectronicContractInfoAttachmentsInfo3 struct {
+// AttachmentsInfo6: Документы, прикрепленные к проекту электронного контракта
+type AttachmentsInfo6 struct {
 	XMLName xml.Name `xml:"attachmentsInfo"`
 
 	// AttachmentInfo: Документ, прикрепленный к проекту электронного контракта
@@ -3307,8 +3307,8 @@ type ElectronicContractInfo3 struct {
 	// PrintFormHtmlinfo: Печатная форма проекта электронного контракта в HTML-представлении, подписанная системной подписью
 	PrintFormHtmlinfo cmn.AttachmentType `xml:"printFormHTMLInfo"`
 
-	// ElectronicContractInfoAttachmentsInfo: Документы, прикрепленные к проекту электронного контракта
-	AttachmentsInfo ElectronicContractInfoAttachmentsInfo `xml:"attachmentsInfo"`
+	// AttachmentsInfo6: Документы, прикрепленные к проекту электронного контракта
+	AttachmentsInfo AttachmentsInfo6 `xml:"attachmentsInfo"`
 }
 
 // PrintFormFieldsInfo6: Дополнительная информация для печатной формы
@@ -3319,8 +3319,8 @@ type PrintFormFieldsInfo6 struct {
 	IsControlP1Ch5St99 *bool `xml:",any,omitempty"`
 }
 
-// FoundationInfoProtocolInfo4: Реквизиты документа, подтверждающего основание заключения контракта. Блок игнорируется при приёме. Заполняется при передаче из связанного извещения (foundationInfo/purchaseNumber)
-type FoundationInfoProtocolInfo4 struct {
+// FoundationInfo3ProtocolInfo: Реквизиты документа, подтверждающего основание заключения контракта. Блок игнорируется при приёме. Заполняется при передаче из связанного извещения (foundationInfo/purchaseNumber)
+type FoundationInfo3ProtocolInfo struct {
 	XMLName xml.Name `xml:"protocolInfo,omitempty"`
 
 	// Name: Наименование протокола-основаня
@@ -3349,8 +3349,8 @@ type FoundationInfo4 struct {
 	// PurchaseCode: Идентификационный код закупки. Элемент игнорируется при приёме. Заполняется при передаче из связанного извещения (foundationInfo/purchaseNumber)
 	PurchaseCode *base.IkzCodeType `xml:"purchaseCode,omitempty"`
 
-	// FoundationInfoProtocolInfo: Реквизиты документа, подтверждающего основание заключения контракта. Блок игнорируется при приёме. Заполняется при передаче из связанного извещения (foundationInfo/purchaseNumber)
-	ProtocolInfo *FoundationInfoProtocolInfo `xml:"protocolInfo,omitempty"`
+	// FoundationInfo4ProtocolInfo: Реквизиты документа, подтверждающего основание заключения контракта. Блок игнорируется при приёме. Заполняется при передаче из связанного извещения (foundationInfo/purchaseNumber)
+	ProtocolInfo *FoundationInfo4ProtocolInfo `xml:"protocolInfo,omitempty"`
 }
 
 // PlacerInfo3: Информация об организации, разместившей контракт
@@ -3364,8 +3364,8 @@ type PlacerInfo3 struct {
 	ResponsibleRole base.PlacerRoleContractProjectEnum `xml:"responsibleRole"`
 }
 
-// ParticipantInfoLegalEntityRfinfo4: Юридическое лицо РФ
-type ParticipantInfoLegalEntityRfinfo4 struct {
+// ParticipantInfo3LegalEntityRfinfo: Юридическое лицо РФ
+type ParticipantInfo3LegalEntityRfinfo struct {
 	XMLName xml.Name `xml:"legalEntityRFInfo,omitempty"`
 
 	// FullName: Полное наименование. Игнорируется при приёме. Заполняется при выгрузке из связанного итогового протокола (foundationInfo/protocolInfo/number) поставщиком с указанными ИНН КПП
@@ -3378,8 +3378,8 @@ type ParticipantInfoLegalEntityRfinfo4 struct {
 	Kpp base.KppType `xml:"KPP"`
 }
 
-// ParticipantInfoLegalEntityForeignStateInfo2: Юридическое лицо иностранного государства
-type ParticipantInfoLegalEntityForeignStateInfo2 struct {
+// ParticipantInfo3LegalEntityForeignStateInfo: Юридическое лицо иностранного государства
+type ParticipantInfo3LegalEntityForeignStateInfo struct {
 	XMLName xml.Name `xml:"legalEntityForeignStateInfo,omitempty"`
 
 	// FullName: Полное наименование. Игнорируется при приёме. Заполняется при выгрузке из связанного итогового протокола со значениями, указанными в полях INN\taxPayerCode (проверяется точное соответствие пары полей INN и\или taxPayerCode)
@@ -3395,8 +3395,8 @@ type ParticipantInfoLegalEntityForeignStateInfo2 struct {
 	Country *base.Oksmref `xml:"country,omitempty"`
 }
 
-// ParticipantInfoIndividualPersonRfinfo4: Физическое лицо РФ
-type ParticipantInfoIndividualPersonRfinfo4 struct {
+// ParticipantInfo3IndividualPersonRfinfo: Физическое лицо РФ
+type ParticipantInfo3IndividualPersonRfinfo struct {
 	XMLName xml.Name `xml:"individualPersonRFInfo,omitempty"`
 
 	// NameInfo: ФИО. Игнорируется при приёме. Заполняется при выгрузке из связанного итогового протокола (foundationInfo/protocolInfo/number) поставщиком с указанным ИНН
@@ -3409,8 +3409,8 @@ type ParticipantInfoIndividualPersonRfinfo4 struct {
 	IsIp *bool `xml:"isIP,omitempty"`
 }
 
-// ParticipantInfoIndividualPersonForeignStateInfo4: Физическое лицо иностранного государства
-type ParticipantInfoIndividualPersonForeignStateInfo4 struct {
+// ParticipantInfo3IndividualPersonForeignStateInfo: Физическое лицо иностранного государства
+type ParticipantInfo3IndividualPersonForeignStateInfo struct {
 	XMLName xml.Name `xml:"individualPersonForeignStateInfo,omitempty"`
 
 	// NameInfo: ФИО. Игнорируется при приёме. Заполняется при выгрузке из связанного итогового протокола (foundationInfo/protocolInfo/number) поставщиком со значением указанным в поле "Код налогоплательщика в стране регистрации или его аналог" (taxPayerCode)
@@ -3433,21 +3433,21 @@ type ParticipantInfo4 struct {
 	// ContractorRegistryNum: Номер реестровой записи в ЕРУЗ. Игнорируется при приеме. Заполняется при выгрузке из связанного итогового протокола при наличии
 	ContractorRegistryNum *base.EruzRegistryNumType `xml:"contractorRegistryNum,omitempty"`
 
-	// ParticipantInfoLegalEntityRfinfo: Юридическое лицо РФ
-	LegalEntityRfinfo *ParticipantInfoLegalEntityRfinfo `xml:"legalEntityRFInfo,omitempty"`
+	// ParticipantInfo4LegalEntityRfinfo: Юридическое лицо РФ
+	LegalEntityRfinfo *ParticipantInfo4LegalEntityRfinfo `xml:"legalEntityRFInfo,omitempty"`
 
-	// ParticipantInfoLegalEntityForeignStateInfo: Юридическое лицо иностранного государства
-	LegalEntityForeignStateInfo *ParticipantInfoLegalEntityForeignStateInfo `xml:"legalEntityForeignStateInfo,omitempty"`
+	// ParticipantInfo4LegalEntityForeignStateInfo: Юридическое лицо иностранного государства
+	LegalEntityForeignStateInfo *ParticipantInfo4LegalEntityForeignStateInfo `xml:"legalEntityForeignStateInfo,omitempty"`
 
-	// ParticipantInfoIndividualPersonRfinfo: Физическое лицо РФ
-	IndividualPersonRfinfo *ParticipantInfoIndividualPersonRfinfo `xml:"individualPersonRFInfo,omitempty"`
+	// ParticipantInfo4IndividualPersonRfinfo: Физическое лицо РФ
+	IndividualPersonRfinfo *ParticipantInfo4IndividualPersonRfinfo `xml:"individualPersonRFInfo,omitempty"`
 
-	// ParticipantInfoIndividualPersonForeignStateInfo: Физическое лицо иностранного государства
-	IndividualPersonForeignStateInfo *ParticipantInfoIndividualPersonForeignStateInfo `xml:"individualPersonForeignStateInfo,omitempty"`
+	// ParticipantInfo4IndividualPersonForeignStateInfo: Физическое лицо иностранного государства
+	IndividualPersonForeignStateInfo *ParticipantInfo4IndividualPersonForeignStateInfo `xml:"individualPersonForeignStateInfo,omitempty"`
 }
 
-// ContractInfoChangePriceInfo2: Цена контракта изменена относительно предложения поставщика в итоговом протоколе. При приеме блока контролируется отсутствие в итоговом протоколе (foundationInfo/protocolInfo/number) флага "Торги проводили на право заключения контракта" (concludeContractRight) с выставленным значением true
-type ContractInfoChangePriceInfo2 struct {
+// ContractInfo1ChangePriceInfo: Цена контракта изменена относительно предложения поставщика в итоговом протоколе. При приеме блока контролируется отсутствие в итоговом протоколе (foundationInfo/protocolInfo/number) флага "Торги проводили на право заключения контракта" (concludeContractRight) с выставленным значением true
+type ContractInfo1ChangePriceInfo struct {
 	XMLName xml.Name `xml:"changePriceInfo,omitempty"`
 
 	// ChangePrice: Изменённая цена контракта
@@ -3470,8 +3470,8 @@ type ContractInfo2 struct {
 	// ConcludeContractRight: Торги проводили на право заключения контракта. Элемент игнорируется при приёме. Заполняется из связанного итогового протокола (foundationInfo/protocolInfo/number)
 	ConcludeContractRight *bool `xml:"concludeContractRight,omitempty"`
 
-	// ContractInfoChangePriceInfo: Цена контракта изменена относительно предложения поставщика в итоговом протоколе. При приеме блока контролируется отсутствие в итоговом протоколе (foundationInfo/protocolInfo/number) флага "Торги проводили на право заключения контракта" (concludeContractRight) с выставленным значением true
-	ChangePriceInfo *ContractInfoChangePriceInfo `xml:"changePriceInfo,omitempty"`
+	// ContractInfo2ChangePriceInfo: Цена контракта изменена относительно предложения поставщика в итоговом протоколе. При приеме блока контролируется отсутствие в итоговом протоколе (foundationInfo/protocolInfo/number) флага "Торги проводили на право заключения контракта" (concludeContractRight) с выставленным значением true
+	ChangePriceInfo *ContractInfo2ChangePriceInfo `xml:"changePriceInfo,omitempty"`
 
 	// Price: Цена контракта (в валюте контракта)/Максимальное значение цены контракта/Цена за право заключения контракта. Элемент игнорируется при приёме. Заполняется из поля "Измененная цена контракта" (contractInfo/changePriceInfo/changePrice) при наличии, иначе из связанного итогового протокола (foundationInfo/protocolInfo/number)
 	Price *base.MoneyPositiveType `xml:"price,omitempty"`
@@ -3585,16 +3585,16 @@ type CommonInfo7 struct {
 	PublishDtinEtp string `xml:"publishDTInETP"`
 }
 
-// AttachmentsInfo2: Информация о прикрепленных документах
-type AttachmentsInfo2 struct {
+// AttachmentsInfo7: Информация о прикрепленных документах
+type AttachmentsInfo7 struct {
 	XMLName xml.Name `xml:"attachmentsInfo,omitempty"`
 
 	// AttachmentInfo: Информация о прикрепленном документе
 	AttachmentInfo []ContractProjectFileType `xml:",any"`
 }
 
-// PrintFormFieldsInfoCustomerInfo: Заказчик
-type PrintFormFieldsInfoCustomerInfo struct {
+// CustomerInfo2: Заказчик
+type CustomerInfo2 struct {
 	XMLName xml.Name `xml:"customerInfo,omitempty"`
 
 	// FullName: Полное наименование
@@ -3605,8 +3605,8 @@ type PrintFormFieldsInfoCustomerInfo struct {
 type PrintFormFieldsInfo10 struct {
 	XMLName xml.Name `xml:"printFormFieldsInfo,omitempty"`
 
-	// PrintFormFieldsInfoCustomerInfo: Заказчик
-	CustomerInfo *PrintFormFieldsInfoCustomerInfo `xml:"customerInfo,omitempty"`
+	// CustomerInfo2: Заказчик
+	CustomerInfo *CustomerInfo2 `xml:"customerInfo,omitempty"`
 
 	// PurchaseNumber: Номер закупки
 	PurchaseNumber *base.PurchaseNumberType `xml:"purchaseNumber,omitempty"`
@@ -3623,8 +3623,8 @@ type PlacerInfo4 struct {
 	ResponsibleRole base.PlacerRoleContractProjectEnum `xml:"responsibleRole"`
 }
 
-// ContractProjectInfoParticipantInfo: Поставщик
-type ContractProjectInfoParticipantInfo struct {
+// ParticipantInfo5: Поставщик
+type ParticipantInfo5 struct {
 	XMLName xml.Name `xml:"participantInfo,omitempty"`
 
 	// FullName: Полное наименование
@@ -3641,8 +3641,8 @@ type PrintFormFieldsInfoContractProjectInfo struct {
 	// FullName: Полное наименование заказчика
 	FullName *base.Text2000Type `xml:"fullName,omitempty"`
 
-	// ContractProjectInfoParticipantInfo: Поставщик
-	ParticipantInfo *ContractProjectInfoParticipantInfo `xml:"participantInfo,omitempty"`
+	// ParticipantInfo5: Поставщик
+	ParticipantInfo *ParticipantInfo5 `xml:"participantInfo,omitempty"`
 
 	// Subject: Предмет контракта
 	Subject *base.Text2000Type `xml:"subject,omitempty"`
@@ -3734,8 +3734,8 @@ type CommonInfo8 struct {
 	AppNumber *base.JournalNumberType `xml:"appNumber,omitempty"`
 }
 
-// CustomerInfo2: Сведения о заказчике
-type CustomerInfo2 struct {
+// CustomerInfo3: Сведения о заказчике
+type CustomerInfo3 struct {
 	XMLName xml.Name `xml:"customerInfo"`
 
 	// Oktmoppo: ОКТМО публично-правового образования (ППО)
@@ -4022,8 +4022,8 @@ type ConscientiousnessDocsInfo1 struct {
 	ConscientiousnessDocInfo []ConscientiousnessDocsInfoConscientiousnessDocInfo `xml:"conscientiousnessDocInfo"`
 }
 
-// ContractProjectFilesInfoContractProjectFileInfo1: Файл проекта контракта, подписанный поставщиком. При приёме в ЕИС в блоке контролируется наличие элемента "Уникальный идентификатор контента прикреплённого документа на ЕИС" (contentId). При приёме в ЕИС проверяется наличие у проекта контракта (доработанного проекта контракта при наличии) с номером, указанным в поле "Номер проекта контракта" (commonInfo/number), файла с тем же именем (fileName), уникальным идентификатором контента прикреплённого документа в ЕИС (contentId), совпадающего по размеру (fileSize) и с совпадающим отпечатком файла (fileFingerPrint)
-type ContractProjectFilesInfoContractProjectFileInfo1 struct {
+// ContractProjectFilesInfo2ContractProjectFileInfo: Файл проекта контракта, подписанный поставщиком. При приёме в ЕИС в блоке контролируется наличие элемента "Уникальный идентификатор контента прикреплённого документа на ЕИС" (contentId). При приёме в ЕИС проверяется наличие у проекта контракта (доработанного проекта контракта при наличии) с номером, указанным в поле "Номер проекта контракта" (commonInfo/number), файла с тем же именем (fileName), уникальным идентификатором контента прикреплённого документа в ЕИС (contentId), совпадающего по размеру (fileSize) и с совпадающим отпечатком файла (fileFingerPrint)
+type ContractProjectFilesInfo2ContractProjectFileInfo struct {
 	XMLName xml.Name `xml:"contractProjectFileInfo"`
 
 	// SignatureCheckUrl: Ссылка на страницу проверки подписи на ЭП
@@ -4061,12 +4061,12 @@ type ContractProjectFilesInfoContractProjectFileInfo1 struct {
 type ContractProjectFilesInfo5 struct {
 	XMLName xml.Name `xml:"contractProjectFilesInfo,omitempty"`
 
-	// ContractProjectFilesInfoContractProjectFileInfo: Файл проекта контракта, подписанный поставщиком. При приёме в ЕИС в блоке контролируется наличие элемента "Уникальный идентификатор контента прикреплённого документа на ЕИС" (contentId). При приёме в ЕИС проверяется наличие у проекта контракта (доработанного проекта контракта при наличии) с номером, указанным в поле "Номер проекта контракта" (commonInfo/number), файла с тем же именем (fileName), уникальным идентификатором контента прикреплённого документа в ЕИС (contentId), совпадающего по размеру (fileSize) и с совпадающим отпечатком файла (fileFingerPrint)
-	ContractProjectFileInfo []ContractProjectFilesInfoContractProjectFileInfo `xml:",any"`
+	// ContractProjectFilesInfo2ContractProjectFileInfo: Файл проекта контракта, подписанный поставщиком. При приёме в ЕИС в блоке контролируется наличие элемента "Уникальный идентификатор контента прикреплённого документа на ЕИС" (contentId). При приёме в ЕИС проверяется наличие у проекта контракта (доработанного проекта контракта при наличии) с номером, указанным в поле "Номер проекта контракта" (commonInfo/number), файла с тем же именем (fileName), уникальным идентификатором контента прикреплённого документа в ЕИС (contentId), совпадающего по размеру (fileSize) и с совпадающим отпечатком файла (fileFingerPrint)
+	ContractProjectFileInfo []ContractProjectFilesInfo2ContractProjectFileInfo `xml:",any"`
 }
 
-// ElectronicContractInfoPrintFormInfo1: Печатная форма проекта электронного контракта в XML-представлении, сформированная по элементу "Электронный контракт" (cpElectronicContract) схемы fcsPrintForm. При приёме в ЕИС в блоке контролируется наличие элемента "Уникальный идентификатор контента прикреплённого документа на ЕИС" (contentId). При приёме в ЕИС проверяется наличие у проекта контракта (доработанного проекта контракта при наличии) с номером, указанным в поле "Номер проекта контракта" (commonInfo/number), проекта электронного контракта с тем же именем (fileName), уникальным идентификатором контента прикреплённого документа в ЕИС (contentId), совпадающего по размеру (fileSize) и с совпадающим отпечатком файла (fileFingerPrint)
-type ElectronicContractInfoPrintFormInfo1 struct {
+// ElectronicContractInfo2PrintFormInfo: Печатная форма проекта электронного контракта в XML-представлении, сформированная по элементу "Электронный контракт" (cpElectronicContract) схемы fcsPrintForm. При приёме в ЕИС в блоке контролируется наличие элемента "Уникальный идентификатор контента прикреплённого документа на ЕИС" (contentId). При приёме в ЕИС проверяется наличие у проекта контракта (доработанного проекта контракта при наличии) с номером, указанным в поле "Номер проекта контракта" (commonInfo/number), проекта электронного контракта с тем же именем (fileName), уникальным идентификатором контента прикреплённого документа в ЕИС (contentId), совпадающего по размеру (fileSize) и с совпадающим отпечатком файла (fileFingerPrint)
+type ElectronicContractInfo2PrintFormInfo struct {
 	XMLName xml.Name `xml:"printFormInfo"`
 
 	// SignatureCheckUrl: Ссылка на страницу проверки подписи на ЭП
@@ -4100,8 +4100,8 @@ type ElectronicContractInfoPrintFormInfo1 struct {
 	Content string `xml:"content,omitempty"`
 }
 
-// ElectronicContractInfoAttachmentsInfoAttachmentInfo: Документ, прикрепленный к проекту электронного контракта
-type ElectronicContractInfoAttachmentsInfoAttachmentInfo struct {
+// AttachmentsInfo5AttachmentInfo: Документ, прикрепленный к проекту электронного контракта
+type AttachmentsInfo5AttachmentInfo struct {
 	XMLName xml.Name `xml:"attachmentInfo"`
 
 	// SignatureCheckUrl: Ссылка на страницу проверки подписи на ЭП
@@ -4135,23 +4135,23 @@ type ElectronicContractInfoAttachmentsInfoAttachmentInfo struct {
 	Content string `xml:"content,omitempty"`
 }
 
-// ElectronicContractInfoAttachmentsInfo4: Документы, прикрепленные к проекту электронного контракта. При приёме в ЕИС в блоке контролируется наличие элемента "Уникальный идентификатор контента прикреплённого документа на ЕИС" (contentId). При приёме в ЕИС проверяется наличие у проекта электронного контракта файла с тем же именем (fileName), уникальным идентификатором контента прикреплённого документа в ЕИС (contentId), совпадающего по размеру (fileSize) и с совпадающим отпечатком файла (fileFingerPrint)
-type ElectronicContractInfoAttachmentsInfo4 struct {
+// AttachmentsInfo8: Документы, прикрепленные к проекту электронного контракта. При приёме в ЕИС в блоке контролируется наличие элемента "Уникальный идентификатор контента прикреплённого документа на ЕИС" (contentId). При приёме в ЕИС проверяется наличие у проекта электронного контракта файла с тем же именем (fileName), уникальным идентификатором контента прикреплённого документа в ЕИС (contentId), совпадающего по размеру (fileSize) и с совпадающим отпечатком файла (fileFingerPrint)
+type AttachmentsInfo8 struct {
 	XMLName xml.Name `xml:"attachmentsInfo"`
 
-	// ElectronicContractInfoAttachmentsInfoAttachmentInfo: Документ, прикрепленный к проекту электронного контракта
-	AttachmentInfo []ElectronicContractInfoAttachmentsInfoAttachmentInfo `xml:",any"`
+	// AttachmentsInfo5AttachmentInfo: Документ, прикрепленный к проекту электронного контракта
+	AttachmentInfo []AttachmentsInfo5AttachmentInfo `xml:",any"`
 }
 
 // ElectronicContractInfo4: Проект электронного контракта в структурированной форме. Если в проекте контракта установлен признак "Проект контракта формируется в структурированном виде" (contractInfo/isStructuredForm), то в блоке указывается проект электронного контракта и приложенные к нему вложения, подписанные поставщиком. Если в проекте контракта не установлен признак "Проект контракта формируется в структурированном виде" (contractInfo/isStructuredForm), , то блок игнорируется при приеме
 type ElectronicContractInfo4 struct {
 	XMLName xml.Name `xml:"electronicContractInfo,omitempty"`
 
-	// ElectronicContractInfoPrintFormInfo: Печатная форма проекта электронного контракта в XML-представлении, сформированная по элементу "Электронный контракт" (cpElectronicContract) схемы fcsPrintForm. При приёме в ЕИС в блоке контролируется наличие элемента "Уникальный идентификатор контента прикреплённого документа на ЕИС" (contentId). При приёме в ЕИС проверяется наличие у проекта контракта (доработанного проекта контракта при наличии) с номером, указанным в поле "Номер проекта контракта" (commonInfo/number), проекта электронного контракта с тем же именем (fileName), уникальным идентификатором контента прикреплённого документа в ЕИС (contentId), совпадающего по размеру (fileSize) и с совпадающим отпечатком файла (fileFingerPrint)
-	PrintFormInfo ElectronicContractInfoPrintFormInfo `xml:"printFormInfo"`
+	// ElectronicContractInfo2PrintFormInfo: Печатная форма проекта электронного контракта в XML-представлении, сформированная по элементу "Электронный контракт" (cpElectronicContract) схемы fcsPrintForm. При приёме в ЕИС в блоке контролируется наличие элемента "Уникальный идентификатор контента прикреплённого документа на ЕИС" (contentId). При приёме в ЕИС проверяется наличие у проекта контракта (доработанного проекта контракта при наличии) с номером, указанным в поле "Номер проекта контракта" (commonInfo/number), проекта электронного контракта с тем же именем (fileName), уникальным идентификатором контента прикреплённого документа в ЕИС (contentId), совпадающего по размеру (fileSize) и с совпадающим отпечатком файла (fileFingerPrint)
+	PrintFormInfo ElectronicContractInfo2PrintFormInfo `xml:"printFormInfo"`
 
-	// ElectronicContractInfoAttachmentsInfo: Документы, прикрепленные к проекту электронного контракта. При приёме в ЕИС в блоке контролируется наличие элемента "Уникальный идентификатор контента прикреплённого документа на ЕИС" (contentId). При приёме в ЕИС проверяется наличие у проекта электронного контракта файла с тем же именем (fileName), уникальным идентификатором контента прикреплённого документа в ЕИС (contentId), совпадающего по размеру (fileSize) и с совпадающим отпечатком файла (fileFingerPrint)
-	AttachmentsInfo ElectronicContractInfoAttachmentsInfo `xml:"attachmentsInfo"`
+	// AttachmentsInfo8: Документы, прикрепленные к проекту электронного контракта. При приёме в ЕИС в блоке контролируется наличие элемента "Уникальный идентификатор контента прикреплённого документа на ЕИС" (contentId). При приёме в ЕИС проверяется наличие у проекта электронного контракта файла с тем же именем (fileName), уникальным идентификатором контента прикреплённого документа в ЕИС (contentId), совпадающего по размеру (fileSize) и с совпадающим отпечатком файла (fileFingerPrint)
+	AttachmentsInfo AttachmentsInfo8 `xml:"attachmentsInfo"`
 }
 
 // ModificationInfoReasonInfoResponsibleDecisionInfo: По решению поставщика
@@ -4190,8 +4190,8 @@ type ModificationInfo1 struct {
 	ReasonInfo ModificationInfoReasonInfo `xml:"reasonInfo"`
 }
 
-// ParticipantInfoLegalEntityRfinfo5: Юридическое лицо РФ
-type ParticipantInfoLegalEntityRfinfo5 struct {
+// ParticipantInfo3LegalEntityRfinfo1: Юридическое лицо РФ
+type ParticipantInfo3LegalEntityRfinfo1 struct {
 	XMLName xml.Name `xml:"legalEntityRFInfo,omitempty"`
 
 	// FullName: Полное наименование. Игнорируется при приёме. Заполняется при выгрузке из связанного итогового протокола (foundationInfo/protocolInfo/number) поставщиком с указанными ИНН КПП
@@ -4204,8 +4204,8 @@ type ParticipantInfoLegalEntityRfinfo5 struct {
 	Kpp base.KppType `xml:"KPP"`
 }
 
-// ParticipantInfoLegalEntityForeignStateInfo3: Юридическое лицо иностранного государства
-type ParticipantInfoLegalEntityForeignStateInfo3 struct {
+// ParticipantInfo3LegalEntityForeignStateInfo1: Юридическое лицо иностранного государства
+type ParticipantInfo3LegalEntityForeignStateInfo1 struct {
 	XMLName xml.Name `xml:"legalEntityForeignStateInfo,omitempty"`
 
 	// FullName: Полное наименование. Игнорируется при приёме. Заполняется при выгрузке из связанного итогового протокола со значениями, указанными в полях INN\taxPayerCode (проверяется точное соответствие пары полей INN и\или taxPayerCode)
@@ -4221,8 +4221,8 @@ type ParticipantInfoLegalEntityForeignStateInfo3 struct {
 	Country *base.Oksmref `xml:"country,omitempty"`
 }
 
-// ParticipantInfoIndividualPersonRfinfo5: Физическое лицо РФ
-type ParticipantInfoIndividualPersonRfinfo5 struct {
+// ParticipantInfo3IndividualPersonRfinfo1: Физическое лицо РФ
+type ParticipantInfo3IndividualPersonRfinfo1 struct {
 	XMLName xml.Name `xml:"individualPersonRFInfo,omitempty"`
 
 	// NameInfo: ФИО. Игнорируется при приёме. Заполняется при выгрузке из связанного итогового протокола (foundationInfo/protocolInfo/number) поставщиком с указанным ИНН
@@ -4235,8 +4235,8 @@ type ParticipantInfoIndividualPersonRfinfo5 struct {
 	IsIp *bool `xml:"isIP,omitempty"`
 }
 
-// ParticipantInfoIndividualPersonForeignStateInfo5: Физическое лицо иностранного государства
-type ParticipantInfoIndividualPersonForeignStateInfo5 struct {
+// ParticipantInfo3IndividualPersonForeignStateInfo1: Физическое лицо иностранного государства
+type ParticipantInfo3IndividualPersonForeignStateInfo1 struct {
 	XMLName xml.Name `xml:"individualPersonForeignStateInfo,omitempty"`
 
 	// NameInfo: ФИО. Игнорируется при приёме. Заполняется при выгрузке из связанного итогового протокола (foundationInfo/protocolInfo/number) поставщиком со значением указанным в поле "Код налогоплательщика в стране регистрации или его аналог" (taxPayerCode)
@@ -4252,8 +4252,8 @@ type ParticipantInfoIndividualPersonForeignStateInfo5 struct {
 	Country *base.Oksmref `xml:"country,omitempty"`
 }
 
-// FoundationInfoProtocolInfo5: Реквизиты документа, подтверждающего основание заключения контракта. Блок игнорируется при приёме. Заполняется при передаче из связанного извещения (foundationInfo/purchaseNumber)
-type FoundationInfoProtocolInfo5 struct {
+// FoundationInfo4ProtocolInfo: Реквизиты документа, подтверждающего основание заключения контракта. Блок игнорируется при приёме. Заполняется при передаче из связанного извещения (foundationInfo/purchaseNumber)
+type FoundationInfo4ProtocolInfo struct {
 	XMLName xml.Name `xml:"protocolInfo,omitempty"`
 
 	// Name: Наименование протокола-основаня
@@ -4282,8 +4282,8 @@ type FoundationInfo5 struct {
 	// PurchaseCode: Идентификационный код закупки. Элемент игнорируется при приёме. Заполняется при передаче из связанного извещения (foundationInfo/purchaseNumber)
 	PurchaseCode *base.IkzCodeType `xml:"purchaseCode,omitempty"`
 
-	// FoundationInfoProtocolInfo: Реквизиты документа, подтверждающего основание заключения контракта. Блок игнорируется при приёме. Заполняется при передаче из связанного извещения (foundationInfo/purchaseNumber)
-	ProtocolInfo *FoundationInfoProtocolInfo `xml:"protocolInfo,omitempty"`
+	// FoundationInfo4ProtocolInfo: Реквизиты документа, подтверждающего основание заключения контракта. Блок игнорируется при приёме. Заполняется при передаче из связанного извещения (foundationInfo/purchaseNumber)
+	ProtocolInfo *FoundationInfo4ProtocolInfo `xml:"protocolInfo,omitempty"`
 }
 
 // PlacerInfo6: Информация об организации, разместившей контракт
@@ -4297,8 +4297,8 @@ type PlacerInfo6 struct {
 	ResponsibleRole base.PlacerRoleContractProjectEnum `xml:"responsibleRole"`
 }
 
-// ParticipantInfoLegalEntityRfinfo6: Юридическое лицо РФ
-type ParticipantInfoLegalEntityRfinfo6 struct {
+// ParticipantInfo4LegalEntityRfinfo: Юридическое лицо РФ
+type ParticipantInfo4LegalEntityRfinfo struct {
 	XMLName xml.Name `xml:"legalEntityRFInfo,omitempty"`
 
 	// FullName: Полное наименование. Игнорируется при приёме. Заполняется при выгрузке из связанного итогового протокола (foundationInfo/protocolInfo/number) поставщиком с указанными ИНН КПП
@@ -4311,8 +4311,8 @@ type ParticipantInfoLegalEntityRfinfo6 struct {
 	Kpp base.KppType `xml:"KPP"`
 }
 
-// ParticipantInfoLegalEntityForeignStateInfo4: Юридическое лицо иностранного государства
-type ParticipantInfoLegalEntityForeignStateInfo4 struct {
+// ParticipantInfo4LegalEntityForeignStateInfo: Юридическое лицо иностранного государства
+type ParticipantInfo4LegalEntityForeignStateInfo struct {
 	XMLName xml.Name `xml:"legalEntityForeignStateInfo,omitempty"`
 
 	// FullName: Полное наименование. Игнорируется при приёме. Заполняется при выгрузке из связанного итогового протокола со значениями, указанными в полях INN\taxPayerCode (проверяется точное соответствие пары полей INN и\или taxPayerCode)
@@ -4328,8 +4328,8 @@ type ParticipantInfoLegalEntityForeignStateInfo4 struct {
 	Country *base.Oksmref `xml:"country,omitempty"`
 }
 
-// ParticipantInfoIndividualPersonRfinfo6: Физическое лицо РФ
-type ParticipantInfoIndividualPersonRfinfo6 struct {
+// ParticipantInfo4IndividualPersonRfinfo: Физическое лицо РФ
+type ParticipantInfo4IndividualPersonRfinfo struct {
 	XMLName xml.Name `xml:"individualPersonRFInfo,omitempty"`
 
 	// NameInfo: ФИО. Игнорируется при приёме. Заполняется при выгрузке из связанного итогового протокола (foundationInfo/protocolInfo/number) поставщиком с указанным ИНН
@@ -4342,8 +4342,8 @@ type ParticipantInfoIndividualPersonRfinfo6 struct {
 	IsIp *bool `xml:"isIP,omitempty"`
 }
 
-// ParticipantInfoIndividualPersonForeignStateInfo6: Физическое лицо иностранного государства
-type ParticipantInfoIndividualPersonForeignStateInfo6 struct {
+// ParticipantInfo4IndividualPersonForeignStateInfo: Физическое лицо иностранного государства
+type ParticipantInfo4IndividualPersonForeignStateInfo struct {
 	XMLName xml.Name `xml:"individualPersonForeignStateInfo,omitempty"`
 
 	// NameInfo: ФИО. Игнорируется при приёме. Заполняется при выгрузке из связанного итогового протокола (foundationInfo/protocolInfo/number) поставщиком со значением указанным в поле "Код налогоплательщика в стране регистрации или его аналог" (taxPayerCode)
@@ -4359,28 +4359,28 @@ type ParticipantInfoIndividualPersonForeignStateInfo6 struct {
 	Country *base.Oksmref `xml:"country,omitempty"`
 }
 
-// ParticipantInfo5: Поставщик. При приёме проверяется - Наличие указанного поставщика в связанном итоговом протоколе (foundationInfo/protocolInfo/number); - Отсутствие по закупке с номером указанным в поле (foundationInfo/purchaseNumber) для указанного поставщика размещенного протокола отказа от заключения контратка (fcsProtocolEvasion), или протокола о признании участника уклонившимся от заключения контракта (fcsProtocolDeviation)
-type ParticipantInfo5 struct {
+// ParticipantInfo6: Поставщик. При приёме проверяется - Наличие указанного поставщика в связанном итоговом протоколе (foundationInfo/protocolInfo/number); - Отсутствие по закупке с номером указанным в поле (foundationInfo/purchaseNumber) для указанного поставщика размещенного протокола отказа от заключения контратка (fcsProtocolEvasion), или протокола о признании участника уклонившимся от заключения контракта (fcsProtocolDeviation)
+type ParticipantInfo6 struct {
 	XMLName xml.Name `xml:"participantInfo"`
 
 	// ContractorRegistryNum: Номер реестровой записи в ЕРУЗ. Игнорируется при приеме. Заполняется при выгрузке из связанного итогового протокола при наличии
 	ContractorRegistryNum *base.EruzRegistryNumType `xml:"contractorRegistryNum,omitempty"`
 
-	// ParticipantInfoLegalEntityRfinfo: Юридическое лицо РФ
-	LegalEntityRfinfo *ParticipantInfoLegalEntityRfinfo `xml:"legalEntityRFInfo,omitempty"`
+	// ParticipantInfo4LegalEntityRfinfo: Юридическое лицо РФ
+	LegalEntityRfinfo *ParticipantInfo4LegalEntityRfinfo `xml:"legalEntityRFInfo,omitempty"`
 
-	// ParticipantInfoLegalEntityForeignStateInfo: Юридическое лицо иностранного государства
-	LegalEntityForeignStateInfo *ParticipantInfoLegalEntityForeignStateInfo `xml:"legalEntityForeignStateInfo,omitempty"`
+	// ParticipantInfo4LegalEntityForeignStateInfo: Юридическое лицо иностранного государства
+	LegalEntityForeignStateInfo *ParticipantInfo4LegalEntityForeignStateInfo `xml:"legalEntityForeignStateInfo,omitempty"`
 
-	// ParticipantInfoIndividualPersonRfinfo: Физическое лицо РФ
-	IndividualPersonRfinfo *ParticipantInfoIndividualPersonRfinfo `xml:"individualPersonRFInfo,omitempty"`
+	// ParticipantInfo4IndividualPersonRfinfo: Физическое лицо РФ
+	IndividualPersonRfinfo *ParticipantInfo4IndividualPersonRfinfo `xml:"individualPersonRFInfo,omitempty"`
 
-	// ParticipantInfoIndividualPersonForeignStateInfo: Физическое лицо иностранного государства
-	IndividualPersonForeignStateInfo *ParticipantInfoIndividualPersonForeignStateInfo `xml:"individualPersonForeignStateInfo,omitempty"`
+	// ParticipantInfo4IndividualPersonForeignStateInfo: Физическое лицо иностранного государства
+	IndividualPersonForeignStateInfo *ParticipantInfo4IndividualPersonForeignStateInfo `xml:"individualPersonForeignStateInfo,omitempty"`
 }
 
-// ContractInfoChangePriceInfo3: Цена контракта изменена относительно предложения поставщика в итоговом протоколе. При приеме блока контролируется отсутствие в итоговом протоколе (foundationInfo/protocolInfo/number) флага "Торги проводили на право заключения контракта" (concludeContractRight) с выставленным значением true
-type ContractInfoChangePriceInfo3 struct {
+// ContractInfo2ChangePriceInfo: Цена контракта изменена относительно предложения поставщика в итоговом протоколе. При приеме блока контролируется отсутствие в итоговом протоколе (foundationInfo/protocolInfo/number) флага "Торги проводили на право заключения контракта" (concludeContractRight) с выставленным значением true
+type ContractInfo2ChangePriceInfo struct {
 	XMLName xml.Name `xml:"changePriceInfo,omitempty"`
 
 	// ChangePrice: Изменённая цена контракта
@@ -4403,8 +4403,8 @@ type ContractInfo3 struct {
 	// ConcludeContractRight: Торги проводили на право заключения контракта. Элемент игнорируется при приёме. Заполняется из связанного итогового протокола (foundationInfo/protocolInfo/number)
 	ConcludeContractRight *bool `xml:"concludeContractRight,omitempty"`
 
-	// ContractInfoChangePriceInfo: Цена контракта изменена относительно предложения поставщика в итоговом протоколе. При приеме блока контролируется отсутствие в итоговом протоколе (foundationInfo/protocolInfo/number) флага "Торги проводили на право заключения контракта" (concludeContractRight) с выставленным значением true
-	ChangePriceInfo *ContractInfoChangePriceInfo `xml:"changePriceInfo,omitempty"`
+	// ContractInfo2ChangePriceInfo: Цена контракта изменена относительно предложения поставщика в итоговом протоколе. При приеме блока контролируется отсутствие в итоговом протоколе (foundationInfo/protocolInfo/number) флага "Торги проводили на право заключения контракта" (concludeContractRight) с выставленным значением true
+	ChangePriceInfo *ContractInfo2ChangePriceInfo `xml:"changePriceInfo,omitempty"`
 
 	// Price: Цена контракта (в валюте контракта)/Максимальное значение цены контракта/Цена за право заключения контракта. Элемент игнорируется при приёме. Заполняется из поля "Измененная цена контракта" (contractInfo/changePriceInfo/changePrice) при наличии, иначе из связанного итогового протокола (foundationInfo/protocolInfo/number)
 	Price *base.MoneyPositiveType `xml:"price,omitempty"`
@@ -4720,8 +4720,8 @@ type Okpd2InfoCharacteristics struct {
 type Okpd2Info struct {
 	XMLName xml.Name `xml:"OKPD2Info,omitempty"`
 
-	// ProductInfoOkpd2InfoCharacteristics: Характеристики товара, работы, услуги позиции ОКПД2
-	Characteristics *ProductInfoOkpd2InfoCharacteristics `xml:"characteristics,omitempty"`
+	// Okpd2Info1Characteristics: Характеристики товара, работы, услуги позиции ОКПД2
+	Characteristics *Okpd2Info1Characteristics `xml:"characteristics,omitempty"`
 
 	base.Okpd2Ref
 }
@@ -4741,8 +4741,8 @@ type KtruinfoCharacteristics struct {
 type Ktruinfo struct {
 	XMLName xml.Name `xml:"KTRUInfo,omitempty"`
 
-	// ProductInfoKtruinfoCharacteristics: Характеристики товара, работы, услуги позиции КТРУ. Для родительского объекта закупки: Игнорируется при приеме, не заполняется при передаче
-	Characteristics *ProductInfoKtruinfoCharacteristics `xml:"characteristics,omitempty"`
+	// Ktruinfo1Characteristics: Характеристики товара, работы, услуги позиции КТРУ. Для родительского объекта закупки: Игнорируется при приеме, не заполняется при передаче
+	Characteristics *Ktruinfo1Characteristics `xml:"characteristics,omitempty"`
 
 	base.Ktruref
 }
@@ -4794,12 +4794,12 @@ type Okpd2InfoCharacteristics1 struct {
 	CharacteristicsUsingTextForm []cmn.ManualOkpd2CharacteristicType `xml:",any,omitempty"`
 }
 
-// ProductInfoOkpd2Info: Классификация по ОКПД2
-type ProductInfoOkpd2Info struct {
+// Okpd2Info1: Классификация по ОКПД2
+type Okpd2Info1 struct {
 	XMLName xml.Name `xml:"OKPD2Info,omitempty"`
 
-	// ProductInfoOkpd2InfoCharacteristics: Характеристики товара, работы, услуги позиции ОКПД2
-	Characteristics *ProductInfoOkpd2InfoCharacteristics `xml:"characteristics,omitempty"`
+	// Okpd2Info1Characteristics: Характеристики товара, работы, услуги позиции ОКПД2
+	Characteristics *Okpd2Info1Characteristics `xml:"characteristics,omitempty"`
 
 	base.Okpd2Ref
 }
@@ -4815,12 +4815,12 @@ type KtruinfoCharacteristics1 struct {
 	CharacteristicsUsingTextForm []cmn.ManualKtrucharacteristicType `xml:"characteristicsUsingTextForm,omitempty"`
 }
 
-// ProductInfoKtruinfo: Классификация по КТРУ
-type ProductInfoKtruinfo struct {
+// Ktruinfo1: Классификация по КТРУ
+type Ktruinfo1 struct {
 	XMLName xml.Name `xml:"KTRUInfo,omitempty"`
 
-	// ProductInfoKtruinfoCharacteristics: Характеристики товара, работы, услуги позиции КТРУ. Для родительского объекта закупки: Игнорируется при приеме, не заполняется при передаче
-	Characteristics *ProductInfoKtruinfoCharacteristics `xml:"characteristics,omitempty"`
+	// Ktruinfo1Characteristics: Характеристики товара, работы, услуги позиции КТРУ. Для родительского объекта закупки: Игнорируется при приеме, не заполняется при передаче
+	Characteristics *Ktruinfo1Characteristics `xml:"characteristics,omitempty"`
 
 	base.Ktruref
 }
@@ -4895,11 +4895,11 @@ type ProductInfo struct {
 	// IsNameProductChanged: Наименование объекта закупки изменено
 	IsNameProductChanged *bool `xml:"isNameProductChanged,omitempty"`
 
-	// ParentProductInfoOkpd2Info: Классификация по ОКПД2
-	Okpd2Info *ParentProductInfoOkpd2Info `xml:"OKPD2Info,omitempty"`
+	// Okpd2Info2: Классификация по ОКПД2
+	Okpd2Info *Okpd2Info2 `xml:"OKPD2Info,omitempty"`
 
-	// ParentProductInfoKtruinfo: Классификация по КТРУ
-	Ktruinfo *ParentProductInfoKtruinfo `xml:"KTRUInfo,omitempty"`
+	// Ktruinfo2: Классификация по КТРУ
+	Ktruinfo *Ktruinfo2 `xml:"KTRUInfo,omitempty"`
 
 	// HierarchyType: Тип объекта закупки в иерархии
 	HierarchyType *base.ProductHierarchyTypeEnumType `xml:"hierarchyType,omitempty"`
@@ -4914,26 +4914,26 @@ type ProductInfo struct {
 	Sum *base.MoneyPositiveType `xml:"sum,omitempty"`
 }
 
-// ProductInfoOkpd2InfoCharacteristics: Характеристики товара, работы, услуги позиции ОКПД2
-type ProductInfoOkpd2InfoCharacteristics struct {
+// Okpd2Info1Characteristics: Характеристики товара, работы, услуги позиции ОКПД2
+type Okpd2Info1Characteristics struct {
 	XMLName xml.Name `xml:"characteristics,omitempty"`
 
 	// CharacteristicsUsingTextForm: Характеристика товара, работы, услуги позиции ОКПД2, сформированная в текстовой форме
 	CharacteristicsUsingTextForm []cmn.ManualOkpd2CharacteristicType `xml:",any,omitempty"`
 }
 
-// ParentProductInfoOkpd2Info: Классификация по ОКПД2
-type ParentProductInfoOkpd2Info struct {
+// Okpd2Info2: Классификация по ОКПД2
+type Okpd2Info2 struct {
 	XMLName xml.Name `xml:"OKPD2Info,omitempty"`
 
-	// ProductInfoOkpd2InfoCharacteristics: Характеристики товара, работы, услуги позиции ОКПД2
-	Characteristics *ProductInfoOkpd2InfoCharacteristics `xml:"characteristics,omitempty"`
+	// Okpd2Info1Characteristics: Характеристики товара, работы, услуги позиции ОКПД2
+	Characteristics *Okpd2Info1Characteristics `xml:"characteristics,omitempty"`
 
 	base.Okpd2Ref
 }
 
-// ProductInfoKtruinfoCharacteristics: Характеристики товара, работы, услуги позиции КТРУ. Для родительского объекта закупки: Игнорируется при приеме, не заполняется при передаче
-type ProductInfoKtruinfoCharacteristics struct {
+// Ktruinfo1Characteristics: Характеристики товара, работы, услуги позиции КТРУ. Для родительского объекта закупки: Игнорируется при приеме, не заполняется при передаче
+type Ktruinfo1Characteristics struct {
 	XMLName xml.Name `xml:"characteristics,omitempty"`
 
 	// CharacteristicsUsingReferenceInfo: Характеристика товара, работы услуги позиции КТРУ, сформированная с использованием справочной информации (справочник Каталог товаров, работ, услуг (КТРУ) (nsiKTRU))
@@ -4943,12 +4943,12 @@ type ProductInfoKtruinfoCharacteristics struct {
 	CharacteristicsUsingTextForm []cmn.ManualKtrucharacteristicType `xml:"characteristicsUsingTextForm,omitempty"`
 }
 
-// ParentProductInfoKtruinfo: Классификация по КТРУ
-type ParentProductInfoKtruinfo struct {
+// Ktruinfo2: Классификация по КТРУ
+type Ktruinfo2 struct {
 	XMLName xml.Name `xml:"KTRUInfo,omitempty"`
 
-	// ProductInfoKtruinfoCharacteristics: Характеристики товара, работы, услуги позиции КТРУ. Для родительского объекта закупки: Игнорируется при приеме, не заполняется при передаче
-	Characteristics *ProductInfoKtruinfoCharacteristics `xml:"characteristics,omitempty"`
+	// Ktruinfo1Characteristics: Характеристики товара, работы, услуги позиции КТРУ. Для родительского объекта закупки: Игнорируется при приеме, не заполняется при передаче
+	Characteristics *Ktruinfo1Characteristics `xml:"characteristics,omitempty"`
 
 	base.Ktruref
 }
@@ -4987,11 +4987,11 @@ type ParentProductInfo struct {
 	// IsNameProductChanged: Наименование объекта закупки изменено
 	IsNameProductChanged *bool `xml:"isNameProductChanged,omitempty"`
 
-	// ParentProductInfoOkpd2Info: Классификация по ОКПД2
-	Okpd2Info *ParentProductInfoOkpd2Info `xml:"OKPD2Info,omitempty"`
+	// Okpd2Info2: Классификация по ОКПД2
+	Okpd2Info *Okpd2Info2 `xml:"OKPD2Info,omitempty"`
 
-	// ParentProductInfoKtruinfo: Классификация по КТРУ
-	Ktruinfo *ParentProductInfoKtruinfo `xml:"KTRUInfo,omitempty"`
+	// Ktruinfo2: Классификация по КТРУ
+	Ktruinfo *Ktruinfo2 `xml:"KTRUInfo,omitempty"`
 
 	// HierarchyType: Тип объекта закупки в иерархии
 	HierarchyType *base.ProductHierarchyTypeEnumType `xml:"hierarchyType,omitempty"`
@@ -5022,8 +5022,8 @@ type ChangePriceInfo1 struct {
 	ChangePriceFoundation base.ChangePriceFoundationRef `xml:",any"`
 }
 
-// Ktruinfo1: Классификация по КТРУ Игнорируется при приеме, при передаче заполняется из соответствующей позиции извещения (приглашения)
-type Ktruinfo1 struct {
+// Ktruinfo3: Классификация по КТРУ Игнорируется при приеме, при передаче заполняется из соответствующей позиции извещения (приглашения)
+type Ktruinfo3 struct {
 	XMLName xml.Name `xml:"KTRUInfo,omitempty"`
 
 	base.Ktruref
@@ -5291,8 +5291,8 @@ type SpecializedOrgContactPersonInfo struct {
 	cmn.PersonWithoutOblType
 }
 
-// CustomerMainOrgInfoRegNum: Код по СПЗ
-type CustomerMainOrgInfoRegNum struct {
+// RegNum1: Код по СПЗ
+type RegNum1 struct {
 	XMLName xml.Name `xml:"regNum,omitempty"`
 
 	FieldCode string `xml:"fieldCode,attr,omitempty"`
@@ -5303,8 +5303,8 @@ type CustomerMainOrgInfoRegNum struct {
 	Text string `xml:",chardata"`
 }
 
-// CustomerMainOrgInfoConsRegistryNum: Код по Сводному Реестру
-type CustomerMainOrgInfoConsRegistryNum struct {
+// ConsRegistryNum1: Код по Сводному Реестру
+type ConsRegistryNum1 struct {
 	XMLName xml.Name `xml:"consRegistryNum,omitempty"`
 
 	FieldCode string `xml:"fieldCode,attr,omitempty"`
@@ -5315,8 +5315,8 @@ type CustomerMainOrgInfoConsRegistryNum struct {
 	Text string `xml:",chardata"`
 }
 
-// CustomerMainOrgInfoFullName: Полное наименование
-type CustomerMainOrgInfoFullName struct {
+// FullName1: Полное наименование
+type FullName1 struct {
 	XMLName xml.Name `xml:"fullName,omitempty"`
 
 	FieldCode string `xml:"fieldCode,attr,omitempty"`
@@ -5327,8 +5327,8 @@ type CustomerMainOrgInfoFullName struct {
 	Text string `xml:",chardata"`
 }
 
-// CustomerMainOrgInfoShortName: Сокращенное наименование
-type CustomerMainOrgInfoShortName struct {
+// ShortName1: Сокращенное наименование
+type ShortName1 struct {
 	XMLName xml.Name `xml:"shortName,omitempty"`
 
 	FieldCode string `xml:"fieldCode,attr,omitempty"`
@@ -5339,8 +5339,8 @@ type CustomerMainOrgInfoShortName struct {
 	Text string `xml:",chardata"`
 }
 
-// CustomerMainOrgInfoPostAddress: Почтовый адрес организации
-type CustomerMainOrgInfoPostAddress struct {
+// PostAddress1: Почтовый адрес организации
+type PostAddress1 struct {
 	XMLName xml.Name `xml:"postAddress,omitempty"`
 
 	FieldCode string `xml:"fieldCode,attr,omitempty"`
@@ -5351,8 +5351,8 @@ type CustomerMainOrgInfoPostAddress struct {
 	Text string `xml:",chardata"`
 }
 
-// CustomerMainOrgInfoFactAddress: Адрес местонахождения организации
-type CustomerMainOrgInfoFactAddress struct {
+// FactAddress1: Адрес местонахождения организации
+type FactAddress1 struct {
 	XMLName xml.Name `xml:"factAddress,omitempty"`
 
 	FieldCode string `xml:"fieldCode,attr,omitempty"`
@@ -5363,8 +5363,8 @@ type CustomerMainOrgInfoFactAddress struct {
 	Text string `xml:",chardata"`
 }
 
-// CustomerMainOrgInfoInn: ИНН организации
-type CustomerMainOrgInfoInn struct {
+// Inn1: ИНН организации
+type Inn1 struct {
 	XMLName xml.Name `xml:"INN,omitempty"`
 
 	FieldCode string `xml:"fieldCode,attr,omitempty"`
@@ -5375,8 +5375,8 @@ type CustomerMainOrgInfoInn struct {
 	Text string `xml:",chardata"`
 }
 
-// CustomerMainOrgInfoKpp: КПП организации
-type CustomerMainOrgInfoKpp struct {
+// Kpp1: КПП организации
+type Kpp1 struct {
 	XMLName xml.Name `xml:"KPP,omitempty"`
 
 	FieldCode string `xml:"fieldCode,attr,omitempty"`
@@ -5391,29 +5391,29 @@ type CustomerMainOrgInfoKpp struct {
 type CustomerMainOrgInfo struct {
 	XMLName xml.Name `xml:"customerMainOrgInfo,omitempty"`
 
-	// CustomerMainOrgInfoRegNum: Код по СПЗ
-	RegNum *CustomerMainOrgInfoRegNum `xml:"regNum,omitempty"`
+	// RegNum1: Код по СПЗ
+	RegNum *RegNum1 `xml:"regNum,omitempty"`
 
-	// CustomerMainOrgInfoConsRegistryNum: Код по Сводному Реестру
-	ConsRegistryNum *CustomerMainOrgInfoConsRegistryNum `xml:"consRegistryNum,omitempty"`
+	// ConsRegistryNum1: Код по Сводному Реестру
+	ConsRegistryNum *ConsRegistryNum1 `xml:"consRegistryNum,omitempty"`
 
-	// CustomerMainOrgInfoFullName: Полное наименование
-	FullName *CustomerMainOrgInfoFullName `xml:"fullName,omitempty"`
+	// FullName1: Полное наименование
+	FullName *FullName1 `xml:"fullName,omitempty"`
 
-	// CustomerMainOrgInfoShortName: Сокращенное наименование
-	ShortName *CustomerMainOrgInfoShortName `xml:"shortName,omitempty"`
+	// ShortName1: Сокращенное наименование
+	ShortName *ShortName1 `xml:"shortName,omitempty"`
 
-	// CustomerMainOrgInfoPostAddress: Почтовый адрес организации
-	PostAddress *CustomerMainOrgInfoPostAddress `xml:"postAddress,omitempty"`
+	// PostAddress1: Почтовый адрес организации
+	PostAddress *PostAddress1 `xml:"postAddress,omitempty"`
 
-	// CustomerMainOrgInfoFactAddress: Адрес местонахождения организации
-	FactAddress *CustomerMainOrgInfoFactAddress `xml:"factAddress,omitempty"`
+	// FactAddress1: Адрес местонахождения организации
+	FactAddress *FactAddress1 `xml:"factAddress,omitempty"`
 
-	// CustomerMainOrgInfoInn: ИНН организации
-	Inn *CustomerMainOrgInfoInn `xml:"INN,omitempty"`
+	// Inn1: ИНН организации
+	Inn *Inn1 `xml:"INN,omitempty"`
 
-	// CustomerMainOrgInfoKpp: КПП организации
-	Kpp *CustomerMainOrgInfoKpp `xml:"KPP,omitempty"`
+	// Kpp1: КПП организации
+	Kpp *Kpp1 `xml:"KPP,omitempty"`
 }
 
 // PriceType: Способ указания цены контракта. Допустимые значения: P - цена контракта; MP - максимальное значение цены контракта; ОР - ориентировочное значение цены контракта. Заполняется, если указан признак "Проект доп.соглашения формируется в структурированном виде" (isStructuredForm)
@@ -5548,8 +5548,8 @@ type RelativeTermsInfoTermDayType1 struct {
 	Text string `xml:",chardata"`
 }
 
-// TermsInfoRelativeTermsInfo: Относительные сроки
-type TermsInfoRelativeTermsInfo struct {
+// RelativeTermsInfo2: Относительные сроки
+type RelativeTermsInfo2 struct {
 	XMLName xml.Name `xml:"relativeTermsInfo,omitempty"`
 
 	// RelativeTermsInfoStart: Количество дней до даты начала исполнения контракта с даты заключения контракта
@@ -5613,8 +5613,8 @@ type NotRelativeTermsInfoIsNotEarlierConclusionDate1 struct {
 	Text string `xml:",chardata"`
 }
 
-// TermsInfoNotRelativeTermsInfo: Неотносительные сроки
-type TermsInfoNotRelativeTermsInfo struct {
+// NotRelativeTermsInfo2: Неотносительные сроки
+type NotRelativeTermsInfo2 struct {
 	XMLName xml.Name `xml:"notRelativeTermsInfo,omitempty"`
 
 	// NotRelativeTermsInfoEndDate: Дата окончания испонления контракта
@@ -5634,11 +5634,11 @@ type TermsInfoNotRelativeTermsInfo struct {
 type StageInfoTermsInfo struct {
 	XMLName xml.Name `xml:"termsInfo,omitempty"`
 
-	// TermsInfoRelativeTermsInfo: Относительные сроки
-	RelativeTermsInfo *TermsInfoRelativeTermsInfo `xml:"relativeTermsInfo,omitempty"`
+	// RelativeTermsInfo2: Относительные сроки
+	RelativeTermsInfo *RelativeTermsInfo2 `xml:"relativeTermsInfo,omitempty"`
 
-	// TermsInfoNotRelativeTermsInfo: Неотносительные сроки
-	NotRelativeTermsInfo *TermsInfoNotRelativeTermsInfo `xml:"notRelativeTermsInfo,omitempty"`
+	// NotRelativeTermsInfo2: Неотносительные сроки
+	NotRelativeTermsInfo *NotRelativeTermsInfo2 `xml:"notRelativeTermsInfo,omitempty"`
 }
 
 // PaymentsSumInfoPaymentsSum: Сумма платежей по этапу. Заполняется рассчитываемой суммой значений, указанных для этапа в полях «Сумма платежа» (paymentsSumInfo/budgetFinancingsInfo/ paymentYearsInfo/paymentYearInfo/paymentSum) и «Сумма платежа» (paymentsSumInfo/nonbudgetFinancingsInfo/paymentYearsInfo/paymentYearInfo/paymentSum). При вычислении суммы не учитываются значения тех строк, которые были проигнорированы при приеме
@@ -7352,8 +7352,8 @@ type ParticipantAccountsDetailsInfo struct {
 	ElectronicContractAccountsDetailsInfo *ParticipantAccountsDetailsInfoElectronicContractAccountsDetailsInfo `xml:"electronicContractAccountsDetailsInfo,omitempty"`
 }
 
-// LegalEntityRfinfoFullName: Полное наименование организации
-type LegalEntityRfinfoFullName struct {
+// FullName2: Полное наименование организации
+type FullName2 struct {
 	XMLName xml.Name `xml:"fullName,omitempty"`
 
 	FieldCode string `xml:"fieldCode,attr,omitempty"`
@@ -7364,8 +7364,8 @@ type LegalEntityRfinfoFullName struct {
 	Text string `xml:",chardata"`
 }
 
-// LegalEntityRfinfoShortName: Сокращенное наименование организации. Заполняется, если указан признак "Проект доп.соглашения формируется в структурированном виде" (isStructuredForm)
-type LegalEntityRfinfoShortName struct {
+// ShortName2: Сокращенное наименование организации. Заполняется, если указан признак "Проект доп.соглашения формируется в структурированном виде" (isStructuredForm)
+type ShortName2 struct {
 	XMLName xml.Name `xml:"shortName,omitempty"`
 
 	FieldCode string `xml:"fieldCode,attr,omitempty"`
@@ -7388,8 +7388,8 @@ type LegalEntityRfinfoOgrn struct {
 	Text string `xml:",chardata"`
 }
 
-// LegalEntityRfinfoInn: ИНН
-type LegalEntityRfinfoInn struct {
+// Inn2: ИНН
+type Inn2 struct {
 	XMLName xml.Name `xml:"INN,omitempty"`
 
 	FieldCode string `xml:"fieldCode,attr,omitempty"`
@@ -7400,8 +7400,8 @@ type LegalEntityRfinfoInn struct {
 	Text string `xml:",chardata"`
 }
 
-// LegalEntityRfinfoKpp: КПП
-type LegalEntityRfinfoKpp struct {
+// Kpp2: КПП
+type Kpp2 struct {
 	XMLName xml.Name `xml:"KPP,omitempty"`
 
 	FieldCode string `xml:"fieldCode,attr,omitempty"`
@@ -7424,8 +7424,8 @@ type LegalEntityRfinfoMajorTaxPayerKpp struct {
 	Text string `xml:",chardata"`
 }
 
-// LegalEntityRfinfoFactAddress: Место нахождения
-type LegalEntityRfinfoFactAddress struct {
+// FactAddress2: Место нахождения
+type FactAddress2 struct {
 	XMLName xml.Name `xml:"factAddress,omitempty"`
 
 	FieldCode string `xml:"fieldCode,attr,omitempty"`
@@ -7436,8 +7436,8 @@ type LegalEntityRfinfoFactAddress struct {
 	Text string `xml:",chardata"`
 }
 
-// LegalEntityRfinfoPostAddress: Почтовый адрес. Заполняется, если указан признак "Проект доп.соглашения формируется в структурированном виде" (isStructuredForm)
-type LegalEntityRfinfoPostAddress struct {
+// PostAddress2: Почтовый адрес. Заполняется, если указан признак "Проект доп.соглашения формируется в структурированном виде" (isStructuredForm)
+type PostAddress2 struct {
 	XMLName xml.Name `xml:"postAddress,omitempty"`
 
 	FieldCode string `xml:"fieldCode,attr,omitempty"`
@@ -7448,8 +7448,8 @@ type LegalEntityRfinfoPostAddress struct {
 	Text string `xml:",chardata"`
 }
 
-// LegalEntityRfinfoEmail: Адрес электронной почты. Заполняется, если указан признак "Проект доп.соглашения формируется в структурированном виде" (isStructuredForm)
-type LegalEntityRfinfoEmail struct {
+// Email1: Адрес электронной почты. Заполняется, если указан признак "Проект доп.соглашения формируется в структурированном виде" (isStructuredForm)
+type Email1 struct {
 	XMLName xml.Name `xml:"email,omitempty"`
 
 	FieldCode string `xml:"fieldCode,attr,omitempty"`
@@ -7460,8 +7460,8 @@ type LegalEntityRfinfoEmail struct {
 	Text string `xml:",chardata"`
 }
 
-// LegalEntityRfinfoContactPhone: Номер контактного телефона. Заполняется, если указан признак "Проект доп.соглашения формируется в структурированном виде" (isStructuredForm)
-type LegalEntityRfinfoContactPhone struct {
+// ContactPhone1: Номер контактного телефона. Заполняется, если указан признак "Проект доп.соглашения формируется в структурированном виде" (isStructuredForm)
+type ContactPhone1 struct {
 	XMLName xml.Name `xml:"contactPhone,omitempty"`
 
 	FieldCode string `xml:"fieldCode,attr,omitempty"`
@@ -7484,8 +7484,8 @@ type InformationPersonInfoNameInfo struct {
 	cmn.PersonWithoutOblType
 }
 
-// InformationPersonInfoInn: ИНН
-type InformationPersonInfoInn struct {
+// Inn3: ИНН
+type Inn3 struct {
 	XMLName xml.Name `xml:"INN,omitempty"`
 
 	FieldCode string `xml:"fieldCode,attr,omitempty"`
@@ -7515,8 +7515,8 @@ type InformationPersonsInfoInformationPersonInfo6 struct {
 	// InformationPersonInfoNameInfo: ФИО
 	NameInfo *InformationPersonInfoNameInfo `xml:"nameInfo,omitempty"`
 
-	// InformationPersonInfoInn: ИНН
-	Inn *InformationPersonInfoInn `xml:"INN,omitempty"`
+	// Inn3: ИНН
+	Inn *Inn3 `xml:"INN,omitempty"`
 
 	// InformationPersonInfoPosition: Должность
 	Position *InformationPersonInfoPosition `xml:"position,omitempty"`
@@ -7530,8 +7530,8 @@ type LegalEntityRfinfoInformationPersonsInfo2 struct {
 	InformationPersonInfo []InformationPersonsInfoInformationPersonInfo `xml:",any"`
 }
 
-// FilialInfoKpp: КПП
-type FilialInfoKpp struct {
+// Kpp3: КПП
+type Kpp3 struct {
 	XMLName xml.Name `xml:"KPP,omitempty"`
 
 	FieldCode string `xml:"fieldCode,attr,omitempty"`
@@ -7542,8 +7542,8 @@ type FilialInfoKpp struct {
 	Text string `xml:",chardata"`
 }
 
-// FilialInfoFullName: Наименование
-type FilialInfoFullName struct {
+// FullName3: Наименование
+type FullName3 struct {
 	XMLName xml.Name `xml:"fullName,omitempty"`
 
 	FieldCode string `xml:"fieldCode,attr,omitempty"`
@@ -7554,8 +7554,8 @@ type FilialInfoFullName struct {
 	Text string `xml:",chardata"`
 }
 
-// FilialInfoFactAddress: Место нахождения
-type FilialInfoFactAddress struct {
+// FactAddress3: Место нахождения
+type FactAddress3 struct {
 	XMLName xml.Name `xml:"factAddress,omitempty"`
 
 	FieldCode string `xml:"fieldCode,attr,omitempty"`
@@ -7570,49 +7570,49 @@ type FilialInfoFactAddress struct {
 type LegalEntityRfinfoFilialInfo2 struct {
 	XMLName xml.Name `xml:"filialInfo,omitempty"`
 
-	// FilialInfoKpp: КПП
-	Kpp *FilialInfoKpp `xml:"KPP,omitempty"`
+	// Kpp3: КПП
+	Kpp *Kpp3 `xml:"KPP,omitempty"`
 
-	// FilialInfoFullName: Наименование
-	FullName *FilialInfoFullName `xml:"fullName,omitempty"`
+	// FullName3: Наименование
+	FullName *FullName3 `xml:"fullName,omitempty"`
 
-	// FilialInfoFactAddress: Место нахождения
-	FactAddress *FilialInfoFactAddress `xml:"factAddress,omitempty"`
+	// FactAddress3: Место нахождения
+	FactAddress *FactAddress3 `xml:"factAddress,omitempty"`
 }
 
 // LegalEntityRfinfo: Юридическое лицо РФ
 type LegalEntityRfinfo struct {
 	XMLName xml.Name `xml:"legalEntityRFInfo,omitempty"`
 
-	// LegalEntityRfinfoFullName: Полное наименование организации
-	FullName *LegalEntityRfinfoFullName `xml:"fullName,omitempty"`
+	// FullName2: Полное наименование организации
+	FullName *FullName2 `xml:"fullName,omitempty"`
 
-	// LegalEntityRfinfoShortName: Сокращенное наименование организации. Заполняется, если указан признак "Проект доп.соглашения формируется в структурированном виде" (isStructuredForm)
-	ShortName *LegalEntityRfinfoShortName `xml:"shortName,omitempty"`
+	// ShortName2: Сокращенное наименование организации. Заполняется, если указан признак "Проект доп.соглашения формируется в структурированном виде" (isStructuredForm)
+	ShortName *ShortName2 `xml:"shortName,omitempty"`
 
 	// LegalEntityRfinfoOgrn: ОГРН. Не используется, начиная с версии 15.2
 	Ogrn *LegalEntityRfinfoOgrn `xml:"OGRN,omitempty"`
 
-	// LegalEntityRfinfoInn: ИНН
-	Inn *LegalEntityRfinfoInn `xml:"INN,omitempty"`
+	// Inn2: ИНН
+	Inn *Inn2 `xml:"INN,omitempty"`
 
-	// LegalEntityRfinfoKpp: КПП
-	Kpp *LegalEntityRfinfoKpp `xml:"KPP,omitempty"`
+	// Kpp2: КПП
+	Kpp *Kpp2 `xml:"KPP,omitempty"`
 
 	// LegalEntityRfinfoMajorTaxPayerKpp: КПП крупнейшего налогоплательщика. Заполняется, если указан признак "Проект доп.соглашения формируется в структурированном виде" (isStructuredForm)
 	MajorTaxPayerKpp *LegalEntityRfinfoMajorTaxPayerKpp `xml:"majorTaxPayerKPP,omitempty"`
 
-	// LegalEntityRfinfoFactAddress: Место нахождения
-	FactAddress *LegalEntityRfinfoFactAddress `xml:"factAddress,omitempty"`
+	// FactAddress2: Место нахождения
+	FactAddress *FactAddress2 `xml:"factAddress,omitempty"`
 
-	// LegalEntityRfinfoPostAddress: Почтовый адрес. Заполняется, если указан признак "Проект доп.соглашения формируется в структурированном виде" (isStructuredForm)
-	PostAddress *LegalEntityRfinfoPostAddress `xml:"postAddress,omitempty"`
+	// PostAddress2: Почтовый адрес. Заполняется, если указан признак "Проект доп.соглашения формируется в структурированном виде" (isStructuredForm)
+	PostAddress *PostAddress2 `xml:"postAddress,omitempty"`
 
-	// LegalEntityRfinfoEmail: Адрес электронной почты. Заполняется, если указан признак "Проект доп.соглашения формируется в структурированном виде" (isStructuredForm)
-	Email *LegalEntityRfinfoEmail `xml:"email,omitempty"`
+	// Email1: Адрес электронной почты. Заполняется, если указан признак "Проект доп.соглашения формируется в структурированном виде" (isStructuredForm)
+	Email *Email1 `xml:"email,omitempty"`
 
-	// LegalEntityRfinfoContactPhone: Номер контактного телефона. Заполняется, если указан признак "Проект доп.соглашения формируется в структурированном виде" (isStructuredForm)
-	ContactPhone *LegalEntityRfinfoContactPhone `xml:"contactPhone,omitempty"`
+	// ContactPhone1: Номер контактного телефона. Заполняется, если указан признак "Проект доп.соглашения формируется в структурированном виде" (isStructuredForm)
+	ContactPhone *ContactPhone1 `xml:"contactPhone,omitempty"`
 
 	// LegalEntityRfinfoInformationPersonsInfo: Сведения о лицах, имеющих право без доверенности действовать от имени юридического лица РФ. Заполняется, если указан признак "Проект доп.соглашения формируется в структурированном виде" (isStructuredForm)
 	InformationPersonsInfo *LegalEntityRfinfoInformationPersonsInfo `xml:"informationPersonsInfo,omitempty"`
@@ -7621,8 +7621,8 @@ type LegalEntityRfinfo struct {
 	FilialInfo *LegalEntityRfinfoFilialInfo `xml:"filialInfo,omitempty"`
 }
 
-// LegalEntityInfoFullName: Полное наименование организации
-type LegalEntityInfoFullName struct {
+// FullName4: Полное наименование организации
+type FullName4 struct {
 	XMLName xml.Name `xml:"fullName,omitempty"`
 
 	FieldCode string `xml:"fieldCode,attr,omitempty"`
@@ -7633,8 +7633,8 @@ type LegalEntityInfoFullName struct {
 	Text string `xml:",chardata"`
 }
 
-// LegalEntityInfoShortName: Сокращенное наименование организации
-type LegalEntityInfoShortName struct {
+// ShortName3: Сокращенное наименование организации
+type ShortName3 struct {
 	XMLName xml.Name `xml:"shortName,omitempty"`
 
 	FieldCode string `xml:"fieldCode,attr,omitempty"`
@@ -7657,8 +7657,8 @@ type LegalEntityInfoOgrn struct {
 	Text string `xml:",chardata"`
 }
 
-// LegalEntityInfoInn: ИНН
-type LegalEntityInfoInn struct {
+// Inn4: ИНН
+type Inn4 struct {
 	XMLName xml.Name `xml:"INN,omitempty"`
 
 	FieldCode string `xml:"fieldCode,attr,omitempty"`
@@ -7669,8 +7669,8 @@ type LegalEntityInfoInn struct {
 	Text string `xml:",chardata"`
 }
 
-// LegalEntityInfoKpp: КПП
-type LegalEntityInfoKpp struct {
+// Kpp4: КПП
+type Kpp4 struct {
 	XMLName xml.Name `xml:"KPP,omitempty"`
 
 	FieldCode string `xml:"fieldCode,attr,omitempty"`
@@ -7693,8 +7693,8 @@ type LegalEntityInfoMajorTaxPayerKpp struct {
 	Text string `xml:",chardata"`
 }
 
-// LegalEntityInfoFactAddress: Место нахождения
-type LegalEntityInfoFactAddress struct {
+// FactAddress4: Место нахождения
+type FactAddress4 struct {
 	XMLName xml.Name `xml:"factAddress,omitempty"`
 
 	FieldCode string `xml:"fieldCode,attr,omitempty"`
@@ -7709,30 +7709,30 @@ type LegalEntityInfoFactAddress struct {
 type FilialLegalEntityRfinfoLegalEntityInfo2 struct {
 	XMLName xml.Name `xml:"legalEntityInfo,omitempty"`
 
-	// LegalEntityInfoFullName: Полное наименование организации
-	FullName *LegalEntityInfoFullName `xml:"fullName,omitempty"`
+	// FullName4: Полное наименование организации
+	FullName *FullName4 `xml:"fullName,omitempty"`
 
-	// LegalEntityInfoShortName: Сокращенное наименование организации
-	ShortName *LegalEntityInfoShortName `xml:"shortName,omitempty"`
+	// ShortName3: Сокращенное наименование организации
+	ShortName *ShortName3 `xml:"shortName,omitempty"`
 
 	// LegalEntityInfoOgrn: ОГРН. Не используется, начиная с версии 15.2
 	Ogrn *LegalEntityInfoOgrn `xml:"OGRN,omitempty"`
 
-	// LegalEntityInfoInn: ИНН
-	Inn *LegalEntityInfoInn `xml:"INN,omitempty"`
+	// Inn4: ИНН
+	Inn *Inn4 `xml:"INN,omitempty"`
 
-	// LegalEntityInfoKpp: КПП
-	Kpp *LegalEntityInfoKpp `xml:"KPP,omitempty"`
+	// Kpp4: КПП
+	Kpp *Kpp4 `xml:"KPP,omitempty"`
 
 	// LegalEntityInfoMajorTaxPayerKpp: КПП крупнейшего налогоплательщика
 	MajorTaxPayerKpp *LegalEntityInfoMajorTaxPayerKpp `xml:"majorTaxPayerKPP,omitempty"`
 
-	// LegalEntityInfoFactAddress: Место нахождения
-	FactAddress *LegalEntityInfoFactAddress `xml:"factAddress,omitempty"`
+	// FactAddress4: Место нахождения
+	FactAddress *FactAddress4 `xml:"factAddress,omitempty"`
 }
 
-// FilialInfoFullName1: Наименование
-type FilialInfoFullName1 struct {
+// FullName5: Наименование
+type FullName5 struct {
 	XMLName xml.Name `xml:"fullName,omitempty"`
 
 	FieldCode string `xml:"fieldCode,attr,omitempty"`
@@ -7743,8 +7743,8 @@ type FilialInfoFullName1 struct {
 	Text string `xml:",chardata"`
 }
 
-// FilialInfoInn: ИНН
-type FilialInfoInn struct {
+// Inn5: ИНН
+type Inn5 struct {
 	XMLName xml.Name `xml:"INN,omitempty"`
 
 	FieldCode string `xml:"fieldCode,attr,omitempty"`
@@ -7755,8 +7755,8 @@ type FilialInfoInn struct {
 	Text string `xml:",chardata"`
 }
 
-// FilialInfoKpp1: КПП
-type FilialInfoKpp1 struct {
+// Kpp5: КПП
+type Kpp5 struct {
 	XMLName xml.Name `xml:"KPP,omitempty"`
 
 	FieldCode string `xml:"fieldCode,attr,omitempty"`
@@ -7767,8 +7767,8 @@ type FilialInfoKpp1 struct {
 	Text string `xml:",chardata"`
 }
 
-// FilialInfoFactAddress1: Место нахождения
-type FilialInfoFactAddress1 struct {
+// FactAddress5: Место нахождения
+type FactAddress5 struct {
 	XMLName xml.Name `xml:"factAddress,omitempty"`
 
 	FieldCode string `xml:"fieldCode,attr,omitempty"`
@@ -7779,8 +7779,8 @@ type FilialInfoFactAddress1 struct {
 	Text string `xml:",chardata"`
 }
 
-// FilialInfoPostAddress: Почтовый адрес. Заполняется, если указан признак "Проект доп.соглашения формируется в структурированном виде" (isStructuredForm)
-type FilialInfoPostAddress struct {
+// PostAddress3: Почтовый адрес. Заполняется, если указан признак "Проект доп.соглашения формируется в структурированном виде" (isStructuredForm)
+type PostAddress3 struct {
 	XMLName xml.Name `xml:"postAddress,omitempty"`
 
 	FieldCode string `xml:"fieldCode,attr,omitempty"`
@@ -7791,8 +7791,8 @@ type FilialInfoPostAddress struct {
 	Text string `xml:",chardata"`
 }
 
-// FilialInfoEmail: Адрес электронной почты. Заполняется, если указан признак "Проект доп.соглашения формируется в структурированном виде" (isStructuredForm)
-type FilialInfoEmail struct {
+// Email2: Адрес электронной почты. Заполняется, если указан признак "Проект доп.соглашения формируется в структурированном виде" (isStructuredForm)
+type Email2 struct {
 	XMLName xml.Name `xml:"email,omitempty"`
 
 	FieldCode string `xml:"fieldCode,attr,omitempty"`
@@ -7803,8 +7803,8 @@ type FilialInfoEmail struct {
 	Text string `xml:",chardata"`
 }
 
-// FilialInfoContactPhone: Номер контактного телефона. Заполняется, если указан признак "Проект доп.соглашения формируется в структурированном виде" (isStructuredForm)
-type FilialInfoContactPhone struct {
+// ContactPhone2: Номер контактного телефона. Заполняется, если указан признак "Проект доп.соглашения формируется в структурированном виде" (isStructuredForm)
+type ContactPhone2 struct {
 	XMLName xml.Name `xml:"contactPhone,omitempty"`
 
 	FieldCode string `xml:"fieldCode,attr,omitempty"`
@@ -7827,8 +7827,8 @@ type InformationPersonInfoNameInfo1 struct {
 	cmn.PersonWithoutOblType
 }
 
-// InformationPersonInfoInn1: ИНН
-type InformationPersonInfoInn1 struct {
+// Inn6: ИНН
+type Inn6 struct {
 	XMLName xml.Name `xml:"INN,omitempty"`
 
 	FieldCode string `xml:"fieldCode,attr,omitempty"`
@@ -7858,8 +7858,8 @@ type InformationPersonsInfoInformationPersonInfo7 struct {
 	// InformationPersonInfoNameInfo: ФИО
 	NameInfo *InformationPersonInfoNameInfo `xml:"nameInfo,omitempty"`
 
-	// InformationPersonInfoInn: ИНН
-	Inn *InformationPersonInfoInn `xml:"INN,omitempty"`
+	// Inn6: ИНН
+	Inn *Inn6 `xml:"INN,omitempty"`
 
 	// InformationPersonInfoPosition: Должность
 	Position *InformationPersonInfoPosition `xml:"position,omitempty"`
@@ -7877,26 +7877,26 @@ type FilialInfoInformationPersonsInfo2 struct {
 type FilialLegalEntityRfinfoFilialInfo2 struct {
 	XMLName xml.Name `xml:"filialInfo,omitempty"`
 
-	// FilialInfoFullName: Наименование
-	FullName *FilialInfoFullName `xml:"fullName,omitempty"`
+	// FullName5: Наименование
+	FullName *FullName5 `xml:"fullName,omitempty"`
 
-	// FilialInfoInn: ИНН
-	Inn *FilialInfoInn `xml:"INN,omitempty"`
+	// Inn5: ИНН
+	Inn *Inn5 `xml:"INN,omitempty"`
 
-	// FilialInfoKpp: КПП
-	Kpp *FilialInfoKpp `xml:"KPP,omitempty"`
+	// Kpp5: КПП
+	Kpp *Kpp5 `xml:"KPP,omitempty"`
 
-	// FilialInfoFactAddress: Место нахождения
-	FactAddress *FilialInfoFactAddress `xml:"factAddress,omitempty"`
+	// FactAddress5: Место нахождения
+	FactAddress *FactAddress5 `xml:"factAddress,omitempty"`
 
-	// FilialInfoPostAddress: Почтовый адрес. Заполняется, если указан признак "Проект доп.соглашения формируется в структурированном виде" (isStructuredForm)
-	PostAddress *FilialInfoPostAddress `xml:"postAddress,omitempty"`
+	// PostAddress3: Почтовый адрес. Заполняется, если указан признак "Проект доп.соглашения формируется в структурированном виде" (isStructuredForm)
+	PostAddress *PostAddress3 `xml:"postAddress,omitempty"`
 
-	// FilialInfoEmail: Адрес электронной почты. Заполняется, если указан признак "Проект доп.соглашения формируется в структурированном виде" (isStructuredForm)
-	Email *FilialInfoEmail `xml:"email,omitempty"`
+	// Email2: Адрес электронной почты. Заполняется, если указан признак "Проект доп.соглашения формируется в структурированном виде" (isStructuredForm)
+	Email *Email2 `xml:"email,omitempty"`
 
-	// FilialInfoContactPhone: Номер контактного телефона. Заполняется, если указан признак "Проект доп.соглашения формируется в структурированном виде" (isStructuredForm)
-	ContactPhone *FilialInfoContactPhone `xml:"contactPhone,omitempty"`
+	// ContactPhone2: Номер контактного телефона. Заполняется, если указан признак "Проект доп.соглашения формируется в структурированном виде" (isStructuredForm)
+	ContactPhone *ContactPhone2 `xml:"contactPhone,omitempty"`
 
 	// FilialInfoInformationPersonsInfo: Сведения о лицах, имеющих право без доверенности действовать от имени юридического лица РФ. Заполняется, если указан признак "Проект доп.соглашения формируется в структурированном виде" (isStructuredForm)
 	InformationPersonsInfo *FilialInfoInformationPersonsInfo `xml:"informationPersonsInfo,omitempty"`
@@ -7957,8 +7957,8 @@ type IndividualPersonRfinfoIpinfo2 struct {
 	Ogrnip IpinfoOgrnip `xml:",any"`
 }
 
-// IndividualPersonRfinfoInn: ИНН
-type IndividualPersonRfinfoInn struct {
+// Inn7: ИНН
+type Inn7 struct {
 	XMLName xml.Name `xml:"INN,omitempty"`
 
 	FieldCode string `xml:"fieldCode,attr,omitempty"`
@@ -7969,8 +7969,8 @@ type IndividualPersonRfinfoInn struct {
 	Text string `xml:",chardata"`
 }
 
-// IndividualPersonRfinfoFactAddress: Место жительства. Заполняется, если указан признак "Проект доп.соглашения формируется в структурированном виде" (isStructuredForm)
-type IndividualPersonRfinfoFactAddress struct {
+// FactAddress6: Место жительства. Заполняется, если указан признак "Проект доп.соглашения формируется в структурированном виде" (isStructuredForm)
+type FactAddress6 struct {
 	XMLName xml.Name `xml:"factAddress,omitempty"`
 
 	FieldCode string `xml:"fieldCode,attr,omitempty"`
@@ -7981,8 +7981,8 @@ type IndividualPersonRfinfoFactAddress struct {
 	Text string `xml:",chardata"`
 }
 
-// IndividualPersonRfinfoPostAddress: Почтовый адрес. Заполняется, если указан признак "Проект доп.соглашения формируется в структурированном виде" (isStructuredForm)
-type IndividualPersonRfinfoPostAddress struct {
+// PostAddress4: Почтовый адрес. Заполняется, если указан признак "Проект доп.соглашения формируется в структурированном виде" (isStructuredForm)
+type PostAddress4 struct {
 	XMLName xml.Name `xml:"postAddress,omitempty"`
 
 	FieldCode string `xml:"fieldCode,attr,omitempty"`
@@ -7993,8 +7993,8 @@ type IndividualPersonRfinfoPostAddress struct {
 	Text string `xml:",chardata"`
 }
 
-// IndividualPersonRfinfoEmail: Адрес электронной почты. Заполняется, если указан признак "Проект доп.соглашения формируется в структурированном виде" (isStructuredForm)
-type IndividualPersonRfinfoEmail struct {
+// Email3: Адрес электронной почты. Заполняется, если указан признак "Проект доп.соглашения формируется в структурированном виде" (isStructuredForm)
+type Email3 struct {
 	XMLName xml.Name `xml:"email,omitempty"`
 
 	FieldCode string `xml:"fieldCode,attr,omitempty"`
@@ -8005,8 +8005,8 @@ type IndividualPersonRfinfoEmail struct {
 	Text string `xml:",chardata"`
 }
 
-// IndividualPersonRfinfoContactPhone: Номер контактного телефона. Заполняется, если указан признак "Проект доп.соглашения формируется в структурированном виде" (isStructuredForm)
-type IndividualPersonRfinfoContactPhone struct {
+// ContactPhone3: Номер контактного телефона. Заполняется, если указан признак "Проект доп.соглашения формируется в структурированном виде" (isStructuredForm)
+type ContactPhone3 struct {
 	XMLName xml.Name `xml:"contactPhone,omitempty"`
 
 	FieldCode string `xml:"fieldCode,attr,omitempty"`
@@ -8030,24 +8030,24 @@ type IndividualPersonRfinfo struct {
 	// IndividualPersonRfinfoIpinfo: Индивидуaльный предприниматель. Не используется, начиная с версии 15.2
 	Ipinfo *IndividualPersonRfinfoIpinfo `xml:"IPInfo,omitempty"`
 
-	// IndividualPersonRfinfoInn: ИНН
-	Inn *IndividualPersonRfinfoInn `xml:"INN,omitempty"`
+	// Inn7: ИНН
+	Inn *Inn7 `xml:"INN,omitempty"`
 
-	// IndividualPersonRfinfoFactAddress: Место жительства. Заполняется, если указан признак "Проект доп.соглашения формируется в структурированном виде" (isStructuredForm)
-	FactAddress *IndividualPersonRfinfoFactAddress `xml:"factAddress,omitempty"`
+	// FactAddress6: Место жительства. Заполняется, если указан признак "Проект доп.соглашения формируется в структурированном виде" (isStructuredForm)
+	FactAddress *FactAddress6 `xml:"factAddress,omitempty"`
 
-	// IndividualPersonRfinfoPostAddress: Почтовый адрес. Заполняется, если указан признак "Проект доп.соглашения формируется в структурированном виде" (isStructuredForm)
-	PostAddress *IndividualPersonRfinfoPostAddress `xml:"postAddress,omitempty"`
+	// PostAddress4: Почтовый адрес. Заполняется, если указан признак "Проект доп.соглашения формируется в структурированном виде" (isStructuredForm)
+	PostAddress *PostAddress4 `xml:"postAddress,omitempty"`
 
-	// IndividualPersonRfinfoEmail: Адрес электронной почты. Заполняется, если указан признак "Проект доп.соглашения формируется в структурированном виде" (isStructuredForm)
-	Email *IndividualPersonRfinfoEmail `xml:"email,omitempty"`
+	// Email3: Адрес электронной почты. Заполняется, если указан признак "Проект доп.соглашения формируется в структурированном виде" (isStructuredForm)
+	Email *Email3 `xml:"email,omitempty"`
 
-	// IndividualPersonRfinfoContactPhone: Номер контактного телефона. Заполняется, если указан признак "Проект доп.соглашения формируется в структурированном виде" (isStructuredForm)
-	ContactPhone *IndividualPersonRfinfoContactPhone `xml:"contactPhone,omitempty"`
+	// ContactPhone3: Номер контактного телефона. Заполняется, если указан признак "Проект доп.соглашения формируется в структурированном виде" (isStructuredForm)
+	ContactPhone *ContactPhone3 `xml:"contactPhone,omitempty"`
 }
 
-// LegalEntityForeignStateDataInfoFullName: Полное наименование
-type LegalEntityForeignStateDataInfoFullName struct {
+// FullName6: Полное наименование
+type FullName6 struct {
 	XMLName xml.Name `xml:"fullName,omitempty"`
 
 	FieldCode string `xml:"fieldCode,attr,omitempty"`
@@ -8058,8 +8058,8 @@ type LegalEntityForeignStateDataInfoFullName struct {
 	Text string `xml:",chardata"`
 }
 
-// LegalEntityForeignStateDataInfoShortName: Сокращенное наименование организации
-type LegalEntityForeignStateDataInfoShortName struct {
+// ShortName4: Сокращенное наименование организации
+type ShortName4 struct {
 	XMLName xml.Name `xml:"shortName,omitempty"`
 
 	FieldCode string `xml:"fieldCode,attr,omitempty"`
@@ -8086,18 +8086,18 @@ type LegalEntityForeignStateDataInfoCountryInfo struct {
 type LegalEntityForeignStateInRafpinfoLegalEntityForeignStateDataInfo2 struct {
 	XMLName xml.Name `xml:"legalEntityForeignStateDataInfo,omitempty"`
 
-	// LegalEntityForeignStateDataInfoFullName: Полное наименование
-	FullName *LegalEntityForeignStateDataInfoFullName `xml:"fullName,omitempty"`
+	// FullName6: Полное наименование
+	FullName *FullName6 `xml:"fullName,omitempty"`
 
-	// LegalEntityForeignStateDataInfoShortName: Сокращенное наименование организации
-	ShortName *LegalEntityForeignStateDataInfoShortName `xml:"shortName,omitempty"`
+	// ShortName4: Сокращенное наименование организации
+	ShortName *ShortName4 `xml:"shortName,omitempty"`
 
 	// LegalEntityForeignStateDataInfoCountryInfo: Страна или территория регистрации
 	CountryInfo *LegalEntityForeignStateDataInfoCountryInfo `xml:"countryInfo,omitempty"`
 }
 
-// FilialLegalEntityForeignStateInfoFullName: Полное наименование
-type FilialLegalEntityForeignStateInfoFullName struct {
+// FullName7: Полное наименование
+type FullName7 struct {
 	XMLName xml.Name `xml:"fullName,omitempty"`
 
 	FieldCode string `xml:"fieldCode,attr,omitempty"`
@@ -8108,8 +8108,8 @@ type FilialLegalEntityForeignStateInfoFullName struct {
 	Text string `xml:",chardata"`
 }
 
-// FilialLegalEntityForeignStateInfoShortName: Сокращенное наименование организации. Заполняется, если указан признак "Проект доп.соглашения формируется в структурированном виде" (isStructuredForm)
-type FilialLegalEntityForeignStateInfoShortName struct {
+// ShortName5: Сокращенное наименование организации. Заполняется, если указан признак "Проект доп.соглашения формируется в структурированном виде" (isStructuredForm)
+type ShortName5 struct {
 	XMLName xml.Name `xml:"shortName,omitempty"`
 
 	FieldCode string `xml:"fieldCode,attr,omitempty"`
@@ -8120,8 +8120,8 @@ type FilialLegalEntityForeignStateInfoShortName struct {
 	Text string `xml:",chardata"`
 }
 
-// FilialLegalEntityForeignStateInfoInn: ИНН
-type FilialLegalEntityForeignStateInfoInn struct {
+// Inn8: ИНН
+type Inn8 struct {
 	XMLName xml.Name `xml:"INN,omitempty"`
 
 	FieldCode string `xml:"fieldCode,attr,omitempty"`
@@ -8132,8 +8132,8 @@ type FilialLegalEntityForeignStateInfoInn struct {
 	Text string `xml:",chardata"`
 }
 
-// FilialLegalEntityForeignStateInfoKpp: КПП
-type FilialLegalEntityForeignStateInfoKpp struct {
+// Kpp6: КПП
+type Kpp6 struct {
 	XMLName xml.Name `xml:"KPP,omitempty"`
 
 	FieldCode string `xml:"fieldCode,attr,omitempty"`
@@ -8144,8 +8144,8 @@ type FilialLegalEntityForeignStateInfoKpp struct {
 	Text string `xml:",chardata"`
 }
 
-// FilialLegalEntityForeignStateInfoFactAddress: Место нахождения
-type FilialLegalEntityForeignStateInfoFactAddress struct {
+// FactAddress7: Место нахождения
+type FactAddress7 struct {
 	XMLName xml.Name `xml:"factAddress,omitempty"`
 
 	FieldCode string `xml:"fieldCode,attr,omitempty"`
@@ -8156,8 +8156,8 @@ type FilialLegalEntityForeignStateInfoFactAddress struct {
 	Text string `xml:",chardata"`
 }
 
-// FilialLegalEntityForeignStateInfoPostAddress: Почтовый адрес. Заполняется, если указан признак "Проект доп.соглашения формируется в структурированном виде" (isStructuredForm)
-type FilialLegalEntityForeignStateInfoPostAddress struct {
+// PostAddress5: Почтовый адрес. Заполняется, если указан признак "Проект доп.соглашения формируется в структурированном виде" (isStructuredForm)
+type PostAddress5 struct {
 	XMLName xml.Name `xml:"postAddress,omitempty"`
 
 	FieldCode string `xml:"fieldCode,attr,omitempty"`
@@ -8168,8 +8168,8 @@ type FilialLegalEntityForeignStateInfoPostAddress struct {
 	Text string `xml:",chardata"`
 }
 
-// FilialLegalEntityForeignStateInfoEmail: Адрес электронной почты. Заполняется, если указан признак "Проект доп.соглашения формируется в структурированном виде" (isStructuredForm)
-type FilialLegalEntityForeignStateInfoEmail struct {
+// Email4: Адрес электронной почты. Заполняется, если указан признак "Проект доп.соглашения формируется в структурированном виде" (isStructuredForm)
+type Email4 struct {
 	XMLName xml.Name `xml:"email,omitempty"`
 
 	FieldCode string `xml:"fieldCode,attr,omitempty"`
@@ -8180,8 +8180,8 @@ type FilialLegalEntityForeignStateInfoEmail struct {
 	Text string `xml:",chardata"`
 }
 
-// FilialLegalEntityForeignStateInfoContactPhone: Номер контактного телефона. Заполняется, если указан признак "Проект доп.соглашения формируется в структурированном виде" (isStructuredForm)
-type FilialLegalEntityForeignStateInfoContactPhone struct {
+// ContactPhone4: Номер контактного телефона. Заполняется, если указан признак "Проект доп.соглашения формируется в структурированном виде" (isStructuredForm)
+type ContactPhone4 struct {
 	XMLName xml.Name `xml:"contactPhone,omitempty"`
 
 	FieldCode string `xml:"fieldCode,attr,omitempty"`
@@ -8216,8 +8216,8 @@ type HeadInfoPosition struct {
 	Text string `xml:",chardata"`
 }
 
-// HeadInfoInn: ИНН
-type HeadInfoInn struct {
+// Inn9: ИНН
+type Inn9 struct {
 	XMLName xml.Name `xml:"INN,omitempty"`
 
 	FieldCode string `xml:"fieldCode,attr,omitempty"`
@@ -8238,37 +8238,37 @@ type FilialLegalEntityForeignStateInfoHeadInfo2 struct {
 	// HeadInfoPosition: Должность
 	Position *HeadInfoPosition `xml:"position,omitempty"`
 
-	// HeadInfoInn: ИНН
-	Inn *HeadInfoInn `xml:"INN,omitempty"`
+	// Inn9: ИНН
+	Inn *Inn9 `xml:"INN,omitempty"`
 }
 
 // LegalEntityForeignStateInRafpinfoFilialLegalEntityForeignStateInfo2: Сведения об аккредитованном филиале или представительстве
 type LegalEntityForeignStateInRafpinfoFilialLegalEntityForeignStateInfo2 struct {
 	XMLName xml.Name `xml:"filialLegalEntityForeignStateInfo,omitempty"`
 
-	// FilialLegalEntityForeignStateInfoFullName: Полное наименование
-	FullName *FilialLegalEntityForeignStateInfoFullName `xml:"fullName,omitempty"`
+	// FullName7: Полное наименование
+	FullName *FullName7 `xml:"fullName,omitempty"`
 
-	// FilialLegalEntityForeignStateInfoShortName: Сокращенное наименование организации. Заполняется, если указан признак "Проект доп.соглашения формируется в структурированном виде" (isStructuredForm)
-	ShortName *FilialLegalEntityForeignStateInfoShortName `xml:"shortName,omitempty"`
+	// ShortName5: Сокращенное наименование организации. Заполняется, если указан признак "Проект доп.соглашения формируется в структурированном виде" (isStructuredForm)
+	ShortName *ShortName5 `xml:"shortName,omitempty"`
 
-	// FilialLegalEntityForeignStateInfoInn: ИНН
-	Inn *FilialLegalEntityForeignStateInfoInn `xml:"INN,omitempty"`
+	// Inn8: ИНН
+	Inn *Inn8 `xml:"INN,omitempty"`
 
-	// FilialLegalEntityForeignStateInfoKpp: КПП
-	Kpp *FilialLegalEntityForeignStateInfoKpp `xml:"KPP,omitempty"`
+	// Kpp6: КПП
+	Kpp *Kpp6 `xml:"KPP,omitempty"`
 
-	// FilialLegalEntityForeignStateInfoFactAddress: Место нахождения
-	FactAddress *FilialLegalEntityForeignStateInfoFactAddress `xml:"factAddress,omitempty"`
+	// FactAddress7: Место нахождения
+	FactAddress *FactAddress7 `xml:"factAddress,omitempty"`
 
-	// FilialLegalEntityForeignStateInfoPostAddress: Почтовый адрес. Заполняется, если указан признак "Проект доп.соглашения формируется в структурированном виде" (isStructuredForm)
-	PostAddress *FilialLegalEntityForeignStateInfoPostAddress `xml:"postAddress,omitempty"`
+	// PostAddress5: Почтовый адрес. Заполняется, если указан признак "Проект доп.соглашения формируется в структурированном виде" (isStructuredForm)
+	PostAddress *PostAddress5 `xml:"postAddress,omitempty"`
 
-	// FilialLegalEntityForeignStateInfoEmail: Адрес электронной почты. Заполняется, если указан признак "Проект доп.соглашения формируется в структурированном виде" (isStructuredForm)
-	Email *FilialLegalEntityForeignStateInfoEmail `xml:"email,omitempty"`
+	// Email4: Адрес электронной почты. Заполняется, если указан признак "Проект доп.соглашения формируется в структурированном виде" (isStructuredForm)
+	Email *Email4 `xml:"email,omitempty"`
 
-	// FilialLegalEntityForeignStateInfoContactPhone: Номер контактного телефона. Заполняется, если указан признак "Проект доп.соглашения формируется в структурированном виде" (isStructuredForm)
-	ContactPhone *FilialLegalEntityForeignStateInfoContactPhone `xml:"contactPhone,omitempty"`
+	// ContactPhone4: Номер контактного телефона. Заполняется, если указан признак "Проект доп.соглашения формируется в структурированном виде" (isStructuredForm)
+	ContactPhone *ContactPhone4 `xml:"contactPhone,omitempty"`
 
 	// FilialLegalEntityForeignStateInfoHeadInfo: Сведения о руководителе филиала/представительства. Заполняется, если указан признак "Проект доп.соглашения формируется в структурированном виде" (isStructuredForm)
 	HeadInfo *FilialLegalEntityForeignStateInfoHeadInfo `xml:"headInfo,omitempty"`
@@ -8285,8 +8285,8 @@ type LegalEntityForeignStateInRafpinfo struct {
 	FilialLegalEntityForeignStateInfo *LegalEntityForeignStateInRafpinfoFilialLegalEntityForeignStateInfo `xml:"filialLegalEntityForeignStateInfo,omitempty"`
 }
 
-// LegalEntityForeignStateNotInRafpinfoFullName: Полное наименование организации
-type LegalEntityForeignStateNotInRafpinfoFullName struct {
+// FullName8: Полное наименование организации
+type FullName8 struct {
 	XMLName xml.Name `xml:"fullName,omitempty"`
 
 	FieldCode string `xml:"fieldCode,attr,omitempty"`
@@ -8297,8 +8297,8 @@ type LegalEntityForeignStateNotInRafpinfoFullName struct {
 	Text string `xml:",chardata"`
 }
 
-// LegalEntityForeignStateNotInRafpinfoShortName: Сокращенное наименование организации. Заполняется, если указан признак "Проект доп.соглашения формируется в структурированном виде" (isStructuredForm)
-type LegalEntityForeignStateNotInRafpinfoShortName struct {
+// ShortName6: Сокращенное наименование организации. Заполняется, если указан признак "Проект доп.соглашения формируется в структурированном виде" (isStructuredForm)
+type ShortName6 struct {
 	XMLName xml.Name `xml:"shortName,omitempty"`
 
 	FieldCode string `xml:"fieldCode,attr,omitempty"`
@@ -8333,8 +8333,8 @@ type LegalEntityForeignStateNotInRafpinfoCountryInfo struct {
 	base.Oksmref
 }
 
-// LegalEntityForeignStateNotInRafpinfoFactAddress: Место нахождения
-type LegalEntityForeignStateNotInRafpinfoFactAddress struct {
+// FactAddress8: Место нахождения
+type FactAddress8 struct {
 	XMLName xml.Name `xml:"factAddress,omitempty"`
 
 	FieldCode string `xml:"fieldCode,attr,omitempty"`
@@ -8345,8 +8345,8 @@ type LegalEntityForeignStateNotInRafpinfoFactAddress struct {
 	Text string `xml:",chardata"`
 }
 
-// LegalEntityForeignStateNotInRafpinfoPostAddress: Почтовый адрес. Заполняется, если указан признак "Проект доп.соглашения формируется в структурированном виде" (isStructuredForm)
-type LegalEntityForeignStateNotInRafpinfoPostAddress struct {
+// PostAddress6: Почтовый адрес. Заполняется, если указан признак "Проект доп.соглашения формируется в структурированном виде" (isStructuredForm)
+type PostAddress6 struct {
 	XMLName xml.Name `xml:"postAddress,omitempty"`
 
 	FieldCode string `xml:"fieldCode,attr,omitempty"`
@@ -8357,8 +8357,8 @@ type LegalEntityForeignStateNotInRafpinfoPostAddress struct {
 	Text string `xml:",chardata"`
 }
 
-// LegalEntityForeignStateNotInRafpinfoEmail: Адрес электронной почты. Заполняется, если указан признак "Проект доп.соглашения формируется в структурированном виде" (isStructuredForm)
-type LegalEntityForeignStateNotInRafpinfoEmail struct {
+// Email5: Адрес электронной почты. Заполняется, если указан признак "Проект доп.соглашения формируется в структурированном виде" (isStructuredForm)
+type Email5 struct {
 	XMLName xml.Name `xml:"email,omitempty"`
 
 	FieldCode string `xml:"fieldCode,attr,omitempty"`
@@ -8369,8 +8369,8 @@ type LegalEntityForeignStateNotInRafpinfoEmail struct {
 	Text string `xml:",chardata"`
 }
 
-// LegalEntityForeignStateNotInRafpinfoContactPhone: Номер контактного телефона. Заполняется, если указан признак "Проект доп.соглашения формируется в структурированном виде" (isStructuredForm)
-type LegalEntityForeignStateNotInRafpinfoContactPhone struct {
+// ContactPhone5: Номер контактного телефона. Заполняется, если указан признак "Проект доп.соглашения формируется в структурированном виде" (isStructuredForm)
+type ContactPhone5 struct {
 	XMLName xml.Name `xml:"contactPhone,omitempty"`
 
 	FieldCode string `xml:"fieldCode,attr,omitempty"`
@@ -8393,8 +8393,8 @@ type InformationPersonInfoNameInfo2 struct {
 	cmn.PersonWithoutOblType
 }
 
-// InformationPersonInfoInn2: ИНН
-type InformationPersonInfoInn2 struct {
+// Inn10: ИНН
+type Inn10 struct {
 	XMLName xml.Name `xml:"INN,omitempty"`
 
 	FieldCode string `xml:"fieldCode,attr,omitempty"`
@@ -8424,8 +8424,8 @@ type InformationPersonsInfoInformationPersonInfo8 struct {
 	// InformationPersonInfoNameInfo: ФИО
 	NameInfo *InformationPersonInfoNameInfo `xml:"nameInfo,omitempty"`
 
-	// InformationPersonInfoInn: ИНН
-	Inn *InformationPersonInfoInn `xml:"INN,omitempty"`
+	// Inn10: ИНН
+	Inn *Inn10 `xml:"INN,omitempty"`
 
 	// InformationPersonInfoPosition: Должность
 	Position *InformationPersonInfoPosition `xml:"position,omitempty"`
@@ -8443,11 +8443,11 @@ type LegalEntityForeignStateNotInRafpinfoInformationPersonsInfo2 struct {
 type LegalEntityForeignStateNotInRafpinfo struct {
 	XMLName xml.Name `xml:"legalEntityForeignStateNotInRAFPInfo,omitempty"`
 
-	// LegalEntityForeignStateNotInRafpinfoFullName: Полное наименование организации
-	FullName *LegalEntityForeignStateNotInRafpinfoFullName `xml:"fullName,omitempty"`
+	// FullName8: Полное наименование организации
+	FullName *FullName8 `xml:"fullName,omitempty"`
 
-	// LegalEntityForeignStateNotInRafpinfoShortName: Сокращенное наименование организации. Заполняется, если указан признак "Проект доп.соглашения формируется в структурированном виде" (isStructuredForm)
-	ShortName *LegalEntityForeignStateNotInRafpinfoShortName `xml:"shortName,omitempty"`
+	// ShortName6: Сокращенное наименование организации. Заполняется, если указан признак "Проект доп.соглашения формируется в структурированном виде" (isStructuredForm)
+	ShortName *ShortName6 `xml:"shortName,omitempty"`
 
 	// LegalEntityForeignStateNotInRafpinfoTaxPayerCode: Аналог идентификационного номера налогоплательщика в соответствии с законодательством иностранного государства
 	TaxPayerCode *LegalEntityForeignStateNotInRafpinfoTaxPayerCode `xml:"taxPayerCode,omitempty"`
@@ -8455,17 +8455,17 @@ type LegalEntityForeignStateNotInRafpinfo struct {
 	// LegalEntityForeignStateNotInRafpinfoCountryInfo: Страна или территория регистрации
 	CountryInfo *LegalEntityForeignStateNotInRafpinfoCountryInfo `xml:"countryInfo,omitempty"`
 
-	// LegalEntityForeignStateNotInRafpinfoFactAddress: Место нахождения
-	FactAddress *LegalEntityForeignStateNotInRafpinfoFactAddress `xml:"factAddress,omitempty"`
+	// FactAddress8: Место нахождения
+	FactAddress *FactAddress8 `xml:"factAddress,omitempty"`
 
-	// LegalEntityForeignStateNotInRafpinfoPostAddress: Почтовый адрес. Заполняется, если указан признак "Проект доп.соглашения формируется в структурированном виде" (isStructuredForm)
-	PostAddress *LegalEntityForeignStateNotInRafpinfoPostAddress `xml:"postAddress,omitempty"`
+	// PostAddress6: Почтовый адрес. Заполняется, если указан признак "Проект доп.соглашения формируется в структурированном виде" (isStructuredForm)
+	PostAddress *PostAddress6 `xml:"postAddress,omitempty"`
 
-	// LegalEntityForeignStateNotInRafpinfoEmail: Адрес электронной почты. Заполняется, если указан признак "Проект доп.соглашения формируется в структурированном виде" (isStructuredForm)
-	Email *LegalEntityForeignStateNotInRafpinfoEmail `xml:"email,omitempty"`
+	// Email5: Адрес электронной почты. Заполняется, если указан признак "Проект доп.соглашения формируется в структурированном виде" (isStructuredForm)
+	Email *Email5 `xml:"email,omitempty"`
 
-	// LegalEntityForeignStateNotInRafpinfoContactPhone: Номер контактного телефона. Заполняется, если указан признак "Проект доп.соглашения формируется в структурированном виде" (isStructuredForm)
-	ContactPhone *LegalEntityForeignStateNotInRafpinfoContactPhone `xml:"contactPhone,omitempty"`
+	// ContactPhone5: Номер контактного телефона. Заполняется, если указан признак "Проект доп.соглашения формируется в структурированном виде" (isStructuredForm)
+	ContactPhone *ContactPhone5 `xml:"contactPhone,omitempty"`
 
 	// LegalEntityForeignStateNotInRafpinfoInformationPersonsInfo: Сведения о лицах, имеющих право без доверенности действовать от имени юридического лица. Заполняется, если указан признак "Проект доп.соглашения формируется в структурированном виде" (isStructuredForm)
 	InformationPersonsInfo *LegalEntityForeignStateNotInRafpinfoInformationPersonsInfo `xml:"informationPersonsInfo,omitempty"`
@@ -8527,8 +8527,8 @@ type IndividualPersonForeignStateInfoIpinfo2 struct {
 	Ogrnip IpinfoOgrnip `xml:",any"`
 }
 
-// IndividualPersonForeignStateInfoInn: ИНН
-type IndividualPersonForeignStateInfoInn struct {
+// Inn11: ИНН
+type Inn11 struct {
 	XMLName xml.Name `xml:"INN,omitempty"`
 
 	FieldCode string `xml:"fieldCode,attr,omitempty"`
@@ -8563,8 +8563,8 @@ type IndividualPersonForeignStateInfoCountryInfo struct {
 	base.Oksmref
 }
 
-// IndividualPersonForeignStateInfoFactAddress: Место жительства. Заполняется, если указан признак "Проект доп.соглашения формируется в структурированном виде" (isStructuredForm)
-type IndividualPersonForeignStateInfoFactAddress struct {
+// FactAddress9: Место жительства. Заполняется, если указан признак "Проект доп.соглашения формируется в структурированном виде" (isStructuredForm)
+type FactAddress9 struct {
 	XMLName xml.Name `xml:"factAddress,omitempty"`
 
 	FieldCode string `xml:"fieldCode,attr,omitempty"`
@@ -8575,8 +8575,8 @@ type IndividualPersonForeignStateInfoFactAddress struct {
 	Text string `xml:",chardata"`
 }
 
-// IndividualPersonForeignStateInfoPostAddress: Почтовый адрес. Заполняется, если указан признак "Проект доп.соглашения формируется в структурированном виде" (isStructuredForm)
-type IndividualPersonForeignStateInfoPostAddress struct {
+// PostAddress7: Почтовый адрес. Заполняется, если указан признак "Проект доп.соглашения формируется в структурированном виде" (isStructuredForm)
+type PostAddress7 struct {
 	XMLName xml.Name `xml:"postAddress,omitempty"`
 
 	FieldCode string `xml:"fieldCode,attr,omitempty"`
@@ -8587,8 +8587,8 @@ type IndividualPersonForeignStateInfoPostAddress struct {
 	Text string `xml:",chardata"`
 }
 
-// IndividualPersonForeignStateInfoEmail: Адрес электронной почты. Заполняется, если указан признак "Проект доп.соглашения формируется в структурированном виде" (isStructuredForm)
-type IndividualPersonForeignStateInfoEmail struct {
+// Email6: Адрес электронной почты. Заполняется, если указан признак "Проект доп.соглашения формируется в структурированном виде" (isStructuredForm)
+type Email6 struct {
 	XMLName xml.Name `xml:"email,omitempty"`
 
 	FieldCode string `xml:"fieldCode,attr,omitempty"`
@@ -8599,8 +8599,8 @@ type IndividualPersonForeignStateInfoEmail struct {
 	Text string `xml:",chardata"`
 }
 
-// IndividualPersonForeignStateInfoContactPhone: Номер контактного телефона. Заполняется, если указан признак "Проект доп.соглашения формируется в структурированном виде" (isStructuredForm)
-type IndividualPersonForeignStateInfoContactPhone struct {
+// ContactPhone6: Номер контактного телефона. Заполняется, если указан признак "Проект доп.соглашения формируется в структурированном виде" (isStructuredForm)
+type ContactPhone6 struct {
 	XMLName xml.Name `xml:"contactPhone,omitempty"`
 
 	FieldCode string `xml:"fieldCode,attr,omitempty"`
@@ -8627,8 +8627,8 @@ type IndividualPersonForeignStateInfo struct {
 	// IndividualPersonForeignStateInfoIpinfo: Индивидуальный предприниматель. Не используется, начиная с версии 15.2
 	Ipinfo *IndividualPersonForeignStateInfoIpinfo `xml:"IPInfo,omitempty"`
 
-	// IndividualPersonForeignStateInfoInn: ИНН
-	Inn *IndividualPersonForeignStateInfoInn `xml:"INN,omitempty"`
+	// Inn11: ИНН
+	Inn *Inn11 `xml:"INN,omitempty"`
 
 	// IndividualPersonForeignStateInfoTaxPayerCode: Аналог идентификационного номера налогоплательщика в соответствии с законодательством иностранного государства
 	TaxPayerCode *IndividualPersonForeignStateInfoTaxPayerCode `xml:"taxPayerCode,omitempty"`
@@ -8636,17 +8636,17 @@ type IndividualPersonForeignStateInfo struct {
 	// IndividualPersonForeignStateInfoCountryInfo: Страна или территория регистрации
 	CountryInfo *IndividualPersonForeignStateInfoCountryInfo `xml:"countryInfo,omitempty"`
 
-	// IndividualPersonForeignStateInfoFactAddress: Место жительства. Заполняется, если указан признак "Проект доп.соглашения формируется в структурированном виде" (isStructuredForm)
-	FactAddress *IndividualPersonForeignStateInfoFactAddress `xml:"factAddress,omitempty"`
+	// FactAddress9: Место жительства. Заполняется, если указан признак "Проект доп.соглашения формируется в структурированном виде" (isStructuredForm)
+	FactAddress *FactAddress9 `xml:"factAddress,omitempty"`
 
-	// IndividualPersonForeignStateInfoPostAddress: Почтовый адрес. Заполняется, если указан признак "Проект доп.соглашения формируется в структурированном виде" (isStructuredForm)
-	PostAddress *IndividualPersonForeignStateInfoPostAddress `xml:"postAddress,omitempty"`
+	// PostAddress7: Почтовый адрес. Заполняется, если указан признак "Проект доп.соглашения формируется в структурированном виде" (isStructuredForm)
+	PostAddress *PostAddress7 `xml:"postAddress,omitempty"`
 
-	// IndividualPersonForeignStateInfoEmail: Адрес электронной почты. Заполняется, если указан признак "Проект доп.соглашения формируется в структурированном виде" (isStructuredForm)
-	Email *IndividualPersonForeignStateInfoEmail `xml:"email,omitempty"`
+	// Email6: Адрес электронной почты. Заполняется, если указан признак "Проект доп.соглашения формируется в структурированном виде" (isStructuredForm)
+	Email *Email6 `xml:"email,omitempty"`
 
-	// IndividualPersonForeignStateInfoContactPhone: Номер контактного телефона. Заполняется, если указан признак "Проект доп.соглашения формируется в структурированном виде" (isStructuredForm)
-	ContactPhone *IndividualPersonForeignStateInfoContactPhone `xml:"contactPhone,omitempty"`
+	// ContactPhone6: Номер контактного телефона. Заполняется, если указан признак "Проект доп.соглашения формируется в структурированном виде" (isStructuredForm)
+	ContactPhone *ContactPhone6 `xml:"contactPhone,omitempty"`
 }
 
 // IndexNum: Порядковый номер объекта закупки
@@ -8782,8 +8782,8 @@ type ProductInfoIndicationSubjects struct {
 	Text string `xml:",chardata"`
 }
 
-// ProductInfoPrice: Цена за единицу
-type ProductInfoPrice struct {
+// Price1: Цена за единицу
+type Price1 struct {
 	XMLName xml.Name `xml:"price,omitempty"`
 
 	FieldCode string `xml:"fieldCode,attr,omitempty"`
@@ -8816,8 +8816,8 @@ type ProductInfoVatrateInfo struct {
 	Vatname *base.Text500Type `xml:"VATName,omitempty"`
 }
 
-// ProductInfoParentProductInfo1: Родительский объект закупки
-type ProductInfoParentProductInfo1 struct {
+// ParentProductInfo1: Родительский объект закупки
+type ParentProductInfo1 struct {
 	XMLName xml.Name `xml:"parentProductInfo,omitempty"`
 
 	// Sid: Уникальный идентификатор объекта закупки
@@ -8863,8 +8863,8 @@ type ProductInfoVolumeTextForm struct {
 	Text string `xml:",chardata"`
 }
 
-// ProductInfoIndexNum: Порядковый номер объекта закупки
-type ProductInfoIndexNum struct {
+// IndexNum1: Порядковый номер объекта закупки
+type IndexNum1 struct {
 	XMLName xml.Name `xml:"indexNum,omitempty"`
 
 	FieldCode string `xml:"fieldCode,attr,omitempty"`
@@ -8875,8 +8875,8 @@ type ProductInfoIndexNum struct {
 	Text string `xml:",chardata"`
 }
 
-// ProductInfoName: Наименование объекта закупки
-type ProductInfoName struct {
+// Name1: Наименование объекта закупки
+type Name1 struct {
 	XMLName xml.Name `xml:"name,omitempty"`
 
 	FieldCode string `xml:"fieldCode,attr,omitempty"`
@@ -8887,8 +8887,8 @@ type ProductInfoName struct {
 	Text string `xml:",chardata"`
 }
 
-// ProductInfoHierarchyType: Тип объекта закупки в иерархии
-type ProductInfoHierarchyType struct {
+// HierarchyType1: Тип объекта закупки в иерархии
+type HierarchyType1 struct {
 	XMLName xml.Name `xml:"hierarchyType,omitempty"`
 
 	FieldCode string `xml:"fieldCode,attr,omitempty"`
@@ -8899,8 +8899,8 @@ type ProductInfoHierarchyType struct {
 	Text string `xml:",chardata"`
 }
 
-// ProductInfoType: Тип объекта закупки. Допустимые значения: PRODUCT - товар; WORK - работа; SERVICE - услуга.
-type ProductInfoType struct {
+// Type1: Тип объекта закупки. Допустимые значения: PRODUCT - товар; WORK - работа; SERVICE - услуга.
+type Type1 struct {
 	XMLName xml.Name `xml:"type,omitempty"`
 
 	FieldCode string `xml:"fieldCode,attr,omitempty"`
@@ -8911,8 +8911,8 @@ type ProductInfoType struct {
 	Text string `xml:",chardata"`
 }
 
-// ProductInfoSum: Сумма
-type ProductInfoSum struct {
+// Sum1: Сумма
+type Sum1 struct {
 	XMLName xml.Name `xml:"sum,omitempty"`
 
 	FieldCode string `xml:"fieldCode,attr,omitempty"`
@@ -8942,8 +8942,8 @@ type ProductInfo1 struct {
 	// ProductInfoIndicationSubjects: Способ указания объема выполнения работы, оказания услуги
 	IndicationSubjects *ProductInfoIndicationSubjects `xml:"indicationSubjects,omitempty"`
 
-	// ProductInfoPrice: Цена за единицу
-	Price *ProductInfoPrice `xml:"price,omitempty"`
+	// Price1: Цена за единицу
+	Price *Price1 `xml:"price,omitempty"`
 
 	// ProductInfoOriginCountryInfo: Страна происхождения товара
 	OriginCountryInfo []ProductInfoOriginCountryInfo `xml:"originCountryInfo,omitempty"`
@@ -8951,8 +8951,8 @@ type ProductInfo1 struct {
 	// ProductInfoVatrateInfo: Ставка НДС
 	VatrateInfo *ProductInfoVatrateInfo `xml:"VATRateInfo,omitempty"`
 
-	// ProductInfoParentProductInfo: Родительский объект закупки
-	ParentProductInfo *ProductInfoParentProductInfo `xml:"parentProductInfo,omitempty"`
+	// ParentProductInfo1: Родительский объект закупки
+	ParentProductInfo *ParentProductInfo1 `xml:"parentProductInfo,omitempty"`
 
 	// ProductInfoIsDuplicated: Позиция является продублированной
 	IsDuplicated *ProductInfoIsDuplicated `xml:"isDuplicated,omitempty"`
@@ -8969,11 +8969,11 @@ type ProductInfo1 struct {
 	// ExternalSid: Внешний идентификатор объекта закупки
 	ExternalSid *base.ExternalIdType `xml:"externalSid,omitempty"`
 
-	// ParentProductInfoIndexNum: Порядковый номер объекта закупки
-	IndexNum *ParentProductInfoIndexNum `xml:"indexNum,omitempty"`
+	// IndexNum2: Порядковый номер объекта закупки
+	IndexNum *IndexNum2 `xml:"indexNum,omitempty"`
 
-	// ParentProductInfoName: Наименование объекта закупки
-	Name *ParentProductInfoName `xml:"name,omitempty"`
+	// Name2: Наименование объекта закупки
+	Name *Name2 `xml:"name,omitempty"`
 
 	// Okpd2Info: Классификация по ОКПД2
 	Okpd2Info *DlOkpd2InfoType `xml:"OKPD2Info,omitempty"`
@@ -8981,14 +8981,14 @@ type ProductInfo1 struct {
 	// Ktruinfo: Классификация по КТРУ
 	Ktruinfo *DlKtruinfoType `xml:"KTRUInfo,omitempty"`
 
-	// ParentProductInfoHierarchyType: Тип объекта закупки в иерархии
-	HierarchyType *ParentProductInfoHierarchyType `xml:"hierarchyType,omitempty"`
+	// HierarchyType2: Тип объекта закупки в иерархии
+	HierarchyType *HierarchyType2 `xml:"hierarchyType,omitempty"`
 
-	// ParentProductInfoType: Тип объекта закупки. Допустимые значения: PRODUCT - товар; WORK - работа; SERVICE - услуга.
-	Type *ParentProductInfoType `xml:"type,omitempty"`
+	// Type2: Тип объекта закупки. Допустимые значения: PRODUCT - товар; WORK - работа; SERVICE - услуга.
+	Type *Type2 `xml:"type,omitempty"`
 
-	// ParentProductInfoSum: Сумма
-	Sum *ParentProductInfoSum `xml:"sum,omitempty"`
+	// Sum2: Сумма
+	Sum *Sum2 `xml:"sum,omitempty"`
 }
 
 // ParentProductInfoIsDuplicated: Позиция является продублированной
@@ -9003,8 +9003,8 @@ type ParentProductInfoIsDuplicated struct {
 	Text string `xml:",chardata"`
 }
 
-// ParentProductInfoIndexNum: Порядковый номер объекта закупки
-type ParentProductInfoIndexNum struct {
+// IndexNum2: Порядковый номер объекта закупки
+type IndexNum2 struct {
 	XMLName xml.Name `xml:"indexNum,omitempty"`
 
 	FieldCode string `xml:"fieldCode,attr,omitempty"`
@@ -9015,8 +9015,8 @@ type ParentProductInfoIndexNum struct {
 	Text string `xml:",chardata"`
 }
 
-// ParentProductInfoName: Наименование объекта закупки
-type ParentProductInfoName struct {
+// Name2: Наименование объекта закупки
+type Name2 struct {
 	XMLName xml.Name `xml:"name,omitempty"`
 
 	FieldCode string `xml:"fieldCode,attr,omitempty"`
@@ -9027,8 +9027,8 @@ type ParentProductInfoName struct {
 	Text string `xml:",chardata"`
 }
 
-// ParentProductInfoHierarchyType: Тип объекта закупки в иерархии
-type ParentProductInfoHierarchyType struct {
+// HierarchyType2: Тип объекта закупки в иерархии
+type HierarchyType2 struct {
 	XMLName xml.Name `xml:"hierarchyType,omitempty"`
 
 	FieldCode string `xml:"fieldCode,attr,omitempty"`
@@ -9039,8 +9039,8 @@ type ParentProductInfoHierarchyType struct {
 	Text string `xml:",chardata"`
 }
 
-// ParentProductInfoType: Тип объекта закупки. Допустимые значения: PRODUCT - товар; WORK - работа; SERVICE - услуга.
-type ParentProductInfoType struct {
+// Type2: Тип объекта закупки. Допустимые значения: PRODUCT - товар; WORK - работа; SERVICE - услуга.
+type Type2 struct {
 	XMLName xml.Name `xml:"type,omitempty"`
 
 	FieldCode string `xml:"fieldCode,attr,omitempty"`
@@ -9051,8 +9051,8 @@ type ParentProductInfoType struct {
 	Text string `xml:",chardata"`
 }
 
-// ParentProductInfoSum: Сумма
-type ParentProductInfoSum struct {
+// Sum2: Сумма
+type Sum2 struct {
 	XMLName xml.Name `xml:"sum,omitempty"`
 
 	FieldCode string `xml:"fieldCode,attr,omitempty"`
@@ -9063,8 +9063,8 @@ type ParentProductInfoSum struct {
 	Text string `xml:",chardata"`
 }
 
-// ParentProductInfo1: Родительский объект закупки
-type ParentProductInfo1 struct {
+// ParentProductInfo2: Родительский объект закупки
+type ParentProductInfo2 struct {
 	XMLName xml.Name `xml:"parentProductInfo,omitempty"`
 
 	// ParentProductInfoIsDuplicated: Позиция является продублированной
@@ -9076,11 +9076,11 @@ type ParentProductInfo1 struct {
 	// ExternalSid: Внешний идентификатор объекта закупки
 	ExternalSid *base.ExternalIdType `xml:"externalSid,omitempty"`
 
-	// ParentProductInfoIndexNum: Порядковый номер объекта закупки
-	IndexNum *ParentProductInfoIndexNum `xml:"indexNum,omitempty"`
+	// IndexNum2: Порядковый номер объекта закупки
+	IndexNum *IndexNum2 `xml:"indexNum,omitempty"`
 
-	// ParentProductInfoName: Наименование объекта закупки
-	Name *ParentProductInfoName `xml:"name,omitempty"`
+	// Name2: Наименование объекта закупки
+	Name *Name2 `xml:"name,omitempty"`
 
 	// Okpd2Info: Классификация по ОКПД2
 	Okpd2Info *DlOkpd2InfoType `xml:"OKPD2Info,omitempty"`
@@ -9088,14 +9088,14 @@ type ParentProductInfo1 struct {
 	// Ktruinfo: Классификация по КТРУ
 	Ktruinfo *DlKtruinfoType `xml:"KTRUInfo,omitempty"`
 
-	// ParentProductInfoHierarchyType: Тип объекта закупки в иерархии
-	HierarchyType *ParentProductInfoHierarchyType `xml:"hierarchyType,omitempty"`
+	// HierarchyType2: Тип объекта закупки в иерархии
+	HierarchyType *HierarchyType2 `xml:"hierarchyType,omitempty"`
 
-	// ParentProductInfoType: Тип объекта закупки. Допустимые значения: PRODUCT - товар; WORK - работа; SERVICE - услуга.
-	Type *ParentProductInfoType `xml:"type,omitempty"`
+	// Type2: Тип объекта закупки. Допустимые значения: PRODUCT - товар; WORK - работа; SERVICE - услуга.
+	Type *Type2 `xml:"type,omitempty"`
 
-	// ParentProductInfoSum: Сумма
-	Sum *ParentProductInfoSum `xml:"sum,omitempty"`
+	// Sum2: Сумма
+	Sum *Sum2 `xml:"sum,omitempty"`
 }
 
 // QuantityUndefined: Невозможно определить количество товара, объем подлежащих выполнению работ, оказанию услуг
@@ -9126,8 +9126,8 @@ type ThirdParticipantInfoThirdParticipantAccountsDetailsInfo struct {
 	ThirdParticipantAccountsDetailsInfo []cmn.AccountDetailsForDeltaType `xml:",any"`
 }
 
-// LegalEntityRfinfoFullName1: Полное наименование организации
-type LegalEntityRfinfoFullName1 struct {
+// FullName9: Полное наименование организации
+type FullName9 struct {
 	XMLName xml.Name `xml:"fullName,omitempty"`
 
 	FieldCode string `xml:"fieldCode,attr,omitempty"`
@@ -9138,8 +9138,8 @@ type LegalEntityRfinfoFullName1 struct {
 	Text string `xml:",chardata"`
 }
 
-// LegalEntityRfinfoInn1: ИНН
-type LegalEntityRfinfoInn1 struct {
+// Inn12: ИНН
+type Inn12 struct {
 	XMLName xml.Name `xml:"INN,omitempty"`
 
 	FieldCode string `xml:"fieldCode,attr,omitempty"`
@@ -9150,8 +9150,8 @@ type LegalEntityRfinfoInn1 struct {
 	Text string `xml:",chardata"`
 }
 
-// LegalEntityRfinfoKpp1: КПП
-type LegalEntityRfinfoKpp1 struct {
+// Kpp7: КПП
+type Kpp7 struct {
 	XMLName xml.Name `xml:"KPP,omitempty"`
 
 	FieldCode string `xml:"fieldCode,attr,omitempty"`
@@ -9174,18 +9174,18 @@ type LegalEntityRfinfoMajorTaxPayerKpp1 struct {
 	Text string `xml:",chardata"`
 }
 
-// ThirdParticipantInfoLegalEntityRfinfo: Юридическое лицо РФ
-type ThirdParticipantInfoLegalEntityRfinfo struct {
+// LegalEntityRfinfo1: Юридическое лицо РФ
+type LegalEntityRfinfo1 struct {
 	XMLName xml.Name `xml:"legalEntityRFInfo,omitempty"`
 
-	// LegalEntityRfinfoFullName: Полное наименование организации
-	FullName *LegalEntityRfinfoFullName `xml:"fullName,omitempty"`
+	// FullName9: Полное наименование организации
+	FullName *FullName9 `xml:"fullName,omitempty"`
 
-	// LegalEntityRfinfoInn: ИНН
-	Inn *LegalEntityRfinfoInn `xml:"INN,omitempty"`
+	// Inn12: ИНН
+	Inn *Inn12 `xml:"INN,omitempty"`
 
-	// LegalEntityRfinfoKpp: КПП
-	Kpp *LegalEntityRfinfoKpp `xml:"KPP,omitempty"`
+	// Kpp7: КПП
+	Kpp *Kpp7 `xml:"KPP,omitempty"`
 
 	// LegalEntityRfinfoMajorTaxPayerKpp: КПП крупнейшего налогоплательщика
 	MajorTaxPayerKpp *LegalEntityRfinfoMajorTaxPayerKpp `xml:"majorTaxPayerKPP,omitempty"`
@@ -9215,8 +9215,8 @@ type IndividualPersonRfinfoIsIp1 struct {
 	Text string `xml:",chardata"`
 }
 
-// IndividualPersonRfinfoInn1: ИНН
-type IndividualPersonRfinfoInn1 struct {
+// Inn13: ИНН
+type Inn13 struct {
 	XMLName xml.Name `xml:"INN,omitempty"`
 
 	FieldCode string `xml:"fieldCode,attr,omitempty"`
@@ -9227,8 +9227,8 @@ type IndividualPersonRfinfoInn1 struct {
 	Text string `xml:",chardata"`
 }
 
-// ThirdParticipantInfoIndividualPersonRfinfo: Физическое лицо РФ
-type ThirdParticipantInfoIndividualPersonRfinfo struct {
+// IndividualPersonRfinfo1: Физическое лицо РФ
+type IndividualPersonRfinfo1 struct {
 	XMLName xml.Name `xml:"individualPersonRFInfo,omitempty"`
 
 	// IndividualPersonRfinfoNameInfo: ФИО
@@ -9237,8 +9237,8 @@ type ThirdParticipantInfoIndividualPersonRfinfo struct {
 	// IndividualPersonRfinfoIsIp: Индивидуальный предприниматель
 	IsIp *IndividualPersonRfinfoIsIp `xml:"isIP,omitempty"`
 
-	// IndividualPersonRfinfoInn: ИНН
-	Inn *IndividualPersonRfinfoInn `xml:"INN,omitempty"`
+	// Inn13: ИНН
+	Inn *Inn13 `xml:"INN,omitempty"`
 }
 
 // Element
@@ -9253,11 +9253,11 @@ type ThirdParticipantInfo struct {
 	// ThirdParticipantInfoThirdParticipantAccountsDetailsInfo: Реквизиты для осуществления оплаты
 	ThirdParticipantAccountsDetailsInfo *ThirdParticipantInfoThirdParticipantAccountsDetailsInfo `xml:"thirdParticipantAccountsDetailsInfo,omitempty"`
 
-	// ThirdParticipantInfoLegalEntityRfinfo: Юридическое лицо РФ
-	LegalEntityRfinfo *ThirdParticipantInfoLegalEntityRfinfo `xml:"legalEntityRFInfo,omitempty"`
+	// LegalEntityRfinfo1: Юридическое лицо РФ
+	LegalEntityRfinfo *LegalEntityRfinfo1 `xml:"legalEntityRFInfo,omitempty"`
 
-	// ThirdParticipantInfoIndividualPersonRfinfo: Физическое лицо РФ
-	IndividualPersonRfinfo *ThirdParticipantInfoIndividualPersonRfinfo `xml:"individualPersonRFInfo,omitempty"`
+	// IndividualPersonRfinfo1: Физическое лицо РФ
+	IndividualPersonRfinfo *IndividualPersonRfinfo1 `xml:"individualPersonRFInfo,omitempty"`
 }
 
 // DetailIndicatorsInfo: Детализирующие показатели
@@ -9345,8 +9345,8 @@ type ValueSet struct {
 	ConcreteValue ValueSetConcreteValue `xml:",any"`
 }
 
-// Name1: Наименование характеристики
-type Name1 struct {
+// Name3: Наименование характеристики
+type Name3 struct {
 	XMLName xml.Name `xml:"name,omitempty"`
 
 	FieldCode string `xml:"fieldCode,attr,omitempty"`
@@ -9357,8 +9357,8 @@ type Name1 struct {
 	Text string `xml:",chardata"`
 }
 
-// Type1: Тип характеристики: 1 - качественная; 2 - количественная.
-type Type1 struct {
+// Type3: Тип характеристики: 1 - качественная; 2 - количественная.
+type Type3 struct {
 	XMLName xml.Name `xml:"type,omitempty"`
 
 	FieldCode string `xml:"fieldCode,attr,omitempty"`
@@ -9489,8 +9489,8 @@ type Code struct {
 	Text string `xml:",chardata"`
 }
 
-// Name2: Наименование характеристики
-type Name2 struct {
+// Name4: Наименование характеристики
+type Name4 struct {
 	XMLName xml.Name `xml:"name,omitempty"`
 
 	FieldCode string `xml:"fieldCode,attr,omitempty"`
@@ -9501,8 +9501,8 @@ type Name2 struct {
 	Text string `xml:",chardata"`
 }
 
-// Type2: Тип характеристики позиции КТРУ. Контролируется обязательность заполнения. Является полем, идентифицирующим характеристику: 1 - качественная; 2 - количественная
-type Type2 struct {
+// Type4: Тип характеристики позиции КТРУ. Контролируется обязательность заполнения. Является полем, идентифицирующим характеристику: 1 - качественная; 2 - количественная
+type Type4 struct {
 	XMLName xml.Name `xml:"type,omitempty"`
 
 	FieldCode string `xml:"fieldCode,attr,omitempty"`
@@ -9540,8 +9540,8 @@ type Code1 struct {
 	Text string `xml:",chardata"`
 }
 
-// Name3: Наименование товара, работы или услуги в справочнике Каталог товаров, работ, услуг (КТРУ) (nsiKTRU). Заполняется значением из справочника Каталог товаров, работ, услуг (КТРУ) (nsiKTRU)
-type Name3 struct {
+// Name5: Наименование товара, работы или услуги в справочнике Каталог товаров, работ, услуг (КТРУ) (nsiKTRU). Заполняется значением из справочника Каталог товаров, работ, услуг (КТРУ) (nsiKTRU)
+type Name5 struct {
 	XMLName xml.Name `xml:"name,omitempty"`
 
 	Text string `xml:",chardata"`
@@ -9986,8 +9986,8 @@ type PackagingInfoDrugQuantity struct {
 	Text string `xml:",chardata"`
 }
 
-// EditedPackagingsInfoPackagingInfo: Сведения об упаковке
-type EditedPackagingsInfoPackagingInfo struct {
+// PackagingInfo1: Сведения об упаковке
+type PackagingInfo1 struct {
 	XMLName xml.Name `xml:"packagingInfo"`
 
 	// PackagingInfoPrimaryPackagingInfo: Сведения о первичной упаковке
@@ -10013,8 +10013,8 @@ type EditedPackagingsInfoPackagingInfo struct {
 type EditedPackagingsInfo struct {
 	XMLName xml.Name `xml:"editedPackagingsInfo,omitempty"`
 
-	// EditedPackagingsInfoPackagingInfo: Сведения об упаковке
-	PackagingInfo EditedPackagingsInfoPackagingInfo `xml:",any"`
+	// PackagingInfo1: Сведения об упаковке
+	PackagingInfo PackagingInfo1 `xml:",any"`
 }
 
 // ManufacturerInfoManufacturerOksm: Страна производителя. Ссылка на классификатор ОКСМ (nsiOKSM)
@@ -10220,8 +10220,8 @@ type PackagingInfoCompleteness2 struct {
 	Text string `xml:",chardata"`
 }
 
-// PackagingInfo1: Сведения об упаковке
-type PackagingInfo1 struct {
+// PackagingInfo2: Сведения об упаковке
+type PackagingInfo2 struct {
 	XMLName xml.Name `xml:"packagingInfo,omitempty"`
 
 	// PackagingInfoPrimaryPackagingName: Наименование вида первичной упаковки
@@ -10480,8 +10480,8 @@ type NameDrugProduct struct {
 	Text string `xml:",chardata"`
 }
 
-// Okpd2Info1: Классификация по ОКПД2
-type Okpd2Info1 struct {
+// Okpd2Info3: Классификация по ОКПД2
+type Okpd2Info3 struct {
 	XMLName xml.Name `xml:"OKPD2Info,omitempty"`
 
 	// Okpdcode: Код товара, работы или услуги
@@ -10537,8 +10537,8 @@ type DrugQuantity struct {
 	Text string `xml:",chardata"`
 }
 
-// Price1: Цена за единицу
-type Price1 struct {
+// Price2: Цена за единицу
+type Price2 struct {
 	XMLName xml.Name `xml:"price,omitempty"`
 
 	FieldCode string `xml:"fieldCode,attr,omitempty"`
@@ -10677,8 +10677,8 @@ type DrugChangeInfoDrugRef2 struct {
 	Text string `xml:",chardata"`
 }
 
-// MnninfoDrugChangeInfo: Информация, указываемая при ручном изменении лекарственного препарата
-type MnninfoDrugChangeInfo struct {
+// DrugChangeInfo2: Информация, указываемая при ручном изменении лекарственного препарата
+type DrugChangeInfo2 struct {
 	XMLName xml.Name `xml:"drugChangeInfo,omitempty"`
 
 	// DrugChangeInfoDrugChangeReason: Причина корректировки сведений о лекарственных препаратах
@@ -10698,12 +10698,12 @@ type Mnninfo struct {
 	// MnninfoMnnname: Наименование МНН
 	Mnnname *MnninfoMnnname `xml:"MNNName,omitempty"`
 
-	// MnninfoDrugChangeInfo: Информация, указываемая при ручном изменении лекарственного препарата
-	DrugChangeInfo *MnninfoDrugChangeInfo `xml:"drugChangeInfo,omitempty"`
+	// DrugChangeInfo2: Информация, указываемая при ручном изменении лекарственного препарата
+	DrugChangeInfo *DrugChangeInfo2 `xml:"drugChangeInfo,omitempty"`
 }
 
-// Name4: Наименование товара
-type Name4 struct {
+// Name6: Наименование товара
+type Name6 struct {
 	XMLName xml.Name `xml:"name,omitempty"`
 
 	FieldCode string `xml:"fieldCode,attr,omitempty"`
@@ -10714,8 +10714,8 @@ type Name4 struct {
 	Text string `xml:",chardata"`
 }
 
-// Okpd2Info2: Классификация по ОКПД2
-type Okpd2Info2 struct {
+// Okpd2Info4: Классификация по ОКПД2
+type Okpd2Info4 struct {
 	XMLName xml.Name `xml:"OKPD2Info,omitempty"`
 
 	// Okpdcode: Код товара, работы или услуги
@@ -10736,8 +10736,8 @@ type MedicamentalFormInfo3 struct {
 	MedicamentalForm *base.MedicamentalFormRef `xml:"medicamentalForm,omitempty"`
 }
 
-// DosageInfoDosageGrlsvalue1: Полная форма дозировки
-type DosageInfoDosageGrlsvalue1 struct {
+// DosageGrlsvalue1: Полная форма дозировки
+type DosageGrlsvalue1 struct {
 	XMLName xml.Name `xml:"dosageGRLSValue,omitempty"`
 
 	FieldCode string `xml:"fieldCode,attr,omitempty"`
@@ -10752,8 +10752,8 @@ type DosageInfoDosageGrlsvalue1 struct {
 type DosageInfo1 struct {
 	XMLName xml.Name `xml:"dosageInfo,omitempty"`
 
-	// DosageInfoDosageGrlsvalue: Полная форма дозировки
-	DosageGrlsvalue *DosageInfoDosageGrlsvalue `xml:",any,omitempty"`
+	// DosageGrlsvalue1: Полная форма дозировки
+	DosageGrlsvalue *DosageGrlsvalue1 `xml:",any,omitempty"`
 }
 
 // DrugQuantity1: Количество (объем) закупаемого лекарственного препарата
@@ -10768,8 +10768,8 @@ type DrugQuantity1 struct {
 	Text string `xml:",chardata"`
 }
 
-// Price2: Цена за единицу
-type Price2 struct {
+// Price3: Цена за единицу
+type Price3 struct {
 	XMLName xml.Name `xml:"price,omitempty"`
 
 	FieldCode string `xml:"fieldCode,attr,omitempty"`
@@ -10957,35 +10957,35 @@ type ElectronicContractCrktype struct {
 	// PublishDate: Дата размещения документа в ЕИС.
 	PublishDate string `xml:"publishDate,omitempty"`
 
-	// CustomerInfo: Информация о заказчике. Сведения о заказчике, заполняемые в блоке, автоматически подтягиваются из блока "Заказчик" (customerInfo) в связанном проекте контракта/доработанном проекте контракта (за исключением блоков contactPersonInfo, email, contactPhone - их содержимое берется из принимаемого пакета)
-	CustomerInfo CustomerInfo `xml:"customerInfo"`
+	// CustomerInfo1: Информация о заказчике. Сведения о заказчике, заполняемые в блоке, автоматически подтягиваются из блока "Заказчик" (customerInfo) в связанном проекте контракта/доработанном проекте контракта (за исключением блоков contactPersonInfo, email, contactPhone - их содержимое берется из принимаемого пакета)
+	CustomerInfo CustomerInfo1 `xml:"customerInfo"`
 
 	// PlacerInfo: Информация об организации, разместившей контракт
 	PlacerInfo *PlacerInfo `xml:"placerInfo,omitempty"`
 
-	// ParticipantInfo: Информация о поставщике
-	ParticipantInfo *ParticipantInfo `xml:"participantInfo,omitempty"`
+	// ParticipantInfo1: Информация о поставщике
+	ParticipantInfo *ParticipantInfo1 `xml:"participantInfo,omitempty"`
 
-	// FoundationInfo: Основание заключения контракта. Блок игнорируется при приеме, заполняется при передаче в соответствии с блоком "Основание заключения контракта" (foundationInfo) связанного проекта контракта / доработанного проекта контракта. Идентификатор проекта контракта / доработанного проекта контракта указан в блоке "Информация о документе, к которому сформирован проект электронного контракта" (mainDocInfo)
-	FoundationInfo *FoundationInfo `xml:"foundationInfo,omitempty"`
+	// FoundationInfo1: Основание заключения контракта. Блок игнорируется при приеме, заполняется при передаче в соответствии с блоком "Основание заключения контракта" (foundationInfo) связанного проекта контракта / доработанного проекта контракта. Идентификатор проекта контракта / доработанного проекта контракта указан в блоке "Информация о документе, к которому сформирован проект электронного контракта" (mainDocInfo)
+	FoundationInfo *FoundationInfo1 `xml:"foundationInfo,omitempty"`
 
-	// ContractSubjectInfo: Предмет контракта
-	ContractSubjectInfo ContractSubjectInfo `xml:"contractSubjectInfo"`
+	// ContractSubjectInfo1: Предмет контракта
+	ContractSubjectInfo ContractSubjectInfo1 `xml:"contractSubjectInfo"`
 
-	// ContractConditionsInfo: Условия контракта
-	ContractConditionsInfo ContractConditionsInfo `xml:"contractConditionsInfo"`
+	// ContractConditionsInfo1: Условия контракта
+	ContractConditionsInfo ContractConditionsInfo1 `xml:"contractConditionsInfo"`
 
-	// ContractFinancingInfo: Финансирование контракта
-	ContractFinancingInfo ContractFinancingInfo `xml:"contractFinancingInfo"`
+	// ContractFinancingInfo1: Финансирование контракта
+	ContractFinancingInfo ContractFinancingInfo1 `xml:"contractFinancingInfo"`
 
-	// AttachmentsInfo: Информация о прикрепленных документах
-	AttachmentsInfo AttachmentsInfo `xml:"attachmentsInfo"`
+	// AttachmentsInfo1: Информация о прикрепленных документах
+	AttachmentsInfo AttachmentsInfo1 `xml:"attachmentsInfo"`
 
-	// ConstructionDocuments: Информация о проектных документах по специализации строительства
-	ConstructionDocuments *ConstructionDocuments `xml:"constructionDocuments,omitempty"`
+	// ConstructionDocuments1: Информация о проектных документах по специализации строительства
+	ConstructionDocuments *ConstructionDocuments1 `xml:"constructionDocuments,omitempty"`
 
-	// PrintFormFieldsInfo: Дополнительная информация для печатной формы
-	PrintFormFieldsInfo *PrintFormFieldsInfo `xml:"printFormFieldsInfo,omitempty"`
+	// PrintFormFieldsInfo1: Дополнительная информация для печатной формы
+	PrintFormFieldsInfo *PrintFormFieldsInfo1 `xml:"printFormFieldsInfo,omitempty"`
 }
 
 // DeltaType: Тип: Дельта доп.соглашения
@@ -11025,8 +11025,8 @@ type DeltaType struct {
 	// PurchaseCode: Идентификационный код закупки
 	PurchaseCode *base.IkzCodeType `xml:"purchaseCode,omitempty"`
 
-	// MainDocInfo: Информация о документе, к которому сформирован проект электронного доп.соглашения. Заполняется, если указан признак "Проект доп.соглашения формируется в структурированном виде" (isStructuredForm)
-	MainDocInfo *MainDocInfo `xml:"mainDocInfo,omitempty"`
+	// MainDocInfo1: Информация о документе, к которому сформирован проект электронного доп.соглашения. Заполняется, если указан признак "Проект доп.соглашения формируется в структурированном виде" (isStructuredForm)
+	MainDocInfo *MainDocInfo1 `xml:"mainDocInfo,omitempty"`
 
 	// CustomerInfo: Информация о заказчике
 	CustomerInfo *CustomerInfoDeltaType `xml:"customerInfo,omitempty"`
@@ -11046,8 +11046,8 @@ type DeltaType struct {
 	// ContractFinancingInfo: Финансирование контракта
 	ContractFinancingInfo *ContractFinancingInfoDeltaType `xml:"contractFinancingInfo,omitempty"`
 
-	// PrintFormFieldsInfo: Дополнительная информация для печатной формы
-	PrintFormFieldsInfo *PrintFormFieldsInfo `xml:"printFormFieldsInfo,omitempty"`
+	// PrintFormFieldsInfo2: Дополнительная информация для печатной формы
+	PrintFormFieldsInfo *PrintFormFieldsInfo2 `xml:"printFormFieldsInfo,omitempty"`
 }
 
 // ProtocolDeltaType: Тип: Протокол изменений электронного контракта
@@ -11110,8 +11110,8 @@ type ContractProjectType struct {
 	// ExtPrintFormInfo: Электронный документ, полученный из внешней системы
 	ExtPrintFormInfo *cmn.ExtPrintFormType `xml:"extPrintFormInfo,omitempty"`
 
-	// PrintFormFieldsInfo: Дополнительная информация для печатной формы
-	PrintFormFieldsInfo *PrintFormFieldsInfo `xml:"printFormFieldsInfo,omitempty"`
+	// PrintFormFieldsInfo3: Дополнительная информация для печатной формы
+	PrintFormFieldsInfo *PrintFormFieldsInfo3 `xml:"printFormFieldsInfo,omitempty"`
 
 	// Id: Идентификатор документа ЕИС
 	Id *int64 `xml:"id,omitempty"`
@@ -11122,17 +11122,17 @@ type ContractProjectType struct {
 	// VersionNumber: Номер версии документа
 	VersionNumber *base.VersionNumberType `xml:"versionNumber,omitempty"`
 
-	// FoundationInfo: Основание заключения контракта
-	FoundationInfo FoundationInfo `xml:"foundationInfo"`
+	// FoundationInfo5: Основание заключения контракта
+	FoundationInfo FoundationInfo5 `xml:"foundationInfo"`
 
 	// CustomerInfo: Заказчик. - В случае если в связанном извещении (foundationInfo/purchaseNumber) указан один заказчик, блок игнорируется при приёме, заполняется из связанного извещения; - В случае если в связанном извещении (foundationInfo/purchaseNumber) указано более одного заказчика, требуется обязательное заполнение и проверяется наличие заказчика в связанном извещении
 	CustomerInfo *cmn.OrganizationType `xml:"customerInfo,omitempty"`
 
-	// PlacerInfo: Информация об организации, разместившей контракт
-	PlacerInfo PlacerInfo `xml:"placerInfo"`
+	// PlacerInfo6: Информация об организации, разместившей контракт
+	PlacerInfo PlacerInfo6 `xml:"placerInfo"`
 
-	// ParticipantInfo: Поставщик. При приёме проверяется - Наличие указанного поставщика в связанном итоговом протоколе (foundationInfo/protocolInfo/number); - Отсутствие по закупке с номером указанным в поле (foundationInfo/purchaseNumber) для указанного поставщика размещенного протокола отказа от заключения контратка (fcsProtocolEvasion), или протокола о признании участника уклонившимся от заключения контракта (fcsProtocolDeviation)
-	ParticipantInfo ParticipantInfo `xml:"participantInfo"`
+	// ParticipantInfo6: Поставщик. При приёме проверяется - Наличие указанного поставщика в связанном итоговом протоколе (foundationInfo/protocolInfo/number); - Отсутствие по закупке с номером указанным в поле (foundationInfo/purchaseNumber) для указанного поставщика размещенного протокола отказа от заключения контратка (fcsProtocolEvasion), или протокола о признании участника уклонившимся от заключения контракта (fcsProtocolDeviation)
+	ParticipantInfo ParticipantInfo6 `xml:"participantInfo"`
 
 	// IsSecondParticipant: Контракт заключается с участником, которому по результатам процедуры определения поставщика присвоен воторой номер. Элемент игнорируется при приёме. Заполняется из связанного итогового протокола (foundationInfo/protocolInfo/number). Устарело, не применяется
 	IsSecondParticipant *bool `xml:"isSecondParticipant,omitempty"`
@@ -11140,8 +11140,8 @@ type ContractProjectType struct {
 	// QuantityUndefined: Невозможно определить количество товара, объем подлежащих выполнению работ, оказанию услуг. Игнорируется при приеме. Заполняется автоматически на основании извещения (foundationInfo/purchaseNumber)
 	QuantityUndefined *bool `xml:"quantityUndefined,omitempty"`
 
-	// ContractInfo: Информация о контракте
-	ContractInfo ContractInfo `xml:"contractInfo"`
+	// ContractInfo3: Информация о контракте
+	ContractInfo ContractInfo3 `xml:"contractInfo"`
 
 	// PrintFormInfo: Печатная форма документа. Элемент игнорируется при приёме. При передаче заполняется ссылкой на печатную форму и электронную подпись размещенного в ЕИС документа
 	PrintFormInfo *cmn.PrintFormType `xml:"printFormInfo,omitempty"`
@@ -11160,20 +11160,20 @@ type ContractProjectChangeType struct {
 	// SchemeVersion: Версия схемы
 	SchemeVersion base.SchemeVersionType `xml:"schemeVersion,attr"`
 
-	// CommonInfo: Общая информация
-	CommonInfo CommonInfo `xml:"commonInfo"`
+	// CommonInfo1: Общая информация
+	CommonInfo CommonInfo1 `xml:"commonInfo"`
 
 	// RequirementsInfo: Требования к подтверждающим документам и информации. Блок игнорируется при приёме и передаче. Добавлен на развитие
 	RequirementsInfo *ContractRequirementDocType `xml:"requirementsInfo,omitempty"`
 
-	// ContractProjectFilesInfo: Файлы проекта контракта, направляемого поставщику. Если установлен признак "Проект контракта формируется в структурированном виде" (contractInfo/isStructuredForm), то игнорируется при приеме, не заполняется при передаче. Если не установлен признак "Проект контракта формируется в структурированном виде" (contractInfo/isStructuredForm), то контролируется обязательность указания файлов проекта контракта в неструктурированном виде
-	ContractProjectFilesInfo *ContractProjectFilesInfo `xml:"contractProjectFilesInfo,omitempty"`
+	// ContractProjectFilesInfo1: Файлы проекта контракта, направляемого поставщику. Если установлен признак "Проект контракта формируется в структурированном виде" (contractInfo/isStructuredForm), то игнорируется при приеме, не заполняется при передаче. Если не установлен признак "Проект контракта формируется в структурированном виде" (contractInfo/isStructuredForm), то контролируется обязательность указания файлов проекта контракта в неструктурированном виде
+	ContractProjectFilesInfo *ContractProjectFilesInfo1 `xml:"contractProjectFilesInfo,omitempty"`
 
-	// ElectronicContractInfo: Проект электронного контракта в структурированной форме. Игнорируется при приеме. Если установлен признак "Проект контракта формируется в структурированном виде" (contractInfo/isStructuredForm), то заполняется при передаче
-	ElectronicContractInfo *ElectronicContractInfo `xml:"electronicContractInfo,omitempty"`
+	// ElectronicContractInfo1: Проект электронного контракта в структурированной форме. Игнорируется при приеме. Если установлен признак "Проект контракта формируется в структурированном виде" (contractInfo/isStructuredForm), то заполняется при передаче
+	ElectronicContractInfo *ElectronicContractInfo1 `xml:"electronicContractInfo,omitempty"`
 
-	// ApprovalAttachmentsInfo: Лист согласования. Если установлен признак "Проект контракта формируется в структурированном виде" (isStructuredForm), то принимается и заполняется при передаче. Если не установлен признак "Проект контракта формируется в структурированном виде" (isStructuredForm), то игнорируется при приеме. Не заполняется при выгрузке "Подписанного контракта" (cpContractSign/cpClosedContractSign).
-	ApprovalAttachmentsInfo *ApprovalAttachmentsInfo `xml:"approvalAttachmentsInfo,omitempty"`
+	// ApprovalAttachmentsInfo1: Лист согласования. Если установлен признак "Проект контракта формируется в структурированном виде" (isStructuredForm), то принимается и заполняется при передаче. Если не установлен признак "Проект контракта формируется в структурированном виде" (isStructuredForm), то игнорируется при приеме. Не заполняется при выгрузке "Подписанного контракта" (cpContractSign/cpClosedContractSign).
+	ApprovalAttachmentsInfo *ApprovalAttachmentsInfo1 `xml:"approvalAttachmentsInfo,omitempty"`
 
 	// ChangeInfo: Информация об изменении в проекте контракта, направляемого участнику
 	ChangeInfo ChangeInfo `xml:"changeInfo"`
@@ -11184,8 +11184,8 @@ type ContractProjectChangeType struct {
 	// ExtPrintFormInfo: Электронный документ, полученный из внешней системы
 	ExtPrintFormInfo *cmn.ExtPrintFormType `xml:"extPrintFormInfo,omitempty"`
 
-	// PrintFormFieldsInfo: Дополнительная информация для печатной формы
-	PrintFormFieldsInfo *PrintFormFieldsInfo `xml:"printFormFieldsInfo,omitempty"`
+	// PrintFormFieldsInfo4: Дополнительная информация для печатной формы
+	PrintFormFieldsInfo *PrintFormFieldsInfo4 `xml:"printFormFieldsInfo,omitempty"`
 
 	// Id: Идентификатор документа ЕИС
 	Id *int64 `xml:"id,omitempty"`
@@ -11196,17 +11196,17 @@ type ContractProjectChangeType struct {
 	// VersionNumber: Номер версии документа
 	VersionNumber *base.VersionNumberType `xml:"versionNumber,omitempty"`
 
-	// FoundationInfo: Основание заключения контракта
-	FoundationInfo FoundationInfo `xml:"foundationInfo"`
+	// FoundationInfo5: Основание заключения контракта
+	FoundationInfo FoundationInfo5 `xml:"foundationInfo"`
 
 	// CustomerInfo: Заказчик. - В случае если в связанном извещении (foundationInfo/purchaseNumber) указан один заказчик, блок игнорируется при приёме, заполняется из связанного извещения; - В случае если в связанном извещении (foundationInfo/purchaseNumber) указано более одного заказчика, требуется обязательное заполнение и проверяется наличие заказчика в связанном извещении
 	CustomerInfo *cmn.OrganizationType `xml:"customerInfo,omitempty"`
 
-	// PlacerInfo: Информация об организации, разместившей контракт
-	PlacerInfo PlacerInfo `xml:"placerInfo"`
+	// PlacerInfo6: Информация об организации, разместившей контракт
+	PlacerInfo PlacerInfo6 `xml:"placerInfo"`
 
-	// ParticipantInfo: Поставщик. При приёме проверяется - Наличие указанного поставщика в связанном итоговом протоколе (foundationInfo/protocolInfo/number); - Отсутствие по закупке с номером указанным в поле (foundationInfo/purchaseNumber) для указанного поставщика размещенного протокола отказа от заключения контратка (fcsProtocolEvasion), или протокола о признании участника уклонившимся от заключения контракта (fcsProtocolDeviation)
-	ParticipantInfo ParticipantInfo `xml:"participantInfo"`
+	// ParticipantInfo6: Поставщик. При приёме проверяется - Наличие указанного поставщика в связанном итоговом протоколе (foundationInfo/protocolInfo/number); - Отсутствие по закупке с номером указанным в поле (foundationInfo/purchaseNumber) для указанного поставщика размещенного протокола отказа от заключения контратка (fcsProtocolEvasion), или протокола о признании участника уклонившимся от заключения контракта (fcsProtocolDeviation)
+	ParticipantInfo ParticipantInfo6 `xml:"participantInfo"`
 
 	// IsSecondParticipant: Контракт заключается с участником, которому по результатам процедуры определения поставщика присвоен воторой номер. Элемент игнорируется при приёме. Заполняется из связанного итогового протокола (foundationInfo/protocolInfo/number). Устарело, не применяется
 	IsSecondParticipant *bool `xml:"isSecondParticipant,omitempty"`
@@ -11214,8 +11214,8 @@ type ContractProjectChangeType struct {
 	// QuantityUndefined: Невозможно определить количество товара, объем подлежащих выполнению работ, оказанию услуг. Игнорируется при приеме. Заполняется автоматически на основании извещения (foundationInfo/purchaseNumber)
 	QuantityUndefined *bool `xml:"quantityUndefined,omitempty"`
 
-	// ContractInfo: Информация о контракте
-	ContractInfo ContractInfo `xml:"contractInfo"`
+	// ContractInfo3: Информация о контракте
+	ContractInfo ContractInfo3 `xml:"contractInfo"`
 
 	// PrintFormInfo: Печатная форма документа. Элемент игнорируется при приёме. При передаче заполняется ссылкой на печатную форму и электронную подпись размещенного в ЕИС документа
 	PrintFormInfo *cmn.PrintFormType `xml:"printFormInfo,omitempty"`
@@ -11234,8 +11234,8 @@ type ContractProjectSignType struct {
 	// SchemeVersion: Версия схемы
 	SchemeVersion base.SchemeVersionType `xml:"schemeVersion,attr"`
 
-	// PrintFormFieldsInfo: Дополнительная информация для печатной формы
-	PrintFormFieldsInfo *PrintFormFieldsInfo `xml:"printFormFieldsInfo,omitempty"`
+	// PrintFormFieldsInfo5: Дополнительная информация для печатной формы
+	PrintFormFieldsInfo *PrintFormFieldsInfo5 `xml:"printFormFieldsInfo,omitempty"`
 
 	// Id: Идентификатор документа ЕИС
 	Id *int64 `xml:"id,omitempty"`
@@ -11249,26 +11249,26 @@ type ContractProjectSignType struct {
 	// ParentVersionNumber: Номер версии документа основания. Проверяется наличие размещенного и не отменённого документа основания с указанной версией
 	ParentVersionNumber base.VersionNumberType `xml:"parentVersionNumber"`
 
-	// CommonInfo: Общая информация
-	CommonInfo CommonInfo `xml:"commonInfo"`
+	// CommonInfo10: Общая информация
+	CommonInfo CommonInfo10 `xml:"commonInfo"`
 
-	// RequirementsDocInfo: Документы, подтверждающие обеспечение исполнения контракта
-	RequirementsDocInfo *RequirementsDocInfo `xml:"requirementsDocInfo,omitempty"`
+	// RequirementsDocInfo1: Документы, подтверждающие обеспечение исполнения контракта
+	RequirementsDocInfo *RequirementsDocInfo1 `xml:"requirementsDocInfo,omitempty"`
 
-	// ConscientiousnessDocsInfo: Документы, подтверждающие добросовестность участника
-	ConscientiousnessDocsInfo *ConscientiousnessDocsInfo `xml:"conscientiousnessDocsInfo,omitempty"`
+	// ConscientiousnessDocsInfo1: Документы, подтверждающие добросовестность участника
+	ConscientiousnessDocsInfo *ConscientiousnessDocsInfo1 `xml:"conscientiousnessDocsInfo,omitempty"`
 
 	// ContractPriceFoundationDocInfo: Обоснование предлагаемой цены
 	ContractPriceFoundationDocInfo *cmn.AttachmentListSignCheckUrlType `xml:"contractPriceFoundationDocInfo,omitempty"`
 
-	// ContractProjectFilesInfo: Файлы проекта контракта, подписанные поставщиком. Если в проекте контракта не установлен признак "Проект контракта формируется в структурированном виде" (contractInfo/isStructuredForm), то в блоке должны быть указаны подписанные поставщиком вложения Если в проекте контракта установлен признак "Проект контракта формируется в структурированном виде" (contractInfo/isStructuredForm), то блок игнорируется при приеме
-	ContractProjectFilesInfo *ContractProjectFilesInfo `xml:"contractProjectFilesInfo,omitempty"`
+	// ContractProjectFilesInfo5: Файлы проекта контракта, подписанные поставщиком. Если в проекте контракта не установлен признак "Проект контракта формируется в структурированном виде" (contractInfo/isStructuredForm), то в блоке должны быть указаны подписанные поставщиком вложения Если в проекте контракта установлен признак "Проект контракта формируется в структурированном виде" (contractInfo/isStructuredForm), то блок игнорируется при приеме
+	ContractProjectFilesInfo *ContractProjectFilesInfo5 `xml:"contractProjectFilesInfo,omitempty"`
 
-	// ElectronicContractInfo: Проект электронного контракта в структурированной форме. Если в проекте контракта установлен признак "Проект контракта формируется в структурированном виде" (contractInfo/isStructuredForm), то в блоке указывается проект электронного контракта и приложенные к нему вложения, подписанные поставщиком. Если в проекте контракта не установлен признак "Проект контракта формируется в структурированном виде" (contractInfo/isStructuredForm), , то блок игнорируется при приеме
-	ElectronicContractInfo *ElectronicContractInfo `xml:"electronicContractInfo,omitempty"`
+	// ElectronicContractInfo4: Проект электронного контракта в структурированной форме. Если в проекте контракта установлен признак "Проект контракта формируется в структурированном виде" (contractInfo/isStructuredForm), то в блоке указывается проект электронного контракта и приложенные к нему вложения, подписанные поставщиком. Если в проекте контракта не установлен признак "Проект контракта формируется в структурированном виде" (contractInfo/isStructuredForm), , то блок игнорируется при приеме
+	ElectronicContractInfo *ElectronicContractInfo4 `xml:"electronicContractInfo,omitempty"`
 
-	// ModificationInfo: Основание внесения изменений
-	ModificationInfo *ModificationInfo `xml:"modificationInfo,omitempty"`
+	// ModificationInfo1: Основание внесения изменений
+	ModificationInfo *ModificationInfo1 `xml:"modificationInfo,omitempty"`
 
 	// ExtPrintFormInfo: Электронный документ, полученный из внешней системы. Элемент игнорируется при приёме, оставлен для обратной совместимости
 	ExtPrintFormInfo *cmn.ExtPrintFormType `xml:"extPrintFormInfo,omitempty"`
@@ -11284,20 +11284,20 @@ type ContractSignType struct {
 	// SchemeVersion: Версия схемы
 	SchemeVersion base.SchemeVersionType `xml:"schemeVersion,attr"`
 
-	// CommonInfo: Общая информация
-	CommonInfo CommonInfo `xml:"commonInfo"`
+	// CommonInfo3: Общая информация
+	CommonInfo CommonInfo3 `xml:"commonInfo"`
 
-	// ContractProjectFilesInfo: Файлы подписанного контракта. Заполняется при передаче, если не установлен признак "Проект контракта формируется в структурированном виде" (contractInfo/isStructuredForm)
-	ContractProjectFilesInfo *ContractProjectFilesInfo `xml:"contractProjectFilesInfo,omitempty"`
+	// ContractProjectFilesInfo3: Файлы подписанного контракта. Заполняется при передаче, если не установлен признак "Проект контракта формируется в структурированном виде" (contractInfo/isStructuredForm)
+	ContractProjectFilesInfo *ContractProjectFilesInfo3 `xml:"contractProjectFilesInfo,omitempty"`
 
-	// ElectronicContractInfo: Проект электронного контракта в структурированной форме. Заполняется при передаче, если установлен признак "Проект контракта формируется в структурированном виде" (contractInfo/isStructuredForm)
-	ElectronicContractInfo *ElectronicContractInfo `xml:"electronicContractInfo,omitempty"`
+	// ElectronicContractInfo3: Проект электронного контракта в структурированной форме. Заполняется при передаче, если установлен признак "Проект контракта формируется в структурированном виде" (contractInfo/isStructuredForm)
+	ElectronicContractInfo *ElectronicContractInfo3 `xml:"electronicContractInfo,omitempty"`
 
 	// PowerOfAttorney: Сведения о доверенности Блок игнорируется при приеме проекта от ВСРЗ. При передаче документа на ЭТП заполняется блок "Сведения о доверенности заказчика" (customerPOAInfo), блок "Сведения о доверенности поставщика" (participantPOAInfo) не заполняется
 	PowerOfAttorney *cmn.WithFirstPoattorneyListType `xml:"powerOfAttorney,omitempty"`
 
-	// PrintFormFieldsInfo: Дополнительная информация для печатной формы
-	PrintFormFieldsInfo *PrintFormFieldsInfo `xml:"printFormFieldsInfo,omitempty"`
+	// PrintFormFieldsInfo6: Дополнительная информация для печатной формы
+	PrintFormFieldsInfo *PrintFormFieldsInfo6 `xml:"printFormFieldsInfo,omitempty"`
 
 	// Id: Идентификатор документа ЕИС
 	Id *int64 `xml:"id,omitempty"`
@@ -11308,17 +11308,17 @@ type ContractSignType struct {
 	// VersionNumber: Номер версии документа
 	VersionNumber *base.VersionNumberType `xml:"versionNumber,omitempty"`
 
-	// FoundationInfo: Основание заключения контракта
-	FoundationInfo FoundationInfo `xml:"foundationInfo"`
+	// FoundationInfo5: Основание заключения контракта
+	FoundationInfo FoundationInfo5 `xml:"foundationInfo"`
 
 	// CustomerInfo: Заказчик. - В случае если в связанном извещении (foundationInfo/purchaseNumber) указан один заказчик, блок игнорируется при приёме, заполняется из связанного извещения; - В случае если в связанном извещении (foundationInfo/purchaseNumber) указано более одного заказчика, требуется обязательное заполнение и проверяется наличие заказчика в связанном извещении
 	CustomerInfo *cmn.OrganizationType `xml:"customerInfo,omitempty"`
 
-	// PlacerInfo: Информация об организации, разместившей контракт
-	PlacerInfo PlacerInfo `xml:"placerInfo"`
+	// PlacerInfo6: Информация об организации, разместившей контракт
+	PlacerInfo PlacerInfo6 `xml:"placerInfo"`
 
-	// ParticipantInfo: Поставщик. При приёме проверяется - Наличие указанного поставщика в связанном итоговом протоколе (foundationInfo/protocolInfo/number); - Отсутствие по закупке с номером указанным в поле (foundationInfo/purchaseNumber) для указанного поставщика размещенного протокола отказа от заключения контратка (fcsProtocolEvasion), или протокола о признании участника уклонившимся от заключения контракта (fcsProtocolDeviation)
-	ParticipantInfo ParticipantInfo `xml:"participantInfo"`
+	// ParticipantInfo6: Поставщик. При приёме проверяется - Наличие указанного поставщика в связанном итоговом протоколе (foundationInfo/protocolInfo/number); - Отсутствие по закупке с номером указанным в поле (foundationInfo/purchaseNumber) для указанного поставщика размещенного протокола отказа от заключения контратка (fcsProtocolEvasion), или протокола о признании участника уклонившимся от заключения контракта (fcsProtocolDeviation)
+	ParticipantInfo ParticipantInfo6 `xml:"participantInfo"`
 
 	// IsSecondParticipant: Контракт заключается с участником, которому по результатам процедуры определения поставщика присвоен воторой номер. Элемент игнорируется при приёме. Заполняется из связанного итогового протокола (foundationInfo/protocolInfo/number). Устарело, не применяется
 	IsSecondParticipant *bool `xml:"isSecondParticipant,omitempty"`
@@ -11326,8 +11326,8 @@ type ContractSignType struct {
 	// QuantityUndefined: Невозможно определить количество товара, объем подлежащих выполнению работ, оказанию услуг. Игнорируется при приеме. Заполняется автоматически на основании извещения (foundationInfo/purchaseNumber)
 	QuantityUndefined *bool `xml:"quantityUndefined,omitempty"`
 
-	// ContractInfo: Информация о контракте
-	ContractInfo ContractInfo `xml:"contractInfo"`
+	// ContractInfo3: Информация о контракте
+	ContractInfo ContractInfo3 `xml:"contractInfo"`
 
 	// PrintFormInfo: Печатная форма документа. Элемент игнорируется при приёме. При передаче заполняется ссылкой на печатную форму и электронную подпись размещенного в ЕИС документа
 	PrintFormInfo *cmn.PrintFormType `xml:"printFormInfo,omitempty"`
@@ -11355,8 +11355,8 @@ type ProtocolDisagreementsType struct {
 	// ParentVersionNumber: Номер версии документа основания. Проверяется наличие размещенного и не отменённого документа основания с указанной версией
 	ParentVersionNumber base.VersionNumberType `xml:"parentVersionNumber"`
 
-	// CommonInfo: Общая информация. Протокол разногласий не принимается для проектов контрактов, сформированных на основании закупок по способам "Запрос котировок в электронной форме с 2020 года" и "Закупка товаров согласно ч.12 ст. 93 № 44-ФЗ"
-	CommonInfo CommonInfo `xml:"commonInfo"`
+	// CommonInfo4: Общая информация. Протокол разногласий не принимается для проектов контрактов, сформированных на основании закупок по способам "Запрос котировок в электронной форме с 2020 года" и "Закупка товаров согласно ч.12 ст. 93 № 44-ФЗ"
+	CommonInfo CommonInfo4 `xml:"commonInfo"`
 
 	// CustomerInfo: Заказчик. Проверяется наличие заказчика в документе основании
 	CustomerInfo cmn.OrganizationType `xml:"customerInfo"`
@@ -11379,8 +11379,8 @@ type ProtocolDisagreementsType struct {
 	// ExtPrintFormInfo: Электронный документ, полученный из внешней системы Элемент игнорируется при приёме, оставлен для обратной совместимости
 	ExtPrintFormInfo *cmn.ExtPrintFormType `xml:"extPrintFormInfo,omitempty"`
 
-	// PrintFormFieldsInfo: Дополнительная информация для печатной формы. Игнорируется при приёме, заполняется при передаче из проекта контракта
-	PrintFormFieldsInfo *PrintFormFieldsInfo `xml:"printFormFieldsInfo,omitempty"`
+	// PrintFormFieldsInfo7: Дополнительная информация для печатной формы. Игнорируется при приёме, заполняется при передаче из проекта контракта
+	PrintFormFieldsInfo *PrintFormFieldsInfo7 `xml:"printFormFieldsInfo,omitempty"`
 
 	// PowerOfAttorney: Сведения о доверенности. Блок "Сведения о доверенности заказчика" (customerPOAInfo) игнорируется при приеме от ЭТП. Блок "Сведения о доверенности поставщика" (participantPOAInfo) принимается и сохраняется
 	PowerOfAttorney *cmn.WithFirstPoattorneyListType `xml:"powerOfAttorney,omitempty"`
@@ -11402,8 +11402,8 @@ type NoticeDeviationType struct {
 	// ParentVersionNumber: Номер версии документа основания. Проверяется наличие размещенного и не отменённого документа основания с указанной версией
 	ParentVersionNumber base.VersionNumberType `xml:"parentVersionNumber"`
 
-	// CommonInfo: Общая информация
-	CommonInfo CommonInfo `xml:"commonInfo"`
+	// CommonInfo9: Общая информация
+	CommonInfo CommonInfo9 `xml:"commonInfo"`
 
 	// ParticipantInfo: Поставщик
 	ParticipantInfo ParticipantType `xml:"participantInfo"`
@@ -11417,8 +11417,8 @@ type NoticeDeviationType struct {
 	// ExtPrintFormInfo: Электронный документ, полученный из внешней системы
 	ExtPrintFormInfo cmn.ExtPrintFormType `xml:"extPrintFormInfo"`
 
-	// PrintFormFieldsInfo: Дополнительная информация для печатной формы. Игнорируется при приёме, заполняется при передаче из проекта контракта
-	PrintFormFieldsInfo *PrintFormFieldsInfo `xml:"printFormFieldsInfo,omitempty"`
+	// PrintFormFieldsInfo16: Дополнительная информация для печатной формы. Игнорируется при приёме, заполняется при передаче из проекта контракта
+	PrintFormFieldsInfo *PrintFormFieldsInfo16 `xml:"printFormFieldsInfo,omitempty"`
 }
 
 // NoticeEvasionType: Тип: Уведомление об отказе от заключения контракта. Устарело, не применяется
@@ -11437,8 +11437,8 @@ type NoticeEvasionType struct {
 	// ParentVersionNumber: Номер версии документа основания. Проверяется наличие размещенного и не отменённого документа основания с указанной версией
 	ParentVersionNumber base.VersionNumberType `xml:"parentVersionNumber"`
 
-	// CommonInfo: Общая информация
-	CommonInfo CommonInfo `xml:"commonInfo"`
+	// CommonInfo9: Общая информация
+	CommonInfo CommonInfo9 `xml:"commonInfo"`
 
 	// ParticipantInfo: Поставщик
 	ParticipantInfo ParticipantType `xml:"participantInfo"`
@@ -11452,8 +11452,8 @@ type NoticeEvasionType struct {
 	// ExtPrintFormInfo: Электронный документ, полученный из внешней системы
 	ExtPrintFormInfo cmn.ExtPrintFormType `xml:"extPrintFormInfo"`
 
-	// PrintFormFieldsInfo: Дополнительная информация для печатной формы. Игнорируется при приёме, заполняется при передаче из проекта контракта
-	PrintFormFieldsInfo *PrintFormFieldsInfo `xml:"printFormFieldsInfo,omitempty"`
+	// PrintFormFieldsInfo16: Дополнительная информация для печатной формы. Игнорируется при приёме, заполняется при передаче из проекта контракта
+	PrintFormFieldsInfo *PrintFormFieldsInfo16 `xml:"printFormFieldsInfo,omitempty"`
 }
 
 // RefusalConcludeContractType: Тип: Отказ участника закупки от заключения контракта
@@ -11472,8 +11472,8 @@ type RefusalConcludeContractType struct {
 	// ParentVersionNumber: Номер версии документа-основания. Проверяется наличие размещенного и не отменённого документа-основания с указанной версией
 	ParentVersionNumber base.VersionNumberType `xml:"parentVersionNumber"`
 
-	// CommonInfo: Общая информация
-	CommonInfo CommonInfo `xml:"commonInfo"`
+	// CommonInfo7: Общая информация
+	CommonInfo CommonInfo7 `xml:"commonInfo"`
 
 	// ParticipantInfo: Поставщик
 	ParticipantInfo ParticipantType `xml:"participantInfo"`
@@ -11481,8 +11481,8 @@ type RefusalConcludeContractType struct {
 	// FoundationText: Основание отказа от заключения контракта
 	FoundationText base.Text2000Type `xml:"foundationText"`
 
-	// AttachmentsInfo: Информация о прикрепленных документах
-	AttachmentsInfo *AttachmentsInfo `xml:"attachmentsInfo,omitempty"`
+	// AttachmentsInfo7: Информация о прикрепленных документах
+	AttachmentsInfo *AttachmentsInfo7 `xml:"attachmentsInfo,omitempty"`
 
 	// PrintFormInfo: Печатная форма документа. Элемент игнорируется при приёме. При передаче заполняется ссылкой на печатную форму и электронную подпись размещенного в ЕИС документа
 	PrintFormInfo *cmn.PrintFormType `xml:"printFormInfo,omitempty"`
@@ -11490,8 +11490,8 @@ type RefusalConcludeContractType struct {
 	// ExtPrintFormInfo: Электронный документ, полученный из внешней системы
 	ExtPrintFormInfo cmn.ExtPrintFormType `xml:"extPrintFormInfo"`
 
-	// PrintFormFieldsInfo: Дополнительная информация для печатной формы. Игнорируется при приёме, заполняется при передаче из проекта контракта
-	PrintFormFieldsInfo *PrintFormFieldsInfo `xml:"printFormFieldsInfo,omitempty"`
+	// PrintFormFieldsInfo10: Дополнительная информация для печатной формы. Игнорируется при приёме, заполняется при передаче из проекта контракта
+	PrintFormFieldsInfo *PrintFormFieldsInfo10 `xml:"printFormFieldsInfo,omitempty"`
 
 	// PowerOfAttorney: Сведения о доверенности. Блок "Сведения о доверенности заказчика" (customerPOAInfo) игнорируется при приеме от ЭТП. Блок "Сведения о доверенности поставщика" (participantPOAInfo) принимается и сохраняется
 	PowerOfAttorney *cmn.WithFirstPoattorneyListType `xml:"powerOfAttorney,omitempty"`
@@ -11513,8 +11513,8 @@ type ProcedureCancelType struct {
 	// CommonInfo: Общая информация
 	CommonInfo CommonInfoType `xml:"commonInfo"`
 
-	// PlacerInfo: Информация об организации, разместившей извещение об отмене
-	PlacerInfo PlacerInfo `xml:"placerInfo"`
+	// PlacerInfo4: Информация об организации, разместившей извещение об отмене
+	PlacerInfo PlacerInfo4 `xml:"placerInfo"`
 
 	// CancelInfo: Информация об отмене процедуры заключения контракта
 	CancelInfo CancelType `xml:"cancelInfo"`
@@ -11525,8 +11525,8 @@ type ProcedureCancelType struct {
 	// ExtPrintFormInfo: Электронный документ, полученный из внешней системы
 	ExtPrintFormInfo *cmn.ExtPrintFormType `xml:"extPrintFormInfo,omitempty"`
 
-	// PrintFormFieldsInfo: Дополнительная информация для печатной формы. Игнорируется при приёме, заполняется при передаче из проекта контракта
-	PrintFormFieldsInfo *PrintFormFieldsInfo `xml:"printFormFieldsInfo,omitempty"`
+	// PrintFormFieldsInfo11: Дополнительная информация для печатной формы. Игнорируется при приёме, заполняется при передаче из проекта контракта
+	PrintFormFieldsInfo *PrintFormFieldsInfo11 `xml:"printFormFieldsInfo,omitempty"`
 }
 
 // ProcedureCancelFailureType: Тип: Отмена извещения об отмене процедуры заключения контракта
@@ -11586,23 +11586,23 @@ type Control99ContractProjectExtractType struct {
 	// ControlAuthorityInfo: Сведения об органе контроля
 	ControlAuthorityInfo cmn.Control99ControlAuthorityInfoType `xml:"controlAuthorityInfo"`
 
-	// CommonInfo: Общая информация о проекте контракта
-	CommonInfo CommonInfo `xml:"commonInfo"`
+	// CommonInfo8: Общая информация о проекте контракта
+	CommonInfo CommonInfo8 `xml:"commonInfo"`
 
-	// CustomerInfo: Сведения о заказчике
-	CustomerInfo CustomerInfo `xml:"customerInfo"`
+	// CustomerInfo3: Сведения о заказчике
+	CustomerInfo CustomerInfo3 `xml:"customerInfo"`
 
-	// PlacerInfo: Информация об организации, разместившей проект контракта
-	PlacerInfo PlacerInfo `xml:"placerInfo"`
+	// PlacerInfo5: Информация об организации, разместившей проект контракта
+	PlacerInfo PlacerInfo5 `xml:"placerInfo"`
 
 	// PurchaseInfo: Сведения о закупке
 	PurchaseInfo PurchaseInfo `xml:"purchaseInfo"`
 
-	// ContractProjectFilesInfo: Файлы проекта контракта, направляемого поставщику
-	ContractProjectFilesInfo ContractProjectFilesInfo `xml:"contractProjectFilesInfo"`
+	// ContractProjectFilesInfo4: Файлы проекта контракта, направляемого поставщику
+	ContractProjectFilesInfo ContractProjectFilesInfo4 `xml:"contractProjectFilesInfo"`
 
-	// ChangeInfo: Информация об изменении в проекте контракта, направляемого участнику
-	ChangeInfo *ChangeInfo `xml:"changeInfo,omitempty"`
+	// ChangeInfo1: Информация об изменении в проекте контракта, направляемого участнику
+	ChangeInfo *ChangeInfo1 `xml:"changeInfo,omitempty"`
 
 	// PrintForm: Печатная форма документа
 	PrintForm *cmn.AttachmentType `xml:"printForm,omitempty"`
@@ -11660,8 +11660,8 @@ type ContractProjectLkptype struct {
 	// ExtPrintFormInfo: Электронный документ, полученный из внешней системы
 	ExtPrintFormInfo *cmn.LkpPrintFormType `xml:"extPrintFormInfo,omitempty"`
 
-	// PrintFormFieldsInfo: Дополнительная информация для печатной формы
-	PrintFormFieldsInfo *PrintFormFieldsInfo `xml:"printFormFieldsInfo,omitempty"`
+	// PrintFormFieldsInfo15: Дополнительная информация для печатной формы
+	PrintFormFieldsInfo *PrintFormFieldsInfo15 `xml:"printFormFieldsInfo,omitempty"`
 }
 
 // ContractProjectChangeLkptype: Тип: Доработанный проект контракта на основании размещенного поставщиком протокола разногласий (ЛКП)
@@ -11716,8 +11716,8 @@ type ContractProjectChangeLkptype struct {
 	// ExtPrintFormInfo: Электронный документ, полученный из внешней системы
 	ExtPrintFormInfo *cmn.LkpPrintFormType `xml:"extPrintFormInfo,omitempty"`
 
-	// PrintFormFieldsInfo: Дополнительная информация для печатной формы
-	PrintFormFieldsInfo *PrintFormFieldsInfo `xml:"printFormFieldsInfo,omitempty"`
+	// PrintFormFieldsInfo15: Дополнительная информация для печатной формы
+	PrintFormFieldsInfo *PrintFormFieldsInfo15 `xml:"printFormFieldsInfo,omitempty"`
 }
 
 // ContractProjectSignLkptype: Тип: Проект контракта, подписанный поставщиком (ЛКП)
@@ -11760,8 +11760,8 @@ type ContractProjectSignLkptype struct {
 	// PowerOfAttorney: Сведения о доверенности
 	PowerOfAttorney *cmn.WithFirstPoattorneyListType `xml:"powerOfAttorney,omitempty"`
 
-	// PrintFormFieldsInfo: Дополнительная информация для печатной формы
-	PrintFormFieldsInfo *PrintFormFieldsInfo `xml:"printFormFieldsInfo,omitempty"`
+	// PrintFormFieldsInfo14: Дополнительная информация для печатной формы
+	PrintFormFieldsInfo *PrintFormFieldsInfo14 `xml:"printFormFieldsInfo,omitempty"`
 }
 
 // ContractSignLkptype: Тип: Подписанный контракт (ЛКП)
@@ -11822,8 +11822,8 @@ type ContractSignLkptype struct {
 	// ExtPrintFormInfo: Электронный документ, полученный из внешней системы
 	ExtPrintFormInfo *cmn.LkpPrintFormType `xml:"extPrintFormInfo,omitempty"`
 
-	// PrintFormFieldsInfo: Дополнительная информация для печатной формы
-	PrintFormFieldsInfo *PrintFormFieldsInfo `xml:"printFormFieldsInfo,omitempty"`
+	// PrintFormFieldsInfo15: Дополнительная информация для печатной формы
+	PrintFormFieldsInfo *PrintFormFieldsInfo15 `xml:"printFormFieldsInfo,omitempty"`
 }
 
 // ProtocolDisagreementsLkptype: Тип: Протокол разногласий (ЛКП)
@@ -12032,8 +12032,8 @@ type NoticeCommonType struct {
 	// ParentVersionNumber: Номер версии документа основания. Проверяется наличие размещенного и не отменённого документа основания с указанной версией
 	ParentVersionNumber base.VersionNumberType `xml:"parentVersionNumber"`
 
-	// CommonInfo: Общая информация
-	CommonInfo CommonInfo `xml:"commonInfo"`
+	// CommonInfo9: Общая информация
+	CommonInfo CommonInfo9 `xml:"commonInfo"`
 
 	// ParticipantInfo: Поставщик
 	ParticipantInfo ParticipantType `xml:"participantInfo"`
@@ -12047,8 +12047,8 @@ type NoticeCommonType struct {
 	// ExtPrintFormInfo: Электронный документ, полученный из внешней системы
 	ExtPrintFormInfo cmn.ExtPrintFormType `xml:"extPrintFormInfo"`
 
-	// PrintFormFieldsInfo: Дополнительная информация для печатной формы. Игнорируется при приёме, заполняется при передаче из проекта контракта
-	PrintFormFieldsInfo *PrintFormFieldsInfo `xml:"printFormFieldsInfo,omitempty"`
+	// PrintFormFieldsInfo16: Дополнительная информация для печатной формы. Игнорируется при приёме, заполняется при передаче из проекта контракта
+	PrintFormFieldsInfo *PrintFormFieldsInfo16 `xml:"printFormFieldsInfo,omitempty"`
 }
 
 // AdditionalDocType: Тип: Информация, полученная от поставщика вместе с подписанным проектом контракта
@@ -12070,26 +12070,26 @@ type AdditionalDocType struct {
 	// ParentVersionNumber: Номер версии документа основания. Проверяется наличие размещенного и не отменённого документа основания с указанной версией
 	ParentVersionNumber base.VersionNumberType `xml:"parentVersionNumber"`
 
-	// CommonInfo: Общая информация
-	CommonInfo CommonInfo `xml:"commonInfo"`
+	// CommonInfo10: Общая информация
+	CommonInfo CommonInfo10 `xml:"commonInfo"`
 
-	// RequirementsDocInfo: Документы, подтверждающие обеспечение исполнения контракта
-	RequirementsDocInfo *RequirementsDocInfo `xml:"requirementsDocInfo,omitempty"`
+	// RequirementsDocInfo1: Документы, подтверждающие обеспечение исполнения контракта
+	RequirementsDocInfo *RequirementsDocInfo1 `xml:"requirementsDocInfo,omitempty"`
 
-	// ConscientiousnessDocsInfo: Документы, подтверждающие добросовестность участника
-	ConscientiousnessDocsInfo *ConscientiousnessDocsInfo `xml:"conscientiousnessDocsInfo,omitempty"`
+	// ConscientiousnessDocsInfo1: Документы, подтверждающие добросовестность участника
+	ConscientiousnessDocsInfo *ConscientiousnessDocsInfo1 `xml:"conscientiousnessDocsInfo,omitempty"`
 
 	// ContractPriceFoundationDocInfo: Обоснование предлагаемой цены
 	ContractPriceFoundationDocInfo *cmn.AttachmentListSignCheckUrlType `xml:"contractPriceFoundationDocInfo,omitempty"`
 
-	// ContractProjectFilesInfo: Файлы проекта контракта, подписанные поставщиком. Если в проекте контракта не установлен признак "Проект контракта формируется в структурированном виде" (contractInfo/isStructuredForm), то в блоке должны быть указаны подписанные поставщиком вложения Если в проекте контракта установлен признак "Проект контракта формируется в структурированном виде" (contractInfo/isStructuredForm), то блок игнорируется при приеме
-	ContractProjectFilesInfo *ContractProjectFilesInfo `xml:"contractProjectFilesInfo,omitempty"`
+	// ContractProjectFilesInfo5: Файлы проекта контракта, подписанные поставщиком. Если в проекте контракта не установлен признак "Проект контракта формируется в структурированном виде" (contractInfo/isStructuredForm), то в блоке должны быть указаны подписанные поставщиком вложения Если в проекте контракта установлен признак "Проект контракта формируется в структурированном виде" (contractInfo/isStructuredForm), то блок игнорируется при приеме
+	ContractProjectFilesInfo *ContractProjectFilesInfo5 `xml:"contractProjectFilesInfo,omitempty"`
 
-	// ElectronicContractInfo: Проект электронного контракта в структурированной форме. Если в проекте контракта установлен признак "Проект контракта формируется в структурированном виде" (contractInfo/isStructuredForm), то в блоке указывается проект электронного контракта и приложенные к нему вложения, подписанные поставщиком. Если в проекте контракта не установлен признак "Проект контракта формируется в структурированном виде" (contractInfo/isStructuredForm), , то блок игнорируется при приеме
-	ElectronicContractInfo *ElectronicContractInfo `xml:"electronicContractInfo,omitempty"`
+	// ElectronicContractInfo4: Проект электронного контракта в структурированной форме. Если в проекте контракта установлен признак "Проект контракта формируется в структурированном виде" (contractInfo/isStructuredForm), то в блоке указывается проект электронного контракта и приложенные к нему вложения, подписанные поставщиком. Если в проекте контракта не установлен признак "Проект контракта формируется в структурированном виде" (contractInfo/isStructuredForm), , то блок игнорируется при приеме
+	ElectronicContractInfo *ElectronicContractInfo4 `xml:"electronicContractInfo,omitempty"`
 
-	// ModificationInfo: Основание внесения изменений
-	ModificationInfo *ModificationInfo `xml:"modificationInfo,omitempty"`
+	// ModificationInfo1: Основание внесения изменений
+	ModificationInfo *ModificationInfo1 `xml:"modificationInfo,omitempty"`
 
 	// ExtPrintFormInfo: Электронный документ, полученный из внешней системы. Элемент игнорируется при приёме, оставлен для обратной совместимости
 	ExtPrintFormInfo *cmn.ExtPrintFormType `xml:"extPrintFormInfo,omitempty"`
@@ -12102,17 +12102,17 @@ type AdditionalDocType struct {
 type ParticipantType struct {
 	XMLName xml.Name
 
-	// ParticipantInfoLegalEntityRfinfo: Юридическое лицо РФ
-	LegalEntityRfinfo *ParticipantInfoLegalEntityRfinfo `xml:"legalEntityRFInfo,omitempty"`
+	// ParticipantInfo4LegalEntityRfinfo: Юридическое лицо РФ
+	LegalEntityRfinfo *ParticipantInfo4LegalEntityRfinfo `xml:"legalEntityRFInfo,omitempty"`
 
-	// ParticipantInfoLegalEntityForeignStateInfo: Юридическое лицо иностранного государства
-	LegalEntityForeignStateInfo *ParticipantInfoLegalEntityForeignStateInfo `xml:"legalEntityForeignStateInfo,omitempty"`
+	// ParticipantInfo4LegalEntityForeignStateInfo: Юридическое лицо иностранного государства
+	LegalEntityForeignStateInfo *ParticipantInfo4LegalEntityForeignStateInfo `xml:"legalEntityForeignStateInfo,omitempty"`
 
-	// ParticipantInfoIndividualPersonRfinfo: Физическое лицо РФ
-	IndividualPersonRfinfo *ParticipantInfoIndividualPersonRfinfo `xml:"individualPersonRFInfo,omitempty"`
+	// ParticipantInfo4IndividualPersonRfinfo: Физическое лицо РФ
+	IndividualPersonRfinfo *ParticipantInfo4IndividualPersonRfinfo `xml:"individualPersonRFInfo,omitempty"`
 
-	// ParticipantInfoIndividualPersonForeignStateInfo: Физическое лицо иностранного государства
-	IndividualPersonForeignStateInfo *ParticipantInfoIndividualPersonForeignStateInfo `xml:"individualPersonForeignStateInfo,omitempty"`
+	// ParticipantInfo4IndividualPersonForeignStateInfo: Физическое лицо иностранного государства
+	IndividualPersonForeignStateInfo *ParticipantInfo4IndividualPersonForeignStateInfo `xml:"individualPersonForeignStateInfo,omitempty"`
 }
 
 // ContractProjectCommonType: Тип: Общий тип для проекта контракта
@@ -12131,17 +12131,17 @@ type ContractProjectCommonType struct {
 	// VersionNumber: Номер версии документа
 	VersionNumber *base.VersionNumberType `xml:"versionNumber,omitempty"`
 
-	// FoundationInfo: Основание заключения контракта
-	FoundationInfo FoundationInfo `xml:"foundationInfo"`
+	// FoundationInfo5: Основание заключения контракта
+	FoundationInfo FoundationInfo5 `xml:"foundationInfo"`
 
 	// CustomerInfo: Заказчик. - В случае если в связанном извещении (foundationInfo/purchaseNumber) указан один заказчик, блок игнорируется при приёме, заполняется из связанного извещения; - В случае если в связанном извещении (foundationInfo/purchaseNumber) указано более одного заказчика, требуется обязательное заполнение и проверяется наличие заказчика в связанном извещении
 	CustomerInfo *cmn.OrganizationType `xml:"customerInfo,omitempty"`
 
-	// PlacerInfo: Информация об организации, разместившей контракт
-	PlacerInfo PlacerInfo `xml:"placerInfo"`
+	// PlacerInfo6: Информация об организации, разместившей контракт
+	PlacerInfo PlacerInfo6 `xml:"placerInfo"`
 
-	// ParticipantInfo: Поставщик. При приёме проверяется - Наличие указанного поставщика в связанном итоговом протоколе (foundationInfo/protocolInfo/number); - Отсутствие по закупке с номером указанным в поле (foundationInfo/purchaseNumber) для указанного поставщика размещенного протокола отказа от заключения контратка (fcsProtocolEvasion), или протокола о признании участника уклонившимся от заключения контракта (fcsProtocolDeviation)
-	ParticipantInfo ParticipantInfo `xml:"participantInfo"`
+	// ParticipantInfo6: Поставщик. При приёме проверяется - Наличие указанного поставщика в связанном итоговом протоколе (foundationInfo/protocolInfo/number); - Отсутствие по закупке с номером указанным в поле (foundationInfo/purchaseNumber) для указанного поставщика размещенного протокола отказа от заключения контратка (fcsProtocolEvasion), или протокола о признании участника уклонившимся от заключения контракта (fcsProtocolDeviation)
+	ParticipantInfo ParticipantInfo6 `xml:"participantInfo"`
 
 	// IsSecondParticipant: Контракт заключается с участником, которому по результатам процедуры определения поставщика присвоен воторой номер. Элемент игнорируется при приёме. Заполняется из связанного итогового протокола (foundationInfo/protocolInfo/number). Устарело, не применяется
 	IsSecondParticipant *bool `xml:"isSecondParticipant,omitempty"`
@@ -12149,8 +12149,8 @@ type ContractProjectCommonType struct {
 	// QuantityUndefined: Невозможно определить количество товара, объем подлежащих выполнению работ, оказанию услуг. Игнорируется при приеме. Заполняется автоматически на основании извещения (foundationInfo/purchaseNumber)
 	QuantityUndefined *bool `xml:"quantityUndefined,omitempty"`
 
-	// ContractInfo: Информация о контракте
-	ContractInfo ContractInfo `xml:"contractInfo"`
+	// ContractInfo3: Информация о контракте
+	ContractInfo ContractInfo3 `xml:"contractInfo"`
 
 	// PrintFormInfo: Печатная форма документа. Элемент игнорируется при приёме. При передаче заполняется ссылкой на печатную форму и электронную подпись размещенного в ЕИС документа
 	PrintFormInfo *cmn.PrintFormType `xml:"printFormInfo,omitempty"`
@@ -12191,11 +12191,11 @@ type RelativeAndNotRelativeTermsType struct {
 type RelativeAndNotRelativeTermsWithoutOblType struct {
 	XMLName xml.Name
 
-	// RelativeTermsInfo: Относительные сроки
-	RelativeTermsInfo *RelativeTermsInfo `xml:"relativeTermsInfo,omitempty"`
+	// RelativeTermsInfo1: Относительные сроки
+	RelativeTermsInfo *RelativeTermsInfo1 `xml:"relativeTermsInfo,omitempty"`
 
-	// NotRelativeTermsInfo: Неотносительные сроки
-	NotRelativeTermsInfo *NotRelativeTermsInfo `xml:"notRelativeTermsInfo,omitempty"`
+	// NotRelativeTermsInfo1: Неотносительные сроки
+	NotRelativeTermsInfo *NotRelativeTermsInfo1 `xml:"notRelativeTermsInfo,omitempty"`
 }
 
 // ModificationType: Тип: Основание внесения изменений в контракт
@@ -12219,8 +12219,8 @@ type CancelType struct {
 	// AttachmentsInfo: Прикрепленные документы
 	AttachmentsInfo *cmn.AttachmentListType `xml:"attachmentsInfo,omitempty"`
 
-	// ReasonInfo: Основание отмены процедуры заключения контракта
-	ReasonInfo ReasonInfo `xml:"reasonInfo"`
+	// ReasonInfo1: Основание отмены процедуры заключения контракта
+	ReasonInfo ReasonInfo1 `xml:"reasonInfo"`
 }
 
 // CriteriaProposalsType: Тип: Предложения участника по критериям, предусмотренным пунктами 2 и (или) 3 части 1 статьи 32 Закона № 44-ФЗ
@@ -12321,11 +12321,11 @@ type ProductInfoElectronicContractType struct {
 	// IsNameProductChanged: Наименование объекта закупки изменено
 	IsNameProductChanged *bool `xml:"isNameProductChanged,omitempty"`
 
-	// ParentProductInfoOkpd2Info: Классификация по ОКПД2
-	Okpd2Info *ParentProductInfoOkpd2Info `xml:"OKPD2Info,omitempty"`
+	// Okpd2Info2: Классификация по ОКПД2
+	Okpd2Info *Okpd2Info2 `xml:"OKPD2Info,omitempty"`
 
-	// ParentProductInfoKtruinfo: Классификация по КТРУ
-	Ktruinfo *ParentProductInfoKtruinfo `xml:"KTRUInfo,omitempty"`
+	// Ktruinfo2: Классификация по КТРУ
+	Ktruinfo *Ktruinfo2 `xml:"KTRUInfo,omitempty"`
 
 	// HierarchyType: Тип объекта закупки в иерархии
 	HierarchyType *base.ProductHierarchyTypeEnumType `xml:"hierarchyType,omitempty"`
@@ -12367,8 +12367,8 @@ type DrugProductsInfoElectronicContractType struct {
 	// QuantityUndefined: Невозможно определить количество (объем)
 	QuantityUndefined *bool `xml:"quantityUndefined,omitempty"`
 
-	// ChangePriceInfo: Цена единиц товаров, работ, услуг изменена относительно предложения поставщика в итоговом протоколе (извещении). Принимается если указан признак quantityUndefined и не указан concludeContractRightPrice, иначе игнорируется
-	ChangePriceInfo *ChangePriceInfo `xml:"changePriceInfo,omitempty"`
+	// ChangePriceInfo1: Цена единиц товаров, работ, услуг изменена относительно предложения поставщика в итоговом протоколе (извещении). Принимается если указан признак quantityUndefined и не указан concludeContractRightPrice, иначе игнорируется
+	ChangePriceInfo *ChangePriceInfo1 `xml:"changePriceInfo,omitempty"`
 
 	// IsCancelSplit: Отменить указание цены за единицу ТН
 	IsCancelSplit *bool `xml:"isCancelSplit,omitempty"`
@@ -12396,8 +12396,8 @@ type ParentProductInfoElectronicContractType struct {
 	// Okpd2Info: Классификация по ОКПД2 Игнорируется при приеме, при передаче заполняется из соответствующей позиции извещения (приглашения)
 	Okpd2Info *base.Okpd2Ref `xml:"OKPD2Info,omitempty"`
 
-	// Ktruinfo: Классификация по КТРУ Игнорируется при приеме, при передаче заполняется из соответствующей позиции извещения (приглашения)
-	Ktruinfo *Ktruinfo `xml:"KTRUInfo,omitempty"`
+	// Ktruinfo3: Классификация по КТРУ Игнорируется при приеме, при передаче заполняется из соответствующей позиции извещения (приглашения)
+	Ktruinfo *Ktruinfo3 `xml:"KTRUInfo,omitempty"`
 
 	// HierarchyType: Тип объекта закупки в иерархии. Игнорируется при приеме. Если позиция задана в блоке "Объект закупки" (contractSubjectInfo/productsInfo/ productInfo), то: 1. Если заполнен блок "Родительский объект закупки" (productInfo/parentProductInfo), то заполняется при передаче значением "CH" - Дочерний 2. Иначе заполняется значением "ND" - Недетализированный объект закупки Если позиция задана в блоке "Родительский объект закупки" (contractSubjectInfo/productsInfo/parentProductInfo), то заполняется при передаче значением "P" - Родитель
 	HierarchyType *base.ProductHierarchyTypeEnumType `xml:"hierarchyType,omitempty"`
@@ -12590,8 +12590,8 @@ type ContractProjectOutsideInfoType struct {
 	// Price: Цена контракта (в валюте контракта)
 	Price *base.MoneyPositiveType `xml:"price,omitempty"`
 
-	// ChangePriceInfo: Цена контракта изменена относительно цены в извещении (приглашении)
-	ChangePriceInfo *ChangePriceInfo `xml:"changePriceInfo,omitempty"`
+	// ChangePriceInfo2: Цена контракта изменена относительно цены в извещении (приглашении)
+	ChangePriceInfo *ChangePriceInfo2 `xml:"changePriceInfo,omitempty"`
 }
 
 // SingleSupplierOutsideType: Тип: Закупка у прямого единственного поставщика (ЛКП) "с улицы"
@@ -12674,8 +12674,8 @@ type CpContractInfoType struct {
 	// ConcludeContractRight: Торги проводили на право заключения контракта
 	ConcludeContractRight *bool `xml:"concludeContractRight,omitempty"`
 
-	// ChangePriceInfo: Цена контракта изменена относительно предложения поставщика в итоговом протоколе
-	ChangePriceInfo *ChangePriceInfo `xml:"changePriceInfo,omitempty"`
+	// ChangePriceInfo3: Цена контракта изменена относительно предложения поставщика в итоговом протоколе
+	ChangePriceInfo *ChangePriceInfo3 `xml:"changePriceInfo,omitempty"`
 
 	// Price: Цена контракта (в валюте контракта)/Максимальное значение цены контракта/Цена за право заключения контракта. Элемент игнорируется при приёме
 	Price *base.MoneyPositiveType `xml:"price,omitempty"`
@@ -12848,8 +12848,8 @@ type DrugProductsInfoElectronicAdditionalType struct {
 	// QuantityUndefined: Невозможно определить количество (объем)
 	QuantityUndefined *bool `xml:"quantityUndefined,omitempty"`
 
-	// ChangePriceInfo: Цена контракта изменена относительно цены в извещении (приглашении)
-	ChangePriceInfo *ChangePriceInfo `xml:"changePriceInfo,omitempty"`
+	// ChangePriceInfo4: Цена контракта изменена относительно цены в извещении (приглашении)
+	ChangePriceInfo *ChangePriceInfo4 `xml:"changePriceInfo,omitempty"`
 }
 
 // CustomerInfoDeltaType: Тип: Информация о заказчике для дельты электронного доп соглашения
@@ -13036,11 +13036,11 @@ type ProductInfoElectronicAdditionalType struct {
 	// ExternalSid: Внешний идентификатор объекта закупки
 	ExternalSid *base.ExternalIdType `xml:"externalSid,omitempty"`
 
-	// ParentProductInfoIndexNum: Порядковый номер объекта закупки
-	IndexNum *ParentProductInfoIndexNum `xml:"indexNum,omitempty"`
+	// IndexNum2: Порядковый номер объекта закупки
+	IndexNum *IndexNum2 `xml:"indexNum,omitempty"`
 
-	// ParentProductInfoName: Наименование объекта закупки
-	Name *ParentProductInfoName `xml:"name,omitempty"`
+	// Name2: Наименование объекта закупки
+	Name *Name2 `xml:"name,omitempty"`
 
 	// Okpd2Info: Классификация по ОКПД2
 	Okpd2Info *DlOkpd2InfoType `xml:"OKPD2Info,omitempty"`
@@ -13048,31 +13048,31 @@ type ProductInfoElectronicAdditionalType struct {
 	// Ktruinfo: Классификация по КТРУ
 	Ktruinfo *DlKtruinfoType `xml:"KTRUInfo,omitempty"`
 
-	// ParentProductInfoHierarchyType: Тип объекта закупки в иерархии
-	HierarchyType *ParentProductInfoHierarchyType `xml:"hierarchyType,omitempty"`
+	// HierarchyType2: Тип объекта закупки в иерархии
+	HierarchyType *HierarchyType2 `xml:"hierarchyType,omitempty"`
 
-	// ParentProductInfoType: Тип объекта закупки. Допустимые значения: PRODUCT - товар; WORK - работа; SERVICE - услуга.
-	Type *ParentProductInfoType `xml:"type,omitempty"`
+	// Type2: Тип объекта закупки. Допустимые значения: PRODUCT - товар; WORK - работа; SERVICE - услуга.
+	Type *Type2 `xml:"type,omitempty"`
 
-	// ParentProductInfoSum: Сумма
-	Sum *ParentProductInfoSum `xml:"sum,omitempty"`
+	// Sum2: Сумма
+	Sum *Sum2 `xml:"sum,omitempty"`
 }
 
 // ProductsInfoElectronicAdditionalType: Тип: Объекты закупки в электронном доп.соглашении
 type ProductsInfoElectronicAdditionalType struct {
 	XMLName xml.Name
 
-	// ProductInfo: Объект закупки
-	ProductInfo []ProductInfo `xml:"productInfo,omitempty"`
+	// ProductInfo1: Объект закупки
+	ProductInfo []ProductInfo1 `xml:"productInfo,omitempty"`
 
-	// ParentProductInfo: Родительский объект закупки
-	ParentProductInfo []ParentProductInfo `xml:"parentProductInfo,omitempty"`
+	// ParentProductInfo2: Родительский объект закупки
+	ParentProductInfo []ParentProductInfo2 `xml:"parentProductInfo,omitempty"`
 
 	// QuantityUndefined: Невозможно определить количество товара, объем подлежащих выполнению работ, оказанию услуг
 	QuantityUndefined *QuantityUndefined `xml:"quantityUndefined,omitempty"`
 
-	// ChangePriceInfo: Цена единиц товаров, работ, услуг изменена относительно предложения поставщика в итоговом протоколе (извещении). Принимается если указан признак quantityUndefined и не указан concludeContractRightPrice, иначе игнорируется
-	ChangePriceInfo *ChangePriceInfo `xml:"changePriceInfo,omitempty"`
+	// ChangePriceInfo5: Цена единиц товаров, работ, услуг изменена относительно предложения поставщика в итоговом протоколе (извещении). Принимается если указан признак quantityUndefined и не указан concludeContractRightPrice, иначе игнорируется
+	ChangePriceInfo *ChangePriceInfo5 `xml:"changePriceInfo,omitempty"`
 }
 
 // ThirdParticipantInfoDeltaType: Тип: Информация о контрагенте для оплаты третьим лицам для дельты электронного доп соглашения
@@ -13152,8 +13152,8 @@ type DlCriteriaProposalsInfoType struct {
 	// OfferText: Информация о предложении участника
 	OfferText *base.Text2000Type `xml:"offerText,omitempty"`
 
-	// IndicatorsInfo: Критерий с показателями
-	IndicatorsInfo *IndicatorsInfo `xml:"indicatorsInfo,omitempty"`
+	// IndicatorsInfo1: Критерий с показателями
+	IndicatorsInfo *IndicatorsInfo1 `xml:"indicatorsInfo,omitempty"`
 }
 
 // DlOkeiinfoType: Тип: Единица измерения (дельта)
@@ -13216,11 +13216,11 @@ type DlCharacteristicsUsingTextFormType struct {
 	// ExternalSid: Внешний идентификатор характеристики
 	ExternalSid *base.ExternalIdType `xml:"externalSid,omitempty"`
 
-	// Name: Наименование характеристики
-	Name *Name `xml:"name,omitempty"`
+	// Name3: Наименование характеристики
+	Name *Name3 `xml:"name,omitempty"`
 
-	// Type: Тип характеристики: 1 - качественная; 2 - количественная.
-	Type *Type `xml:"type,omitempty"`
+	// Type3: Тип характеристики: 1 - качественная; 2 - количественная.
+	Type *Type3 `xml:"type,omitempty"`
 
 	// Values: Допустимые значения характеристики
 	Values *Values `xml:"values,omitempty"`
@@ -13253,20 +13253,20 @@ type DlCharacteristicsUsingReferenceInfoValueType struct {
 	// CodeCharacteristicValue: Код значения характеристики
 	CodeCharacteristicValue *CodeCharacteristicValue `xml:"codeCharacteristicValue,omitempty"`
 
-	// QualityDescription: Текстовое описание значения качественной характеристики
-	QualityDescription *QualityDescription `xml:"qualityDescription,omitempty"`
+	// QualityDescription1: Текстовое описание значения качественной характеристики
+	QualityDescription *QualityDescription1 `xml:"qualityDescription,omitempty"`
 
-	// Okei: Единица измерения. Ссылка на классификатор ОКЕИ (nsiOKEI)
-	Okei *Okei `xml:"OKEI,omitempty"`
+	// Okei1: Единица измерения. Ссылка на классификатор ОКЕИ (nsiOKEI)
+	Okei *Okei1 `xml:"OKEI,omitempty"`
 
-	// ValueFormat: Формат значения характеристики: N-числовой; A-дополнительный
-	ValueFormat *ValueFormat `xml:"valueFormat,omitempty"`
+	// ValueFormat1: Формат значения характеристики: N-числовой; A-дополнительный
+	ValueFormat *ValueFormat1 `xml:"valueFormat,omitempty"`
 
-	// RangeSet: Набор диапазонов значений характеристик
-	RangeSet *RangeSet `xml:"rangeSet,omitempty"`
+	// RangeSet1: Набор диапазонов значений характеристик
+	RangeSet *RangeSet1 `xml:"rangeSet,omitempty"`
 
-	// ValueSet: Набор конкретных значений характеристики
-	ValueSet *ValueSet `xml:"valueSet,omitempty"`
+	// ValueSet1: Набор конкретных значений характеристики
+	ValueSet *ValueSet1 `xml:"valueSet,omitempty"`
 }
 
 // DlCharacteristicsUsingReferenceInfo: Тип: Характеристика товара по справочнику (дельта)
@@ -13282,34 +13282,34 @@ type DlCharacteristicsUsingReferenceInfo struct {
 	// Code: Код характеристики
 	Code *Code `xml:"code,omitempty"`
 
-	// Name: Наименование характеристики
-	Name *Name `xml:"name,omitempty"`
+	// Name4: Наименование характеристики
+	Name *Name4 `xml:"name,omitempty"`
 
-	// Type: Тип характеристики позиции КТРУ. Контролируется обязательность заполнения. Является полем, идентифицирующим характеристику: 1 - качественная; 2 - количественная
-	Type *Type `xml:"type,omitempty"`
+	// Type4: Тип характеристики позиции КТРУ. Контролируется обязательность заполнения. Является полем, идентифицирующим характеристику: 1 - качественная; 2 - количественная
+	Type *Type4 `xml:"type,omitempty"`
 
 	// Kind: Вид характеристики позиции КТРУ (игнорируется при приеме, заполняется автоматически на основе кода характеристики): 1 - неизменяемая заказчиком (в применении КТРУ невозможно переопределить справочные значения); 2 - изменяемая заказчиком с выбором одного значения; 3 - изменяемая заказчиком, выбор нескольких значений
 	Kind *Kind `xml:"kind,omitempty"`
 
-	// Values: Допустимые значения характеристики позиции КТРУ
-	Values *Values `xml:"values,omitempty"`
+	// Values1: Допустимые значения характеристики позиции КТРУ
+	Values *Values1 `xml:"values,omitempty"`
 }
 
 // DlKtruinfoType: Тип: Классификация по КТРУ (дельта)
 type DlKtruinfoType struct {
 	XMLName xml.Name
 
-	// Code: Код товара, работы или услуги в справочнике Каталог товаров, работ, услуг (КТРУ) (nsiKTRU)
-	Code Code `xml:"code"`
+	// Code1: Код товара, работы или услуги в справочнике Каталог товаров, работ, услуг (КТРУ) (nsiKTRU)
+	Code Code1 `xml:"code"`
 
-	// Name: Наименование товара, работы или услуги в справочнике Каталог товаров, работ, услуг (КТРУ) (nsiKTRU). Заполняется значением из справочника Каталог товаров, работ, услуг (КТРУ) (nsiKTRU)
-	Name *Name `xml:"name,omitempty"`
+	// Name5: Наименование товара, работы или услуги в справочнике Каталог товаров, работ, услуг (КТРУ) (nsiKTRU). Заполняется значением из справочника Каталог товаров, работ, услуг (КТРУ) (nsiKTRU)
+	Name *Name5 `xml:"name,omitempty"`
 
 	// VersionNumber: Номер версии позиции. Заполняется значением из справочника Каталог товаров, работ, услуг (КТРУ) (nsiKTRU)
 	VersionNumber *VersionNumber `xml:"versionNumber,omitempty"`
 
-	// Characteristics: Характеристики товара, работы, услуги позиции КТРУ. Для родительского объекта закупки не заполняется
-	Characteristics *Characteristics `xml:"characteristics,omitempty"`
+	// Characteristics1: Характеристики товара, работы, услуги позиции КТРУ. Для родительского объекта закупки не заполняется
+	Characteristics *Characteristics1 `xml:"characteristics,omitempty"`
 }
 
 // DltradeInfoType: Тип: Торговое наименование (ТН) лекарственного препарата (дельта)
@@ -13416,47 +13416,47 @@ type DlTradeNamesInfoUsingTextFormType struct {
 	// TradeInfo: Торговое наименование (ТН) лекарственного препарата в текстовой форме
 	TradeInfo *TradeInfo `xml:"tradeInfo,omitempty"`
 
-	// CertificateNumber: Номер регистрационного удостоверения лекарственного препарата
-	CertificateNumber *CertificateNumber `xml:"certificateNumber,omitempty"`
+	// CertificateNumber1: Номер регистрационного удостоверения лекарственного препарата
+	CertificateNumber *CertificateNumber1 `xml:"certificateNumber,omitempty"`
 
-	// CertificateKeeperName: Наименование держателя или владельца регистрационного удостоверения
-	CertificateKeeperName *CertificateKeeperName `xml:"certificateKeeperName,omitempty"`
+	// CertificateKeeperName1: Наименование держателя или владельца регистрационного удостоверения
+	CertificateKeeperName *CertificateKeeperName1 `xml:"certificateKeeperName,omitempty"`
 
-	// MedicamentalFormInfo: Лекарственная форма в текстовой форме
-	MedicamentalFormInfo *MedicamentalFormInfo `xml:"medicamentalFormInfo,omitempty"`
+	// MedicamentalFormInfo1: Лекарственная форма в текстовой форме
+	MedicamentalFormInfo *MedicamentalFormInfo1 `xml:"medicamentalFormInfo,omitempty"`
 
 	// DosageInfo: Дозировка в текстовой форме
 	DosageInfo *DosageInfo `xml:"dosageInfo,omitempty"`
 
-	// PackagingInfo: Сведения об упаковке
-	PackagingInfo *PackagingInfo `xml:"packagingInfo,omitempty"`
+	// PackagingInfo2: Сведения об упаковке
+	PackagingInfo *PackagingInfo2 `xml:"packagingInfo,omitempty"`
 
-	// ConsumerDrugQuantity: Количество в потребительских единицах измерения
-	ConsumerDrugQuantity *ConsumerDrugQuantity `xml:"consumerDrugQuantity,omitempty"`
+	// ConsumerDrugQuantity1: Количество в потребительских единицах измерения
+	ConsumerDrugQuantity *ConsumerDrugQuantity1 `xml:"consumerDrugQuantity,omitempty"`
 
-	// IsConsumerDrugQuantityEdited: Количество в потребительских единицах измерения принято из пакета
-	IsConsumerDrugQuantityEdited *IsConsumerDrugQuantityEdited `xml:"isConsumerDrugQuantityEdited,omitempty"`
+	// IsConsumerDrugQuantityEdited1: Количество в потребительских единицах измерения принято из пакета
+	IsConsumerDrugQuantityEdited *IsConsumerDrugQuantityEdited1 `xml:"isConsumerDrugQuantityEdited,omitempty"`
 
-	// ConsumerPackagingQuantity: Количество потребительских упаковок
-	ConsumerPackagingQuantity *ConsumerPackagingQuantity `xml:"consumerPackagingQuantity,omitempty"`
+	// ConsumerPackagingQuantity1: Количество потребительских упаковок
+	ConsumerPackagingQuantity *ConsumerPackagingQuantity1 `xml:"consumerPackagingQuantity,omitempty"`
 
-	// TotalQuantity: Общее количество
-	TotalQuantity *TotalQuantity `xml:"totalQuantity,omitempty"`
+	// TotalQuantity1: Общее количество
+	TotalQuantity *TotalQuantity1 `xml:"totalQuantity,omitempty"`
 
 	// ManufacturerOksminfo: Производитель лекарственного препарата
 	ManufacturerOksminfo *ManufacturerOksminfo `xml:"manufacturerOKSMInfo,omitempty"`
 
-	// DrugChangeInfo: Информация, указываемая при ручном изменении лекарственного препарата
-	DrugChangeInfo *DrugChangeInfo `xml:"drugChangeInfo,omitempty"`
+	// DrugChangeInfo1: Информация, указываемая при ручном изменении лекарственного препарата
+	DrugChangeInfo *DrugChangeInfo1 `xml:"drugChangeInfo,omitempty"`
 
-	// DosageNormName: Нормализованное описание (исходное) дозировки
-	DosageNormName *DosageNormName `xml:"dosageNormName,omitempty"`
+	// DosageNormName1: Нормализованное описание (исходное) дозировки
+	DosageNormName *DosageNormName1 `xml:"dosageNormName,omitempty"`
 
-	// MedicamentalFormNormName: Нормализованное название (исходное) лекарственной формы
-	MedicamentalFormNormName *MedicamentalFormNormName `xml:"medicamentalFormNormName,omitempty"`
+	// MedicamentalFormNormName1: Нормализованное название (исходное) лекарственной формы
+	MedicamentalFormNormName *MedicamentalFormNormName1 `xml:"medicamentalFormNormName,omitempty"`
 
-	// MnnnormName: Нормализованное описание (исходное) МНН
-	MnnnormName *MnnnormName `xml:"MNNNormName,omitempty"`
+	// MnnnormName1: Нормализованное описание (исходное) МНН
+	MnnnormName *MnnnormName1 `xml:"MNNNormName,omitempty"`
 }
 
 // DlDosageInfoType: Тип: Дозировка (дельта)
@@ -13486,14 +13486,14 @@ type DlMnninfoType struct {
 	// NameDrugProduct: Наименование объекта закупки
 	NameDrugProduct *NameDrugProduct `xml:"nameDrugProduct,omitempty"`
 
-	// Okpd2Info: Классификация по ОКПД2
-	Okpd2Info *Okpd2Info `xml:"OKPD2Info,omitempty"`
+	// Okpd2Info3: Классификация по ОКПД2
+	Okpd2Info *Okpd2Info3 `xml:"OKPD2Info,omitempty"`
 
 	// Ktru: Классификация по КТРУ
 	Ktru *Ktru `xml:"KTRU,omitempty"`
 
-	// MedicamentalFormInfo: Лекарственная форма
-	MedicamentalFormInfo *MedicamentalFormInfo `xml:"medicamentalFormInfo,omitempty"`
+	// MedicamentalFormInfo2: Лекарственная форма
+	MedicamentalFormInfo *MedicamentalFormInfo2 `xml:"medicamentalFormInfo,omitempty"`
 
 	// DosageInfo: Дозировка
 	DosageInfo *DlDosageInfoType `xml:"dosageInfo,omitempty"`
@@ -13504,8 +13504,8 @@ type DlMnninfoType struct {
 	// DrugQuantity: Количество (объем) закупаемого лекарственного препарата
 	DrugQuantity *DrugQuantity `xml:"drugQuantity,omitempty"`
 
-	// Price: Цена за единицу
-	Price *Price `xml:"price,omitempty"`
+	// Price2: Цена за единицу
+	Price *Price2 `xml:"price,omitempty"`
 
 	// VatrateInfo: Ставка НДС
 	VatrateInfo *VatrateInfo `xml:"VATRateInfo,omitempty"`
@@ -13524,35 +13524,35 @@ type DlMnninfoUsingTextFormType struct {
 	// Mnninfo: Международное, группировочное или химическое наименование лекарственного препарата (МНН)
 	Mnninfo *Mnninfo `xml:"MNNInfo,omitempty"`
 
-	// Name: Наименование товара
-	Name *Name `xml:"name,omitempty"`
+	// Name6: Наименование товара
+	Name *Name6 `xml:"name,omitempty"`
 
-	// Okpd2Info: Классификация по ОКПД2
-	Okpd2Info *Okpd2Info `xml:"OKPD2Info,omitempty"`
+	// Okpd2Info4: Классификация по ОКПД2
+	Okpd2Info *Okpd2Info4 `xml:"OKPD2Info,omitempty"`
 
 	// Okeiinfo: Единица измерения
 	Okeiinfo *DlOkeiinfoType `xml:"OKEIInfo,omitempty"`
 
-	// MedicamentalFormInfo: Лекарственная форма в текстовой форме
-	MedicamentalFormInfo *MedicamentalFormInfo `xml:"medicamentalFormInfo,omitempty"`
+	// MedicamentalFormInfo3: Лекарственная форма в текстовой форме
+	MedicamentalFormInfo *MedicamentalFormInfo3 `xml:"medicamentalFormInfo,omitempty"`
 
-	// DosageInfo: Дозировка в текстовой форме
-	DosageInfo *DosageInfo `xml:"dosageInfo,omitempty"`
+	// DosageInfo1: Дозировка в текстовой форме
+	DosageInfo *DosageInfo1 `xml:"dosageInfo,omitempty"`
 
-	// DrugQuantity: Количество (объем) закупаемого лекарственного препарата
-	DrugQuantity *DrugQuantity `xml:"drugQuantity,omitempty"`
+	// DrugQuantity1: Количество (объем) закупаемого лекарственного препарата
+	DrugQuantity *DrugQuantity1 `xml:"drugQuantity,omitempty"`
 
-	// Price: Цена за единицу
-	Price *Price `xml:"price,omitempty"`
+	// Price3: Цена за единицу
+	Price *Price3 `xml:"price,omitempty"`
 
-	// VatrateInfo: Ставка НДС
-	VatrateInfo *VatrateInfo `xml:"VATRateInfo,omitempty"`
+	// VatrateInfo1: Ставка НДС
+	VatrateInfo *VatrateInfo1 `xml:"VATRateInfo,omitempty"`
 
-	// ExpirationDateCustomFormatInfo: Срок годности (годен до) в пользовательском формате. Устарело, не применяется, начиная с версии 14.1 ЕИС
-	ExpirationDateCustomFormatInfo *ExpirationDateCustomFormatInfo `xml:"expirationDateCustomFormatInfo,omitempty"`
+	// ExpirationDateCustomFormatInfo1: Срок годности (годен до) в пользовательском формате. Устарело, не применяется, начиная с версии 14.1 ЕИС
+	ExpirationDateCustomFormatInfo *ExpirationDateCustomFormatInfo1 `xml:"expirationDateCustomFormatInfo,omitempty"`
 
-	// IsZnvlp: Признак включения в реестр жизненно необходимые и важнейших лекарственных препаратов (ЖНВЛП)
-	IsZnvlp *IsZnvlp `xml:"isZNVLP,omitempty"`
+	// IsZnvlp1: Признак включения в реестр жизненно необходимые и важнейших лекарственных препаратов (ЖНВЛП)
+	IsZnvlp *IsZnvlp1 `xml:"isZNVLP,omitempty"`
 
 	// BasicUnit: Признак основного варианта поставки
 	BasicUnit *BasicUnit `xml:"basicUnit,omitempty"`

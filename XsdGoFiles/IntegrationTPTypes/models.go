@@ -133,8 +133,8 @@ type OutcomeIndicators struct {
 	KokssTotalsInfo *OutcomeIndicatorsKokssTotalsInfo `xml:"KOKSsTotalsInfo,omitempty"`
 }
 
-// NotPublishedOnEisinfoPositions: Позиции плана-графика закупок с признаком «Информация, не подлежащая размещению»
-type NotPublishedOnEisinfoPositions struct {
+// Positions1: Позиции плана-графика закупок с признаком «Информация, не подлежащая размещению»
+type Positions1 struct {
 	XMLName xml.Name `xml:"positions"`
 
 	// Position: Позиция плана-графика закупок с признаком «Информация, не подлежащая размещению». В рамках блока значение true может быть указано только для одного из признаков: - "Планируется заключение энергосервисного контракта" (isEnergyServiceContract) - "Закупка на оказание услуг по предоставлению кредита" (isProvisionLendingServices) - "Закупка работ по строительству, реконструкции объекта капитального строительства" (isConstructionWorks) (совместно может быть указан признак isNotFederalFinancing)
@@ -217,38 +217,38 @@ type OutcomeIndicatorsKokssTotalsInfo1 struct {
 	KokstotalsInfo []TenderPlan2020KoksinfoType `xml:",any"`
 }
 
-// NotPublishedOnEisinfoOutcomeIndicators: Итоговые показатели для позиций как "открытых", так и "закрытых" (содержащим признак «Информация, не подлежащая размещению»)
-type NotPublishedOnEisinfoOutcomeIndicators struct {
+// OutcomeIndicators1: Итоговые показатели для позиций как "открытых", так и "закрытых" (содержащим признак «Информация, не подлежащая размещению»)
+type OutcomeIndicators1 struct {
 	XMLName xml.Name `xml:"outcomeIndicators,omitempty"`
 
 	// TotalsInfo: Итого для осуществления закупок. Значения блока игнорируются при приеме, автоматически рассчитываются как сумма соответствующих полей position\financeInfo для всех позиций плана-графика закупок и сумма соответствующих полей specialPurchase\yearFinanceInfo для всех особых закупок плана-графика закупок
 	TotalsInfo *TenderPlan2020FinanceResourcesType `xml:"totalsInfo,omitempty"`
 
-	// NotPublishedOnEisinfoOutcomeIndicatorsKbksTotalsInfo: Итоговые показатели по кодам бюджетной классификации. Блоки «Итоговый показатель по коду бюджетной классификации» (outcomeIndicators/KBKsTotalsInfo/KBKTotalsInfo) игонрируются при приеме, автоматически заполняются значениями блоков «Детализация по коду бюджетной классификации» (positions/position/financeInfo/KBKsInfo/KBKInfo) всех позиций и из блоков «Детализация по коду бюджетной классификации» (specialPurchasePositions/specialPurchasePosition/KBKsInfo/KBKInfo) всех позиций особых закупок
-	KbksTotalsInfo *NotPublishedOnEisinfoOutcomeIndicatorsKbksTotalsInfo `xml:"KBKsTotalsInfo,omitempty"`
+	// OutcomeIndicators1KbksTotalsInfo: Итоговые показатели по кодам бюджетной классификации. Блоки «Итоговый показатель по коду бюджетной классификации» (outcomeIndicators/KBKsTotalsInfo/KBKTotalsInfo) игонрируются при приеме, автоматически заполняются значениями блоков «Детализация по коду бюджетной классификации» (positions/position/financeInfo/KBKsInfo/KBKInfo) всех позиций и из блоков «Детализация по коду бюджетной классификации» (specialPurchasePositions/specialPurchasePosition/KBKsInfo/KBKInfo) всех позиций особых закупок
+	KbksTotalsInfo *OutcomeIndicators1KbksTotalsInfo `xml:"KBKsTotalsInfo,omitempty"`
 
-	// NotPublishedOnEisinfoOutcomeIndicatorsTargetArticlesTotalsInfo: Итоговые показатели по целевым статьям. Игнорируется при приеме, автоматически заполняется значениями из блока «Детализации по целевым статьям» (positions/position/targetArticlesInfo) всех позиций и из блоков «Детализации по целевым статьям» (specialPurchasePositions/specialPurchasePosition/targetArticlesInfo) всех позиций особых закупок
-	TargetArticlesTotalsInfo *NotPublishedOnEisinfoOutcomeIndicatorsTargetArticlesTotalsInfo `xml:"targetArticlesTotalsInfo,omitempty"`
+	// OutcomeIndicators1TargetArticlesTotalsInfo: Итоговые показатели по целевым статьям. Игнорируется при приеме, автоматически заполняется значениями из блока «Детализации по целевым статьям» (positions/position/targetArticlesInfo) всех позиций и из блоков «Детализации по целевым статьям» (specialPurchasePositions/specialPurchasePosition/targetArticlesInfo) всех позиций особых закупок
+	TargetArticlesTotalsInfo *OutcomeIndicators1TargetArticlesTotalsInfo `xml:"targetArticlesTotalsInfo,omitempty"`
 
-	// NotPublishedOnEisinfoOutcomeIndicatorsKvrsTotalsInfo: Итоговые показатели по кодам видов расходов. Игнорируется при приеме, автоматически заполняется значениями из блока «Детализации по КВР» (positions/position/KVRsInfo) всех позиций и из блока «Детализации по КВР» (specialPurchasePositions/specialPurchasePosition/KVRsInfo) всех позиций особых закупок
-	KvrsTotalsInfo *NotPublishedOnEisinfoOutcomeIndicatorsKvrsTotalsInfo `xml:"KVRsTotalsInfo,omitempty"`
+	// OutcomeIndicators1KvrsTotalsInfo: Итоговые показатели по кодам видов расходов. Игнорируется при приеме, автоматически заполняется значениями из блока «Детализации по КВР» (positions/position/KVRsInfo) всех позиций и из блока «Детализации по КВР» (specialPurchasePositions/specialPurchasePosition/KVRsInfo) всех позиций особых закупок
+	KvrsTotalsInfo *OutcomeIndicators1KvrsTotalsInfo `xml:"KVRsTotalsInfo,omitempty"`
 
-	// NotPublishedOnEisinfoOutcomeIndicatorsAgreementsTotalsInfo: Итоговые показатели по соглашениям о предоставлении субсидий. При приеме контролируется уникальность соглашения по сочетанию полей "Номер соглашения, "Дата соглашения", "Код типа соглашения"
-	AgreementsTotalsInfo *NotPublishedOnEisinfoOutcomeIndicatorsAgreementsTotalsInfo `xml:"agreementsTotalsInfo,omitempty"`
+	// OutcomeIndicators1AgreementsTotalsInfo: Итоговые показатели по соглашениям о предоставлении субсидий. При приеме контролируется уникальность соглашения по сочетанию полей "Номер соглашения, "Дата соглашения", "Код типа соглашения"
+	AgreementsTotalsInfo *OutcomeIndicators1AgreementsTotalsInfo `xml:"agreementsTotalsInfo,omitempty"`
 
-	// NotPublishedOnEisinfoOutcomeIndicatorsKokssTotalsInfo: Итоговые показатели по кодам ОКС/ОНИ (КОКС). Игнорируется при приеме, автоматически заполняется значениями из блока «Детализации по кодам объектов капитального строительства / недвижимого имущества» (positions/position/KOKSsInfo) всех позиций
-	KokssTotalsInfo *NotPublishedOnEisinfoOutcomeIndicatorsKokssTotalsInfo `xml:"KOKSsTotalsInfo,omitempty"`
+	// OutcomeIndicators1KokssTotalsInfo: Итоговые показатели по кодам ОКС/ОНИ (КОКС). Игнорируется при приеме, автоматически заполняется значениями из блока «Детализации по кодам объектов капитального строительства / недвижимого имущества» (positions/position/KOKSsInfo) всех позиций
+	KokssTotalsInfo *OutcomeIndicators1KokssTotalsInfo `xml:"KOKSsTotalsInfo,omitempty"`
 }
 
 // NotPublishedOnEisinfo: Позиции с признаком «Информация, не подлежащая размещению». Итоговые показатели и электронный документ по "открытым" и "закрытым" позициям. Указание одного из блоков positions или specialPurchasePositions или notPublishedOnEISInfo обязательно при приеме
 type NotPublishedOnEisinfo struct {
 	XMLName xml.Name `xml:"notPublishedOnEISInfo,omitempty"`
 
-	// NotPublishedOnEisinfoPositions: Позиции плана-графика закупок с признаком «Информация, не подлежащая размещению»
-	Positions NotPublishedOnEisinfoPositions `xml:"positions"`
+	// Positions3: Позиции плана-графика закупок с признаком «Информация, не подлежащая размещению»
+	Positions Positions3 `xml:"positions"`
 
-	// NotPublishedOnEisinfoOutcomeIndicators: Итоговые показатели для позиций как "открытых", так и "закрытых" (содержащим признак «Информация, не подлежащая размещению»)
-	OutcomeIndicators *NotPublishedOnEisinfoOutcomeIndicators `xml:"outcomeIndicators,omitempty"`
+	// OutcomeIndicators3: Итоговые показатели для позиций как "открытых", так и "закрытых" (содержащим признак «Информация, не подлежащая размещению»)
+	OutcomeIndicators *OutcomeIndicators3 `xml:"outcomeIndicators,omitempty"`
 
 	// PrintForm: Печатная форма плана-графика закупок. Игнорируется при приеме, заполняется при передаче содержимым сведений позиций как "открытых", так и "закрытых"(содержащим признак «Информация, не подлежащая размещению»)
 	PrintForm *cmn.PrintFormType `xml:"printForm,omitempty"`
@@ -257,8 +257,8 @@ type NotPublishedOnEisinfo struct {
 	ExtPrintForm *cmn.ExtPrintFormType `xml:"extPrintForm,omitempty"`
 }
 
-// Positions1: Позиции плана-графика закупок. Указание одного из блоков positions или specialPurchasePositions или notPublishedOnEISInfo обязательно при приеме
-type Positions1 struct {
+// Positions2: Позиции плана-графика закупок. Указание одного из блоков positions или specialPurchasePositions или notPublishedOnEISInfo обязательно при приеме
+type Positions2 struct {
 	XMLName xml.Name `xml:"positions,omitempty"`
 
 	// Position: Позиция плана-графика закупок. Значение true может быть указано только для одного из признаков: - "Планируется заключение энергосервисного контракта" (isEnergyServiceContract) - "Закупка на оказание услуг по предоставлению кредита" (isProvisionLendingServices) - "Закупка работ по строительству, реконструкции объекта капитального строительства" (isConstructionWorks)
@@ -357,8 +357,8 @@ type OutcomeIndicatorsKokssTotalsInfo2 struct {
 	KokstotalsInfo []TenderPlan2020KoksinfoType `xml:",any"`
 }
 
-// OutcomeIndicators1: Итоговые показатели
-type OutcomeIndicators1 struct {
+// OutcomeIndicators2: Итоговые показатели
+type OutcomeIndicators2 struct {
 	XMLName xml.Name `xml:"outcomeIndicators,omitempty"`
 
 	// TotalsInfo: Итого для осуществления закупок. Значения блока игнорируются при приеме, автоматически рассчитываются как сумма соответствующих полей position\financeInfo для всех позиций плана-графика закупок и сумма соответствующих полей specialPurchase\yearFinanceInfo для всех особых закупок плана-графика закупок
@@ -380,8 +380,8 @@ type OutcomeIndicators1 struct {
 	KokssTotalsInfo *OutcomeIndicatorsKokssTotalsInfo `xml:"KOKSsTotalsInfo,omitempty"`
 }
 
-// NotPublishedOnEisinfoPositions1: Позиции плана-графика закупок с признаком «Информация, не подлежащая размещению»
-type NotPublishedOnEisinfoPositions1 struct {
+// Positions3: Позиции плана-графика закупок с признаком «Информация, не подлежащая размещению»
+type Positions3 struct {
 	XMLName xml.Name `xml:"positions"`
 
 	// Position: Позиция плана-графика закупок с признаком «Информация, не подлежащая размещению». В рамках блока значение true может быть указано только для одного из признаков: - "Планируется заключение энергосервисного контракта" (isEnergyServiceContract) - "Закупка на оказание услуг по предоставлению кредита" (isProvisionLendingServices) - "Закупка работ по строительству, реконструкции объекта капитального строительства" (isConstructionWorks) (совместно может быть указан признак isNotFederalFinancing)
@@ -399,8 +399,8 @@ type OutcomeIndicatorsKbksTotalsInfoKbktotalsInfo1 struct {
 	KbktotalsYearsInfo TenderPlan2020FinanceResourcesType `xml:"KBKTotalsYearsInfo"`
 }
 
-// NotPublishedOnEisinfoOutcomeIndicatorsKbksTotalsInfo: Итоговые показатели по кодам бюджетной классификации. Блоки «Итоговый показатель по коду бюджетной классификации» (outcomeIndicators/KBKsTotalsInfo/KBKTotalsInfo) игонрируются при приеме, автоматически заполняются значениями блоков «Детализация по коду бюджетной классификации» (positions/position/financeInfo/KBKsInfo/KBKInfo) всех позиций и из блоков «Детализация по коду бюджетной классификации» (specialPurchasePositions/specialPurchasePosition/KBKsInfo/KBKInfo) всех позиций особых закупок
-type NotPublishedOnEisinfoOutcomeIndicatorsKbksTotalsInfo struct {
+// OutcomeIndicators1KbksTotalsInfo: Итоговые показатели по кодам бюджетной классификации. Блоки «Итоговый показатель по коду бюджетной классификации» (outcomeIndicators/KBKsTotalsInfo/KBKTotalsInfo) игонрируются при приеме, автоматически заполняются значениями блоков «Детализация по коду бюджетной классификации» (positions/position/financeInfo/KBKsInfo/KBKInfo) всех позиций и из блоков «Детализация по коду бюджетной классификации» (specialPurchasePositions/specialPurchasePosition/KBKsInfo/KBKInfo) всех позиций особых закупок
+type OutcomeIndicators1KbksTotalsInfo struct {
 	XMLName xml.Name `xml:"KBKsTotalsInfo,omitempty"`
 
 	// ExtraBudgetFundsTotalsInfo: Итого из внебюджетных средств. Значения блока автоматически расчитывается как сумма соответствующих полей блока «Итого из внебюджетных средств» (positions/position/financeInfo/KBKsInfo/extraBudgetFundsTotalsInfo) всех позиций и сумма соответствующих полей блока «Итого из внебюджетных средств» (specialPurchasePositions/specialPurchasePosition/KBKsInfo/extraBudgetFundsTotalsInfo) всех позиций особых закупок
@@ -421,8 +421,8 @@ type OutcomeIndicatorsTargetArticlesTotalsInfoTargetArticleTotalsInfo1 struct {
 	TargetArticleTotalsYearsInfo TenderPlan2020FinanceResourcesType `xml:"targetArticleTotalsYearsInfo"`
 }
 
-// NotPublishedOnEisinfoOutcomeIndicatorsTargetArticlesTotalsInfo: Итоговые показатели по целевым статьям. Игнорируется при приеме, автоматически заполняется значениями из блока «Детализации по целевым статьям» (positions/position/targetArticlesInfo) всех позиций и из блоков «Детализации по целевым статьям» (specialPurchasePositions/specialPurchasePosition/targetArticlesInfo) всех позиций особых закупок
-type NotPublishedOnEisinfoOutcomeIndicatorsTargetArticlesTotalsInfo struct {
+// OutcomeIndicators1TargetArticlesTotalsInfo: Итоговые показатели по целевым статьям. Игнорируется при приеме, автоматически заполняется значениями из блока «Детализации по целевым статьям» (positions/position/targetArticlesInfo) всех позиций и из блоков «Детализации по целевым статьям» (specialPurchasePositions/specialPurchasePosition/targetArticlesInfo) всех позиций особых закупок
+type OutcomeIndicators1TargetArticlesTotalsInfo struct {
 	XMLName xml.Name `xml:"targetArticlesTotalsInfo,omitempty"`
 
 	// OutcomeIndicatorsTargetArticlesTotalsInfoTargetArticleTotalsInfo: Итоговый показатель по целевой статье
@@ -440,62 +440,62 @@ type OutcomeIndicatorsKvrsTotalsInfoKvrtotalsInfo1 struct {
 	KvrtotalsYearsInfo TenderPlan2020FinanceResourcesType `xml:"KVRTotalsYearsInfo"`
 }
 
-// NotPublishedOnEisinfoOutcomeIndicatorsKvrsTotalsInfo: Итоговые показатели по кодам видов расходов. Игнорируется при приеме, автоматически заполняется значениями из блока «Детализации по КВР» (positions/position/KVRsInfo) всех позиций и из блока «Детализации по КВР» (specialPurchasePositions/specialPurchasePosition/KVRsInfo) всех позиций особых закупок
-type NotPublishedOnEisinfoOutcomeIndicatorsKvrsTotalsInfo struct {
+// OutcomeIndicators1KvrsTotalsInfo: Итоговые показатели по кодам видов расходов. Игнорируется при приеме, автоматически заполняется значениями из блока «Детализации по КВР» (positions/position/KVRsInfo) всех позиций и из блока «Детализации по КВР» (specialPurchasePositions/specialPurchasePosition/KVRsInfo) всех позиций особых закупок
+type OutcomeIndicators1KvrsTotalsInfo struct {
 	XMLName xml.Name `xml:"KVRsTotalsInfo,omitempty"`
 
 	// OutcomeIndicatorsKvrsTotalsInfoKvrtotalsInfo: Итоговый показатель по коду вида расхода
 	KvrtotalsInfo []OutcomeIndicatorsKvrsTotalsInfoKvrtotalsInfo `xml:",any"`
 }
 
-// NotPublishedOnEisinfoOutcomeIndicatorsAgreementsTotalsInfo: Итоговые показатели по соглашениям о предоставлении субсидий. При приеме контролируется уникальность соглашения по сочетанию полей "Номер соглашения, "Дата соглашения", "Код типа соглашения"
-type NotPublishedOnEisinfoOutcomeIndicatorsAgreementsTotalsInfo struct {
+// OutcomeIndicators1AgreementsTotalsInfo: Итоговые показатели по соглашениям о предоставлении субсидий. При приеме контролируется уникальность соглашения по сочетанию полей "Номер соглашения, "Дата соглашения", "Код типа соглашения"
+type OutcomeIndicators1AgreementsTotalsInfo struct {
 	XMLName xml.Name `xml:"agreementsTotalsInfo,omitempty"`
 
 	// AgreementTotalsInfo: Итоговый показатель по соглашениям о предоставлении субсидий
 	AgreementTotalsInfo []TenderPlan2020AgreementTotalsInfoType `xml:",any"`
 }
 
-// NotPublishedOnEisinfoOutcomeIndicatorsKokssTotalsInfo: Итоговые показатели по кодам ОКС/ОНИ (КОКС). Игнорируется при приеме, автоматически заполняется значениями из блока «Детализации по кодам объектов капитального строительства / недвижимого имущества» (positions/position/KOKSsInfo) всех позиций
-type NotPublishedOnEisinfoOutcomeIndicatorsKokssTotalsInfo struct {
+// OutcomeIndicators1KokssTotalsInfo: Итоговые показатели по кодам ОКС/ОНИ (КОКС). Игнорируется при приеме, автоматически заполняется значениями из блока «Детализации по кодам объектов капитального строительства / недвижимого имущества» (positions/position/KOKSsInfo) всех позиций
+type OutcomeIndicators1KokssTotalsInfo struct {
 	XMLName xml.Name `xml:"KOKSsTotalsInfo,omitempty"`
 
 	// KokstotalsInfo: Итоговый показатель по коду ОКС/ОНИ (КОКС)
 	KokstotalsInfo []TenderPlan2020KoksinfoType `xml:",any"`
 }
 
-// NotPublishedOnEisinfoOutcomeIndicators1: Итоговые показатели для позиций как "открытых", так и "закрытых" (содержащим признак «Информация, не подлежащая размещению»)
-type NotPublishedOnEisinfoOutcomeIndicators1 struct {
+// OutcomeIndicators3: Итоговые показатели для позиций как "открытых", так и "закрытых" (содержащим признак «Информация, не подлежащая размещению»)
+type OutcomeIndicators3 struct {
 	XMLName xml.Name `xml:"outcomeIndicators,omitempty"`
 
 	// TotalsInfo: Итого для осуществления закупок. Значения блока игнорируются при приеме, автоматически рассчитываются как сумма соответствующих полей position\financeInfo для всех позиций плана-графика закупок и сумма соответствующих полей specialPurchase\yearFinanceInfo для всех особых закупок плана-графика закупок
 	TotalsInfo *TenderPlan2020FinanceResourcesType `xml:"totalsInfo,omitempty"`
 
-	// NotPublishedOnEisinfoOutcomeIndicatorsKbksTotalsInfo: Итоговые показатели по кодам бюджетной классификации. Блоки «Итоговый показатель по коду бюджетной классификации» (outcomeIndicators/KBKsTotalsInfo/KBKTotalsInfo) игонрируются при приеме, автоматически заполняются значениями блоков «Детализация по коду бюджетной классификации» (positions/position/financeInfo/KBKsInfo/KBKInfo) всех позиций и из блоков «Детализация по коду бюджетной классификации» (specialPurchasePositions/specialPurchasePosition/KBKsInfo/KBKInfo) всех позиций особых закупок
-	KbksTotalsInfo *NotPublishedOnEisinfoOutcomeIndicatorsKbksTotalsInfo `xml:"KBKsTotalsInfo,omitempty"`
+	// OutcomeIndicators1KbksTotalsInfo: Итоговые показатели по кодам бюджетной классификации. Блоки «Итоговый показатель по коду бюджетной классификации» (outcomeIndicators/KBKsTotalsInfo/KBKTotalsInfo) игонрируются при приеме, автоматически заполняются значениями блоков «Детализация по коду бюджетной классификации» (positions/position/financeInfo/KBKsInfo/KBKInfo) всех позиций и из блоков «Детализация по коду бюджетной классификации» (specialPurchasePositions/specialPurchasePosition/KBKsInfo/KBKInfo) всех позиций особых закупок
+	KbksTotalsInfo *OutcomeIndicators1KbksTotalsInfo `xml:"KBKsTotalsInfo,omitempty"`
 
-	// NotPublishedOnEisinfoOutcomeIndicatorsTargetArticlesTotalsInfo: Итоговые показатели по целевым статьям. Игнорируется при приеме, автоматически заполняется значениями из блока «Детализации по целевым статьям» (positions/position/targetArticlesInfo) всех позиций и из блоков «Детализации по целевым статьям» (specialPurchasePositions/specialPurchasePosition/targetArticlesInfo) всех позиций особых закупок
-	TargetArticlesTotalsInfo *NotPublishedOnEisinfoOutcomeIndicatorsTargetArticlesTotalsInfo `xml:"targetArticlesTotalsInfo,omitempty"`
+	// OutcomeIndicators1TargetArticlesTotalsInfo: Итоговые показатели по целевым статьям. Игнорируется при приеме, автоматически заполняется значениями из блока «Детализации по целевым статьям» (positions/position/targetArticlesInfo) всех позиций и из блоков «Детализации по целевым статьям» (specialPurchasePositions/specialPurchasePosition/targetArticlesInfo) всех позиций особых закупок
+	TargetArticlesTotalsInfo *OutcomeIndicators1TargetArticlesTotalsInfo `xml:"targetArticlesTotalsInfo,omitempty"`
 
-	// NotPublishedOnEisinfoOutcomeIndicatorsKvrsTotalsInfo: Итоговые показатели по кодам видов расходов. Игнорируется при приеме, автоматически заполняется значениями из блока «Детализации по КВР» (positions/position/KVRsInfo) всех позиций и из блока «Детализации по КВР» (specialPurchasePositions/specialPurchasePosition/KVRsInfo) всех позиций особых закупок
-	KvrsTotalsInfo *NotPublishedOnEisinfoOutcomeIndicatorsKvrsTotalsInfo `xml:"KVRsTotalsInfo,omitempty"`
+	// OutcomeIndicators1KvrsTotalsInfo: Итоговые показатели по кодам видов расходов. Игнорируется при приеме, автоматически заполняется значениями из блока «Детализации по КВР» (positions/position/KVRsInfo) всех позиций и из блока «Детализации по КВР» (specialPurchasePositions/specialPurchasePosition/KVRsInfo) всех позиций особых закупок
+	KvrsTotalsInfo *OutcomeIndicators1KvrsTotalsInfo `xml:"KVRsTotalsInfo,omitempty"`
 
-	// NotPublishedOnEisinfoOutcomeIndicatorsAgreementsTotalsInfo: Итоговые показатели по соглашениям о предоставлении субсидий. При приеме контролируется уникальность соглашения по сочетанию полей "Номер соглашения, "Дата соглашения", "Код типа соглашения"
-	AgreementsTotalsInfo *NotPublishedOnEisinfoOutcomeIndicatorsAgreementsTotalsInfo `xml:"agreementsTotalsInfo,omitempty"`
+	// OutcomeIndicators1AgreementsTotalsInfo: Итоговые показатели по соглашениям о предоставлении субсидий. При приеме контролируется уникальность соглашения по сочетанию полей "Номер соглашения, "Дата соглашения", "Код типа соглашения"
+	AgreementsTotalsInfo *OutcomeIndicators1AgreementsTotalsInfo `xml:"agreementsTotalsInfo,omitempty"`
 
-	// NotPublishedOnEisinfoOutcomeIndicatorsKokssTotalsInfo: Итоговые показатели по кодам ОКС/ОНИ (КОКС). Игнорируется при приеме, автоматически заполняется значениями из блока «Детализации по кодам объектов капитального строительства / недвижимого имущества» (positions/position/KOKSsInfo) всех позиций
-	KokssTotalsInfo *NotPublishedOnEisinfoOutcomeIndicatorsKokssTotalsInfo `xml:"KOKSsTotalsInfo,omitempty"`
+	// OutcomeIndicators1KokssTotalsInfo: Итоговые показатели по кодам ОКС/ОНИ (КОКС). Игнорируется при приеме, автоматически заполняется значениями из блока «Детализации по кодам объектов капитального строительства / недвижимого имущества» (positions/position/KOKSsInfo) всех позиций
+	KokssTotalsInfo *OutcomeIndicators1KokssTotalsInfo `xml:"KOKSsTotalsInfo,omitempty"`
 }
 
 // NotPublishedOnEisinfo1: Позиции с признаком «Информация, не подлежащая размещению». Итоговые показатели и электронный документ по "открытым" и "закрытым" позициям. Указание одного из блоков positions или specialPurchasePositions или notPublishedOnEISInfo обязательно при приеме
 type NotPublishedOnEisinfo1 struct {
 	XMLName xml.Name `xml:"notPublishedOnEISInfo,omitempty"`
 
-	// NotPublishedOnEisinfoPositions: Позиции плана-графика закупок с признаком «Информация, не подлежащая размещению»
-	Positions NotPublishedOnEisinfoPositions `xml:"positions"`
+	// Positions3: Позиции плана-графика закупок с признаком «Информация, не подлежащая размещению»
+	Positions Positions3 `xml:"positions"`
 
-	// NotPublishedOnEisinfoOutcomeIndicators: Итоговые показатели для позиций как "открытых", так и "закрытых" (содержащим признак «Информация, не подлежащая размещению»)
-	OutcomeIndicators *NotPublishedOnEisinfoOutcomeIndicators `xml:"outcomeIndicators,omitempty"`
+	// OutcomeIndicators3: Итоговые показатели для позиций как "открытых", так и "закрытых" (содержащим признак «Информация, не подлежащая размещению»)
+	OutcomeIndicators *OutcomeIndicators3 `xml:"outcomeIndicators,omitempty"`
 
 	// PrintForm: Печатная форма плана-графика закупок. Игнорируется при приеме, заполняется при передаче содержимым сведений позиций как "открытых", так и "закрытых"(содержащим признак «Информация, не подлежащая размещению»)
 	PrintForm *cmn.PrintFormType `xml:"printForm,omitempty"`
@@ -504,8 +504,8 @@ type NotPublishedOnEisinfo1 struct {
 	ExtPrintForm *cmn.ExtPrintFormType `xml:"extPrintForm,omitempty"`
 }
 
-// Positions2: Позиции плана-графика закупок
-type Positions2 struct {
+// Positions4: Позиции плана-графика закупок
+type Positions4 struct {
 	XMLName xml.Name `xml:"positions,omitempty"`
 
 	// Position: Позиция плана-графика закупок
@@ -596,8 +596,8 @@ type OutcomeIndicatorsAgreementsTotalsInfo3 struct {
 	AgreementTotalsInfo []TenderPlan2020AgreementTotalsInfoType `xml:",any"`
 }
 
-// OutcomeIndicators2: Итоговые показатели
-type OutcomeIndicators2 struct {
+// OutcomeIndicators4: Итоговые показатели
+type OutcomeIndicators4 struct {
 	XMLName xml.Name `xml:"outcomeIndicators,omitempty"`
 
 	// TotalsInfo: Итого для осуществления закупок. Значения блока игнорируются при приеме, автоматически рассчитываются как сумма соответствующих полей position\financeInfo для всех позиций ПГ и сумма соответствующих полей specialPurchase\yearFinanceInfo для всех особых закупок ПГ
@@ -616,8 +616,8 @@ type OutcomeIndicators2 struct {
 	AgreementsTotalsInfo *OutcomeIndicatorsAgreementsTotalsInfo `xml:"agreementsTotalsInfo,omitempty"`
 }
 
-// NotPublishedOnEisinfoPositions2: Позиции плана-графика закупок с признаком «Информация, не подлежащая размещению»
-type NotPublishedOnEisinfoPositions2 struct {
+// Positions5: Позиции плана-графика закупок с признаком «Информация, не подлежащая размещению»
+type Positions5 struct {
 	XMLName xml.Name `xml:"positions"`
 
 	// Position: Позиция плана-графика закупок с признаком «Информация, не подлежащая размещению». В рамках блока значение true может быть указано только для одного из признаков: - "Планируется заключение энергосервисного контракта" (isEnergyServiceContract) - "Закупка на оказание услуг по предоставлению кредита" (isProvisionLendingServices) - "Закупка работ по строительству, реконструкции объекта капитального строительства" (isConstructionWorks)
@@ -692,8 +692,8 @@ type OutcomeIndicatorsAgreementsTotalsInfo4 struct {
 	AgreementTotalsInfo []TenderPlan2020AgreementTotalsInfoType `xml:",any"`
 }
 
-// NotPublishedOnEisinfoOutcomeIndicators2: Итоговые показатели для позиций как "открытых", так и "закрытых" (содержащим признак «Информация, не подлежащая размещению»)
-type NotPublishedOnEisinfoOutcomeIndicators2 struct {
+// OutcomeIndicators5: Итоговые показатели для позиций как "открытых", так и "закрытых" (содержащим признак «Информация, не подлежащая размещению»)
+type OutcomeIndicators5 struct {
 	XMLName xml.Name `xml:"outcomeIndicators,omitempty"`
 
 	// TotalsInfo: Итого для осуществления закупок. Значения блока игнорируются при приеме, автоматически рассчитываются как сумма соответствующих полей position\financeInfo для всех позиций плана-графика закупок и сумма соответствующих полей specialPurchase\yearFinanceInfo для всех особых закупок плана-графика закупок
@@ -716,11 +716,11 @@ type NotPublishedOnEisinfoOutcomeIndicators2 struct {
 type NotPublishedOnEisinfo2 struct {
 	XMLName xml.Name `xml:"notPublishedOnEISInfo,omitempty"`
 
-	// NotPublishedOnEisinfoPositions: Позиции плана-графика закупок с признаком «Информация, не подлежащая размещению»
-	Positions NotPublishedOnEisinfoPositions `xml:"positions"`
+	// Positions5: Позиции плана-графика закупок с признаком «Информация, не подлежащая размещению»
+	Positions Positions5 `xml:"positions"`
 
-	// NotPublishedOnEisinfoOutcomeIndicators: Итоговые показатели для позиций как "открытых", так и "закрытых" (содержащим признак «Информация, не подлежащая размещению»)
-	OutcomeIndicators *NotPublishedOnEisinfoOutcomeIndicators `xml:"outcomeIndicators,omitempty"`
+	// OutcomeIndicators5: Итоговые показатели для позиций как "открытых", так и "закрытых" (содержащим признак «Информация, не подлежащая размещению»)
+	OutcomeIndicators *OutcomeIndicators5 `xml:"outcomeIndicators,omitempty"`
 
 	// PrintForm: Печатная форма плана-графика закупок. Игнорируется при приеме, заполняется при передаче содержимым сведений позиций как "открытых", так и "закрытых"(содержащим признак «Информация, не подлежащая размещению»)
 	PrintForm *cmn.PrintFormType `xml:"printForm,omitempty"`
@@ -1034,8 +1034,8 @@ type ActInfoDocInfo struct {
 	DocName *base.Text1000Type `xml:"docName,omitempty"`
 }
 
-// ActFinanceInfoFinanceInfo: Объем средств
-type ActFinanceInfoFinanceInfo struct {
+// FinanceInfo1: Объем средств
+type FinanceInfo1 struct {
 	XMLName xml.Name `xml:"financeInfo"`
 
 	// Total: Всего. Значение игнорируется при приеме. автоматически рассчитывается как сумма нижеследующих полей (т.е. total=currentYear+firstYear+secondYear+subsecYears).
@@ -1061,8 +1061,8 @@ type ActInfoActFinanceInfo struct {
 	// Kvr: КВР
 	Kvr base.Kvrref `xml:"KVR"`
 
-	// ActFinanceInfoFinanceInfo: Объем средств
-	FinanceInfo ActFinanceInfoFinanceInfo `xml:"financeInfo"`
+	// FinanceInfo1: Объем средств
+	FinanceInfo FinanceInfo1 `xml:"financeInfo"`
 }
 
 // PurchasesSubsecYearsInfoActInfo: Сведения об объемах средств, указанных в правовых актах (проектах правовых актов), предусматривающих возможность заключения государственного (муниципального) контракта на срок, превышающий срок действия доведенных лимитов бюджетных обязательств
@@ -1278,8 +1278,8 @@ type AgreementInfo struct {
 	AgreementDate string `xml:"agreementDate"`
 }
 
-// CommonInfoPlanPeriod: Плановый период
-type CommonInfoPlanPeriod struct {
+// PlanPeriod1: Плановый период
+type PlanPeriod1 struct {
 	XMLName xml.Name `xml:"planPeriod"`
 
 	// FirstYear: Первый плановый год
@@ -1296,8 +1296,8 @@ type CommonInfo1 struct {
 	// PlanYear: Финансовый год планирования
 	PlanYear base.YearType `xml:"planYear"`
 
-	// CommonInfoPlanPeriod: Плановый период
-	PlanPeriod CommonInfoPlanPeriod `xml:"planPeriod"`
+	// PlanPeriod1: Плановый период
+	PlanPeriod PlanPeriod1 `xml:"planPeriod"`
 
 	// ConfirmDate: Дата утверждения плана-графика закупок
 	ConfirmDate string `xml:"confirmDate"`
@@ -1322,16 +1322,16 @@ type CustomerInfo1 struct {
 	cmn.Control99CustomerInfoType
 }
 
-// Positions3: Позиции плана-графика закупок. Указание одного из блоков positions и/или specialPurchases обязательно
-type Positions3 struct {
+// Positions6: Позиции плана-графика закупок. Указание одного из блоков positions и/или specialPurchases обязательно
+type Positions6 struct {
 	XMLName xml.Name `xml:"positions,omitempty"`
 
 	// Position: Позиция плана-графика закупок
 	Position []Control99TenderPlan2020PositionType `xml:",any"`
 }
 
-// SpecialPurchaseFinanceInfo: Финансовое обеспечение
-type SpecialPurchaseFinanceInfo struct {
+// FinanceInfo2: Финансовое обеспечение
+type FinanceInfo2 struct {
 	XMLName xml.Name `xml:"financeInfo"`
 
 	// KbksInfo: Детализировано по КБК
@@ -1353,8 +1353,8 @@ type SpecialPurchaseFinanceInfo struct {
 	SubsecYears *base.MoneyPosNegMaxLengthToPoint18Type `xml:"subsecYears,omitempty"`
 }
 
-// SpecialPurchaseTargetArticlesInfo: Детализации по целевым статьям
-type SpecialPurchaseTargetArticlesInfo struct {
+// TargetArticlesInfo2: Детализации по целевым статьям
+type TargetArticlesInfo2 struct {
 	XMLName xml.Name `xml:"targetArticlesInfo,omitempty"`
 
 	// TargetArticleInfo: Детализация по целевой статье
@@ -1371,11 +1371,11 @@ type SpecialPurchasesSpecialPurchase struct {
 	// Ikz: Идентификационный код закупки
 	Ikz base.IkzCodeType `xml:"IKZ"`
 
-	// SpecialPurchaseFinanceInfo: Финансовое обеспечение
-	FinanceInfo SpecialPurchaseFinanceInfo `xml:"financeInfo"`
+	// FinanceInfo2: Финансовое обеспечение
+	FinanceInfo FinanceInfo2 `xml:"financeInfo"`
 
-	// SpecialPurchaseTargetArticlesInfo: Детализации по целевым статьям
-	TargetArticlesInfo *SpecialPurchaseTargetArticlesInfo `xml:"targetArticlesInfo,omitempty"`
+	// TargetArticlesInfo2: Детализации по целевым статьям
+	TargetArticlesInfo *TargetArticlesInfo2 `xml:"targetArticlesInfo,omitempty"`
 }
 
 // SpecialPurchases3: Особые закупки. Указание одного из блоков positions и/или specialPurchases обязательно
@@ -1424,8 +1424,8 @@ type OutcomeIndicatorsKokssTotalsInfo3 struct {
 	KokstotalsInfo []TenderPlan2020KoksinfoType `xml:",any"`
 }
 
-// OutcomeIndicators3: Итоговые показатели
-type OutcomeIndicators3 struct {
+// OutcomeIndicators6: Итоговые показатели
+type OutcomeIndicators6 struct {
 	XMLName xml.Name `xml:"outcomeIndicators,omitempty"`
 
 	// KbksTotalsInfo: Итоговые показатели по кодам бюджетной классификации
@@ -1441,8 +1441,8 @@ type OutcomeIndicators3 struct {
 	KokssTotalsInfo *OutcomeIndicatorsKokssTotalsInfo `xml:"KOKSsTotalsInfo,omitempty"`
 }
 
-// FinanceInfo1: Финансовое обеспечение
-type FinanceInfo1 struct {
+// FinanceInfo3: Финансовое обеспечение
+type FinanceInfo3 struct {
 	XMLName xml.Name `xml:"financeInfo"`
 
 	// KbksInfo: Детализировано по КБК
@@ -1464,8 +1464,8 @@ type FinanceInfo1 struct {
 	SubsecYears *base.MoneyPosNegMaxLengthToPoint18Type `xml:"subsecYears,omitempty"`
 }
 
-// TargetArticlesInfo2: Детализации по целевым статьям
-type TargetArticlesInfo2 struct {
+// TargetArticlesInfo3: Детализации по целевым статьям
+type TargetArticlesInfo3 struct {
 	XMLName xml.Name `xml:"targetArticlesInfo,omitempty"`
 
 	// TargetArticleInfo: Детализация по целевой статье
@@ -1489,8 +1489,8 @@ type ActInfoDocInfo1 struct {
 	DocName *base.Text1000Type `xml:"docName,omitempty"`
 }
 
-// ActFinanceInfoFinanceInfo1: Объем средств
-type ActFinanceInfoFinanceInfo1 struct {
+// FinanceInfo4: Объем средств
+type FinanceInfo4 struct {
 	XMLName xml.Name `xml:"financeInfo"`
 
 	// Total: Всего. Значение игнорируется при приеме. автоматически рассчитывается как сумма нижеследующих полей (т.е. total=currentYear+firstYear+secondYear+subsecYears).
@@ -1516,8 +1516,8 @@ type ActInfoActFinanceInfo1 struct {
 	// Kvr: КВР
 	Kvr base.Kvrref `xml:"KVR"`
 
-	// ActFinanceInfoFinanceInfo: Объем средств
-	FinanceInfo ActFinanceInfoFinanceInfo `xml:"financeInfo"`
+	// FinanceInfo4: Объем средств
+	FinanceInfo FinanceInfo4 `xml:"financeInfo"`
 }
 
 // PurchasesSubsecYearsInfoActInfo1: Сведения об объемах средств, указанных в правовых актах (проектах правовых актов), предусматривающих возможность заключения государственного (муниципального) контракта на срок, превышающий срок действия доведенных лимитов бюджетных обязательств
@@ -1574,17 +1574,17 @@ type TenderPlan2020Type struct {
 	// CommonInfo: Общая информация плана-графика закупок
 	CommonInfo TenderPlan2020CommonInfoType `xml:"commonInfo"`
 
-	// Positions: Позиции плана-графика закупок. Указание одного из блоков positions или specialPurchasePositions или notPublishedOnEISInfo обязательно при приеме
-	Positions *Positions `xml:"positions,omitempty"`
+	// Positions2: Позиции плана-графика закупок. Указание одного из блоков positions или specialPurchasePositions или notPublishedOnEISInfo обязательно при приеме
+	Positions *Positions2 `xml:"positions,omitempty"`
 
-	// SpecialPurchases: Особые закупки. Устарело. Игнорируется при приеме, оставлено для обратной совместимости
-	SpecialPurchases *SpecialPurchases `xml:"specialPurchases,omitempty"`
+	// SpecialPurchases1: Особые закупки. Устарело. Игнорируется при приеме, оставлено для обратной совместимости
+	SpecialPurchases *SpecialPurchases1 `xml:"specialPurchases,omitempty"`
 
-	// SpecialPurchasePositions: Позиции особой закупки. Указание одного из блоков positions или specialPurchasePositions или notPublishedOnEISInfo обязательно при приеме. При приеме изменений размещенного до выхода версии ЕИС 10.1 плана-графика закупок, необходимо один раз указать все закупки из особых закупок (в том числе отмененные)
-	SpecialPurchasePositions *SpecialPurchasePositions `xml:"specialPurchasePositions,omitempty"`
+	// SpecialPurchasePositions1: Позиции особой закупки. Указание одного из блоков positions или specialPurchasePositions или notPublishedOnEISInfo обязательно при приеме. При приеме изменений размещенного до выхода версии ЕИС 10.1 плана-графика закупок, необходимо один раз указать все закупки из особых закупок (в том числе отмененные)
+	SpecialPurchasePositions *SpecialPurchasePositions1 `xml:"specialPurchasePositions,omitempty"`
 
-	// OutcomeIndicators: Итоговые показатели
-	OutcomeIndicators *OutcomeIndicators `xml:"outcomeIndicators,omitempty"`
+	// OutcomeIndicators2: Итоговые показатели
+	OutcomeIndicators *OutcomeIndicators2 `xml:"outcomeIndicators,omitempty"`
 
 	// Attachments: Информация о прикрепленных документах
 	Attachments *cmn.AttachmentListNotPublishedOnEistype `xml:"attachments,omitempty"`
@@ -1598,8 +1598,8 @@ type TenderPlan2020Type struct {
 	// HasNotPublishedOnEispositions: План график содержит позиции, особые закупки с признаком «Информация, не подлежащая размещению». Игнорируется при приеме, автоматически заполняется при передаче в случае наличия в составе ПГ позиций и/или особых закупок с признаком «Информация, не подлежащая размещению»
 	HasNotPublishedOnEispositions *bool `xml:"hasNotPublishedOnEISPositions,omitempty"`
 
-	// NotPublishedOnEisinfo: Позиции с признаком «Информация, не подлежащая размещению». Итоговые показатели и электронный документ по "открытым" и "закрытым" позициям. Указание одного из блоков positions или specialPurchasePositions или notPublishedOnEISInfo обязательно при приеме
-	NotPublishedOnEisinfo *NotPublishedOnEisinfo `xml:"notPublishedOnEISInfo,omitempty"`
+	// NotPublishedOnEisinfo1: Позиции с признаком «Информация, не подлежащая размещению». Итоговые показатели и электронный документ по "открытым" и "закрытым" позициям. Указание одного из блоков positions или specialPurchasePositions или notPublishedOnEISInfo обязательно при приеме
+	NotPublishedOnEisinfo *NotPublishedOnEisinfo1 `xml:"notPublishedOnEISInfo,omitempty"`
 }
 
 // TenderPlan2020Control99Nctype: План-график закупок с уведомлением о соответствии контролируемой информации по 99 статье
@@ -1627,17 +1627,17 @@ type TenderPlan2020Control99Nctype struct {
 	// CommonInfo: Общая информация плана-графика закупок
 	CommonInfo TenderPlan2020CommonInfoType `xml:"commonInfo"`
 
-	// Positions: Позиции плана-графика закупок. Указание одного из блоков positions или specialPurchasePositions или notPublishedOnEISInfo обязательно при приеме
-	Positions *Positions `xml:"positions,omitempty"`
+	// Positions2: Позиции плана-графика закупок. Указание одного из блоков positions или specialPurchasePositions или notPublishedOnEISInfo обязательно при приеме
+	Positions *Positions2 `xml:"positions,omitempty"`
 
-	// SpecialPurchases: Особые закупки. Устарело. Игнорируется при приеме, оставлено для обратной совместимости
-	SpecialPurchases *SpecialPurchases `xml:"specialPurchases,omitempty"`
+	// SpecialPurchases1: Особые закупки. Устарело. Игнорируется при приеме, оставлено для обратной совместимости
+	SpecialPurchases *SpecialPurchases1 `xml:"specialPurchases,omitempty"`
 
-	// SpecialPurchasePositions: Позиции особой закупки. Указание одного из блоков positions или specialPurchasePositions или notPublishedOnEISInfo обязательно при приеме. При приеме изменений размещенного до выхода версии ЕИС 10.1 плана-графика закупок, необходимо один раз указать все закупки из особых закупок (в том числе отмененные)
-	SpecialPurchasePositions *SpecialPurchasePositions `xml:"specialPurchasePositions,omitempty"`
+	// SpecialPurchasePositions1: Позиции особой закупки. Указание одного из блоков positions или specialPurchasePositions или notPublishedOnEISInfo обязательно при приеме. При приеме изменений размещенного до выхода версии ЕИС 10.1 плана-графика закупок, необходимо один раз указать все закупки из особых закупок (в том числе отмененные)
+	SpecialPurchasePositions *SpecialPurchasePositions1 `xml:"specialPurchasePositions,omitempty"`
 
-	// OutcomeIndicators: Итоговые показатели
-	OutcomeIndicators *OutcomeIndicators `xml:"outcomeIndicators,omitempty"`
+	// OutcomeIndicators2: Итоговые показатели
+	OutcomeIndicators *OutcomeIndicators2 `xml:"outcomeIndicators,omitempty"`
 
 	// Attachments: Информация о прикрепленных документах
 	Attachments *cmn.AttachmentListNotPublishedOnEistype `xml:"attachments,omitempty"`
@@ -1651,8 +1651,8 @@ type TenderPlan2020Control99Nctype struct {
 	// HasNotPublishedOnEispositions: План график содержит позиции, особые закупки с признаком «Информация, не подлежащая размещению». Игнорируется при приеме, автоматически заполняется при передаче в случае наличия в составе ПГ позиций и/или особых закупок с признаком «Информация, не подлежащая размещению»
 	HasNotPublishedOnEispositions *bool `xml:"hasNotPublishedOnEISPositions,omitempty"`
 
-	// NotPublishedOnEisinfo: Позиции с признаком «Информация, не подлежащая размещению». Итоговые показатели и электронный документ по "открытым" и "закрытым" позициям. Указание одного из блоков positions или specialPurchasePositions или notPublishedOnEISInfo обязательно при приеме
-	NotPublishedOnEisinfo *NotPublishedOnEisinfo `xml:"notPublishedOnEISInfo,omitempty"`
+	// NotPublishedOnEisinfo1: Позиции с признаком «Информация, не подлежащая размещению». Итоговые показатели и электронный документ по "открытым" и "закрытым" позициям. Указание одного из блоков positions или specialPurchasePositions или notPublishedOnEISInfo обязательно при приеме
+	NotPublishedOnEisinfo *NotPublishedOnEisinfo1 `xml:"notPublishedOnEISInfo,omitempty"`
 }
 
 // TenderPlan2020ChangeType: Изменение плана-графика закупок в структурированной форме
@@ -1677,17 +1677,17 @@ type TenderPlan2020ChangeType struct {
 	// CommonInfo: Общая информация плана-графика закупок. Указание одного из блоков commonInfo, positions, specialPurchases или outcomeIndicators обязательно при приеме
 	CommonInfo *TenderPlan2020CommonInfoType `xml:"commonInfo,omitempty"`
 
-	// Positions: Позиции плана-графика закупок
-	Positions *Positions `xml:"positions,omitempty"`
+	// Positions4: Позиции плана-графика закупок
+	Positions *Positions4 `xml:"positions,omitempty"`
 
-	// SpecialPurchases: Особые закупки. Устарело. Игнорируется при приеме, оставлено для обратной совместимости
-	SpecialPurchases *SpecialPurchases `xml:"specialPurchases,omitempty"`
+	// SpecialPurchases2: Особые закупки. Устарело. Игнорируется при приеме, оставлено для обратной совместимости
+	SpecialPurchases *SpecialPurchases2 `xml:"specialPurchases,omitempty"`
 
-	// SpecialPurchasePositions: Позиции особой закупки. При приеме изменений размещенного до выхода версии ЕИС 10.1 плана-графика закупок, необходимо один раз указать все закупки из особых закупок (в том числе отмененные)
-	SpecialPurchasePositions *SpecialPurchasePositions `xml:"specialPurchasePositions,omitempty"`
+	// SpecialPurchasePositions2: Позиции особой закупки. При приеме изменений размещенного до выхода версии ЕИС 10.1 плана-графика закупок, необходимо один раз указать все закупки из особых закупок (в том числе отмененные)
+	SpecialPurchasePositions *SpecialPurchasePositions2 `xml:"specialPurchasePositions,omitempty"`
 
-	// OutcomeIndicators: Итоговые показатели
-	OutcomeIndicators *OutcomeIndicators `xml:"outcomeIndicators,omitempty"`
+	// OutcomeIndicators4: Итоговые показатели
+	OutcomeIndicators *OutcomeIndicators4 `xml:"outcomeIndicators,omitempty"`
 
 	// Attachments: Информация о прикрепленных документах
 	Attachments *cmn.AttachmentListNotPublishedOnEistype `xml:"attachments,omitempty"`
@@ -1695,8 +1695,8 @@ type TenderPlan2020ChangeType struct {
 	// ExtPrintForm: Электронный документ, полученный из внешней системы
 	ExtPrintForm *cmn.ExtPrintFormType `xml:"extPrintForm,omitempty"`
 
-	// NotPublishedOnEisinfo: Позиции с признаком «Информация, не подлежащая размещению». Итоговые показатели и электронный документ по "открытым" и "закрытым" позициям
-	NotPublishedOnEisinfo *NotPublishedOnEisinfo `xml:"notPublishedOnEISInfo,omitempty"`
+	// NotPublishedOnEisinfo2: Позиции с признаком «Информация, не подлежащая размещению». Итоговые показатели и электронный документ по "открытым" и "закрытым" позициям
+	NotPublishedOnEisinfo *NotPublishedOnEisinfo2 `xml:"notPublishedOnEISInfo,omitempty"`
 }
 
 // TenderPlan2020CommonInfoType: Тип: Общие сведения плана-графика закупок с 01.01.2020
@@ -1823,14 +1823,14 @@ type TenderPlan2020SpecialPurchasePositionType struct {
 	// FinanceInfo: Финансовое обеспечение
 	FinanceInfo TenderPlan2020FinanceResourcesType `xml:"financeInfo"`
 
-	// KbksInfo: Детализировано по КБК. Блок может быть заполнен в случае, если для организации заказчика выполняются условия: тип организации = «01 - федеральный орган государственной власти, федеральный государственный орган, орган государственной власти субъекта Российской Федерации, государственный орган субъекта Российской Федерации, орган местного самоуправления, в том числе его территориальные органы» ИЛИ тип организации = «08 - казенное учреждение» ИЛИ тип = «02 - орган управления государственным внебюджетным фондом» ИЛИ Код СПЗ организации = 09950000002 (Государственная корпорация по космической деятельности "Роскосмос") ИЛИ Код СПЗ организации = 07731000003 (Государственная корпорация по атомной энергии "Росатом") Блок должен быть заполнен в случае, если выполняется одно из условий выше И уровень организации заказчика = 1 «Федеральный уровень»
-	KbksInfo *KbksInfo `xml:"KBKsInfo,omitempty"`
+	// KbksInfo1: Детализировано по КБК. Блок может быть заполнен в случае, если для организации заказчика выполняются условия: тип организации = «01 - федеральный орган государственной власти, федеральный государственный орган, орган государственной власти субъекта Российской Федерации, государственный орган субъекта Российской Федерации, орган местного самоуправления, в том числе его территориальные органы» ИЛИ тип организации = «08 - казенное учреждение» ИЛИ тип = «02 - орган управления государственным внебюджетным фондом» ИЛИ Код СПЗ организации = 09950000002 (Государственная корпорация по космической деятельности "Роскосмос") ИЛИ Код СПЗ организации = 07731000003 (Государственная корпорация по атомной энергии "Росатом") Блок должен быть заполнен в случае, если выполняется одно из условий выше И уровень организации заказчика = 1 «Федеральный уровень»
+	KbksInfo *KbksInfo1 `xml:"KBKsInfo,omitempty"`
 
-	// KvrsInfo: Детализации по КВР. Контролируется обязательность заполнения, если тип организации заказчика: Тип организации = «03 - бюджетное учреждение»; Тип организации = «10 – автономное учреждение». Для остальных типов организаций не допускается указание данного блока
-	KvrsInfo *KvrsInfo `xml:"KVRsInfo,omitempty"`
+	// KvrsInfo1: Детализации по КВР. Контролируется обязательность заполнения, если тип организации заказчика: Тип организации = «03 - бюджетное учреждение»; Тип организации = «10 – автономное учреждение». Для остальных типов организаций не допускается указание данного блока
+	KvrsInfo *KvrsInfo1 `xml:"KVRsInfo,omitempty"`
 
-	// TargetArticlesInfo: Детализации по целевым статьям. Может быть заполнено, если тип организации заказчика: Тип организации = «03 - бюджетное учреждение»; Тип организации = «10 – автономное учреждение». Для остальных типов организаций не допускается указание данного блока
-	TargetArticlesInfo *TargetArticlesInfo `xml:"targetArticlesInfo,omitempty"`
+	// TargetArticlesInfo1: Детализации по целевым статьям. Может быть заполнено, если тип организации заказчика: Тип организации = «03 - бюджетное учреждение»; Тип организации = «10 – автономное учреждение». Для остальных типов организаций не допускается указание данного блока
+	TargetArticlesInfo *TargetArticlesInfo1 `xml:"targetArticlesInfo,omitempty"`
 
 	// SpecialPurchasePositionModification: Обоснование внесения изменений в позицию особой закупки плана-графика закупок. Обязателен для указания в случае если в поле specialPositionModificationStatus указано значение "E". Игнорируется, в случае если позиция особая закупки новая
 	SpecialPurchasePositionModification *SpecialPurchasePositionModification `xml:"specialPurchasePositionModification,omitempty"`
@@ -1838,8 +1838,8 @@ type TenderPlan2020SpecialPurchasePositionType struct {
 	// SpecialPurchasePositionModificationStatus: Статус позиции особой закупки при приеме изменений плана-графика закупок (Если значение поля не указано, то данные позиции особой закупки перенесены из предыдущей версии без изменений). Игнорируется, в случае если позиция особой закупки новая: N - Данные позиции особой закупки перенесены из предыдущей версии без изменений; E - Данные позиции особой закупки отредактированы.
 	SpecialPurchasePositionModificationStatus *TenderPlan2020PositionModificationStatusEnum `xml:"specialPurchasePositionModificationStatus,omitempty"`
 
-	// CentralizedPurchaseInfo: Централизованная закупка
-	CentralizedPurchaseInfo *CentralizedPurchaseInfo `xml:"centralizedPurchaseInfo,omitempty"`
+	// CentralizedPurchaseInfo1: Централизованная закупка
+	CentralizedPurchaseInfo *CentralizedPurchaseInfo1 `xml:"centralizedPurchaseInfo,omitempty"`
 
 	// VersionNumber: Номер версии особой закупки плана-графика закупок. Игнорируется при приеме, используется при формировании печатной формы
 	VersionNumber *base.VersionNumberType `xml:"versionNumber,omitempty"`
@@ -2081,23 +2081,23 @@ type Control99TenderPlan2020ExtractType struct {
 	// ControlAuthorityInfo: Сведения об органе контроля
 	ControlAuthorityInfo cmn.Control99ControlAuthorityInfoType `xml:"controlAuthorityInfo"`
 
-	// CommonInfo: Общая информация плана-графика закупок
-	CommonInfo CommonInfo `xml:"commonInfo"`
+	// CommonInfo1: Общая информация плана-графика закупок
+	CommonInfo CommonInfo1 `xml:"commonInfo"`
 
-	// CustomerInfo: Сведения о заказчике
-	CustomerInfo CustomerInfo `xml:"customerInfo"`
+	// CustomerInfo1: Сведения о заказчике
+	CustomerInfo CustomerInfo1 `xml:"customerInfo"`
 
 	// OwnerInfo: Сведения об организации-владельце версии плана-графика закупок
 	OwnerInfo Control99OwnerInfoType `xml:"ownerInfo"`
 
-	// Positions: Позиции плана-графика закупок. Указание одного из блоков positions и/или specialPurchases обязательно
-	Positions *Positions `xml:"positions,omitempty"`
+	// Positions6: Позиции плана-графика закупок. Указание одного из блоков positions и/или specialPurchases обязательно
+	Positions *Positions6 `xml:"positions,omitempty"`
 
-	// SpecialPurchases: Особые закупки. Указание одного из блоков positions и/или specialPurchases обязательно
-	SpecialPurchases *SpecialPurchases `xml:"specialPurchases,omitempty"`
+	// SpecialPurchases3: Особые закупки. Указание одного из блоков positions и/или specialPurchases обязательно
+	SpecialPurchases *SpecialPurchases3 `xml:"specialPurchases,omitempty"`
 
-	// OutcomeIndicators: Итоговые показатели
-	OutcomeIndicators *OutcomeIndicators `xml:"outcomeIndicators,omitempty"`
+	// OutcomeIndicators6: Итоговые показатели
+	OutcomeIndicators *OutcomeIndicators6 `xml:"outcomeIndicators,omitempty"`
 
 	// DocumentLink: Ссылка на карточку документа
 	DocumentLink *Control99DocLinkType `xml:"documentLink,omitempty"`
@@ -2116,14 +2116,14 @@ type Control99TenderPlan2020PositionType struct {
 	// Ikz: Идентификационный код закупки
 	Ikz base.IkzCodeType `xml:"IKZ"`
 
-	// FinanceInfo: Финансовое обеспечение
-	FinanceInfo FinanceInfo `xml:"financeInfo"`
+	// FinanceInfo3: Финансовое обеспечение
+	FinanceInfo FinanceInfo3 `xml:"financeInfo"`
 
-	// TargetArticlesInfo: Детализации по целевым статьям
-	TargetArticlesInfo *TargetArticlesInfo `xml:"targetArticlesInfo,omitempty"`
+	// TargetArticlesInfo3: Детализации по целевым статьям
+	TargetArticlesInfo *TargetArticlesInfo3 `xml:"targetArticlesInfo,omitempty"`
 
-	// PurchasesSubsecYearsInfo: Сведения о закупках на последующие годы
-	PurchasesSubsecYearsInfo *PurchasesSubsecYearsInfo `xml:"purchasesSubsecYearsInfo,omitempty"`
+	// PurchasesSubsecYearsInfo1: Сведения о закупках на последующие годы
+	PurchasesSubsecYearsInfo *PurchasesSubsecYearsInfo1 `xml:"purchasesSubsecYearsInfo,omitempty"`
 
 	// IsEnergyServiceContract: Планируется заключение энергосервисного контракта
 	IsEnergyServiceContract bool `xml:"isEnergyServiceContract"`
@@ -2131,8 +2131,8 @@ type Control99TenderPlan2020PositionType struct {
 	// IsProvisionLendingServices: Закупка на оказание услуг по предоставлению кредита
 	IsProvisionLendingServices *bool `xml:"isProvisionLendingServices,omitempty"`
 
-	// KokssInfo: Детализации по кодам объектов капитального строительства / недвижимого имущества
-	KokssInfo *KokssInfo `xml:"KOKSsInfo,omitempty"`
+	// KokssInfo1: Детализации по кодам объектов капитального строительства / недвижимого имущества
+	KokssInfo *KokssInfo1 `xml:"KOKSsInfo,omitempty"`
 
 	// IsConstructionWorks: Закупка в соответствии с пп. «а» п.18 Положения, утвержденного постановлением Правительства Российский Федерации от 30.09.2019 № 1279
 	IsConstructionWorks *bool `xml:"isConstructionWorks,omitempty"`

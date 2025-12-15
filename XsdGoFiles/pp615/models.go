@@ -290,8 +290,8 @@ type ExclusionReasons struct {
 	ExclusionReason []base.ExclusionReason615Ref `xml:",any"`
 }
 
-// PrintFormFieldsInfoContractorInfo: Сведения о подрядной организации. Игнорируется при приёме. Заполняется при передаче из реестровой записи РКПО (pprf615QualifiedContractor)
-type PrintFormFieldsInfoContractorInfo struct {
+// ContractorInfo1: Сведения о подрядной организации. Игнорируется при приёме. Заполняется при передаче из реестровой записи РКПО (pprf615QualifiedContractor)
+type ContractorInfo1 struct {
 	XMLName xml.Name `xml:"contractorInfo,omitempty"`
 
 	// Inn: ИНН
@@ -311,8 +311,8 @@ type PrintFormFieldsInfo struct {
 	// KeepingRegisterOrg: Орган по ведению реестра квалифицированных подрядных организаций. Игнорируется при приёме. Заполняется при передаче из реестровой записи РКПО (pprf615QualifiedContractor)
 	KeepingRegisterOrg *base.OrganizationRef `xml:"keepingRegisterOrg,omitempty"`
 
-	// PrintFormFieldsInfoContractorInfo: Сведения о подрядной организации. Игнорируется при приёме. Заполняется при передаче из реестровой записи РКПО (pprf615QualifiedContractor)
-	ContractorInfo *PrintFormFieldsInfoContractorInfo `xml:"contractorInfo,omitempty"`
+	// ContractorInfo1: Сведения о подрядной организации. Игнорируется при приёме. Заполняется при передаче из реестровой записи РКПО (pprf615QualifiedContractor)
+	ContractorInfo *ContractorInfo1 `xml:"contractorInfo,omitempty"`
 }
 
 // CommonInfo2: Общая информация
@@ -397,8 +397,8 @@ type ExclusionCancelReason struct {
 	Reason ExclusionCancelReasonReason `xml:"reason"`
 }
 
-// PrintFormFieldsInfoContractorInfo1: Сведения о подрядной организации. Игнорируется при приёме. Заполняется при передаче из реестровой записи РКПО (pprf615QualifiedContractor)
-type PrintFormFieldsInfoContractorInfo1 struct {
+// ContractorInfo2: Сведения о подрядной организации. Игнорируется при приёме. Заполняется при передаче из реестровой записи РКПО (pprf615QualifiedContractor)
+type ContractorInfo2 struct {
 	XMLName xml.Name `xml:"contractorInfo,omitempty"`
 
 	// Inn: ИНН
@@ -418,8 +418,8 @@ type PrintFormFieldsInfo1 struct {
 	// KeepingRegisterOrg: Орган по ведению реестра квалифицированных подрядных организаций. Игнорируется при приёме. Заполняется при передаче из реестровой записи РКПО (pprf615QualifiedContractor)
 	KeepingRegisterOrg *base.OrganizationRef `xml:"keepingRegisterOrg,omitempty"`
 
-	// PrintFormFieldsInfoContractorInfo: Сведения о подрядной организации. Игнорируется при приёме. Заполняется при передаче из реестровой записи РКПО (pprf615QualifiedContractor)
-	ContractorInfo *PrintFormFieldsInfoContractorInfo `xml:"contractorInfo,omitempty"`
+	// ContractorInfo2: Сведения о подрядной организации. Игнорируется при приёме. Заполняется при передаче из реестровой записи РКПО (pprf615QualifiedContractor)
+	ContractorInfo *ContractorInfo2 `xml:"contractorInfo,omitempty"`
 }
 
 // PurchaseResponsibleInfo1: Информация о разместившей организации
@@ -453,8 +453,8 @@ type PrintFormFieldsInfoCustomerInfo struct {
 type PrintFormFieldsInfo2 struct {
 	XMLName xml.Name `xml:"printFormFieldsInfo,omitempty"`
 
-	// PrintFormFieldsInfoCustomerInfo: Заказчик
-	CustomerInfo *PrintFormFieldsInfoCustomerInfo `xml:"customerInfo,omitempty"`
+	// CustomerInfo1: Заказчик
+	CustomerInfo *CustomerInfo1 `xml:"customerInfo,omitempty"`
 
 	// PurchaseObjectInfo: Наименование объекта закупки
 	PurchaseObjectInfo *base.Text2000Type `xml:"purchaseObjectInfo,omitempty"`
@@ -584,14 +584,14 @@ type ParticipantInfoIndividualPersonRfinfo struct {
 type ParticipantInfo struct {
 	XMLName xml.Name `xml:"participantInfo"`
 
-	// ParticipantInfoLegalEntityRfinfo: Юридическое лицо РФ. При приёме проверяется наличие участника с указанным ИНН, КПП (при наличии) в протоколе проведения электронного аукциона protocolEF2
-	LegalEntityRfinfo *ParticipantInfoLegalEntityRfinfo `xml:"legalEntityRFInfo,omitempty"`
+	// LegalEntityRfinfo2: Юридическое лицо РФ. При приёме проверяется наличие участника с указанным ИНН, КПП (при наличии) в протоколе проведения электронного аукциона protocolEF2
+	LegalEntityRfinfo *LegalEntityRfinfo2 `xml:"legalEntityRFInfo,omitempty"`
 
-	// ParticipantInfoLegalEntityForeignStateInfo: Юридическое лицо иностранного государства. При приёме проверяется наличие участника с указанным ИНН, КПП (при наличии) в протоколе проведения электронного аукциона protocolEF2
-	LegalEntityForeignStateInfo *ParticipantInfoLegalEntityForeignStateInfo `xml:"legalEntityForeignStateInfo,omitempty"`
+	// LegalEntityForeignStateInfo2: Юридическое лицо иностранного государства. При приёме проверяется наличие участника с указанным ИНН, КПП (при наличии) в протоколе проведения электронного аукциона protocolEF2
+	LegalEntityForeignStateInfo *LegalEntityForeignStateInfo2 `xml:"legalEntityForeignStateInfo,omitempty"`
 
-	// ParticipantInfoIndividualPersonRfinfo: Индивидуальный предприниматель. При приёме проверяется наличие участника с указанным ИНН в протоколе проведения электронного аукциона protocolEF2
-	IndividualPersonRfinfo *ParticipantInfoIndividualPersonRfinfo `xml:"individualPersonRFInfo,omitempty"`
+	// ParticipantInfo1IndividualPersonRfinfo: Индивидуальный предприниматель. При приёме проверяется наличие участника с указанным ИНН в протоколе проведения электронного аукциона protocolEF2
+	IndividualPersonRfinfo *ParticipantInfo1IndividualPersonRfinfo `xml:"individualPersonRFInfo,omitempty"`
 }
 
 // CommonInfo4: Информация о документе
@@ -696,14 +696,14 @@ type ParticipantInfoIndividualPersonRfinfo1 struct {
 type ParticipantInfo1 struct {
 	XMLName xml.Name `xml:"participantInfo"`
 
-	// ParticipantInfoLegalEntityRfinfo: Юридическое лицо РФ. При приёме проверяется наличие участника с указанным ИНН, КПП (при наличии) в протоколе проведения электронного аукциона protocolEF2
-	LegalEntityRfinfo *ParticipantInfoLegalEntityRfinfo `xml:"legalEntityRFInfo,omitempty"`
+	// LegalEntityRfinfo2: Юридическое лицо РФ. При приёме проверяется наличие участника с указанным ИНН, КПП (при наличии) в протоколе проведения электронного аукциона protocolEF2
+	LegalEntityRfinfo *LegalEntityRfinfo2 `xml:"legalEntityRFInfo,omitempty"`
 
-	// ParticipantInfoLegalEntityForeignStateInfo: Юридическое лицо иностранного государства. При приёме проверяется наличие участника с указанным ИНН, КПП (при наличии) в протоколе проведения электронного аукциона protocolEF2
-	LegalEntityForeignStateInfo *ParticipantInfoLegalEntityForeignStateInfo `xml:"legalEntityForeignStateInfo,omitempty"`
+	// LegalEntityForeignStateInfo2: Юридическое лицо иностранного государства. При приёме проверяется наличие участника с указанным ИНН, КПП (при наличии) в протоколе проведения электронного аукциона protocolEF2
+	LegalEntityForeignStateInfo *LegalEntityForeignStateInfo2 `xml:"legalEntityForeignStateInfo,omitempty"`
 
-	// ParticipantInfoIndividualPersonRfinfo: Индивидуальный предприниматель. При приёме проверяется наличие участника с указанным ИНН в протоколе проведения электронного аукциона protocolEF2
-	IndividualPersonRfinfo *ParticipantInfoIndividualPersonRfinfo `xml:"individualPersonRFInfo,omitempty"`
+	// ParticipantInfo1IndividualPersonRfinfo: Индивидуальный предприниматель. При приёме проверяется наличие участника с указанным ИНН в протоколе проведения электронного аукциона protocolEF2
+	IndividualPersonRfinfo *ParticipantInfo1IndividualPersonRfinfo `xml:"individualPersonRFInfo,omitempty"`
 }
 
 // CommonInfo5: Информация о документе
@@ -864,8 +864,8 @@ type FundingSourcesInfoFundingSourceInfo1 struct {
 	Payments FundingSourceInfoPayments `xml:"payments"`
 }
 
-// StageInfoFundingSourcesInfo: Источники финансирования
-type StageInfoFundingSourcesInfo struct {
+// FundingSourcesInfo1: Источники финансирования
+type FundingSourcesInfo1 struct {
 	XMLName xml.Name `xml:"fundingSourcesInfo"`
 
 	// FundingSourcesInfoFundingSourceInfo: Источник финансирования
@@ -879,8 +879,8 @@ type StagesInfoStageInfo struct {
 	// StageSum: Сумма платежей по этапу
 	StageSum base.MoneyPositiveType `xml:"stageSum"`
 
-	// StageInfoFundingSourcesInfo: Источники финансирования
-	FundingSourcesInfo StageInfoFundingSourcesInfo `xml:"fundingSourcesInfo"`
+	// FundingSourcesInfo1: Источники финансирования
+	FundingSourcesInfo FundingSourcesInfo1 `xml:"fundingSourcesInfo"`
 
 	// StartDate: Дата начала исполнения этапа
 	StartDate string `xml:"startDate"`
@@ -1739,8 +1739,8 @@ type CommonInfo12 struct {
 	Href *base.HrefType `xml:"href,omitempty"`
 }
 
-// PrintFormFieldsInfoProtocolPublisherInfo: Информация об организации, разместившей отмену протокола
-type PrintFormFieldsInfoProtocolPublisherInfo struct {
+// ProtocolPublisherInfo3: Информация об организации, разместившей отмену протокола
+type ProtocolPublisherInfo3 struct {
 	XMLName xml.Name `xml:"protocolPublisherInfo,omitempty"`
 
 	// PublisherOrgInfo: Организация, разместившая отмену протокола. При приеме содержимое контролируется на присутствие в справочнике "Сводный перечень заказчиков (СПЗ)" nsiOrganization
@@ -1754,8 +1754,8 @@ type PrintFormFieldsInfoProtocolPublisherInfo struct {
 type PrintFormFieldsInfo9 struct {
 	XMLName xml.Name `xml:"printFormFieldsInfo,omitempty"`
 
-	// PrintFormFieldsInfoProtocolPublisherInfo: Информация об организации, разместившей отмену протокола
-	ProtocolPublisherInfo *PrintFormFieldsInfoProtocolPublisherInfo `xml:"protocolPublisherInfo,omitempty"`
+	// ProtocolPublisherInfo3: Информация об организации, разместившей отмену протокола
+	ProtocolPublisherInfo *ProtocolPublisherInfo3 `xml:"protocolPublisherInfo,omitempty"`
 
 	// ProtocolName: Наиенование отменяемого протокола
 	ProtocolName *base.Text2000Type `xml:"protocolName,omitempty"`
@@ -1764,8 +1764,8 @@ type PrintFormFieldsInfo9 struct {
 	ProtocolPublishDate string `xml:"protocolPublishDate,omitempty"`
 }
 
-// CommonInfoPurchaseInfo: Информация о закупке
-type CommonInfoPurchaseInfo struct {
+// PurchaseInfo1: Информация о закупке
+type PurchaseInfo1 struct {
 	XMLName xml.Name `xml:"purchaseInfo"`
 
 	// PurchaseNumber: Реестровый номер электронного аукциона. При приеме контролируется наличие неотмененного извещения о проведении ЭА по ПП РФ 615 с таким номером
@@ -1776,8 +1776,8 @@ type CommonInfoPurchaseInfo struct {
 type CommonInfo13 struct {
 	XMLName xml.Name `xml:"commonInfo"`
 
-	// CommonInfoPurchaseInfo: Информация о закупке
-	PurchaseInfo CommonInfoPurchaseInfo `xml:"purchaseInfo"`
+	// PurchaseInfo1: Информация о закупке
+	PurchaseInfo PurchaseInfo1 `xml:"purchaseInfo"`
 
 	// ContractNumber: Номер договора о проведении капитального ремонта
 	ContractNumber *base.ContractNumber615Type `xml:"contractNumber,omitempty"`
@@ -1967,8 +1967,8 @@ type Applications1 struct {
 	Application []ApplicationsApplication `xml:",any"`
 }
 
-// AppParticipantInfoLegalEntityRfinfo: Юридическое лицо РФ
-type AppParticipantInfoLegalEntityRfinfo struct {
+// LegalEntityRfinfo1: Юридическое лицо РФ
+type LegalEntityRfinfo1 struct {
 	XMLName xml.Name `xml:"legalEntityRFInfo"`
 
 	// EMail: Адрес электронной почты
@@ -1993,8 +1993,8 @@ type AppParticipantInfoLegalEntityRfinfo struct {
 	OrgFactAddress base.Text2000Type `xml:"orgFactAddress"`
 }
 
-// AppParticipantInfoLegalEntityForeignStateInfo: Юридическое лицо иностранного государства
-type AppParticipantInfoLegalEntityForeignStateInfo struct {
+// LegalEntityForeignStateInfo1: Юридическое лицо иностранного государства
+type LegalEntityForeignStateInfo1 struct {
 	XMLName xml.Name `xml:"legalEntityForeignStateInfo"`
 
 	// EMail: Адрес электронной почты
@@ -2031,8 +2031,8 @@ type AppParticipantInfoLegalEntityForeignStateInfo struct {
 	PlaceOfStayInRf *base.Text2000Type `xml:"placeOfStayInRF,omitempty"`
 }
 
-// AppParticipantInfoIndividualPersonInfo: Индивидуальный предприниматель
-type AppParticipantInfoIndividualPersonInfo struct {
+// IndividualPersonInfo1: Индивидуальный предприниматель
+type IndividualPersonInfo1 struct {
 	XMLName xml.Name `xml:"individualPersonInfo"`
 
 	// EMail: Адрес электронной почты
@@ -2055,14 +2055,14 @@ type AppParticipantInfoIndividualPersonInfo struct {
 type ApplicationAppParticipantInfo struct {
 	XMLName xml.Name `xml:"appParticipantInfo"`
 
-	// AppParticipantInfoLegalEntityRfinfo: Юридическое лицо РФ
-	LegalEntityRfinfo *AppParticipantInfoLegalEntityRfinfo `xml:"legalEntityRFInfo,omitempty"`
+	// LegalEntityRfinfo1: Юридическое лицо РФ
+	LegalEntityRfinfo *LegalEntityRfinfo1 `xml:"legalEntityRFInfo,omitempty"`
 
-	// AppParticipantInfoLegalEntityForeignStateInfo: Юридическое лицо иностранного государства
-	LegalEntityForeignStateInfo *AppParticipantInfoLegalEntityForeignStateInfo `xml:"legalEntityForeignStateInfo,omitempty"`
+	// LegalEntityForeignStateInfo1: Юридическое лицо иностранного государства
+	LegalEntityForeignStateInfo *LegalEntityForeignStateInfo1 `xml:"legalEntityForeignStateInfo,omitempty"`
 
-	// AppParticipantInfoIndividualPersonInfo: Индивидуальный предприниматель
-	IndividualPersonInfo *AppParticipantInfoIndividualPersonInfo `xml:"individualPersonInfo,omitempty"`
+	// IndividualPersonInfo1: Индивидуальный предприниматель
+	IndividualPersonInfo *IndividualPersonInfo1 `xml:"individualPersonInfo,omitempty"`
 }
 
 // ApplicationAdmittedInfo1: Результат рассмотрения заявки
@@ -2245,8 +2245,8 @@ type CommonInfo14 struct {
 	Href *base.HrefType `xml:"href,omitempty"`
 }
 
-// ParticipantInfoLegalEntityRfinfo2: Юридическое лицо РФ. При приёме проверяется наличие участника с указанным ИНН, КПП (при наличии) в протоколе проведения электронного аукциона protocolEF2
-type ParticipantInfoLegalEntityRfinfo2 struct {
+// LegalEntityRfinfo2: Юридическое лицо РФ. При приёме проверяется наличие участника с указанным ИНН, КПП (при наличии) в протоколе проведения электронного аукциона protocolEF2
+type LegalEntityRfinfo2 struct {
 	XMLName xml.Name `xml:"legalEntityRFInfo,omitempty"`
 
 	// Inn: ИНН
@@ -2265,8 +2265,8 @@ type ParticipantInfoLegalEntityRfinfo2 struct {
 	OrgFactAddress *base.Text2000Type `xml:"orgFactAddress,omitempty"`
 }
 
-// ParticipantInfoLegalEntityForeignStateInfo2: Юридическое лицо иностранного государства. При приёме проверяется наличие участника с указанным ИНН, КПП (при наличии) в протоколе проведения электронного аукциона protocolEF2
-type ParticipantInfoLegalEntityForeignStateInfo2 struct {
+// LegalEntityForeignStateInfo2: Юридическое лицо иностранного государства. При приёме проверяется наличие участника с указанным ИНН, КПП (при наличии) в протоколе проведения электронного аукциона protocolEF2
+type LegalEntityForeignStateInfo2 struct {
 	XMLName xml.Name `xml:"legalEntityForeignStateInfo,omitempty"`
 
 	// Inn: ИНН
@@ -2297,8 +2297,8 @@ type ParticipantInfoLegalEntityForeignStateInfo2 struct {
 	PlaceOfStayInRf *base.Text2000Type `xml:"placeOfStayInRF,omitempty"`
 }
 
-// ParticipantInfoIndividualPersonRfinfo2: Индивидуальный предприниматель. При приёме проверяется наличие участника с указанным ИНН в протоколе проведения электронного аукциона protocolEF2
-type ParticipantInfoIndividualPersonRfinfo2 struct {
+// ParticipantInfo1IndividualPersonRfinfo: Индивидуальный предприниматель. При приёме проверяется наличие участника с указанным ИНН в протоколе проведения электронного аукциона protocolEF2
+type ParticipantInfo1IndividualPersonRfinfo struct {
 	XMLName xml.Name `xml:"individualPersonRFInfo,omitempty"`
 
 	// Inn: ИНН
@@ -2318,18 +2318,18 @@ type ParticipantInfoIndividualPersonRfinfo2 struct {
 type ParticipantInfo3 struct {
 	XMLName xml.Name `xml:"participantInfo"`
 
-	// ParticipantInfoLegalEntityRfinfo: Юридическое лицо РФ. При приёме проверяется наличие участника с указанным ИНН, КПП (при наличии) в протоколе проведения электронного аукциона protocolEF2
-	LegalEntityRfinfo *ParticipantInfoLegalEntityRfinfo `xml:"legalEntityRFInfo,omitempty"`
+	// LegalEntityRfinfo2: Юридическое лицо РФ. При приёме проверяется наличие участника с указанным ИНН, КПП (при наличии) в протоколе проведения электронного аукциона protocolEF2
+	LegalEntityRfinfo *LegalEntityRfinfo2 `xml:"legalEntityRFInfo,omitempty"`
 
-	// ParticipantInfoLegalEntityForeignStateInfo: Юридическое лицо иностранного государства. При приёме проверяется наличие участника с указанным ИНН, КПП (при наличии) в протоколе проведения электронного аукциона protocolEF2
-	LegalEntityForeignStateInfo *ParticipantInfoLegalEntityForeignStateInfo `xml:"legalEntityForeignStateInfo,omitempty"`
+	// LegalEntityForeignStateInfo2: Юридическое лицо иностранного государства. При приёме проверяется наличие участника с указанным ИНН, КПП (при наличии) в протоколе проведения электронного аукциона protocolEF2
+	LegalEntityForeignStateInfo *LegalEntityForeignStateInfo2 `xml:"legalEntityForeignStateInfo,omitempty"`
 
-	// ParticipantInfoIndividualPersonRfinfo: Индивидуальный предприниматель. При приёме проверяется наличие участника с указанным ИНН в протоколе проведения электронного аукциона protocolEF2
-	IndividualPersonRfinfo *ParticipantInfoIndividualPersonRfinfo `xml:"individualPersonRFInfo,omitempty"`
+	// ParticipantInfo1IndividualPersonRfinfo: Индивидуальный предприниматель. При приёме проверяется наличие участника с указанным ИНН в протоколе проведения электронного аукциона protocolEF2
+	IndividualPersonRfinfo *ParticipantInfo1IndividualPersonRfinfo `xml:"individualPersonRFInfo,omitempty"`
 }
 
-// LegalEntityRfinfo1: Юридическое лицо РФ
-type LegalEntityRfinfo1 struct {
+// LegalEntityRfinfo3: Юридическое лицо РФ
+type LegalEntityRfinfo3 struct {
 	XMLName xml.Name `xml:"legalEntityRFInfo"`
 
 	// EMail: Адрес электронной почты
@@ -2354,8 +2354,8 @@ type LegalEntityRfinfo1 struct {
 	OrgFactAddress base.Text2000Type `xml:"orgFactAddress"`
 }
 
-// LegalEntityForeignStateInfo1: Юридическое лицо иностранного государства
-type LegalEntityForeignStateInfo1 struct {
+// LegalEntityForeignStateInfo3: Юридическое лицо иностранного государства
+type LegalEntityForeignStateInfo3 struct {
 	XMLName xml.Name `xml:"legalEntityForeignStateInfo"`
 
 	// EMail: Адрес электронной почты
@@ -2392,8 +2392,8 @@ type LegalEntityForeignStateInfo1 struct {
 	PlaceOfStayInRf *base.Text2000Type `xml:"placeOfStayInRF,omitempty"`
 }
 
-// IndividualPersonInfo1: Индивидуальный предприниматель
-type IndividualPersonInfo1 struct {
+// IndividualPersonInfo2: Индивидуальный предприниматель
+type IndividualPersonInfo2 struct {
 	XMLName xml.Name `xml:"individualPersonInfo"`
 
 	// EMail: Адрес электронной почты
@@ -2415,8 +2415,8 @@ type IndividualPersonInfo1 struct {
 	FactAddress *base.Text2000Type `xml:"factAddress,omitempty"`
 }
 
-// PrintFormFieldsInfoCustomerInfo1: Заказчик
-type PrintFormFieldsInfoCustomerInfo1 struct {
+// CustomerInfo1: Заказчик
+type CustomerInfo1 struct {
 	XMLName xml.Name `xml:"customerInfo,omitempty"`
 
 	base.OrganizationRef
@@ -2426,8 +2426,8 @@ type PrintFormFieldsInfoCustomerInfo1 struct {
 type PrintFormFieldsInfo10 struct {
 	XMLName xml.Name `xml:"printFormFieldsInfo,omitempty"`
 
-	// PrintFormFieldsInfoCustomerInfo: Заказчик
-	CustomerInfo *PrintFormFieldsInfoCustomerInfo `xml:"customerInfo,omitempty"`
+	// CustomerInfo1: Заказчик
+	CustomerInfo *CustomerInfo1 `xml:"customerInfo,omitempty"`
 
 	// PurchaseObjectInfo: Наименование объекта закупки
 	PurchaseObjectInfo *base.Text2000Type `xml:"purchaseObjectInfo,omitempty"`
@@ -2641,8 +2641,8 @@ type QualifiedContractorExcludeType struct {
 	// ExternalId: Внешний идентификатор документа
 	ExternalId *base.ExternalIdType `xml:"externalId,omitempty"`
 
-	// CommonInfo: Общая информация
-	CommonInfo CommonInfo `xml:"commonInfo"`
+	// CommonInfo1: Общая информация
+	CommonInfo CommonInfo1 `xml:"commonInfo"`
 
 	// PrintFormInfo: Печатная форма документа в ЕИС. Элемент игнорируется при приёме. При передаче заполняется ссылкой на печатную форму и электронную подпись размещенного в ЕИС документа
 	PrintFormInfo *PrintFormType `xml:"printFormInfo,omitempty"`
@@ -2673,8 +2673,8 @@ type QualifiedContractorExcludeCancelType struct {
 	// ExternalId: Внешний идентификатор документа
 	ExternalId *base.ExternalIdType `xml:"externalId,omitempty"`
 
-	// CommonInfo: Общая информация
-	CommonInfo CommonInfo `xml:"commonInfo"`
+	// CommonInfo2: Общая информация
+	CommonInfo CommonInfo2 `xml:"commonInfo"`
 
 	// ExclusionCancelReason: Основания отмены исключения сведений квалифицированной подрядной организации из РКПО
 	ExclusionCancelReason ExclusionCancelReason `xml:"exclusionCancelReason"`
@@ -2688,8 +2688,8 @@ type QualifiedContractorExcludeCancelType struct {
 	// AttachmentsInfo: Информация о прикрепленных документах
 	AttachmentsInfo *AttachmentListType `xml:"attachmentsInfo,omitempty"`
 
-	// PrintFormFieldsInfo: Дополнительная информация для печатной формы. Игнорируется при приёме, заполняется при передаче
-	PrintFormFieldsInfo *PrintFormFieldsInfo `xml:"printFormFieldsInfo,omitempty"`
+	// PrintFormFieldsInfo1: Дополнительная информация для печатной формы. Игнорируется при приёме, заполняется при передаче
+	PrintFormFieldsInfo *PrintFormFieldsInfo1 `xml:"printFormFieldsInfo,omitempty"`
 }
 
 // NotificationEftype: Извещение о проведении ЭА (электронный аукцион); внесение изменений
@@ -2699,8 +2699,8 @@ type NotificationEftype struct {
 	// SchemeVersion: Версия схемы
 	SchemeVersion base.SchemeVersionType `xml:"schemeVersion,attr"`
 
-	// PurchaseResponsibleInfo: Информация о разместившей организации
-	PurchaseResponsibleInfo PurchaseResponsibleInfo `xml:"purchaseResponsibleInfo"`
+	// PurchaseResponsibleInfo1: Информация о разместившей организации
+	PurchaseResponsibleInfo PurchaseResponsibleInfo1 `xml:"purchaseResponsibleInfo"`
 
 	// NotificationInfo: Информация о проведении ЭА (электронный аукцион)
 	NotificationInfo NotificationEfinfoType `xml:"notificationInfo"`
@@ -2761,8 +2761,8 @@ type NotificationCancelType struct {
 	// AttachmentsInfo: Документация
 	AttachmentsInfo *AttachmentListType `xml:"attachmentsInfo,omitempty"`
 
-	// PrintFormFieldsInfo: Дополнительная информация для печатной формы. Игнорируется при приёме, заполняется при передаче
-	PrintFormFieldsInfo *PrintFormFieldsInfo `xml:"printFormFieldsInfo,omitempty"`
+	// PrintFormFieldsInfo10: Дополнительная информация для печатной формы. Игнорируется при приёме, заполняется при передаче
+	PrintFormFieldsInfo *PrintFormFieldsInfo10 `xml:"printFormFieldsInfo,omitempty"`
 }
 
 // TimeEftype: Время проведения электронного аукциона
@@ -2792,8 +2792,8 @@ type ProtocolEf1Type struct {
 	// SchemeVersion: Версия схемы
 	SchemeVersion base.SchemeVersionType `xml:"schemeVersion,attr"`
 
-	// ProtocolPublisherInfo: Информация об организации, разместившей протокол
-	ProtocolPublisherInfo ProtocolPublisherInfo `xml:"protocolPublisherInfo"`
+	// ProtocolPublisherInfo1: Информация об организации, разместившей протокол
+	ProtocolPublisherInfo ProtocolPublisherInfo1 `xml:"protocolPublisherInfo"`
 
 	// ProtocolInfo: Информацио о рассмотрении заявок на участие в электронном аукционе
 	ProtocolInfo ProtocolEf1InfoType `xml:"protocolInfo"`
@@ -2830,8 +2830,8 @@ type ProtocolEf2Type struct {
 	// SchemeVersion: Версия схемы
 	SchemeVersion base.SchemeVersionType `xml:"schemeVersion,attr"`
 
-	// ProtocolPublisherInfo: Информация об организации, разместившей протокол
-	ProtocolPublisherInfo ProtocolPublisherInfo `xml:"protocolPublisherInfo"`
+	// ProtocolPublisherInfo2: Информация об организации, разместившей протокол
+	ProtocolPublisherInfo ProtocolPublisherInfo2 `xml:"protocolPublisherInfo"`
 
 	// ProtocolInfo: Информация о проведении электронного аукциона
 	ProtocolInfo ProtocolEf2InfoType `xml:"protocolInfo"`
@@ -2877,14 +2877,14 @@ type ActEvasionType struct {
 	// VersionNumber: Номер версии документа
 	VersionNumber *base.VersionNumberType `xml:"versionNumber,omitempty"`
 
-	// CommonInfo: Информация о документе
-	CommonInfo CommonInfo `xml:"commonInfo"`
+	// CommonInfo14: Информация о документе
+	CommonInfo CommonInfo14 `xml:"commonInfo"`
 
 	// RefusalFactInfo: Основание принятия решения
 	RefusalFactInfo RefusalFact `xml:"refusalFactInfo"`
 
-	// ParticipantInfo: Сведения об участнике
-	ParticipantInfo ParticipantInfo `xml:"participantInfo"`
+	// ParticipantInfo3: Сведения об участнике
+	ParticipantInfo ParticipantInfo3 `xml:"participantInfo"`
 
 	// PrintFormInfo: Печатная форма документа в ЕИС. Элемент игнорируется при приёме. При передаче заполняется ссылкой на печатную форму и электронную подпись размещенного в ЕИС документа
 	PrintFormInfo *PrintFormType `xml:"printFormInfo,omitempty"`
@@ -2915,14 +2915,14 @@ type ActDeviationType struct {
 	// VersionNumber: Номер версии документа
 	VersionNumber *base.VersionNumberType `xml:"versionNumber,omitempty"`
 
-	// CommonInfo: Информация о документе
-	CommonInfo CommonInfo `xml:"commonInfo"`
+	// CommonInfo14: Информация о документе
+	CommonInfo CommonInfo14 `xml:"commonInfo"`
 
 	// RefusalFactInfo: Основание принятия решения
 	RefusalFactInfo RefusalFact `xml:"refusalFactInfo"`
 
-	// ParticipantInfo: Сведения об участнике
-	ParticipantInfo ParticipantInfo `xml:"participantInfo"`
+	// ParticipantInfo3: Сведения об участнике
+	ParticipantInfo ParticipantInfo3 `xml:"participantInfo"`
 
 	// PrintFormInfo: Печатная форма документа в ЕИС. Элемент игнорируется при приёме. При передаче заполняется ссылкой на печатную форму и электронную подпись размещенного в ЕИС документа
 	PrintFormInfo *PrintFormType `xml:"printFormInfo,omitempty"`
@@ -2950,8 +2950,8 @@ type ActCancelType struct {
 	// ExternalId: Внешний идентификатор документа
 	ExternalId *base.ExternalIdType `xml:"externalId,omitempty"`
 
-	// CommonInfo: Информация о документе
-	CommonInfo CommonInfo `xml:"commonInfo"`
+	// CommonInfo5: Информация о документе
+	CommonInfo CommonInfo5 `xml:"commonInfo"`
 
 	// CancelReasonInfo: Причина отмены акта
 	CancelReasonInfo PurchaseCancelType `xml:"cancelReasonInfo"`
@@ -2965,8 +2965,8 @@ type ActCancelType struct {
 	// AttachmentsInfo: Информация о прикрепленных документах
 	AttachmentsInfo *AttachmentListType `xml:"attachmentsInfo,omitempty"`
 
-	// PrintFormFieldsInfo: Дополнительная информация для печатной формы. Игнорируется при приёме, заполняется при передаче
-	PrintFormFieldsInfo *PrintFormFieldsInfo `xml:"printFormFieldsInfo,omitempty"`
+	// PrintFormFieldsInfo3: Дополнительная информация для печатной формы. Игнорируется при приёме, заполняется при передаче
+	PrintFormFieldsInfo *PrintFormFieldsInfo3 `xml:"printFormFieldsInfo,omitempty"`
 }
 
 // ContractType: Сведения о договоре о проведении капитального ремонта по ПП РФ № 615; внесение изменений
@@ -3024,11 +3024,11 @@ type ContractType struct {
 	// AttachmentsInfo: Информация о прикрепленных документах
 	AttachmentsInfo *AttachmentListType `xml:"attachmentsInfo,omitempty"`
 
-	// ModificationInfo: Основание внесения изменений
-	ModificationInfo *ModificationInfo `xml:"modificationInfo,omitempty"`
+	// ModificationInfo1: Основание внесения изменений
+	ModificationInfo *ModificationInfo1 `xml:"modificationInfo,omitempty"`
 
-	// PrintFormFieldsInfo: Дополнительная информация для печатной формы. Игнорируется при приёме, заполняется при передаче
-	PrintFormFieldsInfo *PrintFormFieldsInfo `xml:"printFormFieldsInfo,omitempty"`
+	// PrintFormFieldsInfo4: Дополнительная информация для печатной формы. Игнорируется при приёме, заполняется при передаче
+	PrintFormFieldsInfo *PrintFormFieldsInfo4 `xml:"printFormFieldsInfo,omitempty"`
 
 	// IsMajorRepairContract: Договор на поставку товаров, необходимых для оказания услуг и (или) выполнения работ по капитальному ремонту
 	IsMajorRepairContract *bool `xml:"isMajorRepairContract,omitempty"`
@@ -3053,8 +3053,8 @@ type ContractProcedureType struct {
 	// VersionNumber: Номер версии
 	VersionNumber *base.VersionNumberType `xml:"versionNumber,omitempty"`
 
-	// CommonInfo: Общая информация. Первичным ключом при приеме как первоначальной версии, так и изменений, является сочетание полей: "Номер договора" (commonInfo\regNum) + procedure\executions\stage\startDate + procedure\executions\stage\endDate + procedure\executions\ordinalNumber
-	CommonInfo CommonInfo `xml:"commonInfo"`
+	// CommonInfo6: Общая информация. Первичным ключом при приеме как первоначальной версии, так и изменений, является сочетание полей: "Номер договора" (commonInfo\regNum) + procedure\executions\stage\startDate + procedure\executions\stage\endDate + procedure\executions\ordinalNumber
+	CommonInfo CommonInfo6 `xml:"commonInfo"`
 
 	// Procedure: Сведения об исполнении/расторжении
 	Procedure Procedure `xml:"procedure"`
@@ -3071,11 +3071,11 @@ type ContractProcedureType struct {
 	// AttachmentsInfo: Информация о прикрепленных документах
 	AttachmentsInfo *AttachmentListType `xml:"attachmentsInfo,omitempty"`
 
-	// ModificationInfo: Основание внесения изменений
-	ModificationInfo *ModificationInfo `xml:"modificationInfo,omitempty"`
+	// ModificationInfo2: Основание внесения изменений
+	ModificationInfo *ModificationInfo2 `xml:"modificationInfo,omitempty"`
 
-	// PrintFormFieldsInfo: Дополнительная информация для печатной формы. Игнорируется при приёме, заполняется при передаче
-	PrintFormFieldsInfo *PrintFormFieldsInfo `xml:"printFormFieldsInfo,omitempty"`
+	// PrintFormFieldsInfo5: Дополнительная информация для печатной формы. Игнорируется при приёме, заполняется при передаче
+	PrintFormFieldsInfo *PrintFormFieldsInfo5 `xml:"printFormFieldsInfo,omitempty"`
 }
 
 // ContractProcedureCancelType: Отмена информации об исполнении/расторжении договора о проведении капитального ремонта по ПП РФ № 615
@@ -3091,8 +3091,8 @@ type ContractProcedureCancelType struct {
 	// ExternalId: Внешний идентификатор документа
 	ExternalId *base.ExternalIdType `xml:"externalId,omitempty"`
 
-	// CommonInfo: Общая информация
-	CommonInfo CommonInfo `xml:"commonInfo"`
+	// CommonInfo7: Общая информация
+	CommonInfo CommonInfo7 `xml:"commonInfo"`
 
 	// PrintFormInfo: Печатная форма документа в ЕИС. Элемент игнорируется при приёме. При передаче заполняется ссылкой на печатную форму и электронную подпись размещенного в ЕИС документа
 	PrintFormInfo *PrintFormType `xml:"printFormInfo,omitempty"`
@@ -3117,8 +3117,8 @@ type ContractDiscrepancyProtocolType struct {
 	// VersionNumber: Номер версии документа
 	VersionNumber *base.VersionNumberType `xml:"versionNumber,omitempty"`
 
-	// CommonInfo: Общая информация
-	CommonInfo CommonInfo `xml:"commonInfo"`
+	// CommonInfo8: Общая информация
+	CommonInfo CommonInfo8 `xml:"commonInfo"`
 
 	// AuthorityInfo: Сведения об уполномоченном финансовом органе
 	AuthorityInfo ContractOrganizationInfoType `xml:"authorityInfo"`
@@ -3126,8 +3126,8 @@ type ContractDiscrepancyProtocolType struct {
 	// AttachmentsInfo: Информация о прикрепленных документах
 	AttachmentsInfo *AttachmentListType `xml:"attachmentsInfo,omitempty"`
 
-	// PrintFormFieldsInfo: Дополнительная информация для печатной формы. Игнорируется при приёме, заполняется при передаче
-	PrintFormFieldsInfo *PrintFormFieldsInfo `xml:"printFormFieldsInfo,omitempty"`
+	// PrintFormFieldsInfo6: Дополнительная информация для печатной формы. Игнорируется при приёме, заполняется при передаче
+	PrintFormFieldsInfo *PrintFormFieldsInfo6 `xml:"printFormFieldsInfo,omitempty"`
 }
 
 // UnfairContractorType: Сведения о недобросовестой подрядной организации по ПП РФ № 615. Устарело, не применяется с 01.04.2022
@@ -3137,8 +3137,8 @@ type UnfairContractorType struct {
 	// SchemeVersion: Версия схемы
 	SchemeVersion base.SchemeVersionType `xml:"schemeVersion,attr"`
 
-	// CommonInfo: Общая информация
-	CommonInfo CommonInfo `xml:"commonInfo"`
+	// CommonInfo9: Общая информация
+	CommonInfo CommonInfo9 `xml:"commonInfo"`
 
 	// CustomerInfo: Информация о заказчике, подавшем заявку на включение реестр
 	CustomerInfo *CustomerInfo `xml:"customerInfo,omitempty"`
@@ -3183,17 +3183,17 @@ type ClarificationRequestType struct {
 	// ExternalId: Внешний идентификатор документа
 	ExternalId *base.ExternalIdType `xml:"externalId,omitempty"`
 
-	// CommonInfo: Общая информация
-	CommonInfo CommonInfo `xml:"commonInfo"`
+	// CommonInfo10: Общая информация
+	CommonInfo CommonInfo10 `xml:"commonInfo"`
 
-	// ParticipantInfo: Участник размещения заказа
-	ParticipantInfo ParticipantInfo `xml:"participantInfo"`
+	// ParticipantInfo2: Участник размещения заказа
+	ParticipantInfo ParticipantInfo2 `xml:"participantInfo"`
 
 	// AttachmentsInfo: Информация о прикрепленных документах
 	AttachmentsInfo *AttachmentListType `xml:"attachmentsInfo,omitempty"`
 
-	// PrintFormFieldsInfo: Дополнительная информация для печатной формы. Игнорируется при приёме, заполняется при передаче
-	PrintFormFieldsInfo *PrintFormFieldsInfo `xml:"printFormFieldsInfo,omitempty"`
+	// PrintFormFieldsInfo7: Дополнительная информация для печатной формы. Игнорируется при приёме, заполняется при передаче
+	PrintFormFieldsInfo *PrintFormFieldsInfo7 `xml:"printFormFieldsInfo,omitempty"`
 }
 
 // ClarificationType: Разъяснение положений документации/Дополнительная информация
@@ -3209,8 +3209,8 @@ type ClarificationType struct {
 	// ExternalId: Внешний идентификатор документа
 	ExternalId *base.ExternalIdType `xml:"externalId,omitempty"`
 
-	// CommonInfo: Общая информация
-	CommonInfo CommonInfo `xml:"commonInfo"`
+	// CommonInfo11: Общая информация
+	CommonInfo CommonInfo11 `xml:"commonInfo"`
 
 	// RequestInfo: Информация о запросе на разъяснение
 	RequestInfo *RequestInfo `xml:"requestInfo,omitempty"`
@@ -3224,8 +3224,8 @@ type ClarificationType struct {
 	// AttachmentsInfo: Информация о прикрепленных документах
 	AttachmentsInfo *AttachmentListType `xml:"attachmentsInfo,omitempty"`
 
-	// PrintFormFieldsInfo: Дополнительная информация для ПФ. Игнорируется при приёме, заполняется при передачк
-	PrintFormFieldsInfo *PrintFormFieldsInfo `xml:"printFormFieldsInfo,omitempty"`
+	// PrintFormFieldsInfo8: Дополнительная информация для ПФ. Игнорируется при приёме, заполняется при передачк
+	PrintFormFieldsInfo *PrintFormFieldsInfo8 `xml:"printFormFieldsInfo,omitempty"`
 }
 
 // ProtocolCancelType: Информация об отмене протокола
@@ -3241,8 +3241,8 @@ type ProtocolCancelType struct {
 	// ExternalId: Внешний идентификатор документа
 	ExternalId *base.ExternalIdType `xml:"externalId,omitempty"`
 
-	// CommonInfo: Информация о документе
-	CommonInfo CommonInfo `xml:"commonInfo"`
+	// CommonInfo12: Информация о документе
+	CommonInfo CommonInfo12 `xml:"commonInfo"`
 
 	// PrintFormInfo: Печатная форма документа в ЕИС. Элемент игнорируется при приёме. При передаче заполняется ссылкой на печатную форму и электронную подпись размещенного в ЕИС документа
 	PrintFormInfo *PrintFormType `xml:"printFormInfo,omitempty"`
@@ -3256,8 +3256,8 @@ type ProtocolCancelType struct {
 	// CancelReason: Причина отмены протокола
 	CancelReason PurchaseCancelType `xml:"cancelReason"`
 
-	// PrintFormFieldsInfo: Дополнительная информация для печатной формы. Игнорируется при приёме, заполняется при передаче
-	PrintFormFieldsInfo *PrintFormFieldsInfo `xml:"printFormFieldsInfo,omitempty"`
+	// PrintFormFieldsInfo9: Дополнительная информация для печатной формы. Игнорируется при приёме, заполняется при передаче
+	PrintFormFieldsInfo *PrintFormFieldsInfo9 `xml:"printFormFieldsInfo,omitempty"`
 }
 
 // ContractSignType: Сведения о заключенном в электронной форме на ЭП договоре оказания услуг и (или) выполнения работ по капитальному ремонту общего имущества в многоквартирном доме по ПП РФ № 615
@@ -3267,8 +3267,8 @@ type ContractSignType struct {
 	// SchemeVersion: Версия схемы
 	SchemeVersion base.SchemeVersionType `xml:"schemeVersion,attr"`
 
-	// CommonInfo: Общая информация
-	CommonInfo CommonInfo `xml:"commonInfo"`
+	// CommonInfo13: Общая информация
+	CommonInfo CommonInfo13 `xml:"commonInfo"`
 
 	// CustomerInfo: Заказчик. При приеме контролируется, что заказчик, указанный в блоке, совпадает по коду по СПЗ (коду СвР) с заказчиком в связанном ЭА по ПП РФ 615
 	CustomerInfo ContractOrganizationInfoType `xml:"customerInfo"`
@@ -3276,8 +3276,8 @@ type ContractSignType struct {
 	// ContractorInfo: Сведения о подрядной организации. При приеме контролируется, что подрядная организация, указанная в блоке, совпадает по коду по СПЗ (коду СвР) с подрядной организацией в связанном ЭА по ПП РФ 615 на основании протокола проведения электронного аукциона (protocolEF2)
 	ContractorInfo ContractorInfoType `xml:"contractorInfo"`
 
-	// FinancesInfo: Финансирование
-	FinancesInfo FinancesInfo `xml:"financesInfo"`
+	// FinancesInfo1: Финансирование
+	FinancesInfo FinancesInfo1 `xml:"financesInfo"`
 
 	// ExtPrintFormInfo: Электронный документ, полученный из внешней системы
 	ExtPrintFormInfo ExtPrintFormType `xml:"extPrintFormInfo"`
@@ -3473,8 +3473,8 @@ type NotificationPoinfoType struct {
 	// Etpinfo: Электронная площалка. При приеме код контролируется на присутствие в справочнике "Справочник: Электронные торговые площадки по ПП РФ № 615" (nsiETP)
 	Etpinfo base.Etpref `xml:"ETPInfo"`
 
-	// ProcedureInfo: Информация о процедуре ПО
-	ProcedureInfo ProcedureInfo `xml:"procedureInfo"`
+	// ProcedureInfo1: Информация о процедуре ПО
+	ProcedureInfo ProcedureInfo1 `xml:"procedureInfo"`
 
 	// PurchaseSubject: Информация о предмете электронного аукциона. При приеме код контролируется на присутствие в справочнике "Справочник: Предметы электронного аукциона по ПП РФ № 615" (nsiPurchaseSubject)
 	PurchaseSubject base.PurchaseSubjectRef `xml:"purchaseSubject"`
@@ -3498,8 +3498,8 @@ type ProtocolEf2InfoType struct {
 	// BiddingInfo: Информация об электронном аукционе
 	BiddingInfo BiddingInfo `xml:"biddingInfo"`
 
-	// Applications: Заявки по лоту
-	Applications *Applications `xml:"applications,omitempty"`
+	// Applications1: Заявки по лоту
+	Applications *Applications1 `xml:"applications,omitempty"`
 
 	// AbandonedReason: Признание аукциона несостоявшимся Необходимо заполнение блока только в случае если количество заявок с предложениями в блоке applications (элемент applications\application) меньше либо равно 1. При приеме содержимое контролируется на присутствие в справочнике "Справочник оснований признания процедуры несостоявшейся" (nsiAbandonedReason). Запись должна иметь значение "pprf615ProtocolEF2" в поле objectName
 	AbandonedReason *base.AbandonedReasonRef `xml:"abandonedReason,omitempty"`
@@ -3515,8 +3515,8 @@ type ProtocolPoinfoType struct {
 	// Commission: Информация о комиссии
 	Commission CommissionType `xml:"commission"`
 
-	// Applications: Заявки
-	Applications *Applications `xml:"applications,omitempty"`
+	// Applications2: Заявки
+	Applications *Applications2 `xml:"applications,omitempty"`
 
 	// AbandonedReason: Признание предварительного отбора несостоявшимся. Необходимо заполнение блока только в случае если количество неотклонённых заявок в блоке applications (указан элемент applications\application\admittedInfo\admitted) меньше либо равно 1. При приеме содержимое контролируется на присутствие в справочнике "Справочник оснований признания процедуры несостоявшейся" (nsiAbandonedReason). Запись должна иметь значение "pprf615ProtocolPO" в поле objectName
 	AbandonedReason *base.AbandonedReasonRef `xml:"abandonedReason,omitempty"`
@@ -3886,8 +3886,8 @@ type PrintFormType struct {
 	// Url: Ссылка для скачивания печатной формы
 	Url base.HrefType `xml:"url"`
 
-	// Signature: Электронная подпись печатной формы
-	Signature []Signature `xml:"signature,omitempty"`
+	// Signature1: Электронная подпись печатной формы
+	Signature []Signature1 `xml:"signature,omitempty"`
 }
 
 // ProtocolCommonInfoType: Тип: Общая информация о протоколе
@@ -3935,14 +3935,14 @@ type PurchaseActType struct {
 	// VersionNumber: Номер версии документа
 	VersionNumber *base.VersionNumberType `xml:"versionNumber,omitempty"`
 
-	// CommonInfo: Информация о документе
-	CommonInfo CommonInfo `xml:"commonInfo"`
+	// CommonInfo14: Информация о документе
+	CommonInfo CommonInfo14 `xml:"commonInfo"`
 
 	// RefusalFactInfo: Основание принятия решения
 	RefusalFactInfo RefusalFact `xml:"refusalFactInfo"`
 
-	// ParticipantInfo: Сведения об участнике
-	ParticipantInfo ParticipantInfo `xml:"participantInfo"`
+	// ParticipantInfo3: Сведения об участнике
+	ParticipantInfo ParticipantInfo3 `xml:"participantInfo"`
 
 	// PrintFormInfo: Печатная форма документа в ЕИС. Элемент игнорируется при приёме. При передаче заполняется ссылкой на печатную форму и электронную подпись размещенного в ЕИС документа
 	PrintFormInfo *PrintFormType `xml:"printFormInfo,omitempty"`
@@ -4061,14 +4061,14 @@ type ContractOrganizationInfoType struct {
 type PurchaseContractorInfoType struct {
 	XMLName xml.Name
 
-	// LegalEntityRfinfo: Юридическое лицо РФ
-	LegalEntityRfinfo *LegalEntityRfinfo `xml:"legalEntityRFInfo,omitempty"`
+	// LegalEntityRfinfo3: Юридическое лицо РФ
+	LegalEntityRfinfo *LegalEntityRfinfo3 `xml:"legalEntityRFInfo,omitempty"`
 
-	// LegalEntityForeignStateInfo: Юридическое лицо иностранного государства
-	LegalEntityForeignStateInfo *LegalEntityForeignStateInfo `xml:"legalEntityForeignStateInfo,omitempty"`
+	// LegalEntityForeignStateInfo3: Юридическое лицо иностранного государства
+	LegalEntityForeignStateInfo *LegalEntityForeignStateInfo3 `xml:"legalEntityForeignStateInfo,omitempty"`
 
-	// IndividualPersonInfo: Индивидуальный предприниматель
-	IndividualPersonInfo *IndividualPersonInfo `xml:"individualPersonInfo,omitempty"`
+	// IndividualPersonInfo2: Индивидуальный предприниматель
+	IndividualPersonInfo *IndividualPersonInfo2 `xml:"individualPersonInfo,omitempty"`
 }
 
 // PurchaseDocumentCommonType: Тип: Общая информация о документе закупки
@@ -4096,8 +4096,8 @@ type PurchaseDocumentCommonType struct {
 	// AttachmentsInfo: Документация
 	AttachmentsInfo *AttachmentListType `xml:"attachmentsInfo,omitempty"`
 
-	// PrintFormFieldsInfo: Дополнительная информация для печатной формы. Игнорируется при приёме, заполняется при передаче
-	PrintFormFieldsInfo *PrintFormFieldsInfo `xml:"printFormFieldsInfo,omitempty"`
+	// PrintFormFieldsInfo10: Дополнительная информация для печатной формы. Игнорируется при приёме, заполняется при передаче
+	PrintFormFieldsInfo *PrintFormFieldsInfo10 `xml:"printFormFieldsInfo,omitempty"`
 }
 
 // PurchaseModificationType: Тип: Внесение исправлений в документ закупки
@@ -4161,11 +4161,11 @@ type PurchaseObjects615InfoType struct {
 type PurchaseObjectsContracts615InfoType struct {
 	XMLName xml.Name
 
-	// ServicesWorksKindCh1St166Info: Виды услуг и (или) работ в соотвествии с ст. 166 Жилищного кодекса РФ
-	ServicesWorksKindCh1St166Info *ServicesWorksKindCh1St166Info `xml:"servicesWorksKindCh1St166Info,omitempty"`
+	// ServicesWorksKindCh1St166Info1: Виды услуг и (или) работ в соотвествии с ст. 166 Жилищного кодекса РФ
+	ServicesWorksKindCh1St166Info *ServicesWorksKindCh1St166Info1 `xml:"servicesWorksKindCh1St166Info,omitempty"`
 
-	// ServicesWorksKindNpainfo: Виды услуг и (или) работ установленные нормативным правовым актом субъекта РФ
-	ServicesWorksKindNpainfo *ServicesWorksKindNpainfo `xml:"servicesWorksKindNPAInfo,omitempty"`
+	// ServicesWorksKindNpainfo1: Виды услуг и (или) работ установленные нормативным правовым актом субъекта РФ
+	ServicesWorksKindNpainfo *ServicesWorksKindNpainfo1 `xml:"servicesWorksKindNPAInfo,omitempty"`
 }
 
 // PurchaseOrganizationInfoType: Тип: Данные организации, участвующей в закупке

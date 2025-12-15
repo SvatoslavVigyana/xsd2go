@@ -337,8 +337,8 @@ type ElActUnstructuredCustomerTitleType struct {
 	// SupplierTitleInfo: Сведения о документе, содержащем инфомацию поставщика
 	SupplierTitleInfo SupplierTitleInfo `xml:"supplierTitleInfo"`
 
-	// CommonInfo: Общая информация
-	CommonInfo CommonInfo `xml:"commonInfo"`
+	// CommonInfo1: Общая информация
+	CommonInfo CommonInfo1 `xml:"commonInfo"`
 
 	// ElActDocsInfo: Файлы документа о приемке
 	ElActDocsInfo *cmn.AttachmentListType `xml:"elActDocsInfo,omitempty"`

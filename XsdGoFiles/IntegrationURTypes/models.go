@@ -266,8 +266,8 @@ type ClaimsCorrespondenceNoticeType struct {
 	// ParentNoticeUuid: Уникальный идентификатор родительского документа уведомления в рамках претензионной переписки
 	ParentNoticeUuid *base.GuidType `xml:"parentNoticeUuid,omitempty"`
 
-	// CommonInfo: Общая информация
-	CommonInfo CommonInfo `xml:"commonInfo"`
+	// CommonInfo1: Общая информация
+	CommonInfo CommonInfo1 `xml:"commonInfo"`
 
 	// AttachmentsInfo: Файлы уведомления
 	AttachmentsInfo *cmn.AttachmentListWithDsuidType `xml:"attachmentsInfo,omitempty"`
@@ -295,8 +295,8 @@ type ContractProcedureUnilateralRefusalCancelType struct {
 	// RefusalUuid: Уникальный идентификатор документа реешения об одностороннем отказе от исполнения контракта, на основании которого сформировано уведомление в рамках претензионной переписки, сформированное заказчиком
 	RefusalUuid base.GuidType `xml:"refusalUuid"`
 
-	// CommonInfo: Общая информация
-	CommonInfo CommonInfo `xml:"commonInfo"`
+	// CommonInfo2: Общая информация
+	CommonInfo CommonInfo2 `xml:"commonInfo"`
 
 	// NoticeAttachmentsInfo: Уведомление об устранении причины одностороннего отказа
 	NoticeAttachmentsInfo *cmn.AttachmentListWithDsuidType `xml:"noticeAttachmentsInfo,omitempty"`
@@ -313,8 +313,8 @@ type ContractProcedureUnilateralRefusalCancelType struct {
 	// PowerOfAttorneyInfo: Сведения о доверенности. Игнорируется при приеме, заполняется при передаче
 	PowerOfAttorneyInfo *cmn.WithFirstPoattorneyType `xml:"powerOfAttorneyInfo,omitempty"`
 
-	// PrintFormFieldsInfo: Дополнительная информация для печатной формы. Игнорируется при приёме
-	PrintFormFieldsInfo *PrintFormFieldsInfo `xml:"printFormFieldsInfo,omitempty"`
+	// PrintFormFieldsInfo1: Дополнительная информация для печатной формы. Игнорируется при приёме
+	PrintFormFieldsInfo *PrintFormFieldsInfo1 `xml:"printFormFieldsInfo,omitempty"`
 }
 
 // ParContractProcedureUnilateralRefusalType: Тип: Решение об одностороннем отказе от исполнения контракта, сформированное поставщиком
@@ -330,8 +330,8 @@ type ParContractProcedureUnilateralRefusalType struct {
 	// Uuid: Уникальный идентификатор документа в ЕИС. Не заполняется при подписании поставщиком. Заполняется при размещении
 	Uuid *base.GuidType `xml:"uuid,omitempty"`
 
-	// CommonInfo: Общая информация
-	CommonInfo CommonInfo `xml:"commonInfo"`
+	// CommonInfo3: Общая информация
+	CommonInfo CommonInfo3 `xml:"commonInfo"`
 
 	// AttachmentsInfo: Файлы решения об одностороннем отказе
 	AttachmentsInfo *cmn.AttachmentListWithDsuidType `xml:"attachmentsInfo,omitempty"`
@@ -345,8 +345,8 @@ type ParContractProcedureUnilateralRefusalType struct {
 	// PowerOfAttorneyInfo: Сведения о доверенности. Игнорируется при приеме, заполняется при передаче
 	PowerOfAttorneyInfo *cmn.WithFirstPoattorneyType `xml:"powerOfAttorneyInfo,omitempty"`
 
-	// PrintFormFieldsInfo: Дополнительная информация для печатной формы. Игнорируется при приёме
-	PrintFormFieldsInfo *PrintFormFieldsInfo `xml:"printFormFieldsInfo,omitempty"`
+	// PrintFormFieldsInfo2: Дополнительная информация для печатной формы. Игнорируется при приёме
+	PrintFormFieldsInfo *PrintFormFieldsInfo2 `xml:"printFormFieldsInfo,omitempty"`
 }
 
 // ParClaimsCorrespondenceNoticeType: Тип: Уведомление в рамках претензионной переписки, сформированное поставщиком
@@ -368,8 +368,8 @@ type ParClaimsCorrespondenceNoticeType struct {
 	// ParentNoticeLkpUuid: Уникальный идентификатор родительского документа уведомления в рамках претензионной переписки
 	ParentNoticeLkpUuid *base.GuidType `xml:"parentNoticeLkpUuid,omitempty"`
 
-	// CommonInfo: Общая информация
-	CommonInfo CommonInfo `xml:"commonInfo"`
+	// CommonInfo4: Общая информация
+	CommonInfo CommonInfo4 `xml:"commonInfo"`
 
 	// AttachmentsInfo: Файлы уведомления
 	AttachmentsInfo *cmn.AttachmentListWithDsuidType `xml:"attachmentsInfo,omitempty"`
@@ -400,8 +400,8 @@ type ParContractProcedureUnilateralRefusalCancelType struct {
 	// RefusalLkpUuid: Уникальный идентификатор документа реешения об одностороннем отказе от исполнения контракта, сформированное поставщиком, на основании которого сформировано извещение об отмене решения об одностороннем отказе от исполнения контракта, сформированное поставщиком
 	RefusalLkpUuid base.GuidType `xml:"refusalLkpUuid"`
 
-	// CommonInfo: Общая информация
-	CommonInfo CommonInfo `xml:"commonInfo"`
+	// CommonInfo5: Общая информация
+	CommonInfo CommonInfo5 `xml:"commonInfo"`
 
 	// NoticeAttachmentsInfo: Уведомление об устранении причины одностороннего отказа
 	NoticeAttachmentsInfo *cmn.AttachmentListWithDsuidType `xml:"noticeAttachmentsInfo,omitempty"`
@@ -418,8 +418,8 @@ type ParContractProcedureUnilateralRefusalCancelType struct {
 	// PowerOfAttorneyInfo: Сведения о доверенности. Игнорируется при приеме, заполняется при передаче
 	PowerOfAttorneyInfo *cmn.WithFirstPoattorneyType `xml:"powerOfAttorneyInfo,omitempty"`
 
-	// PrintFormFieldsInfo: Дополнительная информация для печатной формы. Игнорируется при приёме
-	PrintFormFieldsInfo *PrintFormFieldsInfo `xml:"printFormFieldsInfo,omitempty"`
+	// PrintFormFieldsInfo3: Дополнительная информация для печатной формы. Игнорируется при приёме
+	PrintFormFieldsInfo *PrintFormFieldsInfo3 `xml:"printFormFieldsInfo,omitempty"`
 }
 
 // SupplierDataChangeNoticeType: Тип: Уведомление об изменении реквизитов поставщика по контракту

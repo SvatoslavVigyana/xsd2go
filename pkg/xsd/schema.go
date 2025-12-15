@@ -7,6 +7,7 @@ import (
 	"os"
 	"path/filepath"
 	"sort"
+	"strconv"
 	"strings"
 
 	"golang.org/x/net/html/charset"
@@ -322,13 +323,24 @@ func (sch *Schema) registerImportedModule(module *Schema) {
 
 // Some elements are not defined at the top-level, rather these are inlined in the complexType definitions.
 func (sch *Schema) registerInlinedElement(el *Element, parentElement *Element) {
-	if sch.isElementInlined(el) {
-		if el.Name == "" {
-			panic("Not implemented: found inlined xsd:element without @name attribute")
-		}
-		el.prefixNameWithParent(parentElement)
-		sch.inlinedElements = append(sch.inlinedElements, *el)
+	if !sch.isElementInlined(el) {
+		return
 	}
+
+	if el.Name == "" {
+		panic("Not implemented: found inlined xsd:element without @name attribute")
+	}
+
+	el.prefixNameWithParent(parentElement)
+
+	baseName := el.Name
+	index := nextDuplicateIndex(sch.inlinedElements, baseName)
+
+	if index > 0 {
+		el.nameOverride = fmt.Sprintf("%s-%d", baseName, index)
+	}
+
+	sch.inlinedElements = append(sch.inlinedElements, *el)
 }
 
 func (sch *Schema) isElementInlined(el *Element) bool {
@@ -369,4 +381,32 @@ func (i *Include) load(ws *Workspace, baseDir string) (err error) {
 		i.IncludedSchema, err = ws.loadXsd(filepath.Join(baseDir, i.SchemaLocation), true)
 	}
 	return
+}
+
+func nextDuplicateIndex(elements []Element, baseName string) int {
+	max := -1
+
+	for _, el := range elements {
+		// Если override нет — используется базовое имя → индекс 0
+		if el.nameOverride == "" {
+			if el.Name == baseName {
+				if max < 0 {
+					max = 0
+				}
+			}
+			continue
+		}
+
+		// Если override есть — смотрим суффикс
+		if strings.HasPrefix(el.nameOverride, baseName+"-") {
+			suffix := strings.TrimPrefix(el.nameOverride, baseName+"-")
+			if n, err := strconv.Atoi(suffix); err == nil {
+				if n > max {
+					max = n
+				}
+			}
+		}
+	}
+
+	return max + 1
 }

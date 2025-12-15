@@ -366,8 +366,8 @@ type OrganizationInfo struct {
 	FullName *base.Text2000Type `xml:"fullName,omitempty"`
 }
 
-// EstoreInfo1: Электронный магазин
-type EstoreInfo1 struct {
+// EStoreInfo1: Электронный магазин
+type EStoreInfo1 struct {
 	XMLName xml.Name `xml:"eStoreInfo"`
 
 	// Code: Код электронного магазина
@@ -700,14 +700,14 @@ type NsiCustomerUserType struct {
 	// OrganizationInfo: Организация пользователя
 	OrganizationInfo OrganizationInfo `xml:"organizationInfo"`
 
-	// EStoreInfo: Электронный магазин
-	EStoreInfo EStoreInfo `xml:"eStoreInfo"`
+	// EStoreInfo1: Электронный магазин
+	EStoreInfo EStoreInfo1 `xml:"eStoreInfo"`
 
-	// UsersInfo: Информация о пользователях Заказчика
-	UsersInfo UsersInfo `xml:"usersInfo"`
+	// UsersInfo1: Информация о пользователях Заказчика
+	UsersInfo UsersInfo1 `xml:"usersInfo"`
 
-	// PowerOfAttorneysInfo: Сведения о доверенностях. В блоке указаны все доверенности, выданные данному пользователю в ЕИС
-	PowerOfAttorneysInfo *PowerOfAttorneysInfo `xml:"powerOfAttorneysInfo,omitempty"`
+	// PowerOfAttorneysInfo1: Сведения о доверенностях. В блоке указаны все доверенности, выданные данному пользователю в ЕИС
+	PowerOfAttorneysInfo *PowerOfAttorneysInfo1 `xml:"powerOfAttorneysInfo,omitempty"`
 }
 
 // XSD SimpleType declarations

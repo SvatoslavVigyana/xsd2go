@@ -146,8 +146,8 @@ type CommonInfo1 struct {
 	Topic base.Text2000Type `xml:"topic"`
 }
 
-// NotificationInfoCommonInfo: Общая информация
-type NotificationInfoCommonInfo struct {
+// CommonInfo2: Общая информация
+type CommonInfo2 struct {
 	XMLName xml.Name `xml:"commonInfo,omitempty"`
 
 	// DocType: Тип документа
@@ -158,20 +158,20 @@ type NotificationInfoCommonInfo struct {
 type PrintFormFieldsInfoNotificationInfo struct {
 	XMLName xml.Name `xml:"notificationInfo,omitempty"`
 
-	// PrintFormFieldsInfoNotificationInfoCommonInfo: Общая информация
-	CommonInfo *PrintFormFieldsInfoNotificationInfoCommonInfo `xml:",any,omitempty"`
+	// CommonInfo30: Общая информация
+	CommonInfo *CommonInfo30 `xml:",any,omitempty"`
 }
 
 // PrintFormFieldsInfo: Дополнительная информация для печатной формы. Игнорируется при приёме, заполняется при передаче
 type PrintFormFieldsInfo struct {
 	XMLName xml.Name `xml:"printFormFieldsInfo,omitempty"`
 
-	// PrintFormFieldsInfoNotificationInfo: Информация из извещения
-	NotificationInfo *PrintFormFieldsInfoNotificationInfo `xml:",any,omitempty"`
+	// NotificationInfo19: Информация из извещения
+	NotificationInfo *NotificationInfo19 `xml:",any,omitempty"`
 }
 
-// CommonInfo2: Общая информация
-type CommonInfo2 struct {
+// CommonInfo3: Общая информация
+type CommonInfo3 struct {
 	XMLName xml.Name `xml:"commonInfo"`
 
 	// PurchaseNumber: Реестровый номер закупки. При приёме контролируется наличие неотменённой закупки с указанным номером
@@ -204,8 +204,8 @@ type RequestInfo struct {
 	Question base.Text2000Type `xml:"question"`
 }
 
-// NotificationInfoCommonInfo1: Общая информация
-type NotificationInfoCommonInfo1 struct {
+// CommonInfo4: Общая информация
+type CommonInfo4 struct {
 	XMLName xml.Name `xml:"commonInfo,omitempty"`
 
 	// PurchaseObjectInfo: Наименование объекта закупки
@@ -235,23 +235,23 @@ type NotificationInfoPurchaseResponsibleInfo struct {
 type PrintFormFieldsInfoNotificationInfo1 struct {
 	XMLName xml.Name `xml:"notificationInfo,omitempty"`
 
-	// PrintFormFieldsInfoNotificationInfoCommonInfo: Общая информация
-	CommonInfo *PrintFormFieldsInfoNotificationInfoCommonInfo `xml:"commonInfo,omitempty"`
+	// CommonInfo32: Общая информация
+	CommonInfo *CommonInfo32 `xml:"commonInfo,omitempty"`
 
-	// PrintFormFieldsInfoNotificationInfoPurchaseResponsibleInfo: Информация об организации, осуществляющей размещение
-	PurchaseResponsibleInfo *PrintFormFieldsInfoNotificationInfoPurchaseResponsibleInfo `xml:"purchaseResponsibleInfo,omitempty"`
+	// PurchaseResponsibleInfo23: Информация об организации, осуществляющей размещение
+	PurchaseResponsibleInfo *PurchaseResponsibleInfo23 `xml:"purchaseResponsibleInfo,omitempty"`
 }
 
 // PrintFormFieldsInfo1: Дополнительная информация для печатной формы. Игнорируется при приёме, заполняется при передаче
 type PrintFormFieldsInfo1 struct {
 	XMLName xml.Name `xml:"printFormFieldsInfo,omitempty"`
 
-	// PrintFormFieldsInfoNotificationInfo: Информация из извещения
-	NotificationInfo *PrintFormFieldsInfoNotificationInfo `xml:",any,omitempty"`
+	// NotificationInfo20: Информация из извещения
+	NotificationInfo *NotificationInfo20 `xml:",any,omitempty"`
 }
 
-// CommonInfo3: Общая информация
-type CommonInfo3 struct {
+// CommonInfo5: Общая информация
+type CommonInfo5 struct {
 	XMLName xml.Name `xml:"commonInfo"`
 
 	// PurchaseNumber: Номер закупки. При приёме контролируется наличие неотменённой закупки с указанным номером
@@ -267,8 +267,8 @@ type CommonInfo3 struct {
 	Topic base.Text2000Type `xml:"topic"`
 }
 
-// PrintFormFieldsInfoNotificationInfoCommonInfo: Общая информация
-type PrintFormFieldsInfoNotificationInfoCommonInfo struct {
+// CommonInfo6: Общая информация
+type CommonInfo6 struct {
 	XMLName xml.Name `xml:"commonInfo,omitempty"`
 
 	// DocType: Тип документа
@@ -279,20 +279,20 @@ type PrintFormFieldsInfoNotificationInfoCommonInfo struct {
 type PrintFormFieldsInfoNotificationInfo2 struct {
 	XMLName xml.Name `xml:"notificationInfo,omitempty"`
 
-	// PrintFormFieldsInfoNotificationInfoCommonInfo: Общая информация
-	CommonInfo *PrintFormFieldsInfoNotificationInfoCommonInfo `xml:",any,omitempty"`
+	// CommonInfo30: Общая информация
+	CommonInfo *CommonInfo30 `xml:",any,omitempty"`
 }
 
 // PrintFormFieldsInfo2: Дополнительная информация для печатной формы. Игнорируется при приёме, заполняется при передаче
 type PrintFormFieldsInfo2 struct {
 	XMLName xml.Name `xml:"printFormFieldsInfo,omitempty"`
 
-	// PrintFormFieldsInfoNotificationInfo: Информация из извещения
-	NotificationInfo *PrintFormFieldsInfoNotificationInfo `xml:",any,omitempty"`
+	// NotificationInfo19: Информация из извещения
+	NotificationInfo *NotificationInfo19 `xml:",any,omitempty"`
 }
 
-// CommonInfo4: Общая информация
-type CommonInfo4 struct {
+// CommonInfo7: Общая информация
+type CommonInfo7 struct {
 	XMLName xml.Name `xml:"commonInfo"`
 
 	// PurchaseNumber: Реестровый номер закупки. При приёме контролируется наличие неотменённой закупки с указанным номером
@@ -325,8 +325,8 @@ type RequestInfo1 struct {
 	Question base.Text2000Type `xml:"question"`
 }
 
-// PrintFormFieldsInfoNotificationInfoCommonInfo1: Общая информация
-type PrintFormFieldsInfoNotificationInfoCommonInfo1 struct {
+// CommonInfo8: Общая информация
+type CommonInfo8 struct {
 	XMLName xml.Name `xml:"commonInfo,omitempty"`
 
 	// PurchaseObjectInfo: Наименование объекта закупки
@@ -352,27 +352,27 @@ type PrintFormFieldsInfoNotificationInfoPurchaseResponsibleInfo struct {
 	base.OrganizationRef
 }
 
-// PrintFormFieldsInfoNotificationInfo3: Информация из извещения
-type PrintFormFieldsInfoNotificationInfo3 struct {
+// PrintFormFieldsInfo1NotificationInfo: Информация из извещения
+type PrintFormFieldsInfo1NotificationInfo struct {
 	XMLName xml.Name `xml:"notificationInfo,omitempty"`
 
-	// PrintFormFieldsInfoNotificationInfoCommonInfo: Общая информация
-	CommonInfo *PrintFormFieldsInfoNotificationInfoCommonInfo `xml:"commonInfo,omitempty"`
+	// CommonInfo32: Общая информация
+	CommonInfo *CommonInfo32 `xml:"commonInfo,omitempty"`
 
-	// PrintFormFieldsInfoNotificationInfoPurchaseResponsibleInfo: Информация об организации, осуществляющей размещение
-	PurchaseResponsibleInfo *PrintFormFieldsInfoNotificationInfoPurchaseResponsibleInfo `xml:"purchaseResponsibleInfo,omitempty"`
+	// PurchaseResponsibleInfo23: Информация об организации, осуществляющей размещение
+	PurchaseResponsibleInfo *PurchaseResponsibleInfo23 `xml:"purchaseResponsibleInfo,omitempty"`
 }
 
 // PrintFormFieldsInfo3: Дополнительная информация для печатной формы. Игнорируется при приёме, заполняется при передаче
 type PrintFormFieldsInfo3 struct {
 	XMLName xml.Name `xml:"printFormFieldsInfo,omitempty"`
 
-	// PrintFormFieldsInfoNotificationInfo: Информация из извещения
-	NotificationInfo *PrintFormFieldsInfoNotificationInfo `xml:",any,omitempty"`
+	// NotificationInfo20: Информация из извещения
+	NotificationInfo *NotificationInfo20 `xml:",any,omitempty"`
 }
 
-// CommonInfo5: Общая информация
-type CommonInfo5 struct {
+// CommonInfo9: Общая информация
+type CommonInfo9 struct {
 	XMLName xml.Name `xml:"commonInfo"`
 
 	// PurchaseNumber: Реестровый номер закупки. При приёме контролируется наличие неотменённой закупки с указанным номером
@@ -408,8 +408,8 @@ type PrintFormFieldsInfo4 struct {
 	XMLName xml.Name `xml:"printFormFieldsInfo,omitempty"`
 }
 
-// ProtocolInfoApplicationInfo: Заявка
-type ProtocolInfoApplicationInfo struct {
+// ApplicationInfo1: Заявка
+type ApplicationInfo1 struct {
 	XMLName xml.Name `xml:"applicationInfo"`
 
 	// JournalNumber: Номер заявки в журнале регистрации
@@ -440,8 +440,8 @@ type ProtocolInfoRefusalFact struct {
 type ProtocolInfo1 struct {
 	XMLName xml.Name `xml:"protocolInfo"`
 
-	// ProtocolInfoApplicationInfo: Заявка
-	ApplicationInfo ProtocolInfoApplicationInfo `xml:"applicationInfo"`
+	// ApplicationInfo1: Заявка
+	ApplicationInfo ApplicationInfo1 `xml:"applicationInfo"`
 
 	// Customer: Организация заказчика
 	Customer base.OrganizationRef `xml:"customer"`
@@ -450,8 +450,8 @@ type ProtocolInfo1 struct {
 	RefusalFact ProtocolInfoRefusalFact `xml:"refusalFact"`
 }
 
-// CommonInfo6: Общая информация
-type CommonInfo6 struct {
+// CommonInfo10: Общая информация
+type CommonInfo10 struct {
 	XMLName xml.Name `xml:"commonInfo"`
 
 	// PurchaseNumber: Реестровый номер закупки. При приёме контролируется наличие неотменённой закупки с указанным номером
@@ -549,8 +549,8 @@ type PurchaseInfoCustomerRequirements struct {
 type PrintFormFieldsInfoPurchaseInfo struct {
 	XMLName xml.Name `xml:"purchaseInfo,omitempty"`
 
-	// PrintFormFieldsInfoPurchaseInfoPurchaseResponsible: Информация об организации, осуществляющей закупку
-	PurchaseResponsible *PrintFormFieldsInfoPurchaseInfoPurchaseResponsible `xml:"purchaseResponsible,omitempty"`
+	// PrintFormFieldsInfo5PurchaseInfoPurchaseResponsible: Информация об организации, осуществляющей закупку
+	PurchaseResponsible *PrintFormFieldsInfo5PurchaseInfoPurchaseResponsible `xml:"purchaseResponsible,omitempty"`
 
 	// PlacingWay: Подспособ определения поставщика
 	PlacingWay *base.PlacingWayRef `xml:"placingWay,omitempty"`
@@ -567,8 +567,8 @@ type PrintFormFieldsInfoPurchaseInfo struct {
 	// PurchaseObjectInfo: Наименование объекта закупки
 	PurchaseObjectInfo *base.Text2000Type `xml:"purchaseObjectInfo,omitempty"`
 
-	// PrintFormFieldsInfoPurchaseInfoCustomerRequirements: Требования заказчиков
-	CustomerRequirements *PrintFormFieldsInfoPurchaseInfoCustomerRequirements `xml:"customerRequirements,omitempty"`
+	// PrintFormFieldsInfo5PurchaseInfoCustomerRequirements: Требования заказчиков
+	CustomerRequirements *PrintFormFieldsInfo5PurchaseInfoCustomerRequirements `xml:"customerRequirements,omitempty"`
 }
 
 // PrintFormFieldsInfoFoundationDocInfo: Документ-основание
@@ -648,8 +648,8 @@ type DeliveryInfoDeliveryPlacesInfo struct {
 type PrintFormFieldsInfoDeliveryInfo struct {
 	XMLName xml.Name `xml:"deliveryInfo,omitempty"`
 
-	// PrintFormFieldsInfoDeliveryInfoDeliveryPlacesInfo: Места доставки товара, выполнения работы или оказания услуги по справочнику КЛАДР
-	DeliveryPlacesInfo *PrintFormFieldsInfoDeliveryInfoDeliveryPlacesInfo `xml:"deliveryPlacesInfo,omitempty"`
+	// PrintFormFieldsInfo5DeliveryInfoDeliveryPlacesInfo: Места доставки товара, выполнения работы или оказания услуги по справочнику КЛАДР
+	DeliveryPlacesInfo *PrintFormFieldsInfo5DeliveryInfoDeliveryPlacesInfo `xml:"deliveryPlacesInfo,omitempty"`
 
 	// DeliveryTerm: Сроки доставки товара, выполнения работы или оказания услуги либо график оказания услуг
 	DeliveryTerm *base.Text2000Type `xml:"deliveryTerm,omitempty"`
@@ -667,30 +667,30 @@ type PrintFormFieldsInfoCustomers struct {
 type PrintFormFieldsInfo5 struct {
 	XMLName xml.Name `xml:"printFormFieldsInfo,omitempty"`
 
-	// PrintFormFieldsInfoPurchaseInfo: Инфомрация о закупке
-	PurchaseInfo *PrintFormFieldsInfoPurchaseInfo `xml:"purchaseInfo,omitempty"`
+	// PrintFormFieldsInfo6PurchaseInfo: Инфомрация о закупке
+	PurchaseInfo *PrintFormFieldsInfo6PurchaseInfo `xml:"purchaseInfo,omitempty"`
 
-	// PrintFormFieldsInfoFoundationDocInfo: Документ-основание
-	FoundationDocInfo *PrintFormFieldsInfoFoundationDocInfo `xml:"foundationDocInfo,omitempty"`
+	// PrintFormFieldsInfo6FoundationDocInfo: Документ-основание
+	FoundationDocInfo *PrintFormFieldsInfo6FoundationDocInfo `xml:"foundationDocInfo,omitempty"`
 
-	// PrintFormFieldsInfoMaxPriceInfo: Информация о начальной (максимальной) цене контракта
-	MaxPriceInfo *PrintFormFieldsInfoMaxPriceInfo `xml:"maxPriceInfo,omitempty"`
+	// PrintFormFieldsInfo6MaxPriceInfo: Информация о начальной (максимальной) цене контракта
+	MaxPriceInfo *PrintFormFieldsInfo6MaxPriceInfo `xml:"maxPriceInfo,omitempty"`
 
-	// PrintFormFieldsInfoUnitPriceInfo: Информация о цене за единицу измерения
-	UnitPriceInfo *PrintFormFieldsInfoUnitPriceInfo `xml:"unitPriceInfo,omitempty"`
+	// PrintFormFieldsInfo6UnitPriceInfo: Информация о цене за единицу измерения
+	UnitPriceInfo *PrintFormFieldsInfo6UnitPriceInfo `xml:"unitPriceInfo,omitempty"`
 
 	// QuantityUndefined: Невозможно определить количество товара, объем подлежащих выполнению работ, оказанию услуг
 	QuantityUndefined *bool `xml:"quantityUndefined,omitempty"`
 
-	// PrintFormFieldsInfoDeliveryInfo: Информация о поставке товара, выполнения работы или оказания услуги
-	DeliveryInfo *PrintFormFieldsInfoDeliveryInfo `xml:"deliveryInfo,omitempty"`
+	// PrintFormFieldsInfo6DeliveryInfo: Информация о поставке товара, выполнения работы или оказания услуги
+	DeliveryInfo *PrintFormFieldsInfo6DeliveryInfo `xml:"deliveryInfo,omitempty"`
 
-	// PrintFormFieldsInfoCustomers: Заказчики
-	Customers *PrintFormFieldsInfoCustomers `xml:"customers,omitempty"`
+	// PrintFormFieldsInfo6Customers: Заказчики
+	Customers *PrintFormFieldsInfo6Customers `xml:"customers,omitempty"`
 }
 
-// ProtocolInfoApplicationInfo1: Заявка
-type ProtocolInfoApplicationInfo1 struct {
+// ApplicationInfo2: Заявка
+type ApplicationInfo2 struct {
 	XMLName xml.Name `xml:"applicationInfo"`
 
 	// JournalNumber: Номер заявки в журнале регистрации
@@ -724,8 +724,8 @@ type ProtocolInfo2 struct {
 	// CommissionInfo: Информация о комиссии
 	CommissionInfo *cmn.CommissionType `xml:"commissionInfo,omitempty"`
 
-	// ProtocolInfoApplicationInfo: Заявка
-	ApplicationInfo ProtocolInfoApplicationInfo `xml:"applicationInfo"`
+	// ApplicationInfo2: Заявка
+	ApplicationInfo ApplicationInfo2 `xml:"applicationInfo"`
 
 	// Customer: Организация заказчика
 	Customer base.OrganizationRef `xml:"customer"`
@@ -734,8 +734,8 @@ type ProtocolInfo2 struct {
 	RefusalFact ProtocolInfoRefusalFact `xml:"refusalFact"`
 }
 
-// CommonInfo7: Общая информация
-type CommonInfo7 struct {
+// CommonInfo11: Общая информация
+type CommonInfo11 struct {
 	XMLName xml.Name `xml:"commonInfo"`
 
 	// PurchaseNumber: Реестровый номер закупки. При приёме контролируется наличие неотменённой закупки с указанным номером
@@ -829,12 +829,12 @@ type PrintFormFieldsInfoPurchaseInfoCustomerRequirements struct {
 	CustomerRequirement []PrintFormFieldsInfoPurchaseInfoCustomerRequirementsCustomerRequirement `xml:",any,omitempty"`
 }
 
-// PrintFormFieldsInfoPurchaseInfo1: Инфомрация о закупке
-type PrintFormFieldsInfoPurchaseInfo1 struct {
+// PrintFormFieldsInfo5PurchaseInfo: Инфомрация о закупке
+type PrintFormFieldsInfo5PurchaseInfo struct {
 	XMLName xml.Name `xml:"purchaseInfo,omitempty"`
 
-	// PrintFormFieldsInfoPurchaseInfoPurchaseResponsible: Информация об организации, осуществляющей закупку
-	PurchaseResponsible *PrintFormFieldsInfoPurchaseInfoPurchaseResponsible `xml:"purchaseResponsible,omitempty"`
+	// PrintFormFieldsInfo5PurchaseInfoPurchaseResponsible: Информация об организации, осуществляющей закупку
+	PurchaseResponsible *PrintFormFieldsInfo5PurchaseInfoPurchaseResponsible `xml:"purchaseResponsible,omitempty"`
 
 	// PlacingWay: Подспособ определения поставщика
 	PlacingWay *base.PlacingWayRef `xml:"placingWay,omitempty"`
@@ -851,12 +851,12 @@ type PrintFormFieldsInfoPurchaseInfo1 struct {
 	// PurchaseObjectInfo: Наименование объекта закупки
 	PurchaseObjectInfo *base.Text2000Type `xml:"purchaseObjectInfo,omitempty"`
 
-	// PrintFormFieldsInfoPurchaseInfoCustomerRequirements: Требования заказчиков
-	CustomerRequirements *PrintFormFieldsInfoPurchaseInfoCustomerRequirements `xml:"customerRequirements,omitempty"`
+	// PrintFormFieldsInfo5PurchaseInfoCustomerRequirements: Требования заказчиков
+	CustomerRequirements *PrintFormFieldsInfo5PurchaseInfoCustomerRequirements `xml:"customerRequirements,omitempty"`
 }
 
-// PrintFormFieldsInfoFoundationDocInfo1: Документ-основание
-type PrintFormFieldsInfoFoundationDocInfo1 struct {
+// PrintFormFieldsInfo5FoundationDocInfo: Документ-основание
+type PrintFormFieldsInfo5FoundationDocInfo struct {
 	XMLName xml.Name `xml:"foundationDocInfo,omitempty"`
 
 	// FoundationProtocolName: Наименование предыдущего протокола
@@ -869,8 +869,8 @@ type PrintFormFieldsInfoFoundationDocInfo1 struct {
 	FoundationDocNumberExternal *base.DocumentNumberType `xml:"foundationDocNumberExternal,omitempty"`
 }
 
-// PrintFormFieldsInfoMaxPriceInfo1: Информация о начальной (максимальной) цене контракта
-type PrintFormFieldsInfoMaxPriceInfo1 struct {
+// PrintFormFieldsInfo5MaxPriceInfo: Информация о начальной (максимальной) цене контракта
+type PrintFormFieldsInfo5MaxPriceInfo struct {
 	XMLName xml.Name `xml:"maxPriceInfo,omitempty"`
 
 	// MaxPrice: Начальная (максимальная) цена контракта/Максимальное значение цены контракта
@@ -892,8 +892,8 @@ type PrintFormFieldsInfoMaxPriceInfo1 struct {
 	ContractPriceFormula *base.Text2000Type `xml:"contractPriceFormula,omitempty"`
 }
 
-// PrintFormFieldsInfoUnitPriceInfo1: Информация о цене за единицу измерения
-type PrintFormFieldsInfoUnitPriceInfo1 struct {
+// PrintFormFieldsInfo5UnitPriceInfo: Информация о цене за единицу измерения
+type PrintFormFieldsInfo5UnitPriceInfo struct {
 	XMLName xml.Name `xml:"unitPriceInfo,omitempty"`
 
 	// UnitPrice: Цена за единицу измерения
@@ -928,19 +928,19 @@ type PrintFormFieldsInfoDeliveryInfoDeliveryPlacesInfo struct {
 	Oktmoinfo []PrintFormFieldsInfoDeliveryInfoDeliveryPlacesInfoOktmoinfo `xml:"OKTMOInfo,omitempty"`
 }
 
-// PrintFormFieldsInfoDeliveryInfo1: Информация о поставке товара, выполнения работы или оказания услуги
-type PrintFormFieldsInfoDeliveryInfo1 struct {
+// PrintFormFieldsInfo5DeliveryInfo: Информация о поставке товара, выполнения работы или оказания услуги
+type PrintFormFieldsInfo5DeliveryInfo struct {
 	XMLName xml.Name `xml:"deliveryInfo,omitempty"`
 
-	// PrintFormFieldsInfoDeliveryInfoDeliveryPlacesInfo: Места доставки товара, выполнения работы или оказания услуги по справочнику КЛАДР
-	DeliveryPlacesInfo *PrintFormFieldsInfoDeliveryInfoDeliveryPlacesInfo `xml:"deliveryPlacesInfo,omitempty"`
+	// PrintFormFieldsInfo5DeliveryInfoDeliveryPlacesInfo: Места доставки товара, выполнения работы или оказания услуги по справочнику КЛАДР
+	DeliveryPlacesInfo *PrintFormFieldsInfo5DeliveryInfoDeliveryPlacesInfo `xml:"deliveryPlacesInfo,omitempty"`
 
 	// DeliveryTerm: Сроки доставки товара, выполнения работы или оказания услуги либо график оказания услуг
 	DeliveryTerm *base.Text2000Type `xml:"deliveryTerm,omitempty"`
 }
 
-// PrintFormFieldsInfoCustomers1: Заказчики
-type PrintFormFieldsInfoCustomers1 struct {
+// PrintFormFieldsInfo5Customers: Заказчики
+type PrintFormFieldsInfo5Customers struct {
 	XMLName xml.Name `xml:"customers,omitempty"`
 
 	// Customer: Организация заказчика данных требований
@@ -951,30 +951,30 @@ type PrintFormFieldsInfoCustomers1 struct {
 type PrintFormFieldsInfo6 struct {
 	XMLName xml.Name `xml:"printFormFieldsInfo,omitempty"`
 
-	// PrintFormFieldsInfoPurchaseInfo: Инфомрация о закупке
-	PurchaseInfo *PrintFormFieldsInfoPurchaseInfo `xml:"purchaseInfo,omitempty"`
+	// PrintFormFieldsInfo6PurchaseInfo: Инфомрация о закупке
+	PurchaseInfo *PrintFormFieldsInfo6PurchaseInfo `xml:"purchaseInfo,omitempty"`
 
-	// PrintFormFieldsInfoFoundationDocInfo: Документ-основание
-	FoundationDocInfo *PrintFormFieldsInfoFoundationDocInfo `xml:"foundationDocInfo,omitempty"`
+	// PrintFormFieldsInfo6FoundationDocInfo: Документ-основание
+	FoundationDocInfo *PrintFormFieldsInfo6FoundationDocInfo `xml:"foundationDocInfo,omitempty"`
 
-	// PrintFormFieldsInfoMaxPriceInfo: Информация о начальной (максимальной) цене контракта
-	MaxPriceInfo *PrintFormFieldsInfoMaxPriceInfo `xml:"maxPriceInfo,omitempty"`
+	// PrintFormFieldsInfo6MaxPriceInfo: Информация о начальной (максимальной) цене контракта
+	MaxPriceInfo *PrintFormFieldsInfo6MaxPriceInfo `xml:"maxPriceInfo,omitempty"`
 
-	// PrintFormFieldsInfoUnitPriceInfo: Информация о цене за единицу измерения
-	UnitPriceInfo *PrintFormFieldsInfoUnitPriceInfo `xml:"unitPriceInfo,omitempty"`
+	// PrintFormFieldsInfo6UnitPriceInfo: Информация о цене за единицу измерения
+	UnitPriceInfo *PrintFormFieldsInfo6UnitPriceInfo `xml:"unitPriceInfo,omitempty"`
 
 	// QuantityUndefined: Невозможно определить количество товара, объем подлежащих выполнению работ, оказанию услуг
 	QuantityUndefined *bool `xml:"quantityUndefined,omitempty"`
 
-	// PrintFormFieldsInfoDeliveryInfo: Информация о поставке товара, выполнения работы или оказания услуги
-	DeliveryInfo *PrintFormFieldsInfoDeliveryInfo `xml:"deliveryInfo,omitempty"`
+	// PrintFormFieldsInfo6DeliveryInfo: Информация о поставке товара, выполнения работы или оказания услуги
+	DeliveryInfo *PrintFormFieldsInfo6DeliveryInfo `xml:"deliveryInfo,omitempty"`
 
-	// PrintFormFieldsInfoCustomers: Заказчики
-	Customers *PrintFormFieldsInfoCustomers `xml:"customers,omitempty"`
+	// PrintFormFieldsInfo6Customers: Заказчики
+	Customers *PrintFormFieldsInfo6Customers `xml:"customers,omitempty"`
 }
 
-// CommonInfo8: Общая информация
-type CommonInfo8 struct {
+// CommonInfo12: Общая информация
+type CommonInfo12 struct {
 	XMLName xml.Name `xml:"commonInfo"`
 
 	// PurchaseNumber: Реестровый номер закупки. При приёме контролируется наличие неотменённой закупки с указанным номером
@@ -1004,8 +1004,8 @@ type PrintFormFieldsInfo7 struct {
 	XMLName xml.Name `xml:"printFormFieldsInfo,omitempty"`
 }
 
-// CommonInfo9: Общая информация
-type CommonInfo9 struct {
+// CommonInfo13: Общая информация
+type CommonInfo13 struct {
 	XMLName xml.Name `xml:"commonInfo"`
 
 	// PurchaseNumber: Реестровый номер закупки.
@@ -1588,20 +1588,20 @@ type NotificationInfo2 struct {
 	// ContractConditionsInfo: Условия контракта
 	ContractConditionsInfo ContractConditionsType `xml:"contractConditionsInfo"`
 
-	// NotificationInfoCustomerRequirementsInfo: Требования заказчиков
-	CustomerRequirementsInfo NotificationInfoCustomerRequirementsInfo `xml:"customerRequirementsInfo"`
+	// NotificationInfo2CustomerRequirementsInfo: Требования заказчиков
+	CustomerRequirementsInfo NotificationInfo2CustomerRequirementsInfo `xml:"customerRequirementsInfo"`
 
-	// NotificationInfoPurchaseObjectsInfo: Объекты закупки
-	PurchaseObjectsInfo NotificationInfoPurchaseObjectsInfo `xml:"purchaseObjectsInfo"`
+	// NotificationInfo2PurchaseObjectsInfo: Объекты закупки
+	PurchaseObjectsInfo NotificationInfo2PurchaseObjectsInfo `xml:"purchaseObjectsInfo"`
 
-	// NotificationInfoPreferensesInfo: Преимущества
-	PreferensesInfo *NotificationInfoPreferensesInfo `xml:"preferensesInfo,omitempty"`
+	// NotificationInfo2PreferensesInfo: Преимущества
+	PreferensesInfo *NotificationInfo2PreferensesInfo `xml:"preferensesInfo,omitempty"`
 
-	// NotificationInfoRequirementsInfo: Требования
-	RequirementsInfo *NotificationInfoRequirementsInfo `xml:"requirementsInfo,omitempty"`
+	// NotificationInfo2RequirementsInfo: Требования
+	RequirementsInfo *NotificationInfo2RequirementsInfo `xml:"requirementsInfo,omitempty"`
 
-	// NotificationInfoRestrictionsInfo: Ограничения
-	RestrictionsInfo *NotificationInfoRestrictionsInfo `xml:"restrictionsInfo,omitempty"`
+	// NotificationInfo2RestrictionsInfo: Ограничения
+	RestrictionsInfo *NotificationInfo2RestrictionsInfo `xml:"restrictionsInfo,omitempty"`
 
 	// MustPublicDiscussion: Необходимо обязательное общественное обсуждение в соответствии со статьей 20 Федерального закона №44-ФЗ. Устарело. Если первая версия извещения размещена до выхода версии 10.0 ЕИС, то контролируется обязательное заполнение поля, иначе игнорируется при приеме/передаче
 	MustPublicDiscussion *bool `xml:"mustPublicDiscussion,omitempty"`
@@ -1635,8 +1635,8 @@ type ServiceSigns4 struct {
 	IsControlP1Ch5St99 *bool `xml:",any,omitempty"`
 }
 
-// NotificationInfoCustomerRequirementsInfo3: Требования заказчиков
-type NotificationInfoCustomerRequirementsInfo3 struct {
+// NotificationInfo2CustomerRequirementsInfo: Требования заказчиков
+type NotificationInfo2CustomerRequirementsInfo struct {
 	XMLName xml.Name `xml:"customerRequirementsInfo"`
 
 	// CustomerRequirementInfo: Требование заказчика
@@ -1663,8 +1663,8 @@ type NotificationInfoPurchaseObjectsInfoDrugPurchaseObjectsInfo1 struct {
 	cmn.PurchaseDrugObjectsInfoType
 }
 
-// NotificationInfoPurchaseObjectsInfo3: Объекты закупки
-type NotificationInfoPurchaseObjectsInfo3 struct {
+// NotificationInfo2PurchaseObjectsInfo: Объекты закупки
+type NotificationInfo2PurchaseObjectsInfo struct {
 	XMLName xml.Name `xml:"purchaseObjectsInfo"`
 
 	// NotificationInfoPurchaseObjectsInfoNotDrugPurchaseObjectsInfo: Сведения об объектах закупки в том случае, когда объектами закупки являются нелекарственные препараты. Не все позиции ТРУ по ОКПД2 из базовой позиции плана-графика закупок с 01.01.2020 должны быть представлены в полном объеме. Позиция ТРУ по ОКПД2 из базовой позиции ПГ может иметь несколько потомков
@@ -1674,24 +1674,24 @@ type NotificationInfoPurchaseObjectsInfo3 struct {
 	DrugPurchaseObjectsInfo *NotificationInfoPurchaseObjectsInfoDrugPurchaseObjectsInfo `xml:"drugPurchaseObjectsInfo,omitempty"`
 }
 
-// NotificationInfoPreferensesInfo3: Преимущества
-type NotificationInfoPreferensesInfo3 struct {
+// NotificationInfo2PreferensesInfo: Преимущества
+type NotificationInfo2PreferensesInfo struct {
 	XMLName xml.Name `xml:"preferensesInfo,omitempty"`
 
 	// PreferenseInfo: Преимущество. Если в качестве преимущества указано значение "Участникам, заявки или окончательные предложения которых содержат предложения о поставке товаров в соответствии с приказом Минфина России № 126н от 04.06.2018", контролируется, что величина преимущества должна быть 15% или 20%
 	PreferenseInfo []cmn.PreferenseType `xml:",any"`
 }
 
-// NotificationInfoRequirementsInfo3: Требования
-type NotificationInfoRequirementsInfo3 struct {
+// NotificationInfo2RequirementsInfo: Требования
+type NotificationInfo2RequirementsInfo struct {
 	XMLName xml.Name `xml:"requirementsInfo,omitempty"`
 
 	// RequirementInfo: Требование
 	RequirementInfo []cmn.RequirementWithAddReqsType `xml:",any"`
 }
 
-// NotificationInfoRestrictionsInfo3: Ограничения
-type NotificationInfoRestrictionsInfo3 struct {
+// NotificationInfo2RestrictionsInfo: Ограничения
+type NotificationInfo2RestrictionsInfo struct {
 	XMLName xml.Name `xml:"restrictionsInfo,omitempty"`
 
 	// RestrictionInfo: Ограничение
@@ -1708,20 +1708,20 @@ type NotificationInfo3 struct {
 	// ContractConditionsInfo: Условия контракта
 	ContractConditionsInfo ContractConditionsType `xml:"contractConditionsInfo"`
 
-	// NotificationInfoCustomerRequirementsInfo: Требования заказчиков
-	CustomerRequirementsInfo NotificationInfoCustomerRequirementsInfo `xml:"customerRequirementsInfo"`
+	// NotificationInfo2CustomerRequirementsInfo: Требования заказчиков
+	CustomerRequirementsInfo NotificationInfo2CustomerRequirementsInfo `xml:"customerRequirementsInfo"`
 
-	// NotificationInfoPurchaseObjectsInfo: Объекты закупки
-	PurchaseObjectsInfo NotificationInfoPurchaseObjectsInfo `xml:"purchaseObjectsInfo"`
+	// NotificationInfo2PurchaseObjectsInfo: Объекты закупки
+	PurchaseObjectsInfo NotificationInfo2PurchaseObjectsInfo `xml:"purchaseObjectsInfo"`
 
-	// NotificationInfoPreferensesInfo: Преимущества
-	PreferensesInfo *NotificationInfoPreferensesInfo `xml:"preferensesInfo,omitempty"`
+	// NotificationInfo2PreferensesInfo: Преимущества
+	PreferensesInfo *NotificationInfo2PreferensesInfo `xml:"preferensesInfo,omitempty"`
 
-	// NotificationInfoRequirementsInfo: Требования
-	RequirementsInfo *NotificationInfoRequirementsInfo `xml:"requirementsInfo,omitempty"`
+	// NotificationInfo2RequirementsInfo: Требования
+	RequirementsInfo *NotificationInfo2RequirementsInfo `xml:"requirementsInfo,omitempty"`
 
-	// NotificationInfoRestrictionsInfo: Ограничения
-	RestrictionsInfo *NotificationInfoRestrictionsInfo `xml:"restrictionsInfo,omitempty"`
+	// NotificationInfo2RestrictionsInfo: Ограничения
+	RestrictionsInfo *NotificationInfo2RestrictionsInfo `xml:"restrictionsInfo,omitempty"`
 
 	// MustPublicDiscussion: Необходимо обязательное общественное обсуждение в соответствии со статьей 20 Федерального закона №44-ФЗ. Устарело. Если первая версия извещения размещена до выхода версии 10.0 ЕИС, то контролируется обязательное заполнение поля, иначе игнорируется при приеме/передаче
 	MustPublicDiscussion *bool `xml:"mustPublicDiscussion,omitempty"`
@@ -1975,8 +1975,8 @@ type PrintFormFieldsInfo19 struct {
 	ProlongationInfo *PrintFormFieldsInfoProlongationInfo `xml:",any,omitempty"`
 }
 
-// NotificationInfoCustomerRequirementsInfo4: Требования заказчиков
-type NotificationInfoCustomerRequirementsInfo4 struct {
+// NotificationInfoCustomerRequirementsInfo3: Требования заказчиков
+type NotificationInfoCustomerRequirementsInfo3 struct {
 	XMLName xml.Name `xml:"customerRequirementsInfo"`
 
 	// CustomerRequirementInfo: Требование заказчика
@@ -2003,8 +2003,8 @@ type PurchaseObjectsInfoDrugPurchaseObjectsInfo2 struct {
 	cmn.PurchaseDrugObjectsInfoType
 }
 
-// NotificationInfoPurchaseObjectsInfo4: Объекты закупки
-type NotificationInfoPurchaseObjectsInfo4 struct {
+// NotificationInfoPurchaseObjectsInfo3: Объекты закупки
+type NotificationInfoPurchaseObjectsInfo3 struct {
 	XMLName xml.Name `xml:"purchaseObjectsInfo"`
 
 	// NotificationInfoPurchaseObjectsInfoNotDrugPurchaseObjectsInfo: Сведения об объектах закупки в том случае, когда объектами закупки являются нелекарственные препараты. Не все позиции ТРУ по ОКПД2 из базовой позиции плана-графика закупок с 01.01.2020 должны быть представлены в полном объеме. Позиция ТРУ по ОКПД2 из базовой позиции ПГ может иметь несколько потомков
@@ -2014,16 +2014,16 @@ type NotificationInfoPurchaseObjectsInfo4 struct {
 	DrugPurchaseObjectsInfo *NotificationInfoPurchaseObjectsInfoDrugPurchaseObjectsInfo `xml:"drugPurchaseObjectsInfo,omitempty"`
 }
 
-// NotificationInfoPreferensesInfo4: Преимущества
-type NotificationInfoPreferensesInfo4 struct {
+// NotificationInfoPreferensesInfo3: Преимущества
+type NotificationInfoPreferensesInfo3 struct {
 	XMLName xml.Name `xml:"preferensesInfo,omitempty"`
 
 	// PreferenseInfo: Преимущество. Если в качестве преимущества указано значение "Участникам, заявки или окончательные предложения которых содержат предложения о поставке товаров в соответствии с приказом Минфина России № 126н от 04.06.2018", контролируется, что величина преимущества должна быть 15% или 20%
 	PreferenseInfo []cmn.PreferenseType `xml:",any"`
 }
 
-// NotificationInfoRequirementsInfo4: Требования
-type NotificationInfoRequirementsInfo4 struct {
+// NotificationInfoRequirementsInfo3: Требования
+type NotificationInfoRequirementsInfo3 struct {
 	XMLName xml.Name `xml:"requirementsInfo,omitempty"`
 
 	// RequirementInfo: Требование
@@ -2037,8 +2037,8 @@ type RestrictionsInfoRestrictionInfo struct {
 	cmn.RestrictionType
 }
 
-// NotificationInfoRestrictionsInfo4: Ограничения
-type NotificationInfoRestrictionsInfo4 struct {
+// NotificationInfoRestrictionsInfo3: Ограничения
+type NotificationInfoRestrictionsInfo3 struct {
 	XMLName xml.Name `xml:"restrictionsInfo,omitempty"`
 
 	// NotificationInfoRestrictionsInfoRestrictionInfo: Ограничение
@@ -2055,20 +2055,20 @@ type NotificationInfo4 struct {
 	// ContractConditionsInfo: Условия контракта
 	ContractConditionsInfo ContractConditionsType `xml:"contractConditionsInfo"`
 
-	// NotificationInfoCustomerRequirementsInfo: Требования заказчиков
-	CustomerRequirementsInfo NotificationInfoCustomerRequirementsInfo `xml:"customerRequirementsInfo"`
+	// NotificationInfo4CustomerRequirementsInfo: Требования заказчиков
+	CustomerRequirementsInfo NotificationInfo4CustomerRequirementsInfo `xml:"customerRequirementsInfo"`
 
-	// NotificationInfoPurchaseObjectsInfo: Объекты закупки
-	PurchaseObjectsInfo NotificationInfoPurchaseObjectsInfo `xml:"purchaseObjectsInfo"`
+	// NotificationInfo4PurchaseObjectsInfo: Объекты закупки
+	PurchaseObjectsInfo NotificationInfo4PurchaseObjectsInfo `xml:"purchaseObjectsInfo"`
 
-	// NotificationInfoPreferensesInfo: Преимущества
-	PreferensesInfo *NotificationInfoPreferensesInfo `xml:"preferensesInfo,omitempty"`
+	// NotificationInfo4PreferensesInfo: Преимущества
+	PreferensesInfo *NotificationInfo4PreferensesInfo `xml:"preferensesInfo,omitempty"`
 
-	// NotificationInfoRequirementsInfo: Требования
-	RequirementsInfo *NotificationInfoRequirementsInfo `xml:"requirementsInfo,omitempty"`
+	// NotificationInfo4RequirementsInfo: Требования
+	RequirementsInfo *NotificationInfo4RequirementsInfo `xml:"requirementsInfo,omitempty"`
 
-	// NotificationInfoRestrictionsInfo: Ограничения
-	RestrictionsInfo *NotificationInfoRestrictionsInfo `xml:"restrictionsInfo,omitempty"`
+	// NotificationInfo4RestrictionsInfo: Ограничения
+	RestrictionsInfo *NotificationInfo4RestrictionsInfo `xml:"restrictionsInfo,omitempty"`
 
 	// MustPublicDiscussion: Необходимо обязательное общественное обсуждение в соответствии со статьей 20 Федерального закона №44-ФЗ. Устарело. Если первая версия извещения размещена до выхода версии 10.0 ЕИС, то контролируется обязательное заполнение поля, иначе игнорируется при приеме/передаче
 	MustPublicDiscussion *bool `xml:"mustPublicDiscussion,omitempty"`
@@ -2102,8 +2102,8 @@ type ServiceSigns6 struct {
 	IsControlP1Ch5St99 *bool `xml:",any,omitempty"`
 }
 
-// NotificationInfoCustomerRequirementsInfo5: Требования заказчиков
-type NotificationInfoCustomerRequirementsInfo5 struct {
+// NotificationInfo4CustomerRequirementsInfo: Требования заказчиков
+type NotificationInfo4CustomerRequirementsInfo struct {
 	XMLName xml.Name `xml:"customerRequirementsInfo"`
 
 	// CustomerRequirementInfo: Требование заказчика
@@ -2130,8 +2130,8 @@ type NotificationInfoPurchaseObjectsInfoDrugPurchaseObjectsInfo2 struct {
 	cmn.PurchaseDrugObjectsInfoType
 }
 
-// NotificationInfoPurchaseObjectsInfo5: Объекты закупки
-type NotificationInfoPurchaseObjectsInfo5 struct {
+// NotificationInfo4PurchaseObjectsInfo: Объекты закупки
+type NotificationInfo4PurchaseObjectsInfo struct {
 	XMLName xml.Name `xml:"purchaseObjectsInfo"`
 
 	// NotificationInfoPurchaseObjectsInfoNotDrugPurchaseObjectsInfo: Сведения об объектах закупки в том случае, когда объектами закупки являются нелекарственные препараты. Не все позиции ТРУ по ОКПД2 из базовой позиции плана-графика закупок с 01.01.2020 должны быть представлены в полном объеме. Позиция ТРУ по ОКПД2 из базовой позиции ПГ может иметь несколько потомков
@@ -2141,16 +2141,16 @@ type NotificationInfoPurchaseObjectsInfo5 struct {
 	DrugPurchaseObjectsInfo *NotificationInfoPurchaseObjectsInfoDrugPurchaseObjectsInfo `xml:"drugPurchaseObjectsInfo,omitempty"`
 }
 
-// NotificationInfoPreferensesInfo5: Преимущества
-type NotificationInfoPreferensesInfo5 struct {
+// NotificationInfo4PreferensesInfo: Преимущества
+type NotificationInfo4PreferensesInfo struct {
 	XMLName xml.Name `xml:"preferensesInfo,omitempty"`
 
 	// PreferenseInfo: Преимущество. Если в качестве преимущества указано значение "Участникам, заявки или окончательные предложения которых содержат предложения о поставке товаров в соответствии с приказом Минфина России № 126н от 04.06.2018", контролируется, что величина преимущества должна быть 15% или 20%
 	PreferenseInfo []cmn.PreferenseType `xml:",any"`
 }
 
-// NotificationInfoRequirementsInfo5: Требования
-type NotificationInfoRequirementsInfo5 struct {
+// NotificationInfo4RequirementsInfo: Требования
+type NotificationInfo4RequirementsInfo struct {
 	XMLName xml.Name `xml:"requirementsInfo,omitempty"`
 
 	// RequirementInfo: Требование
@@ -2164,8 +2164,8 @@ type NotificationInfoRestrictionsInfoRestrictionInfo struct {
 	cmn.RestrictionType
 }
 
-// NotificationInfoRestrictionsInfo5: Ограничения
-type NotificationInfoRestrictionsInfo5 struct {
+// NotificationInfo4RestrictionsInfo: Ограничения
+type NotificationInfo4RestrictionsInfo struct {
 	XMLName xml.Name `xml:"restrictionsInfo,omitempty"`
 
 	// NotificationInfoRestrictionsInfoRestrictionInfo: Ограничение
@@ -2182,20 +2182,20 @@ type NotificationInfo5 struct {
 	// ContractConditionsInfo: Условия контракта
 	ContractConditionsInfo ContractConditionsType `xml:"contractConditionsInfo"`
 
-	// NotificationInfoCustomerRequirementsInfo: Требования заказчиков
-	CustomerRequirementsInfo NotificationInfoCustomerRequirementsInfo `xml:"customerRequirementsInfo"`
+	// NotificationInfo4CustomerRequirementsInfo: Требования заказчиков
+	CustomerRequirementsInfo NotificationInfo4CustomerRequirementsInfo `xml:"customerRequirementsInfo"`
 
-	// NotificationInfoPurchaseObjectsInfo: Объекты закупки
-	PurchaseObjectsInfo NotificationInfoPurchaseObjectsInfo `xml:"purchaseObjectsInfo"`
+	// NotificationInfo4PurchaseObjectsInfo: Объекты закупки
+	PurchaseObjectsInfo NotificationInfo4PurchaseObjectsInfo `xml:"purchaseObjectsInfo"`
 
-	// NotificationInfoPreferensesInfo: Преимущества
-	PreferensesInfo *NotificationInfoPreferensesInfo `xml:"preferensesInfo,omitempty"`
+	// NotificationInfo4PreferensesInfo: Преимущества
+	PreferensesInfo *NotificationInfo4PreferensesInfo `xml:"preferensesInfo,omitempty"`
 
-	// NotificationInfoRequirementsInfo: Требования
-	RequirementsInfo *NotificationInfoRequirementsInfo `xml:"requirementsInfo,omitempty"`
+	// NotificationInfo4RequirementsInfo: Требования
+	RequirementsInfo *NotificationInfo4RequirementsInfo `xml:"requirementsInfo,omitempty"`
 
-	// NotificationInfoRestrictionsInfo: Ограничения
-	RestrictionsInfo *NotificationInfoRestrictionsInfo `xml:"restrictionsInfo,omitempty"`
+	// NotificationInfo4RestrictionsInfo: Ограничения
+	RestrictionsInfo *NotificationInfo4RestrictionsInfo `xml:"restrictionsInfo,omitempty"`
 
 	// MustPublicDiscussion: Необходимо обязательное общественное обсуждение в соответствии со статьей 20 Федерального закона №44-ФЗ. Устарело. Если первая версия извещения размещена до выхода версии 10.0 ЕИС, то контролируется обязательное заполнение поля, иначе игнорируется при приеме/передаче
 	MustPublicDiscussion *bool `xml:"mustPublicDiscussion,omitempty"`
@@ -2229,8 +2229,8 @@ type ServiceSigns7 struct {
 	IsControlP1Ch5St99 *bool `xml:",any,omitempty"`
 }
 
-// ApplicationInfoCommonInfo: Общая информация
-type ApplicationInfoCommonInfo struct {
+// CommonInfo14: Общая информация
+type CommonInfo14 struct {
 	XMLName xml.Name `xml:"commonInfo"`
 
 	// AppNumber: Номер заявки
@@ -2275,12 +2275,12 @@ type ApplicationInfoAdmittedInfo struct {
 	AppNotAdmittedInfo *AdmittedInfoAppNotAdmittedInfo `xml:"appNotAdmittedInfo,omitempty"`
 }
 
-// ApplicationsInfoApplicationInfo: Заявка
-type ApplicationsInfoApplicationInfo struct {
+// ApplicationInfo3: Заявка
+type ApplicationInfo3 struct {
 	XMLName xml.Name `xml:"applicationInfo"`
 
-	// ApplicationInfoCommonInfo: Общая информация
-	CommonInfo ApplicationInfoCommonInfo `xml:"commonInfo"`
+	// CommonInfo14: Общая информация
+	CommonInfo CommonInfo14 `xml:"commonInfo"`
 
 	// AppParticipantInfo: Сведения об участнике
 	AppParticipantInfo cmn.ParticipantType `xml:"appParticipantInfo"`
@@ -2293,8 +2293,8 @@ type ApplicationsInfoApplicationInfo struct {
 type ProtocolInfoApplicationsInfo6 struct {
 	XMLName xml.Name `xml:"applicationsInfo,omitempty"`
 
-	// ApplicationsInfoApplicationInfo: Заявка
-	ApplicationInfo []ApplicationsInfoApplicationInfo `xml:",any"`
+	// ApplicationInfo3: Заявка
+	ApplicationInfo []ApplicationInfo3 `xml:",any"`
 }
 
 // ProtocolInfo13: Информация о проведении ЭOKД (двухэтапный конкурс в электронной форме). В рамках блока должен быть заполнен блок applicationsInfo и/или abandonedReason
@@ -2578,8 +2578,8 @@ type ProlongationInfo struct {
 	SecondStageInfo ProlongationInfoSecondStageInfo `xml:"secondStageInfo"`
 }
 
-// PrintFormFieldsInfoProlongationInfo2: Дополнительная информация о продлении срока подачи заявок для печатной формы
-type PrintFormFieldsInfoProlongationInfo2 struct {
+// ProlongationInfo1: Дополнительная информация о продлении срока подачи заявок для печатной формы
+type ProlongationInfo1 struct {
 	XMLName xml.Name `xml:"prolongationInfo,omitempty"`
 
 	// DocNumber: Номер документа
@@ -2593,8 +2593,8 @@ type PrintFormFieldsInfoProlongationInfo2 struct {
 type PrintFormFieldsInfo26 struct {
 	XMLName xml.Name `xml:"printFormFieldsInfo,omitempty"`
 
-	// PrintFormFieldsInfoProlongationInfo: Дополнительная информация о продлении срока подачи заявок для печатной формы
-	ProlongationInfo *PrintFormFieldsInfoProlongationInfo `xml:",any,omitempty"`
+	// ProlongationInfo1: Дополнительная информация о продлении срока подачи заявок для печатной формы
+	ProlongationInfo *ProlongationInfo1 `xml:",any,omitempty"`
 }
 
 // ContractConditionsInfoMaxPriceInfo: Информация о начальной (максимальной) цене контракта
@@ -2656,8 +2656,8 @@ type NotificationInfoContractConditionsInfo struct {
 	ContractLifeCycleInfo *ContractConditionsInfoContractLifeCycleInfo `xml:"contractLifeCycleInfo,omitempty"`
 }
 
-// NotificationInfoCustomerRequirementsInfo6: Требования заказчиков
-type NotificationInfoCustomerRequirementsInfo6 struct {
+// NotificationInfoCustomerRequirementsInfo4: Требования заказчиков
+type NotificationInfoCustomerRequirementsInfo4 struct {
 	XMLName xml.Name `xml:"customerRequirementsInfo"`
 
 	// CustomerRequirementInfo: Требование заказчика
@@ -2684,8 +2684,8 @@ type PurchaseObjectsInfoDrugPurchaseObjectsInfo3 struct {
 	cmn.PurchaseDrugObjectsInfoType
 }
 
-// NotificationInfoPurchaseObjectsInfo6: Объекты закупки
-type NotificationInfoPurchaseObjectsInfo6 struct {
+// NotificationInfoPurchaseObjectsInfo4: Объекты закупки
+type NotificationInfoPurchaseObjectsInfo4 struct {
 	XMLName xml.Name `xml:"purchaseObjectsInfo"`
 
 	// PurchaseObjectsInfoNotDrugPurchaseObjectsInfo: Сведения об объектах закупки в том случае, когда объектами закупки являются нелекарственные препараты. Не все позиции ТРУ по ОКПД2 из базовой позиции плана-графика закупок с 01.01.2020 должны быть представлены в полном объеме. Позиция ТРУ по ОКПД2 из базовой позиции плана-графика может иметь несколько потомков
@@ -2695,24 +2695,24 @@ type NotificationInfoPurchaseObjectsInfo6 struct {
 	DrugPurchaseObjectsInfo *PurchaseObjectsInfoDrugPurchaseObjectsInfo `xml:"drugPurchaseObjectsInfo,omitempty"`
 }
 
-// NotificationInfoPreferensesInfo6: Преимущества
-type NotificationInfoPreferensesInfo6 struct {
+// NotificationInfoPreferensesInfo4: Преимущества
+type NotificationInfoPreferensesInfo4 struct {
 	XMLName xml.Name `xml:"preferensesInfo,omitempty"`
 
 	// PreferenseInfo: Преимущество. Если в качестве преимущества указано значение "Участникам, заявки или окончательные предложения которых содержат предложения о поставке товаров в соответствии с приказом Минфина России № 126н от 04.06.2018", контролируется, что величина преимущества должна быть 15% или 20%
 	PreferenseInfo []cmn.PreferenseType `xml:",any"`
 }
 
-// NotificationInfoRequirementsInfo6: Требования
-type NotificationInfoRequirementsInfo6 struct {
+// NotificationInfoRequirementsInfo4: Требования
+type NotificationInfoRequirementsInfo4 struct {
 	XMLName xml.Name `xml:"requirementsInfo,omitempty"`
 
 	// RequirementInfo: Требование
 	RequirementInfo []cmn.RequirementRestrictionType `xml:",any"`
 }
 
-// NotificationInfoRestrictionsInfo6: Ограничения
-type NotificationInfoRestrictionsInfo6 struct {
+// NotificationInfoRestrictionsInfo4: Ограничения
+type NotificationInfoRestrictionsInfo4 struct {
 	XMLName xml.Name `xml:"restrictionsInfo,omitempty"`
 
 	// RestrictionInfo: Ограничение
@@ -2825,8 +2825,8 @@ type ApplicationInfoAdmittedInfo1 struct {
 	AppNotAdmittedInfo *AdmittedInfoAppNotAdmittedInfo `xml:"appNotAdmittedInfo,omitempty"`
 }
 
-// ApplicationsInfoApplicationInfo1: Заявка
-type ApplicationsInfoApplicationInfo1 struct {
+// ApplicationInfo4: Заявка
+type ApplicationInfo4 struct {
 	XMLName xml.Name `xml:"applicationInfo"`
 
 	// CommonInfo: Общая информация
@@ -2846,8 +2846,8 @@ type ApplicationsInfoApplicationInfo1 struct {
 type ProtocolInfoApplicationsInfo10 struct {
 	XMLName xml.Name `xml:"applicationsInfo,omitempty"`
 
-	// ApplicationsInfoApplicationInfo: Заявка
-	ApplicationInfo []ApplicationsInfoApplicationInfo `xml:",any"`
+	// ApplicationInfo4: Заявка
+	ApplicationInfo []ApplicationInfo4 `xml:",any"`
 }
 
 // ProtocolInfo19: Информация о проведении ЭЗК (запрос котировок в электронной форме). В рамках блока должен быть заполнен блок applicationsInfo и/или abandonedReason
@@ -2932,8 +2932,8 @@ type ApplicationInfoAdmittedInfo2 struct {
 	AppNotAdmittedInfo *AdmittedInfoAppNotAdmittedInfo `xml:"appNotAdmittedInfo,omitempty"`
 }
 
-// ApplicationsInfoApplicationInfo2: Заявка
-type ApplicationsInfoApplicationInfo2 struct {
+// ApplicationInfo5: Заявка
+type ApplicationInfo5 struct {
 	XMLName xml.Name `xml:"applicationInfo"`
 
 	// CommonInfo: Общая информация
@@ -2956,8 +2956,8 @@ type ApplicationsInfoApplicationInfo2 struct {
 type ProtocolInfoApplicationsInfo11 struct {
 	XMLName xml.Name `xml:"applicationsInfo"`
 
-	// ApplicationsInfoApplicationInfo: Заявка
-	ApplicationInfo []ApplicationsInfoApplicationInfo `xml:",any"`
+	// ApplicationInfo5: Заявка
+	ApplicationInfo []ApplicationInfo5 `xml:",any"`
 }
 
 // ProtocolInfo20: Информация о проведении ЭЗК (запрос котировок в электронной форме)
@@ -2993,8 +2993,8 @@ type PrintFormFieldsInfo28 struct {
 	IsMaxPriceCurrency *cmn.PurchaseIsMaxPriceCurrencyType `xml:"isMaxPriceCurrency,omitempty"`
 }
 
-// ProlongationInfo1: Новые сроки проведения ЭЗК (запрос котировок в электронной форме) после продления
-type ProlongationInfo1 struct {
+// ProlongationInfo2: Новые сроки проведения ЭЗК (запрос котировок в электронной форме) после продления
+type ProlongationInfo2 struct {
 	XMLName xml.Name `xml:"prolongationInfo"`
 
 	// CollectingEndDt: Дата и время окончания подачи заявок до продления
@@ -3004,8 +3004,8 @@ type ProlongationInfo1 struct {
 	NewCollectingEndDt string `xml:"newCollectingEndDT"`
 }
 
-// PrintFormFieldsInfoProlongationInfo3: Дополнительная информация о продлении срока подачи заявок для печатной формы
-type PrintFormFieldsInfoProlongationInfo3 struct {
+// ProlongationInfo3: Дополнительная информация о продлении срока подачи заявок для печатной формы
+type ProlongationInfo3 struct {
 	XMLName xml.Name `xml:"prolongationInfo,omitempty"`
 
 	// DocNumber: Номер документа
@@ -3019,12 +3019,12 @@ type PrintFormFieldsInfoProlongationInfo3 struct {
 type PrintFormFieldsInfo29 struct {
 	XMLName xml.Name `xml:"printFormFieldsInfo,omitempty"`
 
-	// PrintFormFieldsInfoProlongationInfo: Дополнительная информация о продлении срока подачи заявок для печатной формы
-	ProlongationInfo *PrintFormFieldsInfoProlongationInfo `xml:",any,omitempty"`
+	// ProlongationInfo3: Дополнительная информация о продлении срока подачи заявок для печатной формы
+	ProlongationInfo *ProlongationInfo3 `xml:",any,omitempty"`
 }
 
-// NotificationInfoCustomerRequirementsInfo7: Требования заказчиков
-type NotificationInfoCustomerRequirementsInfo7 struct {
+// NotificationInfoCustomerRequirementsInfo5: Требования заказчиков
+type NotificationInfoCustomerRequirementsInfo5 struct {
 	XMLName xml.Name `xml:"customerRequirementsInfo"`
 
 	// CustomerRequirementInfo: Требование заказчика
@@ -3048,8 +3048,8 @@ type PurchaseObjectsInfoDrugPurchaseObjectsInfo4 struct {
 	cmn.PurchaseDrugObjectsInfoType
 }
 
-// NotificationInfoPurchaseObjectsInfo7: Объекты закупки
-type NotificationInfoPurchaseObjectsInfo7 struct {
+// NotificationInfoPurchaseObjectsInfo5: Объекты закупки
+type NotificationInfoPurchaseObjectsInfo5 struct {
 	XMLName xml.Name `xml:"purchaseObjectsInfo"`
 
 	// NotificationInfoPurchaseObjectsInfoNotDrugPurchaseObjectsInfo: Сведения об объектах закупки в том случае, когда объектами закупки являются нелекарственные препараты. Не все позиции ТРУ по ОКПД2 из базовой позиции плана-графика закупок с 01.01.2020 должны быть представлены в полном объеме. Позиция ТРУ по ОКПД2 из базовой позиции плана-графика может иметь несколько потомков
@@ -3059,24 +3059,24 @@ type NotificationInfoPurchaseObjectsInfo7 struct {
 	DrugPurchaseObjectsInfo *NotificationInfoPurchaseObjectsInfoDrugPurchaseObjectsInfo `xml:"drugPurchaseObjectsInfo,omitempty"`
 }
 
-// NotificationInfoPreferensesInfo7: Преимущества
-type NotificationInfoPreferensesInfo7 struct {
+// NotificationInfoPreferensesInfo5: Преимущества
+type NotificationInfoPreferensesInfo5 struct {
 	XMLName xml.Name `xml:"preferensesInfo,omitempty"`
 
 	// PreferenseInfo: Преимущество. Если в качестве преимущества указано значение "Участникам, заявки или окончательные предложения которых содержат предложения о поставке товаров в соответствии с приказом Минфина России № 126н от 04.06.2018", контролируется, что величина преимущества должна быть 15% или 20%
 	PreferenseInfo []cmn.PreferenseType `xml:",any"`
 }
 
-// NotificationInfoRequirementsInfo7: Требования
-type NotificationInfoRequirementsInfo7 struct {
+// NotificationInfoRequirementsInfo5: Требования
+type NotificationInfoRequirementsInfo5 struct {
 	XMLName xml.Name `xml:"requirementsInfo,omitempty"`
 
 	// RequirementInfo: Требование
 	RequirementInfo []cmn.RequirementRestrictionType `xml:",any"`
 }
 
-// NotificationInfoRestrictionsInfo7: Ограничения
-type NotificationInfoRestrictionsInfo7 struct {
+// NotificationInfoRestrictionsInfo5: Ограничения
+type NotificationInfoRestrictionsInfo5 struct {
 	XMLName xml.Name `xml:"restrictionsInfo,omitempty"`
 
 	// RestrictionInfo: Ограничение
@@ -3093,20 +3093,20 @@ type NotificationInfo7 struct {
 	// ContractConditionsInfo: Условия контракта
 	ContractConditionsInfo ContractConditionsType `xml:"contractConditionsInfo"`
 
-	// NotificationInfoCustomerRequirementsInfo: Требования заказчиков
-	CustomerRequirementsInfo NotificationInfoCustomerRequirementsInfo `xml:"customerRequirementsInfo"`
+	// NotificationInfo7CustomerRequirementsInfo: Требования заказчиков
+	CustomerRequirementsInfo NotificationInfo7CustomerRequirementsInfo `xml:"customerRequirementsInfo"`
 
-	// NotificationInfoPurchaseObjectsInfo: Объекты закупки
-	PurchaseObjectsInfo NotificationInfoPurchaseObjectsInfo `xml:"purchaseObjectsInfo"`
+	// NotificationInfo7PurchaseObjectsInfo: Объекты закупки
+	PurchaseObjectsInfo NotificationInfo7PurchaseObjectsInfo `xml:"purchaseObjectsInfo"`
 
-	// NotificationInfoPreferensesInfo: Преимущества
-	PreferensesInfo *NotificationInfoPreferensesInfo `xml:"preferensesInfo,omitempty"`
+	// NotificationInfo7PreferensesInfo: Преимущества
+	PreferensesInfo *NotificationInfo7PreferensesInfo `xml:"preferensesInfo,omitempty"`
 
-	// NotificationInfoRequirementsInfo: Требования
-	RequirementsInfo *NotificationInfoRequirementsInfo `xml:"requirementsInfo,omitempty"`
+	// NotificationInfo7RequirementsInfo: Требования
+	RequirementsInfo *NotificationInfo7RequirementsInfo `xml:"requirementsInfo,omitempty"`
 
-	// NotificationInfoRestrictionsInfo: Ограничения
-	RestrictionsInfo *NotificationInfoRestrictionsInfo `xml:"restrictionsInfo,omitempty"`
+	// NotificationInfo7RestrictionsInfo: Ограничения
+	RestrictionsInfo *NotificationInfo7RestrictionsInfo `xml:"restrictionsInfo,omitempty"`
 }
 
 // PurchaseResponsibleInfo8: Информация об организации, осуществляющей размещение
@@ -3134,8 +3134,8 @@ type ServiceSigns9 struct {
 	IsControlP1Ch5St99 *bool `xml:",any,omitempty"`
 }
 
-// NotificationInfoCustomerRequirementsInfo8: Требования заказчиков
-type NotificationInfoCustomerRequirementsInfo8 struct {
+// NotificationInfo7CustomerRequirementsInfo: Требования заказчиков
+type NotificationInfo7CustomerRequirementsInfo struct {
 	XMLName xml.Name `xml:"customerRequirementsInfo"`
 
 	// CustomerRequirementInfo: Требование заказчика
@@ -3159,8 +3159,8 @@ type NotificationInfoPurchaseObjectsInfoDrugPurchaseObjectsInfo3 struct {
 	cmn.PurchaseDrugObjectsInfoType
 }
 
-// NotificationInfoPurchaseObjectsInfo8: Объекты закупки
-type NotificationInfoPurchaseObjectsInfo8 struct {
+// NotificationInfo7PurchaseObjectsInfo: Объекты закупки
+type NotificationInfo7PurchaseObjectsInfo struct {
 	XMLName xml.Name `xml:"purchaseObjectsInfo"`
 
 	// NotificationInfoPurchaseObjectsInfoNotDrugPurchaseObjectsInfo: Сведения об объектах закупки в том случае, когда объектами закупки являются нелекарственные препараты. Не все позиции ТРУ по ОКПД2 из базовой позиции плана-графика закупок с 01.01.2020 должны быть представлены в полном объеме. Позиция ТРУ по ОКПД2 из базовой позиции плана-графика может иметь несколько потомков
@@ -3170,24 +3170,24 @@ type NotificationInfoPurchaseObjectsInfo8 struct {
 	DrugPurchaseObjectsInfo *NotificationInfoPurchaseObjectsInfoDrugPurchaseObjectsInfo `xml:"drugPurchaseObjectsInfo,omitempty"`
 }
 
-// NotificationInfoPreferensesInfo8: Преимущества
-type NotificationInfoPreferensesInfo8 struct {
+// NotificationInfo7PreferensesInfo: Преимущества
+type NotificationInfo7PreferensesInfo struct {
 	XMLName xml.Name `xml:"preferensesInfo,omitempty"`
 
 	// PreferenseInfo: Преимущество. Если в качестве преимущества указано значение "Участникам, заявки или окончательные предложения которых содержат предложения о поставке товаров в соответствии с приказом Минфина России № 126н от 04.06.2018", контролируется, что величина преимущества должна быть 15% или 20%
 	PreferenseInfo []cmn.PreferenseType `xml:",any"`
 }
 
-// NotificationInfoRequirementsInfo8: Требования
-type NotificationInfoRequirementsInfo8 struct {
+// NotificationInfo7RequirementsInfo: Требования
+type NotificationInfo7RequirementsInfo struct {
 	XMLName xml.Name `xml:"requirementsInfo,omitempty"`
 
 	// RequirementInfo: Требование
 	RequirementInfo []cmn.RequirementRestrictionType `xml:",any"`
 }
 
-// NotificationInfoRestrictionsInfo8: Ограничения
-type NotificationInfoRestrictionsInfo8 struct {
+// NotificationInfo7RestrictionsInfo: Ограничения
+type NotificationInfo7RestrictionsInfo struct {
 	XMLName xml.Name `xml:"restrictionsInfo,omitempty"`
 
 	// RestrictionInfo: Ограничение
@@ -3204,20 +3204,20 @@ type NotificationInfo8 struct {
 	// ContractConditionsInfo: Условия контракта
 	ContractConditionsInfo ContractConditionsType `xml:"contractConditionsInfo"`
 
-	// NotificationInfoCustomerRequirementsInfo: Требования заказчиков
-	CustomerRequirementsInfo NotificationInfoCustomerRequirementsInfo `xml:"customerRequirementsInfo"`
+	// NotificationInfo7CustomerRequirementsInfo: Требования заказчиков
+	CustomerRequirementsInfo NotificationInfo7CustomerRequirementsInfo `xml:"customerRequirementsInfo"`
 
-	// NotificationInfoPurchaseObjectsInfo: Объекты закупки
-	PurchaseObjectsInfo NotificationInfoPurchaseObjectsInfo `xml:"purchaseObjectsInfo"`
+	// NotificationInfo7PurchaseObjectsInfo: Объекты закупки
+	PurchaseObjectsInfo NotificationInfo7PurchaseObjectsInfo `xml:"purchaseObjectsInfo"`
 
-	// NotificationInfoPreferensesInfo: Преимущества
-	PreferensesInfo *NotificationInfoPreferensesInfo `xml:"preferensesInfo,omitempty"`
+	// NotificationInfo7PreferensesInfo: Преимущества
+	PreferensesInfo *NotificationInfo7PreferensesInfo `xml:"preferensesInfo,omitempty"`
 
-	// NotificationInfoRequirementsInfo: Требования
-	RequirementsInfo *NotificationInfoRequirementsInfo `xml:"requirementsInfo,omitempty"`
+	// NotificationInfo7RequirementsInfo: Требования
+	RequirementsInfo *NotificationInfo7RequirementsInfo `xml:"requirementsInfo,omitempty"`
 
-	// NotificationInfoRestrictionsInfo: Ограничения
-	RestrictionsInfo *NotificationInfoRestrictionsInfo `xml:"restrictionsInfo,omitempty"`
+	// NotificationInfo7RestrictionsInfo: Ограничения
+	RestrictionsInfo *NotificationInfo7RestrictionsInfo `xml:"restrictionsInfo,omitempty"`
 }
 
 // PurchaseResponsibleInfo9: Информация об организации, осуществляющей размещение
@@ -3256,8 +3256,8 @@ type ProtocolPublisherInfo20 struct {
 	PublisherRole base.ResponsibleRoleEptype `xml:"publisherRole"`
 }
 
-// ApplicationInfoCommonInfo1: Общая информация
-type ApplicationInfoCommonInfo1 struct {
+// CommonInfo15: Общая информация
+type CommonInfo15 struct {
 	XMLName xml.Name `xml:"commonInfo"`
 
 	// AppNumber: Номер заявки
@@ -3291,12 +3291,12 @@ type ApplicationInfoAdmittedInfo3 struct {
 	AppNotAdmittedInfo AdmittedInfoAppNotAdmittedInfo `xml:",any"`
 }
 
-// ApplicationsInfoApplicationInfo3: Отклоненная заявка
-type ApplicationsInfoApplicationInfo3 struct {
+// ApplicationInfo6: Отклоненная заявка
+type ApplicationInfo6 struct {
 	XMLName xml.Name `xml:"applicationInfo"`
 
-	// ApplicationInfoCommonInfo: Общая информация
-	CommonInfo ApplicationInfoCommonInfo `xml:"commonInfo"`
+	// CommonInfo15: Общая информация
+	CommonInfo CommonInfo15 `xml:"commonInfo"`
 
 	// AppParticipant: Сведения об участнике
 	AppParticipant cmn.ParticipantType `xml:"appParticipant"`
@@ -3309,8 +3309,8 @@ type ApplicationsInfoApplicationInfo3 struct {
 type ProtocolInfoApplicationsInfo12 struct {
 	XMLName xml.Name `xml:"applicationsInfo,omitempty"`
 
-	// ApplicationsInfoApplicationInfo: Отклоненная заявка
-	ApplicationInfo []ApplicationsInfoApplicationInfo `xml:",any"`
+	// ApplicationInfo6: Отклоненная заявка
+	ApplicationInfo []ApplicationInfo6 `xml:",any"`
 }
 
 // ProtocolInfo21: Информация о проведении ЭЗП (Запрос предложений в электронной форме)
@@ -3421,8 +3421,8 @@ type ApplicationInfoAdmittedInfo4 struct {
 	AppNotAdmittedInfo *AdmittedInfoAppNotAdmittedInfo `xml:"appNotAdmittedInfo,omitempty"`
 }
 
-// ApplicationsInfoApplicationInfo4: Заявка
-type ApplicationsInfoApplicationInfo4 struct {
+// ApplicationInfo7: Заявка
+type ApplicationInfo7 struct {
 	XMLName xml.Name `xml:"applicationInfo"`
 
 	// CommonInfo: Общая информация
@@ -3445,8 +3445,8 @@ type ApplicationsInfoApplicationInfo4 struct {
 type ProtocolInfoApplicationsInfo13 struct {
 	XMLName xml.Name `xml:"applicationsInfo,omitempty"`
 
-	// ApplicationsInfoApplicationInfo: Заявка
-	ApplicationInfo []ApplicationsInfoApplicationInfo `xml:",any"`
+	// ApplicationInfo7: Заявка
+	ApplicationInfo []ApplicationInfo7 `xml:",any"`
 }
 
 // ProtocolInfo22: Информация о проведении ЭЗП (Запрос предложений в электронной форме). В рамках блока должен быть заполнен блок applicationsInfo и/или abandonedReason
@@ -3568,8 +3568,8 @@ type ApplicationInfoAdmittedInfo5 struct {
 	AppNotAdmittedInfo *AdmittedInfoAppNotAdmittedInfo `xml:"appNotAdmittedInfo,omitempty"`
 }
 
-// ApplicationsInfoApplicationInfo5: Заявка
-type ApplicationsInfoApplicationInfo5 struct {
+// ApplicationInfo8: Заявка
+type ApplicationInfo8 struct {
 	XMLName xml.Name `xml:"applicationInfo"`
 
 	// CommonInfo: Общая информация
@@ -3592,8 +3592,8 @@ type ApplicationsInfoApplicationInfo5 struct {
 type ProtocolInfoApplicationsInfo14 struct {
 	XMLName xml.Name `xml:"applicationsInfo"`
 
-	// ApplicationsInfoApplicationInfo: Заявка
-	ApplicationInfo []ApplicationsInfoApplicationInfo `xml:",any"`
+	// ApplicationInfo8: Заявка
+	ApplicationInfo []ApplicationInfo8 `xml:",any"`
 }
 
 // ProtocolInfo23: Информация о проведении ЭЗП (Запрос предложений в электронной форме)
@@ -3635,8 +3635,8 @@ type PurchaseObjectsInfoDrugPurchaseObjectsInfo5 struct {
 	cmn.PurchaseDrugObjectsInfoType
 }
 
-// NotificationInfoPurchaseObjectsInfo9: Объекты закупки
-type NotificationInfoPurchaseObjectsInfo9 struct {
+// NotificationInfoPurchaseObjectsInfo6: Объекты закупки
+type NotificationInfoPurchaseObjectsInfo6 struct {
 	XMLName xml.Name `xml:"purchaseObjectsInfo"`
 
 	// PurchaseObjectsInfoNotDrugPurchaseObjectsInfo: Сведения об объектах закупки в том случае, когда объектами закупки являются нелекарственные препараты. Не все позиции ТРУ по ОКПД2 из базовой позиции плана-графика закупок с 01.01.2020 должны быть представлены в полном объеме. Позиция ТРУ по ОКПД2 из базовой позиции плана-графика может иметь несколько потомков
@@ -3646,32 +3646,32 @@ type NotificationInfoPurchaseObjectsInfo9 struct {
 	DrugPurchaseObjectsInfo *PurchaseObjectsInfoDrugPurchaseObjectsInfo `xml:"drugPurchaseObjectsInfo,omitempty"`
 }
 
-// NotificationInfoCustomerRequirementsInfo9: Требования заказчиков
-type NotificationInfoCustomerRequirementsInfo9 struct {
+// NotificationInfoCustomerRequirementsInfo6: Требования заказчиков
+type NotificationInfoCustomerRequirementsInfo6 struct {
 	XMLName xml.Name `xml:"customerRequirementsInfo"`
 
 	// CustomerRequirementInfo: Требование заказчика
 	CustomerRequirementInfo []CustomerRequirementType `xml:",any"`
 }
 
-// NotificationInfoPreferensesInfo9: Преимущества
-type NotificationInfoPreferensesInfo9 struct {
+// NotificationInfoPreferensesInfo6: Преимущества
+type NotificationInfoPreferensesInfo6 struct {
 	XMLName xml.Name `xml:"preferensesInfo,omitempty"`
 
 	// PreferenseInfo: Преимущество
 	PreferenseInfo []cmn.PreferenseType `xml:",any"`
 }
 
-// NotificationInfoRequirementsInfo9: Требования
-type NotificationInfoRequirementsInfo9 struct {
+// NotificationInfoRequirementsInfo6: Требования
+type NotificationInfoRequirementsInfo6 struct {
 	XMLName xml.Name `xml:"requirementsInfo,omitempty"`
 
 	// RequirementInfo: Требование
 	RequirementInfo []cmn.RequirementRestrictionType `xml:",any"`
 }
 
-// NotificationInfoRestrictionsInfo9: Ограничения
-type NotificationInfoRestrictionsInfo9 struct {
+// NotificationInfoRestrictionsInfo6: Ограничения
+type NotificationInfoRestrictionsInfo6 struct {
 	XMLName xml.Name `xml:"restrictionsInfo,omitempty"`
 
 	// RestrictionInfo: Ограничение
@@ -3746,8 +3746,8 @@ type PurchaseObjectsInfoDrugPurchaseObjectsInfo6 struct {
 	cmn.PurchaseDrugObjectsInfoType
 }
 
-// NotificationInfoPurchaseObjectsInfo10: Объекты закупки
-type NotificationInfoPurchaseObjectsInfo10 struct {
+// NotificationInfoPurchaseObjectsInfo7: Объекты закупки
+type NotificationInfoPurchaseObjectsInfo7 struct {
 	XMLName xml.Name `xml:"purchaseObjectsInfo"`
 
 	// PurchaseObjectsInfoNotDrugPurchaseObjectsInfo: Сведения об объектах закупки в том случае, когда объектами закупки являются нелекарственные препараты. Не все позиции ТРУ по ОКПД2 из базовой позиции плана-графика закупок с 01.01.2020 должны быть представлены в полном объеме. Позиция ТРУ по ОКПД2 из базовой позиции плана-графика может иметь несколько потомков
@@ -3757,32 +3757,32 @@ type NotificationInfoPurchaseObjectsInfo10 struct {
 	DrugPurchaseObjectsInfo *PurchaseObjectsInfoDrugPurchaseObjectsInfo `xml:"drugPurchaseObjectsInfo,omitempty"`
 }
 
-// NotificationInfoCustomerRequirementsInfo10: Требования заказчиков
-type NotificationInfoCustomerRequirementsInfo10 struct {
+// NotificationInfoCustomerRequirementsInfo7: Требования заказчиков
+type NotificationInfoCustomerRequirementsInfo7 struct {
 	XMLName xml.Name `xml:"customerRequirementsInfo"`
 
 	// CustomerRequirementInfo: Требование заказчика
 	CustomerRequirementInfo []CustomerRequirementType `xml:",any"`
 }
 
-// NotificationInfoPreferensesInfo10: Преимущества
-type NotificationInfoPreferensesInfo10 struct {
+// NotificationInfoPreferensesInfo7: Преимущества
+type NotificationInfoPreferensesInfo7 struct {
 	XMLName xml.Name `xml:"preferensesInfo,omitempty"`
 
 	// PreferenseInfo: Преимущество
 	PreferenseInfo []cmn.PreferenseType `xml:",any"`
 }
 
-// NotificationInfoRequirementsInfo10: Требования
-type NotificationInfoRequirementsInfo10 struct {
+// NotificationInfoRequirementsInfo7: Требования
+type NotificationInfoRequirementsInfo7 struct {
 	XMLName xml.Name `xml:"requirementsInfo,omitempty"`
 
 	// RequirementInfo: Требование
 	RequirementInfo []cmn.RequirementRestrictionType `xml:",any"`
 }
 
-// NotificationInfoRestrictionsInfo10: Ограничения
-type NotificationInfoRestrictionsInfo10 struct {
+// NotificationInfoRestrictionsInfo7: Ограничения
+type NotificationInfoRestrictionsInfo7 struct {
 	XMLName xml.Name `xml:"restrictionsInfo,omitempty"`
 
 	// RestrictionInfo: Ограничение
@@ -3857,8 +3857,8 @@ type PurchaseObjectsInfoDrugPurchaseObjectsInfo7 struct {
 	cmn.PurchaseDrugObjectsInfoType
 }
 
-// NotificationInfoPurchaseObjectsInfo11: Объекты закупки
-type NotificationInfoPurchaseObjectsInfo11 struct {
+// NotificationInfoPurchaseObjectsInfo8: Объекты закупки
+type NotificationInfoPurchaseObjectsInfo8 struct {
 	XMLName xml.Name `xml:"purchaseObjectsInfo"`
 
 	// PurchaseObjectsInfoNotDrugPurchaseObjectsInfo: Сведения об объектах закупки в том случае, когда объектами закупки являются нелекарственные препараты. Не все позиции ТРУ по ОКПД2 из базовой позиции плана-графика закупок с 01.01.2020 должны быть представлены в полном объеме. Позиция ТРУ по ОКПД2 из базовой позиции плана-графика может иметь несколько потомков
@@ -3868,32 +3868,32 @@ type NotificationInfoPurchaseObjectsInfo11 struct {
 	DrugPurchaseObjectsInfo *PurchaseObjectsInfoDrugPurchaseObjectsInfo `xml:"drugPurchaseObjectsInfo,omitempty"`
 }
 
-// NotificationInfoCustomerRequirementsInfo11: Требования заказчиков
-type NotificationInfoCustomerRequirementsInfo11 struct {
+// NotificationInfoCustomerRequirementsInfo8: Требования заказчиков
+type NotificationInfoCustomerRequirementsInfo8 struct {
 	XMLName xml.Name `xml:"customerRequirementsInfo"`
 
 	// CustomerRequirementInfo: Требование заказчика
 	CustomerRequirementInfo []CustomerRequirementType `xml:",any"`
 }
 
-// NotificationInfoPreferensesInfo11: Преимущества
-type NotificationInfoPreferensesInfo11 struct {
+// NotificationInfoPreferensesInfo8: Преимущества
+type NotificationInfoPreferensesInfo8 struct {
 	XMLName xml.Name `xml:"preferensesInfo,omitempty"`
 
 	// PreferenseInfo: Преимущество
 	PreferenseInfo []cmn.PreferenseType `xml:",any"`
 }
 
-// NotificationInfoRequirementsInfo11: Требования
-type NotificationInfoRequirementsInfo11 struct {
+// NotificationInfoRequirementsInfo8: Требования
+type NotificationInfoRequirementsInfo8 struct {
 	XMLName xml.Name `xml:"requirementsInfo,omitempty"`
 
 	// RequirementInfo: Требование
 	RequirementInfo []cmn.RequirementRestrictionType `xml:",any"`
 }
 
-// NotificationInfoRestrictionsInfo11: Ограничения
-type NotificationInfoRestrictionsInfo11 struct {
+// NotificationInfoRestrictionsInfo8: Ограничения
+type NotificationInfoRestrictionsInfo8 struct {
 	XMLName xml.Name `xml:"restrictionsInfo,omitempty"`
 
 	// RestrictionInfo: Ограничение
@@ -3968,8 +3968,8 @@ type PurchaseObjectsInfoDrugPurchaseObjectsInfo8 struct {
 	cmn.PurchaseDrugObjectsInfoType
 }
 
-// NotificationInfoPurchaseObjectsInfo12: Объекты закупки
-type NotificationInfoPurchaseObjectsInfo12 struct {
+// NotificationInfoPurchaseObjectsInfo9: Объекты закупки
+type NotificationInfoPurchaseObjectsInfo9 struct {
 	XMLName xml.Name `xml:"purchaseObjectsInfo"`
 
 	// PurchaseObjectsInfoNotDrugPurchaseObjectsInfo: Сведения об объектах закупки в том случае, когда объектами закупки являются нелекарственные препараты. Не все позиции ТРУ по ОКПД2 из базовой позиции плана-графика закупок с 01.01.2020 должны быть представлены в полном объеме. Позиция ТРУ по ОКПД2 из базовой позиции плана-графика может иметь несколько потомков
@@ -3979,32 +3979,32 @@ type NotificationInfoPurchaseObjectsInfo12 struct {
 	DrugPurchaseObjectsInfo *PurchaseObjectsInfoDrugPurchaseObjectsInfo `xml:"drugPurchaseObjectsInfo,omitempty"`
 }
 
-// NotificationInfoCustomerRequirementsInfo12: Требования заказчиков
-type NotificationInfoCustomerRequirementsInfo12 struct {
+// NotificationInfoCustomerRequirementsInfo9: Требования заказчиков
+type NotificationInfoCustomerRequirementsInfo9 struct {
 	XMLName xml.Name `xml:"customerRequirementsInfo"`
 
 	// CustomerRequirementInfo: Требование заказчика
 	CustomerRequirementInfo []CustomerRequirementType `xml:",any"`
 }
 
-// NotificationInfoPreferensesInfo12: Преимущества
-type NotificationInfoPreferensesInfo12 struct {
+// NotificationInfoPreferensesInfo9: Преимущества
+type NotificationInfoPreferensesInfo9 struct {
 	XMLName xml.Name `xml:"preferensesInfo,omitempty"`
 
 	// PreferenseInfo: Преимущество
 	PreferenseInfo []cmn.PreferenseType `xml:",any"`
 }
 
-// NotificationInfoRequirementsInfo12: Требования
-type NotificationInfoRequirementsInfo12 struct {
+// NotificationInfoRequirementsInfo9: Требования
+type NotificationInfoRequirementsInfo9 struct {
 	XMLName xml.Name `xml:"requirementsInfo,omitempty"`
 
 	// RequirementInfo: Преимущество
 	RequirementInfo []cmn.RequirementRestrictionType `xml:",any"`
 }
 
-// NotificationInfoRestrictionsInfo12: Ограничения
-type NotificationInfoRestrictionsInfo12 struct {
+// NotificationInfoRestrictionsInfo9: Ограничения
+type NotificationInfoRestrictionsInfo9 struct {
 	XMLName xml.Name `xml:"restrictionsInfo,omitempty"`
 
 	// RestrictionInfo: Ограничение
@@ -4115,8 +4115,8 @@ type NotificationInfoContractConditionsInfo1 struct {
 	ContractLifeCycleInfo *ContractConditionsInfoContractLifeCycleInfo `xml:"contractLifeCycleInfo,omitempty"`
 }
 
-// NotificationInfoCustomerRequirementsInfo13: Требования заказчиков
-type NotificationInfoCustomerRequirementsInfo13 struct {
+// NotificationInfoCustomerRequirementsInfo10: Требования заказчиков
+type NotificationInfoCustomerRequirementsInfo10 struct {
 	XMLName xml.Name `xml:"customerRequirementsInfo"`
 
 	// CustomerRequirementInfo: Требование заказчика
@@ -4149,8 +4149,8 @@ type PurchaseObjectsInfoNotDrugPurchaseObjectsInfo9 struct {
 	cmn.PurchaseObjects2020Type
 }
 
-// NotificationInfoPurchaseObjectsInfo13: Объекты закупки
-type NotificationInfoPurchaseObjectsInfo13 struct {
+// NotificationInfoPurchaseObjectsInfo10: Объекты закупки
+type NotificationInfoPurchaseObjectsInfo10 struct {
 	XMLName xml.Name `xml:"purchaseObjectsInfo"`
 
 	// PurchaseObjectsInfoDrugPurchaseObjectsInfo: Сведения об объектах закупки в том случае, когда объектами закупки являются лекарственные препараты. Контролируется обязательность заполнения, если извещение сформировано на основании позиции плана-графика с 01.01.2020 и в такой позиции указан код ОКПД2 21.20 Если заполнен блок «По решению заказчика (организации, осуществляющей определение поставщика для заказчика)» (modificationInfo/reasonInfo/responsibleDecisionInfo), игнорируется при приеме и заполняется из предыдущей версии извещения за исключением: o поля «Всего» (total); o поля «Общая сумма позиций в валюте контракта» (totalSumCurrency); o поля «Цена за единицу в основном варианте поставки» (pricePerUnit); o поля «Стоимость позиции в основном варианте поставки» (positionPrice); o поля «Всего» (drugQuantityCustomersInfo/total); o поля «Количество» (quantity); o поля «Уникальный идентификатор в ЕИС» (sid) o поля «Внешний идентификатор объекта закупки» (externalSid)
@@ -4163,24 +4163,24 @@ type NotificationInfoPurchaseObjectsInfo13 struct {
 	NotDrugPurchaseParentObjectsInfo *cmn.PurchaseParentObjects2020Type `xml:"notDrugPurchaseParentObjectsInfo,omitempty"`
 }
 
-// NotificationInfoPreferensesInfo13: Преимущества
-type NotificationInfoPreferensesInfo13 struct {
+// NotificationInfoPreferensesInfo10: Преимущества
+type NotificationInfoPreferensesInfo10 struct {
 	XMLName xml.Name `xml:"preferensesInfo,omitempty"`
 
 	// PreferenseInfo: Преимущество. При приеме контролируется наличие записи с кодом, указанным в поле shortName, в справочнике "Требования (преимущества, ограничения)" (nsiPurchasePreferences). При этом запись не должна быть помечена как устаревшая (в поле IS_OUTDATED не должно быть указано 1) для извещений, первая версия которых размещена после начала действия оптимизационного законопроекта 44-ФЗ. Если в качестве преимущества указано значение "Участникам, заявки или окончательные предложения которых содержат предложения о поставке товаров в соответствии с приказом Минфина России № 126н от 04.06.2018", то контролируется, что величина преимущества, заданная в поле "Величина преимущества" (prefValue), содержится в справочнике вариантов размера преференциальной ставки (nsiPrefRate)
 	PreferenseInfo []cmn.PreferenseType `xml:",any"`
 }
 
-// NotificationInfoRequirementsInfo13: Требования. Если первая версия извещения размещается (принимается от внешней системы) после выхода версии 12.2 ЕИС, то блок обязателен для заполнения. Кроме того, в нем обязательно должно быть указано требование с кодом "ET44 - Единые требования к участникам закупок в соответствии с ч. 1 ст. 31 Закона № 44-ФЗ"
-type NotificationInfoRequirementsInfo13 struct {
+// NotificationInfoRequirementsInfo10: Требования. Если первая версия извещения размещается (принимается от внешней системы) после выхода версии 12.2 ЕИС, то блок обязателен для заполнения. Кроме того, в нем обязательно должно быть указано требование с кодом "ET44 - Единые требования к участникам закупок в соответствии с ч. 1 ст. 31 Закона № 44-ФЗ"
+type NotificationInfoRequirementsInfo10 struct {
 	XMLName xml.Name `xml:"requirementsInfo,omitempty"`
 
 	// RequirementInfo: Требование. При приеме контролируется наличие записи с кодом, указанным в поле shortName, в справочнике "Требования (преимущества, ограничения)" (nsiPurchasePreferences). При этом запись не должна быть помечена как устаревшая (в поле IS_OUTDATED не должно быть указано 1) для извещений, первая версия которых размещена после начала действия оптимизационного законопроекта 44-ФЗ. Если первая версия извещения размещается (принимается от внешней системы) после выхода версии 12.2 ЕИС, то для следующих требований игнорируется дочернее поле "Содержание требования (ограничения)" (content): - ET44 - Единые требования к участникам закупок в соответствии с ч. 1 ст. 31 Закона № 44-ФЗ; - TU44 - Требования к участникам закупок в соответствии с частью 2 статьи 31 Федерального закона № 44-ФЗ - TR442 - Требования к участникам закупок в соответствии с частью 1.1 статьи 31 Федерального закона № 44-ФЗ; - ETP44312 - Требования к участникам закупок в соответствии с частью 2.1 статьи 31 Федерального закона № 44-ФЗ; - TOVNPIVR - Требование об отсутствии в реестре недобросовестных поставщиков (подрядчиков, исполнителей) информации, включенной в такой реестр в связи отказом поставщика (подрядчика, исполнителя) от исполнения контракта по причине введения в отношении заказчика санкций и (или) мер ограничительного характера
 	RequirementInfo []cmn.Requirement2020WithAddReqsType `xml:",any"`
 }
 
-// NotificationInfoRestrictionsInfo13: Ограничения. Игнорируется при приеме, не заполняется при передаче для извещений, первая версия которых размещена с даты в настройке «Изменение нац.режима»
-type NotificationInfoRestrictionsInfo13 struct {
+// NotificationInfoRestrictionsInfo10: Ограничения. Игнорируется при приеме, не заполняется при передаче для извещений, первая версия которых размещена с даты в настройке «Изменение нац.режима»
+type NotificationInfoRestrictionsInfo10 struct {
 	XMLName xml.Name `xml:"restrictionsInfo,omitempty"`
 
 	// RestrictionInfo: Ограничение. При приеме контролируется наличие записи с кодом, указанным в поле shortName, в справочнике "Требования (преимущества, ограничения)" (nsiPurchasePreferences). При этом запись не должна быть помечена как устаревшая (в поле IS_OUTDATED не должно быть указано 1) для извещений, первая версия которых размещена после начала действия оптимизационного законопроекта 44-ФЗ
@@ -4224,8 +4224,8 @@ type NotificationInfo13 struct {
 	Flags NotificationInfoFlags `xml:"flags"`
 }
 
-// CommonInfo10: Общая информация
-type CommonInfo10 struct {
+// CommonInfo16: Общая информация
+type CommonInfo16 struct {
 	XMLName xml.Name `xml:"commonInfo"`
 
 	// PurchaseObjectInfo: Наименование объекта закупки. Если заполнен блок «По решению заказчика (организации, осуществляющей определение поставщика для заказчика)» (modificationInfo/reasonInfo/responsibleDecisionInfo), то игнорируется при приеме, заполняется из предыдущей версии извещения. Иначе контролируется на обязательность заполнения
@@ -4313,8 +4313,8 @@ type ProtocolInfoProcedureInfo struct {
 	EndDt string `xml:"endDT"`
 }
 
-// ApplicationInfoCommonInfo2: Общая информация
-type ApplicationInfoCommonInfo2 struct {
+// CommonInfo17: Общая информация
+type CommonInfo17 struct {
 	XMLName xml.Name `xml:"commonInfo"`
 
 	// AppNumber: Номер заявки
@@ -4327,12 +4327,12 @@ type ApplicationInfoCommonInfo2 struct {
 	AppRating int16 `xml:"appRating"`
 }
 
-// ApplicationsInfoApplicationInfo6: Заявка
-type ApplicationsInfoApplicationInfo6 struct {
+// ApplicationInfo9: Заявка
+type ApplicationInfo9 struct {
 	XMLName xml.Name `xml:"applicationInfo"`
 
-	// ApplicationInfoCommonInfo: Общая информация
-	CommonInfo ApplicationInfoCommonInfo `xml:"commonInfo"`
+	// CommonInfo17: Общая информация
+	CommonInfo CommonInfo17 `xml:"commonInfo"`
 
 	// PriceOffer: Предложение по цене контракта
 	PriceOffer *BidType `xml:"priceOffer,omitempty"`
@@ -4342,8 +4342,8 @@ type ApplicationsInfoApplicationInfo6 struct {
 type ProtocolInfoApplicationsInfo15 struct {
 	XMLName xml.Name `xml:"applicationsInfo"`
 
-	// ApplicationsInfoApplicationInfo: Заявка
-	ApplicationInfo []ApplicationsInfoApplicationInfo `xml:",any"`
+	// ApplicationInfo9: Заявка
+	ApplicationInfo []ApplicationInfo9 `xml:",any"`
 }
 
 // ProtocolInfo24: Информация о торгах ЭА20 (аукцион в электронной форме с даты начала действия оптимизационного законопроекта 44-ФЗ)
@@ -4420,8 +4420,8 @@ type ApplicationInfoAdmittedInfo6 struct {
 	AppNotAdmittedInfo *ApplicationInfoAdmittedInfoAppNotAdmittedInfo `xml:"appNotAdmittedInfo,omitempty"`
 }
 
-// ApplicationsInfoApplicationInfo7: Заявка
-type ApplicationsInfoApplicationInfo7 struct {
+// ApplicationInfo10: Заявка
+type ApplicationInfo10 struct {
 	XMLName xml.Name `xml:"applicationInfo"`
 
 	// CommonInfo: Общая информация
@@ -4433,19 +4433,19 @@ type ApplicationsInfoApplicationInfo7 struct {
 	// LastPriceOffer: Последнее предложение по цене контракта
 	LastPriceOffer *BidType `xml:"lastPriceOffer,omitempty"`
 
-	// ApplicationsInfoApplicationInfoCorrespondenciesInfo: Соответствие участника преимуществам
-	CorrespondenciesInfo *ApplicationsInfoApplicationInfoCorrespondenciesInfo `xml:"correspondenciesInfo,omitempty"`
+	// ApplicationInfo10CorrespondenciesInfo: Соответствие участника преимуществам
+	CorrespondenciesInfo *ApplicationInfo10CorrespondenciesInfo `xml:"correspondenciesInfo,omitempty"`
 
-	// ApplicationsInfoApplicationInfoAdmittedInfo: Информация о допуске заявки
-	AdmittedInfo ApplicationsInfoApplicationInfoAdmittedInfo `xml:"admittedInfo"`
+	// ApplicationInfo10AdmittedInfo: Информация о допуске заявки
+	AdmittedInfo ApplicationInfo10AdmittedInfo `xml:"admittedInfo"`
 }
 
 // ProtocolInfoApplicationsInfo16: Заявки
 type ProtocolInfoApplicationsInfo16 struct {
 	XMLName xml.Name `xml:"applicationsInfo,omitempty"`
 
-	// ProtocolInfoApplicationsInfoApplicationInfo: Заявка
-	ApplicationInfo []ProtocolInfoApplicationsInfoApplicationInfo `xml:",any"`
+	// ApplicationInfo11: Заявка
+	ApplicationInfo []ApplicationInfo11 `xml:",any"`
 }
 
 // ProtocolInfo25: Информация о проведении ЭА20 (аукцион в электронной форме с даты начала действия оптимизационного законопроекта 44-ФЗ)
@@ -4455,8 +4455,8 @@ type ProtocolInfo25 struct {
 	// CommissionInfo: Информация о комиссии. Блок не заполняется в случае, предусмотренном ч.7 ст.52 (0 поданных заявок). В остальных случаях обязателен для заполнения. В случае незаполнения блока также не должен быть заполнен блок "Заявки" (applicationsInfo)
 	CommissionInfo *cmn.CommissionType `xml:"commissionInfo,omitempty"`
 
-	// ProtocolInfoApplicationsInfo: Заявки
-	ApplicationsInfo *ProtocolInfoApplicationsInfo `xml:"applicationsInfo,omitempty"`
+	// ProtocolInfo25ApplicationsInfo: Заявки
+	ApplicationsInfo *ProtocolInfo25ApplicationsInfo `xml:"applicationsInfo,omitempty"`
 
 	// AbandonedReason: Признание аукциона электронной форме несостоявшимся. При приеме содержимое контролируется на присутствие в справочнике "Справочник оснований признания процедуры несостоявшейся" (nsiAbandonedReason). Запись должна иметь значение "epProtocolEF2020FinaPartl" в поле objectName. При этом запись не должна быть помечена как устаревшая (в поле IS_OUTDATED не должно быть указано 1) для закупок, первая версия извещений которых размещена после начала действия оптимизационного законопроекта 44-ФЗ
 	AbandonedReason *base.AbandonedReasonRef `xml:"abandonedReason,omitempty"`
@@ -4536,8 +4536,8 @@ type AppParticipantsInfo struct {
 	ExtPrintFormInfo cmn.ExtPrintFormType `xml:"extPrintFormInfo"`
 }
 
-// ApplicationsInfoApplicationInfoCorrespondenciesInfo: Соответствие участника преимуществам
-type ApplicationsInfoApplicationInfoCorrespondenciesInfo struct {
+// ApplicationInfo10CorrespondenciesInfo: Соответствие участника преимуществам
+type ApplicationInfo10CorrespondenciesInfo struct {
 	XMLName xml.Name `xml:"correspondenciesInfo,omitempty"`
 
 	// CorrespondenceInfo: Соответствие участника отдельному преимуществу/требованию к участникам
@@ -4577,8 +4577,8 @@ type ApplicationInfoAdmittedInfoAppNotAdmittedInfo struct {
 	AppRejectedReasonsInfo AdmittedInfoAppNotAdmittedInfoAppRejectedReasonsInfo `xml:",any"`
 }
 
-// ApplicationsInfoApplicationInfoAdmittedInfo: Информация о допуске заявки
-type ApplicationsInfoApplicationInfoAdmittedInfo struct {
+// ApplicationInfo10AdmittedInfo: Информация о допуске заявки
+type ApplicationInfo10AdmittedInfo struct {
 	XMLName xml.Name `xml:"admittedInfo"`
 
 	// ApplicationInfoAdmittedInfoAppAdmittedInfo: Информация о допущенной заявке
@@ -4588,8 +4588,8 @@ type ApplicationsInfoApplicationInfoAdmittedInfo struct {
 	AppNotAdmittedInfo *ApplicationInfoAdmittedInfoAppNotAdmittedInfo `xml:"appNotAdmittedInfo,omitempty"`
 }
 
-// ProtocolInfoApplicationsInfoApplicationInfo: Заявка
-type ProtocolInfoApplicationsInfoApplicationInfo struct {
+// ApplicationInfo11: Заявка
+type ApplicationInfo11 struct {
 	XMLName xml.Name `xml:"applicationInfo"`
 
 	// CommonInfo: Общая информация
@@ -4601,19 +4601,19 @@ type ProtocolInfoApplicationsInfoApplicationInfo struct {
 	// LastPriceOffer: Последнее предложение по цене контракта
 	LastPriceOffer *BidType `xml:"lastPriceOffer,omitempty"`
 
-	// ApplicationsInfoApplicationInfoCorrespondenciesInfo: Соответствие участника преимуществам
-	CorrespondenciesInfo *ApplicationsInfoApplicationInfoCorrespondenciesInfo `xml:"correspondenciesInfo,omitempty"`
+	// ApplicationInfo10CorrespondenciesInfo: Соответствие участника преимуществам
+	CorrespondenciesInfo *ApplicationInfo10CorrespondenciesInfo `xml:"correspondenciesInfo,omitempty"`
 
-	// ApplicationsInfoApplicationInfoAdmittedInfo: Информация о допуске заявки
-	AdmittedInfo ApplicationsInfoApplicationInfoAdmittedInfo `xml:"admittedInfo"`
+	// ApplicationInfo10AdmittedInfo: Информация о допуске заявки
+	AdmittedInfo ApplicationInfo10AdmittedInfo `xml:"admittedInfo"`
 }
 
-// ProtocolInfoApplicationsInfo17: Заявки
-type ProtocolInfoApplicationsInfo17 struct {
+// ProtocolInfo25ApplicationsInfo: Заявки
+type ProtocolInfo25ApplicationsInfo struct {
 	XMLName xml.Name `xml:"applicationsInfo,omitempty"`
 
-	// ProtocolInfoApplicationsInfoApplicationInfo: Заявка
-	ApplicationInfo []ProtocolInfoApplicationsInfoApplicationInfo `xml:",any"`
+	// ApplicationInfo11: Заявка
+	ApplicationInfo []ApplicationInfo11 `xml:",any"`
 }
 
 // ProtocolInfo26: Информация о проведении ЭА20 (аукцион в электронной форме с даты начала действия оптимизационного законопроекта 44-ФЗ)
@@ -4623,8 +4623,8 @@ type ProtocolInfo26 struct {
 	// CommissionInfo: Информация о комиссии. Блок не заполняется в случае, предусмотренном ч.7 ст.52 (0 поданных заявок). В остальных случаях обязателен для заполнения. В случае незаполнения блока также не должен быть заполнен блок "Заявки" (applicationsInfo)
 	CommissionInfo *cmn.CommissionType `xml:"commissionInfo,omitempty"`
 
-	// ProtocolInfoApplicationsInfo: Заявки
-	ApplicationsInfo *ProtocolInfoApplicationsInfo `xml:"applicationsInfo,omitempty"`
+	// ProtocolInfo25ApplicationsInfo: Заявки
+	ApplicationsInfo *ProtocolInfo25ApplicationsInfo `xml:"applicationsInfo,omitempty"`
 
 	// AbandonedReason: Признание аукциона электронной форме несостоявшимся. При приеме содержимое контролируется на присутствие в справочнике "Справочник оснований признания процедуры несостоявшейся" (nsiAbandonedReason). Запись должна иметь значение "epProtocolEF2020FinaPartl" в поле objectName. При этом запись не должна быть помечена как устаревшая (в поле IS_OUTDATED не должно быть указано 1) для закупок, первая версия извещений которых размещена после начала действия оптимизационного законопроекта 44-ФЗ
 	AbandonedReason *base.AbandonedReasonRef `xml:"abandonedReason,omitempty"`
@@ -4700,8 +4700,8 @@ type NotificationInfoContractConditionsInfo2 struct {
 	ContractLifeCycleInfo *ContractConditionsInfoContractLifeCycleInfo `xml:"contractLifeCycleInfo,omitempty"`
 }
 
-// NotificationInfoCustomerRequirementsInfo14: Требования заказчиков
-type NotificationInfoCustomerRequirementsInfo14 struct {
+// NotificationInfoCustomerRequirementsInfo11: Требования заказчиков
+type NotificationInfoCustomerRequirementsInfo11 struct {
 	XMLName xml.Name `xml:"customerRequirementsInfo"`
 
 	// CustomerRequirementInfo: Требование заказчика
@@ -4734,8 +4734,8 @@ type PurchaseObjectsInfoNotDrugPurchaseObjectsInfo10 struct {
 	cmn.PurchaseObjects2020Type
 }
 
-// NotificationInfoPurchaseObjectsInfo14: Объекты закупки
-type NotificationInfoPurchaseObjectsInfo14 struct {
+// NotificationInfoPurchaseObjectsInfo11: Объекты закупки
+type NotificationInfoPurchaseObjectsInfo11 struct {
 	XMLName xml.Name `xml:"purchaseObjectsInfo"`
 
 	// PurchaseObjectsInfoDrugPurchaseObjectsInfo: Сведения об объектах закупки в том случае, когда объектами закупки являются лекарственные препараты. Контролируется обязательность заполнения, если извещение сформировано на основании позиции плана-графика с 01.01.2020 и в такой позиции указан код ОКПД2 21.20 Если заполнен блок «По решению заказчика (организации, осуществляющей определение поставщика для заказчика)» (modificationInfo/reasonInfo/responsibleDecisionInfo), игнорируется при приеме и заполняется из предыдущей версии извещения за исключением: o поля «Всего» (total); o поля «Общая сумма позиций в валюте контракта» (totalSumCurrency); o поля «Цена за единицу в основном варианте поставки» (pricePerUnit); o поля «Стоимость позиции в основном варианте поставки» (positionPrice); o поля «Всего» (drugQuantityCustomersInfo/total); o поля «Количество» (quantity); o поля «Уникальный идентификатор в ЕИС» (sid) o поля «Внешний идентификатор объекта закупки» (externalSid)
@@ -4759,24 +4759,24 @@ type NotificationInfoCriteriaInfo struct {
 	CriterionInfo []CriterionOktype `xml:"criterionInfo"`
 }
 
-// NotificationInfoPreferensesInfo14: Преимущества
-type NotificationInfoPreferensesInfo14 struct {
+// NotificationInfoPreferensesInfo11: Преимущества
+type NotificationInfoPreferensesInfo11 struct {
 	XMLName xml.Name `xml:"preferensesInfo,omitempty"`
 
 	// PreferenseInfo: Преимущество. При приеме контролируется наличие записи с кодом, указанным в поле shortName, в справочнике "Требования (преимущества, ограничения)" (nsiPurchasePreferences). При этом запись не должна быть помечена как устаревшая (в поле IS_OUTDATED не должно быть указано 1) для извещений, первая версия которых размещена после начала действия оптимизационного законопроекта 44-ФЗ. Если в качестве преимущества указано значение "Участникам, заявки или окончательные предложения которых содержат предложения о поставке товаров в соответствии с приказом Минфина России № 126н от 04.06.2018", то контролируется, что величина преимущества, заданная в поле "Величина преимущства" (prefValue), содержится в справочнике вариантов размера преференциальной ставки (nsiPrefRate)
 	PreferenseInfo []cmn.PreferenseType `xml:",any"`
 }
 
-// NotificationInfoRequirementsInfo14: Требования. Если первая версия извещения размещается (принимается от внешней системы) после выхода версии 12.2 ЕИС, то блок обязателен для заполнения. Кроме того, в нем обязательно должно быть указано требование с кодом "ET44 - Единые требования к участникам закупок в соответствии с ч. 1 ст. 31 Закона № 44-ФЗ"
-type NotificationInfoRequirementsInfo14 struct {
+// NotificationInfoRequirementsInfo11: Требования. Если первая версия извещения размещается (принимается от внешней системы) после выхода версии 12.2 ЕИС, то блок обязателен для заполнения. Кроме того, в нем обязательно должно быть указано требование с кодом "ET44 - Единые требования к участникам закупок в соответствии с ч. 1 ст. 31 Закона № 44-ФЗ"
+type NotificationInfoRequirementsInfo11 struct {
 	XMLName xml.Name `xml:"requirementsInfo,omitempty"`
 
 	// RequirementInfo: Требование. При приеме контролируется наличие записи с кодом, указанным в поле shortName, в справочнике "Требования (преимущества, ограничения)" (nsiPurchasePreferences). При этом запись не должна быть помечена как устаревшая (в поле IS_OUTDATED не должно быть указано 1) для извещений, первая версия которых размещена после начала действия оптимизационного законопроекта 44-ФЗ. Если первая версия извещения размещается (принимается от внешней системы) после выхода версии 12.2 ЕИС, то для следующих требований игнорируется дочернее поле "Содержание требования (ограничения)" (content): - ET44 - Единые требования к участникам закупок в соответствии с ч. 1 ст. 31 Закона № 44-ФЗ; - TU44 - Требования к участникам закупок в соответствии с частью 2 статьи 31 Федерального закона № 44-ФЗ - TR442 - Требования к участникам закупок в соответствии с частью 1.1 статьи 31 Федерального закона № 44-ФЗ; - ETP44312 - Требования к участникам закупок в соответствии с частью 2.1 статьи 31 Федерального закона № 44-ФЗ; - TOVNPIVR - Требование об отсутствии в реестре недобросовестных поставщиков (подрядчиков, исполнителей) информации, включенной в такой реестр в связи отказом поставщика (подрядчика, исполнителя) от исполнения контракта по причине введения в отношении заказчика санкций и (или) мер ограничительного характера
 	RequirementInfo []cmn.Requirement2020WithAddReqsType `xml:",any"`
 }
 
-// NotificationInfoRestrictionsInfo14: Ограничения. Игнорируется при приеме, не заполняется при передаче для извещений, первая версия которых размещена с даты в настройке «Изменение нац.режима»
-type NotificationInfoRestrictionsInfo14 struct {
+// NotificationInfoRestrictionsInfo11: Ограничения. Игнорируется при приеме, не заполняется при передаче для извещений, первая версия которых размещена с даты в настройке «Изменение нац.режима»
+type NotificationInfoRestrictionsInfo11 struct {
 	XMLName xml.Name `xml:"restrictionsInfo,omitempty"`
 
 	// RestrictionInfo: Ограничение. При приеме контролируется наличие записи с кодом, указанным в поле shortName, в справочнике "Требования (преимущества, ограничения)" (nsiPurchasePreferences). При этом запись не должна быть помечена как устаревшая (в поле IS_OUTDATED не должно быть указано 1) для извещений, первая версия которых размещена после начала действия оптимизационного законопроекта 44-ФЗ
@@ -4826,8 +4826,8 @@ type NotificationInfo14 struct {
 	Flags NotificationInfoFlags `xml:"flags"`
 }
 
-// CommonInfo11: Общая информация
-type CommonInfo11 struct {
+// CommonInfo18: Общая информация
+type CommonInfo18 struct {
 	XMLName xml.Name `xml:"commonInfo"`
 
 	// PurchaseObjectInfo: Наименование объекта закупки. Если заполнен блок «По решению заказчика (организации, осуществляющей определение поставщика для заказчика)» (modificationInfo/reasonInfo/responsibleDecisionInfo), то игнорируется при приеме, заполняется из предыдущей версии извещения. Иначе контролируется на обязательность заполнения
@@ -4956,8 +4956,8 @@ type ApplicationInfoAdmittedInfo7 struct {
 	AppNotAdmittedInfo *AdmittedInfoAppNotAdmittedInfo `xml:"appNotAdmittedInfo,omitempty"`
 }
 
-// ApplicationsInfoApplicationInfo8: Заявка
-type ApplicationsInfoApplicationInfo8 struct {
+// ApplicationInfo12: Заявка
+type ApplicationInfo12 struct {
 	XMLName xml.Name `xml:"applicationInfo"`
 
 	// CommonInfo: Общая информация
@@ -4967,12 +4967,12 @@ type ApplicationsInfoApplicationInfo8 struct {
 	AdmittedInfo ApplicationInfoAdmittedInfo `xml:"admittedInfo"`
 }
 
-// ProtocolInfoApplicationsInfo18: Заявки
-type ProtocolInfoApplicationsInfo18 struct {
+// ProtocolInfoApplicationsInfo17: Заявки
+type ProtocolInfoApplicationsInfo17 struct {
 	XMLName xml.Name `xml:"applicationsInfo,omitempty"`
 
-	// ApplicationsInfoApplicationInfo: Заявка
-	ApplicationInfo []ApplicationsInfoApplicationInfo `xml:",any"`
+	// ApplicationInfo12: Заявка
+	ApplicationInfo []ApplicationInfo12 `xml:",any"`
 }
 
 // ProtocolInfo27: Информация о проведении ЭОК20 (открытый конкурс в электронной форме с даты начала действия оптимизационного законопроекта 44-ФЗ). В рамках блока должен быть заполнен блок applicationsInfo и/или abandonedReason
@@ -5063,26 +5063,26 @@ type ApplicationInfoAdmittedInfo8 struct {
 	AppNotAdmittedInfo *ApplicationInfoAdmittedInfoAppNotAdmittedInfo `xml:"appNotAdmittedInfo,omitempty"`
 }
 
-// ApplicationsInfoApplicationInfo9: Заявка
-type ApplicationsInfoApplicationInfo9 struct {
+// ApplicationInfo13: Заявка
+type ApplicationInfo13 struct {
 	XMLName xml.Name `xml:"applicationInfo"`
 
 	// CommonInfo: Общая информация
 	CommonInfo AppCommonInfoProtocolMemberType `xml:"commonInfo"`
 
-	// ApplicationsInfoApplicationInfoCorrespondenciesInfo: Соответствие участника преимуществам / требованиям / ограничениям
-	CorrespondenciesInfo *ApplicationsInfoApplicationInfoCorrespondenciesInfo `xml:"correspondenciesInfo,omitempty"`
+	// ApplicationInfo13CorrespondenciesInfo: Соответствие участника преимуществам / требованиям / ограничениям
+	CorrespondenciesInfo *ApplicationInfo13CorrespondenciesInfo `xml:"correspondenciesInfo,omitempty"`
 
-	// ApplicationsInfoApplicationInfoAdmittedInfo: Информация о допуске заявки
-	AdmittedInfo ApplicationsInfoApplicationInfoAdmittedInfo `xml:"admittedInfo"`
+	// ApplicationInfo13AdmittedInfo: Информация о допуске заявки
+	AdmittedInfo ApplicationInfo13AdmittedInfo `xml:"admittedInfo"`
 }
 
-// ProtocolInfoApplicationsInfo19: Заявки
-type ProtocolInfoApplicationsInfo19 struct {
+// ProtocolInfoApplicationsInfo18: Заявки
+type ProtocolInfoApplicationsInfo18 struct {
 	XMLName xml.Name `xml:"applicationsInfo,omitempty"`
 
-	// ProtocolInfoApplicationsInfoApplicationInfo: Заявка
-	ApplicationInfo []ProtocolInfoApplicationsInfoApplicationInfo `xml:",any"`
+	// ApplicationInfo14: Заявка
+	ApplicationInfo []ApplicationInfo14 `xml:",any"`
 }
 
 // ProtocolInfo28: Информация о проведении ЭОК20 (открытый конкурс в электронной форме с даты начала действия оптимизационного законопроекта 44-ФЗ). В рамках блока должен быть заполнен блок applicationsInfo и/или abandonedReason
@@ -5092,8 +5092,8 @@ type ProtocolInfo28 struct {
 	// CommissionInfo: Информация о комиссии
 	CommissionInfo cmn.CommissionType `xml:"commissionInfo"`
 
-	// ProtocolInfoApplicationsInfo: Заявки
-	ApplicationsInfo *ProtocolInfoApplicationsInfo `xml:"applicationsInfo,omitempty"`
+	// ProtocolInfo28ApplicationsInfo: Заявки
+	ApplicationsInfo *ProtocolInfo28ApplicationsInfo `xml:"applicationsInfo,omitempty"`
 
 	// AbandonedReason: Признание открытого конкурса в электронной форме несостоявшимся. При приеме содержимое контролируется на присутствие в справочнике "Справочник оснований признания процедуры несостоявшейся" (nsiAbandonedReason). Запись должна иметь значение "epProtocolEOK2020SecondSectionsPart" в поле objectName. При этом запись не должна быть помечена как устаревшая (в поле IS_OUTDATED не должно быть указано 1) для закупок, первая версия извещений которых размещена после начала действия оптимизационного законопроекта 44-ФЗ
 	AbandonedReason *base.AbandonedReasonRef `xml:"abandonedReason,omitempty"`
@@ -5145,8 +5145,8 @@ type AppParticipantsInfo1 struct {
 	ExtPrintFormInfo cmn.ExtPrintFormType `xml:"extPrintFormInfo"`
 }
 
-// ApplicationsInfoApplicationInfoCorrespondenciesInfo1: Соответствие участника преимуществам / требованиям / ограничениям
-type ApplicationsInfoApplicationInfoCorrespondenciesInfo1 struct {
+// ApplicationInfo13CorrespondenciesInfo: Соответствие участника преимуществам / требованиям / ограничениям
+type ApplicationInfo13CorrespondenciesInfo struct {
 	XMLName xml.Name `xml:"correspondenciesInfo,omitempty"`
 
 	// CorrespondenceInfo: Соответствие участника отдельному преимуществу/требованию/ограничению к участникам
@@ -5191,8 +5191,8 @@ type ApplicationInfoAdmittedInfoAppNotAdmittedInfo1 struct {
 	AppRejectedReasonsInfo AdmittedInfoAppNotAdmittedInfoAppRejectedReasonsInfo `xml:",any"`
 }
 
-// ApplicationsInfoApplicationInfoAdmittedInfo1: Информация о допуске заявки
-type ApplicationsInfoApplicationInfoAdmittedInfo1 struct {
+// ApplicationInfo13AdmittedInfo: Информация о допуске заявки
+type ApplicationInfo13AdmittedInfo struct {
 	XMLName xml.Name `xml:"admittedInfo"`
 
 	// ApplicationInfoAdmittedInfoSingleAppAdmittedInfo: Информация о допущенной заявке (В случае если допущена одна заявка)
@@ -5205,26 +5205,26 @@ type ApplicationsInfoApplicationInfoAdmittedInfo1 struct {
 	AppNotAdmittedInfo *ApplicationInfoAdmittedInfoAppNotAdmittedInfo `xml:"appNotAdmittedInfo,omitempty"`
 }
 
-// ProtocolInfoApplicationsInfoApplicationInfo1: Заявка
-type ProtocolInfoApplicationsInfoApplicationInfo1 struct {
+// ApplicationInfo14: Заявка
+type ApplicationInfo14 struct {
 	XMLName xml.Name `xml:"applicationInfo"`
 
 	// CommonInfo: Общая информация
 	CommonInfo AppCommonInfoProtocolMemberType `xml:"commonInfo"`
 
-	// ApplicationsInfoApplicationInfoCorrespondenciesInfo: Соответствие участника преимуществам / требованиям / ограничениям
-	CorrespondenciesInfo *ApplicationsInfoApplicationInfoCorrespondenciesInfo `xml:"correspondenciesInfo,omitempty"`
+	// ApplicationInfo13CorrespondenciesInfo: Соответствие участника преимуществам / требованиям / ограничениям
+	CorrespondenciesInfo *ApplicationInfo13CorrespondenciesInfo `xml:"correspondenciesInfo,omitempty"`
 
-	// ApplicationsInfoApplicationInfoAdmittedInfo: Информация о допуске заявки
-	AdmittedInfo ApplicationsInfoApplicationInfoAdmittedInfo `xml:"admittedInfo"`
+	// ApplicationInfo13AdmittedInfo: Информация о допуске заявки
+	AdmittedInfo ApplicationInfo13AdmittedInfo `xml:"admittedInfo"`
 }
 
-// ProtocolInfoApplicationsInfo20: Заявки
-type ProtocolInfoApplicationsInfo20 struct {
+// ProtocolInfo28ApplicationsInfo: Заявки
+type ProtocolInfo28ApplicationsInfo struct {
 	XMLName xml.Name `xml:"applicationsInfo,omitempty"`
 
-	// ProtocolInfoApplicationsInfoApplicationInfo: Заявка
-	ApplicationInfo []ProtocolInfoApplicationsInfoApplicationInfo `xml:",any"`
+	// ApplicationInfo14: Заявка
+	ApplicationInfo []ApplicationInfo14 `xml:",any"`
 }
 
 // ProtocolInfo29: Информация о проведении ЭОК20 (открытый конкурс в электронной форме с даты начала действия оптимизационного законопроекта 44-ФЗ). В рамках блока должен быть заполнен блок applicationsInfo и/или abandonedReason
@@ -5234,8 +5234,8 @@ type ProtocolInfo29 struct {
 	// CommissionInfo: Информация о комиссии
 	CommissionInfo cmn.CommissionType `xml:"commissionInfo"`
 
-	// ProtocolInfoApplicationsInfo: Заявки
-	ApplicationsInfo *ProtocolInfoApplicationsInfo `xml:"applicationsInfo,omitempty"`
+	// ProtocolInfo28ApplicationsInfo: Заявки
+	ApplicationsInfo *ProtocolInfo28ApplicationsInfo `xml:"applicationsInfo,omitempty"`
 
 	// AbandonedReason: Признание открытого конкурса в электронной форме несостоявшимся. При приеме содержимое контролируется на присутствие в справочнике "Справочник оснований признания процедуры несостоявшейся" (nsiAbandonedReason). Запись должна иметь значение "epProtocolEOK2020SecondSectionsPart" в поле objectName. При этом запись не должна быть помечена как устаревшая (в поле IS_OUTDATED не должно быть указано 1) для закупок, первая версия извещений которых размещена после начала действия оптимизационного законопроекта 44-ФЗ
 	AbandonedReason *base.AbandonedReasonRef `xml:"abandonedReason,omitempty"`
@@ -5358,26 +5358,26 @@ type ApplicationInfoAdmittedInfo9 struct {
 	AppNotAdmittedInfo *ApplicationInfoAdmittedInfoAppNotAdmittedInfo `xml:"appNotAdmittedInfo,omitempty"`
 }
 
-// ApplicationsInfoApplicationInfo10: Заявка
-type ApplicationsInfoApplicationInfo10 struct {
+// ApplicationInfo15: Заявка
+type ApplicationInfo15 struct {
 	XMLName xml.Name `xml:"applicationInfo"`
 
 	// CommonInfo: Общая информация
 	CommonInfo AppCommonInfoProtocolMemberType `xml:"commonInfo"`
 
-	// ApplicationsInfoApplicationInfoCorrespondenciesInfo: Соответствие участника преимуществам
-	CorrespondenciesInfo *ApplicationsInfoApplicationInfoCorrespondenciesInfo `xml:"correspondenciesInfo,omitempty"`
+	// ApplicationInfo15CorrespondenciesInfo: Соответствие участника преимуществам
+	CorrespondenciesInfo *ApplicationInfo15CorrespondenciesInfo `xml:"correspondenciesInfo,omitempty"`
 
-	// ApplicationsInfoApplicationInfoAdmittedInfo: Информация о допуске заявки
-	AdmittedInfo ApplicationsInfoApplicationInfoAdmittedInfo `xml:"admittedInfo"`
+	// ApplicationInfo15AdmittedInfo: Информация о допуске заявки
+	AdmittedInfo ApplicationInfo15AdmittedInfo `xml:"admittedInfo"`
 }
 
-// ProtocolInfoApplicationsInfo21: Заявки
-type ProtocolInfoApplicationsInfo21 struct {
+// ProtocolInfoApplicationsInfo19: Заявки
+type ProtocolInfoApplicationsInfo19 struct {
 	XMLName xml.Name `xml:"applicationsInfo,omitempty"`
 
-	// ProtocolInfoApplicationsInfoApplicationInfo: Заявка
-	ApplicationInfo []ProtocolInfoApplicationsInfoApplicationInfo `xml:",any"`
+	// ApplicationInfo16: Заявка
+	ApplicationInfo []ApplicationInfo16 `xml:",any"`
 }
 
 // ProtocolInfo30: Информация о проведении ЭОК20 (открытый конкурс в электронной форме с даты начала действия оптимизационного законопроекта 44-ФЗ). В рамках блока должен быть заполнен блок applicationsInfo и/или abandonedReason
@@ -5387,8 +5387,8 @@ type ProtocolInfo30 struct {
 	// CommissionInfo: Информация о комиссии. Блок не заполняется в случае, предусмотренном ч.7 ст.52 (0 поданных заявок). В остальных случаях обязателен для заполнения. В случае незаполнения блока также не должен быть заполнен блок "Заявки" (applicationsInfo)
 	CommissionInfo *cmn.CommissionType `xml:"commissionInfo,omitempty"`
 
-	// ProtocolInfoApplicationsInfo: Заявки
-	ApplicationsInfo *ProtocolInfoApplicationsInfo `xml:"applicationsInfo,omitempty"`
+	// ProtocolInfo30ApplicationsInfo: Заявки
+	ApplicationsInfo *ProtocolInfo30ApplicationsInfo `xml:"applicationsInfo,omitempty"`
 
 	// AbandonedReason: Признание открытого конкурса в электронной форме несостоявшимся. При приеме содержимое контролируется на присутствие в справочнике "Справочник оснований признания процедуры несостоявшейся" (nsiAbandonedReason). Запись должна иметь значение "epProtocolEOK2020FinalPart" в поле objectName. При этом запись не должна быть помечена как устаревшая (в поле IS_OUTDATED не должно быть указано 1) для закупок, первая версия извещений которых размещена после начала действия оптимизационного законопроекта 44-ФЗ
 	AbandonedReason *base.AbandonedReasonRef `xml:"abandonedReason,omitempty"`
@@ -5468,8 +5468,8 @@ type AppParticipantsInfo2 struct {
 	ExtPrintFormInfo cmn.ExtPrintFormType `xml:"extPrintFormInfo"`
 }
 
-// ApplicationsInfoApplicationInfoCorrespondenciesInfo2: Соответствие участника преимуществам
-type ApplicationsInfoApplicationInfoCorrespondenciesInfo2 struct {
+// ApplicationInfo15CorrespondenciesInfo: Соответствие участника преимуществам
+type ApplicationInfo15CorrespondenciesInfo struct {
 	XMLName xml.Name `xml:"correspondenciesInfo,omitempty"`
 
 	// CorrespondenceInfo: Соответствие участника отдельному преимуществу/требованию к участникам
@@ -5557,8 +5557,8 @@ type ApplicationInfoAdmittedInfoAppNotAdmittedInfo2 struct {
 	AppRejectedReasonsInfo AdmittedInfoAppNotAdmittedInfoAppRejectedReasonsInfo `xml:",any"`
 }
 
-// ApplicationsInfoApplicationInfoAdmittedInfo2: Информация о допуске заявки
-type ApplicationsInfoApplicationInfoAdmittedInfo2 struct {
+// ApplicationInfo15AdmittedInfo: Информация о допуске заявки
+type ApplicationInfo15AdmittedInfo struct {
 	XMLName xml.Name `xml:"admittedInfo"`
 
 	// ApplicationInfoAdmittedInfoSingleAppAdmittedInfo: Информация о допущенной заявке (В случае если допущена одна заявка)
@@ -5571,26 +5571,26 @@ type ApplicationsInfoApplicationInfoAdmittedInfo2 struct {
 	AppNotAdmittedInfo *ApplicationInfoAdmittedInfoAppNotAdmittedInfo `xml:"appNotAdmittedInfo,omitempty"`
 }
 
-// ProtocolInfoApplicationsInfoApplicationInfo2: Заявка
-type ProtocolInfoApplicationsInfoApplicationInfo2 struct {
+// ApplicationInfo16: Заявка
+type ApplicationInfo16 struct {
 	XMLName xml.Name `xml:"applicationInfo"`
 
 	// CommonInfo: Общая информация
 	CommonInfo AppCommonInfoProtocolMemberType `xml:"commonInfo"`
 
-	// ApplicationsInfoApplicationInfoCorrespondenciesInfo: Соответствие участника преимуществам
-	CorrespondenciesInfo *ApplicationsInfoApplicationInfoCorrespondenciesInfo `xml:"correspondenciesInfo,omitempty"`
+	// ApplicationInfo15CorrespondenciesInfo: Соответствие участника преимуществам
+	CorrespondenciesInfo *ApplicationInfo15CorrespondenciesInfo `xml:"correspondenciesInfo,omitempty"`
 
-	// ApplicationsInfoApplicationInfoAdmittedInfo: Информация о допуске заявки
-	AdmittedInfo ApplicationsInfoApplicationInfoAdmittedInfo `xml:"admittedInfo"`
+	// ApplicationInfo15AdmittedInfo: Информация о допуске заявки
+	AdmittedInfo ApplicationInfo15AdmittedInfo `xml:"admittedInfo"`
 }
 
-// ProtocolInfoApplicationsInfo22: Заявки
-type ProtocolInfoApplicationsInfo22 struct {
+// ProtocolInfo30ApplicationsInfo: Заявки
+type ProtocolInfo30ApplicationsInfo struct {
 	XMLName xml.Name `xml:"applicationsInfo,omitempty"`
 
-	// ProtocolInfoApplicationsInfoApplicationInfo: Заявка
-	ApplicationInfo []ProtocolInfoApplicationsInfoApplicationInfo `xml:",any"`
+	// ApplicationInfo16: Заявка
+	ApplicationInfo []ApplicationInfo16 `xml:",any"`
 }
 
 // ProtocolInfo31: Информация о проведении ЭОК20 (открытый конкурс в электронной форме с даты начала действия оптимизационного законопроекта 44-ФЗ). В рамках блока должен быть заполнен блок applicationsInfo и/или abandonedReason
@@ -5600,8 +5600,8 @@ type ProtocolInfo31 struct {
 	// CommissionInfo: Информация о комиссии. Блок не заполняется в случае, предусмотренном ч.7 ст.52 (0 поданных заявок). В остальных случаях обязателен для заполнения. В случае незаполнения блока также не должен быть заполнен блок "Заявки" (applicationsInfo)
 	CommissionInfo *cmn.CommissionType `xml:"commissionInfo,omitempty"`
 
-	// ProtocolInfoApplicationsInfo: Заявки
-	ApplicationsInfo *ProtocolInfoApplicationsInfo `xml:"applicationsInfo,omitempty"`
+	// ProtocolInfo30ApplicationsInfo: Заявки
+	ApplicationsInfo *ProtocolInfo30ApplicationsInfo `xml:"applicationsInfo,omitempty"`
 
 	// AbandonedReason: Признание открытого конкурса в электронной форме несостоявшимся. При приеме содержимое контролируется на присутствие в справочнике "Справочник оснований признания процедуры несостоявшейся" (nsiAbandonedReason). Запись должна иметь значение "epProtocolEOK2020FinalPart" в поле objectName. При этом запись не должна быть помечена как устаревшая (в поле IS_OUTDATED не должно быть указано 1) для закупок, первая версия извещений которых размещена после начала действия оптимизационного законопроекта 44-ФЗ
 	AbandonedReason *base.AbandonedReasonRef `xml:"abandonedReason,omitempty"`
@@ -5621,8 +5621,8 @@ type ProtocolPublisherInfo30 struct {
 	PublisherRole base.ResponsibleRoleEptype `xml:"publisherRole"`
 }
 
-// NotificationInfoCustomerRequirementsInfo15: Требования заказчиков
-type NotificationInfoCustomerRequirementsInfo15 struct {
+// NotificationInfoCustomerRequirementsInfo12: Требования заказчиков
+type NotificationInfoCustomerRequirementsInfo12 struct {
 	XMLName xml.Name `xml:"customerRequirementsInfo"`
 
 	// CustomerRequirementInfo: Требование заказчика
@@ -5658,8 +5658,8 @@ type PurchaseObjectsInfoNotDrugPurchaseObjectsInfo11 struct {
 	cmn.PurchaseObjects2020Type
 }
 
-// NotificationInfoPurchaseObjectsInfo15: Объекты закупки
-type NotificationInfoPurchaseObjectsInfo15 struct {
+// NotificationInfoPurchaseObjectsInfo12: Объекты закупки
+type NotificationInfoPurchaseObjectsInfo12 struct {
 	XMLName xml.Name `xml:"purchaseObjectsInfo"`
 
 	// PurchaseObjectsInfoDrugPurchaseObjectsInfo: Сведения об объектах закупки в том случае, когда объектами закупки являются лекарственные препараты. Контролируется обязательность заполнения, если извещение сформировано на основании позиции плана-графика с 01.01.2020 и в такой позиции указан код ОКПД2 21.20 Если заполнен блок «По решению заказчика (организации, осуществляющей определение поставщика для заказчика)» (modificationInfo/reasonInfo/responsibleDecisionInfo), игнорируется при приеме и заполняется из предыдущей версии извещения за исключением: o поля «Всего» (total); o поля «Общая сумма позиций в валюте контракта» (totalSumCurrency); o поля «Цена за единицу в основном варианте поставки» (pricePerUnit); o поля «Стоимость позиции в основном варианте поставки» (positionPrice); o поля «Всего» (drugQuantityCustomersInfo/total); o поля «Количество» (quantity); o поля «Уникальный идентификатор в ЕИС» (sid); o поля «Внешний идентификатор объекта закупки» (externalSid)
@@ -5672,24 +5672,24 @@ type NotificationInfoPurchaseObjectsInfo15 struct {
 	NotDrugPurchaseParentObjectsInfo *cmn.PurchaseParentObjects2020Type `xml:"notDrugPurchaseParentObjectsInfo,omitempty"`
 }
 
-// NotificationInfoPreferensesInfo15: Преимущества
-type NotificationInfoPreferensesInfo15 struct {
+// NotificationInfoPreferensesInfo12: Преимущества
+type NotificationInfoPreferensesInfo12 struct {
 	XMLName xml.Name `xml:"preferensesInfo,omitempty"`
 
 	// PreferenseInfo: Преимущество. При приеме контролируется наличие записи с кодом, указанным в поле shortName, в справочнике "Требования (преимущества, ограничения)" (nsiPurchasePreferences). При этом запись не должна быть помечена как устаревшая (в поле IS_OUTDATED не должно быть указано 1) для извещений, первая версия которых размещена после начала действия оптимизационного законопроекта 44-ФЗ. Если в качестве преимущества указано значение "Участникам, заявки или окончательные предложения которых содержат предложения о поставке товаров в соответствии с приказом Минфина России № 126н от 04.06.2018", то контролируется, что величина преимущества, заданная в поле "Величина преимущства" (prefValue), содержится в справочнике вариантов размера преференциальной ставки (nsiPrefRate)
 	PreferenseInfo []cmn.PreferenseType `xml:",any"`
 }
 
-// NotificationInfoRequirementsInfo15: Требования. Если первая версия извещения размещается (принимается от внешней системы) после выхода версии 12.2 ЕИС, то блок обязателен для заполнения. Кроме того, в нем обязательно должно быть указано требование с кодом "ET44 - Единые требования к участникам закупок в соответствии с ч. 1 ст. 31 Закона № 44-ФЗ"
-type NotificationInfoRequirementsInfo15 struct {
+// NotificationInfoRequirementsInfo12: Требования. Если первая версия извещения размещается (принимается от внешней системы) после выхода версии 12.2 ЕИС, то блок обязателен для заполнения. Кроме того, в нем обязательно должно быть указано требование с кодом "ET44 - Единые требования к участникам закупок в соответствии с ч. 1 ст. 31 Закона № 44-ФЗ"
+type NotificationInfoRequirementsInfo12 struct {
 	XMLName xml.Name `xml:"requirementsInfo,omitempty"`
 
 	// RequirementInfo: Требование. При приеме контролируется наличие записи с кодом, указанным в поле shortName, в справочнике "Требования (преимущества, ограничения)" (nsiPurchasePreferences). При этом запись не должна быть помечена как устаревшая (в поле IS_OUTDATED не должно быть указано 1) для извещений, первая версия которых размещена после начала действия оптимизационного законопроекта 44-ФЗ. Если первая версия извещения размещается (принимается от внешней системы) после выхода версии 12.2 ЕИС, то для следующих требований игнорируется дочернее поле "Содержание требования (ограничения)" (content): - ET44 - Единые требования к участникам закупок в соответствии с ч. 1 ст. 31 Закона № 44-ФЗ; - TU44 - Требования к участникам закупок в соответствии с частью 2 статьи 31 Федерального закона № 44-ФЗ - TR442 - Требования к участникам закупок в соответствии с частью 1.1 статьи 31 Федерального закона № 44-ФЗ; - ETP44312 - Требования к участникам закупок в соответствии с частью 2.1 статьи 31 Федерального закона № 44-ФЗ; - TOVNPIVR - Требование об отсутствии в реестре недобросовестных поставщиков (подрядчиков, исполнителей) информации, включенной в такой реестр в связи отказом поставщика (подрядчика, исполнителя) от исполнения контракта по причине введения в отношении заказчика санкций и (или) мер ограничительного характера
 	RequirementInfo []cmn.Requirement2020WithAddReqsType `xml:",any"`
 }
 
-// NotificationInfoRestrictionsInfo15: Ограничения. Игнорируется при приеме, не заполняется при передаче для извещений, первая версия которых размещена с даты в настройке «Изменение нац.режима»
-type NotificationInfoRestrictionsInfo15 struct {
+// NotificationInfoRestrictionsInfo12: Ограничения. Игнорируется при приеме, не заполняется при передаче для извещений, первая версия которых размещена с даты в настройке «Изменение нац.режима»
+type NotificationInfoRestrictionsInfo12 struct {
 	XMLName xml.Name `xml:"restrictionsInfo,omitempty"`
 
 	// RestrictionInfo: Ограничение. При приеме контролируется наличие записи с кодом, указанным в поле shortName, в справочнике "Требования (преимущества, ограничения)" (nsiPurchasePreferences). При этом запись не должна быть помечена как устаревшая (в поле IS_OUTDATED не должно быть указано 1) для извещений, первая версия которых размещена после начала действия оптимизационного законопроекта 44-ФЗ
@@ -5730,8 +5730,8 @@ type PrintFormFieldsInfo30 struct {
 	Is449Features *bool `xml:",any,omitempty"`
 }
 
-// CommonInfo12: Общая информация
-type CommonInfo12 struct {
+// CommonInfo19: Общая информация
+type CommonInfo19 struct {
 	XMLName xml.Name `xml:"commonInfo"`
 
 	// PurchaseObjectInfo: Наименование объекта закупки. Если заполнен блок «По решению заказчика (организации, осуществляющей определение поставщика для заказчика)» (modificationInfo/reasonInfo/responsibleDecisionInfo), то игнорируется при приеме, заполняется из предыдущей версии извещения. Иначе контролируется на обязательность заполнения
@@ -5866,8 +5866,8 @@ type ApplicationInfoAdmittedInfo10 struct {
 	AppNotAdmittedInfo *ApplicationInfoAdmittedInfoAppNotAdmittedInfo `xml:"appNotAdmittedInfo,omitempty"`
 }
 
-// ApplicationsInfoApplicationInfo11: Заявка
-type ApplicationsInfoApplicationInfo11 struct {
+// ApplicationInfo17: Заявка
+type ApplicationInfo17 struct {
 	XMLName xml.Name `xml:"applicationInfo"`
 
 	// CommonInfo: Общая информация
@@ -5876,19 +5876,19 @@ type ApplicationsInfoApplicationInfo11 struct {
 	// FinalPrice: Сумма предложения участника. Указание 11 знаков после запятой допускается только в случае, если в исходном извещении установлены признаки: “Лекарственные препараты” = TRUE и “Невозможно определить количество (объем) закупаемых товаров, работ, услуг” = TRUE
 	FinalPrice base.MoneyLongType `xml:"finalPrice"`
 
-	// ApplicationsInfoApplicationInfoCorrespondenciesInfo: Соответствие участника преимуществам
-	CorrespondenciesInfo *ApplicationsInfoApplicationInfoCorrespondenciesInfo `xml:"correspondenciesInfo,omitempty"`
+	// ApplicationInfo17CorrespondenciesInfo: Соответствие участника преимуществам
+	CorrespondenciesInfo *ApplicationInfo17CorrespondenciesInfo `xml:"correspondenciesInfo,omitempty"`
 
-	// ApplicationsInfoApplicationInfoAdmittedInfo: Информация о допуске заявки
-	AdmittedInfo ApplicationsInfoApplicationInfoAdmittedInfo `xml:"admittedInfo"`
+	// ApplicationInfo17AdmittedInfo: Информация о допуске заявки
+	AdmittedInfo ApplicationInfo17AdmittedInfo `xml:"admittedInfo"`
 }
 
-// ProtocolInfoApplicationsInfo23: Заявки
-type ProtocolInfoApplicationsInfo23 struct {
+// ProtocolInfoApplicationsInfo20: Заявки
+type ProtocolInfoApplicationsInfo20 struct {
 	XMLName xml.Name `xml:"applicationsInfo,omitempty"`
 
-	// ProtocolInfoApplicationsInfoApplicationInfo: Заявка
-	ApplicationInfo []ProtocolInfoApplicationsInfoApplicationInfo `xml:",any"`
+	// ApplicationInfo18: Заявка
+	ApplicationInfo []ApplicationInfo18 `xml:",any"`
 }
 
 // ProtocolInfo32: Информация о проведении ЭЗК (запрос котировок в электронной форме)
@@ -5898,8 +5898,8 @@ type ProtocolInfo32 struct {
 	// CommissionInfo: Информация о комиссии. Блок не заполняется в случае, предусмотренном ч.7 ст.52 (0 поданных заявок). В остальных случаях обязателен для заполнения. В случае незаполнения блока также не должен быть заполнен блок "Заявки" (applicationsInfo)
 	CommissionInfo *cmn.CommissionType `xml:"commissionInfo,omitempty"`
 
-	// ProtocolInfoApplicationsInfo: Заявки
-	ApplicationsInfo *ProtocolInfoApplicationsInfo `xml:"applicationsInfo,omitempty"`
+	// ProtocolInfo32ApplicationsInfo: Заявки
+	ApplicationsInfo *ProtocolInfo32ApplicationsInfo `xml:"applicationsInfo,omitempty"`
 
 	// AbandonedReason: Признание запроса котировок в электронной форме несостоявшимся. При приеме содержимое контролируется на присутствие в справочнике "Справочник оснований признания процедуры несостоявшейся" (nsiAbandonedReason). Запись должна иметь значение "epProtocolEZK2020Final" в поле objectName. При этом запись не должна быть помечена как устаревшая (в поле IS_OUTDATED не должно быть указано 1) для закупок, первая версия извещений которых размещена после начала действия оптимизационного законопроекта 44-ФЗ
 	AbandonedReason *base.AbandonedReasonRef `xml:"abandonedReason,omitempty"`
@@ -5979,8 +5979,8 @@ type AppParticipantsInfo3 struct {
 	ExtPrintFormInfo cmn.ExtPrintFormType `xml:"extPrintFormInfo"`
 }
 
-// ApplicationsInfoApplicationInfoCorrespondenciesInfo3: Соответствие участника преимуществам
-type ApplicationsInfoApplicationInfoCorrespondenciesInfo3 struct {
+// ApplicationInfo17CorrespondenciesInfo: Соответствие участника преимуществам
+type ApplicationInfo17CorrespondenciesInfo struct {
 	XMLName xml.Name `xml:"correspondenciesInfo,omitempty"`
 
 	// CorrespondenceInfo: Соответствие участника отдельному преимуществу/требованию к участникам
@@ -6026,8 +6026,8 @@ type ApplicationInfoAdmittedInfoAppNotAdmittedInfo3 struct {
 	AppRejectedReasonsInfo AdmittedInfoAppNotAdmittedInfoAppRejectedReasonsInfo `xml:",any"`
 }
 
-// ApplicationsInfoApplicationInfoAdmittedInfo3: Информация о допуске заявки
-type ApplicationsInfoApplicationInfoAdmittedInfo3 struct {
+// ApplicationInfo17AdmittedInfo: Информация о допуске заявки
+type ApplicationInfo17AdmittedInfo struct {
 	XMLName xml.Name `xml:"admittedInfo"`
 
 	// ApplicationInfoAdmittedInfoAppAdmittedInfo: Информация о допуске заявки
@@ -6037,8 +6037,8 @@ type ApplicationsInfoApplicationInfoAdmittedInfo3 struct {
 	AppNotAdmittedInfo *ApplicationInfoAdmittedInfoAppNotAdmittedInfo `xml:"appNotAdmittedInfo,omitempty"`
 }
 
-// ProtocolInfoApplicationsInfoApplicationInfo3: Заявка
-type ProtocolInfoApplicationsInfoApplicationInfo3 struct {
+// ApplicationInfo18: Заявка
+type ApplicationInfo18 struct {
 	XMLName xml.Name `xml:"applicationInfo"`
 
 	// CommonInfo: Общая информация
@@ -6047,19 +6047,19 @@ type ProtocolInfoApplicationsInfoApplicationInfo3 struct {
 	// FinalPrice: Сумма предложения участника. Указание 11 знаков после запятой допускается только в случае, если в исходном извещении установлены признаки: “Лекарственные препараты” = TRUE и “Невозможно определить количество (объем) закупаемых товаров, работ, услуг” = TRUE
 	FinalPrice base.MoneyLongType `xml:"finalPrice"`
 
-	// ApplicationsInfoApplicationInfoCorrespondenciesInfo: Соответствие участника преимуществам
-	CorrespondenciesInfo *ApplicationsInfoApplicationInfoCorrespondenciesInfo `xml:"correspondenciesInfo,omitempty"`
+	// ApplicationInfo17CorrespondenciesInfo: Соответствие участника преимуществам
+	CorrespondenciesInfo *ApplicationInfo17CorrespondenciesInfo `xml:"correspondenciesInfo,omitempty"`
 
-	// ApplicationsInfoApplicationInfoAdmittedInfo: Информация о допуске заявки
-	AdmittedInfo ApplicationsInfoApplicationInfoAdmittedInfo `xml:"admittedInfo"`
+	// ApplicationInfo17AdmittedInfo: Информация о допуске заявки
+	AdmittedInfo ApplicationInfo17AdmittedInfo `xml:"admittedInfo"`
 }
 
-// ProtocolInfoApplicationsInfo24: Заявки
-type ProtocolInfoApplicationsInfo24 struct {
+// ProtocolInfo32ApplicationsInfo: Заявки
+type ProtocolInfo32ApplicationsInfo struct {
 	XMLName xml.Name `xml:"applicationsInfo,omitempty"`
 
-	// ProtocolInfoApplicationsInfoApplicationInfo: Заявка
-	ApplicationInfo []ProtocolInfoApplicationsInfoApplicationInfo `xml:",any"`
+	// ApplicationInfo18: Заявка
+	ApplicationInfo []ApplicationInfo18 `xml:",any"`
 }
 
 // ProtocolInfo33: Информация о проведении ЭЗК (запрос котировок в электронной форме)
@@ -6069,8 +6069,8 @@ type ProtocolInfo33 struct {
 	// CommissionInfo: Информация о комиссии. Блок не заполняется в случае, предусмотренном ч.7 ст.52 (0 поданных заявок). В остальных случаях обязателен для заполнения. В случае незаполнения блока также не должен быть заполнен блок "Заявки" (applicationsInfo)
 	CommissionInfo *cmn.CommissionType `xml:"commissionInfo,omitempty"`
 
-	// ProtocolInfoApplicationsInfo: Заявки
-	ApplicationsInfo *ProtocolInfoApplicationsInfo `xml:"applicationsInfo,omitempty"`
+	// ProtocolInfo32ApplicationsInfo: Заявки
+	ApplicationsInfo *ProtocolInfo32ApplicationsInfo `xml:"applicationsInfo,omitempty"`
 
 	// AbandonedReason: Признание запроса котировок в электронной форме несостоявшимся. При приеме содержимое контролируется на присутствие в справочнике "Справочник оснований признания процедуры несостоявшейся" (nsiAbandonedReason). Запись должна иметь значение "epProtocolEZK2020Final" в поле objectName. При этом запись не должна быть помечена как устаревшая (в поле IS_OUTDATED не должно быть указано 1) для закупок, первая версия извещений которых размещена после начала действия оптимизационного законопроекта 44-ФЗ
 	AbandonedReason *base.AbandonedReasonRef `xml:"abandonedReason,omitempty"`
@@ -6090,8 +6090,8 @@ type ProtocolPublisherInfo32 struct {
 	PublisherRole base.ResponsibleRoleEptype `xml:"publisherRole"`
 }
 
-// CommonInfo13: Общая информация
-type CommonInfo13 struct {
+// CommonInfo20: Общая информация
+type CommonInfo20 struct {
 	XMLName xml.Name `xml:"commonInfo"`
 
 	// UseProgramRights: Закупка, по результатам которой заключается контракт, предусматривающий предоставление права на использование программы для электронной вычислительной машины и (или) базы данных
@@ -6205,40 +6205,40 @@ type NotificationInfoContractConditionsInfo3 struct {
 	DeliveryPlaceInfo ContractConditionsInfoDeliveryPlaceInfo `xml:"deliveryPlaceInfo"`
 }
 
-// NotificationInfoCustomerRequirementsInfo16: Требования заказчиков
-type NotificationInfoCustomerRequirementsInfo16 struct {
+// NotificationInfoCustomerRequirementsInfo13: Требования заказчиков
+type NotificationInfoCustomerRequirementsInfo13 struct {
 	XMLName xml.Name `xml:"customerRequirementsInfo"`
 
 	// CustomerRequirementInfo: Требование заказчика
 	CustomerRequirementInfo []CustomerRequirementEzt2020Type `xml:",any"`
 }
 
-// NotificationInfoPreferensesInfo16: Преимущества
-type NotificationInfoPreferensesInfo16 struct {
+// NotificationInfoPreferensesInfo13: Преимущества
+type NotificationInfoPreferensesInfo13 struct {
 	XMLName xml.Name `xml:"preferensesInfo,omitempty"`
 
 	// PreferenseInfo: Преимущество. Если в качестве преимущества указано значение "Участникам, заявки или окончательные предложения которых содержат предложения о поставке товаров в соответствии с приказом Минфина России № 126н от 04.06.2018", то контролируется, что величина преимущества, заданная в поле "Величина преимущства" (prefValue), содержится в справочнике вариантов размера преференциальной ставки (nsiPrefRate)
 	PreferenseInfo []cmn.PreferenseType `xml:",any"`
 }
 
-// NotificationInfoRequirementsInfo16: Требования. Если первая версия извещения размещается (принимается от внешней системы) после выхода версии 12.2 ЕИС, то блок обязателен для заполнения. Кроме того, в нем обязательно должно быть указано требование с кодом "ET44 - Единые требования к участникам закупок в соответствии с ч. 1 ст. 31 Закона № 44-ФЗ"
-type NotificationInfoRequirementsInfo16 struct {
+// NotificationInfoRequirementsInfo13: Требования. Если первая версия извещения размещается (принимается от внешней системы) после выхода версии 12.2 ЕИС, то блок обязателен для заполнения. Кроме того, в нем обязательно должно быть указано требование с кодом "ET44 - Единые требования к участникам закупок в соответствии с ч. 1 ст. 31 Закона № 44-ФЗ"
+type NotificationInfoRequirementsInfo13 struct {
 	XMLName xml.Name `xml:"requirementsInfo,omitempty"`
 
 	// RequirementInfo: Требование. Если первая версия извещения размещается (принимается от внешней системы) после выхода версии 12.2 ЕИС, то для следующих требований игнорируется дочернее поле "Содержание требования (ограничения)" (content): - ET44 - Единые требования к участникам закупок в соответствии с ч. 1 ст. 31 Закона № 44-ФЗ; - TU44 - Требования к участникам закупок в соответствии с частью 2 статьи 31 Федерального закона № 44-ФЗ - TR442 - Требования к участникам закупок в соответствии с частью 1.1 статьи 31 Федерального закона № 44-ФЗ; - ETP44312 - Требования к участникам закупок в соответствии с частью 2.1 статьи 31 Федерального закона № 44-ФЗ; - TOVNPIVR - Требование об отсутствии в реестре недобросовестных поставщиков (подрядчиков, исполнителей) информации, включенной в такой реестр в связи отказом поставщика (подрядчика, исполнителя) от исполнения контракта по причине введения в отношении заказчика санкций и (или) мер ограничительного характера
 	RequirementInfo []cmn.RequirementWithAddReqsType `xml:",any"`
 }
 
-// NotificationInfoRestrictionsInfo16: Ограничения
-type NotificationInfoRestrictionsInfo16 struct {
+// NotificationInfoRestrictionsInfo13: Ограничения
+type NotificationInfoRestrictionsInfo13 struct {
 	XMLName xml.Name `xml:"restrictionsInfo,omitempty"`
 
 	// RestrictionInfo: Ограничение
 	RestrictionInfo []cmn.RestrictionType `xml:",any"`
 }
 
-// NotificationInfoPurchaseObjectsInfo16: Объекты закупки. Для каждого объекта закупки необходимо указание кода КТРУ (purchaseObject/KTRU) Если заполнен блок «По решению заказчика (организации, осуществляющей определение поставщика для заказчика)» (modificationInfo/reasonInfo/responsibleDecisionInfo), игнорируется при приеме и заполняется из предыдущей версии извещения за исключением: o поля «Общая сумма позиций/Начальная сумма цен единиц товара, работы, услуги в валюте контракт»( totalSumCurrency); o блока «Единица измерения» (OKEI); o блока «Общее количество по объекту закупки» (quantity); o поля «Количество для заказчика» (customerQuantities/customerQuantity/quantity); o поля «Объем работы, услуги (указание объема в текстовом виде)» (customerQuantities/customerQuantity/volumeTextForm); o поля «Количество для заказчика» (customerQuantitiesCH/customerQuantityCH/quantity); o поля «Объем работы, услуги (указание объема в текстовом виде)» (customerQuantitiesCH/customerQuantityCH/volumeTextForm); o поля «Цена за единицу измерения» (price); o блока «Информация о товарном знаке» (trademarkInfo); o поля «Знаки обслуживания, фирменные наименования, патенты, полезные модели, промышленные образцы» (serviceMarks); o поля «Стоимость позиции» (sum); o блока «Характеристики товара, работы, услуги позиции ОКПД2» (OKPD2/characteristics); o блока «Характеристики товара, работы, услуги позиции КТРУ» (KTRU/characteristics); o поля «Уникальный идентификатор в ЕИС» (sid); o поля «Внешний идентификатор объекта закупки» (externalSid)
-type NotificationInfoPurchaseObjectsInfo16 struct {
+// NotificationInfoPurchaseObjectsInfo13: Объекты закупки. Для каждого объекта закупки необходимо указание кода КТРУ (purchaseObject/KTRU) Если заполнен блок «По решению заказчика (организации, осуществляющей определение поставщика для заказчика)» (modificationInfo/reasonInfo/responsibleDecisionInfo), игнорируется при приеме и заполняется из предыдущей версии извещения за исключением: o поля «Общая сумма позиций/Начальная сумма цен единиц товара, работы, услуги в валюте контракт»( totalSumCurrency); o блока «Единица измерения» (OKEI); o блока «Общее количество по объекту закупки» (quantity); o поля «Количество для заказчика» (customerQuantities/customerQuantity/quantity); o поля «Объем работы, услуги (указание объема в текстовом виде)» (customerQuantities/customerQuantity/volumeTextForm); o поля «Количество для заказчика» (customerQuantitiesCH/customerQuantityCH/quantity); o поля «Объем работы, услуги (указание объема в текстовом виде)» (customerQuantitiesCH/customerQuantityCH/volumeTextForm); o поля «Цена за единицу измерения» (price); o блока «Информация о товарном знаке» (trademarkInfo); o поля «Знаки обслуживания, фирменные наименования, патенты, полезные модели, промышленные образцы» (serviceMarks); o поля «Стоимость позиции» (sum); o блока «Характеристики товара, работы, услуги позиции ОКПД2» (OKPD2/characteristics); o блока «Характеристики товара, работы, услуги позиции КТРУ» (KTRU/characteristics); o поля «Уникальный идентификатор в ЕИС» (sid); o поля «Внешний идентификатор объекта закупки» (externalSid)
+type NotificationInfoPurchaseObjectsInfo13 struct {
 	XMLName xml.Name `xml:"purchaseObjectsInfo"`
 
 	// Type: Тип объекта закупки. Игнорируется при приеме и устанавливается значение PRODUCT - товар, если не установлен признак "Закупка, по результатам которой заключается контракт, предусматривающий предоставление права на использование программы для электронной вычислительной машины и (или) базы данных" (useProgramRights), иначе принимается
@@ -6630,8 +6630,8 @@ type DrugProposalsInfo struct {
 	MnninfoUsingReferenceInfo DrugProposalsInfoMnninfoUsingReferenceInfo `xml:",any"`
 }
 
-// ApplicationInfoCommonInfo3: Общая информация
-type ApplicationInfoCommonInfo3 struct {
+// CommonInfo21: Общая информация
+type CommonInfo21 struct {
 	XMLName xml.Name `xml:"commonInfo"`
 
 	// AppNumber: Номер заявки
@@ -6696,29 +6696,29 @@ type ApplicationInfoAdmittedInfo11 struct {
 	AppNotAdmittedInfo *ApplicationInfoAdmittedInfoAppNotAdmittedInfo `xml:"appNotAdmittedInfo,omitempty"`
 }
 
-// ApplicationsInfoApplicationInfo12: Заявка
-type ApplicationsInfoApplicationInfo12 struct {
+// ApplicationInfo19: Заявка
+type ApplicationInfo19 struct {
 	XMLName xml.Name `xml:"applicationInfo"`
 
-	// ApplicationsInfoApplicationInfoCommonInfo: Общая информация
-	CommonInfo ApplicationsInfoApplicationInfoCommonInfo `xml:"commonInfo"`
+	// CommonInfo22: Общая информация
+	CommonInfo CommonInfo22 `xml:"commonInfo"`
 
 	// FinalPrice: Сумма предложения участника
 	FinalPrice base.MoneyLongType `xml:"finalPrice"`
 
-	// ApplicationsInfoApplicationInfoCorrespondenciesInfo: Соответствие участника преимуществам
-	CorrespondenciesInfo *ApplicationsInfoApplicationInfoCorrespondenciesInfo `xml:"correspondenciesInfo,omitempty"`
+	// ApplicationInfo19CorrespondenciesInfo: Соответствие участника преимуществам
+	CorrespondenciesInfo *ApplicationInfo19CorrespondenciesInfo `xml:"correspondenciesInfo,omitempty"`
 
-	// ApplicationsInfoApplicationInfoAdmittedInfo: Информация о допуске заявки
-	AdmittedInfo ApplicationsInfoApplicationInfoAdmittedInfo `xml:"admittedInfo"`
+	// ApplicationInfo19AdmittedInfo: Информация о допуске заявки
+	AdmittedInfo ApplicationInfo19AdmittedInfo `xml:"admittedInfo"`
 }
 
-// ProtocolInfoApplicationsInfo25: Заявки
-type ProtocolInfoApplicationsInfo25 struct {
+// ProtocolInfoApplicationsInfo21: Заявки
+type ProtocolInfoApplicationsInfo21 struct {
 	XMLName xml.Name `xml:"applicationsInfo"`
 
-	// ProtocolInfoApplicationsInfoApplicationInfo: Заявка
-	ApplicationInfo []ProtocolInfoApplicationsInfoApplicationInfo `xml:",any"`
+	// ApplicationInfo20: Заявка
+	ApplicationInfo []ApplicationInfo20 `xml:",any"`
 }
 
 // ProtocolInfo34: Информация о проведении ЭЗТ (Закупка товаров согласно ч.12 ст. 93 № 44-ФЗ)
@@ -6728,8 +6728,8 @@ type ProtocolInfo34 struct {
 	// CommissionInfo: Информация о комиссии
 	CommissionInfo *cmn.CommissionType `xml:"commissionInfo,omitempty"`
 
-	// ProtocolInfoApplicationsInfo: Заявки
-	ApplicationsInfo ProtocolInfoApplicationsInfo `xml:"applicationsInfo"`
+	// ProtocolInfo34ApplicationsInfo: Заявки
+	ApplicationsInfo ProtocolInfo34ApplicationsInfo `xml:"applicationsInfo"`
 
 	// AbandonedReason: Признание ЭЗТ несостоявшимся. При приеме содержимое контролируется на присутствие в справочнике "Справочник оснований признания процедуры несостоявшейся" (nsiAbandonedReason). Запись должна иметь значение "protocolEZT2020Finall" в поле objectName. При этом запись не должна быть помечена как устаревшая (в поле IS_OUTDATED не должно быть указано 1) для закупок, первая версия извещений которых размещена после начала действия оптимизационного законопроекта 44-ФЗ
 	AbandonedReason *base.AbandonedReasonRef `xml:"abandonedReason,omitempty"`
@@ -6809,8 +6809,8 @@ type AppParticipantsInfo4 struct {
 	ExtPrintFormInfo cmn.ExtPrintFormType `xml:"extPrintFormInfo"`
 }
 
-// ApplicationsInfoApplicationInfoCommonInfo: Общая информация
-type ApplicationsInfoApplicationInfoCommonInfo struct {
+// CommonInfo22: Общая информация
+type CommonInfo22 struct {
 	XMLName xml.Name `xml:"commonInfo"`
 
 	// AppNumber: Номер заявки
@@ -6823,8 +6823,8 @@ type ApplicationsInfoApplicationInfoCommonInfo struct {
 	AdmissionResultsInfo *AdmissionResultsType `xml:"admissionResultsInfo,omitempty"`
 }
 
-// ApplicationsInfoApplicationInfoCorrespondenciesInfo4: Соответствие участника преимуществам
-type ApplicationsInfoApplicationInfoCorrespondenciesInfo4 struct {
+// ApplicationInfo19CorrespondenciesInfo: Соответствие участника преимуществам
+type ApplicationInfo19CorrespondenciesInfo struct {
 	XMLName xml.Name `xml:"correspondenciesInfo,omitempty"`
 
 	// CorrespondenceInfo: Соответствие участника отдельному преимуществу/требованию к участникам
@@ -6864,8 +6864,8 @@ type ApplicationInfoAdmittedInfoAppNotAdmittedInfo4 struct {
 	AppRejectedReasonsInfo AdmittedInfoAppNotAdmittedInfoAppRejectedReasonsInfo `xml:",any"`
 }
 
-// ApplicationsInfoApplicationInfoAdmittedInfo4: Информация о допуске заявки
-type ApplicationsInfoApplicationInfoAdmittedInfo4 struct {
+// ApplicationInfo19AdmittedInfo: Информация о допуске заявки
+type ApplicationInfo19AdmittedInfo struct {
 	XMLName xml.Name `xml:"admittedInfo"`
 
 	// ApplicationInfoAdmittedInfoAppAdmittedInfo: Информация о допущенной заявке
@@ -6875,29 +6875,29 @@ type ApplicationsInfoApplicationInfoAdmittedInfo4 struct {
 	AppNotAdmittedInfo *ApplicationInfoAdmittedInfoAppNotAdmittedInfo `xml:"appNotAdmittedInfo,omitempty"`
 }
 
-// ProtocolInfoApplicationsInfoApplicationInfo4: Заявка
-type ProtocolInfoApplicationsInfoApplicationInfo4 struct {
+// ApplicationInfo20: Заявка
+type ApplicationInfo20 struct {
 	XMLName xml.Name `xml:"applicationInfo"`
 
-	// ApplicationsInfoApplicationInfoCommonInfo: Общая информация
-	CommonInfo ApplicationsInfoApplicationInfoCommonInfo `xml:"commonInfo"`
+	// CommonInfo22: Общая информация
+	CommonInfo CommonInfo22 `xml:"commonInfo"`
 
 	// FinalPrice: Сумма предложения участника
 	FinalPrice base.MoneyLongType `xml:"finalPrice"`
 
-	// ApplicationsInfoApplicationInfoCorrespondenciesInfo: Соответствие участника преимуществам
-	CorrespondenciesInfo *ApplicationsInfoApplicationInfoCorrespondenciesInfo `xml:"correspondenciesInfo,omitempty"`
+	// ApplicationInfo19CorrespondenciesInfo: Соответствие участника преимуществам
+	CorrespondenciesInfo *ApplicationInfo19CorrespondenciesInfo `xml:"correspondenciesInfo,omitempty"`
 
-	// ApplicationsInfoApplicationInfoAdmittedInfo: Информация о допуске заявки
-	AdmittedInfo ApplicationsInfoApplicationInfoAdmittedInfo `xml:"admittedInfo"`
+	// ApplicationInfo19AdmittedInfo: Информация о допуске заявки
+	AdmittedInfo ApplicationInfo19AdmittedInfo `xml:"admittedInfo"`
 }
 
-// ProtocolInfoApplicationsInfo26: Заявки
-type ProtocolInfoApplicationsInfo26 struct {
+// ProtocolInfo34ApplicationsInfo: Заявки
+type ProtocolInfo34ApplicationsInfo struct {
 	XMLName xml.Name `xml:"applicationsInfo"`
 
-	// ProtocolInfoApplicationsInfoApplicationInfo: Заявка
-	ApplicationInfo []ProtocolInfoApplicationsInfoApplicationInfo `xml:",any"`
+	// ApplicationInfo20: Заявка
+	ApplicationInfo []ApplicationInfo20 `xml:",any"`
 }
 
 // ProtocolInfo35: Информация о проведении ЭЗТ (Закупка товаров согласно ч.12 ст. 93 № 44-ФЗ)
@@ -6907,8 +6907,8 @@ type ProtocolInfo35 struct {
 	// CommissionInfo: Информация о комиссии
 	CommissionInfo *cmn.CommissionType `xml:"commissionInfo,omitempty"`
 
-	// ProtocolInfoApplicationsInfo: Заявки
-	ApplicationsInfo ProtocolInfoApplicationsInfo `xml:"applicationsInfo"`
+	// ProtocolInfo34ApplicationsInfo: Заявки
+	ApplicationsInfo ProtocolInfo34ApplicationsInfo `xml:"applicationsInfo"`
 
 	// AbandonedReason: Признание ЭЗТ несостоявшимся. При приеме содержимое контролируется на присутствие в справочнике "Справочник оснований признания процедуры несостоявшейся" (nsiAbandonedReason). Запись должна иметь значение "protocolEZT2020Finall" в поле objectName. При этом запись не должна быть помечена как устаревшая (в поле IS_OUTDATED не должно быть указано 1) для закупок, первая версия извещений которых размещена после начала действия оптимизационного законопроекта 44-ФЗ
 	AbandonedReason *base.AbandonedReasonRef `xml:"abandonedReason,omitempty"`
@@ -6984,8 +6984,8 @@ type PurchaseObjectsInfoNotDrugPurchaseObjectsInfo12 struct {
 	cmn.PurchaseObjectsClosed2020Type
 }
 
-// NotificationInfoPurchaseObjectsInfo17: Объекты закупки
-type NotificationInfoPurchaseObjectsInfo17 struct {
+// NotificationInfoPurchaseObjectsInfo14: Объекты закупки
+type NotificationInfoPurchaseObjectsInfo14 struct {
 	XMLName xml.Name `xml:"purchaseObjectsInfo"`
 
 	// PurchaseObjectsInfoDrugPurchaseObjectsInfo: Сведения об объектах закупки в том случае, когда объектами закупки являются лекарственные препараты. Контролируется обязательность заполнения, если извещение сформировано на основании позиции плана-графика с 01.01.2020 и в такой позиции указан код ОКПД2 21.20 Если заполнен блок «По решению заказчика (организации, осуществляющей определение поставщика для заказчика)» (modificationInfo/reasonInfo/responsibleDecisionInfo), игнорируется при приеме и заполняется из предыдущей версии извещения за исключением: o поля «Всего» (total); o поля «Общая сумма позиций в валюте контракта» (totalSumCurrency); o поля «Цена за единицу в основном варианте поставки» (pricePerUnit); o поля «Стоимость позиции в основном варианте поставки» (positionPrice); o поля «Всего» (drugQuantityCustomersInfo/total); o поля «Количество» (quantity); o поля «Уникальный идентификатор в ЕИС» (sid) o поля «Внешний идентификатор объекта закупки» (externalSid)
@@ -6998,32 +6998,32 @@ type NotificationInfoPurchaseObjectsInfo17 struct {
 	NotDrugPurchaseParentObjectsInfo *cmn.PurchaseParentObjects2020Type `xml:"notDrugPurchaseParentObjectsInfo,omitempty"`
 }
 
-// NotificationInfoCustomerRequirementsInfo17: Требования. Если первая версия приглашения размещается (принимается от внешней системы) после выхода версии 12.2 ЕИС, то блок обязателен для заполнения. Кроме того, в нем обязательно должно быть указано требование с кодом "ET44 - Единые требования к участникам закупок в соответствии с ч. 1 ст. 31 Закона № 44-ФЗ"
-type NotificationInfoCustomerRequirementsInfo17 struct {
+// NotificationInfoCustomerRequirementsInfo14: Требования. Если первая версия приглашения размещается (принимается от внешней системы) после выхода версии 12.2 ЕИС, то блок обязателен для заполнения. Кроме того, в нем обязательно должно быть указано требование с кодом "ET44 - Единые требования к участникам закупок в соответствии с ч. 1 ст. 31 Закона № 44-ФЗ"
+type NotificationInfoCustomerRequirementsInfo14 struct {
 	XMLName xml.Name `xml:"customerRequirementsInfo"`
 
 	// CustomerRequirementInfo: Требование. Если первая версия приглашения размещается (принимается от внешней системы) после выхода версии 12.2 ЕИС, то для следующих требований игнорируется дочернее поле "Содержание требования (ограничения)" (content): - ET44 - Единые требования к участникам закупок в соответствии с ч. 1 ст. 31 Закона № 44-ФЗ; - TU44 - Требования к участникам закупок в соответствии с частью 2 статьи 31 Федерального закона № 44-ФЗ - TR442 - Требования к участникам закупок в соответствии с частью 1.1 статьи 31 Федерального закона № 44-ФЗ; - ETP44312 - Требования к участникам закупок в соответствии с частью 2.1 статьи 31 Федерального закона № 44-ФЗ; - TOVNPIVR - Требование об отсутствии в реестре недобросовестных поставщиков (подрядчиков, исполнителей) информации, включенной в такой реестр в связи отказом поставщика (подрядчика, исполнителя) от исполнения контракта по причине введения в отношении заказчика санкций и (или) мер ограничительного характера
 	CustomerRequirementInfo []CustomerRequirementEzakA2020Type `xml:",any"`
 }
 
-// NotificationInfoPreferensesInfo17: Преимущества
-type NotificationInfoPreferensesInfo17 struct {
+// NotificationInfoPreferensesInfo14: Преимущества
+type NotificationInfoPreferensesInfo14 struct {
 	XMLName xml.Name `xml:"preferensesInfo,omitempty"`
 
 	// PreferenseInfo: Преимущество
 	PreferenseInfo []cmn.PreferenseType `xml:",any"`
 }
 
-// NotificationInfoRequirementsInfo17: Требования
-type NotificationInfoRequirementsInfo17 struct {
+// NotificationInfoRequirementsInfo14: Требования
+type NotificationInfoRequirementsInfo14 struct {
 	XMLName xml.Name `xml:"requirementsInfo,omitempty"`
 
 	// RequirementInfo: Требование. Если первая версия приглашения размещается (принимается от внешней системы) после выхода версии 12.2 ЕИС, то для следующих требований игнорируется дочернее поле "Содержание требования (ограничения)" (content): - ET44 - Единые требования к участникам закупок в соответствии с ч. 1 ст. 31 Закона № 44-ФЗ; - TR442 - Требования к участникам закупок в соответствии с частью 1.1 статьи 31 Федерального закона № 44-ФЗ; - ETP44312 - Требования к участникам закупок в соответствии с частью 2.1 статьи 31 Федерального закона № 44-ФЗ; - TOVNPIVR - Требование об отсутствии в реестре недобросовестных поставщиков (подрядчиков, исполнителей) информации, включенной в такой реестр в связи отказом поставщика (подрядчика, исполнителя) от исполнения контракта по причине введения в отношении заказчика санкций и (или) мер ограничительного характера
 	RequirementInfo []cmn.Requirement2020WithAddReqsType `xml:",any"`
 }
 
-// NotificationInfoRestrictionsInfo17: Ограничения. Игнорируется при приеме, не заполняется при передаче для извещений, первая версия которых размещена с даты в настройке «Изменение нац.режима»
-type NotificationInfoRestrictionsInfo17 struct {
+// NotificationInfoRestrictionsInfo14: Ограничения. Игнорируется при приеме, не заполняется при передаче для извещений, первая версия которых размещена с даты в настройке «Изменение нац.режима»
+type NotificationInfoRestrictionsInfo14 struct {
 	XMLName xml.Name `xml:"restrictionsInfo,omitempty"`
 
 	// RestrictionInfo: Ограничение
@@ -7056,8 +7056,8 @@ type NotificationInfo17 struct {
 	RestrictionsInfo *NotificationInfoRestrictionsInfo `xml:"restrictionsInfo,omitempty"`
 }
 
-// CommonInfo14: Общая информация
-type CommonInfo14 struct {
+// CommonInfo23: Общая информация
+type CommonInfo23 struct {
 	XMLName xml.Name `xml:"commonInfo"`
 
 	// PurchaseNumber: Реестровый номер закупки. Элемент не заполняется при приёме первой версии документа. Присваивается автоматически после размещения. Должен быть заполнен при приёме изменения документа
@@ -7133,8 +7133,8 @@ type ServiceSigns19 struct {
 	IsControlP1Ch5St99 *bool `xml:",any,omitempty"`
 }
 
-// RequestInfoCommonInfo: Общая информация
-type RequestInfoCommonInfo struct {
+// CommonInfo24: Общая информация
+type CommonInfo24 struct {
 	XMLName xml.Name `xml:"commonInfo"`
 
 	// ReqNumber: Номер запроса
@@ -7203,12 +7203,12 @@ type RequestInfoAdmittedInfo struct {
 	ReqNotAdmittedInfo *AdmittedInfoReqNotAdmittedInfo `xml:"reqNotAdmittedInfo,omitempty"`
 }
 
-// RequestsInfoRequestInfo: Запрос
-type RequestsInfoRequestInfo struct {
+// RequestInfo2: Запрос
+type RequestInfo2 struct {
 	XMLName xml.Name `xml:"requestInfo"`
 
-	// RequestInfoCommonInfo: Общая информация
-	CommonInfo RequestInfoCommonInfo `xml:"commonInfo"`
+	// CommonInfo24: Общая информация
+	CommonInfo CommonInfo24 `xml:"commonInfo"`
 
 	// RequestInfoParticipantInfo: Сведения об участнике
 	ParticipantInfo RequestInfoParticipantInfo `xml:"participantInfo"`
@@ -7221,8 +7221,8 @@ type RequestsInfoRequestInfo struct {
 type ProtocolInfoRequestsInfo struct {
 	XMLName xml.Name `xml:"requestsInfo,omitempty"`
 
-	// RequestsInfoRequestInfo: Запрос
-	RequestInfo []RequestsInfoRequestInfo `xml:",any"`
+	// RequestInfo2: Запрос
+	RequestInfo []RequestInfo2 `xml:",any"`
 }
 
 // ProtocolInfo36: Информация о проведении ЭЗакА20. В рамках блока должен быть заполнен блок requestsInfo и/или abandonedReason
@@ -7340,8 +7340,8 @@ type ApplicationInfoAdmittedInfo12 struct {
 	AppNotAdmittedInfo *AdmittedInfoAppNotAdmittedInfo `xml:"appNotAdmittedInfo,omitempty"`
 }
 
-// ApplicationsInfoApplicationInfo13: Заявка
-type ApplicationsInfoApplicationInfo13 struct {
+// ApplicationInfo21: Заявка
+type ApplicationInfo21 struct {
 	XMLName xml.Name `xml:"applicationInfo"`
 
 	// CommonInfo: Общая информация
@@ -7366,12 +7366,12 @@ type ApplicationsInfoApplicationInfo13 struct {
 	AdmittedInfo ApplicationInfoAdmittedInfo `xml:"admittedInfo"`
 }
 
-// ProtocolInfoApplicationsInfo27: Заявки
-type ProtocolInfoApplicationsInfo27 struct {
+// ProtocolInfoApplicationsInfo22: Заявки
+type ProtocolInfoApplicationsInfo22 struct {
 	XMLName xml.Name `xml:"applicationsInfo,omitempty"`
 
-	// ApplicationsInfoApplicationInfo: Заявка
-	ApplicationInfo []ApplicationsInfoApplicationInfo `xml:",any"`
+	// ApplicationInfo21: Заявка
+	ApplicationInfo []ApplicationInfo21 `xml:",any"`
 }
 
 // ProtocolInfo37: Информация о проведении ЭЗакА20. В рамках блока должен быть заполнен блок applicationsInfo и/или abandonedReason
@@ -7503,8 +7503,8 @@ type PurchaseObjectsInfoNotDrugPurchaseObjectsInfo13 struct {
 	cmn.PurchaseObjectsClosed2020Type
 }
 
-// NotificationInfoPurchaseObjectsInfo18: Объекты закупки
-type NotificationInfoPurchaseObjectsInfo18 struct {
+// NotificationInfoPurchaseObjectsInfo15: Объекты закупки
+type NotificationInfoPurchaseObjectsInfo15 struct {
 	XMLName xml.Name `xml:"purchaseObjectsInfo"`
 
 	// PurchaseObjectsInfoDrugPurchaseObjectsInfo: Сведения об объектах закупки в том случае, когда объектами закупки являются лекарственные препараты. Контролируется обязательность заполнения, если извещение сформировано на основании позиции плана-графика с 01.01.2020 и в такой позиции указан код ОКПД2 21.20 Если заполнен блок «По решению заказчика (организации, осуществляющей определение поставщика для заказчика)» (modificationInfo/reasonInfo/responsibleDecisionInfo), игнорируется при приеме и заполняется из предыдущей версии извещения за исключением: o поля «Всего» (total); o поля «Общая сумма позиций в валюте контракта» (totalSumCurrency); o поля «Цена за единицу в основном варианте поставки» (pricePerUnit); o поля «Стоимость позиции в основном варианте поставки» (positionPrice); o поля «Всего» (drugQuantityCustomersInfo/total); o поля «Количество» (quantity); o поля «Уникальный идентификатор в ЕИС» (sid) o поля «Внешний идентификатор объекта закупки» (externalSid)
@@ -7517,8 +7517,8 @@ type NotificationInfoPurchaseObjectsInfo18 struct {
 	NotDrugPurchaseParentObjectsInfo *cmn.PurchaseParentObjects2020Type `xml:"notDrugPurchaseParentObjectsInfo,omitempty"`
 }
 
-// NotificationInfoCustomerRequirementsInfo18: Требования заказчиков
-type NotificationInfoCustomerRequirementsInfo18 struct {
+// NotificationInfoCustomerRequirementsInfo15: Требования заказчиков
+type NotificationInfoCustomerRequirementsInfo15 struct {
 	XMLName xml.Name `xml:"customerRequirementsInfo"`
 
 	// CustomerRequirementInfo: Требование заказчика
@@ -7536,24 +7536,24 @@ type NotificationInfoCriteriaInfo1 struct {
 	CriterionInfo []CriterionOktype `xml:"criterionInfo"`
 }
 
-// NotificationInfoPreferensesInfo18: Преимущества
-type NotificationInfoPreferensesInfo18 struct {
+// NotificationInfoPreferensesInfo15: Преимущества
+type NotificationInfoPreferensesInfo15 struct {
 	XMLName xml.Name `xml:"preferensesInfo,omitempty"`
 
 	// PreferenseInfo: Преимущество
 	PreferenseInfo []cmn.PreferenseType `xml:",any"`
 }
 
-// NotificationInfoRequirementsInfo18: Требования. Если первая версия приглашения размещается (принимается от внешней системы) после выхода версии 12.2 ЕИС, то блок обязателен для заполнения. Кроме того, в нем обязательно должно быть указано требование с кодом "ET44 - Единые требования к участникам закупок в соответствии с ч. 1 ст. 31 Закона № 44-ФЗ"
-type NotificationInfoRequirementsInfo18 struct {
+// NotificationInfoRequirementsInfo15: Требования. Если первая версия приглашения размещается (принимается от внешней системы) после выхода версии 12.2 ЕИС, то блок обязателен для заполнения. Кроме того, в нем обязательно должно быть указано требование с кодом "ET44 - Единые требования к участникам закупок в соответствии с ч. 1 ст. 31 Закона № 44-ФЗ"
+type NotificationInfoRequirementsInfo15 struct {
 	XMLName xml.Name `xml:"requirementsInfo,omitempty"`
 
 	// RequirementInfo: Требование. Если первая версия приглашения размещается (принимается от внешней системы) после выхода версии 12.2 ЕИС, то для следующих требований игнорируется дочернее поле "Содержание требования (ограничения)" (content): - ET44 - Единые требования к участникам закупок в соответствии с ч. 1 ст. 31 Закона № 44-ФЗ; - TR442 - Требования к участникам закупок в соответствии с частью 1.1 статьи 31 Федерального закона № 44-ФЗ; - ETP44312 - Требования к участникам закупок в соответствии с частью 2.1 статьи 31 Федерального закона № 44-ФЗ; - TOVNPIVR - Требование об отсутствии в реестре недобросовестных поставщиков (подрядчиков, исполнителей) информации, включенной в такой реестр в связи отказом поставщика (подрядчика, исполнителя) от исполнения контракта по причине введения в отношении заказчика санкций и (или) мер ограничительного характера
 	RequirementInfo []cmn.Requirement2020WithAddReqsType `xml:",any"`
 }
 
-// NotificationInfoRestrictionsInfo18: Ограничения. Игнорируется при приеме, не заполняется при передаче для извещений, первая версия которых размещена с даты в настройке «Изменение нац.режима»
-type NotificationInfoRestrictionsInfo18 struct {
+// NotificationInfoRestrictionsInfo15: Ограничения. Игнорируется при приеме, не заполняется при передаче для извещений, первая версия которых размещена с даты в настройке «Изменение нац.режима»
+type NotificationInfoRestrictionsInfo15 struct {
 	XMLName xml.Name `xml:"restrictionsInfo,omitempty"`
 
 	// RestrictionInfo: Ограничение
@@ -7589,8 +7589,8 @@ type NotificationInfo18 struct {
 	RestrictionsInfo *NotificationInfoRestrictionsInfo `xml:"restrictionsInfo,omitempty"`
 }
 
-// CommonInfo15: Общая информация
-type CommonInfo15 struct {
+// CommonInfo25: Общая информация
+type CommonInfo25 struct {
 	XMLName xml.Name `xml:"commonInfo"`
 
 	// PurchaseNumber: Реестровый номер закупки. Элемент не заполняется при приёме первой версии документа. Присваивается автоматически после размещения. Должен быть заполнен при приёме изменения документа
@@ -7666,8 +7666,8 @@ type ServiceSigns20 struct {
 	IsControlP1Ch5St99 *bool `xml:",any,omitempty"`
 }
 
-// RequestInfoCommonInfo1: Общая информация
-type RequestInfoCommonInfo1 struct {
+// CommonInfo26: Общая информация
+type CommonInfo26 struct {
 	XMLName xml.Name `xml:"commonInfo"`
 
 	// ReqNumber: Номер запроса
@@ -7736,12 +7736,12 @@ type RequestInfoAdmittedInfo1 struct {
 	ReqNotAdmittedInfo *AdmittedInfoReqNotAdmittedInfo `xml:"reqNotAdmittedInfo,omitempty"`
 }
 
-// RequestsInfoRequestInfo1: Запрос
-type RequestsInfoRequestInfo1 struct {
+// RequestInfo3: Запрос
+type RequestInfo3 struct {
 	XMLName xml.Name `xml:"requestInfo"`
 
-	// RequestInfoCommonInfo: Общая информация
-	CommonInfo RequestInfoCommonInfo `xml:"commonInfo"`
+	// CommonInfo26: Общая информация
+	CommonInfo CommonInfo26 `xml:"commonInfo"`
 
 	// RequestInfoParticipantInfo: Сведения об участнике
 	ParticipantInfo RequestInfoParticipantInfo `xml:"participantInfo"`
@@ -7754,8 +7754,8 @@ type RequestsInfoRequestInfo1 struct {
 type ProtocolInfoRequestsInfo1 struct {
 	XMLName xml.Name `xml:"requestsInfo,omitempty"`
 
-	// RequestsInfoRequestInfo: Запрос
-	RequestInfo []RequestsInfoRequestInfo `xml:",any"`
+	// RequestInfo3: Запрос
+	RequestInfo []RequestInfo3 `xml:",any"`
 }
 
 // ProtocolInfo38: Информация о проведении ЭЗакК20. В рамках блока должен быть заполнен блок applicationsInfo и/или abandonedReason
@@ -7927,8 +7927,8 @@ type ApplicationInfoAdmittedInfo13 struct {
 	AppNotAdmittedInfo *AdmittedInfoAppNotAdmittedInfo `xml:"appNotAdmittedInfo,omitempty"`
 }
 
-// ApplicationsInfoApplicationInfo14: Заявка
-type ApplicationsInfoApplicationInfo14 struct {
+// ApplicationInfo22: Заявка
+type ApplicationInfo22 struct {
 	XMLName xml.Name `xml:"applicationInfo"`
 
 	// CommonInfo: Общая информация
@@ -7947,12 +7947,12 @@ type ApplicationsInfoApplicationInfo14 struct {
 	AdmittedInfo ApplicationInfoAdmittedInfo `xml:"admittedInfo"`
 }
 
-// ProtocolInfoApplicationsInfo28: Заявки
-type ProtocolInfoApplicationsInfo28 struct {
+// ProtocolInfoApplicationsInfo23: Заявки
+type ProtocolInfoApplicationsInfo23 struct {
 	XMLName xml.Name `xml:"applicationsInfo,omitempty"`
 
-	// ApplicationsInfoApplicationInfo: Заявка
-	ApplicationInfo []ApplicationsInfoApplicationInfo `xml:",any"`
+	// ApplicationInfo22: Заявка
+	ApplicationInfo []ApplicationInfo22 `xml:",any"`
 }
 
 // ProtocolInfo39: Информация о проведении ЭЗакК20. В рамках блока должен быть заполнен блок applicationsInfo и/или abandonedReason
@@ -7983,8 +7983,8 @@ type ProtocolPublisherInfo39 struct {
 	PublisherRole base.ResponsibleRoleEptype `xml:"publisherRole"`
 }
 
-// CommonInfo16: Общая информация
-type CommonInfo16 struct {
+// CommonInfo27: Общая информация
+type CommonInfo27 struct {
 	XMLName xml.Name `xml:"commonInfo"`
 
 	// PurchaseNumber: Реестровый номер закупки. Элемент не заполняется при приёме первой версии документа. Присваивается автоматически после размещения. Должен быть заполнен при приёме изменения документа
@@ -8076,8 +8076,8 @@ type ResponsibleDecisionInfo1 struct {
 	DecisionDate string `xml:",any"`
 }
 
-// CommonInfo17: Общая информация
-type CommonInfo17 struct {
+// CommonInfo28: Общая информация
+type CommonInfo28 struct {
 	XMLName xml.Name `xml:"commonInfo"`
 
 	// PurchaseObjectInfo: Наименование объекта закупки. Если заполнен блок «По решению заказчика (организации, осуществляющей определение поставщика для заказчика)» (modificationInfo/reasonInfo/responsibleDecisionInfo), то игнорируется при приеме, заполняется из предыдущей версии извещения. Иначе контролируется на обязательность заполнения
@@ -8310,8 +8310,8 @@ type ScoringInfo struct {
 	SecondPartsDt string `xml:"secondPartsDT,omitempty"`
 }
 
-// FirstStageInfoScoringInfo: Информация о процедуре рассмотрения и оценки заявок
-type FirstStageInfoScoringInfo struct {
+// ScoringInfo1: Информация о процедуре рассмотрения и оценки заявок
+type ScoringInfo1 struct {
 	XMLName xml.Name `xml:"scoringInfo"`
 
 	// DateTime: Дата и время проведения обсуждения
@@ -8328,12 +8328,12 @@ type FirstStageInfo struct {
 	// CollectingInfo: Информация о подаче заявок
 	CollectingInfo ProcedureCollectingType `xml:"collectingInfo"`
 
-	// FirstStageInfoScoringInfo: Информация о процедуре рассмотрения и оценки заявок
-	ScoringInfo FirstStageInfoScoringInfo `xml:"scoringInfo"`
+	// ScoringInfo1: Информация о процедуре рассмотрения и оценки заявок
+	ScoringInfo ScoringInfo1 `xml:"scoringInfo"`
 }
 
-// SecondStageInfoScoringInfo: Информация о процедуре рассмотрения и оценки заявок
-type SecondStageInfoScoringInfo struct {
+// ScoringInfo2: Информация о процедуре рассмотрения и оценки заявок
+type ScoringInfo2 struct {
 	XMLName xml.Name `xml:"scoringInfo"`
 
 	// AddInfo: Дополнительная информация
@@ -8356,12 +8356,12 @@ type SecondStageInfo struct {
 	// CollectingInfo: Информация о подаче заявок
 	CollectingInfo ProcedureCollectingType `xml:"collectingInfo"`
 
-	// SecondStageInfoScoringInfo: Информация о процедуре рассмотрения и оценки заявок
-	ScoringInfo SecondStageInfoScoringInfo `xml:"scoringInfo"`
+	// ScoringInfo2: Информация о процедуре рассмотрения и оценки заявок
+	ScoringInfo ScoringInfo2 `xml:"scoringInfo"`
 }
 
-// ScoringInfo1: Информация о процедуре рассмотрения и оценки заявок
-type ScoringInfo1 struct {
+// ScoringInfo3: Информация о процедуре рассмотрения и оценки заявок
+type ScoringInfo3 struct {
 	XMLName xml.Name `xml:"scoringInfo"`
 
 	// EndDate: Дата окончания срока рассмотрения и оценки заявок
@@ -8371,8 +8371,8 @@ type ScoringInfo1 struct {
 	AddInfo *base.Text2000Type `xml:"addInfo,omitempty"`
 }
 
-// ScoringInfo2: Информация о рассмотрении и оценке заявок участников и подаче окончательных предложений
-type ScoringInfo2 struct {
+// ScoringInfo4: Информация о рассмотрении и оценке заявок участников и подаче окончательных предложений
+type ScoringInfo4 struct {
 	XMLName xml.Name `xml:"scoringInfo"`
 
 	// EndDate: Дата окончания срока рассмотрения первых частей заявок участников
@@ -8590,8 +8590,8 @@ type IndicatorsScoringInfo1 struct {
 	IndicatorScoringInfo []ScoringType `xml:",any"`
 }
 
-// CommonInfo18: Общая информация
-type CommonInfo18 struct {
+// CommonInfo29: Общая информация
+type CommonInfo29 struct {
 	XMLName xml.Name `xml:"commonInfo"`
 
 	// PurchaseNumber: Номер закупки. При приёме контролируется наличие неотменённой закупки с указанным номером
@@ -8607,32 +8607,32 @@ type CommonInfo18 struct {
 	Topic base.Text2000Type `xml:"topic"`
 }
 
-// PrintFormFieldsInfoNotificationInfoCommonInfo2: Общая информация
-type PrintFormFieldsInfoNotificationInfoCommonInfo2 struct {
+// CommonInfo30: Общая информация
+type CommonInfo30 struct {
 	XMLName xml.Name `xml:"commonInfo,omitempty"`
 
 	// DocType: Тип документа
 	DocType *cmn.DocType `xml:",any,omitempty"`
 }
 
-// PrintFormFieldsInfoNotificationInfo4: Информация из извещения
-type PrintFormFieldsInfoNotificationInfo4 struct {
+// NotificationInfo19: Информация из извещения
+type NotificationInfo19 struct {
 	XMLName xml.Name `xml:"notificationInfo,omitempty"`
 
-	// PrintFormFieldsInfoNotificationInfoCommonInfo: Общая информация
-	CommonInfo *PrintFormFieldsInfoNotificationInfoCommonInfo `xml:",any,omitempty"`
+	// CommonInfo30: Общая информация
+	CommonInfo *CommonInfo30 `xml:",any,omitempty"`
 }
 
 // PrintFormFieldsInfo32: Дополнительная информация для печатной формы. Игнорируется при приёме, заполняется при передаче
 type PrintFormFieldsInfo32 struct {
 	XMLName xml.Name `xml:"printFormFieldsInfo,omitempty"`
 
-	// PrintFormFieldsInfoNotificationInfo: Информация из извещения
-	NotificationInfo *PrintFormFieldsInfoNotificationInfo `xml:",any,omitempty"`
+	// NotificationInfo19: Информация из извещения
+	NotificationInfo *NotificationInfo19 `xml:",any,omitempty"`
 }
 
-// CommonInfo19: Общая информация
-type CommonInfo19 struct {
+// CommonInfo31: Общая информация
+type CommonInfo31 struct {
 	XMLName xml.Name `xml:"commonInfo"`
 
 	// PurchaseNumber: Реестровый номер закупки. При приёме контролируется наличие неотменённой закупки с указанным номером
@@ -8651,8 +8651,8 @@ type CommonInfo19 struct {
 	Href *base.HrefType `xml:"href,omitempty"`
 }
 
-// RequestInfo2: Информация о запросе на разъяснение
-type RequestInfo2 struct {
+// RequestInfo4: Информация о запросе на разъяснение
+type RequestInfo4 struct {
 	XMLName xml.Name `xml:"requestInfo,omitempty"`
 
 	// RequestNumber: Номер запроса на разъяснение
@@ -8665,8 +8665,8 @@ type RequestInfo2 struct {
 	Question base.Text2000Type `xml:"question"`
 }
 
-// PrintFormFieldsInfoNotificationInfoCommonInfo3: Общая информация
-type PrintFormFieldsInfoNotificationInfoCommonInfo3 struct {
+// CommonInfo32: Общая информация
+type CommonInfo32 struct {
 	XMLName xml.Name `xml:"commonInfo,omitempty"`
 
 	// PurchaseObjectInfo: Наименование объекта закупки
@@ -8682,8 +8682,8 @@ type PrintFormFieldsInfoNotificationInfoCommonInfo3 struct {
 	DocType *cmn.DocType `xml:"docType,omitempty"`
 }
 
-// PrintFormFieldsInfoNotificationInfoPurchaseResponsibleInfo1: Информация об организации, осуществляющей размещение
-type PrintFormFieldsInfoNotificationInfoPurchaseResponsibleInfo1 struct {
+// PurchaseResponsibleInfo23: Информация об организации, осуществляющей размещение
+type PurchaseResponsibleInfo23 struct {
 	XMLName xml.Name `xml:"purchaseResponsibleInfo,omitempty"`
 
 	// ResponsibleRole: Роль организации, осуществляющей закупку: CU - Заказчик; OCU - Заказчик в качестве организатора совместного аукциона; RA - Уполномоченный орган; ORA- Уполномоченный орган в качестве организатора совместного конкурса (аукциона) согласно ст. 25 №44ФЗ; AI - Уполномоченное учреждение; OAI- Уполномоченное учреждение в качестве организатора совместного конкурса (аукциона) согласно ст. 25 №44ФЗ; OA - Организация, осуществляющая полномочия заказчика на основании соглашения в соответствии с частью 6 статьи 15 Федерального закона № 44-ФЗ; OOA- Организация, осуществляющая полномочия заказчика на осуществление закупок на основании договора (соглашения) в качестве организатора совместного конкурса (аукциона) согласно ст. 25 №44ФЗ; CS - Организация, осуществляющая закупки в соответствии с частью 5 статьи 15 Федерального закона № 44-ФЗ; OCS - Заказчик, осуществляющий закупки в соответствии с частью 5 статьи 15 Федерального закона № 44-ФЗ, в качестве организатора совместного конкурса (аукциона) согласно ст. 25 №44ФЗ; CC - Заказчик по Федеральному закону 223-ФЗ, осуществляющий закупки в соответствии с Федеральным законом № 44-ФЗ, в случаях, предусмотренных Федеральным законом № 223-ФЗ; OCC - Заказчик, осуществляющий закупки в соответствии с Федеральным законом № 44-ФЗ, в связи с неразмещением положения о закупке в соответствии с положениями Федерального закона № 223-ФЗ, в качестве организатора совместного конкурса (аукциона) согласно ст. 25 №44ФЗ; AU - Юридическое лицо, осуществляющее закупку в соответствии с частью 4 статьи 5 Федерального закона от 30.12.2008 № 307-ФЗ «Об аудиторской деятельности»; OAU - Заказчик, осуществляющий закупку на проведение обязательного аудита (код AU), в качестве организатора совместного конкурса (аукциона) согласно ст. 25 №44ФЗ; RO - Специализированная некоммерческая организация, которая осуществляет деятельность, направленную на обеспечение проведения капитального ремонта общего имущества в многоквартирных домах в соответствии с Постановлением № 615 (региональный оператор); CN - Организация, осуществляющая закупки в соответствии с частью 4.1 или 4.3 статьи 15 Федерального закона N 44-ФЗ; OCN - Заказчик, осуществляющий закупки в соответствии с частью 4.1 статьи 15 Федерального закона № 44-ФЗ в качестве организатора совместного конкурса (аукциона) согласно ст. 25 №44ФЗ; CU5CH26 - Заказчик как орган исполнительной власти по ч.5 ст.26 Закона № 44-ФЗ.
@@ -8692,23 +8692,23 @@ type PrintFormFieldsInfoNotificationInfoPurchaseResponsibleInfo1 struct {
 	base.OrganizationRef
 }
 
-// PrintFormFieldsInfoNotificationInfo5: Информация из извещения
-type PrintFormFieldsInfoNotificationInfo5 struct {
+// NotificationInfo20: Информация из извещения
+type NotificationInfo20 struct {
 	XMLName xml.Name `xml:"notificationInfo,omitempty"`
 
-	// PrintFormFieldsInfoNotificationInfoCommonInfo: Общая информация
-	CommonInfo *PrintFormFieldsInfoNotificationInfoCommonInfo `xml:"commonInfo,omitempty"`
+	// CommonInfo32: Общая информация
+	CommonInfo *CommonInfo32 `xml:"commonInfo,omitempty"`
 
-	// PrintFormFieldsInfoNotificationInfoPurchaseResponsibleInfo: Информация об организации, осуществляющей размещение
-	PurchaseResponsibleInfo *PrintFormFieldsInfoNotificationInfoPurchaseResponsibleInfo `xml:"purchaseResponsibleInfo,omitempty"`
+	// PurchaseResponsibleInfo23: Информация об организации, осуществляющей размещение
+	PurchaseResponsibleInfo *PurchaseResponsibleInfo23 `xml:"purchaseResponsibleInfo,omitempty"`
 }
 
 // PrintFormFieldsInfo33: Дополнительная информация для печатной формы. Игнорируется при приёме, заполняется при передаче
 type PrintFormFieldsInfo33 struct {
 	XMLName xml.Name `xml:"printFormFieldsInfo,omitempty"`
 
-	// PrintFormFieldsInfoNotificationInfo: Информация из извещения
-	NotificationInfo *PrintFormFieldsInfoNotificationInfo `xml:",any,omitempty"`
+	// NotificationInfo20: Информация из извещения
+	NotificationInfo *NotificationInfo20 `xml:",any,omitempty"`
 }
 
 // AdmissionResultInfo: Результат допуска заявки
@@ -9095,8 +9095,8 @@ type ContractExecutionPaymentPlanFinancingSourcesInfo struct {
 	FinanceInfo FinanceResourcesType `xml:"financeInfo"`
 }
 
-// ContractExecutionPaymentPlanNonbudgetFinancings: План оплаты исполнения контракта за счет внебюджетных средств. Принимается только для следующих организаций: • СПЗ организации = 09950000002 (ГОСУДАРСТВЕННАЯ КОРПОРАЦИЯ ПО КОСМИЧЕСКОЙ ДЕЯТЕЛЬНОСТИ "РОСКОСМОС"); • СПЗ организации = 07731000003 (ГОСУДАРСТВЕННАЯ КОРПОРАЦИЯ ПО АТОМНОЙ ЭНЕРГИИ "РОСАТОМ")
-type ContractExecutionPaymentPlanNonbudgetFinancings struct {
+// NonbudgetFinancings1: План оплаты исполнения контракта за счет внебюджетных средств. Принимается только для следующих организаций: • СПЗ организации = 09950000002 (ГОСУДАРСТВЕННАЯ КОРПОРАЦИЯ ПО КОСМИЧЕСКОЙ ДЕЯТЕЛЬНОСТИ "РОСКОСМОС"); • СПЗ организации = 07731000003 (ГОСУДАРСТВЕННАЯ КОРПОРАЦИЯ ПО АТОМНОЙ ЭНЕРГИИ "РОСАТОМ")
+type NonbudgetFinancings1 struct {
 	XMLName xml.Name `xml:"nonbudgetFinancings,omitempty"`
 
 	// CurrentYear: Текущий плановый год
@@ -9116,8 +9116,8 @@ type ContractConditionsInfoContractExecutionPaymentPlan struct {
 	// BudgetFinancings: План оплаты исполнения контракта. Если извещение сформировано на основании позиции плана-графика с 01.01.2020, то контролируется, что указанные КБК присутствуют в позиции ПГ. Не допускается указание нулевого КБК (000000000000000000000). Такой КБК должен быть детализирован
 	BudgetFinancings *BobudgetFinancingsType `xml:"budgetFinancings,omitempty"`
 
-	// ContractExecutionPaymentPlanNonbudgetFinancings: План оплаты исполнения контракта за счет внебюджетных средств. Принимается только для следующих организаций: • СПЗ организации = 09950000002 (ГОСУДАРСТВЕННАЯ КОРПОРАЦИЯ ПО КОСМИЧЕСКОЙ ДЕЯТЕЛЬНОСТИ "РОСКОСМОС"); • СПЗ организации = 07731000003 (ГОСУДАРСТВЕННАЯ КОРПОРАЦИЯ ПО АТОМНОЙ ЭНЕРГИИ "РОСАТОМ")
-	NonbudgetFinancings *ContractExecutionPaymentPlanNonbudgetFinancings `xml:"nonbudgetFinancings,omitempty"`
+	// NonbudgetFinancings1: План оплаты исполнения контракта за счет внебюджетных средств. Принимается только для следующих организаций: • СПЗ организации = 09950000002 (ГОСУДАРСТВЕННАЯ КОРПОРАЦИЯ ПО КОСМИЧЕСКОЙ ДЕЯТЕЛЬНОСТИ "РОСКОСМОС"); • СПЗ организации = 07731000003 (ГОСУДАРСТВЕННАЯ КОРПОРАЦИЯ ПО АТОМНОЙ ЭНЕРГИИ "РОСАТОМ")
+	NonbudgetFinancings *NonbudgetFinancings1 `xml:"nonbudgetFinancings,omitempty"`
 
 	// KvrsInfo: Детализации по КВР. Принимается, только при наличии блока "Сведения о связи с позицией плана-графика закупок с 01.01.2020" (contractConditionsInfo/tenderPlan2020Info), иначе игнорируется при приеме. Применимо только для извещений, размещаемых начиная с верисии 10.2
 	KvrsInfo *cmn.KvrfinancingsType `xml:"KVRsInfo,omitempty"`
@@ -9223,8 +9223,8 @@ type ContractConditionsInfoIkzinfo1 struct {
 	PurchaseOrderNumber base.TenderPlan2020PurchaseOrderNumberType `xml:"purchaseOrderNumber"`
 }
 
-// ContractExecutionPaymentPlanNonbudgetFinancings1: План оплаты исполнения контракта за счет внебюджетных средств. Принимается только для следующих организаций: • СПЗ организации = 09950000002 (ГОСУДАРСТВЕННАЯ КОРПОРАЦИЯ ПО КОСМИЧЕСКОЙ ДЕЯТЕЛЬНОСТИ "РОСКОСМОС"); • СПЗ организации = 07731000003 (ГОСУДАРСТВЕННАЯ КОРПОРАЦИЯ ПО АТОМНОЙ ЭНЕРГИИ "РОСАТОМ"). Для извещений, первая версия которых размещается/размещена после выхода версии ЕИС 12.2, игнорируется при приеме
-type ContractExecutionPaymentPlanNonbudgetFinancings1 struct {
+// NonbudgetFinancings2: План оплаты исполнения контракта за счет внебюджетных средств. Принимается только для следующих организаций: • СПЗ организации = 09950000002 (ГОСУДАРСТВЕННАЯ КОРПОРАЦИЯ ПО КОСМИЧЕСКОЙ ДЕЯТЕЛЬНОСТИ "РОСКОСМОС"); • СПЗ организации = 07731000003 (ГОСУДАРСТВЕННАЯ КОРПОРАЦИЯ ПО АТОМНОЙ ЭНЕРГИИ "РОСАТОМ"). Для извещений, первая версия которых размещается/размещена после выхода версии ЕИС 12.2, игнорируется при приеме
+type NonbudgetFinancings2 struct {
 	XMLName xml.Name `xml:"nonbudgetFinancings,omitempty"`
 
 	// CurrentYear: Текущий плановый год. Может принимать значение только текущего года
@@ -9250,8 +9250,8 @@ type ContractConditionsInfoContractExecutionPaymentPlan1 struct {
 	// BudgetFinancings: Блок «План оплаты исполнения контракта». Если извещение сформировано на основании позиции плана-графика с 01.01.2020, то контролируется, что указанные КБК присутствуют в позиции ПГ. Не допускается указание нулевого КБК (000000000000000000000). Такой КБК должен быть детализирован. Для извещений, первая версия которых размещается/размещена после выхода версии ЕИС 12.2, игнорируется при приеме
 	BudgetFinancings *BobudgetFinancingsType `xml:"budgetFinancings,omitempty"`
 
-	// ContractExecutionPaymentPlanNonbudgetFinancings: План оплаты исполнения контракта за счет внебюджетных средств. Принимается только для следующих организаций: • СПЗ организации = 09950000002 (ГОСУДАРСТВЕННАЯ КОРПОРАЦИЯ ПО КОСМИЧЕСКОЙ ДЕЯТЕЛЬНОСТИ "РОСКОСМОС"); • СПЗ организации = 07731000003 (ГОСУДАРСТВЕННАЯ КОРПОРАЦИЯ ПО АТОМНОЙ ЭНЕРГИИ "РОСАТОМ"). Для извещений, первая версия которых размещается/размещена после выхода версии ЕИС 12.2, игнорируется при приеме
-	NonbudgetFinancings *ContractExecutionPaymentPlanNonbudgetFinancings `xml:"nonbudgetFinancings,omitempty"`
+	// NonbudgetFinancings2: План оплаты исполнения контракта за счет внебюджетных средств. Принимается только для следующих организаций: • СПЗ организации = 09950000002 (ГОСУДАРСТВЕННАЯ КОРПОРАЦИЯ ПО КОСМИЧЕСКОЙ ДЕЯТЕЛЬНОСТИ "РОСКОСМОС"); • СПЗ организации = 07731000003 (ГОСУДАРСТВЕННАЯ КОРПОРАЦИЯ ПО АТОМНОЙ ЭНЕРГИИ "РОСАТОМ"). Для извещений, первая версия которых размещается/размещена после выхода версии ЕИС 12.2, игнорируется при приеме
+	NonbudgetFinancings *NonbudgetFinancings2 `xml:"nonbudgetFinancings,omitempty"`
 
 	// KvrsInfo: Детализации по КВР. Принимается, только при наличии блока "Сведения о связи с позицией плана-графика закупок с 01.01.2020" (contractConditionsInfo/tenderPlan2020Info), иначе игнорируется при приеме. Для извещений, первая версия которых размещается/размещена после выхода версии ЕИС 12.2, игнорируется при приеме
 	KvrsInfo *cmn.KvrfinancingsType `xml:"KVRsInfo,omitempty"`
@@ -9363,8 +9363,8 @@ type ContractConditionsInfoIkzinfo2 struct {
 	PurchaseOrderNumber base.TenderPlan2020PurchaseOrderNumberType `xml:"purchaseOrderNumber"`
 }
 
-// ContractExecutionPaymentPlanNonbudgetFinancings2: План оплаты исполнения контракта за счет внебюджетных средств. Принимается только для следующих организаций: • СПЗ организации = 09950000002 (ГОСУДАРСТВЕННАЯ КОРПОРАЦИЯ ПО КОСМИЧЕСКОЙ ДЕЯТЕЛЬНОСТИ "РОСКОСМОС"); • СПЗ организации = 07731000003 (ГОСУДАРСТВЕННАЯ КОРПОРАЦИЯ ПО АТОМНОЙ ЭНЕРГИИ "РОСАТОМ"). Для извещений, первая версия которых размещается/размещена после выхода версии ЕИС 12.2, игнорируется при приеме
-type ContractExecutionPaymentPlanNonbudgetFinancings2 struct {
+// NonbudgetFinancings3: План оплаты исполнения контракта за счет внебюджетных средств. Принимается только для следующих организаций: • СПЗ организации = 09950000002 (ГОСУДАРСТВЕННАЯ КОРПОРАЦИЯ ПО КОСМИЧЕСКОЙ ДЕЯТЕЛЬНОСТИ "РОСКОСМОС"); • СПЗ организации = 07731000003 (ГОСУДАРСТВЕННАЯ КОРПОРАЦИЯ ПО АТОМНОЙ ЭНЕРГИИ "РОСАТОМ"). Для извещений, первая версия которых размещается/размещена после выхода версии ЕИС 12.2, игнорируется при приеме
+type NonbudgetFinancings3 struct {
 	XMLName xml.Name `xml:"nonbudgetFinancings,omitempty"`
 
 	// CurrentYear: Текущий плановый год. Может принимать значение только текущего года
@@ -9390,8 +9390,8 @@ type ContractConditionsInfoContractExecutionPaymentPlan2 struct {
 	// BudgetFinancings: Блок "План оплаты исполнения контракта". Если извещение сформировано на основании позиции плана-графика с 01.01.2020, то контролируется, что указанные КБК присутствуют в позиции ПГ. Не допускается указание нулевого КБК (000000000000000000000). Такой КБК должен быть детализирован. Для извещений, первая версия которых размещается/размещена после выхода версии ЕИС 12.2, игнорируется при приеме
 	BudgetFinancings *BobudgetFinancingsType `xml:"budgetFinancings,omitempty"`
 
-	// ContractExecutionPaymentPlanNonbudgetFinancings: План оплаты исполнения контракта за счет внебюджетных средств. Принимается только для следующих организаций: • СПЗ организации = 09950000002 (ГОСУДАРСТВЕННАЯ КОРПОРАЦИЯ ПО КОСМИЧЕСКОЙ ДЕЯТЕЛЬНОСТИ "РОСКОСМОС"); • СПЗ организации = 07731000003 (ГОСУДАРСТВЕННАЯ КОРПОРАЦИЯ ПО АТОМНОЙ ЭНЕРГИИ "РОСАТОМ"). Для извещений, первая версия которых размещается/размещена после выхода версии ЕИС 12.2, игнорируется при приеме
-	NonbudgetFinancings *ContractExecutionPaymentPlanNonbudgetFinancings `xml:"nonbudgetFinancings,omitempty"`
+	// NonbudgetFinancings3: План оплаты исполнения контракта за счет внебюджетных средств. Принимается только для следующих организаций: • СПЗ организации = 09950000002 (ГОСУДАРСТВЕННАЯ КОРПОРАЦИЯ ПО КОСМИЧЕСКОЙ ДЕЯТЕЛЬНОСТИ "РОСКОСМОС"); • СПЗ организации = 07731000003 (ГОСУДАРСТВЕННАЯ КОРПОРАЦИЯ ПО АТОМНОЙ ЭНЕРГИИ "РОСАТОМ"). Для извещений, первая версия которых размещается/размещена после выхода версии ЕИС 12.2, игнорируется при приеме
+	NonbudgetFinancings *NonbudgetFinancings3 `xml:"nonbudgetFinancings,omitempty"`
 
 	// KvrsInfo: Детализации по КВР. Принимается, только при наличии блока "Сведения о связи с позицией плана-графика закупок с 01.01.2020" (contractConditionsInfo/tenderPlan2020Info), иначе игнорируется при приеме. Для извещений, первая версия которых размещается/размещена после выхода версии ЕИС 12.2, игнорируется при приеме
 	KvrsInfo *cmn.KvrfinancingsType `xml:"KVRsInfo,omitempty"`
@@ -9503,8 +9503,8 @@ type ContractConditionsInfoIkzinfo3 struct {
 	PurchaseOrderNumber base.TenderPlan2020PurchaseOrderNumberType `xml:"purchaseOrderNumber"`
 }
 
-// ContractExecutionPaymentPlanNonbudgetFinancings3: План оплаты исполнения контракта за счет внебюджетных средств. Принимается только для следующих организаций: • СПЗ организации = 09950000002 (ГОСУДАРСТВЕННАЯ КОРПОРАЦИЯ ПО КОСМИЧЕСКОЙ ДЕЯТЕЛЬНОСТИ "РОСКОСМОС"); • СПЗ организации = 07731000003 (ГОСУДАРСТВЕННАЯ КОРПОРАЦИЯ ПО АТОМНОЙ ЭНЕРГИИ "РОСАТОМ"). Для извещений, первая версия которых размещается/размещена после выхода версии ЕИС 12.2, игнорируется при приеме
-type ContractExecutionPaymentPlanNonbudgetFinancings3 struct {
+// NonbudgetFinancings4: План оплаты исполнения контракта за счет внебюджетных средств. Принимается только для следующих организаций: • СПЗ организации = 09950000002 (ГОСУДАРСТВЕННАЯ КОРПОРАЦИЯ ПО КОСМИЧЕСКОЙ ДЕЯТЕЛЬНОСТИ "РОСКОСМОС"); • СПЗ организации = 07731000003 (ГОСУДАРСТВЕННАЯ КОРПОРАЦИЯ ПО АТОМНОЙ ЭНЕРГИИ "РОСАТОМ"). Для извещений, первая версия которых размещается/размещена после выхода версии ЕИС 12.2, игнорируется при приеме
+type NonbudgetFinancings4 struct {
 	XMLName xml.Name `xml:"nonbudgetFinancings,omitempty"`
 
 	// CurrentYear: Текущий плановый год. Может принимать значение только текущего года
@@ -9530,8 +9530,8 @@ type ContractConditionsInfoContractExecutionPaymentPlan3 struct {
 	// BudgetFinancings: Блок «План оплаты исполнения контракта». Если извещение сформировано на основании позиции плана-графика с 01.01.2020, то контролируется, что указанные КБК присутствуют в позиции ПГ. Не допускается указание нулевого КБК (000000000000000000000). Такой КБК должен быть детализирован. Для извещений, первая версия которых размещается/размещена после выхода версии ЕИС 12.2, игнорируется при приеме
 	BudgetFinancings *BobudgetFinancingsType `xml:"budgetFinancings,omitempty"`
 
-	// ContractExecutionPaymentPlanNonbudgetFinancings: План оплаты исполнения контракта за счет внебюджетных средств. Принимается только для следующих организаций: • СПЗ организации = 09950000002 (ГОСУДАРСТВЕННАЯ КОРПОРАЦИЯ ПО КОСМИЧЕСКОЙ ДЕЯТЕЛЬНОСТИ "РОСКОСМОС"); • СПЗ организации = 07731000003 (ГОСУДАРСТВЕННАЯ КОРПОРАЦИЯ ПО АТОМНОЙ ЭНЕРГИИ "РОСАТОМ"). Для извещений, первая версия которых размещается/размещена после выхода версии ЕИС 12.2, игнорируется при приеме
-	NonbudgetFinancings *ContractExecutionPaymentPlanNonbudgetFinancings `xml:"nonbudgetFinancings,omitempty"`
+	// NonbudgetFinancings4: План оплаты исполнения контракта за счет внебюджетных средств. Принимается только для следующих организаций: • СПЗ организации = 09950000002 (ГОСУДАРСТВЕННАЯ КОРПОРАЦИЯ ПО КОСМИЧЕСКОЙ ДЕЯТЕЛЬНОСТИ "РОСКОСМОС"); • СПЗ организации = 07731000003 (ГОСУДАРСТВЕННАЯ КОРПОРАЦИЯ ПО АТОМНОЙ ЭНЕРГИИ "РОСАТОМ"). Для извещений, первая версия которых размещается/размещена после выхода версии ЕИС 12.2, игнорируется при приеме
+	NonbudgetFinancings *NonbudgetFinancings4 `xml:"nonbudgetFinancings,omitempty"`
 
 	// KvrsInfo: Детализации по КВР. Принимается, только при наличии блока "Сведения о связи с позицией плана-графика закупок с 01.01.2020" (contractConditionsInfo/tenderPlan2020Info), иначе игнорируется при приеме. Для извещений, первая версия которых размещается/размещена после выхода версии ЕИС 12.2, игнорируется при приеме
 	KvrsInfo *cmn.KvrfinancingsType `xml:"KVRsInfo,omitempty"`
@@ -9631,8 +9631,8 @@ type ContractConditionsInfoIkzinfo4 struct {
 	PurchaseOrderNumber base.TenderPlan2020PurchaseOrderNumberType `xml:"purchaseOrderNumber"`
 }
 
-// ContractExecutionPaymentPlanNonbudgetFinancings4: План оплаты исполнения контракта за счет внебюджетных средств. Принимается только для следующих организаций: • СПЗ организации = 09950000002 (ГОСУДАРСТВЕННАЯ КОРПОРАЦИЯ ПО КОСМИЧЕСКОЙ ДЕЯТЕЛЬНОСТИ "РОСКОСМОС"); • СПЗ организации = 07731000003 (ГОСУДАРСТВЕННАЯ КОРПОРАЦИЯ ПО АТОМНОЙ ЭНЕРГИИ "РОСАТОМ"). Для извещений, первая версия которых размещается/размещена после выхода версии ЕИС 12.2, игнорируется при приеме
-type ContractExecutionPaymentPlanNonbudgetFinancings4 struct {
+// NonbudgetFinancings5: План оплаты исполнения контракта за счет внебюджетных средств. Принимается только для следующих организаций: • СПЗ организации = 09950000002 (ГОСУДАРСТВЕННАЯ КОРПОРАЦИЯ ПО КОСМИЧЕСКОЙ ДЕЯТЕЛЬНОСТИ "РОСКОСМОС"); • СПЗ организации = 07731000003 (ГОСУДАРСТВЕННАЯ КОРПОРАЦИЯ ПО АТОМНОЙ ЭНЕРГИИ "РОСАТОМ"). Для извещений, первая версия которых размещается/размещена после выхода версии ЕИС 12.2, игнорируется при приеме
+type NonbudgetFinancings5 struct {
 	XMLName xml.Name `xml:"nonbudgetFinancings,omitempty"`
 
 	// CurrentYear: Текущий плановый год. Может принимать значение только текущего года
@@ -9658,8 +9658,8 @@ type ContractConditionsInfoContractExecutionPaymentPlan4 struct {
 	// BudgetFinancings: Блок «План оплаты исполнения контракта». Если извещение сформировано на основании позиции плана-графика с 01.01.2020, то контролируется, что указанные КБК присутствуют в позиции ПГ. Не допускается указание нулевого КБК (000000000000000000000). Такой КБК должен быть детализирован. Для извещений, первая версия которых размещается/размещена после выхода версии ЕИС 12.2, игнорируется при приеме
 	BudgetFinancings *BobudgetFinancingsType `xml:"budgetFinancings,omitempty"`
 
-	// ContractExecutionPaymentPlanNonbudgetFinancings: План оплаты исполнения контракта за счет внебюджетных средств. Принимается только для следующих организаций: • СПЗ организации = 09950000002 (ГОСУДАРСТВЕННАЯ КОРПОРАЦИЯ ПО КОСМИЧЕСКОЙ ДЕЯТЕЛЬНОСТИ "РОСКОСМОС"); • СПЗ организации = 07731000003 (ГОСУДАРСТВЕННАЯ КОРПОРАЦИЯ ПО АТОМНОЙ ЭНЕРГИИ "РОСАТОМ"). Для извещений, первая версия которых размещается/размещена после выхода версии ЕИС 12.2, игнорируется при приеме
-	NonbudgetFinancings *ContractExecutionPaymentPlanNonbudgetFinancings `xml:"nonbudgetFinancings,omitempty"`
+	// NonbudgetFinancings5: План оплаты исполнения контракта за счет внебюджетных средств. Принимается только для следующих организаций: • СПЗ организации = 09950000002 (ГОСУДАРСТВЕННАЯ КОРПОРАЦИЯ ПО КОСМИЧЕСКОЙ ДЕЯТЕЛЬНОСТИ "РОСКОСМОС"); • СПЗ организации = 07731000003 (ГОСУДАРСТВЕННАЯ КОРПОРАЦИЯ ПО АТОМНОЙ ЭНЕРГИИ "РОСАТОМ"). Для извещений, первая версия которых размещается/размещена после выхода версии ЕИС 12.2, игнорируется при приеме
+	NonbudgetFinancings *NonbudgetFinancings5 `xml:"nonbudgetFinancings,omitempty"`
 
 	// KvrsInfo: Детализации по КВР. Принимается, только при наличии блока "Сведения о связи с позицией плана-графика закупок с 01.01.2020" (contractConditionsInfo/tenderPlan2020Info), иначе игнорируется при приеме. Для извещений, первая версия которых размещается/размещена после выхода версии ЕИС 12.2, игнорируется при приеме
 	KvrsInfo *cmn.KvrfinancingsType `xml:"KVRsInfo,omitempty"`
@@ -9759,8 +9759,8 @@ type ContractExecutionPaymentPlanFinancingSourcesInfo1 struct {
 	FinanceInfo FinanceResourcesType `xml:"financeInfo"`
 }
 
-// ContractExecutionPaymentPlanNonbudgetFinancings5: План оплаты исполнения контракта за счет внебюджетных средств. Принимается только для следующих организаций: • СПЗ организации = 09950000002 (ГОСУДАРСТВЕННАЯ КОРПОРАЦИЯ ПО КОСМИЧЕСКОЙ ДЕЯТЕЛЬНОСТИ "РОСКОСМОС"); • СПЗ организации = 07731000003 (ГОСУДАРСТВЕННАЯ КОРПОРАЦИЯ ПО АТОМНОЙ ЭНЕРГИИ "РОСАТОМ")
-type ContractExecutionPaymentPlanNonbudgetFinancings5 struct {
+// NonbudgetFinancings6: План оплаты исполнения контракта за счет внебюджетных средств. Принимается только для следующих организаций: • СПЗ организации = 09950000002 (ГОСУДАРСТВЕННАЯ КОРПОРАЦИЯ ПО КОСМИЧЕСКОЙ ДЕЯТЕЛЬНОСТИ "РОСКОСМОС"); • СПЗ организации = 07731000003 (ГОСУДАРСТВЕННАЯ КОРПОРАЦИЯ ПО АТОМНОЙ ЭНЕРГИИ "РОСАТОМ")
+type NonbudgetFinancings6 struct {
 	XMLName xml.Name `xml:"nonbudgetFinancings,omitempty"`
 
 	// CurrentYear: Текущий плановый год. Может принимать значение только текущего года
@@ -9780,8 +9780,8 @@ type ContractConditionsInfoContractExecutionPaymentPlan5 struct {
 	// BudgetFinancings: Блок «План оплаты исполнения контракта». Если извещение сформировано на основании позиции плана-графика с 01.01.2020, то контролируется, что указанные КБК присутствуют в позиции ПГ. Не допускается указание нулевого КБК (000000000000000000000). Такой КБК должен быть детализирован
 	BudgetFinancings *BobudgetFinancingsType `xml:"budgetFinancings,omitempty"`
 
-	// ContractExecutionPaymentPlanNonbudgetFinancings: План оплаты исполнения контракта за счет внебюджетных средств. Принимается только для следующих организаций: • СПЗ организации = 09950000002 (ГОСУДАРСТВЕННАЯ КОРПОРАЦИЯ ПО КОСМИЧЕСКОЙ ДЕЯТЕЛЬНОСТИ "РОСКОСМОС"); • СПЗ организации = 07731000003 (ГОСУДАРСТВЕННАЯ КОРПОРАЦИЯ ПО АТОМНОЙ ЭНЕРГИИ "РОСАТОМ")
-	NonbudgetFinancings *ContractExecutionPaymentPlanNonbudgetFinancings `xml:"nonbudgetFinancings,omitempty"`
+	// NonbudgetFinancings6: План оплаты исполнения контракта за счет внебюджетных средств. Принимается только для следующих организаций: • СПЗ организации = 09950000002 (ГОСУДАРСТВЕННАЯ КОРПОРАЦИЯ ПО КОСМИЧЕСКОЙ ДЕЯТЕЛЬНОСТИ "РОСКОСМОС"); • СПЗ организации = 07731000003 (ГОСУДАРСТВЕННАЯ КОРПОРАЦИЯ ПО АТОМНОЙ ЭНЕРГИИ "РОСАТОМ")
+	NonbudgetFinancings *NonbudgetFinancings6 `xml:"nonbudgetFinancings,omitempty"`
 
 	// KvrsInfo: Детализации по КВР. Принимается, только при наличии блока "Сведения о связи с позицией плана-графика закупок с 01.01.2020" (contractConditionsInfo/tenderPlan2020Info), иначе игнорируется при приеме. Применимо только для извещений, размещаемых начиная с верисии 10.2
 	KvrsInfo *cmn.KvrfinancingsType `xml:"KVRsInfo,omitempty"`
@@ -9881,8 +9881,8 @@ type ContractConditionsInfoIkzinfo6 struct {
 	PurchaseOrderNumber base.TenderPlan2020PurchaseOrderNumberType `xml:"purchaseOrderNumber"`
 }
 
-// ContractExecutionPaymentPlanNonbudgetFinancings6: План оплаты исполнения контракта за счет внебюджетных средств. Принимается только для следующих организаций: • СПЗ организации = 09950000002 (ГОСУДАРСТВЕННАЯ КОРПОРАЦИЯ ПО КОСМИЧЕСКОЙ ДЕЯТЕЛЬНОСТИ "РОСКОСМОС"); • СПЗ организации = 07731000003 (ГОСУДАРСТВЕННАЯ КОРПОРАЦИЯ ПО АТОМНОЙ ЭНЕРГИИ "РОСАТОМ"). Для извещений, первая версия которых размещается/размещена после выхода версии ЕИС 12.2, игнорируется при приеме
-type ContractExecutionPaymentPlanNonbudgetFinancings6 struct {
+// NonbudgetFinancings7: План оплаты исполнения контракта за счет внебюджетных средств. Принимается только для следующих организаций: • СПЗ организации = 09950000002 (ГОСУДАРСТВЕННАЯ КОРПОРАЦИЯ ПО КОСМИЧЕСКОЙ ДЕЯТЕЛЬНОСТИ "РОСКОСМОС"); • СПЗ организации = 07731000003 (ГОСУДАРСТВЕННАЯ КОРПОРАЦИЯ ПО АТОМНОЙ ЭНЕРГИИ "РОСАТОМ"). Для извещений, первая версия которых размещается/размещена после выхода версии ЕИС 12.2, игнорируется при приеме
+type NonbudgetFinancings7 struct {
 	XMLName xml.Name `xml:"nonbudgetFinancings,omitempty"`
 
 	// CurrentYear: Текущий плановый год. Может принимать значение только текущего года
@@ -9908,8 +9908,8 @@ type ContractConditionsInfoContractExecutionPaymentPlan6 struct {
 	// BudgetFinancings: План оплаты исполнения контракта за счет бюджетных средств. Если извещение сформировано на основании позиции плана-графика с 01.01.2020, то контролируется, что указанные КБК присутствуют в позиции ПГ. Не допускается указание нулевого КБК (000000000000000000000). Такой КБК должен быть детализирован. Для извещений, первая версия которых размещается/размещена после выхода версии ЕИС 12.2, игнорируется при приеме
 	BudgetFinancings *BobudgetFinancingsType `xml:"budgetFinancings,omitempty"`
 
-	// ContractExecutionPaymentPlanNonbudgetFinancings: План оплаты исполнения контракта за счет внебюджетных средств. Принимается только для следующих организаций: • СПЗ организации = 09950000002 (ГОСУДАРСТВЕННАЯ КОРПОРАЦИЯ ПО КОСМИЧЕСКОЙ ДЕЯТЕЛЬНОСТИ "РОСКОСМОС"); • СПЗ организации = 07731000003 (ГОСУДАРСТВЕННАЯ КОРПОРАЦИЯ ПО АТОМНОЙ ЭНЕРГИИ "РОСАТОМ"). Для извещений, первая версия которых размещается/размещена после выхода версии ЕИС 12.2, игнорируется при приеме
-	NonbudgetFinancings *ContractExecutionPaymentPlanNonbudgetFinancings `xml:"nonbudgetFinancings,omitempty"`
+	// NonbudgetFinancings7: План оплаты исполнения контракта за счет внебюджетных средств. Принимается только для следующих организаций: • СПЗ организации = 09950000002 (ГОСУДАРСТВЕННАЯ КОРПОРАЦИЯ ПО КОСМИЧЕСКОЙ ДЕЯТЕЛЬНОСТИ "РОСКОСМОС"); • СПЗ организации = 07731000003 (ГОСУДАРСТВЕННАЯ КОРПОРАЦИЯ ПО АТОМНОЙ ЭНЕРГИИ "РОСАТОМ"). Для извещений, первая версия которых размещается/размещена после выхода версии ЕИС 12.2, игнорируется при приеме
+	NonbudgetFinancings *NonbudgetFinancings7 `xml:"nonbudgetFinancings,omitempty"`
 
 	// KvrsInfo: Детализации по КВР. Принимается, только при наличии блока "Сведения о связи с позицией плана-графика закупок с 01.01.2020" (contractConditionsInfo/tenderPlan2020Info), иначе игнорируется при приеме. Для извещений, первая версия которых размещается/размещена после выхода версии ЕИС 12.2, игнорируется при приеме
 	KvrsInfo *cmn.KvrfinancingsType `xml:"KVRsInfo,omitempty"`
@@ -10015,8 +10015,8 @@ type ContractExecutionPaymentPlanFinancingSourcesInfo2 struct {
 	FinanceInfo FinanceResourcesType `xml:"financeInfo"`
 }
 
-// ContractExecutionPaymentPlanNonbudgetFinancings7: План оплаты исполнения контракта за счет внебюджетных средств. Принимается только для следующих организаций: • СПЗ организации = 09950000002 (ГОСУДАРСТВЕННАЯ КОРПОРАЦИЯ ПО КОСМИЧЕСКОЙ ДЕЯТЕЛЬНОСТИ "РОСКОСМОС"); • СПЗ организации = 07731000003 (ГОСУДАРСТВЕННАЯ КОРПОРАЦИЯ ПО АТОМНОЙ ЭНЕРГИИ "РОСАТОМ")
-type ContractExecutionPaymentPlanNonbudgetFinancings7 struct {
+// NonbudgetFinancings8: План оплаты исполнения контракта за счет внебюджетных средств. Принимается только для следующих организаций: • СПЗ организации = 09950000002 (ГОСУДАРСТВЕННАЯ КОРПОРАЦИЯ ПО КОСМИЧЕСКОЙ ДЕЯТЕЛЬНОСТИ "РОСКОСМОС"); • СПЗ организации = 07731000003 (ГОСУДАРСТВЕННАЯ КОРПОРАЦИЯ ПО АТОМНОЙ ЭНЕРГИИ "РОСАТОМ")
+type NonbudgetFinancings8 struct {
 	XMLName xml.Name `xml:"nonbudgetFinancings,omitempty"`
 
 	// CurrentYear: Текущий плановый год. Может принимать значение только текущего года
@@ -10036,8 +10036,8 @@ type ContractConditionsInfoContractExecutionPaymentPlan7 struct {
 	// BudgetFinancings: Блок «План оплаты исполнения контракта». Если извещение сформировано на основании позиции плана-графика с 01.01.2020, то контролируется, что указанные КБК присутствуют в позиции ПГ. Не допускается указание нулевого КБК (000000000000000000000). Такой КБК должен быть детализирован
 	BudgetFinancings *BobudgetFinancingsType `xml:"budgetFinancings,omitempty"`
 
-	// ContractExecutionPaymentPlanNonbudgetFinancings: План оплаты исполнения контракта за счет внебюджетных средств. Принимается только для следующих организаций: • СПЗ организации = 09950000002 (ГОСУДАРСТВЕННАЯ КОРПОРАЦИЯ ПО КОСМИЧЕСКОЙ ДЕЯТЕЛЬНОСТИ "РОСКОСМОС"); • СПЗ организации = 07731000003 (ГОСУДАРСТВЕННАЯ КОРПОРАЦИЯ ПО АТОМНОЙ ЭНЕРГИИ "РОСАТОМ")
-	NonbudgetFinancings *ContractExecutionPaymentPlanNonbudgetFinancings `xml:"nonbudgetFinancings,omitempty"`
+	// NonbudgetFinancings8: План оплаты исполнения контракта за счет внебюджетных средств. Принимается только для следующих организаций: • СПЗ организации = 09950000002 (ГОСУДАРСТВЕННАЯ КОРПОРАЦИЯ ПО КОСМИЧЕСКОЙ ДЕЯТЕЛЬНОСТИ "РОСКОСМОС"); • СПЗ организации = 07731000003 (ГОСУДАРСТВЕННАЯ КОРПОРАЦИЯ ПО АТОМНОЙ ЭНЕРГИИ "РОСАТОМ")
+	NonbudgetFinancings *NonbudgetFinancings8 `xml:"nonbudgetFinancings,omitempty"`
 
 	// KvrsInfo: Детализации по КВР. Принимается, только при наличии блока "Сведения о связи с позицией плана-графика закупок с 01.01.2020" (contractConditionsInfo/tenderPlan2020Info), иначе игнорируется при приеме. Применимо только для извещений, размещаемых начиная с верисии 10.2
 	KvrsInfo *cmn.KvrfinancingsType `xml:"KVRsInfo,omitempty"`
@@ -10129,8 +10129,8 @@ type ContractConditionsInfoIkzinfo8 struct {
 	PurchaseOrderNumber base.TenderPlan2020PurchaseOrderNumberType `xml:"purchaseOrderNumber"`
 }
 
-// ContractExecutionPaymentPlanNonbudgetFinancings8: План оплаты исполнения контракта за счет внебюджетных средств. Принимается только для следующих организаций: • СПЗ организации = 09950000002 (ГОСУДАРСТВЕННАЯ КОРПОРАЦИЯ ПО КОСМИЧЕСКОЙ ДЕЯТЕЛЬНОСТИ "РОСКОСМОС"); • СПЗ организации = 07731000003 (ГОСУДАРСТВЕННАЯ КОРПОРАЦИЯ ПО АТОМНОЙ ЭНЕРГИИ "РОСАТОМ"). Для извещений, первая версия которых размещается/размещена после выхода версии ЕИС 12.2, игнорируется при приеме
-type ContractExecutionPaymentPlanNonbudgetFinancings8 struct {
+// NonbudgetFinancings9: План оплаты исполнения контракта за счет внебюджетных средств. Принимается только для следующих организаций: • СПЗ организации = 09950000002 (ГОСУДАРСТВЕННАЯ КОРПОРАЦИЯ ПО КОСМИЧЕСКОЙ ДЕЯТЕЛЬНОСТИ "РОСКОСМОС"); • СПЗ организации = 07731000003 (ГОСУДАРСТВЕННАЯ КОРПОРАЦИЯ ПО АТОМНОЙ ЭНЕРГИИ "РОСАТОМ"). Для извещений, первая версия которых размещается/размещена после выхода версии ЕИС 12.2, игнорируется при приеме
+type NonbudgetFinancings9 struct {
 	XMLName xml.Name `xml:"nonbudgetFinancings,omitempty"`
 
 	// CurrentYear: Текущий плановый год. Может принимать значение только текущего года
@@ -10156,8 +10156,8 @@ type ContractConditionsInfoContractExecutionPaymentPlan8 struct {
 	// BudgetFinancings: Блок «План оплаты исполнения контракта». Если извещение сформировано на основании позиции плана-графика с 01.01.2020, то контролируется, что указанные КБК присутствуют в позиции ПГ. Не допускается указание нулевого КБК (000000000000000000000). Такой КБК должен быть детализирован. Для извещений, первая версия которых размещается/размещена после выхода версии ЕИС 12.2, игнорируется при приеме
 	BudgetFinancings *BobudgetFinancingsType `xml:"budgetFinancings,omitempty"`
 
-	// ContractExecutionPaymentPlanNonbudgetFinancings: План оплаты исполнения контракта за счет внебюджетных средств. Принимается только для следующих организаций: • СПЗ организации = 09950000002 (ГОСУДАРСТВЕННАЯ КОРПОРАЦИЯ ПО КОСМИЧЕСКОЙ ДЕЯТЕЛЬНОСТИ "РОСКОСМОС"); • СПЗ организации = 07731000003 (ГОСУДАРСТВЕННАЯ КОРПОРАЦИЯ ПО АТОМНОЙ ЭНЕРГИИ "РОСАТОМ"). Для извещений, первая версия которых размещается/размещена после выхода версии ЕИС 12.2, игнорируется при приеме
-	NonbudgetFinancings *ContractExecutionPaymentPlanNonbudgetFinancings `xml:"nonbudgetFinancings,omitempty"`
+	// NonbudgetFinancings9: План оплаты исполнения контракта за счет внебюджетных средств. Принимается только для следующих организаций: • СПЗ организации = 09950000002 (ГОСУДАРСТВЕННАЯ КОРПОРАЦИЯ ПО КОСМИЧЕСКОЙ ДЕЯТЕЛЬНОСТИ "РОСКОСМОС"); • СПЗ организации = 07731000003 (ГОСУДАРСТВЕННАЯ КОРПОРАЦИЯ ПО АТОМНОЙ ЭНЕРГИИ "РОСАТОМ"). Для извещений, первая версия которых размещается/размещена после выхода версии ЕИС 12.2, игнорируется при приеме
+	NonbudgetFinancings *NonbudgetFinancings9 `xml:"nonbudgetFinancings,omitempty"`
 
 	// KvrsInfo: Детализации по КВР. Принимается, только при наличии блока "Сведения о связи с позицией плана-графика закупок с 01.01.2020" (contractConditionsInfo/tenderPlan2020Info), иначе игнорируется при приеме. Для извещений, первая версия которых размещается/размещена после выхода версии ЕИС 12.2, игнорируется при приеме
 	KvrsInfo *cmn.KvrfinancingsType `xml:"KVRsInfo,omitempty"`
@@ -10724,12 +10724,12 @@ type KtruinfoCharacteristics struct {
 	CharacteristicsUsingTextForm []ManualProtocolCharacteristicType `xml:"characteristicsUsingTextForm,omitempty"`
 }
 
-// ProductInfoKtruinfo: Классификация по КТРУ
-type ProductInfoKtruinfo struct {
+// Ktruinfo1: Классификация по КТРУ
+type Ktruinfo1 struct {
 	XMLName xml.Name `xml:"KTRUInfo,omitempty"`
 
-	// ProductInfoKtruinfoCharacteristics: Характеристики товара, работы, услуги позиции КТРУ. Для дочернего или недетализированного объекта закупки принимается и сохраняется, если одновременно выполняются условия: • в поле "Тип объекта закупки" (productInfo/type) указано значение PRODUCT; • в извещении в поле "Код подспособа определения поставщика" (commonInfo/placingWay/code) НЕ указано значение EAB20, EZKB20 или OKB20. В других случаях игнорируется при приеме. Для родительского объекта закупки: Игнорируется при приеме, не заполняется при передаче. Выполняется контроль относительно номера версии связанного извещения, указанного в поле «Номер версии связанного извещения»
-	Characteristics *ProductInfoKtruinfoCharacteristics `xml:"characteristics,omitempty"`
+	// Ktruinfo1Characteristics: Характеристики товара, работы, услуги позиции КТРУ. Для дочернего или недетализированного объекта закупки принимается и сохраняется, если одновременно выполняются условия: • в поле "Тип объекта закупки" (productInfo/type) указано значение PRODUCT; • в извещении в поле "Код подспособа определения поставщика" (commonInfo/placingWay/code) НЕ указано значение EAB20, EZKB20 или OKB20. В других случаях игнорируется при приеме. Для родительского объекта закупки: Игнорируется при приеме, не заполняется при передаче. Выполняется контроль относительно номера версии связанного извещения, указанного в поле «Номер версии связанного извещения»
+	Characteristics *Ktruinfo1Characteristics `xml:"characteristics,omitempty"`
 
 	base.Ktruref
 }
@@ -10792,8 +10792,8 @@ type ProductInfo struct {
 	// ProductInfoOkpd2Info: Классификация по ОКПД2
 	Okpd2Info *ProductInfoOkpd2Info `xml:"OKPD2Info,omitempty"`
 
-	// ProductInfoKtruinfo: Классификация по КТРУ
-	Ktruinfo *ProductInfoKtruinfo `xml:"KTRUInfo,omitempty"`
+	// Ktruinfo2: Классификация по КТРУ
+	Ktruinfo *Ktruinfo2 `xml:"KTRUInfo,omitempty"`
 
 	// HierarchyType: Тип объекта закупки в иерархии. Игнорируется при приеме. Если позиция задана в блоке "Объект закупки" (notDrugProposalsInfo/productInfo), то: 1. Если заполнен блок "Родительский объект закупки" (productInfo/parentProductInfo), то заполняется при передаче значением "CH" - Дочерний 2. Иначе заполняется значением "ND" - Недетализированный объект закупки Если позиция задана в блоке "Родительский объект закупки" (notDrugProposalsInfo/parentProductInfo), то заполняется при передаче значением "P" - Родитель
 	HierarchyType *base.ProductHierarchyTypeEnumType `xml:"hierarchyType,omitempty"`
@@ -10829,8 +10829,8 @@ type ProductInfoOkpd2Info1 struct {
 	base.Okpd2Ref
 }
 
-// ProductInfoKtruinfoCharacteristics: Характеристики товара, работы, услуги позиции КТРУ. Для дочернего или недетализированного объекта закупки принимается и сохраняется, если одновременно выполняются условия: • в поле "Тип объекта закупки" (productInfo/type) указано значение PRODUCT; • в извещении в поле "Код подспособа определения поставщика" (commonInfo/placingWay/code) НЕ указано значение EAB20, EZKB20 или OKB20. В других случаях игнорируется при приеме. Для родительского объекта закупки: Игнорируется при приеме, не заполняется при передаче. Выполняется контроль относительно номера версии связанного извещения, указанного в поле «Номер версии связанного извещения»
-type ProductInfoKtruinfoCharacteristics struct {
+// Ktruinfo1Characteristics: Характеристики товара, работы, услуги позиции КТРУ. Для дочернего или недетализированного объекта закупки принимается и сохраняется, если одновременно выполняются условия: • в поле "Тип объекта закупки" (productInfo/type) указано значение PRODUCT; • в извещении в поле "Код подспособа определения поставщика" (commonInfo/placingWay/code) НЕ указано значение EAB20, EZKB20 или OKB20. В других случаях игнорируется при приеме. Для родительского объекта закупки: Игнорируется при приеме, не заполняется при передаче. Выполняется контроль относительно номера версии связанного извещения, указанного в поле «Номер версии связанного извещения»
+type Ktruinfo1Characteristics struct {
 	XMLName xml.Name `xml:"characteristics,omitempty"`
 
 	// NotificationCharacteristicsUsingReferenceInfo: Характеристики, которые имеют связь со справочными характеристиками (справочник Каталог товаров, работ, услуг (КТРУ) (nsiKTRU)) в извещении (приглашении). При приеме проверяется (по sid/externalSid), что все характеристики из блока присутствуют в соответствующем блоке извещения (приглашения)
@@ -10846,12 +10846,12 @@ type ProductInfoKtruinfoCharacteristics struct {
 	CharacteristicsUsingTextForm []ManualProtocolCharacteristicType `xml:"characteristicsUsingTextForm,omitempty"`
 }
 
-// ProductInfoKtruinfo1: Классификация по КТРУ
-type ProductInfoKtruinfo1 struct {
+// Ktruinfo2: Классификация по КТРУ
+type Ktruinfo2 struct {
 	XMLName xml.Name `xml:"KTRUInfo,omitempty"`
 
-	// ProductInfoKtruinfoCharacteristics: Характеристики товара, работы, услуги позиции КТРУ. Для дочернего или недетализированного объекта закупки принимается и сохраняется, если одновременно выполняются условия: • в поле "Тип объекта закупки" (productInfo/type) указано значение PRODUCT; • в извещении в поле "Код подспособа определения поставщика" (commonInfo/placingWay/code) НЕ указано значение EAB20, EZKB20 или OKB20. В других случаях игнорируется при приеме. Для родительского объекта закупки: Игнорируется при приеме, не заполняется при передаче. Выполняется контроль относительно номера версии связанного извещения, указанного в поле «Номер версии связанного извещения»
-	Characteristics *ProductInfoKtruinfoCharacteristics `xml:"characteristics,omitempty"`
+	// Ktruinfo1Characteristics: Характеристики товара, работы, услуги позиции КТРУ. Для дочернего или недетализированного объекта закупки принимается и сохраняется, если одновременно выполняются условия: • в поле "Тип объекта закупки" (productInfo/type) указано значение PRODUCT; • в извещении в поле "Код подспособа определения поставщика" (commonInfo/placingWay/code) НЕ указано значение EAB20, EZKB20 или OKB20. В других случаях игнорируется при приеме. Для родительского объекта закупки: Игнорируется при приеме, не заполняется при передаче. Выполняется контроль относительно номера версии связанного извещения, указанного в поле «Номер версии связанного извещения»
+	Characteristics *Ktruinfo1Characteristics `xml:"characteristics,omitempty"`
 
 	base.Ktruref
 }
@@ -10911,8 +10911,8 @@ type ProtocolPublisherInfo41 struct {
 	PublisherRole base.ResponsibleRoleEptype `xml:"publisherRole"`
 }
 
-// CommonInfo20: Общая информация
-type CommonInfo20 struct {
+// CommonInfo33: Общая информация
+type CommonInfo33 struct {
 	XMLName xml.Name `xml:"commonInfo"`
 
 	// PurchaseNumber: Реестровый номер закупки. При приёме контролируется наличие неотменённой закупки с указанным номером
@@ -10979,8 +10979,8 @@ type ModificationInfo2 struct {
 	ReasonInfo ChangeReasonType `xml:"reasonInfo"`
 }
 
-// PrintFormFieldsInfoPurchaseInfoPurchaseResponsible1: Информация об организации, осуществляющей закупку
-type PrintFormFieldsInfoPurchaseInfoPurchaseResponsible1 struct {
+// PrintFormFieldsInfo5PurchaseInfoPurchaseResponsible: Информация об организации, осуществляющей закупку
+type PrintFormFieldsInfo5PurchaseInfoPurchaseResponsible struct {
 	XMLName xml.Name `xml:"purchaseResponsible,omitempty"`
 
 	// ResponsibleOrg: Организация, осуществляющая закупку
@@ -10998,20 +10998,20 @@ type PrintFormFieldsInfoPurchaseInfoCustomerRequirementsCustomerRequirement stru
 	PurchaseCode *base.IkzCodeType `xml:",any,omitempty"`
 }
 
-// PrintFormFieldsInfoPurchaseInfoCustomerRequirements1: Требования заказчиков
-type PrintFormFieldsInfoPurchaseInfoCustomerRequirements1 struct {
+// PrintFormFieldsInfo5PurchaseInfoCustomerRequirements: Требования заказчиков
+type PrintFormFieldsInfo5PurchaseInfoCustomerRequirements struct {
 	XMLName xml.Name `xml:"customerRequirements,omitempty"`
 
 	// PrintFormFieldsInfoPurchaseInfoCustomerRequirementsCustomerRequirement: Требование заказчика
 	CustomerRequirement []PrintFormFieldsInfoPurchaseInfoCustomerRequirementsCustomerRequirement `xml:",any,omitempty"`
 }
 
-// PrintFormFieldsInfoPurchaseInfo2: Инфомрация о закупке
-type PrintFormFieldsInfoPurchaseInfo2 struct {
+// PrintFormFieldsInfo6PurchaseInfo: Инфомрация о закупке
+type PrintFormFieldsInfo6PurchaseInfo struct {
 	XMLName xml.Name `xml:"purchaseInfo,omitempty"`
 
-	// PrintFormFieldsInfoPurchaseInfoPurchaseResponsible: Информация об организации, осуществляющей закупку
-	PurchaseResponsible *PrintFormFieldsInfoPurchaseInfoPurchaseResponsible `xml:"purchaseResponsible,omitempty"`
+	// PrintFormFieldsInfo5PurchaseInfoPurchaseResponsible: Информация об организации, осуществляющей закупку
+	PurchaseResponsible *PrintFormFieldsInfo5PurchaseInfoPurchaseResponsible `xml:"purchaseResponsible,omitempty"`
 
 	// PlacingWay: Подспособ определения поставщика
 	PlacingWay *base.PlacingWayRef `xml:"placingWay,omitempty"`
@@ -11028,12 +11028,12 @@ type PrintFormFieldsInfoPurchaseInfo2 struct {
 	// PurchaseObjectInfo: Наименование объекта закупки
 	PurchaseObjectInfo *base.Text2000Type `xml:"purchaseObjectInfo,omitempty"`
 
-	// PrintFormFieldsInfoPurchaseInfoCustomerRequirements: Требования заказчиков
-	CustomerRequirements *PrintFormFieldsInfoPurchaseInfoCustomerRequirements `xml:"customerRequirements,omitempty"`
+	// PrintFormFieldsInfo5PurchaseInfoCustomerRequirements: Требования заказчиков
+	CustomerRequirements *PrintFormFieldsInfo5PurchaseInfoCustomerRequirements `xml:"customerRequirements,omitempty"`
 }
 
-// PrintFormFieldsInfoFoundationDocInfo2: Документ-основание
-type PrintFormFieldsInfoFoundationDocInfo2 struct {
+// PrintFormFieldsInfo6FoundationDocInfo: Документ-основание
+type PrintFormFieldsInfo6FoundationDocInfo struct {
 	XMLName xml.Name `xml:"foundationDocInfo,omitempty"`
 
 	// FoundationProtocolName: Наименование предыдущего протокола
@@ -11046,8 +11046,8 @@ type PrintFormFieldsInfoFoundationDocInfo2 struct {
 	FoundationDocNumberExternal *base.DocumentNumberType `xml:"foundationDocNumberExternal,omitempty"`
 }
 
-// PrintFormFieldsInfoMaxPriceInfo2: Информация о начальной (максимальной) цене контракта
-type PrintFormFieldsInfoMaxPriceInfo2 struct {
+// PrintFormFieldsInfo6MaxPriceInfo: Информация о начальной (максимальной) цене контракта
+type PrintFormFieldsInfo6MaxPriceInfo struct {
 	XMLName xml.Name `xml:"maxPriceInfo,omitempty"`
 
 	// MaxPrice: Начальная (максимальная) цена контракта/Максимальное значение цены контракта
@@ -11069,8 +11069,8 @@ type PrintFormFieldsInfoMaxPriceInfo2 struct {
 	ContractPriceFormula *base.Text2000Type `xml:"contractPriceFormula,omitempty"`
 }
 
-// PrintFormFieldsInfoUnitPriceInfo2: Информация о цене за единицу измерения
-type PrintFormFieldsInfoUnitPriceInfo2 struct {
+// PrintFormFieldsInfo6UnitPriceInfo: Информация о цене за единицу измерения
+type PrintFormFieldsInfo6UnitPriceInfo struct {
 	XMLName xml.Name `xml:"unitPriceInfo,omitempty"`
 
 	// UnitPrice: Цена за единицу измерения
@@ -11094,8 +11094,8 @@ type PrintFormFieldsInfoDeliveryInfoDeliveryPlacesInfoOktmoinfo struct {
 	DeliveryPlace base.Text2000Type `xml:"deliveryPlace"`
 }
 
-// PrintFormFieldsInfoDeliveryInfoDeliveryPlacesInfo1: Места доставки товара, выполнения работы или оказания услуги по справочнику КЛАДР
-type PrintFormFieldsInfoDeliveryInfoDeliveryPlacesInfo1 struct {
+// PrintFormFieldsInfo5DeliveryInfoDeliveryPlacesInfo: Места доставки товара, выполнения работы или оказания услуги по справочнику КЛАДР
+type PrintFormFieldsInfo5DeliveryInfoDeliveryPlacesInfo struct {
 	XMLName xml.Name `xml:"deliveryPlacesInfo,omitempty"`
 
 	// Kladrinfo: Место доставки товара, выполнения работы или оказания услуги по справочнику КЛАДР
@@ -11105,19 +11105,19 @@ type PrintFormFieldsInfoDeliveryInfoDeliveryPlacesInfo1 struct {
 	Oktmoinfo []PrintFormFieldsInfoDeliveryInfoDeliveryPlacesInfoOktmoinfo `xml:"OKTMOInfo,omitempty"`
 }
 
-// PrintFormFieldsInfoDeliveryInfo2: Информация о поставке товара, выполнения работы или оказания услуги
-type PrintFormFieldsInfoDeliveryInfo2 struct {
+// PrintFormFieldsInfo6DeliveryInfo: Информация о поставке товара, выполнения работы или оказания услуги
+type PrintFormFieldsInfo6DeliveryInfo struct {
 	XMLName xml.Name `xml:"deliveryInfo,omitempty"`
 
-	// PrintFormFieldsInfoDeliveryInfoDeliveryPlacesInfo: Места доставки товара, выполнения работы или оказания услуги по справочнику КЛАДР
-	DeliveryPlacesInfo *PrintFormFieldsInfoDeliveryInfoDeliveryPlacesInfo `xml:"deliveryPlacesInfo,omitempty"`
+	// PrintFormFieldsInfo5DeliveryInfoDeliveryPlacesInfo: Места доставки товара, выполнения работы или оказания услуги по справочнику КЛАДР
+	DeliveryPlacesInfo *PrintFormFieldsInfo5DeliveryInfoDeliveryPlacesInfo `xml:"deliveryPlacesInfo,omitempty"`
 
 	// DeliveryTerm: Сроки доставки товара, выполнения работы или оказания услуги либо график оказания услуг
 	DeliveryTerm *base.Text2000Type `xml:"deliveryTerm,omitempty"`
 }
 
-// PrintFormFieldsInfoCustomers2: Заказчики
-type PrintFormFieldsInfoCustomers2 struct {
+// PrintFormFieldsInfo6Customers: Заказчики
+type PrintFormFieldsInfo6Customers struct {
 	XMLName xml.Name `xml:"customers,omitempty"`
 
 	// Customer: Организация заказчика данных требований
@@ -11128,26 +11128,26 @@ type PrintFormFieldsInfoCustomers2 struct {
 type PrintFormFieldsInfo35 struct {
 	XMLName xml.Name `xml:"printFormFieldsInfo,omitempty"`
 
-	// PrintFormFieldsInfoPurchaseInfo: Инфомрация о закупке
-	PurchaseInfo *PrintFormFieldsInfoPurchaseInfo `xml:"purchaseInfo,omitempty"`
+	// PrintFormFieldsInfo6PurchaseInfo: Инфомрация о закупке
+	PurchaseInfo *PrintFormFieldsInfo6PurchaseInfo `xml:"purchaseInfo,omitempty"`
 
-	// PrintFormFieldsInfoFoundationDocInfo: Документ-основание
-	FoundationDocInfo *PrintFormFieldsInfoFoundationDocInfo `xml:"foundationDocInfo,omitempty"`
+	// PrintFormFieldsInfo6FoundationDocInfo: Документ-основание
+	FoundationDocInfo *PrintFormFieldsInfo6FoundationDocInfo `xml:"foundationDocInfo,omitempty"`
 
-	// PrintFormFieldsInfoMaxPriceInfo: Информация о начальной (максимальной) цене контракта
-	MaxPriceInfo *PrintFormFieldsInfoMaxPriceInfo `xml:"maxPriceInfo,omitempty"`
+	// PrintFormFieldsInfo6MaxPriceInfo: Информация о начальной (максимальной) цене контракта
+	MaxPriceInfo *PrintFormFieldsInfo6MaxPriceInfo `xml:"maxPriceInfo,omitempty"`
 
-	// PrintFormFieldsInfoUnitPriceInfo: Информация о цене за единицу измерения
-	UnitPriceInfo *PrintFormFieldsInfoUnitPriceInfo `xml:"unitPriceInfo,omitempty"`
+	// PrintFormFieldsInfo6UnitPriceInfo: Информация о цене за единицу измерения
+	UnitPriceInfo *PrintFormFieldsInfo6UnitPriceInfo `xml:"unitPriceInfo,omitempty"`
 
 	// QuantityUndefined: Невозможно определить количество товара, объем подлежащих выполнению работ, оказанию услуг
 	QuantityUndefined *bool `xml:"quantityUndefined,omitempty"`
 
-	// PrintFormFieldsInfoDeliveryInfo: Информация о поставке товара, выполнения работы или оказания услуги
-	DeliveryInfo *PrintFormFieldsInfoDeliveryInfo `xml:"deliveryInfo,omitempty"`
+	// PrintFormFieldsInfo6DeliveryInfo: Информация о поставке товара, выполнения работы или оказания услуги
+	DeliveryInfo *PrintFormFieldsInfo6DeliveryInfo `xml:"deliveryInfo,omitempty"`
 
-	// PrintFormFieldsInfoCustomers: Заказчики
-	Customers *PrintFormFieldsInfoCustomers `xml:"customers,omitempty"`
+	// PrintFormFieldsInfo6Customers: Заказчики
+	Customers *PrintFormFieldsInfo6Customers `xml:"customers,omitempty"`
 }
 
 // ProtocolPublisherInfo43: Информация об организации, разместившей протокол
@@ -11259,11 +11259,11 @@ type AdmittedInfoAppNotAdmittedInfo17 struct {
 type AdmittedInfo3 struct {
 	XMLName xml.Name `xml:"admittedInfo"`
 
-	// AdmittedInfoAppAdmittedInfo: Информация о допущенной заявке
-	AppAdmittedInfo *AdmittedInfoAppAdmittedInfo `xml:"appAdmittedInfo,omitempty"`
+	// AdmittedInfo3AppAdmittedInfo: Информация о допущенной заявке
+	AppAdmittedInfo *AdmittedInfo3AppAdmittedInfo `xml:"appAdmittedInfo,omitempty"`
 
-	// AdmittedInfoAppNotAdmittedInfo: Информация о недопущенной заявке. Наличие блока свидетельствует об отказе в допуске заявки
-	AppNotAdmittedInfo *AdmittedInfoAppNotAdmittedInfo `xml:"appNotAdmittedInfo,omitempty"`
+	// AdmittedInfo3AppNotAdmittedInfo: Информация о недопущенной заявке. Наличие блока свидетельствует об отказе в допуске заявки
+	AppNotAdmittedInfo *AdmittedInfo3AppNotAdmittedInfo `xml:"appNotAdmittedInfo,omitempty"`
 }
 
 // DocumentRequirementsInfo5: Требования к информации и документам для предоставления участниками
@@ -11285,8 +11285,8 @@ type CorrespondenciesInfo3 struct {
 	OverallValue string `xml:"overallValue,omitempty"`
 }
 
-// AdmittedInfoAppAdmittedInfo17: Информация о допущенной заявке
-type AdmittedInfoAppAdmittedInfo17 struct {
+// AdmittedInfo3AppAdmittedInfo: Информация о допущенной заявке
+type AdmittedInfo3AppAdmittedInfo struct {
 	XMLName xml.Name `xml:"appAdmittedInfo,omitempty"`
 
 	// Admitted: Заявка допущена
@@ -11301,8 +11301,8 @@ type AdmittedInfoAppNotAdmittedInfoAppRejectedReasonsInfo5 struct {
 	AppRejectedReasonInfo []cmn.AppRejectedReasonType `xml:",any"`
 }
 
-// AdmittedInfoAppNotAdmittedInfo18: Информация о недопущенной заявке. Наличие блока свидетельствует об отказе в допуске заявки
-type AdmittedInfoAppNotAdmittedInfo18 struct {
+// AdmittedInfo3AppNotAdmittedInfo: Информация о недопущенной заявке. Наличие блока свидетельствует об отказе в допуске заявки
+type AdmittedInfo3AppNotAdmittedInfo struct {
 	XMLName xml.Name `xml:"appNotAdmittedInfo,omitempty"`
 
 	// AdmittedInfoAppNotAdmittedInfoAppRejectedReasonsInfo: Причины отказа в допуске
@@ -11313,11 +11313,11 @@ type AdmittedInfoAppNotAdmittedInfo18 struct {
 type AdmittedInfo4 struct {
 	XMLName xml.Name `xml:"admittedInfo"`
 
-	// AdmittedInfoAppAdmittedInfo: Информация о допущенной заявке
-	AppAdmittedInfo *AdmittedInfoAppAdmittedInfo `xml:"appAdmittedInfo,omitempty"`
+	// AdmittedInfo3AppAdmittedInfo: Информация о допущенной заявке
+	AppAdmittedInfo *AdmittedInfo3AppAdmittedInfo `xml:"appAdmittedInfo,omitempty"`
 
-	// AdmittedInfoAppNotAdmittedInfo: Информация о недопущенной заявке. Наличие блока свидетельствует об отказе в допуске заявки
-	AppNotAdmittedInfo *AdmittedInfoAppNotAdmittedInfo `xml:"appNotAdmittedInfo,omitempty"`
+	// AdmittedInfo3AppNotAdmittedInfo: Информация о недопущенной заявке. Наличие блока свидетельствует об отказе в допуске заявки
+	AppNotAdmittedInfo *AdmittedInfo3AppNotAdmittedInfo `xml:"appNotAdmittedInfo,omitempty"`
 }
 
 // BudgetFinancingsInfoBudgetFinancingInfo: Запись плана исполнения контракта за счет бюджетных средств
@@ -11334,8 +11334,8 @@ type BudgetFinancingsInfoBudgetFinancingInfo struct {
 	PaymentYearInfo FinanceResourcesType `xml:"paymentYearInfo"`
 }
 
-// StageInfoBudgetFinancingsInfo: Бюджетные средства. Если извещение сформировано на основании позиции плана-графика с 01.01.2020, то контролируется, что указанные КБК присутствуют в позиции ПГ. Не допускается указание нулевого КБК (000000000000000000000). Такой КБК должен быть детализирован. Блок обязателен для заполнения, если одновременно выполняются следующие условия: 1. если тип организации заказчика: 01 - федеральный орган государственной власти, федеральный государственный орган, орган государственной власти субъекта Российской Федерации, государственный орган субъекта Российской Федерации, орган местного самоуправления, в том числе его территориальные органы; 02 - орган управления государственным внебюджетным фондом; 08 - казенное учреждение; 2. заполнен блок "Бюджетные средства" (contractConditionsInfo/contractExecutionPaymentPlan/financingSourcesInfo/budgetFinancingsInfo). Блок необязателен для заполнения если одновременно выполняются следующие условия: 1. тип организации заказчика 09 - гос.корпорация; 2. заполнен блок "Бюджетные средства" (contractConditionsInfo/contractExecutionPaymentPlan/financingSourcesInfo/budgetFinancingsInfo). В других случаях игнорируется при приеме
-type StageInfoBudgetFinancingsInfo struct {
+// BudgetFinancingsInfo1: Бюджетные средства. Если извещение сформировано на основании позиции плана-графика с 01.01.2020, то контролируется, что указанные КБК присутствуют в позиции ПГ. Не допускается указание нулевого КБК (000000000000000000000). Такой КБК должен быть детализирован. Блок обязателен для заполнения, если одновременно выполняются следующие условия: 1. если тип организации заказчика: 01 - федеральный орган государственной власти, федеральный государственный орган, орган государственной власти субъекта Российской Федерации, государственный орган субъекта Российской Федерации, орган местного самоуправления, в том числе его территориальные органы; 02 - орган управления государственным внебюджетным фондом; 08 - казенное учреждение; 2. заполнен блок "Бюджетные средства" (contractConditionsInfo/contractExecutionPaymentPlan/financingSourcesInfo/budgetFinancingsInfo). Блок необязателен для заполнения если одновременно выполняются следующие условия: 1. тип организации заказчика 09 - гос.корпорация; 2. заполнен блок "Бюджетные средства" (contractConditionsInfo/contractExecutionPaymentPlan/financingSourcesInfo/budgetFinancingsInfo). В других случаях игнорируется при приеме
+type BudgetFinancingsInfo1 struct {
 	XMLName xml.Name `xml:"budgetFinancingsInfo,omitempty"`
 
 	// BudgetFinancingsInfoBudgetFinancingInfo: Запись плана исполнения контракта за счет бюджетных средств
@@ -11372,8 +11372,8 @@ type StageInfo struct {
 	// TermsInfo: Сроки исполнения этапа контракта. Если заданы относительные сроки исполнения контракта, то есть задан блок "Относительные сроки" (contractConditionsInfo/contractExecutionTermsInfo/relativeTermsInfo), то для каждого этапа должен быть задан дочерний блок "Относительные сроки" (relativeTermsInfo). Если заданы неотносительные сроки исполнения контракта, то есть задан блок "Неотносительные сроки" (contractConditionsInfo/contractExecutionTermsInfo/notRelativeTermsInfo), то для каждого этапа должен быть задан дочерний блок "Неотносительные сроки" (notRelativeTermsInfo). В составе блока "Неотносительные сроки" (notificationInfo/customerRequirementsInfo/customerRequirementInfo/contractConditionsInfo/contractExecutionPaymentPlan/stagesInfo/stageInfo/termsInfo/notRelativeTermsInfo): - признак "Дата начала исполнения контракта не ранее даты заключения контракта" (isNotEarlierConclusionDate) может быть задан только в том случае, если задан признак "Дата начала исполнения контракта не ранее даты заключения контракта" (notificationInfo/customerRequirementsInfo/customerRequirementInfo/contractConditionsInfo/contractExecutionPaymentPlan/contractExecutionTermsInfo/notRelativeTermsInfo/isNotEarlierConclusionDate); - признак "Дата начала исполнения контракта c даты заключения контракта" (isFromConclusionDate) может быть задан только в том случае, если задан признак "Дата начала исполнения контракта c даты заключения контракта" (notificationInfo/customerRequirementsInfo/customerRequirementInfo/contractConditionsInfo/contractExecutionPaymentPlan/contractExecutionTermsInfo/notRelativeTermsInfo/isFromConclusionDate)
 	TermsInfo cmn.RelativeAndNotRelativeTerms2022Type `xml:"termsInfo"`
 
-	// StageInfoBudgetFinancingsInfo: Бюджетные средства. Если извещение сформировано на основании позиции плана-графика с 01.01.2020, то контролируется, что указанные КБК присутствуют в позиции ПГ. Не допускается указание нулевого КБК (000000000000000000000). Такой КБК должен быть детализирован. Блок обязателен для заполнения, если одновременно выполняются следующие условия: 1. если тип организации заказчика: 01 - федеральный орган государственной власти, федеральный государственный орган, орган государственной власти субъекта Российской Федерации, государственный орган субъекта Российской Федерации, орган местного самоуправления, в том числе его территориальные органы; 02 - орган управления государственным внебюджетным фондом; 08 - казенное учреждение; 2. заполнен блок "Бюджетные средства" (contractConditionsInfo/contractExecutionPaymentPlan/financingSourcesInfo/budgetFinancingsInfo). Блок необязателен для заполнения если одновременно выполняются следующие условия: 1. тип организации заказчика 09 - гос.корпорация; 2. заполнен блок "Бюджетные средства" (contractConditionsInfo/contractExecutionPaymentPlan/financingSourcesInfo/budgetFinancingsInfo). В других случаях игнорируется при приеме
-	BudgetFinancingsInfo *StageInfoBudgetFinancingsInfo `xml:"budgetFinancingsInfo,omitempty"`
+	// BudgetFinancingsInfo1: Бюджетные средства. Если извещение сформировано на основании позиции плана-графика с 01.01.2020, то контролируется, что указанные КБК присутствуют в позиции ПГ. Не допускается указание нулевого КБК (000000000000000000000). Такой КБК должен быть детализирован. Блок обязателен для заполнения, если одновременно выполняются следующие условия: 1. если тип организации заказчика: 01 - федеральный орган государственной власти, федеральный государственный орган, орган государственной власти субъекта Российской Федерации, государственный орган субъекта Российской Федерации, орган местного самоуправления, в том числе его территориальные органы; 02 - орган управления государственным внебюджетным фондом; 08 - казенное учреждение; 2. заполнен блок "Бюджетные средства" (contractConditionsInfo/contractExecutionPaymentPlan/financingSourcesInfo/budgetFinancingsInfo). Блок необязателен для заполнения если одновременно выполняются следующие условия: 1. тип организации заказчика 09 - гос.корпорация; 2. заполнен блок "Бюджетные средства" (contractConditionsInfo/contractExecutionPaymentPlan/financingSourcesInfo/budgetFinancingsInfo). В других случаях игнорируется при приеме
+	BudgetFinancingsInfo *BudgetFinancingsInfo1 `xml:"budgetFinancingsInfo,omitempty"`
 
 	// StageInfoNonbudgetFinancingInfo: Внебюджетные средства. Блок необязателен для заполнения, если тип организации заказчика "09 - гос. корпорация" И задано поле "Закупка за счет собственных средст организации" (contractConditionsInfo/contractExecutionPaymentPlan/financingSourcesInfo/nonbudgetFinancingsInfo/selfFunds) Блок обязателен для заполнения, если одновременно выполняются следующие условия: 1. тип организации заказчика: 03 – бюджетное учреждение; 10 – автономное учреждение; 05 – унитарное предприятие; 2. задано поле "Закупка за счет собственных средств организации" (contractConditionsInfo/contractExecutionPaymentPlan/financingSourcesInfo/nonbudgetFinancingsInfo/selfFunds). В других случаях блок игнорируется при приеме
 	NonbudgetFinancingInfo *StageInfoNonbudgetFinancingInfo `xml:"nonbudgetFinancingInfo,omitempty"`
@@ -11678,8 +11678,8 @@ type NotificationCancelFailureType struct {
 	// CancelFailureInfo: Информация об отмене извещения об отмене определения поставщика (подрядчика, исполнителя)
 	CancelFailureInfo CancelFailureInfo `xml:"cancelFailureInfo"`
 
-	// ServiceSigns: Служебные признаки
-	ServiceSigns *ServiceSigns `xml:"serviceSigns,omitempty"`
+	// ServiceSigns1: Служебные признаки
+	ServiceSigns *ServiceSigns1 `xml:"serviceSigns,omitempty"`
 
 	// Id: Идентификатор документа ЕИС. Игнорируется при приеме-передаче. Добавлено на развитие
 	Id *int64 `xml:"id,omitempty"`
@@ -11710,14 +11710,14 @@ type ClarificationDocRequestType struct {
 	// ExternalId: Внешний идентификатор документа/ При приеме контролируется уникальность номера в рамках организации, размещающей закупку
 	ExternalId *base.ExternalIdType `xml:"externalId,omitempty"`
 
-	// CommonInfo: Общая информация
-	CommonInfo CommonInfo `xml:"commonInfo"`
+	// CommonInfo29: Общая информация
+	CommonInfo CommonInfo29 `xml:"commonInfo"`
 
 	// AttachmentsInfo: Информация о прикрепленных документах
 	AttachmentsInfo *cmn.AttachmentListType `xml:"attachmentsInfo,omitempty"`
 
-	// PrintFormFieldsInfo: Дополнительная информация для печатной формы. Игнорируется при приёме, заполняется при передаче
-	PrintFormFieldsInfo *PrintFormFieldsInfo `xml:"printFormFieldsInfo,omitempty"`
+	// PrintFormFieldsInfo32: Дополнительная информация для печатной формы. Игнорируется при приёме, заполняется при передаче
+	PrintFormFieldsInfo *PrintFormFieldsInfo32 `xml:"printFormFieldsInfo,omitempty"`
 }
 
 // ClarificationDocType: Тип:Разъяснения положений извещения об осуществлении закупки
@@ -11733,11 +11733,11 @@ type ClarificationDocType struct {
 	// ExternalId: Внешний идентификатор документа. При приеме контролируется уникальность номера в рамках организации, размещающей закупку
 	ExternalId *base.ExternalIdType `xml:"externalId,omitempty"`
 
-	// CommonInfo: Общая информация
-	CommonInfo CommonInfo `xml:"commonInfo"`
+	// CommonInfo31: Общая информация
+	CommonInfo CommonInfo31 `xml:"commonInfo"`
 
-	// RequestInfo: Информация о запросе на разъяснение
-	RequestInfo *RequestInfo `xml:"requestInfo,omitempty"`
+	// RequestInfo4: Информация о запросе на разъяснение
+	RequestInfo *RequestInfo4 `xml:"requestInfo,omitempty"`
 
 	// PrintFormInfo: Печатная форма документа в ЕИС. Элемент игнорируется при приёме. При передаче заполняется ссылкой на печатную форму и электронную подпись размещенного в ЕИС документа
 	PrintFormInfo *cmn.PrintFormType `xml:"printFormInfo,omitempty"`
@@ -11748,8 +11748,8 @@ type ClarificationDocType struct {
 	// AttachmentsInfo: Информация о прикрепленных документах
 	AttachmentsInfo *cmn.AttachmentListType `xml:"attachmentsInfo,omitempty"`
 
-	// PrintFormFieldsInfo: Дополнительная информация для печатной формы. Игнорируется при приёме, заполняется при передаче
-	PrintFormFieldsInfo *PrintFormFieldsInfo `xml:"printFormFieldsInfo,omitempty"`
+	// PrintFormFieldsInfo33: Дополнительная информация для печатной формы. Игнорируется при приёме, заполняется при передаче
+	PrintFormFieldsInfo *PrintFormFieldsInfo33 `xml:"printFormFieldsInfo,omitempty"`
 }
 
 // ClarificationResultRequestType: Тип: Запрос о даче разъяснений результатов (не применяется для СОП EF2020, EOK2020, EZK2020, EZT)
@@ -11762,14 +11762,14 @@ type ClarificationResultRequestType struct {
 	// ExternalId: Внешний идентификатор документа/ При приеме контролируется уникальность номера в рамках организации, размещающей закупку
 	ExternalId *base.ExternalIdType `xml:"externalId,omitempty"`
 
-	// CommonInfo: Общая информация
-	CommonInfo CommonInfo `xml:"commonInfo"`
+	// CommonInfo29: Общая информация
+	CommonInfo CommonInfo29 `xml:"commonInfo"`
 
 	// AttachmentsInfo: Информация о прикрепленных документах
 	AttachmentsInfo *cmn.AttachmentListType `xml:"attachmentsInfo,omitempty"`
 
-	// PrintFormFieldsInfo: Дополнительная информация для печатной формы. Игнорируется при приёме, заполняется при передаче
-	PrintFormFieldsInfo *PrintFormFieldsInfo `xml:"printFormFieldsInfo,omitempty"`
+	// PrintFormFieldsInfo32: Дополнительная информация для печатной формы. Игнорируется при приёме, заполняется при передаче
+	PrintFormFieldsInfo *PrintFormFieldsInfo32 `xml:"printFormFieldsInfo,omitempty"`
 }
 
 // ClarificationResultType: Тип: Разъяснение результатов (не применяется для СОП EF2020, EOK2020, EZK2020, EZT)
@@ -11785,11 +11785,11 @@ type ClarificationResultType struct {
 	// ExternalId: Внешний идентификатор документа. При приеме контролируется уникальность номера в рамках организации, размещающей закупку
 	ExternalId *base.ExternalIdType `xml:"externalId,omitempty"`
 
-	// CommonInfo: Общая информация
-	CommonInfo CommonInfo `xml:"commonInfo"`
+	// CommonInfo31: Общая информация
+	CommonInfo CommonInfo31 `xml:"commonInfo"`
 
-	// RequestInfo: Информация о запросе на разъяснение
-	RequestInfo *RequestInfo `xml:"requestInfo,omitempty"`
+	// RequestInfo4: Информация о запросе на разъяснение
+	RequestInfo *RequestInfo4 `xml:"requestInfo,omitempty"`
 
 	// PrintFormInfo: Печатная форма документа в ЕИС. Элемент игнорируется при приёме. При передаче заполняется ссылкой на печатную форму и электронную подпись размещенного в ЕИС документа
 	PrintFormInfo *cmn.PrintFormType `xml:"printFormInfo,omitempty"`
@@ -11800,8 +11800,8 @@ type ClarificationResultType struct {
 	// AttachmentsInfo: Информация о прикрепленных документах
 	AttachmentsInfo *cmn.AttachmentListType `xml:"attachmentsInfo,omitempty"`
 
-	// PrintFormFieldsInfo: Дополнительная информация для печатной формы. Игнорируется при приёме, заполняется при передаче
-	PrintFormFieldsInfo *PrintFormFieldsInfo `xml:"printFormFieldsInfo,omitempty"`
+	// PrintFormFieldsInfo33: Дополнительная информация для печатной формы. Игнорируется при приёме, заполняется при передаче
+	PrintFormFieldsInfo *PrintFormFieldsInfo33 `xml:"printFormFieldsInfo,omitempty"`
 }
 
 // ProtocolCancelType: Тип: Информация об отмене протокола, принятого от ЭТП
@@ -11817,8 +11817,8 @@ type ProtocolCancelType struct {
 	// ExternalId: Внешний идентификатор документа. При приеме контролируется уникальность номера в рамках организации, размещающей закупку
 	ExternalId *base.ExternalIdType `xml:"externalId,omitempty"`
 
-	// CommonInfo: Общая информация
-	CommonInfo CommonInfo `xml:"commonInfo"`
+	// CommonInfo9: Общая информация
+	CommonInfo CommonInfo9 `xml:"commonInfo"`
 
 	// AddInfo: Дополнительная информация
 	AddInfo *base.Text2000Type `xml:"addInfo,omitempty"`
@@ -11838,8 +11838,8 @@ type ProtocolCancelType struct {
 	// AfterProlongation: Протокол после продления. Заполняется значением одноименного поля из протокола, который необходимо отменить. При приеме контролируется обязательность заполнения для отмены протоколов ЭОК, ЭОК-ОУ, ЭОКД, ЭЗК
 	AfterProlongation *bool `xml:"afterProlongation,omitempty"`
 
-	// PrintFormFieldsInfo: Дополнительная информация для печатной формы. Игнорируется при приёме, заполняется при передаче
-	PrintFormFieldsInfo *PrintFormFieldsInfo `xml:"printFormFieldsInfo,omitempty"`
+	// PrintFormFieldsInfo4: Дополнительная информация для печатной формы. Игнорируется при приёме, заполняется при передаче
+	PrintFormFieldsInfo *PrintFormFieldsInfo4 `xml:"printFormFieldsInfo,omitempty"`
 }
 
 // ProtocolEvasionType: Тип: Протокол об отказе от заключения контракта с 01.04.2021
@@ -11849,8 +11849,8 @@ type ProtocolEvasionType struct {
 	// SchemeVersion: Версия схемы
 	SchemeVersion base.SchemeVersionType `xml:"schemeVersion,attr"`
 
-	// ProtocolInfo: Повестка дня
-	ProtocolInfo ProtocolInfo `xml:"protocolInfo"`
+	// ProtocolInfo1: Повестка дня
+	ProtocolInfo ProtocolInfo1 `xml:"protocolInfo"`
 
 	// Id: Идентификатор документа ЕИС. Обязателен для заполнения при приеме изменения проекта документа
 	Id *int64 `xml:"id,omitempty"`
@@ -11861,14 +11861,14 @@ type ProtocolEvasionType struct {
 	// VersionNumber: Номер версии документа. В случае если значение поля не указано или в поле указано 1, считается, что это первоначальная версия документа, иначе – изменение существующей версии. При приеме изменений документа контролируется последовательность нумерации
 	VersionNumber *base.VersionNumberType `xml:"versionNumber,omitempty"`
 
-	// CommonInfo: Общая информация
-	CommonInfo CommonInfo `xml:"commonInfo"`
+	// CommonInfo33: Общая информация
+	CommonInfo CommonInfo33 `xml:"commonInfo"`
 
-	// ContractsInfo: Информация о связанных контрактах
-	ContractsInfo *ContractsInfo `xml:"contractsInfo,omitempty"`
+	// ContractsInfo2: Информация о связанных контрактах
+	ContractsInfo *ContractsInfo2 `xml:"contractsInfo,omitempty"`
 
-	// ProtocolPublisherInfo: Информация об организации, разместившей протокол
-	ProtocolPublisherInfo ProtocolPublisherInfo `xml:"protocolPublisherInfo"`
+	// ProtocolPublisherInfo42: Информация об организации, разместившей протокол
+	ProtocolPublisherInfo ProtocolPublisherInfo42 `xml:"protocolPublisherInfo"`
 
 	// PrintFormInfo: Печатная форма документа в ЕИС. Элемент игнорируется при приёме. При передаче заполняется ссылкой на печатную форму и электронную подпись размещенного в ЕИС документа
 	PrintFormInfo *cmn.PrintFormType `xml:"printFormInfo,omitempty"`
@@ -11879,11 +11879,11 @@ type ProtocolEvasionType struct {
 	// AttachmentsInfo: Информация о прикрепленных документах
 	AttachmentsInfo *cmn.AttachmentListType `xml:"attachmentsInfo,omitempty"`
 
-	// ModificationInfo: Основание внесения изменений
-	ModificationInfo *ModificationInfo `xml:"modificationInfo,omitempty"`
+	// ModificationInfo2: Основание внесения изменений
+	ModificationInfo *ModificationInfo2 `xml:"modificationInfo,omitempty"`
 
-	// PrintFormFieldsInfo: Дополнительная информация для печатной формы. Игнорируется при приёме, заполняется при передаче
-	PrintFormFieldsInfo *PrintFormFieldsInfo `xml:"printFormFieldsInfo,omitempty"`
+	// PrintFormFieldsInfo35: Дополнительная информация для печатной формы. Игнорируется при приёме, заполняется при передаче
+	PrintFormFieldsInfo *PrintFormFieldsInfo35 `xml:"printFormFieldsInfo,omitempty"`
 }
 
 // ProtocolDeviationType: Тип: Протокол признания участника уклонившимся от заключения контракта с 01.04.2021
@@ -11893,8 +11893,8 @@ type ProtocolDeviationType struct {
 	// SchemeVersion: Версия схемы
 	SchemeVersion base.SchemeVersionType `xml:"schemeVersion,attr"`
 
-	// ProtocolInfo: Повестка дня
-	ProtocolInfo ProtocolInfo `xml:"protocolInfo"`
+	// ProtocolInfo2: Повестка дня
+	ProtocolInfo ProtocolInfo2 `xml:"protocolInfo"`
 
 	// Id: Идентификатор документа ЕИС. Обязателен для заполнения при приеме изменения проекта документа
 	Id *int64 `xml:"id,omitempty"`
@@ -11905,14 +11905,14 @@ type ProtocolDeviationType struct {
 	// VersionNumber: Номер версии документа. В случае если значение поля не указано или в поле указано 1, считается, что это первоначальная версия документа, иначе – изменение существующей версии. При приеме изменений документа контролируется последовательность нумерации
 	VersionNumber *base.VersionNumberType `xml:"versionNumber,omitempty"`
 
-	// CommonInfo: Общая информация
-	CommonInfo CommonInfo `xml:"commonInfo"`
+	// CommonInfo33: Общая информация
+	CommonInfo CommonInfo33 `xml:"commonInfo"`
 
-	// ContractsInfo: Информация о связанных контрактах
-	ContractsInfo *ContractsInfo `xml:"contractsInfo,omitempty"`
+	// ContractsInfo2: Информация о связанных контрактах
+	ContractsInfo *ContractsInfo2 `xml:"contractsInfo,omitempty"`
 
-	// ProtocolPublisherInfo: Информация об организации, разместившей протокол
-	ProtocolPublisherInfo ProtocolPublisherInfo `xml:"protocolPublisherInfo"`
+	// ProtocolPublisherInfo42: Информация об организации, разместившей протокол
+	ProtocolPublisherInfo ProtocolPublisherInfo42 `xml:"protocolPublisherInfo"`
 
 	// PrintFormInfo: Печатная форма документа в ЕИС. Элемент игнорируется при приёме. При передаче заполняется ссылкой на печатную форму и электронную подпись размещенного в ЕИС документа
 	PrintFormInfo *cmn.PrintFormType `xml:"printFormInfo,omitempty"`
@@ -11923,11 +11923,11 @@ type ProtocolDeviationType struct {
 	// AttachmentsInfo: Информация о прикрепленных документах
 	AttachmentsInfo *cmn.AttachmentListType `xml:"attachmentsInfo,omitempty"`
 
-	// ModificationInfo: Основание внесения изменений
-	ModificationInfo *ModificationInfo `xml:"modificationInfo,omitempty"`
+	// ModificationInfo2: Основание внесения изменений
+	ModificationInfo *ModificationInfo2 `xml:"modificationInfo,omitempty"`
 
-	// PrintFormFieldsInfo: Дополнительная информация для печатной формы. Игнорируется при приёме, заполняется при передаче
-	PrintFormFieldsInfo *PrintFormFieldsInfo `xml:"printFormFieldsInfo,omitempty"`
+	// PrintFormFieldsInfo35: Дополнительная информация для печатной формы. Игнорируется при приёме, заполняется при передаче
+	PrintFormFieldsInfo *PrintFormFieldsInfo35 `xml:"printFormFieldsInfo,omitempty"`
 }
 
 // ProtocolEvDevCancelType: Тип: Информация об отмене протокола ПОК/ППУ с 01.04.2021
@@ -11943,8 +11943,8 @@ type ProtocolEvDevCancelType struct {
 	// ExternalId: Внешний идентификатор документа. При приеме контролируется уникальность номера в рамках организации, размещающей закупку
 	ExternalId *base.ExternalIdType `xml:"externalId,omitempty"`
 
-	// CommonInfo: Общая информация
-	CommonInfo CommonInfo `xml:"commonInfo"`
+	// CommonInfo12: Общая информация
+	CommonInfo CommonInfo12 `xml:"commonInfo"`
 
 	// AddInfo: Дополнительная информация
 	AddInfo *base.Text2000Type `xml:"addInfo,omitempty"`
@@ -11958,8 +11958,8 @@ type ProtocolEvDevCancelType struct {
 	// CancelReasonInfo: Причина отмены протокола
 	CancelReasonInfo CancelWithoutCustomerDecisionType `xml:"cancelReasonInfo"`
 
-	// PrintFormFieldsInfo: Дополнительная информация для печатной формы. Игнорируется при приёме, заполняется при передаче
-	PrintFormFieldsInfo *PrintFormFieldsInfo `xml:"printFormFieldsInfo,omitempty"`
+	// PrintFormFieldsInfo7: Дополнительная информация для печатной формы. Игнорируется при приёме, заполняется при передаче
+	PrintFormFieldsInfo *PrintFormFieldsInfo7 `xml:"printFormFieldsInfo,omitempty"`
 }
 
 // NotificationMfotype: Тип: Извещение о закупке в рамках российских проектов, финансируемых за счет средств займов МФО
@@ -11975,8 +11975,8 @@ type NotificationMfotype struct {
 	// ExternalId: Внешний идентификатор документа.
 	ExternalId *base.ExternalIdType `xml:"externalId,omitempty"`
 
-	// CommonInfo: Общая информация
-	CommonInfo CommonInfo `xml:"commonInfo"`
+	// CommonInfo13: Общая информация
+	CommonInfo CommonInfo13 `xml:"commonInfo"`
 
 	// PurchaseResponsibleInfo: Информация об организации, осуществляющей размещение
 	PurchaseResponsibleInfo PurchaseResponsibleInfo `xml:"purchaseResponsibleInfo"`
@@ -11995,8 +11995,8 @@ type NotificationEokpftype struct {
 	// SchemeVersion: Версия схемы
 	SchemeVersion base.SchemeVersionType `xml:"schemeVersion,attr"`
 
-	// NotificationInfo: Информация о проведении ЭОК (открытый конкурс в электронной форме)
-	NotificationInfo NotificationInfo `xml:"notificationInfo"`
+	// NotificationInfo1: Информация о проведении ЭОК (открытый конкурс в электронной форме)
+	NotificationInfo NotificationInfo1 `xml:"notificationInfo"`
 
 	// ModificationInfo: Основание внесения изменений
 	ModificationInfo *NotificationModificationType `xml:"modificationInfo,omitempty"`
@@ -12013,8 +12013,8 @@ type NotificationEokpftype struct {
 	// CommonInfo: Общая информация
 	CommonInfo NotificationCommonInfoType `xml:"commonInfo"`
 
-	// PurchaseResponsibleInfo: Информация об организации, осуществляющей размещение
-	PurchaseResponsibleInfo PurchaseResponsibleInfo `xml:"purchaseResponsibleInfo"`
+	// PurchaseResponsibleInfo22: Информация об организации, осуществляющей размещение
+	PurchaseResponsibleInfo PurchaseResponsibleInfo22 `xml:"purchaseResponsibleInfo"`
 
 	// PrintFormInfo: Печатная форма документа. Элемент игнорируется при приёме. При передаче заполняется ссылкой на печатную форму и электронную подпись размещенного в ЕИС документа
 	PrintFormInfo *cmn.PrintFormType `xml:"printFormInfo,omitempty"`
@@ -12025,8 +12025,8 @@ type NotificationEokpftype struct {
 	// AttachmentsInfo: Вложенные файлы
 	AttachmentsInfo *cmn.AttachmentListType `xml:"attachmentsInfo,omitempty"`
 
-	// ServiceSigns: Служебные признаки
-	ServiceSigns *ServiceSigns `xml:"serviceSigns,omitempty"`
+	// ServiceSigns23: Служебные признаки
+	ServiceSigns *ServiceSigns23 `xml:"serviceSigns,omitempty"`
 }
 
 // NotificationEoktype: Тип: Извещение о проведении ЭOK (открытый конкурс в электронной форме) с конкурсной документацией; внесение изменений
@@ -12039,8 +12039,8 @@ type NotificationEoktype struct {
 	// Documentation: Конкурсная документация
 	Documentation DocumentationOktype `xml:"documentation"`
 
-	// NotificationInfo: Информация о проведении ЭОК (открытый конкурс в электронной форме)
-	NotificationInfo NotificationInfo `xml:"notificationInfo"`
+	// NotificationInfo1: Информация о проведении ЭОК (открытый конкурс в электронной форме)
+	NotificationInfo NotificationInfo1 `xml:"notificationInfo"`
 
 	// ModificationInfo: Основание внесения изменений
 	ModificationInfo *NotificationModificationType `xml:"modificationInfo,omitempty"`
@@ -12057,8 +12057,8 @@ type NotificationEoktype struct {
 	// CommonInfo: Общая информация
 	CommonInfo NotificationCommonInfoType `xml:"commonInfo"`
 
-	// PurchaseResponsibleInfo: Информация об организации, осуществляющей размещение
-	PurchaseResponsibleInfo PurchaseResponsibleInfo `xml:"purchaseResponsibleInfo"`
+	// PurchaseResponsibleInfo22: Информация об организации, осуществляющей размещение
+	PurchaseResponsibleInfo PurchaseResponsibleInfo22 `xml:"purchaseResponsibleInfo"`
 
 	// PrintFormInfo: Печатная форма документа. Элемент игнорируется при приёме. При передаче заполняется ссылкой на печатную форму и электронную подпись размещенного в ЕИС документа
 	PrintFormInfo *cmn.PrintFormType `xml:"printFormInfo,omitempty"`
@@ -12069,8 +12069,8 @@ type NotificationEoktype struct {
 	// AttachmentsInfo: Вложенные файлы
 	AttachmentsInfo *cmn.AttachmentListType `xml:"attachmentsInfo,omitempty"`
 
-	// ServiceSigns: Служебные признаки
-	ServiceSigns *ServiceSigns `xml:"serviceSigns,omitempty"`
+	// ServiceSigns23: Служебные признаки
+	ServiceSigns *ServiceSigns23 `xml:"serviceSigns,omitempty"`
 }
 
 // ProtocolEok1Type: Тип: Протокол рассмотрения и оценки первых частей заявок на участие в ЭOK (открытый конкурс в электронной форме); внесение изменений
@@ -12080,8 +12080,8 @@ type ProtocolEok1Type struct {
 	// SchemeVersion: Версия схемы
 	SchemeVersion base.SchemeVersionType `xml:"schemeVersion,attr"`
 
-	// ProtocolInfo: Информация о проведении ЭОК (открытый конкурс в электронной форме). В рамках блока должен быть заполнен блок applicationsInfo и/или abandonedReason
-	ProtocolInfo ProtocolInfo `xml:"protocolInfo"`
+	// ProtocolInfo3: Информация о проведении ЭОК (открытый конкурс в электронной форме). В рамках блока должен быть заполнен блок applicationsInfo и/или abandonedReason
+	ProtocolInfo ProtocolInfo3 `xml:"protocolInfo"`
 
 	// Id: Идентификатор документа ЕИС. Игнорируется при приеме-передаче. Добавлено на развитие
 	Id *int64 `xml:"id,omitempty"`
@@ -12098,8 +12098,8 @@ type ProtocolEok1Type struct {
 	// CommonInfo: Общая информация
 	CommonInfo ProtocolCommonInfoType `xml:"commonInfo"`
 
-	// ProtocolPublisherInfo: Информация об организации, разместившей протокол
-	ProtocolPublisherInfo ProtocolPublisherInfo `xml:"protocolPublisherInfo"`
+	// ProtocolPublisherInfo40: Информация об организации, разместившей протокол
+	ProtocolPublisherInfo ProtocolPublisherInfo40 `xml:"protocolPublisherInfo"`
 
 	// CommissionInfo: Информация о комиссии
 	CommissionInfo cmn.CommissionType `xml:"commissionInfo"`
@@ -12119,8 +12119,8 @@ type ProtocolEok1Type struct {
 	// AfterProlongation: Протокол после продления. Для протоколов, принимаемых после того, как по закупке размещен документ "Извещение о продлении срока подачи заявок" должно быть указано значение true, в остальных случаях указывается значение false
 	AfterProlongation bool `xml:"afterProlongation"`
 
-	// PrintFormFieldsInfo: Дополнительная информация для печатной формы. Игнорируется при приёме, заполняется при передаче
-	PrintFormFieldsInfo *PrintFormFieldsInfo `xml:"printFormFieldsInfo,omitempty"`
+	// PrintFormFieldsInfo34: Дополнительная информация для печатной формы. Игнорируется при приёме, заполняется при передаче
+	PrintFormFieldsInfo *PrintFormFieldsInfo34 `xml:"printFormFieldsInfo,omitempty"`
 }
 
 // ProtocolEok2Type: Тип: Протокол рассмотрения и оценки вторых частей заявок на участие в ЭOK (открытый конкурс в электронной форме); внесение изменений
@@ -12130,8 +12130,8 @@ type ProtocolEok2Type struct {
 	// SchemeVersion: Версия схемы
 	SchemeVersion base.SchemeVersionType `xml:"schemeVersion,attr"`
 
-	// ProtocolInfo: Информация о проведении ЭОК (открытый конкурс в электронной форме)
-	ProtocolInfo ProtocolInfo `xml:"protocolInfo"`
+	// ProtocolInfo4: Информация о проведении ЭОК (открытый конкурс в электронной форме)
+	ProtocolInfo ProtocolInfo4 `xml:"protocolInfo"`
 
 	// Id: Идентификатор документа ЕИС. Игнорируется при приеме-передаче. Добавлено на развитие
 	Id *int64 `xml:"id,omitempty"`
@@ -12148,8 +12148,8 @@ type ProtocolEok2Type struct {
 	// CommonInfo: Общая информация
 	CommonInfo ProtocolCommonInfoType `xml:"commonInfo"`
 
-	// ProtocolPublisherInfo: Информация об организации, разместившей протокол
-	ProtocolPublisherInfo ProtocolPublisherInfo `xml:"protocolPublisherInfo"`
+	// ProtocolPublisherInfo40: Информация об организации, разместившей протокол
+	ProtocolPublisherInfo ProtocolPublisherInfo40 `xml:"protocolPublisherInfo"`
 
 	// CommissionInfo: Информация о комиссии
 	CommissionInfo cmn.CommissionType `xml:"commissionInfo"`
@@ -12169,8 +12169,8 @@ type ProtocolEok2Type struct {
 	// AfterProlongation: Протокол после продления. Для протоколов, принимаемых после того, как по закупке размещен документ "Извещение о продлении срока подачи заявок" должно быть указано значение true, в остальных случаях указывается значение false
 	AfterProlongation bool `xml:"afterProlongation"`
 
-	// PrintFormFieldsInfo: Дополнительная информация для печатной формы. Игнорируется при приёме, заполняется при передаче
-	PrintFormFieldsInfo *PrintFormFieldsInfo `xml:"printFormFieldsInfo,omitempty"`
+	// PrintFormFieldsInfo34: Дополнительная информация для печатной формы. Игнорируется при приёме, заполняется при передаче
+	PrintFormFieldsInfo *PrintFormFieldsInfo34 `xml:"printFormFieldsInfo,omitempty"`
 }
 
 // ProtocolEok3Type: Тип: Протокол подведения итогов ЭOK (открытый конкурс в электронной форме); внесение изменений
@@ -12180,8 +12180,8 @@ type ProtocolEok3Type struct {
 	// SchemeVersion: Версия схемы
 	SchemeVersion base.SchemeVersionType `xml:"schemeVersion,attr"`
 
-	// ProtocolInfo: Информация о проведении ЭОК (открытый конкурс в электронной форме)
-	ProtocolInfo ProtocolInfo `xml:"protocolInfo"`
+	// ProtocolInfo5: Информация о проведении ЭОК (открытый конкурс в электронной форме)
+	ProtocolInfo ProtocolInfo5 `xml:"protocolInfo"`
 
 	// Id: Идентификатор документа ЕИС. Игнорируется при приеме-передаче. Добавлено на развитие
 	Id *int64 `xml:"id,omitempty"`
@@ -12198,8 +12198,8 @@ type ProtocolEok3Type struct {
 	// CommonInfo: Общая информация
 	CommonInfo ProtocolCommonInfoType `xml:"commonInfo"`
 
-	// ProtocolPublisherInfo: Информация об организации, разместившей протокол
-	ProtocolPublisherInfo ProtocolPublisherInfo `xml:"protocolPublisherInfo"`
+	// ProtocolPublisherInfo40: Информация об организации, разместившей протокол
+	ProtocolPublisherInfo ProtocolPublisherInfo40 `xml:"protocolPublisherInfo"`
 
 	// CommissionInfo: Информация о комиссии
 	CommissionInfo cmn.CommissionType `xml:"commissionInfo"`
@@ -12219,8 +12219,8 @@ type ProtocolEok3Type struct {
 	// AfterProlongation: Протокол после продления. Для протоколов, принимаемых после того, как по закупке размещен документ "Извещение о продлении срока подачи заявок" должно быть указано значение true, в остальных случаях указывается значение false
 	AfterProlongation bool `xml:"afterProlongation"`
 
-	// PrintFormFieldsInfo: Дополнительная информация для печатной формы. Игнорируется при приёме, заполняется при передаче
-	PrintFormFieldsInfo *PrintFormFieldsInfo `xml:"printFormFieldsInfo,omitempty"`
+	// PrintFormFieldsInfo34: Дополнительная информация для печатной формы. Игнорируется при приёме, заполняется при передаче
+	PrintFormFieldsInfo *PrintFormFieldsInfo34 `xml:"printFormFieldsInfo,omitempty"`
 }
 
 // ProtocolEoksingleAppType: Тип: Протокол рассмотрения единственной заявки на участие ЭOK (открытый конкурс в электронной форме); внесение изменений
@@ -12230,8 +12230,8 @@ type ProtocolEoksingleAppType struct {
 	// SchemeVersion: Версия схемы
 	SchemeVersion base.SchemeVersionType `xml:"schemeVersion,attr"`
 
-	// ProtocolInfo: Информация в протоколе о рассмотрении единственной заявки ЭOK (открытый конкурс в электронной форме)
-	ProtocolInfo ProtocolInfo `xml:"protocolInfo"`
+	// ProtocolInfo6: Информация в протоколе о рассмотрении единственной заявки ЭOK (открытый конкурс в электронной форме)
+	ProtocolInfo ProtocolInfo6 `xml:"protocolInfo"`
 
 	// Id: Идентификатор документа ЕИС. Игнорируется при приеме-передаче. Добавлено на развитие
 	Id *int64 `xml:"id,omitempty"`
@@ -12248,8 +12248,8 @@ type ProtocolEoksingleAppType struct {
 	// CommonInfo: Общая информация
 	CommonInfo ProtocolCommonInfoType `xml:"commonInfo"`
 
-	// ProtocolPublisherInfo: Информация об организации, разместившей протокол
-	ProtocolPublisherInfo ProtocolPublisherInfo `xml:"protocolPublisherInfo"`
+	// ProtocolPublisherInfo40: Информация об организации, разместившей протокол
+	ProtocolPublisherInfo ProtocolPublisherInfo40 `xml:"protocolPublisherInfo"`
 
 	// CommissionInfo: Информация о комиссии
 	CommissionInfo cmn.CommissionType `xml:"commissionInfo"`
@@ -12269,8 +12269,8 @@ type ProtocolEoksingleAppType struct {
 	// AfterProlongation: Протокол после продления. Для протоколов, принимаемых после того, как по закупке размещен документ "Извещение о продлении срока подачи заявок" должно быть указано значение true, в остальных случаях указывается значение false
 	AfterProlongation bool `xml:"afterProlongation"`
 
-	// PrintFormFieldsInfo: Дополнительная информация для печатной формы. Игнорируется при приёме, заполняется при передаче
-	PrintFormFieldsInfo *PrintFormFieldsInfo `xml:"printFormFieldsInfo,omitempty"`
+	// PrintFormFieldsInfo34: Дополнительная информация для печатной формы. Игнорируется при приёме, заполняется при передаче
+	PrintFormFieldsInfo *PrintFormFieldsInfo34 `xml:"printFormFieldsInfo,omitempty"`
 }
 
 // ProtocolEoksinglePartType: Тип: Протокол рассмотрения заявки единственного участника ЭOK (открытый конкурс в электронной форме); внесение изменений
@@ -12280,8 +12280,8 @@ type ProtocolEoksinglePartType struct {
 	// SchemeVersion: Версия схемы
 	SchemeVersion base.SchemeVersionType `xml:"schemeVersion,attr"`
 
-	// ProtocolInfo: Информация протокола рассмотрения заявки единственного участника ЭOK (открытый конкурс в электронной форме)
-	ProtocolInfo ProtocolInfo `xml:"protocolInfo"`
+	// ProtocolInfo7: Информация протокола рассмотрения заявки единственного участника ЭOK (открытый конкурс в электронной форме)
+	ProtocolInfo ProtocolInfo7 `xml:"protocolInfo"`
 
 	// Id: Идентификатор документа ЕИС. Игнорируется при приеме-передаче. Добавлено на развитие
 	Id *int64 `xml:"id,omitempty"`
@@ -12298,8 +12298,8 @@ type ProtocolEoksinglePartType struct {
 	// CommonInfo: Общая информация
 	CommonInfo ProtocolCommonInfoType `xml:"commonInfo"`
 
-	// ProtocolPublisherInfo: Информация об организации, разместившей протокол
-	ProtocolPublisherInfo ProtocolPublisherInfo `xml:"protocolPublisherInfo"`
+	// ProtocolPublisherInfo40: Информация об организации, разместившей протокол
+	ProtocolPublisherInfo ProtocolPublisherInfo40 `xml:"protocolPublisherInfo"`
 
 	// CommissionInfo: Информация о комиссии
 	CommissionInfo cmn.CommissionType `xml:"commissionInfo"`
@@ -12319,8 +12319,8 @@ type ProtocolEoksinglePartType struct {
 	// AfterProlongation: Протокол после продления. Для протоколов, принимаемых после того, как по закупке размещен документ "Извещение о продлении срока подачи заявок" должно быть указано значение true, в остальных случаях указывается значение false
 	AfterProlongation bool `xml:"afterProlongation"`
 
-	// PrintFormFieldsInfo: Дополнительная информация для печатной формы. Игнорируется при приёме, заполняется при передаче
-	PrintFormFieldsInfo *PrintFormFieldsInfo `xml:"printFormFieldsInfo,omitempty"`
+	// PrintFormFieldsInfo34: Дополнительная информация для печатной формы. Игнорируется при приёме, заполняется при передаче
+	PrintFormFieldsInfo *PrintFormFieldsInfo34 `xml:"printFormFieldsInfo,omitempty"`
 }
 
 // ProlongationEoktype: Тип: Извещение о продлении срока подачи заявок на участие в ЭOK (открытый конкурс в электронной форме)
@@ -12362,8 +12362,8 @@ type ProlongationCancelEoktype struct {
 	// ProlongationCancelInfo: Информация об отмене продления срока подачи заявок
 	ProlongationCancelInfo CancelInfoType `xml:"prolongationCancelInfo"`
 
-	// PrintFormFieldsInfo: Дополнительная информация для печатной формы. Игнорируется при приёме, заполняется при передаче
-	PrintFormFieldsInfo *PrintFormFieldsInfo `xml:"printFormFieldsInfo,omitempty"`
+	// PrintFormFieldsInfo13: Дополнительная информация для печатной формы. Игнорируется при приёме, заполняется при передаче
+	PrintFormFieldsInfo *PrintFormFieldsInfo13 `xml:"printFormFieldsInfo,omitempty"`
 
 	// Id: Идентификатор документа ЕИС. Игнорируется при приеме-передаче. Добавлено на развитие
 	Id *int64 `xml:"id,omitempty"`
@@ -12391,8 +12391,8 @@ type NotificationEokoupftype struct {
 	// SchemeVersion: Версия схемы
 	SchemeVersion base.SchemeVersionType `xml:"schemeVersion,attr"`
 
-	// NotificationInfo: Информация о проведении ЭОК-ОУ (открытый конкурс с ограниченным участием в электронной форме)
-	NotificationInfo NotificationInfo `xml:"notificationInfo"`
+	// NotificationInfo3: Информация о проведении ЭОК-ОУ (открытый конкурс с ограниченным участием в электронной форме)
+	NotificationInfo NotificationInfo3 `xml:"notificationInfo"`
 
 	// ModificationInfo: Основание внесения изменений
 	ModificationInfo *NotificationModificationType `xml:"modificationInfo,omitempty"`
@@ -12409,8 +12409,8 @@ type NotificationEokoupftype struct {
 	// CommonInfo: Общая информация
 	CommonInfo NotificationCommonInfoType `xml:"commonInfo"`
 
-	// PurchaseResponsibleInfo: Информация об организации, осуществляющей размещение
-	PurchaseResponsibleInfo PurchaseResponsibleInfo `xml:"purchaseResponsibleInfo"`
+	// PurchaseResponsibleInfo22: Информация об организации, осуществляющей размещение
+	PurchaseResponsibleInfo PurchaseResponsibleInfo22 `xml:"purchaseResponsibleInfo"`
 
 	// PrintFormInfo: Печатная форма документа. Элемент игнорируется при приёме. При передаче заполняется ссылкой на печатную форму и электронную подпись размещенного в ЕИС документа
 	PrintFormInfo *cmn.PrintFormType `xml:"printFormInfo,omitempty"`
@@ -12421,8 +12421,8 @@ type NotificationEokoupftype struct {
 	// AttachmentsInfo: Вложенные файлы
 	AttachmentsInfo *cmn.AttachmentListType `xml:"attachmentsInfo,omitempty"`
 
-	// ServiceSigns: Служебные признаки
-	ServiceSigns *ServiceSigns `xml:"serviceSigns,omitempty"`
+	// ServiceSigns23: Служебные признаки
+	ServiceSigns *ServiceSigns23 `xml:"serviceSigns,omitempty"`
 }
 
 // NotificationEokoutype: Тип: Извещение о проведении ЭOK-ОУ (открытый конкурс с ограниченным участием в электронной форме) с конкурсной документацией; внесение изменений
@@ -12435,8 +12435,8 @@ type NotificationEokoutype struct {
 	// Documentation: Конкурсная документация
 	Documentation DocumentationOktype `xml:"documentation"`
 
-	// NotificationInfo: Информация о проведении ЭОК-ОУ (открытый конкурс с ограниченным участием в электронной форме)
-	NotificationInfo NotificationInfo `xml:"notificationInfo"`
+	// NotificationInfo3: Информация о проведении ЭОК-ОУ (открытый конкурс с ограниченным участием в электронной форме)
+	NotificationInfo NotificationInfo3 `xml:"notificationInfo"`
 
 	// ModificationInfo: Основание внесения изменений
 	ModificationInfo *NotificationModificationType `xml:"modificationInfo,omitempty"`
@@ -12453,8 +12453,8 @@ type NotificationEokoutype struct {
 	// CommonInfo: Общая информация
 	CommonInfo NotificationCommonInfoType `xml:"commonInfo"`
 
-	// PurchaseResponsibleInfo: Информация об организации, осуществляющей размещение
-	PurchaseResponsibleInfo PurchaseResponsibleInfo `xml:"purchaseResponsibleInfo"`
+	// PurchaseResponsibleInfo22: Информация об организации, осуществляющей размещение
+	PurchaseResponsibleInfo PurchaseResponsibleInfo22 `xml:"purchaseResponsibleInfo"`
 
 	// PrintFormInfo: Печатная форма документа. Элемент игнорируется при приёме. При передаче заполняется ссылкой на печатную форму и электронную подпись размещенного в ЕИС документа
 	PrintFormInfo *cmn.PrintFormType `xml:"printFormInfo,omitempty"`
@@ -12465,8 +12465,8 @@ type NotificationEokoutype struct {
 	// AttachmentsInfo: Вложенные файлы
 	AttachmentsInfo *cmn.AttachmentListType `xml:"attachmentsInfo,omitempty"`
 
-	// ServiceSigns: Служебные признаки
-	ServiceSigns *ServiceSigns `xml:"serviceSigns,omitempty"`
+	// ServiceSigns23: Служебные признаки
+	ServiceSigns *ServiceSigns23 `xml:"serviceSigns,omitempty"`
 }
 
 // ProtocolEokou1Type: Тип: Протокол рассмотрения и оценки первых частей заявок на участие в ЭOK-ОУ (открытый конкурс с ограниченным участием в электронной форме); внесение изменений
@@ -12476,8 +12476,8 @@ type ProtocolEokou1Type struct {
 	// SchemeVersion: Версия схемы
 	SchemeVersion base.SchemeVersionType `xml:"schemeVersion,attr"`
 
-	// ProtocolInfo: Информация о проведении ЭОК-ОУ (открытый конкурс с ограниченным участием в электронной форме). В рамках блока должен быть заполнен блок applicationsInfo и/или abandonedReason
-	ProtocolInfo ProtocolInfo `xml:"protocolInfo"`
+	// ProtocolInfo8: Информация о проведении ЭОК-ОУ (открытый конкурс с ограниченным участием в электронной форме). В рамках блока должен быть заполнен блок applicationsInfo и/или abandonedReason
+	ProtocolInfo ProtocolInfo8 `xml:"protocolInfo"`
 
 	// Id: Идентификатор документа ЕИС. Игнорируется при приеме-передаче. Добавлено на развитие
 	Id *int64 `xml:"id,omitempty"`
@@ -12494,8 +12494,8 @@ type ProtocolEokou1Type struct {
 	// CommonInfo: Общая информация
 	CommonInfo ProtocolCommonInfoType `xml:"commonInfo"`
 
-	// ProtocolPublisherInfo: Информация об организации, разместившей протокол
-	ProtocolPublisherInfo ProtocolPublisherInfo `xml:"protocolPublisherInfo"`
+	// ProtocolPublisherInfo40: Информация об организации, разместившей протокол
+	ProtocolPublisherInfo ProtocolPublisherInfo40 `xml:"protocolPublisherInfo"`
 
 	// CommissionInfo: Информация о комиссии
 	CommissionInfo cmn.CommissionType `xml:"commissionInfo"`
@@ -12515,8 +12515,8 @@ type ProtocolEokou1Type struct {
 	// AfterProlongation: Протокол после продления. Для протоколов, принимаемых после того, как по закупке размещен документ "Извещение о продлении срока подачи заявок" должно быть указано значение true, в остальных случаях указывается значение false
 	AfterProlongation bool `xml:"afterProlongation"`
 
-	// PrintFormFieldsInfo: Дополнительная информация для печатной формы. Игнорируется при приёме, заполняется при передаче
-	PrintFormFieldsInfo *PrintFormFieldsInfo `xml:"printFormFieldsInfo,omitempty"`
+	// PrintFormFieldsInfo34: Дополнительная информация для печатной формы. Игнорируется при приёме, заполняется при передаче
+	PrintFormFieldsInfo *PrintFormFieldsInfo34 `xml:"printFormFieldsInfo,omitempty"`
 }
 
 // ProtocolEokou2Type: Тип: Протокол рассмотрения и оценки вторых частей заявок на участие в ЭOK-ОУ (открытый конкурс с ограниченным участием в электронной форме); внесение изменений
@@ -12526,8 +12526,8 @@ type ProtocolEokou2Type struct {
 	// SchemeVersion: Версия схемы
 	SchemeVersion base.SchemeVersionType `xml:"schemeVersion,attr"`
 
-	// ProtocolInfo: Информация о проведении ЭОК-ОУ (открытый конкурс с ограниченным участием в электронной форме)
-	ProtocolInfo ProtocolInfo `xml:"protocolInfo"`
+	// ProtocolInfo9: Информация о проведении ЭОК-ОУ (открытый конкурс с ограниченным участием в электронной форме)
+	ProtocolInfo ProtocolInfo9 `xml:"protocolInfo"`
 
 	// Id: Идентификатор документа ЕИС. Игнорируется при приеме-передаче. Добавлено на развитие
 	Id *int64 `xml:"id,omitempty"`
@@ -12544,8 +12544,8 @@ type ProtocolEokou2Type struct {
 	// CommonInfo: Общая информация
 	CommonInfo ProtocolCommonInfoType `xml:"commonInfo"`
 
-	// ProtocolPublisherInfo: Информация об организации, разместившей протокол
-	ProtocolPublisherInfo ProtocolPublisherInfo `xml:"protocolPublisherInfo"`
+	// ProtocolPublisherInfo40: Информация об организации, разместившей протокол
+	ProtocolPublisherInfo ProtocolPublisherInfo40 `xml:"protocolPublisherInfo"`
 
 	// CommissionInfo: Информация о комиссии
 	CommissionInfo cmn.CommissionType `xml:"commissionInfo"`
@@ -12565,8 +12565,8 @@ type ProtocolEokou2Type struct {
 	// AfterProlongation: Протокол после продления. Для протоколов, принимаемых после того, как по закупке размещен документ "Извещение о продлении срока подачи заявок" должно быть указано значение true, в остальных случаях указывается значение false
 	AfterProlongation bool `xml:"afterProlongation"`
 
-	// PrintFormFieldsInfo: Дополнительная информация для печатной формы. Игнорируется при приёме, заполняется при передаче
-	PrintFormFieldsInfo *PrintFormFieldsInfo `xml:"printFormFieldsInfo,omitempty"`
+	// PrintFormFieldsInfo34: Дополнительная информация для печатной формы. Игнорируется при приёме, заполняется при передаче
+	PrintFormFieldsInfo *PrintFormFieldsInfo34 `xml:"printFormFieldsInfo,omitempty"`
 }
 
 // ProtocolEokou3Type: Тип: Протокол подведения итогов ЭOK-ОУ (открытый конкурс с ограниченным участием в электронной форме); внесение изменений
@@ -12576,8 +12576,8 @@ type ProtocolEokou3Type struct {
 	// SchemeVersion: Версия схемы
 	SchemeVersion base.SchemeVersionType `xml:"schemeVersion,attr"`
 
-	// ProtocolInfo: Информация о проведении ЭОК-ОУ (открытый конкурс с ограниченным участием в электронной форме)
-	ProtocolInfo ProtocolInfo `xml:"protocolInfo"`
+	// ProtocolInfo10: Информация о проведении ЭОК-ОУ (открытый конкурс с ограниченным участием в электронной форме)
+	ProtocolInfo ProtocolInfo10 `xml:"protocolInfo"`
 
 	// Id: Идентификатор документа ЕИС. Игнорируется при приеме-передаче. Добавлено на развитие
 	Id *int64 `xml:"id,omitempty"`
@@ -12594,8 +12594,8 @@ type ProtocolEokou3Type struct {
 	// CommonInfo: Общая информация
 	CommonInfo ProtocolCommonInfoType `xml:"commonInfo"`
 
-	// ProtocolPublisherInfo: Информация об организации, разместившей протокол
-	ProtocolPublisherInfo ProtocolPublisherInfo `xml:"protocolPublisherInfo"`
+	// ProtocolPublisherInfo40: Информация об организации, разместившей протокол
+	ProtocolPublisherInfo ProtocolPublisherInfo40 `xml:"protocolPublisherInfo"`
 
 	// CommissionInfo: Информация о комиссии
 	CommissionInfo cmn.CommissionType `xml:"commissionInfo"`
@@ -12615,8 +12615,8 @@ type ProtocolEokou3Type struct {
 	// AfterProlongation: Протокол после продления. Для протоколов, принимаемых после того, как по закупке размещен документ "Извещение о продлении срока подачи заявок" должно быть указано значение true, в остальных случаях указывается значение false
 	AfterProlongation bool `xml:"afterProlongation"`
 
-	// PrintFormFieldsInfo: Дополнительная информация для печатной формы. Игнорируется при приёме, заполняется при передаче
-	PrintFormFieldsInfo *PrintFormFieldsInfo `xml:"printFormFieldsInfo,omitempty"`
+	// PrintFormFieldsInfo34: Дополнительная информация для печатной формы. Игнорируется при приёме, заполняется при передаче
+	PrintFormFieldsInfo *PrintFormFieldsInfo34 `xml:"printFormFieldsInfo,omitempty"`
 }
 
 // ProtocolEokousingleAppType: Тип: Протокол рассмотрения единственной заявки на участие ЭOK-ОУ (открытый конкурс с ограниченным участием в электронной форме); внесение изменений
@@ -12626,8 +12626,8 @@ type ProtocolEokousingleAppType struct {
 	// SchemeVersion: Версия схемы
 	SchemeVersion base.SchemeVersionType `xml:"schemeVersion,attr"`
 
-	// ProtocolInfo: Информация в протоколе о рассмотрении единственной заявки ЭOK-ОУ (открытый конкурс с ограниченным участием в электронной форме)
-	ProtocolInfo ProtocolInfo `xml:"protocolInfo"`
+	// ProtocolInfo11: Информация в протоколе о рассмотрении единственной заявки ЭOK-ОУ (открытый конкурс с ограниченным участием в электронной форме)
+	ProtocolInfo ProtocolInfo11 `xml:"protocolInfo"`
 
 	// Id: Идентификатор документа ЕИС. Игнорируется при приеме-передаче. Добавлено на развитие
 	Id *int64 `xml:"id,omitempty"`
@@ -12644,8 +12644,8 @@ type ProtocolEokousingleAppType struct {
 	// CommonInfo: Общая информация
 	CommonInfo ProtocolCommonInfoType `xml:"commonInfo"`
 
-	// ProtocolPublisherInfo: Информация об организации, разместившей протокол
-	ProtocolPublisherInfo ProtocolPublisherInfo `xml:"protocolPublisherInfo"`
+	// ProtocolPublisherInfo40: Информация об организации, разместившей протокол
+	ProtocolPublisherInfo ProtocolPublisherInfo40 `xml:"protocolPublisherInfo"`
 
 	// CommissionInfo: Информация о комиссии
 	CommissionInfo cmn.CommissionType `xml:"commissionInfo"`
@@ -12665,8 +12665,8 @@ type ProtocolEokousingleAppType struct {
 	// AfterProlongation: Протокол после продления. Для протоколов, принимаемых после того, как по закупке размещен документ "Извещение о продлении срока подачи заявок" должно быть указано значение true, в остальных случаях указывается значение false
 	AfterProlongation bool `xml:"afterProlongation"`
 
-	// PrintFormFieldsInfo: Дополнительная информация для печатной формы. Игнорируется при приёме, заполняется при передаче
-	PrintFormFieldsInfo *PrintFormFieldsInfo `xml:"printFormFieldsInfo,omitempty"`
+	// PrintFormFieldsInfo34: Дополнительная информация для печатной формы. Игнорируется при приёме, заполняется при передаче
+	PrintFormFieldsInfo *PrintFormFieldsInfo34 `xml:"printFormFieldsInfo,omitempty"`
 }
 
 // ProtocolEokousinglePartType: Тип: Протокол рассмотрения заявки единственного участника ЭOK-ОУ (открытый конкурс с ограниченным участием в электронной форме); внесение изменений
@@ -12676,8 +12676,8 @@ type ProtocolEokousinglePartType struct {
 	// SchemeVersion: Версия схемы
 	SchemeVersion base.SchemeVersionType `xml:"schemeVersion,attr"`
 
-	// ProtocolInfo: Информация протокола рассмотрения заявки единственного участника ЭOK-ОУ (открытый конкурс с ограниченным участием в электронной форме)
-	ProtocolInfo ProtocolInfo `xml:"protocolInfo"`
+	// ProtocolInfo12: Информация протокола рассмотрения заявки единственного участника ЭOK-ОУ (открытый конкурс с ограниченным участием в электронной форме)
+	ProtocolInfo ProtocolInfo12 `xml:"protocolInfo"`
 
 	// Id: Идентификатор документа ЕИС. Игнорируется при приеме-передаче. Добавлено на развитие
 	Id *int64 `xml:"id,omitempty"`
@@ -12694,8 +12694,8 @@ type ProtocolEokousinglePartType struct {
 	// CommonInfo: Общая информация
 	CommonInfo ProtocolCommonInfoType `xml:"commonInfo"`
 
-	// ProtocolPublisherInfo: Информация об организации, разместившей протокол
-	ProtocolPublisherInfo ProtocolPublisherInfo `xml:"protocolPublisherInfo"`
+	// ProtocolPublisherInfo40: Информация об организации, разместившей протокол
+	ProtocolPublisherInfo ProtocolPublisherInfo40 `xml:"protocolPublisherInfo"`
 
 	// CommissionInfo: Информация о комиссии
 	CommissionInfo cmn.CommissionType `xml:"commissionInfo"`
@@ -12715,8 +12715,8 @@ type ProtocolEokousinglePartType struct {
 	// AfterProlongation: Протокол после продления. Для протоколов, принимаемых после того, как по закупке размещен документ "Извещение о продлении срока подачи заявок" должно быть указано значение true, в остальных случаях указывается значение false
 	AfterProlongation bool `xml:"afterProlongation"`
 
-	// PrintFormFieldsInfo: Дополнительная информация для печатной формы. Игнорируется при приёме, заполняется при передаче
-	PrintFormFieldsInfo *PrintFormFieldsInfo `xml:"printFormFieldsInfo,omitempty"`
+	// PrintFormFieldsInfo34: Дополнительная информация для печатной формы. Игнорируется при приёме, заполняется при передаче
+	PrintFormFieldsInfo *PrintFormFieldsInfo34 `xml:"printFormFieldsInfo,omitempty"`
 }
 
 // ProlongationEokoutype: Тип: Извещение о продлении срока подачи заявок в ЭOK-ОУ (открытый конкурс с ограниченным участием в электронной форме)
@@ -12758,8 +12758,8 @@ type ProlongationCancelEokoutype struct {
 	// ProlongationCancelInfo: Информация об отмене продления срока подачи заявок
 	ProlongationCancelInfo CancelInfoType `xml:"prolongationCancelInfo"`
 
-	// PrintFormFieldsInfo: Дополнительная информация для печатной формы. Игнорируется при приёме, заполняется при передаче
-	PrintFormFieldsInfo *PrintFormFieldsInfo `xml:"printFormFieldsInfo,omitempty"`
+	// PrintFormFieldsInfo19: Дополнительная информация для печатной формы. Игнорируется при приёме, заполняется при передаче
+	PrintFormFieldsInfo *PrintFormFieldsInfo19 `xml:"printFormFieldsInfo,omitempty"`
 
 	// Id: Идентификатор документа ЕИС. Игнорируется при приеме-передаче. Добавлено на развитие
 	Id *int64 `xml:"id,omitempty"`
@@ -12787,8 +12787,8 @@ type NotificationEokdpftype struct {
 	// SchemeVersion: Версия схемы
 	SchemeVersion base.SchemeVersionType `xml:"schemeVersion,attr"`
 
-	// NotificationInfo: Информация о проведении ЭOKД (двухэтапный конкурс в электронной форме)
-	NotificationInfo NotificationInfo `xml:"notificationInfo"`
+	// NotificationInfo5: Информация о проведении ЭOKД (двухэтапный конкурс в электронной форме)
+	NotificationInfo NotificationInfo5 `xml:"notificationInfo"`
 
 	// ModificationInfo: Основание внесения изменений
 	ModificationInfo *NotificationModificationType `xml:"modificationInfo,omitempty"`
@@ -12805,8 +12805,8 @@ type NotificationEokdpftype struct {
 	// CommonInfo: Общая информация
 	CommonInfo NotificationCommonInfoType `xml:"commonInfo"`
 
-	// PurchaseResponsibleInfo: Информация об организации, осуществляющей размещение
-	PurchaseResponsibleInfo PurchaseResponsibleInfo `xml:"purchaseResponsibleInfo"`
+	// PurchaseResponsibleInfo22: Информация об организации, осуществляющей размещение
+	PurchaseResponsibleInfo PurchaseResponsibleInfo22 `xml:"purchaseResponsibleInfo"`
 
 	// PrintFormInfo: Печатная форма документа. Элемент игнорируется при приёме. При передаче заполняется ссылкой на печатную форму и электронную подпись размещенного в ЕИС документа
 	PrintFormInfo *cmn.PrintFormType `xml:"printFormInfo,omitempty"`
@@ -12817,8 +12817,8 @@ type NotificationEokdpftype struct {
 	// AttachmentsInfo: Вложенные файлы
 	AttachmentsInfo *cmn.AttachmentListType `xml:"attachmentsInfo,omitempty"`
 
-	// ServiceSigns: Служебные признаки
-	ServiceSigns *ServiceSigns `xml:"serviceSigns,omitempty"`
+	// ServiceSigns23: Служебные признаки
+	ServiceSigns *ServiceSigns23 `xml:"serviceSigns,omitempty"`
 }
 
 // NotificationEokdtype: Тип: Извещение о проведении ЭOKД (двухэтапный конкурс в электронной форме) с конкурсной документацией; внесение изменений
@@ -12831,8 +12831,8 @@ type NotificationEokdtype struct {
 	// Documentation: Конкурсная документация
 	Documentation DocumentationOktype `xml:"documentation"`
 
-	// NotificationInfo: Информация о проведении ЭOKД (двухэтапный конкурс в электронной форме)
-	NotificationInfo NotificationInfo `xml:"notificationInfo"`
+	// NotificationInfo5: Информация о проведении ЭOKД (двухэтапный конкурс в электронной форме)
+	NotificationInfo NotificationInfo5 `xml:"notificationInfo"`
 
 	// ModificationInfo: Основание внесения изменений
 	ModificationInfo *NotificationModificationType `xml:"modificationInfo,omitempty"`
@@ -12849,8 +12849,8 @@ type NotificationEokdtype struct {
 	// CommonInfo: Общая информация
 	CommonInfo NotificationCommonInfoType `xml:"commonInfo"`
 
-	// PurchaseResponsibleInfo: Информация об организации, осуществляющей размещение
-	PurchaseResponsibleInfo PurchaseResponsibleInfo `xml:"purchaseResponsibleInfo"`
+	// PurchaseResponsibleInfo22: Информация об организации, осуществляющей размещение
+	PurchaseResponsibleInfo PurchaseResponsibleInfo22 `xml:"purchaseResponsibleInfo"`
 
 	// PrintFormInfo: Печатная форма документа. Элемент игнорируется при приёме. При передаче заполняется ссылкой на печатную форму и электронную подпись размещенного в ЕИС документа
 	PrintFormInfo *cmn.PrintFormType `xml:"printFormInfo,omitempty"`
@@ -12861,8 +12861,8 @@ type NotificationEokdtype struct {
 	// AttachmentsInfo: Вложенные файлы
 	AttachmentsInfo *cmn.AttachmentListType `xml:"attachmentsInfo,omitempty"`
 
-	// ServiceSigns: Служебные признаки
-	ServiceSigns *ServiceSigns `xml:"serviceSigns,omitempty"`
+	// ServiceSigns23: Служебные признаки
+	ServiceSigns *ServiceSigns23 `xml:"serviceSigns,omitempty"`
 }
 
 // ProtocolEokd1Type: Тип: Протокол первого этапа ЭOKД (двухэтапный конкурс в электронной форме); внесение изменений
@@ -12872,8 +12872,8 @@ type ProtocolEokd1Type struct {
 	// SchemeVersion: Версия схемы
 	SchemeVersion base.SchemeVersionType `xml:"schemeVersion,attr"`
 
-	// ProtocolInfo: Информация о проведении ЭOKД (двухэтапный конкурс в электронной форме). В рамках блока должен быть заполнен блок applicationsInfo и/или abandonedReason
-	ProtocolInfo ProtocolInfo `xml:"protocolInfo"`
+	// ProtocolInfo13: Информация о проведении ЭOKД (двухэтапный конкурс в электронной форме). В рамках блока должен быть заполнен блок applicationsInfo и/или abandonedReason
+	ProtocolInfo ProtocolInfo13 `xml:"protocolInfo"`
 
 	// Id: Идентификатор документа ЕИС. Игнорируется при приеме-передаче. Добавлено на развитие
 	Id *int64 `xml:"id,omitempty"`
@@ -12890,8 +12890,8 @@ type ProtocolEokd1Type struct {
 	// CommonInfo: Общая информация
 	CommonInfo ProtocolCommonInfoType `xml:"commonInfo"`
 
-	// ProtocolPublisherInfo: Информация об организации, разместившей протокол
-	ProtocolPublisherInfo ProtocolPublisherInfo `xml:"protocolPublisherInfo"`
+	// ProtocolPublisherInfo40: Информация об организации, разместившей протокол
+	ProtocolPublisherInfo ProtocolPublisherInfo40 `xml:"protocolPublisherInfo"`
 
 	// CommissionInfo: Информация о комиссии
 	CommissionInfo cmn.CommissionType `xml:"commissionInfo"`
@@ -12911,8 +12911,8 @@ type ProtocolEokd1Type struct {
 	// AfterProlongation: Протокол после продления. Для протоколов, принимаемых после того, как по закупке размещен документ "Извещение о продлении срока подачи заявок" должно быть указано значение true, в остальных случаях указывается значение false
 	AfterProlongation bool `xml:"afterProlongation"`
 
-	// PrintFormFieldsInfo: Дополнительная информация для печатной формы. Игнорируется при приёме, заполняется при передаче
-	PrintFormFieldsInfo *PrintFormFieldsInfo `xml:"printFormFieldsInfo,omitempty"`
+	// PrintFormFieldsInfo34: Дополнительная информация для печатной формы. Игнорируется при приёме, заполняется при передаче
+	PrintFormFieldsInfo *PrintFormFieldsInfo34 `xml:"printFormFieldsInfo,omitempty"`
 }
 
 // ProtocolEokd2Type: Тип: Протокол рассмотрения и оценки первых частей заявок на участие в ЭOKД (двухэтапный конкурс в электронной форме); внесение изменений
@@ -12922,8 +12922,8 @@ type ProtocolEokd2Type struct {
 	// SchemeVersion: Версия схемы
 	SchemeVersion base.SchemeVersionType `xml:"schemeVersion,attr"`
 
-	// ProtocolInfo: Информация о проведении ЭOKД (двухэтапный конкурс в электронной форме). В рамках блока должен быть заполнен блок applicationsInfo и/или abandonedReason
-	ProtocolInfo ProtocolInfo `xml:"protocolInfo"`
+	// ProtocolInfo14: Информация о проведении ЭOKД (двухэтапный конкурс в электронной форме). В рамках блока должен быть заполнен блок applicationsInfo и/или abandonedReason
+	ProtocolInfo ProtocolInfo14 `xml:"protocolInfo"`
 
 	// Id: Идентификатор документа ЕИС. Игнорируется при приеме-передаче. Добавлено на развитие
 	Id *int64 `xml:"id,omitempty"`
@@ -12940,8 +12940,8 @@ type ProtocolEokd2Type struct {
 	// CommonInfo: Общая информация
 	CommonInfo ProtocolCommonInfoType `xml:"commonInfo"`
 
-	// ProtocolPublisherInfo: Информация об организации, разместившей протокол
-	ProtocolPublisherInfo ProtocolPublisherInfo `xml:"protocolPublisherInfo"`
+	// ProtocolPublisherInfo40: Информация об организации, разместившей протокол
+	ProtocolPublisherInfo ProtocolPublisherInfo40 `xml:"protocolPublisherInfo"`
 
 	// CommissionInfo: Информация о комиссии
 	CommissionInfo cmn.CommissionType `xml:"commissionInfo"`
@@ -12961,8 +12961,8 @@ type ProtocolEokd2Type struct {
 	// AfterProlongation: Протокол после продления. Для протоколов, принимаемых после того, как по закупке размещен документ "Извещение о продлении срока подачи заявок" должно быть указано значение true, в остальных случаях указывается значение false
 	AfterProlongation bool `xml:"afterProlongation"`
 
-	// PrintFormFieldsInfo: Дополнительная информация для печатной формы. Игнорируется при приёме, заполняется при передаче
-	PrintFormFieldsInfo *PrintFormFieldsInfo `xml:"printFormFieldsInfo,omitempty"`
+	// PrintFormFieldsInfo34: Дополнительная информация для печатной формы. Игнорируется при приёме, заполняется при передаче
+	PrintFormFieldsInfo *PrintFormFieldsInfo34 `xml:"printFormFieldsInfo,omitempty"`
 }
 
 // ProtocolEokd3Type: Тип: Протокол рассмотрения и оценки вторых частей заявок на участие в ЭOKД (двухэтапный конкурс в электронной форме); внесение изменений
@@ -12972,8 +12972,8 @@ type ProtocolEokd3Type struct {
 	// SchemeVersion: Версия схемы
 	SchemeVersion base.SchemeVersionType `xml:"schemeVersion,attr"`
 
-	// ProtocolInfo: Информация о проведении ЭOKД (двухэтапный конкурс в электронной форме)
-	ProtocolInfo ProtocolInfo `xml:"protocolInfo"`
+	// ProtocolInfo15: Информация о проведении ЭOKД (двухэтапный конкурс в электронной форме)
+	ProtocolInfo ProtocolInfo15 `xml:"protocolInfo"`
 
 	// Id: Идентификатор документа ЕИС. Игнорируется при приеме-передаче. Добавлено на развитие
 	Id *int64 `xml:"id,omitempty"`
@@ -12990,8 +12990,8 @@ type ProtocolEokd3Type struct {
 	// CommonInfo: Общая информация
 	CommonInfo ProtocolCommonInfoType `xml:"commonInfo"`
 
-	// ProtocolPublisherInfo: Информация об организации, разместившей протокол
-	ProtocolPublisherInfo ProtocolPublisherInfo `xml:"protocolPublisherInfo"`
+	// ProtocolPublisherInfo40: Информация об организации, разместившей протокол
+	ProtocolPublisherInfo ProtocolPublisherInfo40 `xml:"protocolPublisherInfo"`
 
 	// CommissionInfo: Информация о комиссии
 	CommissionInfo cmn.CommissionType `xml:"commissionInfo"`
@@ -13011,8 +13011,8 @@ type ProtocolEokd3Type struct {
 	// AfterProlongation: Протокол после продления. Для протоколов, принимаемых после того, как по закупке размещен документ "Извещение о продлении срока подачи заявок" должно быть указано значение true, в остальных случаях указывается значение false
 	AfterProlongation bool `xml:"afterProlongation"`
 
-	// PrintFormFieldsInfo: Дополнительная информация для печатной формы. Игнорируется при приёме, заполняется при передаче
-	PrintFormFieldsInfo *PrintFormFieldsInfo `xml:"printFormFieldsInfo,omitempty"`
+	// PrintFormFieldsInfo34: Дополнительная информация для печатной формы. Игнорируется при приёме, заполняется при передаче
+	PrintFormFieldsInfo *PrintFormFieldsInfo34 `xml:"printFormFieldsInfo,omitempty"`
 }
 
 // ProtocolEokd4Type: Тип: Протокол подведения итогов ЭOKД (двухэтапный конкурс в электронной форме); внесение изменений
@@ -13022,8 +13022,8 @@ type ProtocolEokd4Type struct {
 	// SchemeVersion: Версия схемы
 	SchemeVersion base.SchemeVersionType `xml:"schemeVersion,attr"`
 
-	// ProtocolInfo: Информация о проведении ЭOKД (двухэтапный конкурс в электронной форме)
-	ProtocolInfo ProtocolInfo `xml:"protocolInfo"`
+	// ProtocolInfo16: Информация о проведении ЭOKД (двухэтапный конкурс в электронной форме)
+	ProtocolInfo ProtocolInfo16 `xml:"protocolInfo"`
 
 	// Id: Идентификатор документа ЕИС. Игнорируется при приеме-передаче. Добавлено на развитие
 	Id *int64 `xml:"id,omitempty"`
@@ -13040,8 +13040,8 @@ type ProtocolEokd4Type struct {
 	// CommonInfo: Общая информация
 	CommonInfo ProtocolCommonInfoType `xml:"commonInfo"`
 
-	// ProtocolPublisherInfo: Информация об организации, разместившей протокол
-	ProtocolPublisherInfo ProtocolPublisherInfo `xml:"protocolPublisherInfo"`
+	// ProtocolPublisherInfo40: Информация об организации, разместившей протокол
+	ProtocolPublisherInfo ProtocolPublisherInfo40 `xml:"protocolPublisherInfo"`
 
 	// CommissionInfo: Информация о комиссии
 	CommissionInfo cmn.CommissionType `xml:"commissionInfo"`
@@ -13061,8 +13061,8 @@ type ProtocolEokd4Type struct {
 	// AfterProlongation: Протокол после продления. Для протоколов, принимаемых после того, как по закупке размещен документ "Извещение о продлении срока подачи заявок" должно быть указано значение true, в остальных случаях указывается значение false
 	AfterProlongation bool `xml:"afterProlongation"`
 
-	// PrintFormFieldsInfo: Дополнительная информация для печатной формы. Игнорируется при приёме, заполняется при передаче
-	PrintFormFieldsInfo *PrintFormFieldsInfo `xml:"printFormFieldsInfo,omitempty"`
+	// PrintFormFieldsInfo34: Дополнительная информация для печатной формы. Игнорируется при приёме, заполняется при передаче
+	PrintFormFieldsInfo *PrintFormFieldsInfo34 `xml:"printFormFieldsInfo,omitempty"`
 }
 
 // ProtocolEokdsingleAppType: Тип: Протокол рассмотрения единственной заявки на участие ЭOKД (двухэтапный конкурс в электронной форме); внесение изменений
@@ -13072,8 +13072,8 @@ type ProtocolEokdsingleAppType struct {
 	// SchemeVersion: Версия схемы
 	SchemeVersion base.SchemeVersionType `xml:"schemeVersion,attr"`
 
-	// ProtocolInfo: Информация в протоколе о рассмотрении единственной заявки ЭOKД (двухэтапный конкурс в электронной форме)
-	ProtocolInfo ProtocolInfo `xml:"protocolInfo"`
+	// ProtocolInfo17: Информация в протоколе о рассмотрении единственной заявки ЭOKД (двухэтапный конкурс в электронной форме)
+	ProtocolInfo ProtocolInfo17 `xml:"protocolInfo"`
 
 	// Id: Идентификатор документа ЕИС. Игнорируется при приеме-передаче. Добавлено на развитие
 	Id *int64 `xml:"id,omitempty"`
@@ -13090,8 +13090,8 @@ type ProtocolEokdsingleAppType struct {
 	// CommonInfo: Общая информация
 	CommonInfo ProtocolCommonInfoType `xml:"commonInfo"`
 
-	// ProtocolPublisherInfo: Информация об организации, разместившей протокол
-	ProtocolPublisherInfo ProtocolPublisherInfo `xml:"protocolPublisherInfo"`
+	// ProtocolPublisherInfo40: Информация об организации, разместившей протокол
+	ProtocolPublisherInfo ProtocolPublisherInfo40 `xml:"protocolPublisherInfo"`
 
 	// CommissionInfo: Информация о комиссии
 	CommissionInfo cmn.CommissionType `xml:"commissionInfo"`
@@ -13111,8 +13111,8 @@ type ProtocolEokdsingleAppType struct {
 	// AfterProlongation: Протокол после продления. Для протоколов, принимаемых после того, как по закупке размещен документ "Извещение о продлении срока подачи заявок" должно быть указано значение true, в остальных случаях указывается значение false
 	AfterProlongation bool `xml:"afterProlongation"`
 
-	// PrintFormFieldsInfo: Дополнительная информация для печатной формы. Игнорируется при приёме, заполняется при передаче
-	PrintFormFieldsInfo *PrintFormFieldsInfo `xml:"printFormFieldsInfo,omitempty"`
+	// PrintFormFieldsInfo34: Дополнительная информация для печатной формы. Игнорируется при приёме, заполняется при передаче
+	PrintFormFieldsInfo *PrintFormFieldsInfo34 `xml:"printFormFieldsInfo,omitempty"`
 }
 
 // ProtocolEokdsinglePartType: Тип: Протокол рассмотрения заявки единственного участника ЭOKД (двухэтапный конкурс в электронной форме); внесение изменений
@@ -13122,8 +13122,8 @@ type ProtocolEokdsinglePartType struct {
 	// SchemeVersion: Версия схемы
 	SchemeVersion base.SchemeVersionType `xml:"schemeVersion,attr"`
 
-	// ProtocolInfo: Информация протокола рассмотрения заявки единственного участника ЭOKД (двухэтапный конкурс в электронной форме)
-	ProtocolInfo ProtocolInfo `xml:"protocolInfo"`
+	// ProtocolInfo18: Информация протокола рассмотрения заявки единственного участника ЭOKД (двухэтапный конкурс в электронной форме)
+	ProtocolInfo ProtocolInfo18 `xml:"protocolInfo"`
 
 	// Id: Идентификатор документа ЕИС. Игнорируется при приеме-передаче. Добавлено на развитие
 	Id *int64 `xml:"id,omitempty"`
@@ -13140,8 +13140,8 @@ type ProtocolEokdsinglePartType struct {
 	// CommonInfo: Общая информация
 	CommonInfo ProtocolCommonInfoType `xml:"commonInfo"`
 
-	// ProtocolPublisherInfo: Информация об организации, разместившей протокол
-	ProtocolPublisherInfo ProtocolPublisherInfo `xml:"protocolPublisherInfo"`
+	// ProtocolPublisherInfo40: Информация об организации, разместившей протокол
+	ProtocolPublisherInfo ProtocolPublisherInfo40 `xml:"protocolPublisherInfo"`
 
 	// CommissionInfo: Информация о комиссии
 	CommissionInfo cmn.CommissionType `xml:"commissionInfo"`
@@ -13161,8 +13161,8 @@ type ProtocolEokdsinglePartType struct {
 	// AfterProlongation: Протокол после продления. Для протоколов, принимаемых после того, как по закупке размещен документ "Извещение о продлении срока подачи заявок" должно быть указано значение true, в остальных случаях указывается значение false
 	AfterProlongation bool `xml:"afterProlongation"`
 
-	// PrintFormFieldsInfo: Дополнительная информация для печатной формы. Игнорируется при приёме, заполняется при передаче
-	PrintFormFieldsInfo *PrintFormFieldsInfo `xml:"printFormFieldsInfo,omitempty"`
+	// PrintFormFieldsInfo34: Дополнительная информация для печатной формы. Игнорируется при приёме, заполняется при передаче
+	PrintFormFieldsInfo *PrintFormFieldsInfo34 `xml:"printFormFieldsInfo,omitempty"`
 }
 
 // ProlongationEokdtype: Тип: Извещение о продлении срока подачи заявок на участие в ЭOKД (двухэтапный конкурс в электронной форме)
@@ -13204,8 +13204,8 @@ type ProlongationCancelEokdtype struct {
 	// ProlongationCancelInfo: Информация об отмене продления срока подачи заявок
 	ProlongationCancelInfo CancelInfoType `xml:"prolongationCancelInfo"`
 
-	// PrintFormFieldsInfo: Дополнительная информация для печатной формы. Игнорируется при приёме, заполняется при передаче
-	PrintFormFieldsInfo *PrintFormFieldsInfo `xml:"printFormFieldsInfo,omitempty"`
+	// PrintFormFieldsInfo26: Дополнительная информация для печатной формы. Игнорируется при приёме, заполняется при передаче
+	PrintFormFieldsInfo *PrintFormFieldsInfo26 `xml:"printFormFieldsInfo,omitempty"`
 
 	// Id: Идентификатор документа ЕИС. Игнорируется при приеме-передаче. Добавлено на развитие
 	Id *int64 `xml:"id,omitempty"`
@@ -13233,8 +13233,8 @@ type NotificationEzktype struct {
 	// SchemeVersion: Версия схемы
 	SchemeVersion base.SchemeVersionType `xml:"schemeVersion,attr"`
 
-	// NotificationInfo: Информация о проведении ЭЗК (запрос котировок в электронной форме)
-	NotificationInfo NotificationInfo `xml:"notificationInfo"`
+	// NotificationInfo6: Информация о проведении ЭЗК (запрос котировок в электронной форме)
+	NotificationInfo NotificationInfo6 `xml:"notificationInfo"`
 
 	// ModificationInfo: Основание внесения изменений
 	ModificationInfo *NotificationModificationType `xml:"modificationInfo,omitempty"`
@@ -13251,8 +13251,8 @@ type NotificationEzktype struct {
 	// CommonInfo: Общая информация
 	CommonInfo NotificationCommonInfoType `xml:"commonInfo"`
 
-	// PurchaseResponsibleInfo: Информация об организации, осуществляющей размещение
-	PurchaseResponsibleInfo PurchaseResponsibleInfo `xml:"purchaseResponsibleInfo"`
+	// PurchaseResponsibleInfo22: Информация об организации, осуществляющей размещение
+	PurchaseResponsibleInfo PurchaseResponsibleInfo22 `xml:"purchaseResponsibleInfo"`
 
 	// PrintFormInfo: Печатная форма документа. Элемент игнорируется при приёме. При передаче заполняется ссылкой на печатную форму и электронную подпись размещенного в ЕИС документа
 	PrintFormInfo *cmn.PrintFormType `xml:"printFormInfo,omitempty"`
@@ -13263,8 +13263,8 @@ type NotificationEzktype struct {
 	// AttachmentsInfo: Вложенные файлы
 	AttachmentsInfo *cmn.AttachmentListType `xml:"attachmentsInfo,omitempty"`
 
-	// ServiceSigns: Служебные признаки
-	ServiceSigns *ServiceSigns `xml:"serviceSigns,omitempty"`
+	// ServiceSigns23: Служебные признаки
+	ServiceSigns *ServiceSigns23 `xml:"serviceSigns,omitempty"`
 }
 
 // ProtocolEzk1Type: Тип: Протокол рассмотрения заявок на участие в ЭЗК (запрос котировок в электронной форме)
@@ -13274,8 +13274,8 @@ type ProtocolEzk1Type struct {
 	// SchemeVersion: Версия схемы
 	SchemeVersion base.SchemeVersionType `xml:"schemeVersion,attr"`
 
-	// ProtocolInfo: Информация о проведении ЭЗК (запрос котировок в электронной форме). В рамках блока должен быть заполнен блок applicationsInfo и/или abandonedReason
-	ProtocolInfo ProtocolInfo `xml:"protocolInfo"`
+	// ProtocolInfo19: Информация о проведении ЭЗК (запрос котировок в электронной форме). В рамках блока должен быть заполнен блок applicationsInfo и/или abandonedReason
+	ProtocolInfo ProtocolInfo19 `xml:"protocolInfo"`
 
 	// Id: Идентификатор документа ЕИС. Игнорируется при приеме-передаче. Добавлено на развитие
 	Id *int64 `xml:"id,omitempty"`
@@ -13292,8 +13292,8 @@ type ProtocolEzk1Type struct {
 	// CommonInfo: Общая информация
 	CommonInfo ProtocolCommonInfoType `xml:"commonInfo"`
 
-	// ProtocolPublisherInfo: Информация об организации, разместившей протокол
-	ProtocolPublisherInfo ProtocolPublisherInfo `xml:"protocolPublisherInfo"`
+	// ProtocolPublisherInfo40: Информация об организации, разместившей протокол
+	ProtocolPublisherInfo ProtocolPublisherInfo40 `xml:"protocolPublisherInfo"`
 
 	// CommissionInfo: Информация о комиссии
 	CommissionInfo cmn.CommissionType `xml:"commissionInfo"`
@@ -13313,8 +13313,8 @@ type ProtocolEzk1Type struct {
 	// AfterProlongation: Протокол после продления. Для протоколов, принимаемых после того, как по закупке размещен документ "Извещение о продлении срока подачи заявок" должно быть указано значение true, в остальных случаях указывается значение false
 	AfterProlongation bool `xml:"afterProlongation"`
 
-	// PrintFormFieldsInfo: Дополнительная информация для печатной формы. Игнорируется при приёме, заполняется при передаче
-	PrintFormFieldsInfo *PrintFormFieldsInfo `xml:"printFormFieldsInfo,omitempty"`
+	// PrintFormFieldsInfo34: Дополнительная информация для печатной формы. Игнорируется при приёме, заполняется при передаче
+	PrintFormFieldsInfo *PrintFormFieldsInfo34 `xml:"printFormFieldsInfo,omitempty"`
 }
 
 // ProtocolEzk2Type: Тип: Протокол рассмотрения и оценки заявок на участие в ЭЗК (запрос котировок в электронной форме)
@@ -13324,8 +13324,8 @@ type ProtocolEzk2Type struct {
 	// SchemeVersion: Версия схемы
 	SchemeVersion base.SchemeVersionType `xml:"schemeVersion,attr"`
 
-	// ProtocolInfo: Информация о проведении ЭЗК (запрос котировок в электронной форме)
-	ProtocolInfo ProtocolInfo `xml:"protocolInfo"`
+	// ProtocolInfo20: Информация о проведении ЭЗК (запрос котировок в электронной форме)
+	ProtocolInfo ProtocolInfo20 `xml:"protocolInfo"`
 
 	// Id: Идентификатор документа ЕИС. Игнорируется при приеме-передаче. Добавлено на развитие
 	Id *int64 `xml:"id,omitempty"`
@@ -13342,8 +13342,8 @@ type ProtocolEzk2Type struct {
 	// CommonInfo: Общая информация
 	CommonInfo ProtocolCommonInfoType `xml:"commonInfo"`
 
-	// ProtocolPublisherInfo: Информация об организации, разместившей протокол
-	ProtocolPublisherInfo ProtocolPublisherInfo `xml:"protocolPublisherInfo"`
+	// ProtocolPublisherInfo40: Информация об организации, разместившей протокол
+	ProtocolPublisherInfo ProtocolPublisherInfo40 `xml:"protocolPublisherInfo"`
 
 	// CommissionInfo: Информация о комиссии
 	CommissionInfo cmn.CommissionType `xml:"commissionInfo"`
@@ -13363,8 +13363,8 @@ type ProtocolEzk2Type struct {
 	// AfterProlongation: Протокол после продления. Для протоколов, принимаемых после того, как по закупке размещен документ "Извещение о продлении срока подачи заявок" должно быть указано значение true, в остальных случаях указывается значение false
 	AfterProlongation bool `xml:"afterProlongation"`
 
-	// PrintFormFieldsInfo: Дополнительная информация для печатной формы. Игнорируется при приёме, заполняется при передаче
-	PrintFormFieldsInfo *PrintFormFieldsInfo `xml:"printFormFieldsInfo,omitempty"`
+	// PrintFormFieldsInfo34: Дополнительная информация для печатной формы. Игнорируется при приёме, заполняется при передаче
+	PrintFormFieldsInfo *PrintFormFieldsInfo34 `xml:"printFormFieldsInfo,omitempty"`
 }
 
 // ProlongationEzktype: Тип: Извещение о продлении срока подачи заявок на участие в ЭЗК (запрос котировок в электронной форме)
@@ -13374,8 +13374,8 @@ type ProlongationEzktype struct {
 	// SchemeVersion: Версия схемы
 	SchemeVersion base.SchemeVersionType `xml:"schemeVersion,attr"`
 
-	// ProlongationInfo: Новые сроки проведения ЭЗК (запрос котировок в электронной форме) после продления
-	ProlongationInfo ProlongationInfo `xml:"prolongationInfo"`
+	// ProlongationInfo2: Новые сроки проведения ЭЗК (запрос котировок в электронной форме) после продления
+	ProlongationInfo ProlongationInfo2 `xml:"prolongationInfo"`
 
 	// Id: Идентификатор документа ЕИС. Игнорируется при приеме-передаче. Добавлено на развитие
 	Id *int64 `xml:"id,omitempty"`
@@ -13406,8 +13406,8 @@ type ProlongationCancelEzktype struct {
 	// ProlongationCancelInfo: Информация об отмене продления срока подачи заявок
 	ProlongationCancelInfo CancelInfoType `xml:"prolongationCancelInfo"`
 
-	// PrintFormFieldsInfo: Дополнительная информация для печатной формы. Игнорируется при приёме, заполняется при передаче
-	PrintFormFieldsInfo *PrintFormFieldsInfo `xml:"printFormFieldsInfo,omitempty"`
+	// PrintFormFieldsInfo29: Дополнительная информация для печатной формы. Игнорируется при приёме, заполняется при передаче
+	PrintFormFieldsInfo *PrintFormFieldsInfo29 `xml:"printFormFieldsInfo,omitempty"`
 
 	// Id: Идентификатор документа ЕИС. Игнорируется при приеме-передаче. Добавлено на развитие
 	Id *int64 `xml:"id,omitempty"`
@@ -13435,8 +13435,8 @@ type NotificationEzppftype struct {
 	// SchemeVersion: Версия схемы
 	SchemeVersion base.SchemeVersionType `xml:"schemeVersion,attr"`
 
-	// NotificationInfo: Информация о проведении ЭЗП (Запрос предложений в электронной форме)
-	NotificationInfo NotificationInfo `xml:"notificationInfo"`
+	// NotificationInfo8: Информация о проведении ЭЗП (Запрос предложений в электронной форме)
+	NotificationInfo NotificationInfo8 `xml:"notificationInfo"`
 
 	// ModificationInfo: Основание внесения изменений
 	ModificationInfo *ModificationWithoutCustomerDecisionType `xml:"modificationInfo,omitempty"`
@@ -13453,8 +13453,8 @@ type NotificationEzppftype struct {
 	// CommonInfo: Общая информация
 	CommonInfo NotificationCommonInfoType `xml:"commonInfo"`
 
-	// PurchaseResponsibleInfo: Информация об организации, осуществляющей размещение
-	PurchaseResponsibleInfo PurchaseResponsibleInfo `xml:"purchaseResponsibleInfo"`
+	// PurchaseResponsibleInfo22: Информация об организации, осуществляющей размещение
+	PurchaseResponsibleInfo PurchaseResponsibleInfo22 `xml:"purchaseResponsibleInfo"`
 
 	// PrintFormInfo: Печатная форма документа. Элемент игнорируется при приёме. При передаче заполняется ссылкой на печатную форму и электронную подпись размещенного в ЕИС документа
 	PrintFormInfo *cmn.PrintFormType `xml:"printFormInfo,omitempty"`
@@ -13465,8 +13465,8 @@ type NotificationEzppftype struct {
 	// AttachmentsInfo: Вложенные файлы
 	AttachmentsInfo *cmn.AttachmentListType `xml:"attachmentsInfo,omitempty"`
 
-	// ServiceSigns: Служебные признаки
-	ServiceSigns *ServiceSigns `xml:"serviceSigns,omitempty"`
+	// ServiceSigns23: Служебные признаки
+	ServiceSigns *ServiceSigns23 `xml:"serviceSigns,omitempty"`
 }
 
 // NotificationEzptype: Тип: Извещение о проведении ЭЗП (запрос предложений в электронной форме) с конкурсной документацией; внесение изменений
@@ -13479,8 +13479,8 @@ type NotificationEzptype struct {
 	// Documentation: Конкурсная документация
 	Documentation DocumentationZptype `xml:"documentation"`
 
-	// NotificationInfo: Информация о проведении ЭЗП (Запрос предложений в электронной форме)
-	NotificationInfo NotificationInfo `xml:"notificationInfo"`
+	// NotificationInfo8: Информация о проведении ЭЗП (Запрос предложений в электронной форме)
+	NotificationInfo NotificationInfo8 `xml:"notificationInfo"`
 
 	// ModificationInfo: Основание внесения изменений
 	ModificationInfo *ModificationWithoutCustomerDecisionType `xml:"modificationInfo,omitempty"`
@@ -13497,8 +13497,8 @@ type NotificationEzptype struct {
 	// CommonInfo: Общая информация
 	CommonInfo NotificationCommonInfoType `xml:"commonInfo"`
 
-	// PurchaseResponsibleInfo: Информация об организации, осуществляющей размещение
-	PurchaseResponsibleInfo PurchaseResponsibleInfo `xml:"purchaseResponsibleInfo"`
+	// PurchaseResponsibleInfo22: Информация об организации, осуществляющей размещение
+	PurchaseResponsibleInfo PurchaseResponsibleInfo22 `xml:"purchaseResponsibleInfo"`
 
 	// PrintFormInfo: Печатная форма документа. Элемент игнорируется при приёме. При передаче заполняется ссылкой на печатную форму и электронную подпись размещенного в ЕИС документа
 	PrintFormInfo *cmn.PrintFormType `xml:"printFormInfo,omitempty"`
@@ -13509,8 +13509,8 @@ type NotificationEzptype struct {
 	// AttachmentsInfo: Вложенные файлы
 	AttachmentsInfo *cmn.AttachmentListType `xml:"attachmentsInfo,omitempty"`
 
-	// ServiceSigns: Служебные признаки
-	ServiceSigns *ServiceSigns `xml:"serviceSigns,omitempty"`
+	// ServiceSigns23: Служебные признаки
+	ServiceSigns *ServiceSigns23 `xml:"serviceSigns,omitempty"`
 }
 
 // ProtocolEzp1ExtractType: Тип: Выписка из протокола проведения ЭЗП (запрос предложений в электронной форме); внесение изменений
@@ -13535,8 +13535,8 @@ type ProtocolEzp1ExtractType struct {
 	// CommonInfo: Общая информация
 	CommonInfo ProtocolCommonInfoType `xml:"commonInfo"`
 
-	// ProtocolPublisherInfo: Информация об организации, разместившей протокол
-	ProtocolPublisherInfo ProtocolPublisherInfo `xml:"protocolPublisherInfo"`
+	// ProtocolPublisherInfo20: Информация об организации, разместившей протокол
+	ProtocolPublisherInfo ProtocolPublisherInfo20 `xml:"protocolPublisherInfo"`
 
 	// CommissionName: Название комиссии
 	CommissionName base.Text2000Type `xml:"commissionName"`
@@ -13553,8 +13553,8 @@ type ProtocolEzp1ExtractType struct {
 	// ModificationInfo: Основание внесения изменений
 	ModificationInfo *ModificationType `xml:"modificationInfo,omitempty"`
 
-	// ProtocolInfo: Информация о проведении ЭЗП (Запрос предложений в электронной форме)
-	ProtocolInfo ProtocolInfo `xml:"protocolInfo"`
+	// ProtocolInfo21: Информация о проведении ЭЗП (Запрос предложений в электронной форме)
+	ProtocolInfo ProtocolInfo21 `xml:"protocolInfo"`
 }
 
 // ProtocolEzp1Type: Тип: Протокол проведения ЭЗП (запрос предложений в электронной форме); внесение изменений
@@ -13564,8 +13564,8 @@ type ProtocolEzp1Type struct {
 	// SchemeVersion: Версия схемы
 	SchemeVersion base.SchemeVersionType `xml:"schemeVersion,attr"`
 
-	// ProtocolInfo: Информация о проведении ЭЗП (Запрос предложений в электронной форме). В рамках блока должен быть заполнен блок applicationsInfo и/или abandonedReason
-	ProtocolInfo ProtocolInfo `xml:"protocolInfo"`
+	// ProtocolInfo22: Информация о проведении ЭЗП (Запрос предложений в электронной форме). В рамках блока должен быть заполнен блок applicationsInfo и/или abandonedReason
+	ProtocolInfo ProtocolInfo22 `xml:"protocolInfo"`
 
 	// Id: Идентификатор документа ЕИС. Игнорируется при приеме-передаче. Добавлено на развитие
 	Id *int64 `xml:"id,omitempty"`
@@ -13582,8 +13582,8 @@ type ProtocolEzp1Type struct {
 	// CommonInfo: Общая информация
 	CommonInfo ProtocolCommonInfoType `xml:"commonInfo"`
 
-	// ProtocolPublisherInfo: Информация об организации, разместившей протокол
-	ProtocolPublisherInfo ProtocolPublisherInfo `xml:"protocolPublisherInfo"`
+	// ProtocolPublisherInfo43: Информация об организации, разместившей протокол
+	ProtocolPublisherInfo ProtocolPublisherInfo43 `xml:"protocolPublisherInfo"`
 
 	// CommissionInfo: Информация о комиссии
 	CommissionInfo cmn.CommissionType `xml:"commissionInfo"`
@@ -13608,8 +13608,8 @@ type ProtocolEzp2Type struct {
 	// SchemeVersion: Версия схемы
 	SchemeVersion base.SchemeVersionType `xml:"schemeVersion,attr"`
 
-	// ProtocolInfo: Информация о проведении ЭЗП (Запрос предложений в электронной форме)
-	ProtocolInfo ProtocolInfo `xml:"protocolInfo"`
+	// ProtocolInfo23: Информация о проведении ЭЗП (Запрос предложений в электронной форме)
+	ProtocolInfo ProtocolInfo23 `xml:"protocolInfo"`
 
 	// Id: Идентификатор документа ЕИС. Игнорируется при приеме-передаче. Добавлено на развитие
 	Id *int64 `xml:"id,omitempty"`
@@ -13626,8 +13626,8 @@ type ProtocolEzp2Type struct {
 	// CommonInfo: Общая информация
 	CommonInfo ProtocolCommonInfoType `xml:"commonInfo"`
 
-	// ProtocolPublisherInfo: Информация об организации, разместившей протокол
-	ProtocolPublisherInfo ProtocolPublisherInfo `xml:"protocolPublisherInfo"`
+	// ProtocolPublisherInfo43: Информация об организации, разместившей протокол
+	ProtocolPublisherInfo ProtocolPublisherInfo43 `xml:"protocolPublisherInfo"`
 
 	// CommissionInfo: Информация о комиссии
 	CommissionInfo cmn.CommissionType `xml:"commissionInfo"`
@@ -13652,8 +13652,8 @@ type NotificationEzakKtype struct {
 	// SchemeVersion: Версия схемы
 	SchemeVersion base.SchemeVersionType `xml:"schemeVersion,attr"`
 
-	// NotificationInfo: Информация о проведении закрытого конкурса в электронной форме
-	NotificationInfo NotificationInfo `xml:"notificationInfo"`
+	// NotificationInfo9: Информация о проведении закрытого конкурса в электронной форме
+	NotificationInfo NotificationInfo9 `xml:"notificationInfo"`
 
 	// ModificationInfo: Основание внесения изменений
 	ModificationInfo *NotificationModificationType `xml:"modificationInfo,omitempty"`
@@ -13670,8 +13670,8 @@ type NotificationEzakKtype struct {
 	// CommonInfo: Общая информация
 	CommonInfo NotificationCommonInfoType `xml:"commonInfo"`
 
-	// PurchaseResponsibleInfo: Информация об организации, осуществляющей размещение
-	PurchaseResponsibleInfo PurchaseResponsibleInfo `xml:"purchaseResponsibleInfo"`
+	// PurchaseResponsibleInfo22: Информация об организации, осуществляющей размещение
+	PurchaseResponsibleInfo PurchaseResponsibleInfo22 `xml:"purchaseResponsibleInfo"`
 
 	// PrintFormInfo: Печатная форма документа. Элемент игнорируется при приёме. При передаче заполняется ссылкой на печатную форму и электронную подпись размещенного в ЕИС документа
 	PrintFormInfo *cmn.PrintFormType `xml:"printFormInfo,omitempty"`
@@ -13682,8 +13682,8 @@ type NotificationEzakKtype struct {
 	// AttachmentsInfo: Вложенные файлы
 	AttachmentsInfo *cmn.AttachmentListType `xml:"attachmentsInfo,omitempty"`
 
-	// ServiceSigns: Служебные признаки
-	ServiceSigns *ServiceSigns `xml:"serviceSigns,omitempty"`
+	// ServiceSigns23: Служебные признаки
+	ServiceSigns *ServiceSigns23 `xml:"serviceSigns,omitempty"`
 }
 
 // NotificationEzakKoutype: Тип: Извещение о проведении закрытого конкурса с ограниченным участием в электронном виде (ЭЗакК-ОУ); внесение изменений
@@ -13693,8 +13693,8 @@ type NotificationEzakKoutype struct {
 	// SchemeVersion: Версия схемы
 	SchemeVersion base.SchemeVersionType `xml:"schemeVersion,attr"`
 
-	// NotificationInfo: Информация о проведении закрытого конкурса в электронной форме
-	NotificationInfo NotificationInfo `xml:"notificationInfo"`
+	// NotificationInfo10: Информация о проведении закрытого конкурса в электронной форме
+	NotificationInfo NotificationInfo10 `xml:"notificationInfo"`
 
 	// ModificationInfo: Основание внесения изменений
 	ModificationInfo *NotificationModificationType `xml:"modificationInfo,omitempty"`
@@ -13711,8 +13711,8 @@ type NotificationEzakKoutype struct {
 	// CommonInfo: Общая информация
 	CommonInfo NotificationCommonInfoType `xml:"commonInfo"`
 
-	// PurchaseResponsibleInfo: Информация об организации, осуществляющей размещение
-	PurchaseResponsibleInfo PurchaseResponsibleInfo `xml:"purchaseResponsibleInfo"`
+	// PurchaseResponsibleInfo22: Информация об организации, осуществляющей размещение
+	PurchaseResponsibleInfo PurchaseResponsibleInfo22 `xml:"purchaseResponsibleInfo"`
 
 	// PrintFormInfo: Печатная форма документа. Элемент игнорируется при приёме. При передаче заполняется ссылкой на печатную форму и электронную подпись размещенного в ЕИС документа
 	PrintFormInfo *cmn.PrintFormType `xml:"printFormInfo,omitempty"`
@@ -13723,8 +13723,8 @@ type NotificationEzakKoutype struct {
 	// AttachmentsInfo: Вложенные файлы
 	AttachmentsInfo *cmn.AttachmentListType `xml:"attachmentsInfo,omitempty"`
 
-	// ServiceSigns: Служебные признаки
-	ServiceSigns *ServiceSigns `xml:"serviceSigns,omitempty"`
+	// ServiceSigns23: Служебные признаки
+	ServiceSigns *ServiceSigns23 `xml:"serviceSigns,omitempty"`
 }
 
 // NotificationEzakKdtype: Тип: Извещение о проведении двухэтапного закрытого конкурса в электронном виде (ЭЗакКД); внесение изменений
@@ -13734,8 +13734,8 @@ type NotificationEzakKdtype struct {
 	// SchemeVersion: Версия схемы
 	SchemeVersion base.SchemeVersionType `xml:"schemeVersion,attr"`
 
-	// NotificationInfo: Информация о проведении закрытого конкурса в электронной форме
-	NotificationInfo NotificationInfo `xml:"notificationInfo"`
+	// NotificationInfo11: Информация о проведении закрытого конкурса в электронной форме
+	NotificationInfo NotificationInfo11 `xml:"notificationInfo"`
 
 	// ModificationInfo: Основание внесения изменений
 	ModificationInfo *NotificationModificationType `xml:"modificationInfo,omitempty"`
@@ -13752,8 +13752,8 @@ type NotificationEzakKdtype struct {
 	// CommonInfo: Общая информация
 	CommonInfo NotificationCommonInfoType `xml:"commonInfo"`
 
-	// PurchaseResponsibleInfo: Информация об организации, осуществляющей размещение
-	PurchaseResponsibleInfo PurchaseResponsibleInfo `xml:"purchaseResponsibleInfo"`
+	// PurchaseResponsibleInfo22: Информация об организации, осуществляющей размещение
+	PurchaseResponsibleInfo PurchaseResponsibleInfo22 `xml:"purchaseResponsibleInfo"`
 
 	// PrintFormInfo: Печатная форма документа. Элемент игнорируется при приёме. При передаче заполняется ссылкой на печатную форму и электронную подпись размещенного в ЕИС документа
 	PrintFormInfo *cmn.PrintFormType `xml:"printFormInfo,omitempty"`
@@ -13764,8 +13764,8 @@ type NotificationEzakKdtype struct {
 	// AttachmentsInfo: Вложенные файлы
 	AttachmentsInfo *cmn.AttachmentListType `xml:"attachmentsInfo,omitempty"`
 
-	// ServiceSigns: Служебные признаки
-	ServiceSigns *ServiceSigns `xml:"serviceSigns,omitempty"`
+	// ServiceSigns23: Служебные признаки
+	ServiceSigns *ServiceSigns23 `xml:"serviceSigns,omitempty"`
 }
 
 // NotificationEzakAtype: Тип: Извещение о проведении закрытого аукциона в электронном виде (ЭЗакА); внесение изменений
@@ -13775,8 +13775,8 @@ type NotificationEzakAtype struct {
 	// SchemeVersion: Версия схемы
 	SchemeVersion base.SchemeVersionType `xml:"schemeVersion,attr"`
 
-	// NotificationInfo: Информация о проведении закрытого конкурса в электронной форме
-	NotificationInfo NotificationInfo `xml:"notificationInfo"`
+	// NotificationInfo12: Информация о проведении закрытого конкурса в электронной форме
+	NotificationInfo NotificationInfo12 `xml:"notificationInfo"`
 
 	// ModificationInfo: Основание внесения изменений
 	ModificationInfo *NotificationModificationType `xml:"modificationInfo,omitempty"`
@@ -13793,8 +13793,8 @@ type NotificationEzakAtype struct {
 	// CommonInfo: Общая информация
 	CommonInfo NotificationCommonInfoType `xml:"commonInfo"`
 
-	// PurchaseResponsibleInfo: Информация об организации, осуществляющей размещение
-	PurchaseResponsibleInfo PurchaseResponsibleInfo `xml:"purchaseResponsibleInfo"`
+	// PurchaseResponsibleInfo22: Информация об организации, осуществляющей размещение
+	PurchaseResponsibleInfo PurchaseResponsibleInfo22 `xml:"purchaseResponsibleInfo"`
 
 	// PrintFormInfo: Печатная форма документа. Элемент игнорируется при приёме. При передаче заполняется ссылкой на печатную форму и электронную подпись размещенного в ЕИС документа
 	PrintFormInfo *cmn.PrintFormType `xml:"printFormInfo,omitempty"`
@@ -13805,8 +13805,8 @@ type NotificationEzakAtype struct {
 	// AttachmentsInfo: Вложенные файлы
 	AttachmentsInfo *cmn.AttachmentListType `xml:"attachmentsInfo,omitempty"`
 
-	// ServiceSigns: Служебные признаки
-	ServiceSigns *ServiceSigns `xml:"serviceSigns,omitempty"`
+	// ServiceSigns23: Служебные признаки
+	ServiceSigns *ServiceSigns23 `xml:"serviceSigns,omitempty"`
 }
 
 // NotificationEf2020Type: Тип: Извещение о проведении ЭА20 (аукцион в электронной форме с даты начала действия оптимизационного законопроекта 44-ФЗ); изменение извещения
@@ -13816,8 +13816,8 @@ type NotificationEf2020Type struct {
 	// SchemeVersion: Версия схемы
 	SchemeVersion base.SchemeVersionType `xml:"schemeVersion,attr"`
 
-	// NotificationInfo: Информация о проведении ЭА20 (аукцион в электронной форме с даты начала действия оптимизационного законопроекта 44-ФЗ)
-	NotificationInfo NotificationInfo `xml:"notificationInfo"`
+	// NotificationInfo13: Информация о проведении ЭА20 (аукцион в электронной форме с даты начала действия оптимизационного законопроекта 44-ФЗ)
+	NotificationInfo NotificationInfo13 `xml:"notificationInfo"`
 
 	// ModificationInfo: Основание внесения изменений
 	ModificationInfo *Notification2020ModificationType `xml:"modificationInfo,omitempty"`
@@ -13831,11 +13831,11 @@ type NotificationEf2020Type struct {
 	// VersionNumber: Номер версии документа. В случае если значение поля не указано или в поле указано 1, считается, что это первоначальная версия документа, иначе – изменение существующей версии. При приеме изменений документа контролируется последовательность нумерации
 	VersionNumber *base.VersionNumberType `xml:"versionNumber,omitempty"`
 
-	// CommonInfo: Общая информация
-	CommonInfo CommonInfo `xml:"commonInfo"`
+	// CommonInfo28: Общая информация
+	CommonInfo CommonInfo28 `xml:"commonInfo"`
 
-	// PurchaseResponsibleInfo: Информация об организации, осуществляющей размещение
-	PurchaseResponsibleInfo PurchaseResponsibleInfo `xml:"purchaseResponsibleInfo"`
+	// PurchaseResponsibleInfo21: Информация об организации, осуществляющей размещение
+	PurchaseResponsibleInfo PurchaseResponsibleInfo21 `xml:"purchaseResponsibleInfo"`
 
 	// PrintFormInfo: Печатная форма документа. Элемент игнорируется при приёме. При передаче заполняется ссылкой на печатную форму и электронную подпись размещенного в ЕИС документа
 	PrintFormInfo *cmn.PrintFormType `xml:"printFormInfo,omitempty"`
@@ -13846,8 +13846,8 @@ type NotificationEf2020Type struct {
 	// AttachmentsInfo: Вложенные файлы
 	AttachmentsInfo *cmn.AttachmentListWithKindType `xml:"attachmentsInfo,omitempty"`
 
-	// ServiceSigns: Служебные признаки
-	ServiceSigns *ServiceSigns `xml:"serviceSigns,omitempty"`
+	// ServiceSigns22: Служебные признаки
+	ServiceSigns *ServiceSigns22 `xml:"serviceSigns,omitempty"`
 }
 
 // ProtocolEf2020SubmitOffersType: Тип: Протокол подачи ценовых предложений ЭА20 (аукцион в электронной форме с даты начала действия оптимизационного законопроекта 44-ФЗ)
@@ -13857,8 +13857,8 @@ type ProtocolEf2020SubmitOffersType struct {
 	// SchemeVersion: Версия схемы
 	SchemeVersion base.SchemeVersionType `xml:"schemeVersion,attr"`
 
-	// ProtocolInfo: Информация о торгах ЭА20 (аукцион в электронной форме с даты начала действия оптимизационного законопроекта 44-ФЗ)
-	ProtocolInfo ProtocolInfo `xml:"protocolInfo"`
+	// ProtocolInfo24: Информация о торгах ЭА20 (аукцион в электронной форме с даты начала действия оптимизационного законопроекта 44-ФЗ)
+	ProtocolInfo ProtocolInfo24 `xml:"protocolInfo"`
 
 	// Id: Идентификатор документа ЕИС. Игнорируется при приеме-передаче. Добавлено на развитие
 	Id *int64 `xml:"id,omitempty"`
@@ -13875,8 +13875,8 @@ type ProtocolEf2020SubmitOffersType struct {
 	// CommonInfo: Общая информация
 	CommonInfo Protocol2020CommonInfoType `xml:"commonInfo"`
 
-	// ProtocolPublisherInfo: Информация об организации, разместившей протокол
-	ProtocolPublisherInfo ProtocolPublisherInfo `xml:"protocolPublisherInfo"`
+	// ProtocolPublisherInfo41: Информация об организации, разместившей протокол
+	ProtocolPublisherInfo ProtocolPublisherInfo41 `xml:"protocolPublisherInfo"`
 
 	// ExtPrintFormInfo: Электронный документ, полученный из внешней системы. В составе блока на стороне ЕИС принимается сформированная на площадке печатная форма протокола без сведений об участниках закупки
 	ExtPrintFormInfo cmn.ExtPrintFormProtocolType `xml:"extPrintFormInfo"`
@@ -13895,8 +13895,8 @@ type ProtocolEf2020FinalType struct {
 	// SchemeVersion: Версия схемы
 	SchemeVersion base.SchemeVersionType `xml:"schemeVersion,attr"`
 
-	// ProtocolInfo: Информация о проведении ЭА20 (аукцион в электронной форме с даты начала действия оптимизационного законопроекта 44-ФЗ)
-	ProtocolInfo ProtocolInfo `xml:"protocolInfo"`
+	// ProtocolInfo26: Информация о проведении ЭА20 (аукцион в электронной форме с даты начала действия оптимизационного законопроекта 44-ФЗ)
+	ProtocolInfo ProtocolInfo26 `xml:"protocolInfo"`
 
 	// Id: Идентификатор документа ЕИС. Игнорируется при приеме-передаче. Добавлено на развитие
 	Id *int64 `xml:"id,omitempty"`
@@ -13913,8 +13913,8 @@ type ProtocolEf2020FinalType struct {
 	// CommonInfo: Общая информация
 	CommonInfo Protocol2020CommonInfoType `xml:"commonInfo"`
 
-	// ProtocolPublisherInfo: Информация об организации, разместившей протокол
-	ProtocolPublisherInfo ProtocolPublisherInfo `xml:"protocolPublisherInfo"`
+	// ProtocolPublisherInfo41: Информация об организации, разместившей протокол
+	ProtocolPublisherInfo ProtocolPublisherInfo41 `xml:"protocolPublisherInfo"`
 
 	// ExtPrintFormInfo: Электронный документ, полученный из внешней системы. В составе блока на стороне ЕИС принимается сформированная на площадке печатная форма протокола без сведений об участниках закупки
 	ExtPrintFormInfo cmn.ExtPrintFormProtocolType `xml:"extPrintFormInfo"`
@@ -13936,8 +13936,8 @@ type ProtocolEf2020FinalPartType struct {
 	// AppParticipantsInfo: Сведения об участниках закупки
 	AppParticipantsInfo *AppParticipantsInfo `xml:"appParticipantsInfo,omitempty"`
 
-	// ProtocolInfo: Информация о проведении ЭА20 (аукцион в электронной форме с даты начала действия оптимизационного законопроекта 44-ФЗ)
-	ProtocolInfo ProtocolInfo `xml:"protocolInfo"`
+	// ProtocolInfo26: Информация о проведении ЭА20 (аукцион в электронной форме с даты начала действия оптимизационного законопроекта 44-ФЗ)
+	ProtocolInfo ProtocolInfo26 `xml:"protocolInfo"`
 
 	// Id: Идентификатор документа ЕИС. Игнорируется при приеме-передаче. Добавлено на развитие
 	Id *int64 `xml:"id,omitempty"`
@@ -13954,8 +13954,8 @@ type ProtocolEf2020FinalPartType struct {
 	// CommonInfo: Общая информация
 	CommonInfo Protocol2020CommonInfoType `xml:"commonInfo"`
 
-	// ProtocolPublisherInfo: Информация об организации, разместившей протокол
-	ProtocolPublisherInfo ProtocolPublisherInfo `xml:"protocolPublisherInfo"`
+	// ProtocolPublisherInfo41: Информация об организации, разместившей протокол
+	ProtocolPublisherInfo ProtocolPublisherInfo41 `xml:"protocolPublisherInfo"`
 
 	// ExtPrintFormInfo: Электронный документ, полученный из внешней системы. В составе блока на стороне ЕИС принимается сформированная на площадке печатная форма протокола без сведений об участниках закупки
 	ExtPrintFormInfo cmn.ExtPrintFormProtocolType `xml:"extPrintFormInfo"`
@@ -13974,8 +13974,8 @@ type NotificationEok2020Type struct {
 	// SchemeVersion: Версия схемы
 	SchemeVersion base.SchemeVersionType `xml:"schemeVersion,attr"`
 
-	// NotificationInfo: Информация о проведении ЭОК20 (открытый конкурс в электронной форме с 2020 года)
-	NotificationInfo NotificationInfo `xml:"notificationInfo"`
+	// NotificationInfo14: Информация о проведении ЭОК20 (открытый конкурс в электронной форме с 2020 года)
+	NotificationInfo NotificationInfo14 `xml:"notificationInfo"`
 
 	// ModificationInfo: Основание внесения изменений
 	ModificationInfo *Notification2020ModificationType `xml:"modificationInfo,omitempty"`
@@ -13989,11 +13989,11 @@ type NotificationEok2020Type struct {
 	// VersionNumber: Номер версии документа. В случае если значение поля не указано или в поле указано 1, считается, что это первоначальная версия документа, иначе – изменение существующей версии. При приеме изменений документа контролируется последовательность нумерации
 	VersionNumber *base.VersionNumberType `xml:"versionNumber,omitempty"`
 
-	// CommonInfo: Общая информация
-	CommonInfo CommonInfo `xml:"commonInfo"`
+	// CommonInfo28: Общая информация
+	CommonInfo CommonInfo28 `xml:"commonInfo"`
 
-	// PurchaseResponsibleInfo: Информация об организации, осуществляющей размещение
-	PurchaseResponsibleInfo PurchaseResponsibleInfo `xml:"purchaseResponsibleInfo"`
+	// PurchaseResponsibleInfo21: Информация об организации, осуществляющей размещение
+	PurchaseResponsibleInfo PurchaseResponsibleInfo21 `xml:"purchaseResponsibleInfo"`
 
 	// PrintFormInfo: Печатная форма документа. Элемент игнорируется при приёме. При передаче заполняется ссылкой на печатную форму и электронную подпись размещенного в ЕИС документа
 	PrintFormInfo *cmn.PrintFormType `xml:"printFormInfo,omitempty"`
@@ -14004,8 +14004,8 @@ type NotificationEok2020Type struct {
 	// AttachmentsInfo: Вложенные файлы
 	AttachmentsInfo *cmn.AttachmentListWithKindType `xml:"attachmentsInfo,omitempty"`
 
-	// ServiceSigns: Служебные признаки
-	ServiceSigns *ServiceSigns `xml:"serviceSigns,omitempty"`
+	// ServiceSigns22: Служебные признаки
+	ServiceSigns *ServiceSigns22 `xml:"serviceSigns,omitempty"`
 }
 
 // ProtocolEok2020FirstSectionsType: Тип: Протокол рассмотрения и оценки первых частей заявок на участие в ЭOK20 (открытый конкурс в электронной форме с даты начала действия оптимизационного законопроекта 44-ФЗ)
@@ -14015,8 +14015,8 @@ type ProtocolEok2020FirstSectionsType struct {
 	// SchemeVersion: Версия схемы
 	SchemeVersion base.SchemeVersionType `xml:"schemeVersion,attr"`
 
-	// ProtocolInfo: Информация о проведении ЭОК20 (открытый конкурс в электронной форме с даты начала действия оптимизационного законопроекта 44-ФЗ). В рамках блока должен быть заполнен блок applicationsInfo и/или abandonedReason
-	ProtocolInfo ProtocolInfo `xml:"protocolInfo"`
+	// ProtocolInfo27: Информация о проведении ЭОК20 (открытый конкурс в электронной форме с даты начала действия оптимизационного законопроекта 44-ФЗ). В рамках блока должен быть заполнен блок applicationsInfo и/или abandonedReason
+	ProtocolInfo ProtocolInfo27 `xml:"protocolInfo"`
 
 	// Id: Идентификатор документа ЕИС. Игнорируется при приеме-передаче. Добавлено на развитие
 	Id *int64 `xml:"id,omitempty"`
@@ -14033,8 +14033,8 @@ type ProtocolEok2020FirstSectionsType struct {
 	// CommonInfo: Общая информация
 	CommonInfo Protocol2020CommonInfoType `xml:"commonInfo"`
 
-	// ProtocolPublisherInfo: Информация об организации, разместившей протокол
-	ProtocolPublisherInfo ProtocolPublisherInfo `xml:"protocolPublisherInfo"`
+	// ProtocolPublisherInfo41: Информация об организации, разместившей протокол
+	ProtocolPublisherInfo ProtocolPublisherInfo41 `xml:"protocolPublisherInfo"`
 
 	// ExtPrintFormInfo: Электронный документ, полученный из внешней системы. В составе блока на стороне ЕИС принимается сформированная на площадке печатная форма протокола без сведений об участниках закупки
 	ExtPrintFormInfo cmn.ExtPrintFormProtocolType `xml:"extPrintFormInfo"`
@@ -14053,8 +14053,8 @@ type ProtocolEok2020SecondSectionsType struct {
 	// SchemeVersion: Версия схемы
 	SchemeVersion base.SchemeVersionType `xml:"schemeVersion,attr"`
 
-	// ProtocolInfo: Информация о проведении ЭОК20 (открытый конкурс в электронной форме с даты начала действия оптимизационного законопроекта 44-ФЗ). В рамках блока должен быть заполнен блок applicationsInfo и/или abandonedReason
-	ProtocolInfo ProtocolInfo `xml:"protocolInfo"`
+	// ProtocolInfo29: Информация о проведении ЭОК20 (открытый конкурс в электронной форме с даты начала действия оптимизационного законопроекта 44-ФЗ). В рамках блока должен быть заполнен блок applicationsInfo и/или abandonedReason
+	ProtocolInfo ProtocolInfo29 `xml:"protocolInfo"`
 
 	// Id: Идентификатор документа ЕИС. Игнорируется при приеме-передаче. Добавлено на развитие
 	Id *int64 `xml:"id,omitempty"`
@@ -14071,8 +14071,8 @@ type ProtocolEok2020SecondSectionsType struct {
 	// CommonInfo: Общая информация
 	CommonInfo Protocol2020CommonInfoType `xml:"commonInfo"`
 
-	// ProtocolPublisherInfo: Информация об организации, разместившей протокол
-	ProtocolPublisherInfo ProtocolPublisherInfo `xml:"protocolPublisherInfo"`
+	// ProtocolPublisherInfo41: Информация об организации, разместившей протокол
+	ProtocolPublisherInfo ProtocolPublisherInfo41 `xml:"protocolPublisherInfo"`
 
 	// ExtPrintFormInfo: Электронный документ, полученный из внешней системы. В составе блока на стороне ЕИС принимается сформированная на площадке печатная форма протокола без сведений об участниках закупки
 	ExtPrintFormInfo cmn.ExtPrintFormProtocolType `xml:"extPrintFormInfo"`
@@ -14091,11 +14091,11 @@ type ProtocolEok2020SecondSectionsPartType struct {
 	// SchemeVersion: Версия схемы
 	SchemeVersion base.SchemeVersionType `xml:"schemeVersion,attr"`
 
-	// AppParticipantsInfo: Сведения об участниках закупки
-	AppParticipantsInfo *AppParticipantsInfo `xml:"appParticipantsInfo,omitempty"`
+	// AppParticipantsInfo1: Сведения об участниках закупки
+	AppParticipantsInfo *AppParticipantsInfo1 `xml:"appParticipantsInfo,omitempty"`
 
-	// ProtocolInfo: Информация о проведении ЭОК20 (открытый конкурс в электронной форме с даты начала действия оптимизационного законопроекта 44-ФЗ). В рамках блока должен быть заполнен блок applicationsInfo и/или abandonedReason
-	ProtocolInfo ProtocolInfo `xml:"protocolInfo"`
+	// ProtocolInfo29: Информация о проведении ЭОК20 (открытый конкурс в электронной форме с даты начала действия оптимизационного законопроекта 44-ФЗ). В рамках блока должен быть заполнен блок applicationsInfo и/или abandonedReason
+	ProtocolInfo ProtocolInfo29 `xml:"protocolInfo"`
 
 	// Id: Идентификатор документа ЕИС. Игнорируется при приеме-передаче. Добавлено на развитие
 	Id *int64 `xml:"id,omitempty"`
@@ -14112,8 +14112,8 @@ type ProtocolEok2020SecondSectionsPartType struct {
 	// CommonInfo: Общая информация
 	CommonInfo Protocol2020CommonInfoType `xml:"commonInfo"`
 
-	// ProtocolPublisherInfo: Информация об организации, разместившей протокол
-	ProtocolPublisherInfo ProtocolPublisherInfo `xml:"protocolPublisherInfo"`
+	// ProtocolPublisherInfo41: Информация об организации, разместившей протокол
+	ProtocolPublisherInfo ProtocolPublisherInfo41 `xml:"protocolPublisherInfo"`
 
 	// ExtPrintFormInfo: Электронный документ, полученный из внешней системы. В составе блока на стороне ЕИС принимается сформированная на площадке печатная форма протокола без сведений об участниках закупки
 	ExtPrintFormInfo cmn.ExtPrintFormProtocolType `xml:"extPrintFormInfo"`
@@ -14132,8 +14132,8 @@ type ProtocolEok2020FinalType struct {
 	// SchemeVersion: Версия схемы
 	SchemeVersion base.SchemeVersionType `xml:"schemeVersion,attr"`
 
-	// ProtocolInfo: Информация о проведении ЭОК20 (открытый конкурс в электронной форме с даты начала действия оптимизационного законопроекта 44-ФЗ). В рамках блока должен быть заполнен блок applicationsInfo и/или abandonedReason
-	ProtocolInfo ProtocolInfo `xml:"protocolInfo"`
+	// ProtocolInfo31: Информация о проведении ЭОК20 (открытый конкурс в электронной форме с даты начала действия оптимизационного законопроекта 44-ФЗ). В рамках блока должен быть заполнен блок applicationsInfo и/или abandonedReason
+	ProtocolInfo ProtocolInfo31 `xml:"protocolInfo"`
 
 	// Id: Идентификатор документа ЕИС. Игнорируется при приеме-передаче. Добавлено на развитие
 	Id *int64 `xml:"id,omitempty"`
@@ -14150,8 +14150,8 @@ type ProtocolEok2020FinalType struct {
 	// CommonInfo: Общая информация
 	CommonInfo Protocol2020CommonInfoType `xml:"commonInfo"`
 
-	// ProtocolPublisherInfo: Информация об организации, разместившей протокол
-	ProtocolPublisherInfo ProtocolPublisherInfo `xml:"protocolPublisherInfo"`
+	// ProtocolPublisherInfo41: Информация об организации, разместившей протокол
+	ProtocolPublisherInfo ProtocolPublisherInfo41 `xml:"protocolPublisherInfo"`
 
 	// ExtPrintFormInfo: Электронный документ, полученный из внешней системы. В составе блока на стороне ЕИС принимается сформированная на площадке печатная форма протокола без сведений об участниках закупки
 	ExtPrintFormInfo cmn.ExtPrintFormProtocolType `xml:"extPrintFormInfo"`
@@ -14170,11 +14170,11 @@ type ProtocolEok2020FinalPartType struct {
 	// SchemeVersion: Версия схемы
 	SchemeVersion base.SchemeVersionType `xml:"schemeVersion,attr"`
 
-	// AppParticipantsInfo: Сведения об участниках закупки
-	AppParticipantsInfo *AppParticipantsInfo `xml:"appParticipantsInfo,omitempty"`
+	// AppParticipantsInfo2: Сведения об участниках закупки
+	AppParticipantsInfo *AppParticipantsInfo2 `xml:"appParticipantsInfo,omitempty"`
 
-	// ProtocolInfo: Информация о проведении ЭОК20 (открытый конкурс в электронной форме с даты начала действия оптимизационного законопроекта 44-ФЗ). В рамках блока должен быть заполнен блок applicationsInfo и/или abandonedReason
-	ProtocolInfo ProtocolInfo `xml:"protocolInfo"`
+	// ProtocolInfo31: Информация о проведении ЭОК20 (открытый конкурс в электронной форме с даты начала действия оптимизационного законопроекта 44-ФЗ). В рамках блока должен быть заполнен блок applicationsInfo и/или abandonedReason
+	ProtocolInfo ProtocolInfo31 `xml:"protocolInfo"`
 
 	// Id: Идентификатор документа ЕИС. Игнорируется при приеме-передаче. Добавлено на развитие
 	Id *int64 `xml:"id,omitempty"`
@@ -14191,8 +14191,8 @@ type ProtocolEok2020FinalPartType struct {
 	// CommonInfo: Общая информация
 	CommonInfo Protocol2020CommonInfoType `xml:"commonInfo"`
 
-	// ProtocolPublisherInfo: Информация об организации, разместившей протокол
-	ProtocolPublisherInfo ProtocolPublisherInfo `xml:"protocolPublisherInfo"`
+	// ProtocolPublisherInfo41: Информация об организации, разместившей протокол
+	ProtocolPublisherInfo ProtocolPublisherInfo41 `xml:"protocolPublisherInfo"`
 
 	// ExtPrintFormInfo: Электронный документ, полученный из внешней системы. В составе блока на стороне ЕИС принимается сформированная на площадке печатная форма протокола без сведений об участниках закупки
 	ExtPrintFormInfo cmn.ExtPrintFormProtocolType `xml:"extPrintFormInfo"`
@@ -14211,14 +14211,14 @@ type NotificationEzk2020Type struct {
 	// SchemeVersion: Версия схемы
 	SchemeVersion base.SchemeVersionType `xml:"schemeVersion,attr"`
 
-	// NotificationInfo: Информация о проведении ЭЗК20 (запрос котировок в электронной форме с даты начала действия оптимизационного законопроекта 44-ФЗ)
-	NotificationInfo NotificationInfo `xml:"notificationInfo"`
+	// NotificationInfo15: Информация о проведении ЭЗК20 (запрос котировок в электронной форме с даты начала действия оптимизационного законопроекта 44-ФЗ)
+	NotificationInfo NotificationInfo15 `xml:"notificationInfo"`
 
 	// ModificationInfo: Основание внесения изменений. Для извещений, первая версия которых размещена до даты начала действия оптимизационного законопроекта 44-ФЗ, не допускается внесение изменений по решению заказчика (организации, осуществляющей определение поставщика для заказчика)
 	ModificationInfo *Notification2020ModificationType `xml:"modificationInfo,omitempty"`
 
-	// PrintFormFieldsInfo: Дополнительная информация для печатной формы. Игнорируется при приёме, заполняется при передаче
-	PrintFormFieldsInfo *PrintFormFieldsInfo `xml:"printFormFieldsInfo,omitempty"`
+	// PrintFormFieldsInfo30: Дополнительная информация для печатной формы. Игнорируется при приёме, заполняется при передаче
+	PrintFormFieldsInfo *PrintFormFieldsInfo30 `xml:"printFormFieldsInfo,omitempty"`
 
 	// Id: Идентификатор документа ЕИС. Обязателен для заполнения при приеме изменения проекта документа
 	Id *int64 `xml:"id,omitempty"`
@@ -14229,11 +14229,11 @@ type NotificationEzk2020Type struct {
 	// VersionNumber: Номер версии документа. В случае если значение поля не указано или в поле указано 1, считается, что это первоначальная версия документа, иначе – изменение существующей версии. При приеме изменений документа контролируется последовательность нумерации
 	VersionNumber *base.VersionNumberType `xml:"versionNumber,omitempty"`
 
-	// CommonInfo: Общая информация
-	CommonInfo CommonInfo `xml:"commonInfo"`
+	// CommonInfo28: Общая информация
+	CommonInfo CommonInfo28 `xml:"commonInfo"`
 
-	// PurchaseResponsibleInfo: Информация об организации, осуществляющей размещение
-	PurchaseResponsibleInfo PurchaseResponsibleInfo `xml:"purchaseResponsibleInfo"`
+	// PurchaseResponsibleInfo21: Информация об организации, осуществляющей размещение
+	PurchaseResponsibleInfo PurchaseResponsibleInfo21 `xml:"purchaseResponsibleInfo"`
 
 	// PrintFormInfo: Печатная форма документа. Элемент игнорируется при приёме. При передаче заполняется ссылкой на печатную форму и электронную подпись размещенного в ЕИС документа
 	PrintFormInfo *cmn.PrintFormType `xml:"printFormInfo,omitempty"`
@@ -14244,8 +14244,8 @@ type NotificationEzk2020Type struct {
 	// AttachmentsInfo: Вложенные файлы
 	AttachmentsInfo *cmn.AttachmentListWithKindType `xml:"attachmentsInfo,omitempty"`
 
-	// ServiceSigns: Служебные признаки
-	ServiceSigns *ServiceSigns `xml:"serviceSigns,omitempty"`
+	// ServiceSigns22: Служебные признаки
+	ServiceSigns *ServiceSigns22 `xml:"serviceSigns,omitempty"`
 }
 
 // ProtocolEzk2020FinalType: Тип: Протокол подведения итогов определения поставщика (подрядчика, исполнителя) ЭЗК20 (запрос котировок в электронной форме c 01.04.2021 года)
@@ -14255,8 +14255,8 @@ type ProtocolEzk2020FinalType struct {
 	// SchemeVersion: Версия схемы
 	SchemeVersion base.SchemeVersionType `xml:"schemeVersion,attr"`
 
-	// ProtocolInfo: Информация о проведении ЭЗК (запрос котировок в электронной форме)
-	ProtocolInfo ProtocolInfo `xml:"protocolInfo"`
+	// ProtocolInfo33: Информация о проведении ЭЗК (запрос котировок в электронной форме)
+	ProtocolInfo ProtocolInfo33 `xml:"protocolInfo"`
 
 	// Id: Идентификатор документа ЕИС. Игнорируется при приеме-передаче. Добавлено на развитие
 	Id *int64 `xml:"id,omitempty"`
@@ -14273,8 +14273,8 @@ type ProtocolEzk2020FinalType struct {
 	// CommonInfo: Общая информация
 	CommonInfo Protocol2020CommonInfoType `xml:"commonInfo"`
 
-	// ProtocolPublisherInfo: Информация об организации, разместившей протокол
-	ProtocolPublisherInfo ProtocolPublisherInfo `xml:"protocolPublisherInfo"`
+	// ProtocolPublisherInfo41: Информация об организации, разместившей протокол
+	ProtocolPublisherInfo ProtocolPublisherInfo41 `xml:"protocolPublisherInfo"`
 
 	// ExtPrintFormInfo: Электронный документ, полученный из внешней системы. В составе блока на стороне ЕИС принимается сформированная на площадке печатная форма протокола без сведений об участниках закупки
 	ExtPrintFormInfo cmn.ExtPrintFormProtocolType `xml:"extPrintFormInfo"`
@@ -14293,11 +14293,11 @@ type ProtocolEzk2020FinalPartType struct {
 	// SchemeVersion: Версия схемы
 	SchemeVersion base.SchemeVersionType `xml:"schemeVersion,attr"`
 
-	// AppParticipantsInfo: Сведения об участниках закупки
-	AppParticipantsInfo *AppParticipantsInfo `xml:"appParticipantsInfo,omitempty"`
+	// AppParticipantsInfo3: Сведения об участниках закупки
+	AppParticipantsInfo *AppParticipantsInfo3 `xml:"appParticipantsInfo,omitempty"`
 
-	// ProtocolInfo: Информация о проведении ЭЗК (запрос котировок в электронной форме)
-	ProtocolInfo ProtocolInfo `xml:"protocolInfo"`
+	// ProtocolInfo33: Информация о проведении ЭЗК (запрос котировок в электронной форме)
+	ProtocolInfo ProtocolInfo33 `xml:"protocolInfo"`
 
 	// Id: Идентификатор документа ЕИС. Игнорируется при приеме-передаче. Добавлено на развитие
 	Id *int64 `xml:"id,omitempty"`
@@ -14314,8 +14314,8 @@ type ProtocolEzk2020FinalPartType struct {
 	// CommonInfo: Общая информация
 	CommonInfo Protocol2020CommonInfoType `xml:"commonInfo"`
 
-	// ProtocolPublisherInfo: Информация об организации, разместившей протокол
-	ProtocolPublisherInfo ProtocolPublisherInfo `xml:"protocolPublisherInfo"`
+	// ProtocolPublisherInfo41: Информация об организации, разместившей протокол
+	ProtocolPublisherInfo ProtocolPublisherInfo41 `xml:"protocolPublisherInfo"`
 
 	// ExtPrintFormInfo: Электронный документ, полученный из внешней системы. В составе блока на стороне ЕИС принимается сформированная на площадке печатная форма протокола без сведений об участниках закупки
 	ExtPrintFormInfo cmn.ExtPrintFormProtocolType `xml:"extPrintFormInfo"`
@@ -14343,11 +14343,11 @@ type NotificationEzt2020Type struct {
 	// VersionNumber: Номер версии документа. В случае если значение поля не указано или в поле указано 1, считается, что это первоначальная версия документа, иначе – изменение существующей версии. При приеме изменений документа контролируется последовательность нумерации
 	VersionNumber *base.VersionNumberType `xml:"versionNumber,omitempty"`
 
-	// CommonInfo: Общая информация
-	CommonInfo CommonInfo `xml:"commonInfo"`
+	// CommonInfo20: Общая информация
+	CommonInfo CommonInfo20 `xml:"commonInfo"`
 
-	// PurchaseResponsibleInfo: Информация об организации, осуществляющей размещение
-	PurchaseResponsibleInfo PurchaseResponsibleInfo `xml:"purchaseResponsibleInfo"`
+	// PurchaseResponsibleInfo17: Информация об организации, осуществляющей размещение
+	PurchaseResponsibleInfo PurchaseResponsibleInfo17 `xml:"purchaseResponsibleInfo"`
 
 	// PrintFormInfo: Печатная форма документа. Элемент игнорируется при приёме. При передаче заполняется ссылкой на печатную форму и электронную подпись размещенного в ЕИС документа
 	PrintFormInfo *cmn.PrintFormType `xml:"printFormInfo,omitempty"`
@@ -14358,17 +14358,17 @@ type NotificationEzt2020Type struct {
 	// AttachmentsInfo: Вложенные файлы
 	AttachmentsInfo *cmn.AttachmentListWithKindType `xml:"attachmentsInfo,omitempty"`
 
-	// NotificationInfo: Информация о проведении ЭЗТ (Закупка товаров согласно ч.12 ст. 93 № 44-ФЗ)
-	NotificationInfo NotificationInfo `xml:"notificationInfo"`
+	// NotificationInfo16: Информация о проведении ЭЗТ (Закупка товаров согласно ч.12 ст. 93 № 44-ФЗ)
+	NotificationInfo NotificationInfo16 `xml:"notificationInfo"`
 
 	// ModificationInfo: Основание внесения изменений
 	ModificationInfo *Notification2020ModificationType `xml:"modificationInfo,omitempty"`
 
-	// PrintFormFieldsInfo: Дополнительная информация для печатной формы. Игнорируется при приёме, заполняется при передаче
-	PrintFormFieldsInfo *PrintFormFieldsInfo `xml:"printFormFieldsInfo,omitempty"`
+	// PrintFormFieldsInfo31: Дополнительная информация для печатной формы. Игнорируется при приёме, заполняется при передаче
+	PrintFormFieldsInfo *PrintFormFieldsInfo31 `xml:"printFormFieldsInfo,omitempty"`
 
-	// ServiceSigns: Служебные признаки
-	ServiceSigns *ServiceSigns `xml:"serviceSigns,omitempty"`
+	// ServiceSigns18: Служебные признаки
+	ServiceSigns *ServiceSigns18 `xml:"serviceSigns,omitempty"`
 }
 
 // PreliminaryOfferType: Тип: Предварительное предложение; внесение изменений в предварительное предложение
@@ -14419,8 +14419,8 @@ type ProtocolEzt2020FinalType struct {
 	// SchemeVersion: Версия схемы
 	SchemeVersion base.SchemeVersionType `xml:"schemeVersion,attr"`
 
-	// ProtocolInfo: Информация о проведении ЭЗТ (Закупка товаров согласно ч.12 ст. 93 № 44-ФЗ)
-	ProtocolInfo ProtocolInfo `xml:"protocolInfo"`
+	// ProtocolInfo35: Информация о проведении ЭЗТ (Закупка товаров согласно ч.12 ст. 93 № 44-ФЗ)
+	ProtocolInfo ProtocolInfo35 `xml:"protocolInfo"`
 
 	// Id: Идентификатор документа ЕИС. Игнорируется при приеме-передаче. Добавлено на развитие
 	Id *int64 `xml:"id,omitempty"`
@@ -14437,8 +14437,8 @@ type ProtocolEzt2020FinalType struct {
 	// CommonInfo: Общая информация
 	CommonInfo Protocol2020CommonInfoType `xml:"commonInfo"`
 
-	// ProtocolPublisherInfo: Информация об организации, разместившей протокол
-	ProtocolPublisherInfo ProtocolPublisherInfo `xml:"protocolPublisherInfo"`
+	// ProtocolPublisherInfo41: Информация об организации, разместившей протокол
+	ProtocolPublisherInfo ProtocolPublisherInfo41 `xml:"protocolPublisherInfo"`
 
 	// ExtPrintFormInfo: Электронный документ, полученный из внешней системы. В составе блока на стороне ЕИС принимается сформированная на площадке печатная форма протокола без сведений об участниках закупки
 	ExtPrintFormInfo cmn.ExtPrintFormProtocolType `xml:"extPrintFormInfo"`
@@ -14457,11 +14457,11 @@ type ProtocolEzt2020FinalPartType struct {
 	// SchemeVersion: Версия схемы
 	SchemeVersion base.SchemeVersionType `xml:"schemeVersion,attr"`
 
-	// AppParticipantsInfo: Сведения об участниках закупки
-	AppParticipantsInfo AppParticipantsInfo `xml:"appParticipantsInfo"`
+	// AppParticipantsInfo4: Сведения об участниках закупки
+	AppParticipantsInfo AppParticipantsInfo4 `xml:"appParticipantsInfo"`
 
-	// ProtocolInfo: Информация о проведении ЭЗТ (Закупка товаров согласно ч.12 ст. 93 № 44-ФЗ)
-	ProtocolInfo ProtocolInfo `xml:"protocolInfo"`
+	// ProtocolInfo35: Информация о проведении ЭЗТ (Закупка товаров согласно ч.12 ст. 93 № 44-ФЗ)
+	ProtocolInfo ProtocolInfo35 `xml:"protocolInfo"`
 
 	// Id: Идентификатор документа ЕИС. Игнорируется при приеме-передаче. Добавлено на развитие
 	Id *int64 `xml:"id,omitempty"`
@@ -14478,8 +14478,8 @@ type ProtocolEzt2020FinalPartType struct {
 	// CommonInfo: Общая информация
 	CommonInfo Protocol2020CommonInfoType `xml:"commonInfo"`
 
-	// ProtocolPublisherInfo: Информация об организации, разместившей протокол
-	ProtocolPublisherInfo ProtocolPublisherInfo `xml:"protocolPublisherInfo"`
+	// ProtocolPublisherInfo41: Информация об организации, разместившей протокол
+	ProtocolPublisherInfo ProtocolPublisherInfo41 `xml:"protocolPublisherInfo"`
 
 	// ExtPrintFormInfo: Электронный документ, полученный из внешней системы. В составе блока на стороне ЕИС принимается сформированная на площадке печатная форма протокола без сведений об участниках закупки
 	ExtPrintFormInfo cmn.ExtPrintFormProtocolType `xml:"extPrintFormInfo"`
@@ -14516,8 +14516,8 @@ type NoticeApplicationsAbsenceType struct {
 	// CommonInfo: Общая информация
 	CommonInfo Protocol2020CommonInfoType `xml:"commonInfo"`
 
-	// ProtocolPublisherInfo: Информация об организации, разместившей протокол
-	ProtocolPublisherInfo ProtocolPublisherInfo `xml:"protocolPublisherInfo"`
+	// ProtocolPublisherInfo41: Информация об организации, разместившей протокол
+	ProtocolPublisherInfo ProtocolPublisherInfo41 `xml:"protocolPublisherInfo"`
 
 	// ExtPrintFormInfo: Электронный документ, полученный из внешней системы. В составе блока на стороне ЕИС принимается сформированная на площадке печатная форма протокола без сведений об участниках закупки
 	ExtPrintFormInfo cmn.ExtPrintFormProtocolType `xml:"extPrintFormInfo"`
@@ -14536,8 +14536,8 @@ type InvitationEzakA2020Type struct {
 	// SchemeVersion: Версия схемы
 	SchemeVersion base.SchemeVersionType `xml:"schemeVersion,attr"`
 
-	// NotificationInfo: Информация о проведении ЭЗакА20 (закрытый аукцион в электронной форме с даты начала действия оптимизационного законопроекта 44-ФЗ)
-	NotificationInfo NotificationInfo `xml:"notificationInfo"`
+	// NotificationInfo17: Информация о проведении ЭЗакА20 (закрытый аукцион в электронной форме с даты начала действия оптимизационного законопроекта 44-ФЗ)
+	NotificationInfo NotificationInfo17 `xml:"notificationInfo"`
 
 	// ModificationInfo: Основание внесения изменений
 	ModificationInfo *Notification2020ModificationType `xml:"modificationInfo,omitempty"`
@@ -14551,14 +14551,14 @@ type InvitationEzakA2020Type struct {
 	// VersionNumber: Номер версии документа. В случае если значение поля не указано или в поле указано 1, считается, что это первоначальная версия документа, иначе – изменение существующей версии. При приеме изменений документа контролируется последовательность нумерации
 	VersionNumber *base.VersionNumberType `xml:"versionNumber,omitempty"`
 
-	// CommonInfo: Общая информация
-	CommonInfo CommonInfo `xml:"commonInfo"`
+	// CommonInfo27: Общая информация
+	CommonInfo CommonInfo27 `xml:"commonInfo"`
 
-	// PurchaseFeatures: Особенности закупки
-	PurchaseFeatures *PurchaseFeatures `xml:"purchaseFeatures,omitempty"`
+	// PurchaseFeatures2: Особенности закупки
+	PurchaseFeatures *PurchaseFeatures2 `xml:"purchaseFeatures,omitempty"`
 
-	// PurchaseResponsibleInfo: Информация об организации, осуществляющей размещение
-	PurchaseResponsibleInfo PurchaseResponsibleInfo `xml:"purchaseResponsibleInfo"`
+	// PurchaseResponsibleInfo20: Информация об организации, осуществляющей размещение
+	PurchaseResponsibleInfo PurchaseResponsibleInfo20 `xml:"purchaseResponsibleInfo"`
 
 	// PrintFormInfo: Печатная форма документа. Элемент игнорируется при приёме. При передаче заполняется ссылкой на печатную форму и электронную подпись размещенного в ЕИС документа
 	PrintFormInfo *cmn.PrintFormType `xml:"printFormInfo,omitempty"`
@@ -14569,8 +14569,8 @@ type InvitationEzakA2020Type struct {
 	// AttachmentsInfo: Вложенные файлы
 	AttachmentsInfo *cmn.AttachmentListWithKindType `xml:"attachmentsInfo,omitempty"`
 
-	// ServiceSigns: Служебные признаки
-	ServiceSigns *ServiceSigns `xml:"serviceSigns,omitempty"`
+	// ServiceSigns21: Служебные признаки
+	ServiceSigns *ServiceSigns21 `xml:"serviceSigns,omitempty"`
 }
 
 // ProtocolEzakA2020DocRequestType: Тип: Протокол рассмотрения запросов на представление документации о закупке в ЭЗакА20 (закрытый аукцион в электронной форме с даты начала действия оптимизационного законопроекта 44-ФЗ)
@@ -14580,8 +14580,8 @@ type ProtocolEzakA2020DocRequestType struct {
 	// SchemeVersion: Версия схемы
 	SchemeVersion base.SchemeVersionType `xml:"schemeVersion,attr"`
 
-	// ProtocolInfo: Информация о проведении ЭЗакА20. В рамках блока должен быть заполнен блок requestsInfo и/или abandonedReason
-	ProtocolInfo ProtocolInfo `xml:"protocolInfo"`
+	// ProtocolInfo36: Информация о проведении ЭЗакА20. В рамках блока должен быть заполнен блок requestsInfo и/или abandonedReason
+	ProtocolInfo ProtocolInfo36 `xml:"protocolInfo"`
 
 	// Id: Идентификатор документа ЕИС. Игнорируется при приеме-передаче. Добавлено на развитие
 	Id *int64 `xml:"id,omitempty"`
@@ -14598,8 +14598,8 @@ type ProtocolEzakA2020DocRequestType struct {
 	// CommonInfo: Общая информация
 	CommonInfo Protocol2020CommonInfoType `xml:"commonInfo"`
 
-	// ProtocolPublisherInfo: Информация об организации, разместившей протокол
-	ProtocolPublisherInfo ProtocolPublisherInfo `xml:"protocolPublisherInfo"`
+	// ProtocolPublisherInfo41: Информация об организации, разместившей протокол
+	ProtocolPublisherInfo ProtocolPublisherInfo41 `xml:"protocolPublisherInfo"`
 
 	// ExtPrintFormInfo: Электронный документ, полученный из внешней системы. В составе блока на стороне ЕИС принимается сформированная на площадке печатная форма протокола без сведений об участниках закупки
 	ExtPrintFormInfo cmn.ExtPrintFormProtocolType `xml:"extPrintFormInfo"`
@@ -14618,8 +14618,8 @@ type ProtocolEzakA2020FinalType struct {
 	// SchemeVersion: Версия схемы
 	SchemeVersion base.SchemeVersionType `xml:"schemeVersion,attr"`
 
-	// ProtocolInfo: Информация о проведении ЭЗакА20. В рамках блока должен быть заполнен блок applicationsInfo и/или abandonedReason
-	ProtocolInfo ProtocolInfo `xml:"protocolInfo"`
+	// ProtocolInfo37: Информация о проведении ЭЗакА20. В рамках блока должен быть заполнен блок applicationsInfo и/или abandonedReason
+	ProtocolInfo ProtocolInfo37 `xml:"protocolInfo"`
 
 	// Id: Идентификатор документа ЕИС. Игнорируется при приеме-передаче. Добавлено на развитие
 	Id *int64 `xml:"id,omitempty"`
@@ -14636,8 +14636,8 @@ type ProtocolEzakA2020FinalType struct {
 	// CommonInfo: Общая информация
 	CommonInfo Protocol2020CommonInfoType `xml:"commonInfo"`
 
-	// ProtocolPublisherInfo: Информация об организации, разместившей протокол
-	ProtocolPublisherInfo ProtocolPublisherInfo `xml:"protocolPublisherInfo"`
+	// ProtocolPublisherInfo41: Информация об организации, разместившей протокол
+	ProtocolPublisherInfo ProtocolPublisherInfo41 `xml:"protocolPublisherInfo"`
 
 	// ExtPrintFormInfo: Электронный документ, полученный из внешней системы. В составе блока на стороне ЕИС принимается сформированная на площадке печатная форма протокола без сведений об участниках закупки
 	ExtPrintFormInfo cmn.ExtPrintFormProtocolType `xml:"extPrintFormInfo"`
@@ -14656,8 +14656,8 @@ type InvitationEzakK2020Type struct {
 	// SchemeVersion: Версия схемы
 	SchemeVersion base.SchemeVersionType `xml:"schemeVersion,attr"`
 
-	// NotificationInfo: Информация о проведении ЭЗакК20 (закрытый конкурс в электронной форме с даты начала действия оптимизационного законопроекта 44-ФЗ)
-	NotificationInfo NotificationInfo `xml:"notificationInfo"`
+	// NotificationInfo18: Информация о проведении ЭЗакК20 (закрытый конкурс в электронной форме с даты начала действия оптимизационного законопроекта 44-ФЗ)
+	NotificationInfo NotificationInfo18 `xml:"notificationInfo"`
 
 	// ModificationInfo: Основание внесения изменений
 	ModificationInfo *Notification2020ModificationType `xml:"modificationInfo,omitempty"`
@@ -14671,14 +14671,14 @@ type InvitationEzakK2020Type struct {
 	// VersionNumber: Номер версии документа. В случае если значение поля не указано или в поле указано 1, считается, что это первоначальная версия документа, иначе – изменение существующей версии. При приеме изменений документа контролируется последовательность нумерации
 	VersionNumber *base.VersionNumberType `xml:"versionNumber,omitempty"`
 
-	// CommonInfo: Общая информация
-	CommonInfo CommonInfo `xml:"commonInfo"`
+	// CommonInfo27: Общая информация
+	CommonInfo CommonInfo27 `xml:"commonInfo"`
 
-	// PurchaseFeatures: Особенности закупки
-	PurchaseFeatures *PurchaseFeatures `xml:"purchaseFeatures,omitempty"`
+	// PurchaseFeatures2: Особенности закупки
+	PurchaseFeatures *PurchaseFeatures2 `xml:"purchaseFeatures,omitempty"`
 
-	// PurchaseResponsibleInfo: Информация об организации, осуществляющей размещение
-	PurchaseResponsibleInfo PurchaseResponsibleInfo `xml:"purchaseResponsibleInfo"`
+	// PurchaseResponsibleInfo20: Информация об организации, осуществляющей размещение
+	PurchaseResponsibleInfo PurchaseResponsibleInfo20 `xml:"purchaseResponsibleInfo"`
 
 	// PrintFormInfo: Печатная форма документа. Элемент игнорируется при приёме. При передаче заполняется ссылкой на печатную форму и электронную подпись размещенного в ЕИС документа
 	PrintFormInfo *cmn.PrintFormType `xml:"printFormInfo,omitempty"`
@@ -14689,8 +14689,8 @@ type InvitationEzakK2020Type struct {
 	// AttachmentsInfo: Вложенные файлы
 	AttachmentsInfo *cmn.AttachmentListWithKindType `xml:"attachmentsInfo,omitempty"`
 
-	// ServiceSigns: Служебные признаки
-	ServiceSigns *ServiceSigns `xml:"serviceSigns,omitempty"`
+	// ServiceSigns21: Служебные признаки
+	ServiceSigns *ServiceSigns21 `xml:"serviceSigns,omitempty"`
 }
 
 // ProtocolEzakK2020DocRequestType: Тип: Протокол рассмотрения запросов на представление документации о закупке в ЭЗакК20 (закрытый конкурс в электронной форме с даты начала действия оптимизационного законопроекта 44-ФЗ)
@@ -14700,8 +14700,8 @@ type ProtocolEzakK2020DocRequestType struct {
 	// SchemeVersion: Версия схемы
 	SchemeVersion base.SchemeVersionType `xml:"schemeVersion,attr"`
 
-	// ProtocolInfo: Информация о проведении ЭЗакК20. В рамках блока должен быть заполнен блок applicationsInfo и/или abandonedReason
-	ProtocolInfo ProtocolInfo `xml:"protocolInfo"`
+	// ProtocolInfo38: Информация о проведении ЭЗакК20. В рамках блока должен быть заполнен блок applicationsInfo и/или abandonedReason
+	ProtocolInfo ProtocolInfo38 `xml:"protocolInfo"`
 
 	// Id: Идентификатор документа ЕИС. Игнорируется при приеме-передаче. Добавлено на развитие
 	Id *int64 `xml:"id,omitempty"`
@@ -14718,8 +14718,8 @@ type ProtocolEzakK2020DocRequestType struct {
 	// CommonInfo: Общая информация
 	CommonInfo Protocol2020CommonInfoType `xml:"commonInfo"`
 
-	// ProtocolPublisherInfo: Информация об организации, разместившей протокол
-	ProtocolPublisherInfo ProtocolPublisherInfo `xml:"protocolPublisherInfo"`
+	// ProtocolPublisherInfo41: Информация об организации, разместившей протокол
+	ProtocolPublisherInfo ProtocolPublisherInfo41 `xml:"protocolPublisherInfo"`
 
 	// ExtPrintFormInfo: Электронный документ, полученный из внешней системы. В составе блока на стороне ЕИС принимается сформированная на площадке печатная форма протокола без сведений об участниках закупки
 	ExtPrintFormInfo cmn.ExtPrintFormProtocolType `xml:"extPrintFormInfo"`
@@ -14738,8 +14738,8 @@ type ProtocolEzakK2020FinalType struct {
 	// SchemeVersion: Версия схемы
 	SchemeVersion base.SchemeVersionType `xml:"schemeVersion,attr"`
 
-	// ProtocolInfo: Информация о проведении ЭЗакК20. В рамках блока должен быть заполнен блок applicationsInfo и/или abandonedReason
-	ProtocolInfo ProtocolInfo `xml:"protocolInfo"`
+	// ProtocolInfo39: Информация о проведении ЭЗакК20. В рамках блока должен быть заполнен блок applicationsInfo и/или abandonedReason
+	ProtocolInfo ProtocolInfo39 `xml:"protocolInfo"`
 
 	// Id: Идентификатор документа ЕИС. Игнорируется при приеме-передаче. Добавлено на развитие
 	Id *int64 `xml:"id,omitempty"`
@@ -14756,8 +14756,8 @@ type ProtocolEzakK2020FinalType struct {
 	// CommonInfo: Общая информация
 	CommonInfo Protocol2020CommonInfoType `xml:"commonInfo"`
 
-	// ProtocolPublisherInfo: Информация об организации, разместившей протокол
-	ProtocolPublisherInfo ProtocolPublisherInfo `xml:"protocolPublisherInfo"`
+	// ProtocolPublisherInfo41: Информация об организации, разместившей протокол
+	ProtocolPublisherInfo ProtocolPublisherInfo41 `xml:"protocolPublisherInfo"`
 
 	// ExtPrintFormInfo: Электронный документ, полученный из внешней системы. В составе блока на стороне ЕИС принимается сформированная на площадке печатная форма протокола без сведений об участниках закупки
 	ExtPrintFormInfo cmn.ExtPrintFormProtocolType `xml:"extPrintFormInfo"`
@@ -14785,14 +14785,14 @@ type InvitationType struct {
 	// VersionNumber: Номер версии документа. В случае если значение поля не указано или в поле указано 1, считается, что это первоначальная версия документа, иначе – изменение существующей версии. При приеме изменений документа контролируется последовательность нумерации
 	VersionNumber *base.VersionNumberType `xml:"versionNumber,omitempty"`
 
-	// CommonInfo: Общая информация
-	CommonInfo CommonInfo `xml:"commonInfo"`
+	// CommonInfo27: Общая информация
+	CommonInfo CommonInfo27 `xml:"commonInfo"`
 
-	// PurchaseFeatures: Особенности закупки
-	PurchaseFeatures *PurchaseFeatures `xml:"purchaseFeatures,omitempty"`
+	// PurchaseFeatures2: Особенности закупки
+	PurchaseFeatures *PurchaseFeatures2 `xml:"purchaseFeatures,omitempty"`
 
-	// PurchaseResponsibleInfo: Информация об организации, осуществляющей размещение
-	PurchaseResponsibleInfo PurchaseResponsibleInfo `xml:"purchaseResponsibleInfo"`
+	// PurchaseResponsibleInfo20: Информация об организации, осуществляющей размещение
+	PurchaseResponsibleInfo PurchaseResponsibleInfo20 `xml:"purchaseResponsibleInfo"`
 
 	// PrintFormInfo: Печатная форма документа. Элемент игнорируется при приёме. При передаче заполняется ссылкой на печатную форму и электронную подпись размещенного в ЕИС документа
 	PrintFormInfo *cmn.PrintFormType `xml:"printFormInfo,omitempty"`
@@ -14803,8 +14803,8 @@ type InvitationType struct {
 	// AttachmentsInfo: Вложенные файлы
 	AttachmentsInfo *cmn.AttachmentListWithKindType `xml:"attachmentsInfo,omitempty"`
 
-	// ServiceSigns: Служебные признаки
-	ServiceSigns *ServiceSigns `xml:"serviceSigns,omitempty"`
+	// ServiceSigns21: Служебные признаки
+	ServiceSigns *ServiceSigns21 `xml:"serviceSigns,omitempty"`
 }
 
 // Notification2020ChangeReasonType: Тип: Основание внесения изменений в извещение с даты начала действия оптимизационного законопроекта 44-ФЗ
@@ -14825,8 +14825,8 @@ type Notification2020ChangeReasonType struct {
 type NotificationChangeReasonType struct {
 	XMLName xml.Name
 
-	// ResponsibleDecisionInfo: По решению заказчика (организации, осуществляющей определение поставщика для заказчика)
-	ResponsibleDecisionInfo *ResponsibleDecisionInfo `xml:"responsibleDecisionInfo,omitempty"`
+	// ResponsibleDecisionInfo1: По решению заказчика (организации, осуществляющей определение поставщика для заказчика)
+	ResponsibleDecisionInfo *ResponsibleDecisionInfo1 `xml:"responsibleDecisionInfo,omitempty"`
 
 	// AuthorityPrescriptionInfo: Предписание органа, уполномоченного на осуществление контроля
 	AuthorityPrescriptionInfo *AuthorityPrescriptionType `xml:"authorityPrescriptionInfo,omitempty"`
@@ -14882,11 +14882,11 @@ type Notification2020Type struct {
 	// VersionNumber: Номер версии документа. В случае если значение поля не указано или в поле указано 1, считается, что это первоначальная версия документа, иначе – изменение существующей версии. При приеме изменений документа контролируется последовательность нумерации
 	VersionNumber *base.VersionNumberType `xml:"versionNumber,omitempty"`
 
-	// CommonInfo: Общая информация
-	CommonInfo CommonInfo `xml:"commonInfo"`
+	// CommonInfo28: Общая информация
+	CommonInfo CommonInfo28 `xml:"commonInfo"`
 
-	// PurchaseResponsibleInfo: Информация об организации, осуществляющей размещение
-	PurchaseResponsibleInfo PurchaseResponsibleInfo `xml:"purchaseResponsibleInfo"`
+	// PurchaseResponsibleInfo21: Информация об организации, осуществляющей размещение
+	PurchaseResponsibleInfo PurchaseResponsibleInfo21 `xml:"purchaseResponsibleInfo"`
 
 	// PrintFormInfo: Печатная форма документа. Элемент игнорируется при приёме. При передаче заполняется ссылкой на печатную форму и электронную подпись размещенного в ЕИС документа
 	PrintFormInfo *cmn.PrintFormType `xml:"printFormInfo,omitempty"`
@@ -14897,8 +14897,8 @@ type Notification2020Type struct {
 	// AttachmentsInfo: Вложенные файлы
 	AttachmentsInfo *cmn.AttachmentListWithKindType `xml:"attachmentsInfo,omitempty"`
 
-	// ServiceSigns: Служебные признаки
-	ServiceSigns *ServiceSigns `xml:"serviceSigns,omitempty"`
+	// ServiceSigns22: Служебные признаки
+	ServiceSigns *ServiceSigns22 `xml:"serviceSigns,omitempty"`
 }
 
 // NotificationType: Тип: Общие поля извещений
@@ -14920,8 +14920,8 @@ type NotificationType struct {
 	// CommonInfo: Общая информация
 	CommonInfo NotificationCommonInfoType `xml:"commonInfo"`
 
-	// PurchaseResponsibleInfo: Информация об организации, осуществляющей размещение
-	PurchaseResponsibleInfo PurchaseResponsibleInfo `xml:"purchaseResponsibleInfo"`
+	// PurchaseResponsibleInfo22: Информация об организации, осуществляющей размещение
+	PurchaseResponsibleInfo PurchaseResponsibleInfo22 `xml:"purchaseResponsibleInfo"`
 
 	// PrintFormInfo: Печатная форма документа. Элемент игнорируется при приёме. При передаче заполняется ссылкой на печатную форму и электронную подпись размещенного в ЕИС документа
 	PrintFormInfo *cmn.PrintFormType `xml:"printFormInfo,omitempty"`
@@ -14932,8 +14932,8 @@ type NotificationType struct {
 	// AttachmentsInfo: Вложенные файлы
 	AttachmentsInfo *cmn.AttachmentListType `xml:"attachmentsInfo,omitempty"`
 
-	// ServiceSigns: Служебные признаки
-	ServiceSigns *ServiceSigns `xml:"serviceSigns,omitempty"`
+	// ServiceSigns23: Служебные признаки
+	ServiceSigns *ServiceSigns23 `xml:"serviceSigns,omitempty"`
 }
 
 // Notification2020CommonInfoType: Тип: Общая информация о извещении с даты начала действия оптимизационного законопроекта 44-ФЗ
@@ -15310,8 +15310,8 @@ type ProcedureEzptype struct {
 	// CollectingInfo: Информация о подаче заявок
 	CollectingInfo ProcedureCollectingType `xml:"collectingInfo"`
 
-	// ScoringInfo: Информация о процедуре рассмотрения и оценки заявок
-	ScoringInfo ScoringInfo `xml:"scoringInfo"`
+	// ScoringInfo3: Информация о процедуре рассмотрения и оценки заявок
+	ScoringInfo ScoringInfo3 `xml:"scoringInfo"`
 }
 
 // ProcedureEzk2020Type: Тип: Информация о процедуре закупки ЭЗК (запрос котировок в электронной форме) с даты начала действия оптимизационного законопроекта 44-ФЗ
@@ -15352,8 +15352,8 @@ type ProcedureEzakAtype struct {
 	// CollectingInfo: Информация о подаче заявок
 	CollectingInfo ProcedureCollectingType `xml:"collectingInfo"`
 
-	// ScoringInfo: Информация о рассмотрении и оценке заявок участников и подаче окончательных предложений
-	ScoringInfo ScoringInfo `xml:"scoringInfo"`
+	// ScoringInfo4: Информация о рассмотрении и оценке заявок участников и подаче окончательных предложений
+	ScoringInfo ScoringInfo4 `xml:"scoringInfo"`
 }
 
 // PublicDiscussionType: Тип: Информация об общественном обсуждении по лоту закупки
@@ -15415,8 +15415,8 @@ type DocumentationOktype struct {
 type DocumentationZptype struct {
 	XMLName xml.Name
 
-	// DocumentRequirementsInfo: Требования к информации и документам для предоставления участниками
-	DocumentRequirementsInfo DocumentRequirementsInfo `xml:"documentRequirementsInfo"`
+	// DocumentRequirementsInfo1: Требования к информации и документам для предоставления участниками
+	DocumentRequirementsInfo DocumentRequirementsInfo1 `xml:"documentRequirementsInfo"`
 
 	// Modifiable: Возможно изменить предусмотренные контрактом количество товара, объем работ или услуги
 	Modifiable bool `xml:"modifiable"`
@@ -15475,8 +15475,8 @@ type QualitativeCriterionDocOktype struct {
 	// AddInfo: Дополнительная информация о содержании и порядке оценки по критерию
 	AddInfo *base.Text4000Type `xml:"addInfo,omitempty"`
 
-	// IndicatorsInfo: Критерий оценки с показателями
-	IndicatorsInfo *IndicatorsInfo `xml:"indicatorsInfo,omitempty"`
+	// IndicatorsInfo1: Критерий оценки с показателями
+	IndicatorsInfo *IndicatorsInfo1 `xml:"indicatorsInfo,omitempty"`
 
 	// CriterionInfo: Критерий оценки без показателей. Устарело, игнорируется при приеме-передаче начиная с версии 12.3
 	CriterionInfo *CriterionsScoringDocOktype `xml:"criterionInfo,omitempty"`
@@ -15569,11 +15569,11 @@ type QualitativeCriterionDocZptype struct {
 	// CriterionCode: Код критерия: QF - Качественные, функциональные и экологические характеристики объекта закупки. QO - Квалификация участников закупки, в том числе наличие у них финансовых ресурсов, оборудования и других материальных ресурсов, принадлежащих им на праве собственности или на ином законном основании, опыта работы, связанного с предметом контракта, и деловой репутации, специалистов и иных работников определенного уровня квалификации
 	CriterionCode *base.QualitativeCriterionCodeEnum `xml:"criterionCode,omitempty"`
 
-	// CriterionTextFormInfo: Критерий, введённый вручную
-	CriterionTextFormInfo *CriterionTextFormInfo `xml:"criterionTextFormInfo,omitempty"`
+	// CriterionTextFormInfo1: Критерий, введённый вручную
+	CriterionTextFormInfo *CriterionTextFormInfo1 `xml:"criterionTextFormInfo,omitempty"`
 
-	// IndicatorsInfo: Критерий оценки с показателями
-	IndicatorsInfo *IndicatorsInfo `xml:"indicatorsInfo,omitempty"`
+	// IndicatorsInfo2: Критерий оценки с показателями
+	IndicatorsInfo *IndicatorsInfo2 `xml:"indicatorsInfo,omitempty"`
 
 	// CriterionInfo: Критерий оценки без показателей
 	CriterionInfo *CriterionsScoringDocZptype `xml:"criterionInfo,omitempty"`
@@ -15736,8 +15736,8 @@ type DetailIndicatorScoreType struct {
 	// OfferText: Информация о предложении участника
 	OfferText *base.Text2000Type `xml:"offerText,omitempty"`
 
-	// IndicatorsScoringInfo: Оценки членов комиссии по показателю критерия
-	IndicatorsScoringInfo IndicatorsScoringInfo `xml:"indicatorsScoringInfo"`
+	// IndicatorsScoringInfo1: Оценки членов комиссии по показателю критерия
+	IndicatorsScoringInfo IndicatorsScoringInfo1 `xml:"indicatorsScoringInfo"`
 
 	// OrderEvalIndicatorsInfo: Порядок оценки по показателю
 	OrderEvalIndicatorsInfo base.OrderEvalIndicatorsRef `xml:"orderEvalIndicatorsInfo"`
@@ -15768,14 +15768,14 @@ type ClarificationRequestType struct {
 	// ExternalId: Внешний идентификатор документа/ При приеме контролируется уникальность номера в рамках организации, размещающей закупку
 	ExternalId *base.ExternalIdType `xml:"externalId,omitempty"`
 
-	// CommonInfo: Общая информация
-	CommonInfo CommonInfo `xml:"commonInfo"`
+	// CommonInfo29: Общая информация
+	CommonInfo CommonInfo29 `xml:"commonInfo"`
 
 	// AttachmentsInfo: Информация о прикрепленных документах
 	AttachmentsInfo *cmn.AttachmentListType `xml:"attachmentsInfo,omitempty"`
 
-	// PrintFormFieldsInfo: Дополнительная информация для печатной формы. Игнорируется при приёме, заполняется при передаче
-	PrintFormFieldsInfo *PrintFormFieldsInfo `xml:"printFormFieldsInfo,omitempty"`
+	// PrintFormFieldsInfo32: Дополнительная информация для печатной формы. Игнорируется при приёме, заполняется при передаче
+	PrintFormFieldsInfo *PrintFormFieldsInfo32 `xml:"printFormFieldsInfo,omitempty"`
 }
 
 // ClarificationType: Тип: Разъяснение /Дополнительная информация
@@ -15791,11 +15791,11 @@ type ClarificationType struct {
 	// ExternalId: Внешний идентификатор документа. При приеме контролируется уникальность номера в рамках организации, размещающей закупку
 	ExternalId *base.ExternalIdType `xml:"externalId,omitempty"`
 
-	// CommonInfo: Общая информация
-	CommonInfo CommonInfo `xml:"commonInfo"`
+	// CommonInfo31: Общая информация
+	CommonInfo CommonInfo31 `xml:"commonInfo"`
 
-	// RequestInfo: Информация о запросе на разъяснение
-	RequestInfo *RequestInfo `xml:"requestInfo,omitempty"`
+	// RequestInfo4: Информация о запросе на разъяснение
+	RequestInfo *RequestInfo4 `xml:"requestInfo,omitempty"`
 
 	// PrintFormInfo: Печатная форма документа в ЕИС. Элемент игнорируется при приёме. При передаче заполняется ссылкой на печатную форму и электронную подпись размещенного в ЕИС документа
 	PrintFormInfo *cmn.PrintFormType `xml:"printFormInfo,omitempty"`
@@ -15806,8 +15806,8 @@ type ClarificationType struct {
 	// AttachmentsInfo: Информация о прикрепленных документах
 	AttachmentsInfo *cmn.AttachmentListType `xml:"attachmentsInfo,omitempty"`
 
-	// PrintFormFieldsInfo: Дополнительная информация для печатной формы. Игнорируется при приёме, заполняется при передаче
-	PrintFormFieldsInfo *PrintFormFieldsInfo `xml:"printFormFieldsInfo,omitempty"`
+	// PrintFormFieldsInfo33: Дополнительная информация для печатной формы. Игнорируется при приёме, заполняется при передаче
+	PrintFormFieldsInfo *PrintFormFieldsInfo33 `xml:"printFormFieldsInfo,omitempty"`
 }
 
 // ProlongationInfoType: Тип: Информация о продлении
@@ -15893,8 +15893,8 @@ type AdmissionResultsType struct {
 type AdmissionResultsProtocolMemberType struct {
 	XMLName xml.Name
 
-	// AdmissionResultInfo: Результат допуска заявки
-	AdmissionResultInfo []AdmissionResultInfo `xml:",any"`
+	// AdmissionResultInfo1: Результат допуска заявки
+	AdmissionResultInfo []AdmissionResultInfo1 `xml:",any"`
 }
 
 // AppCorrespondence2020Type: Тип: Соответствие участника преимуществам, требованиям к участникам (согласно действующему извещению о закупке / изменению извещения) с даты начала действия оптимизационного законопроекта 44-ФЗ
@@ -16014,14 +16014,14 @@ type CompetitionApp2Type struct {
 	// AppParticipantInfo: Сведения об участнике
 	AppParticipantInfo cmn.ParticipantType `xml:"appParticipantInfo"`
 
-	// DocumentRequirementsInfo: Требования к информации и документам для предоставления участниками
-	DocumentRequirementsInfo DocumentRequirementsInfo `xml:"documentRequirementsInfo"`
+	// DocumentRequirementsInfo2: Требования к информации и документам для предоставления участниками
+	DocumentRequirementsInfo DocumentRequirementsInfo2 `xml:"documentRequirementsInfo"`
 
 	// CorrespondenciesInfo: Соответствие участника преимуществам / требованиям / ограничениям
 	CorrespondenciesInfo *CorrespondenciesInfo `xml:"correspondenciesInfo,omitempty"`
 
-	// AdmittedInfo: Информация о допуске заявки
-	AdmittedInfo AdmittedInfo `xml:"admittedInfo"`
+	// AdmittedInfo1: Информация о допуске заявки
+	AdmittedInfo AdmittedInfo1 `xml:"admittedInfo"`
 }
 
 // CompetitionApp3Type: Тип: Заявка, входящая в протокол подведения итогов конкурса
@@ -16034,14 +16034,14 @@ type CompetitionApp3Type struct {
 	// AppParticipantInfo: Сведения об участнике
 	AppParticipantInfo *cmn.ParticipantType `xml:"appParticipantInfo,omitempty"`
 
-	// DocumentRequirementsInfo: Требования к информации и документам для предоставления участниками
-	DocumentRequirementsInfo *DocumentRequirementsInfo `xml:"documentRequirementsInfo,omitempty"`
+	// DocumentRequirementsInfo3: Требования к информации и документам для предоставления участниками
+	DocumentRequirementsInfo *DocumentRequirementsInfo3 `xml:"documentRequirementsInfo,omitempty"`
 
-	// CorrespondenciesInfo: Соответствие участника преимуществам
-	CorrespondenciesInfo *CorrespondenciesInfo `xml:"correspondenciesInfo,omitempty"`
+	// CorrespondenciesInfo1: Соответствие участника преимуществам
+	CorrespondenciesInfo *CorrespondenciesInfo1 `xml:"correspondenciesInfo,omitempty"`
 
-	// AdmittedInfo: Информация о допуске заявки
-	AdmittedInfo AdmittedInfo `xml:"admittedInfo"`
+	// AdmittedInfo2: Информация о допуске заявки
+	AdmittedInfo AdmittedInfo2 `xml:"admittedInfo"`
 }
 
 // CustomerRequirementType: Тип: Реквизиты, находящиеся на уровне требований заказчиков
@@ -16098,8 +16098,8 @@ type CustomerRequirementEf2020Type struct {
 	// ContractLcconditionsInfo: Условия контракта жизненного цикла. Контролируется обязательность указания в случае, если заполнен блок «Информация о заключении с поставщиком (подрядчиком, исполнителем) контракта жизненного цикла» (notificationInfo/contractConditionsInfo/contractLifeCycleInfo)
 	ContractLcconditionsInfo *ContractLcconditionsInfo `xml:"contractLCConditionsInfo,omitempty"`
 
-	// ContractConditionsInfo: Условия контракта
-	ContractConditionsInfo ContractConditionsInfo `xml:"contractConditionsInfo"`
+	// ContractConditionsInfo1: Условия контракта
+	ContractConditionsInfo ContractConditionsInfo1 `xml:"contractConditionsInfo"`
 
 	// UnableProvideContractGuaranteeDocs: Отчет с обоснованием невозможности установления требования обеспечения контракта. Контролируется бизнес-контролем заполнение блока, если (И): -не заполнен блок "Обеспечение исполнения контракта" (contractGuarantee); -заказчик осуществляет деятельность на территории иностранного государства (в справочнике «Субъект контроля по 99 статье» (nsiControl99Subjects) для данного заказчика значение поля «Организация включена в перечень ст. 111.1 Федерального закона №44-ФЗ» (isSt111_1) равно «true»)
 	UnableProvideContractGuaranteeDocs *cmn.AttachmentListType `xml:"unableProvideContractGuaranteeDocs,omitempty"`
@@ -16136,11 +16136,11 @@ type CustomerRequirementEok2020Type struct {
 	// ContractGuarantee: Обеспечение исполнения контракта
 	ContractGuarantee *ContractGuaranteePaymentInfoType `xml:"contractGuarantee,omitempty"`
 
-	// ContractLcconditionsInfo: Условия контракта жизненного цикла. Контролируется обязательность указания в случае, если заполнен блок «Информация о заключении с поставщиком (подрядчиком, исполнителем) контракта жизненного цикла» (notificationInfo/contractConditionsInfo/contractLifeCycleInfo)
-	ContractLcconditionsInfo *ContractLcconditionsInfo `xml:"contractLCConditionsInfo,omitempty"`
+	// ContractLcconditionsInfo1: Условия контракта жизненного цикла. Контролируется обязательность указания в случае, если заполнен блок «Информация о заключении с поставщиком (подрядчиком, исполнителем) контракта жизненного цикла» (notificationInfo/contractConditionsInfo/contractLifeCycleInfo)
+	ContractLcconditionsInfo *ContractLcconditionsInfo1 `xml:"contractLCConditionsInfo,omitempty"`
 
-	// ContractConditionsInfo: Условия контракта
-	ContractConditionsInfo ContractConditionsInfo `xml:"contractConditionsInfo"`
+	// ContractConditionsInfo2: Условия контракта
+	ContractConditionsInfo ContractConditionsInfo2 `xml:"contractConditionsInfo"`
 
 	// UnableProvideContractGuaranteeDocs: Отчет с обоснованием невозможности установления требования обеспечения контракта. Контролируется бизнес-контролем заполнение блока, если (И): -не заполнен блок "Обеспечение исполнения контракта" (contractGuarantee); -заказчик осуществляет деятельность на территории иностранного государства (в справочнике «Субъект контроля по 99 статье» (nsiControl99Subjects) для данного заказчика значение поля «Организация включена в перечень ст. 111.1 Федерального закона №44-ФЗ» (isSt111_1) равно «true»)
 	UnableProvideContractGuaranteeDocs *cmn.AttachmentListType `xml:"unableProvideContractGuaranteeDocs,omitempty"`
@@ -16177,11 +16177,11 @@ type CustomerRequirementEzakK2020Type struct {
 	// ContractGuarantee: Обеспечение исполнения контракта
 	ContractGuarantee *ContractGuaranteePaymentInfoType `xml:"contractGuarantee,omitempty"`
 
-	// ContractLcconditionsInfo: Условия контракта жизненного цикла. Контролируется обязательность указания в случае, если заполнен блок «Информация о заключении с поставщиком (подрядчиком, исполнителем) контракта жизненного цикла» (notificationInfo/contractConditionsInfo/contractLifeCycleInfo)
-	ContractLcconditionsInfo *ContractLcconditionsInfo `xml:"contractLCConditionsInfo,omitempty"`
+	// ContractLcconditionsInfo2: Условия контракта жизненного цикла. Контролируется обязательность указания в случае, если заполнен блок «Информация о заключении с поставщиком (подрядчиком, исполнителем) контракта жизненного цикла» (notificationInfo/contractConditionsInfo/contractLifeCycleInfo)
+	ContractLcconditionsInfo *ContractLcconditionsInfo2 `xml:"contractLCConditionsInfo,omitempty"`
 
-	// ContractConditionsInfo: Условия контракта
-	ContractConditionsInfo ContractConditionsInfo `xml:"contractConditionsInfo"`
+	// ContractConditionsInfo3: Условия контракта
+	ContractConditionsInfo ContractConditionsInfo3 `xml:"contractConditionsInfo"`
 
 	// UnableProvideContractGuaranteeDocs: Отчет с обоснованием невозможности установления требования обеспечения контракта. Контролируется бизнес-контролем заполнение блока, если (И): -не заполнен блок "Обеспечение исполнения контракта" (contractGuarantee); -заказчик осуществляет деятельность на территории иностранного государства (в справочнике «Субъект контроля по 99 статье» (nsiControl99Subjects) для данного заказчика значение поля «Организация включена в перечень ст. 111.1 Федерального закона №44-ФЗ» (isSt111_1) равно «true»)
 	UnableProvideContractGuaranteeDocs *cmn.AttachmentListType `xml:"unableProvideContractGuaranteeDocs,omitempty"`
@@ -16218,11 +16218,11 @@ type CustomerRequirementEzakA2020Type struct {
 	// ContractGuarantee: Обеспечение исполнения контракта
 	ContractGuarantee *ContractGuaranteePaymentInfoType `xml:"contractGuarantee,omitempty"`
 
-	// ContractLcconditionsInfo: Условия контракта жизненного цикла. Контролируется обязательность указания в случае, если заполнен блок «Информация о заключении с поставщиком (подрядчиком, исполнителем) контракта жизненного цикла» (notificationInfo/contractConditionsInfo/contractLifeCycleInfo)
-	ContractLcconditionsInfo *ContractLcconditionsInfo `xml:"contractLCConditionsInfo,omitempty"`
+	// ContractLcconditionsInfo3: Условия контракта жизненного цикла. Контролируется обязательность указания в случае, если заполнен блок «Информация о заключении с поставщиком (подрядчиком, исполнителем) контракта жизненного цикла» (notificationInfo/contractConditionsInfo/contractLifeCycleInfo)
+	ContractLcconditionsInfo *ContractLcconditionsInfo3 `xml:"contractLCConditionsInfo,omitempty"`
 
-	// ContractConditionsInfo: Условия контракта
-	ContractConditionsInfo ContractConditionsInfo `xml:"contractConditionsInfo"`
+	// ContractConditionsInfo4: Условия контракта
+	ContractConditionsInfo ContractConditionsInfo4 `xml:"contractConditionsInfo"`
 
 	// UnableProvideContractGuaranteeDocs: Отчет с обоснованием невозможности установления требования обеспечения контракта. Контролируется бизнес-контролем заполнение блока, если (И): -не заполнен блок "Обеспечение исполнения контракта" (contractGuarantee); -заказчик осуществляет деятельность на территории иностранного государства (в справочнике «Субъект контроля по 99 статье» (nsiControl99Subjects) для данного заказчика значение поля «Организация включена в перечень ст. 111.1 Федерального закона №44-ФЗ» (isSt111_1) равно «true»)
 	UnableProvideContractGuaranteeDocs *cmn.AttachmentListType `xml:"unableProvideContractGuaranteeDocs,omitempty"`
@@ -16262,8 +16262,8 @@ type CustomerRequirementEzptype struct {
 	// ProvisionWarranty: Обеспечение гарантийных обязательств
 	ProvisionWarranty *cmn.PaymentGuaranteeInfoType `xml:"provisionWarranty,omitempty"`
 
-	// ContractConditionsInfo: Условия контракта
-	ContractConditionsInfo ContractConditionsInfo `xml:"contractConditionsInfo"`
+	// ContractConditionsInfo5: Условия контракта
+	ContractConditionsInfo ContractConditionsInfo5 `xml:"contractConditionsInfo"`
 
 	// PurchaseObjectDescription: Описание объекта закупки. В описании объекта закупки могут быть указаны функциональные, технические и качественные характеристики, эксплуатационные характеристики объекта закупки (при необходимости) в соответствии со статьей 33 Закона 44-ФЗ
 	PurchaseObjectDescription *base.Text4000Type `xml:"purchaseObjectDescription,omitempty"`
@@ -16294,11 +16294,11 @@ type CustomerRequirementEzk2020Type struct {
 	// ContractGuarantee: Обеспечение исполнения контракта
 	ContractGuarantee *ContractGuaranteePaymentInfoType `xml:"contractGuarantee,omitempty"`
 
-	// ContractLcconditionsInfo: Условия контракта жизненного цикла. Если первая версия извещения размещена до даты начала действия оптимизационного законопроекта 44-ФЗ или проект первой версии принимается до даты начала действия оптимизационного законопроекта 44-ФЗ, то блок игнорируется при приеме, иначе контролируется обязательность указания в случае, если заполнен блок «Информация о заключении с поставщиком (подрядчиком, исполнителем) контракта жизненного цикла» (notificationInfo/contractConditionsInfo/contractLifeCycleInfo)
-	ContractLcconditionsInfo *ContractLcconditionsInfo `xml:"contractLCConditionsInfo,omitempty"`
+	// ContractLcconditionsInfo4: Условия контракта жизненного цикла. Если первая версия извещения размещена до даты начала действия оптимизационного законопроекта 44-ФЗ или проект первой версии принимается до даты начала действия оптимизационного законопроекта 44-ФЗ, то блок игнорируется при приеме, иначе контролируется обязательность указания в случае, если заполнен блок «Информация о заключении с поставщиком (подрядчиком, исполнителем) контракта жизненного цикла» (notificationInfo/contractConditionsInfo/contractLifeCycleInfo)
+	ContractLcconditionsInfo *ContractLcconditionsInfo4 `xml:"contractLCConditionsInfo,omitempty"`
 
-	// ContractConditionsInfo: Условия контракта
-	ContractConditionsInfo ContractConditionsInfo `xml:"contractConditionsInfo"`
+	// ContractConditionsInfo6: Условия контракта
+	ContractConditionsInfo ContractConditionsInfo6 `xml:"contractConditionsInfo"`
 
 	// UnableProvideContractGuaranteeDocs: Отчет с обоснованием невозможности установления требования обеспечения контракта. Контролируется бизнес-контролем заполнение блока, если (И): -первая версия извещения размещена после выхода версии ЕИС 9.1; -не заполнен блок "Обеспечение исполнения контракта" (contractGuarantee); -заказчик осуществляет деятельность на территории иностранного государства (в справочнике «Субъект контроля по 99 статье» (nsiControl99Subjects) для данного заказчика значение поля «Организация включена в перечень ст. 111.1 Федерального закона №44-ФЗ» (isSt111_1) равно «true»)
 	UnableProvideContractGuaranteeDocs *cmn.AttachmentListType `xml:"unableProvideContractGuaranteeDocs,omitempty"`
@@ -16329,8 +16329,8 @@ type CustomerRequirementEzktype struct {
 	// ContractGuarantee: Обеспечение исполнения контракта
 	ContractGuarantee *ContractGuaranteePaymentInfoType `xml:"contractGuarantee,omitempty"`
 
-	// ContractConditionsInfo: Условия контракта
-	ContractConditionsInfo ContractConditionsInfo `xml:"contractConditionsInfo"`
+	// ContractConditionsInfo7: Условия контракта
+	ContractConditionsInfo ContractConditionsInfo7 `xml:"contractConditionsInfo"`
 
 	// UnableProvideContractGuaranteeDocs: Отчет с обоснованием невозможности установления требования обеспечения контракта. Контролируется бизнес-контролем заполнение блока, если (И): -первая версия извещения размещена после выхода версии ЕИС 9.1; -не заполнен блок "Обеспечение исполнения контракта" (contractGuarantee); -заказчик осуществляет деятельность на территории иностранного государства (в справочнике «Субъект контроля по 99 статье» (nsiControl99Subjects) для данного заказчика значение поля «Организация включена в перечень ст. 111.1 Федерального закона №44-ФЗ» (isSt111_1) равно «true»)
 	UnableProvideContractGuaranteeDocs *cmn.AttachmentListType `xml:"unableProvideContractGuaranteeDocs,omitempty"`
@@ -16364,8 +16364,8 @@ type CustomerRequirementEzt2020Type struct {
 	// ContractGuarantee: Обеспечение исполнения контракта
 	ContractGuarantee *ContractGuaranteePaymentInfoType `xml:"contractGuarantee,omitempty"`
 
-	// ContractConditionsInfo: Условия контракта
-	ContractConditionsInfo ContractConditionsInfo `xml:"contractConditionsInfo"`
+	// ContractConditionsInfo8: Условия контракта
+	ContractConditionsInfo ContractConditionsInfo8 `xml:"contractConditionsInfo"`
 
 	// UnableProvideContractGuaranteeDocs: Отчет с обоснованием невозможности установления требования обеспечения контракта. Контролируется бизнес-контролем заполнение блока, если (И): -первая версия извещения размещена после выхода версии ЕИС 9.1; -не заполнен блок "Обеспечение исполнения контракта" (contractGuarantee); -заказчик осуществляет деятельность на территории иностранного государства (в справочнике «Субъект контроля по 99 статье» (nsiControl99Subjects) для данного заказчика значение поля «Организация включена в перечень ст. 111.1 Федерального закона №44-ФЗ» (isSt111_1) равно «true»)
 	UnableProvideContractGuaranteeDocs *cmn.AttachmentListType `xml:"unableProvideContractGuaranteeDocs,omitempty"`
@@ -16482,8 +16482,8 @@ type ProductInfoFinalProtocolType struct {
 	// ProductInfoOkpd2Info: Классификация по ОКПД2
 	Okpd2Info *ProductInfoOkpd2Info `xml:"OKPD2Info,omitempty"`
 
-	// ProductInfoKtruinfo: Классификация по КТРУ
-	Ktruinfo *ProductInfoKtruinfo `xml:"KTRUInfo,omitempty"`
+	// Ktruinfo2: Классификация по КТРУ
+	Ktruinfo *Ktruinfo2 `xml:"KTRUInfo,omitempty"`
 
 	// HierarchyType: Тип объекта закупки в иерархии. Игнорируется при приеме. Если позиция задана в блоке "Объект закупки" (notDrugProposalsInfo/productInfo), то: 1. Если заполнен блок "Родительский объект закупки" (productInfo/parentProductInfo), то заполняется при передаче значением "CH" - Дочерний 2. Иначе заполняется значением "ND" - Недетализированный объект закупки Если позиция задана в блоке "Родительский объект закупки" (notDrugProposalsInfo/parentProductInfo), то заполняется при передаче значением "P" - Родитель
 	HierarchyType *base.ProductHierarchyTypeEnumType `xml:"hierarchyType,omitempty"`
@@ -16568,8 +16568,8 @@ type ProtocolType struct {
 	// CommonInfo: Общая информация
 	CommonInfo ProtocolCommonInfoType `xml:"commonInfo"`
 
-	// ProtocolPublisherInfo: Информация об организации, разместившей протокол
-	ProtocolPublisherInfo ProtocolPublisherInfo `xml:"protocolPublisherInfo"`
+	// ProtocolPublisherInfo40: Информация об организации, разместившей протокол
+	ProtocolPublisherInfo ProtocolPublisherInfo40 `xml:"protocolPublisherInfo"`
 
 	// CommissionInfo: Информация о комиссии
 	CommissionInfo cmn.CommissionType `xml:"commissionInfo"`
@@ -16589,8 +16589,8 @@ type ProtocolType struct {
 	// AfterProlongation: Протокол после продления. Для протоколов, принимаемых после того, как по закупке размещен документ "Извещение о продлении срока подачи заявок" должно быть указано значение true, в остальных случаях указывается значение false
 	AfterProlongation bool `xml:"afterProlongation"`
 
-	// PrintFormFieldsInfo: Дополнительная информация для печатной формы. Игнорируется при приёме, заполняется при передаче
-	PrintFormFieldsInfo *PrintFormFieldsInfo `xml:"printFormFieldsInfo,omitempty"`
+	// PrintFormFieldsInfo34: Дополнительная информация для печатной формы. Игнорируется при приёме, заполняется при передаче
+	PrintFormFieldsInfo *PrintFormFieldsInfo34 `xml:"printFormFieldsInfo,omitempty"`
 }
 
 // Protocol2020Type: Тип: Общие поля протоколов с даты начала действия оптимизационного законопроекта 44-ФЗ
@@ -16615,8 +16615,8 @@ type Protocol2020Type struct {
 	// CommonInfo: Общая информация
 	CommonInfo Protocol2020CommonInfoType `xml:"commonInfo"`
 
-	// ProtocolPublisherInfo: Информация об организации, разместившей протокол
-	ProtocolPublisherInfo ProtocolPublisherInfo `xml:"protocolPublisherInfo"`
+	// ProtocolPublisherInfo41: Информация об организации, разместившей протокол
+	ProtocolPublisherInfo ProtocolPublisherInfo41 `xml:"protocolPublisherInfo"`
 
 	// ExtPrintFormInfo: Электронный документ, полученный из внешней системы. В составе блока на стороне ЕИС принимается сформированная на площадке печатная форма протокола без сведений об участниках закупки
 	ExtPrintFormInfo cmn.ExtPrintFormProtocolType `xml:"extPrintFormInfo"`
@@ -16644,14 +16644,14 @@ type ProtocolEvDevType struct {
 	// VersionNumber: Номер версии документа. В случае если значение поля не указано или в поле указано 1, считается, что это первоначальная версия документа, иначе – изменение существующей версии. При приеме изменений документа контролируется последовательность нумерации
 	VersionNumber *base.VersionNumberType `xml:"versionNumber,omitempty"`
 
-	// CommonInfo: Общая информация
-	CommonInfo CommonInfo `xml:"commonInfo"`
+	// CommonInfo33: Общая информация
+	CommonInfo CommonInfo33 `xml:"commonInfo"`
 
-	// ContractsInfo: Информация о связанных контрактах
-	ContractsInfo *ContractsInfo `xml:"contractsInfo,omitempty"`
+	// ContractsInfo2: Информация о связанных контрактах
+	ContractsInfo *ContractsInfo2 `xml:"contractsInfo,omitempty"`
 
-	// ProtocolPublisherInfo: Информация об организации, разместившей протокол
-	ProtocolPublisherInfo ProtocolPublisherInfo `xml:"protocolPublisherInfo"`
+	// ProtocolPublisherInfo42: Информация об организации, разместившей протокол
+	ProtocolPublisherInfo ProtocolPublisherInfo42 `xml:"protocolPublisherInfo"`
 
 	// PrintFormInfo: Печатная форма документа в ЕИС. Элемент игнорируется при приёме. При передаче заполняется ссылкой на печатную форму и электронную подпись размещенного в ЕИС документа
 	PrintFormInfo *cmn.PrintFormType `xml:"printFormInfo,omitempty"`
@@ -16662,11 +16662,11 @@ type ProtocolEvDevType struct {
 	// AttachmentsInfo: Информация о прикрепленных документах
 	AttachmentsInfo *cmn.AttachmentListType `xml:"attachmentsInfo,omitempty"`
 
-	// ModificationInfo: Основание внесения изменений
-	ModificationInfo *ModificationInfo `xml:"modificationInfo,omitempty"`
+	// ModificationInfo2: Основание внесения изменений
+	ModificationInfo *ModificationInfo2 `xml:"modificationInfo,omitempty"`
 
-	// PrintFormFieldsInfo: Дополнительная информация для печатной формы. Игнорируется при приёме, заполняется при передаче
-	PrintFormFieldsInfo *PrintFormFieldsInfo `xml:"printFormFieldsInfo,omitempty"`
+	// PrintFormFieldsInfo35: Дополнительная информация для печатной формы. Игнорируется при приёме, заполняется при передаче
+	PrintFormFieldsInfo *PrintFormFieldsInfo35 `xml:"printFormFieldsInfo,omitempty"`
 }
 
 // ProtocolEzptype: Тип: Общие поля протоколов для ЭЗП (запрос предложений в электронной форме)
@@ -16691,8 +16691,8 @@ type ProtocolEzptype struct {
 	// CommonInfo: Общая информация
 	CommonInfo ProtocolCommonInfoType `xml:"commonInfo"`
 
-	// ProtocolPublisherInfo: Информация об организации, разместившей протокол
-	ProtocolPublisherInfo ProtocolPublisherInfo `xml:"protocolPublisherInfo"`
+	// ProtocolPublisherInfo43: Информация об организации, разместившей протокол
+	ProtocolPublisherInfo ProtocolPublisherInfo43 `xml:"protocolPublisherInfo"`
 
 	// CommissionInfo: Информация о комиссии
 	CommissionInfo cmn.CommissionType `xml:"commissionInfo"`
@@ -16822,11 +16822,11 @@ type ProtocolCharacteristicValueWithSidsTextFormType struct {
 	// ValueFormat: Формат значения характеристики: N-числовой; A-дополнительный В случае если поле при приеме не указано, по умолчанию считается, что формат значения характеристики - числовой
 	ValueFormat *base.KtruCharacteristicValueFormatType `xml:"valueFormat,omitempty"`
 
-	// RangeSet: Набор диапазонов значений характеристик
-	RangeSet *RangeSet `xml:"rangeSet,omitempty"`
+	// RangeSet1: Набор диапазонов значений характеристик
+	RangeSet *RangeSet1 `xml:"rangeSet,omitempty"`
 
-	// ValueSet: Набор конкретных значений характеристики
-	ValueSet *ValueSet `xml:"valueSet,omitempty"`
+	// ValueSet1: Набор конкретных значений характеристики
+	ValueSet *ValueSet1 `xml:"valueSet,omitempty"`
 }
 
 // RefKtruprotocolCharacteristicWithSidsType: Тип КТРУ: Характеристика товаров, работ, услуг в итоговом протоколе для ввода из справочника, которая связана с характеристикой позиции в извещении
@@ -16877,14 +16877,14 @@ type SingleAppType struct {
 	// AppParticipantInfo: Сведения об участнике
 	AppParticipantInfo cmn.ParticipantType `xml:"appParticipantInfo"`
 
-	// DocumentRequirementsInfo: Требования к информации и документам для предоставления участниками
-	DocumentRequirementsInfo DocumentRequirementsInfo `xml:"documentRequirementsInfo"`
+	// DocumentRequirementsInfo5: Требования к информации и документам для предоставления участниками
+	DocumentRequirementsInfo DocumentRequirementsInfo5 `xml:"documentRequirementsInfo"`
 
-	// CorrespondenciesInfo: Соответствие участника преимуществам
-	CorrespondenciesInfo *CorrespondenciesInfo `xml:"correspondenciesInfo,omitempty"`
+	// CorrespondenciesInfo3: Соответствие участника преимуществам
+	CorrespondenciesInfo *CorrespondenciesInfo3 `xml:"correspondenciesInfo,omitempty"`
 
-	// AdmittedInfo: Информация о допуске заявки
-	AdmittedInfo AdmittedInfo `xml:"admittedInfo"`
+	// AdmittedInfo4: Информация о допуске заявки
+	AdmittedInfo AdmittedInfo4 `xml:"admittedInfo"`
 }
 
 // SinglePartType: Тип: Общий тип для завки, в случае указания в протоколе рассмотрения заявки единственного участника
@@ -16897,14 +16897,14 @@ type SinglePartType struct {
 	// AppParticipantInfo: Сведения об участнике
 	AppParticipantInfo cmn.ParticipantType `xml:"appParticipantInfo"`
 
-	// DocumentRequirementsInfo: Требования к информации и документам для предоставления участниками
-	DocumentRequirementsInfo DocumentRequirementsInfo `xml:"documentRequirementsInfo"`
+	// DocumentRequirementsInfo5: Требования к информации и документам для предоставления участниками
+	DocumentRequirementsInfo DocumentRequirementsInfo5 `xml:"documentRequirementsInfo"`
 
-	// CorrespondenciesInfo: Соответствие участника преимуществам
-	CorrespondenciesInfo *CorrespondenciesInfo `xml:"correspondenciesInfo,omitempty"`
+	// CorrespondenciesInfo3: Соответствие участника преимуществам
+	CorrespondenciesInfo *CorrespondenciesInfo3 `xml:"correspondenciesInfo,omitempty"`
 
-	// AdmittedInfo: Информация о допуске заявки
-	AdmittedInfo AdmittedInfo `xml:"admittedInfo"`
+	// AdmittedInfo4: Информация о допуске заявки
+	AdmittedInfo AdmittedInfo4 `xml:"admittedInfo"`
 }
 
 // StagesInfoType: Тип: Этапы исполнения контракта в извещении
@@ -16925,11 +16925,11 @@ type ManualProtocolCharacteristicValueType struct {
 	// Okei: Единица измерения. Ссылка на классификатор ОКЕИ (nsiOKEI)
 	Okei *base.Okeiref `xml:"OKEI,omitempty"`
 
-	// RangeSet: Набор диапазонов значений характеристик
-	RangeSet *RangeSet `xml:"rangeSet,omitempty"`
+	// RangeSet2: Набор диапазонов значений характеристик
+	RangeSet *RangeSet2 `xml:"rangeSet,omitempty"`
 
-	// ValueSet: Набор конкретных значений характеристики
-	ValueSet *ValueSet `xml:"valueSet,omitempty"`
+	// ValueSet2: Набор конкретных значений характеристики
+	ValueSet *ValueSet2 `xml:"valueSet,omitempty"`
 }
 
 // ManualProtocolCharacteristicValueTextFormType: Тип: Значение характеристики позиции в итоговом протоколе, которое связано со значением характеристики в извещении, для ввода в текстовой форме
@@ -16942,11 +16942,11 @@ type ManualProtocolCharacteristicValueTextFormType struct {
 	// Okei: Единица измерения. Ссылка на классификатор ОКЕИ (nsiOKEI)
 	Okei *base.Okeiref `xml:"OKEI,omitempty"`
 
-	// RangeSet: Набор диапазонов значений характеристик
-	RangeSet *RangeSet `xml:"rangeSet,omitempty"`
+	// RangeSet3: Набор диапазонов значений характеристик
+	RangeSet *RangeSet3 `xml:"rangeSet,omitempty"`
 
-	// ValueSet: Набор конкретных значений характеристики
-	ValueSet *ValueSet `xml:"valueSet,omitempty"`
+	// ValueSet3: Набор конкретных значений характеристики
+	ValueSet *ValueSet3 `xml:"valueSet,omitempty"`
 }
 
 // ManualProtocolCharacteristicType: Тип: Характеристика позиции в итоговом протоколе для ввода в текстовой форме
@@ -16959,8 +16959,8 @@ type ManualProtocolCharacteristicType struct {
 	// Type: Тип характеристики: 1 - качественная; 2 - количественная.
 	Type base.KtruCharacteristicTypeType `xml:"type"`
 
-	// Values: Допустимые значения характеристики
-	Values Values `xml:"values"`
+	// Values1: Допустимые значения характеристики
+	Values Values1 `xml:"values"`
 }
 
 // ManualProtocolCharacteristicWithSidsType: Тип: Характеристика позиции в итоговом протоколе для ввода в текстовой форме, которая связана с характеристикой позиции в извещении
@@ -16985,11 +16985,11 @@ type ManualProtocolCharacteristicWithSidsType struct {
 	// NotificationExternalSid: Внешний идентификатор характеристики в извещении-основании
 	NotificationExternalSid *base.ExternalIdType `xml:"notificationExternalSid,omitempty"`
 
-	// Values: Допустимые значения характеристики. 1. Если признак isNotificationConsent установлен, то блок игнорируется при приеме, заполняется из соответствующего извещения. 2. Если признак isNotificationConsent не установлен, то обязателен для заполнения либо блок values, либо valuesUsingTextForm
-	Values *Values `xml:"values,omitempty"`
+	// Values2: Допустимые значения характеристики. 1. Если признак isNotificationConsent установлен, то блок игнорируется при приеме, заполняется из соответствующего извещения. 2. Если признак isNotificationConsent не установлен, то обязателен для заполнения либо блок values, либо valuesUsingTextForm
+	Values *Values2 `xml:"values,omitempty"`
 
-	// ValuesUsingTextForm: Допустимые значения характеристики в текстовой форме 1. Если признак isNotificationConsent установлен, то блок игнорируется при приеме. 2. Если признак isNotificationConsent не установлен, то обязателен для заполнения либо блок values, либо valuesUsingTextForm
-	ValuesUsingTextForm *ValuesUsingTextForm `xml:"valuesUsingTextForm,omitempty"`
+	// ValuesUsingTextForm1: Допустимые значения характеристики в текстовой форме 1. Если признак isNotificationConsent установлен, то блок игнорируется при приеме. 2. Если признак isNotificationConsent не установлен, то обязателен для заполнения либо блок values, либо valuesUsingTextForm
+	ValuesUsingTextForm *ValuesUsingTextForm1 `xml:"valuesUsingTextForm,omitempty"`
 }
 
 // WarrantyInfoType: Тип: Требования к гарантии качества товара, работы, услуги
@@ -17013,8 +17013,8 @@ type CostCriterionProtocolEok2020FirstSectionsType struct {
 	// Code: Код критерия: MC - Расходы на эксплуатацию и ремонт товаров, использование результатов работ
 	Code base.CostCriterionProtocolEok2020FirstSectionsCodeEnum `xml:"code"`
 
-	// IndicatorsInfo: Оценки по показателям критерия оценки
-	IndicatorsInfo *IndicatorsInfo `xml:"indicatorsInfo,omitempty"`
+	// IndicatorsInfo3: Оценки по показателям критерия оценки
+	IndicatorsInfo *IndicatorsInfo3 `xml:"indicatorsInfo,omitempty"`
 
 	// ValueInfo: Значимость критерия в процентах. Устарело, не применяется с версии 14.0. Оставлено для обратной совместимости
 	ValueInfo *CriterionValueProtocolFinalType `xml:"valueInfo,omitempty"`
@@ -17045,8 +17045,8 @@ type CostCriterionProtocolOktype struct {
 	// Code: Код критерия: CP - Цена контракта. MC - Расходы на эксплуатацию и ремонт товаров, использование результатов работ. TC - Стоимость жизненного цикла товара или созданного в результате выполнения работы объекта. EN - Предложение о сумме соответствующих расходов заказчика, которые заказчик осуществит или понесет по энергосервисному контракту
 	Code base.CostCriterionCodeEnum `xml:"code"`
 
-	// IndicatorsInfo: Оценки по показателями критерия оценки. Блок может быть заполнен только в случае если в поле "Код критерия" содержится значение "MC - Расходы на эксплуатацию и ремонт товаров, использование результатов работ"
-	IndicatorsInfo *IndicatorsInfo `xml:"indicatorsInfo,omitempty"`
+	// IndicatorsInfo4: Оценки по показателями критерия оценки. Блок может быть заполнен только в случае если в поле "Код критерия" содержится значение "MC - Расходы на эксплуатацию и ремонт товаров, использование результатов работ"
+	IndicatorsInfo *IndicatorsInfo4 `xml:"indicatorsInfo,omitempty"`
 
 	// ValueInfo: Значимость критерия в процентах Устарело, не применяется с версии 14.0 Оставлено для обратной совместимости
 	ValueInfo *CriterionValueProtocolFinalType `xml:"valueInfo,omitempty"`
@@ -17111,8 +17111,8 @@ type QualitativeCriterionProtocolOk1Type struct {
 	// AddInfo: Дополнительная информация о содержании и порядке оценки по критерию
 	AddInfo *base.Text4000Type `xml:"addInfo,omitempty"`
 
-	// IndicatorsInfo: Критерий оценки с показателями. Блок может быть заполнен в протоколе в случае, если в извещении заполнен соотвествующий блок notificationInfo/criteriaInfo/criterionInfo/qualitativeCriterionInfo/indicatorsInfo
-	IndicatorsInfo *IndicatorsInfo `xml:"indicatorsInfo,omitempty"`
+	// IndicatorsInfo5: Критерий оценки с показателями. Блок может быть заполнен в протоколе в случае, если в извещении заполнен соотвествующий блок notificationInfo/criteriaInfo/criterionInfo/qualitativeCriterionInfo/indicatorsInfo
+	IndicatorsInfo *IndicatorsInfo5 `xml:"indicatorsInfo,omitempty"`
 
 	// CriterionScoringInfo: Критерий оценки без показателей. Блок может быть заполнен в протоколе в случае, если в извещении не заполнены ни блок notificationInfo/criteriaInfo/criterionInfo/qualitativeCriterionInfo/indicatorsInfo ни блок notificationInfo/criteriaInfo/criterionInfo/qualitativeCriterionInfo/criterionInfo
 	CriterionScoringInfo *CriterionsScoringProtocolOktype `xml:"criterionScoringInfo,omitempty"`
@@ -17134,8 +17134,8 @@ type QualitativeCriterionProtocolOk12020Type struct {
 	// AddInfo: Дополнительная информация о содержании и порядке оценки по критерию
 	AddInfo *base.Text4000Type `xml:"addInfo,omitempty"`
 
-	// IndicatorsInfo: Критерий оценки с показателями. Блок может быть заполнен в протоколе в случае, если в извещении заполнен соотвествующий блок notificationInfo/criteriaInfo/criterionInfo/qualitativeCriterionInfo/indicatorsInfo
-	IndicatorsInfo *IndicatorsInfo `xml:"indicatorsInfo,omitempty"`
+	// IndicatorsInfo6: Критерий оценки с показателями. Блок может быть заполнен в протоколе в случае, если в извещении заполнен соотвествующий блок notificationInfo/criteriaInfo/criterionInfo/qualitativeCriterionInfo/indicatorsInfo
+	IndicatorsInfo *IndicatorsInfo6 `xml:"indicatorsInfo,omitempty"`
 
 	// CriterionScoringInfo: Критерий оценки без показателей. Блок может быть заполнен в протоколе в случае, если в извещении не заполнены ни блок notificationInfo/criteriaInfo/criterionInfo/qualitativeCriterionInfo/indicatorsInfo ни блок notificationInfo/criteriaInfo/criterionInfo/qualitativeCriterionInfo/criterionInfo
 	CriterionScoringInfo *CriterionsScoringProtocolOktype `xml:"criterionScoringInfo,omitempty"`
@@ -17154,8 +17154,8 @@ type QualitativeCriterionProtocolOk2Type struct {
 	// AddInfo: Дополнительная информация о содержании и порядке оценки по критерию
 	AddInfo *base.Text4000Type `xml:"addInfo,omitempty"`
 
-	// IndicatorsInfo: Критерий оценки с показателями. Блок может быть заполнен в протоколе в случае, если в извещении заполнен соотвествующий блок notificationInfo/criteriaInfo/criterionInfo/qualitativeCriterionInfo/indicatorsInfo
-	IndicatorsInfo IndicatorsInfo `xml:"indicatorsInfo"`
+	// IndicatorsInfo7: Критерий оценки с показателями. Блок может быть заполнен в протоколе в случае, если в извещении заполнен соотвествующий блок notificationInfo/criteriaInfo/criterionInfo/qualitativeCriterionInfo/indicatorsInfo
+	IndicatorsInfo IndicatorsInfo7 `xml:"indicatorsInfo"`
 
 	// CriterionScoringInfo: Критерий оценки без показателей. Блок может быть заполнен в протоколе в случае, если в извещении не заполнены ни блок notificationInfo/criteriaInfo/criterionInfo/qualitativeCriterionInfo/indicatorsInfo ни блок notificationInfo/criteriaInfo/criterionInfo/qualitativeCriterionInfo/criterionInfo
 	CriterionScoringInfo CriterionsScoringProtocolOktype `xml:"criterionScoringInfo"`
@@ -17174,8 +17174,8 @@ type QualitativeCriterionProtocolOk3Type struct {
 	// AddInfo: Дополнительная информация о содержании и порядке оценки по критерию
 	AddInfo *base.Text4000Type `xml:"addInfo,omitempty"`
 
-	// IndicatorsInfo: Критерий оценки с показателями. Блок может быть заполнен в протоколе в случае, если в извещении заполнен соотвествующий блок notificationInfo/criteriaInfo/criterionInfo/qualitativeCriterionInfo/indicatorsInfo
-	IndicatorsInfo IndicatorsInfo `xml:"indicatorsInfo"`
+	// IndicatorsInfo8: Критерий оценки с показателями. Блок может быть заполнен в протоколе в случае, если в извещении заполнен соотвествующий блок notificationInfo/criteriaInfo/criterionInfo/qualitativeCriterionInfo/indicatorsInfo
+	IndicatorsInfo IndicatorsInfo8 `xml:"indicatorsInfo"`
 
 	// CriterionScoringInfo: Критерий оценки без показателей. Блок может быть заполнен в протоколе в случае, если в извещении не заполнены ни блок notificationInfo/criteriaInfo/criterionInfo/qualitativeCriterionInfo/indicatorsInfo ни блок notificationInfo/criteriaInfo/criterionInfo/qualitativeCriterionInfo/criterionInfo
 	CriterionScoringInfo CriterionsScoringProtocolOktype `xml:"criterionScoringInfo"`
@@ -17197,8 +17197,8 @@ type QualitativeCriterionProtocolOk32020Type struct {
 	// AddInfo: Дополнительная информация о содержании и порядке оценки по критерию
 	AddInfo *base.Text4000Type `xml:"addInfo,omitempty"`
 
-	// IndicatorsInfo: Критерий оценки с показателями. Блок может быть заполнен в протоколе в случае, если в извещении заполнен соотвествующий блок notificationInfo/criteriaInfo/criterionInfo/qualitativeCriterionInfo/indicatorsInfo
-	IndicatorsInfo *IndicatorsInfo `xml:"indicatorsInfo,omitempty"`
+	// IndicatorsInfo9: Критерий оценки с показателями. Блок может быть заполнен в протоколе в случае, если в извещении заполнен соотвествующий блок notificationInfo/criteriaInfo/criterionInfo/qualitativeCriterionInfo/indicatorsInfo
+	IndicatorsInfo *IndicatorsInfo9 `xml:"indicatorsInfo,omitempty"`
 
 	// CriterionScoringInfo: Критерий оценки без показателей. Блок может быть заполнен в протоколе в случае, если в извещении не заполнены ни блок notificationInfo/criteriaInfo/criterionInfo/qualitativeCriterionInfo/indicatorsInfo ни блок notificationInfo/criteriaInfo/criterionInfo/qualitativeCriterionInfo/criterionInfo
 	CriterionScoringInfo *CriterionsScoringProtocolOktype `xml:"criterionScoringInfo,omitempty"`
@@ -17273,8 +17273,8 @@ type IndicatorProtocolOktype struct {
 	// OfferText: Информация о предложении участника Устарело, игнорируется при приеме-передаче начиная с версии 12.3
 	OfferText *base.Text2000Type `xml:"offerText,omitempty"`
 
-	// IndicatorsScoringInfo: Оценки членов комиссии по показателю критерия Устарело, игнорируется при приеме-передаче начиная с версии 12.3
-	IndicatorsScoringInfo *IndicatorsScoringInfo `xml:"indicatorsScoringInfo,omitempty"`
+	// IndicatorsScoringInfo2: Оценки членов комиссии по показателю критерия Устарело, игнорируется при приеме-передаче начиная с версии 12.3
+	IndicatorsScoringInfo *IndicatorsScoringInfo2 `xml:"indicatorsScoringInfo,omitempty"`
 
 	// DetailIndicatorsScoringInfo: Оценки по детализирующим показателям. Блок обязателен для заполнения, начиная с версии 12.3
 	DetailIndicatorsScoringInfo *DetailIndicatorsScoringInfo `xml:"detailIndicatorsScoringInfo,omitempty"`
@@ -17308,8 +17308,8 @@ type CostCriterionProtocolZptype struct {
 	// CriterionCode: Код критерия: CP - Цена контракта. MC - Расходы на эксплуатацию и ремонт товаров, использование результатов работ. TC - Стоимость жизненного цикла товара или созданного в результате выполнения работы объекта. EN - Предложение о сумме соответствующих расходов заказчика, которые заказчик осуществит или понесет по энергосервисному контракту
 	CriterionCode *base.CostCriterionCodeEnum `xml:"criterionCode,omitempty"`
 
-	// CriterionTextFormInfo: Критерий, введённый вручную
-	CriterionTextFormInfo *CriterionTextFormInfo `xml:"criterionTextFormInfo,omitempty"`
+	// CriterionTextFormInfo2: Критерий, введённый вручную
+	CriterionTextFormInfo *CriterionTextFormInfo2 `xml:"criterionTextFormInfo,omitempty"`
 }
 
 // ConditionScoringZptype: Тип: Оценка предложения участника по отдельному критерию оценки в протоколе в рамках проведения запроса предложений в электронной форме
@@ -17336,11 +17336,11 @@ type QualitativeCriterionProtocolZptype struct {
 	// CriterionCode: Код критерия: QF - Качественные, функциональные и экологические характеристики объекта закупки. QO - Квалификация участников закупки, в том числе наличие у них финансовых ресурсов, оборудования и других материальных ресурсов, принадлежащих им на праве собственности или на ином законном основании, опыта работы, связанного с предметом контракта, и деловой репутации, специалистов и иных работников определенного уровня квалификации
 	CriterionCode *base.QualitativeCriterionCodeEnum `xml:"criterionCode,omitempty"`
 
-	// CriterionTextFormInfo: Критерий, введённый вручную
-	CriterionTextFormInfo *CriterionTextFormInfo `xml:"criterionTextFormInfo,omitempty"`
+	// CriterionTextFormInfo3: Критерий, введённый вручную
+	CriterionTextFormInfo *CriterionTextFormInfo3 `xml:"criterionTextFormInfo,omitempty"`
 
-	// IndicatorsInfo: Критерий оценки с показателями
-	IndicatorsInfo *IndicatorsInfo `xml:"indicatorsInfo,omitempty"`
+	// IndicatorsInfo10: Критерий оценки с показателями
+	IndicatorsInfo *IndicatorsInfo10 `xml:"indicatorsInfo,omitempty"`
 
 	// CriterionScoringInfo: Критерий оценки без показателей
 	CriterionScoringInfo *CriterionsScoringProtocolZptype `xml:"criterionScoringInfo,omitempty"`
@@ -17380,8 +17380,8 @@ type IndicatorProtocolZptype struct {
 	// OfferText: Информация о предложении участника
 	OfferText *base.Text2000Type `xml:"offerText,omitempty"`
 
-	// IndicatorsScoringInfo: Оценки членов комиссии по показателю критерия
-	IndicatorsScoringInfo IndicatorsScoringInfo `xml:"indicatorsScoringInfo"`
+	// IndicatorsScoringInfo3: Оценки членов комиссии по показателю критерия
+	IndicatorsScoringInfo IndicatorsScoringInfo3 `xml:"indicatorsScoringInfo"`
 
 	// MeasurementOrder: Порядок оценки: F - лучшим условием исполнения контракта является наибольшее значение, L - лучшим условием исполнения контракта является наименьшее значение, O - оценка производится по шкале оценки или другому порядку, указанному в документации
 	MeasurementOrder *base.MeasurementOrderEnum `xml:"measurementOrder,omitempty"`
@@ -17409,8 +17409,8 @@ type CriterionsScoringProtocolZptype struct {
 	// OfferText: Информация о предложении участника
 	OfferText *base.Text2000Type `xml:"offerText,omitempty"`
 
-	// CommissionMembersScoringInfo: Оценки членов комиссии по критерию
-	CommissionMembersScoringInfo CommissionMembersScoringInfo `xml:"commissionMembersScoringInfo"`
+	// CommissionMembersScoringInfo1: Оценки членов комиссии по критерию
+	CommissionMembersScoringInfo CommissionMembersScoringInfo1 `xml:"commissionMembersScoringInfo"`
 
 	// MeasurementOrder: Порядок оценки: F - лучшим условием исполнения контракта является наибольшее значение, L - лучшим условием исполнения контракта является наименьшее значение, O - оценка производится по шкале оценки или другому порядку, указанному в документации
 	MeasurementOrder *base.MeasurementOrderEnum `xml:"measurementOrder,omitempty"`
@@ -17437,8 +17437,8 @@ type ScoringType struct {
 type ChangeReasonType struct {
 	XMLName xml.Name
 
-	// ResponsibleDecisionInfo: По решению заказчика (организации, осуществляющей определение поставщика для заказчика) Для документа «Отмена извещения об отмене определения поставщика (подрядчика, исполнителя) в электронной форме» (epNotificationCancelFailure) контролируется недопустимость заполнения, начиная с выхода версии 14.2
-	ResponsibleDecisionInfo *ResponsibleDecisionInfo `xml:"responsibleDecisionInfo,omitempty"`
+	// ResponsibleDecisionInfo2: По решению заказчика (организации, осуществляющей определение поставщика для заказчика) Для документа «Отмена извещения об отмене определения поставщика (подрядчика, исполнителя) в электронной форме» (epNotificationCancelFailure) контролируется недопустимость заполнения, начиная с выхода версии 14.2
+	ResponsibleDecisionInfo *ResponsibleDecisionInfo2 `xml:"responsibleDecisionInfo,omitempty"`
 
 	// AuthorityPrescriptionInfo: Предписание органа, уполномоченного на осуществление контроля
 	AuthorityPrescriptionInfo *AuthorityPrescriptionType `xml:"authorityPrescriptionInfo,omitempty"`

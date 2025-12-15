@@ -112,8 +112,8 @@ type NoticeOrgsInfo struct {
 	NoticeOrgInfo []base.OrganizationRef `xml:",any"`
 }
 
-// PrintFormFieldsInfoSubjectsInfo: Информация о субъектах жалобы
-type PrintFormFieldsInfoSubjectsInfo struct {
+// SubjectsInfo1: Информация о субъектах жалобы
+type SubjectsInfo1 struct {
 	XMLName xml.Name `xml:"subjectsInfo,omitempty"`
 
 	// SubjectInfo: Информация о субъекте жалобы
@@ -136,8 +136,8 @@ type PrintFormFieldsInfo struct {
 	// PurchaseCode: Идентификационный код закупки
 	PurchaseCode *base.IkzCodeType `xml:"purchaseCode,omitempty"`
 
-	// PrintFormFieldsInfoSubjectsInfo: Информация о субъектах жалобы
-	SubjectsInfo *PrintFormFieldsInfoSubjectsInfo `xml:"subjectsInfo,omitempty"`
+	// SubjectsInfo3: Информация о субъектах жалобы
+	SubjectsInfo *SubjectsInfo3 `xml:"subjectsInfo,omitempty"`
 
 	// AppealActionCode: Обжалуемое действие. Допустимые значения: DOCS - жалоба на положения извещения об осуществлении закупки, документации о закупке; ACCR - жалоба на действия (бездействие) оператора электронной площадки, совершенные при аккредитации участника закупки на электронной площадке; COMP - жалоба на действия (бездействие) субъекта (субъектов) контроля, совершенные после даты и времени окончания срока подачи заявок; DEAL - жалоба на действия (бездействие) субъекта (субъектов) контроля, совершенные при заключении контракта после размещения в единой информационной системе протокола подведения итогов определения поставщика (подрядчика, исполнителя), подписания такого протокола (при проведении закрытого конкурса, закрытого аукциона); CNCL - Жалоба на расторжение контракта Устарело, не применяется, начиная с версии 13.1
 	AppealActionCode *base.AppealActionCodeType `xml:"appealActionCode,omitempty"`
@@ -259,8 +259,8 @@ type ComplaintInfo1 struct {
 	ReceiptDate string `xml:"receiptDate,omitempty"`
 }
 
-// NoticeTypeInfoComplaintInfo: Уведомление о размещеннии в ЕИС электронной жалобы, сформированной в ЛКП
-type NoticeTypeInfoComplaintInfo struct {
+// ComplaintInfo2: Уведомление о размещеннии в ЕИС электронной жалобы, сформированной в ЛКП
+type ComplaintInfo2 struct {
 	XMLName xml.Name `xml:"complaintInfo"`
 
 	// LkpUuid: Идентификатор жалобы в ЛКП
@@ -357,8 +357,8 @@ type NoticeTypeInfoCheckResultCancelInfo struct {
 type NoticeTypeInfo struct {
 	XMLName xml.Name `xml:"noticeTypeInfo"`
 
-	// NoticeTypeInfoComplaintInfo: Уведомление о размещеннии в ЕИС электронной жалобы, сформированной в ЛКП
-	ComplaintInfo *NoticeTypeInfoComplaintInfo `xml:"complaintInfo,omitempty"`
+	// ComplaintInfo2: Уведомление о размещеннии в ЕИС электронной жалобы, сформированной в ЛКП
+	ComplaintInfo *ComplaintInfo2 `xml:"complaintInfo,omitempty"`
 
 	// NoticeTypeInfoComplaintCancelInfo: Уведомление о размещении отзыва электронной жалобы, сформированной в ЛКП
 	ComplaintCancelInfo *NoticeTypeInfoComplaintCancelInfo `xml:"complaintCancelInfo,omitempty"`
@@ -453,8 +453,8 @@ type ObjectInfo1 struct {
 	PurchaseInfo ObjectInfoPurchaseInfo `xml:",any"`
 }
 
-// SubjectsInfo1: Информация о субъектах жалобы
-type SubjectsInfo1 struct {
+// SubjectsInfo2: Информация о субъектах жалобы
+type SubjectsInfo2 struct {
 	XMLName xml.Name `xml:"subjectsInfo"`
 
 	// SubjectInfo: Информация о субъекте жалобы
@@ -494,8 +494,8 @@ type NoticeOrgsInfo1 struct {
 	NoticeOrgInfo []base.OrganizationRef `xml:",any"`
 }
 
-// PrintFormFieldsInfoSubjectsInfo1: Информация о субъектах жалобы
-type PrintFormFieldsInfoSubjectsInfo1 struct {
+// SubjectsInfo3: Информация о субъектах жалобы
+type SubjectsInfo3 struct {
 	XMLName xml.Name `xml:"subjectsInfo,omitempty"`
 
 	// SubjectInfo: Информация о субъекте жалобы
@@ -518,8 +518,8 @@ type PrintFormFieldsInfo1 struct {
 	// PurchaseCode: Идентификационный код закупки
 	PurchaseCode *base.IkzCodeType `xml:"purchaseCode,omitempty"`
 
-	// PrintFormFieldsInfoSubjectsInfo: Информация о субъектах жалобы
-	SubjectsInfo *PrintFormFieldsInfoSubjectsInfo `xml:"subjectsInfo,omitempty"`
+	// SubjectsInfo3: Информация о субъектах жалобы
+	SubjectsInfo *SubjectsInfo3 `xml:"subjectsInfo,omitempty"`
 
 	// AppealActionCode: Обжалуемое действие. Допустимые значения: DOCS - жалоба на положения извещения об осуществлении закупки, документации о закупке; ACCR - жалоба на действия (бездействие) оператора электронной площадки, совершенные при аккредитации участника закупки на электронной площадке; COMP - жалоба на действия (бездействие) субъекта (субъектов) контроля, совершенные после даты и времени окончания срока подачи заявок; DEAL - жалоба на действия (бездействие) субъекта (субъектов) контроля, совершенные при заключении контракта после размещения в единой информационной системе протокола подведения итогов определения поставщика (подрядчика, исполнителя), подписания такого протокола (при проведении закрытого конкурса, закрытого аукциона); CNCL - Жалоба на расторжение контракта Устарело, не применяется, начиная с версии 13.1
 	AppealActionCode *base.AppealActionCodeType `xml:"appealActionCode,omitempty"`
@@ -1260,8 +1260,8 @@ type IndividualPersonRfinfoIpinfo struct {
 	TaxRegDate string `xml:"taxRegDate"`
 }
 
-// IndividualPersonRfinfoContactInfo: Контактная информация
-type IndividualPersonRfinfoContactInfo struct {
+// ContactInfo2: Контактная информация
+type ContactInfo2 struct {
 	XMLName xml.Name `xml:"contactInfo"`
 
 	// Email: Адрес электронной почты
@@ -1287,12 +1287,12 @@ type IndividualPersonRfinfo struct {
 	// IndividualPersonRfinfoIpinfo: Индивидуальный предприниматель
 	Ipinfo *IndividualPersonRfinfoIpinfo `xml:"IPInfo,omitempty"`
 
-	// IndividualPersonRfinfoContactInfo: Контактная информация
-	ContactInfo IndividualPersonRfinfoContactInfo `xml:"contactInfo"`
+	// ContactInfo2: Контактная информация
+	ContactInfo ContactInfo2 `xml:"contactInfo"`
 }
 
-// LegalEntityForeignStateInRafpinfoContactInfo: Контактная информация
-type LegalEntityForeignStateInRafpinfoContactInfo struct {
+// ContactInfo3: Контактная информация
+type ContactInfo3 struct {
 	XMLName xml.Name `xml:"contactInfo"`
 
 	// Email: Адрес электронной почты
@@ -1324,12 +1324,12 @@ type LegalEntityForeignStateInRafpinfo struct {
 	// FactAddress: Адрес в пределах места нахождения
 	FactAddress base.Text2000Type `xml:"factAddress"`
 
-	// LegalEntityForeignStateInRafpinfoContactInfo: Контактная информация
-	ContactInfo LegalEntityForeignStateInRafpinfoContactInfo `xml:"contactInfo"`
+	// ContactInfo3: Контактная информация
+	ContactInfo ContactInfo3 `xml:"contactInfo"`
 }
 
-// LegalEntityForeignStateNotInRafpinfoContactInfo: Контактная информация
-type LegalEntityForeignStateNotInRafpinfoContactInfo struct {
+// ContactInfo4: Контактная информация
+type ContactInfo4 struct {
 	XMLName xml.Name `xml:"contactInfo"`
 
 	// Email: Адрес электронной почты
@@ -1355,8 +1355,8 @@ type LegalEntityForeignStateNotInRafpinfo struct {
 	// FactAddress: Адрес в пределах места нахождения
 	FactAddress base.Text2000Type `xml:"factAddress"`
 
-	// LegalEntityForeignStateNotInRafpinfoContactInfo: Контактная информация
-	ContactInfo LegalEntityForeignStateNotInRafpinfoContactInfo `xml:"contactInfo"`
+	// ContactInfo4: Контактная информация
+	ContactInfo ContactInfo4 `xml:"contactInfo"`
 }
 
 // IndividualPersonForeignStateInfoIpinfo: Индивидуальный предприниматель
@@ -1373,8 +1373,8 @@ type IndividualPersonForeignStateInfoIpinfo struct {
 	TaxRegDate string `xml:"taxRegDate"`
 }
 
-// IndividualPersonForeignStateInfoContactInfo: Контактная информация
-type IndividualPersonForeignStateInfoContactInfo struct {
+// ContactInfo5: Контактная информация
+type ContactInfo5 struct {
 	XMLName xml.Name `xml:"contactInfo"`
 
 	// Email: Адрес электронной почты
@@ -1406,12 +1406,12 @@ type IndividualPersonForeignStateInfo struct {
 	// IndividualPersonForeignStateInfoIpinfo: Индивидуальный предприниматель
 	Ipinfo *IndividualPersonForeignStateInfoIpinfo `xml:"IPInfo,omitempty"`
 
-	// IndividualPersonForeignStateInfoContactInfo: Контактная информация
-	ContactInfo IndividualPersonForeignStateInfoContactInfo `xml:"contactInfo"`
+	// ContactInfo5: Контактная информация
+	ContactInfo ContactInfo5 `xml:"contactInfo"`
 }
 
-// ContactInfo2: Контактная информация
-type ContactInfo2 struct {
+// ContactInfo6: Контактная информация
+type ContactInfo6 struct {
 	XMLName xml.Name `xml:"contactInfo"`
 
 	// Email: Адрес электронной почты
@@ -1465,26 +1465,26 @@ type ParElectronicComplaintType struct {
 	// Uuid: Уникальный идентификатор документа в ЕИС. Не заполняется при подписании жалобы поставщиком. Заполняется при размещении
 	Uuid *base.GuidType `xml:"uuid,omitempty"`
 
-	// CommonInfo: Общая информация
-	CommonInfo CommonInfo `xml:"commonInfo"`
+	// CommonInfo3: Общая информация
+	CommonInfo CommonInfo3 `xml:"commonInfo"`
 
 	// ApplicantInfo: Заявитель
 	ApplicantInfo ApplicantInfoType `xml:"applicantInfo"`
 
-	// ObjectInfo: Предмет жалобы
-	ObjectInfo *ObjectInfo `xml:"objectInfo,omitempty"`
+	// ObjectInfo1: Предмет жалобы
+	ObjectInfo *ObjectInfo1 `xml:"objectInfo,omitempty"`
 
-	// SubjectsInfo: Информация о субъектах жалобы
-	SubjectsInfo SubjectsInfo `xml:"subjectsInfo"`
+	// SubjectsInfo2: Информация о субъектах жалобы
+	SubjectsInfo SubjectsInfo2 `xml:"subjectsInfo"`
 
 	// Koinfo: Информация о контрольном органе в сфере закупок
 	Koinfo base.OrganizationRef `xml:"KOInfo"`
 
-	// ExperienceConfirmationInfo: Подтверждение опыта участника закупок
-	ExperienceConfirmationInfo *ExperienceConfirmationInfo `xml:"experienceConfirmationInfo,omitempty"`
+	// ExperienceConfirmationInfo1: Подтверждение опыта участника закупок
+	ExperienceConfirmationInfo *ExperienceConfirmationInfo1 `xml:"experienceConfirmationInfo,omitempty"`
 
-	// ContactInfo: Контактные данные участника закупок
-	ContactInfo ContactInfo `xml:"contactInfo"`
+	// ContactInfo1: Контактные данные участника закупок
+	ContactInfo ContactInfo1 `xml:"contactInfo"`
 
 	// AttachmentsInfo: Информация о прикрепленных документах
 	AttachmentsInfo *cmn.AttachmentListType `xml:"attachmentsInfo,omitempty"`
@@ -1492,8 +1492,8 @@ type ParElectronicComplaintType struct {
 	// ParPrintFormInfo: Печатная форма документа, подписанного поставщиком. При передаче заполняется поле "Содержимое файла электронного документа" (content)
 	ParPrintFormInfo *cmn.LkpPrintFormType `xml:"parPrintFormInfo,omitempty"`
 
-	// NoticeOrgsInfo: Организации, в адрес которых осуществляется рассылка уведомлений Игнорируется при приеме проекта из внешней системы
-	NoticeOrgsInfo *NoticeOrgsInfo `xml:"noticeOrgsInfo,omitempty"`
+	// NoticeOrgsInfo1: Организации, в адрес которых осуществляется рассылка уведомлений Игнорируется при приеме проекта из внешней системы
+	NoticeOrgsInfo *NoticeOrgsInfo1 `xml:"noticeOrgsInfo,omitempty"`
 }
 
 // ParElectronicComplaintCancelType: Тип: Информация об отзыве электронной жалобы, сформированной в ЛКП
@@ -1518,8 +1518,8 @@ type ParElectronicComplaintCancelType struct {
 	// ParPrintFormInfo: Печатная форма документа, подписанного поставщиком
 	ParPrintFormInfo *cmn.LkpPrintFormType `xml:"parPrintFormInfo,omitempty"`
 
-	// PrintFormFieldsInfo: Дополнительная информация для печатной формы
-	PrintFormFieldsInfo *PrintFormFieldsInfo `xml:"printFormFieldsInfo,omitempty"`
+	// PrintFormFieldsInfo1: Дополнительная информация для печатной формы
+	PrintFormFieldsInfo *PrintFormFieldsInfo1 `xml:"printFormFieldsInfo,omitempty"`
 }
 
 // ParElectronicComplaintAcceptType: Тип: Информация о принятии к рассмотрению электронной жалобы, сформированной в ЛКП
@@ -1532,8 +1532,8 @@ type ParElectronicComplaintAcceptType struct {
 	// Uuid: Уникальный идентификатор документа в ЕИС
 	Uuid *base.GuidType `xml:"uuid,omitempty"`
 
-	// CommonInfo: Общая информация о принятии жалобы к рассмотрению
-	CommonInfo CommonInfo `xml:"commonInfo"`
+	// CommonInfo1: Общая информация о принятии жалобы к рассмотрению
+	CommonInfo CommonInfo1 `xml:"commonInfo"`
 
 	// ComplaintInfo: Информация о жалобе, по которой формируется информация о принятии к рассмотрению
 	ComplaintInfo ComplaintInfo `xml:"complaintInfo"`
@@ -1558,11 +1558,11 @@ type ParElectronicComplaintRefusalType struct {
 	// Uuid: Уникальный идентификатор документа в ЕИС
 	Uuid *base.GuidType `xml:"uuid,omitempty"`
 
-	// CommonInfo: Общая информация об отказе в рассмотрении жалобы
-	CommonInfo CommonInfo `xml:"commonInfo"`
+	// CommonInfo2: Общая информация об отказе в рассмотрении жалобы
+	CommonInfo CommonInfo2 `xml:"commonInfo"`
 
-	// ComplaintInfo: Информация о жалобе, по которой формируется информация об отказе в рассмотрении
-	ComplaintInfo ComplaintInfo `xml:"complaintInfo"`
+	// ComplaintInfo1: Информация о жалобе, по которой формируется информация об отказе в рассмотрении
+	ComplaintInfo ComplaintInfo1 `xml:"complaintInfo"`
 
 	// AttachmentsInfo: Информация о прикрепленных документах
 	AttachmentsInfo *cmn.AttachmentListType `xml:"attachmentsInfo,omitempty"`
@@ -1622,26 +1622,26 @@ type ClosedParElectronicComplaintType struct {
 	// Uuid: Уникальный идентификатор документа в ЕИС. Не заполняется при подписании жалобы поставщиком. Заполняется при размещении
 	Uuid *base.GuidType `xml:"uuid,omitempty"`
 
-	// CommonInfo: Общая информация
-	CommonInfo CommonInfo `xml:"commonInfo"`
+	// CommonInfo3: Общая информация
+	CommonInfo CommonInfo3 `xml:"commonInfo"`
 
 	// ApplicantInfo: Заявитель
 	ApplicantInfo ApplicantInfoType `xml:"applicantInfo"`
 
-	// ObjectInfo: Предмет жалобы
-	ObjectInfo *ObjectInfo `xml:"objectInfo,omitempty"`
+	// ObjectInfo1: Предмет жалобы
+	ObjectInfo *ObjectInfo1 `xml:"objectInfo,omitempty"`
 
-	// SubjectsInfo: Информация о субъектах жалобы
-	SubjectsInfo SubjectsInfo `xml:"subjectsInfo"`
+	// SubjectsInfo2: Информация о субъектах жалобы
+	SubjectsInfo SubjectsInfo2 `xml:"subjectsInfo"`
 
 	// Koinfo: Информация о контрольном органе в сфере закупок
 	Koinfo base.OrganizationRef `xml:"KOInfo"`
 
-	// ExperienceConfirmationInfo: Подтверждение опыта участника закупок
-	ExperienceConfirmationInfo *ExperienceConfirmationInfo `xml:"experienceConfirmationInfo,omitempty"`
+	// ExperienceConfirmationInfo1: Подтверждение опыта участника закупок
+	ExperienceConfirmationInfo *ExperienceConfirmationInfo1 `xml:"experienceConfirmationInfo,omitempty"`
 
-	// ContactInfo: Контактные данные участника закупок
-	ContactInfo ContactInfo `xml:"contactInfo"`
+	// ContactInfo1: Контактные данные участника закупок
+	ContactInfo ContactInfo1 `xml:"contactInfo"`
 
 	// AttachmentsInfo: Информация о прикрепленных документах
 	AttachmentsInfo *cmn.AttachmentListType `xml:"attachmentsInfo,omitempty"`
@@ -1649,8 +1649,8 @@ type ClosedParElectronicComplaintType struct {
 	// ParPrintFormInfo: Печатная форма документа, подписанного поставщиком. При передаче заполняется поле "Содержимое файла электронного документа" (content)
 	ParPrintFormInfo *cmn.LkpPrintFormType `xml:"parPrintFormInfo,omitempty"`
 
-	// NoticeOrgsInfo: Организации, в адрес которых осуществляется рассылка уведомлений Игнорируется при приеме проекта из внешней системы
-	NoticeOrgsInfo *NoticeOrgsInfo `xml:"noticeOrgsInfo,omitempty"`
+	// NoticeOrgsInfo1: Организации, в адрес которых осуществляется рассылка уведомлений Игнорируется при приеме проекта из внешней системы
+	NoticeOrgsInfo *NoticeOrgsInfo1 `xml:"noticeOrgsInfo,omitempty"`
 }
 
 // ClosedParElectronicComplaintCancelType: Тип: Информация об отзыве сокрытой электронной жалобы, сформированной в ЛКП
@@ -1675,8 +1675,8 @@ type ClosedParElectronicComplaintCancelType struct {
 	// ParPrintFormInfo: Печатная форма документа, подписанного поставщиком
 	ParPrintFormInfo *cmn.LkpPrintFormType `xml:"parPrintFormInfo,omitempty"`
 
-	// PrintFormFieldsInfo: Дополнительная информация для печатной формы
-	PrintFormFieldsInfo *PrintFormFieldsInfo `xml:"printFormFieldsInfo,omitempty"`
+	// PrintFormFieldsInfo1: Дополнительная информация для печатной формы
+	PrintFormFieldsInfo *PrintFormFieldsInfo1 `xml:"printFormFieldsInfo,omitempty"`
 }
 
 // ApprovalType: Тип: Обращение в контрольный орган
@@ -1689,8 +1689,8 @@ type ApprovalType struct {
 	// Uuid: Уникальный идентификатор документа в ЕИС
 	Uuid base.GuidType `xml:"uuid"`
 
-	// CommonInfo: Общая информация
-	CommonInfo CommonInfo `xml:"commonInfo"`
+	// CommonInfo4: Общая информация
+	CommonInfo CommonInfo4 `xml:"commonInfo"`
 
 	// CustomerInfo: Информация о заказчике
 	CustomerInfo CustomerInfo `xml:"customerInfo"`
@@ -1789,8 +1789,8 @@ type ApprovalMismatchType struct {
 	// ExtPrintFormInfo: Электронный документ, полученный из внешней системы. При приеме контролируется обязательность заполнения блока
 	ExtPrintFormInfo *cmn.ExtPrintFormType `xml:"extPrintFormInfo,omitempty"`
 
-	// PrintFormFieldsInfo: Дополнительная информация для печатной формы
-	PrintFormFieldsInfo *PrintFormFieldsInfo `xml:"printFormFieldsInfo,omitempty"`
+	// PrintFormFieldsInfo2: Дополнительная информация для печатной формы
+	PrintFormFieldsInfo *PrintFormFieldsInfo2 `xml:"printFormFieldsInfo,omitempty"`
 }
 
 // ApprovalLegalEntityRfinfoType: Тип: Юридическое лицо РФ в обращении в контрольный орган
@@ -1913,23 +1913,23 @@ type UnfairSupplier2022Type struct {
 	// Uuid: Уникальный идентификатор документа в ЕИС
 	Uuid base.GuidType `xml:"uuid"`
 
-	// CommonInfo: Общая информация
-	CommonInfo CommonInfo `xml:"commonInfo"`
+	// CommonInfo6: Общая информация
+	CommonInfo CommonInfo6 `xml:"commonInfo"`
 
 	// ApproveOrgInfo: Уполномоченный орган, осуществивший включение информации и ведущий запись в Реестре
 	ApproveOrgInfo *cmn.OrganizationRefType `xml:"approveOrgInfo,omitempty"`
 
-	// CreateReasonInfo: Информация о причинах для внесения в Реестр
-	CreateReasonInfo CreateReasonInfo `xml:"createReasonInfo"`
+	// CreateReasonInfo1: Информация о причинах для внесения в Реестр
+	CreateReasonInfo CreateReasonInfo1 `xml:"createReasonInfo"`
 
 	// RefusalDueToCustSanctions: Отказ поставщика (подрядчика, исполнителя) от исполнения контракта по причине введения в отношении заказчика санкций и (или) мер ограничительного характера
 	RefusalDueToCustSanctions *bool `xml:"refusalDueToCustSanctions,omitempty"`
 
-	// UnfairSupplierInfo: Информация о недобросовестном поставщике (подрядчике, исполнителе)
-	UnfairSupplierInfo UnfairSupplierInfo `xml:"unfairSupplierInfo"`
+	// UnfairSupplierInfo1: Информация о недобросовестном поставщике (подрядчике, исполнителе)
+	UnfairSupplierInfo UnfairSupplierInfo1 `xml:"unfairSupplierInfo"`
 
-	// AutoExDateInfo: Информация о плановой дате автоматического исключения
-	AutoExDateInfo *AutoExDateInfo `xml:"autoExDateInfo,omitempty"`
+	// AutoExDateInfo1: Информация о плановой дате автоматического исключения
+	AutoExDateInfo *AutoExDateInfo1 `xml:"autoExDateInfo,omitempty"`
 
 	// ModificationReason: Причина внесения изменений. Игнорируется при приеме, добавлено для печатной формы
 	ModificationReason *base.Text1000Type `xml:"modificationReason,omitempty"`
@@ -1951,23 +1951,23 @@ type UnfairSupplierIkztype struct {
 	// Uuid: Уникальный идентификатор документа в ЕИС
 	Uuid base.GuidType `xml:"uuid"`
 
-	// CommonInfo: Общая информация
-	CommonInfo CommonInfo `xml:"commonInfo"`
+	// CommonInfo6: Общая информация
+	CommonInfo CommonInfo6 `xml:"commonInfo"`
 
 	// ApproveOrgInfo: Уполномоченный орган, осуществивший включение информации и ведущий запись в Реестре
 	ApproveOrgInfo *cmn.OrganizationRefType `xml:"approveOrgInfo,omitempty"`
 
-	// CreateReasonInfo: Информация о причинах для внесения в Реестр
-	CreateReasonInfo CreateReasonInfo `xml:"createReasonInfo"`
+	// CreateReasonInfo1: Информация о причинах для внесения в Реестр
+	CreateReasonInfo CreateReasonInfo1 `xml:"createReasonInfo"`
 
 	// RefusalDueToCustSanctions: Отказ поставщика (подрядчика, исполнителя) от исполнения контракта по причине введения в отношении заказчика санкций и (или) мер ограничительного характера
 	RefusalDueToCustSanctions *bool `xml:"refusalDueToCustSanctions,omitempty"`
 
-	// UnfairSupplierInfo: Информация о недобросовестном поставщике (подрядчике, исполнителе)
-	UnfairSupplierInfo UnfairSupplierInfo `xml:"unfairSupplierInfo"`
+	// UnfairSupplierInfo1: Информация о недобросовестном поставщике (подрядчике, исполнителе)
+	UnfairSupplierInfo UnfairSupplierInfo1 `xml:"unfairSupplierInfo"`
 
-	// AutoExDateInfo: Информация о плановой дате автоматического исключения
-	AutoExDateInfo *AutoExDateInfo `xml:"autoExDateInfo,omitempty"`
+	// AutoExDateInfo1: Информация о плановой дате автоматического исключения
+	AutoExDateInfo *AutoExDateInfo1 `xml:"autoExDateInfo,omitempty"`
 
 	// ModificationReason: Причина внесения изменений. Игнорируется при приеме, добавлено для печатной формы
 	ModificationReason *base.Text1000Type `xml:"modificationReason,omitempty"`
@@ -1989,8 +1989,8 @@ type UnfairSupplier2022ExcludeType struct {
 	// UnfairSupplier2022ForExcludeInfo: Общая информация о версии исключаемой реестровой записи в ЕИС
 	UnfairSupplier2022ForExcludeInfo UnfairSupplier2022ForExcludeInfo `xml:"unfairSupplier2022ForExcludeInfo"`
 
-	// CommonInfo: Общая информация
-	CommonInfo CommonInfo `xml:"commonInfo"`
+	// CommonInfo7: Общая информация
+	CommonInfo CommonInfo7 `xml:"commonInfo"`
 
 	// PrintFormInfo: Печатная форма документа
 	PrintFormInfo *cmn.PrintFormType `xml:"printFormInfo,omitempty"`
@@ -2044,8 +2044,8 @@ type LegalEntityRfinfoType struct {
 	// FactAddress: Адрес в пределах места нахождения
 	FactAddress base.Text2000Type `xml:"factAddress"`
 
-	// ContactInfo: Контактная информация
-	ContactInfo ContactInfo `xml:"contactInfo"`
+	// ContactInfo6: Контактная информация
+	ContactInfo ContactInfo6 `xml:"contactInfo"`
 }
 
 // KladrPlaceType: Тип: Место рассмотрения жалобы
