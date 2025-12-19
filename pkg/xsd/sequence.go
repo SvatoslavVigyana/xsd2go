@@ -34,6 +34,7 @@ func (s *Sequence) compile(sch *Schema, parentElement *Element) {
 		sInner := &s.Sequences[idx]
 		sInner.compile(sch, parentElement)
 
+		s.allElements = append(s.allElements, sInner.Elements()...)
 	}
 }
 

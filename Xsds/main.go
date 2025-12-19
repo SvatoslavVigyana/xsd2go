@@ -10,8 +10,8 @@ import (
 	"github.com/gocomply/xsd2go/XsdGoFiles/fcsExport"
 )
 
-const filePath = "C:/Users/User/Downloads/contracts_50_14_09_2025_0/contract_3504414173825000010_4.xml"
-const savePath = "C:/Users/User/Downloads/contracts_50_14_09_2025_0/SAVED_XML.xml"
+const filePath = "C:/Users/User/Downloads/nsiOrganizationList_all_20251214000001_300/nsiOrganizationList_all_20251214000001_300.xml"
+const savePath = "C:/Users/User/Downloads/nsiOrganizationList_all_20251214000001_300/SAVED_XML.xml"
 
 func main() {
 

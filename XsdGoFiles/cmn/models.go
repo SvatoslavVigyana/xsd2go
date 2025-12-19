@@ -2010,16 +2010,49 @@ type TradeInfo struct {
 	DrugChangeInfo *DrugChangeInfoType `xml:"drugChangeInfo,omitempty"`
 }
 
-// MedicamentalFormInfo1: Лекарственная форма. Игнорируется при приеме, автоматически заполняется при передаче по справочнику "Лекарственные препараты"
+// MedicamentalFormInfo1: Лекарственная форма
 type MedicamentalFormInfo1 struct {
+	XMLName xml.Name `xml:"medicamentalFormInfo"`
+
+	// MedicamentalFormName: Наименование лекарственной формы. Игнорируется, начиная с даты в настройке ПРИЗ_Н_0112
+	MedicamentalFormName *base.DrugNameType `xml:"medicamentalFormName,omitempty"`
+
+	// MedicamentalForm: Лекарственная форма по справочнику "Справочник: Лекарственные формы" (nsiFarmMedicamentalForm) Заполняется, начиная с даты в настройке ПРИЗ_Н_0112
+	MedicamentalForm *base.MedicamentalFormRef `xml:"medicamentalForm,omitempty"`
+}
+
+// DosageInfo1: Дозировка
+type DosageInfo1 struct {
+	XMLName xml.Name `xml:"dosageInfo"`
+
+	// DosageGrlsvalue: Полная форма дозировки
+	DosageGrlsvalue base.DrugNameType `xml:",any"`
+}
+
+// PackagingInfo1: Сведения об упаковке. В случае заполнения блока mustSpecifyDrugPackage при приеме контролируется заполненность блока packagingInfo во всех вариантах поставки лекарственных препаратов
+type PackagingInfo1 struct {
+	XMLName xml.Name `xml:"packagingInfo,omitempty"`
+
+	// Packaging1Quantity: Количество лекарственных форм в первичной упаковке
+	Packaging1Quantity *base.DrugPackaging1QuantityType `xml:"packaging1Quantity,omitempty"`
+
+	// Packaging2Quantity: Количество первичных упаковок во вторичной (потребительской) упаковке
+	Packaging2Quantity *base.DrugPackaging2QuantityType `xml:"packaging2Quantity,omitempty"`
+
+	// SumaryPackagingQuantity: Количество потребительских единиц в потребительской упаковке. Если заполнены поле packaging1Quantity и поле packaging2Quantity, то игнорируется при приеме, автоматически рассчитывается как произведение packaging1Quantity*packaging2Quantity. Иначе принимается из пакета. Всегда принимается и сохраняется, если явно указано в пакете для извещений, первая версия которых размещена до выхода версии 10.3, независимо от разрешения ручного ввода
+	SumaryPackagingQuantity *base.DrugSumaryPackagingQuantityType `xml:"sumaryPackagingQuantity,omitempty"`
+}
+
+// MedicamentalFormInfo2: Лекарственная форма. Игнорируется при приеме, автоматически заполняется при передаче по справочнику "Лекарственные препараты"
+type MedicamentalFormInfo2 struct {
 	XMLName xml.Name `xml:"medicamentalFormInfo,omitempty"`
 
 	// MedicamentalFormName: Наименование лекарственной формы по справочнику "Лекарственные препараты" (nsiFarmDrugDictionary) (поле MNNsInfo\MNNInfo\medicamentalFormInfo\medicamentalFormName)
 	MedicamentalFormName base.DrugNameType `xml:",any"`
 }
 
-// DosageInfo1: Дозировка. Игнорируется при приеме, автоматически заполняется при передаче по справочнику "Лекарственные препараты"
-type DosageInfo1 struct {
+// DosageInfo2: Дозировка. Игнорируется при приеме, автоматически заполняется при передаче по справочнику "Лекарственные препараты"
+type DosageInfo2 struct {
 	XMLName xml.Name `xml:"dosageInfo,omitempty"`
 
 	// DosageGrlsvalue: Полная форма дозировки по справочнику "Лекарственные препараты" (nsiFarmDrugDictionary) (поле MNNsInfo\MNNInfo\dosagesInfo\dosageInfo\dosageGRLSValue )
@@ -2032,8 +2065,8 @@ type DosageInfo1 struct {
 	DosageUserName *base.DrugNameType `xml:"dosageUserName,omitempty"`
 }
 
-// PackagingInfo1: Сведения об упаковке. В случае заполнения блока mustSpecifyDrugPackage при приеме контролируется заполненность блока packagingInfo во всех вариантах поставки лекарственных препаратов
-type PackagingInfo1 struct {
+// PackagingInfo2: Сведения об упаковке. В случае заполнения блока mustSpecifyDrugPackage при приеме контролируется заполненность блока packagingInfo во всех вариантах поставки лекарственных препаратов
+type PackagingInfo2 struct {
 	XMLName xml.Name `xml:"packagingInfo,omitempty"`
 
 	// PositionTradeNameExternalCode: Уникальный внешний код лекарственного препарата по справочнику "Лекарственные препараты (поле MNNInfo\positionsTradeName\positionTradeName\positionTradeNameExternalCode документа nsiFarmDrugDictionary). При приеме контролируется наличие в справочнике "Лекарственные препараты" ЕИС лекарственного препарата с таким кодом и принадлежность лекарственного препарата с указанным кодом к МНН с кодом, указанным в поле MNNInfo
@@ -2083,14 +2116,14 @@ type DrugsInfoDrugInfo struct {
 	// Ktru: Классификация по КТРУ. Блок всегда игнорируется при приеме, автоматически заполняется при передаче, если: • МНН указан из справочника ЕСКЛП. Не используется до выхода версии ЕИС 13.2
 	Ktru *base.Ktruref `xml:"KTRU,omitempty"`
 
-	// MedicamentalFormInfo26: Лекарственная форма. Игнорируется при приеме, автоматически заполняется при передаче по справочнику "Лекарственные препараты"
-	MedicamentalFormInfo *MedicamentalFormInfo26 `xml:"medicamentalFormInfo,omitempty"`
+	// MedicamentalFormInfo46: Лекарственная форма. Игнорируется при приеме, автоматически заполняется при передаче по справочнику "Лекарственные препараты"
+	MedicamentalFormInfo *MedicamentalFormInfo46 `xml:"medicamentalFormInfo,omitempty"`
 
-	// DosageInfo26: Дозировка. Игнорируется при приеме, автоматически заполняется при передаче по справочнику "Лекарственные препараты"
-	DosageInfo *DosageInfo26 `xml:"dosageInfo,omitempty"`
+	// DosageInfo46: Дозировка. Игнорируется при приеме, автоматически заполняется при передаче по справочнику "Лекарственные препараты"
+	DosageInfo *DosageInfo46 `xml:"dosageInfo,omitempty"`
 
-	// PackagingInfo24: Сведения об упаковке. В случае заполнения блока mustSpecifyDrugPackage при приеме контролируется заполненность блока packagingInfo во всех вариантах поставки лекарственных препаратов
-	PackagingInfo *PackagingInfo24 `xml:"packagingInfo,omitempty"`
+	// PackagingInfo44: Сведения об упаковке. В случае заполнения блока mustSpecifyDrugPackage при приеме контролируется заполненность блока packagingInfo во всех вариантах поставки лекарственных препаратов
+	PackagingInfo *PackagingInfo44 `xml:"packagingInfo,omitempty"`
 
 	// ManualUserOkei: Единица измерения товара, введенная вручную . Если заполнено в принимаемом документе, то считается, что внешняя система явно указала этот блок, содержимое контролируется на присутствие в справочнике "Справочник: Единицы измерения потребительских единиц измерения лекарственных препаратов по ОКЕИ" (nsiDrugOKEI). Для групп взаимозаменяемости (блок drugInterchangeInfo) всегда игнорируется при приеме, автоматически заполняется при передаче по справочнику "Лекарственные препараты"
 	ManualUserOkei *base.Okeiref `xml:"manualUserOKEI,omitempty"`
@@ -2162,6 +2195,39 @@ type TradeInfo1 struct {
 	DrugChangeInfo *DrugChangeInfoType `xml:"drugChangeInfo,omitempty"`
 }
 
+// MedicamentalFormInfo3: Лекарственная форма
+type MedicamentalFormInfo3 struct {
+	XMLName xml.Name `xml:"medicamentalFormInfo"`
+
+	// MedicamentalFormName: Наименование лекарственной формы. Игнорируется, начиная с даты в настройке ПРИЗ_Н_0112
+	MedicamentalFormName *base.DrugNameType `xml:"medicamentalFormName,omitempty"`
+
+	// MedicamentalForm: Лекарственная форма по справочнику "Справочник: Лекарственные формы" (nsiFarmMedicamentalForm) Заполняется, начиная с даты в настройке ПРИЗ_Н_0112
+	MedicamentalForm *base.MedicamentalFormRef `xml:"medicamentalForm,omitempty"`
+}
+
+// DosageInfo3: Дозировка
+type DosageInfo3 struct {
+	XMLName xml.Name `xml:"dosageInfo"`
+
+	// DosageGrlsvalue: Полная форма дозировки
+	DosageGrlsvalue base.DrugNameType `xml:",any"`
+}
+
+// PackagingInfo3: Сведения об упаковке. В случае заполнения блока mustSpecifyDrugPackage при приеме контролируется заполненность блока packagingInfo во всех вариантах поставки лекарственных препаратов
+type PackagingInfo3 struct {
+	XMLName xml.Name `xml:"packagingInfo,omitempty"`
+
+	// Packaging1Quantity: Количество лекарственных форм в первичной упаковке
+	Packaging1Quantity *base.DrugPackaging1QuantityType `xml:"packaging1Quantity,omitempty"`
+
+	// Packaging2Quantity: Количество первичных упаковок во вторичной (потребительской) упаковке
+	Packaging2Quantity *base.DrugPackaging2QuantityType `xml:"packaging2Quantity,omitempty"`
+
+	// SumaryPackagingQuantity: Количество потребительских единиц в потребительской упаковке. Если заполнены поле packaging1Quantity и поле packaging2Quantity, то игнорируется при приеме, автоматически рассчитывается как произведение packaging1Quantity*packaging2Quantity. Иначе принимается из пакета. Всегда принимается и сохраняется, если явно указано в пакете для извещений, первая версия которых размещена до выхода версии 10.3, независимо от разрешения ручного ввода
+	SumaryPackagingQuantity *base.DrugSumaryPackagingQuantityType `xml:"sumaryPackagingQuantity,omitempty"`
+}
+
 // DrugsInfoDrugInfo1: Сведения о варианте поставки лекарственного препарата. Может быть указан только один вариант поставки (один лекарственный препарат). Если необходимо указать несколько вариантов поставки, то заполняется блок drugInterchangeTextFormInfo ("Сведения о лекарственных препаратах с учетом взаимозаменяемости не по справочнику "Группы взаимозаменяемости лекарственных препаратов") Если заполнен блок «По решению заказчика (организации, осуществляющей определение поставщика для заказчика)» (modificationInfo/reasonInfo/responsibleDecisionInfo), то игнорируется при приеме и заполняется из предыдущей версии извещения за исключением: o поля «Уникальный идентификатор лекарственного препарата в извещении-приглашении» (sid) o поля «Внешний идентификатор лекарственного препарата в извещении-приглашении» (externalSid) o поля «Количество (объем) закупаемого лекарственного препарата» (drugQuantity); o поля «Референтная цена по справочнику "Лекарственные препараты"» (averagePriceValue); o поля «Сумма выплат по референтной цене (всего)» (averagePriceTotal)
 type DrugsInfoDrugInfo1 struct {
 	XMLName xml.Name `xml:"drugInfo"`
@@ -2186,6 +2252,21 @@ type DrugsInfoDrugInfo1 struct {
 
 	// BasicUnit: Признак основного варианта поставки. При приеме контролируется обязательность заполнения поля только для одного значения блока drugInfo в составе двух блоков objectInfoUsingReferenceInfo и objectInfoUsingTextForm
 	BasicUnit *bool `xml:"basicUnit,omitempty"`
+
+	// MedicamentalFormInfo47: Лекарственная форма
+	MedicamentalFormInfo MedicamentalFormInfo47 `xml:"medicamentalFormInfo"`
+
+	// DosageInfo47: Дозировка
+	DosageInfo DosageInfo47 `xml:"dosageInfo"`
+
+	// PackagingInfo45: Сведения об упаковке. В случае заполнения блока mustSpecifyDrugPackage при приеме контролируется заполненность блока packagingInfo во всех вариантах поставки лекарственных препаратов
+	PackagingInfo *PackagingInfo45 `xml:"packagingInfo,omitempty"`
+
+	// ManualUserOkei: Единица измерения товара. При приеме содержимое контролируется на присутствие в справочнике "Справочник: Единицы измерения потребительских единиц измерения лекарственных препаратов по ОКЕИ" (nsiDrugOKEI)
+	ManualUserOkei base.Okeiref `xml:"manualUserOKEI"`
+
+	// DrugChangeInfo: Информация указываемая при ручном изменении лекарственного препарата. При приеме контролируется обязательность заполнения в случае указания лекарственной формы, дозировки, упаковки, единицы измерения в текстовой форме. Начиная с версии 10.1 контролируется обязательность указания причины корректировки сведений о лекарственных препаратах
+	DrugChangeInfo *DrugChangeInfoType `xml:"drugChangeInfo,omitempty"`
 }
 
 // ObjectInfoUsingTextFormDrugsInfo: Сведения о вариантах поставки лекарственных препаратов
@@ -2314,16 +2395,16 @@ type DrugPurchaseObjectInfo struct {
 	PositionPrice *base.MoneyType `xml:"positionPrice,omitempty"`
 }
 
-// MedicamentalFormInfo2: Лекарственная форма. Игнорируется при приеме, автоматически заполняется при передаче по справочнику "Лекарственные препараты"
-type MedicamentalFormInfo2 struct {
+// MedicamentalFormInfo4: Лекарственная форма. Игнорируется при приеме, автоматически заполняется при передаче по справочнику "Лекарственные препараты"
+type MedicamentalFormInfo4 struct {
 	XMLName xml.Name `xml:"medicamentalFormInfo,omitempty"`
 
 	// MedicamentalFormName: Наименование лекарственной формы по справочнику "Лекарственные препараты" (nsiFarmDrugDictionary) (поле MNNsInfo\MNNInfo\medicamentalFormInfo\medicamentalFormName)
 	MedicamentalFormName base.DrugNameType `xml:",any"`
 }
 
-// DosageInfo2: Дозировка. Игнорируется при приеме, автоматически заполняется при передаче по справочнику "Лекарственные препараты"
-type DosageInfo2 struct {
+// DosageInfo4: Дозировка. Игнорируется при приеме, автоматически заполняется при передаче по справочнику "Лекарственные препараты"
+type DosageInfo4 struct {
 	XMLName xml.Name `xml:"dosageInfo,omitempty"`
 
 	// DosageGrlsvalue: Полная форма дозировки по справочнику "Лекарственные препараты" (nsiFarmDrugDictionary) (поле MNNsInfo\MNNInfo\dosagesInfo\dosageInfo\dosageGRLSValue )
@@ -2336,8 +2417,8 @@ type DosageInfo2 struct {
 	DosageUserName *base.DrugNameType `xml:"dosageUserName,omitempty"`
 }
 
-// PackagingInfo2: Сведения об упаковке. В случае заполнения блока mustSpecifyDrugPackage при приеме контролируется заполненность блока packagingInfo во всех вариантах поставки лекарственных препаратов
-type PackagingInfo2 struct {
+// PackagingInfo4: Сведения об упаковке. В случае заполнения блока mustSpecifyDrugPackage при приеме контролируется заполненность блока packagingInfo во всех вариантах поставки лекарственных препаратов
+type PackagingInfo4 struct {
 	XMLName xml.Name `xml:"packagingInfo,omitempty"`
 
 	// PositionTradeNameExternalCode: Уникальный внешний код лекарственного препарата по справочнику "Лекарственные препараты (поле MNNInfo\positionsTradeName\positionTradeName\positionTradeNameExternalCode документа nsiFarmDrugDictionary). При приеме контролируется наличие в справочнике "Лекарственные препараты" ЕИС лекарственного препарата с таким кодом и принадлежность лекарственного препарата с указанным кодом к МНН с кодом, указанным в поле MNNInfo
@@ -2387,14 +2468,14 @@ type DrugsInfoDrugInfo2 struct {
 	// Ktru: Классификация по КТРУ. Блок всегда игнорируется при приеме, автоматически заполняется при передаче, если: • МНН указан из справочника ЕСКЛП. Не используется до выхода версии ЕИС 13.2
 	Ktru *base.Ktruref `xml:"KTRU,omitempty"`
 
-	// MedicamentalFormInfo26: Лекарственная форма. Игнорируется при приеме, автоматически заполняется при передаче по справочнику "Лекарственные препараты"
-	MedicamentalFormInfo *MedicamentalFormInfo26 `xml:"medicamentalFormInfo,omitempty"`
+	// MedicamentalFormInfo46: Лекарственная форма. Игнорируется при приеме, автоматически заполняется при передаче по справочнику "Лекарственные препараты"
+	MedicamentalFormInfo *MedicamentalFormInfo46 `xml:"medicamentalFormInfo,omitempty"`
 
-	// DosageInfo26: Дозировка. Игнорируется при приеме, автоматически заполняется при передаче по справочнику "Лекарственные препараты"
-	DosageInfo *DosageInfo26 `xml:"dosageInfo,omitempty"`
+	// DosageInfo46: Дозировка. Игнорируется при приеме, автоматически заполняется при передаче по справочнику "Лекарственные препараты"
+	DosageInfo *DosageInfo46 `xml:"dosageInfo,omitempty"`
 
-	// PackagingInfo24: Сведения об упаковке. В случае заполнения блока mustSpecifyDrugPackage при приеме контролируется заполненность блока packagingInfo во всех вариантах поставки лекарственных препаратов
-	PackagingInfo *PackagingInfo24 `xml:"packagingInfo,omitempty"`
+	// PackagingInfo44: Сведения об упаковке. В случае заполнения блока mustSpecifyDrugPackage при приеме контролируется заполненность блока packagingInfo во всех вариантах поставки лекарственных препаратов
+	PackagingInfo *PackagingInfo44 `xml:"packagingInfo,omitempty"`
 
 	// ManualUserOkei: Единица измерения товара, введенная вручную . Если заполнено в принимаемом документе, то считается, что внешняя система явно указала этот блок, содержимое контролируется на присутствие в справочнике "Справочник: Единицы измерения потребительских единиц измерения лекарственных препаратов по ОКЕИ" (nsiDrugOKEI). Для групп взаимозаменяемости (блок drugInterchangeInfo) всегда игнорируется при приеме, автоматически заполняется при передаче по справочнику "Лекарственные препараты"
 	ManualUserOkei *base.Okeiref `xml:"manualUserOKEI,omitempty"`
@@ -2534,16 +2615,16 @@ type DrugPurchaseObjectInfo1 struct {
 	PositionPrice *base.MoneyType `xml:"positionPrice,omitempty"`
 }
 
-// MedicamentalFormInfo3: Лекарственная форма. Игнорируется при приеме, автоматически заполняется при передаче по справочнику "Лекарственные препараты"
-type MedicamentalFormInfo3 struct {
+// MedicamentalFormInfo5: Лекарственная форма. Игнорируется при приеме, автоматически заполняется при передаче по справочнику "Лекарственные препараты"
+type MedicamentalFormInfo5 struct {
 	XMLName xml.Name `xml:"medicamentalFormInfo,omitempty"`
 
 	// MedicamentalFormName: Наименование лекарственной формы по справочнику "Лекарственные препараты" (nsiFarmDrugDictionary) (поле MNNsInfo\MNNInfo\medicamentalFormInfo\medicamentalFormName)
 	MedicamentalFormName base.DrugNameType `xml:",any"`
 }
 
-// DosageInfo3: Дозировка. Игнорируется при приеме, автоматически заполняется при передаче по справочнику "Лекарственные препараты"
-type DosageInfo3 struct {
+// DosageInfo5: Дозировка. Игнорируется при приеме, автоматически заполняется при передаче по справочнику "Лекарственные препараты"
+type DosageInfo5 struct {
 	XMLName xml.Name `xml:"dosageInfo,omitempty"`
 
 	// DosageGrlsvalue: Полная форма дозировки по справочнику "Лекарственные препараты" (nsiFarmDrugDictionary) (поле MNNsInfo\MNNInfo\dosagesInfo\dosageInfo\dosageGRLSValue )
@@ -2556,8 +2637,8 @@ type DosageInfo3 struct {
 	DosageUserName *base.DrugNameType `xml:"dosageUserName,omitempty"`
 }
 
-// PackagingInfo3: Сведения об упаковке. В случае заполнения блока mustSpecifyDrugPackage при приеме контролируется заполненность блока packagingInfo во всех вариантах поставки лекарственных препаратов
-type PackagingInfo3 struct {
+// PackagingInfo5: Сведения об упаковке. В случае заполнения блока mustSpecifyDrugPackage при приеме контролируется заполненность блока packagingInfo во всех вариантах поставки лекарственных препаратов
+type PackagingInfo5 struct {
 	XMLName xml.Name `xml:"packagingInfo,omitempty"`
 
 	// PositionTradeNameExternalCode: Уникальный внешний код лекарственного препарата по справочнику "Лекарственные препараты (поле MNNInfo\positionsTradeName\positionTradeName\positionTradeNameExternalCode документа nsiFarmDrugDictionary). При приеме контролируется наличие в справочнике "Лекарственные препараты" ЕИС лекарственного препарата с таким кодом и принадлежность лекарственного препарата с указанным кодом к МНН с кодом, указанным в поле MNNInfo
@@ -2607,14 +2688,14 @@ type DrugsInfoDrugInfo3 struct {
 	// Ktru: Классификация по КТРУ. Блок всегда игнорируется при приеме, автоматически заполняется при передаче, если: • МНН указан из справочника ЕСКЛП. Не используется до выхода версии ЕИС 13.2
 	Ktru *base.Ktruref `xml:"KTRU,omitempty"`
 
-	// MedicamentalFormInfo26: Лекарственная форма. Игнорируется при приеме, автоматически заполняется при передаче по справочнику "Лекарственные препараты"
-	MedicamentalFormInfo *MedicamentalFormInfo26 `xml:"medicamentalFormInfo,omitempty"`
+	// MedicamentalFormInfo46: Лекарственная форма. Игнорируется при приеме, автоматически заполняется при передаче по справочнику "Лекарственные препараты"
+	MedicamentalFormInfo *MedicamentalFormInfo46 `xml:"medicamentalFormInfo,omitempty"`
 
-	// DosageInfo26: Дозировка. Игнорируется при приеме, автоматически заполняется при передаче по справочнику "Лекарственные препараты"
-	DosageInfo *DosageInfo26 `xml:"dosageInfo,omitempty"`
+	// DosageInfo46: Дозировка. Игнорируется при приеме, автоматически заполняется при передаче по справочнику "Лекарственные препараты"
+	DosageInfo *DosageInfo46 `xml:"dosageInfo,omitempty"`
 
-	// PackagingInfo24: Сведения об упаковке. В случае заполнения блока mustSpecifyDrugPackage при приеме контролируется заполненность блока packagingInfo во всех вариантах поставки лекарственных препаратов
-	PackagingInfo *PackagingInfo24 `xml:"packagingInfo,omitempty"`
+	// PackagingInfo44: Сведения об упаковке. В случае заполнения блока mustSpecifyDrugPackage при приеме контролируется заполненность блока packagingInfo во всех вариантах поставки лекарственных препаратов
+	PackagingInfo *PackagingInfo44 `xml:"packagingInfo,omitempty"`
 
 	// ManualUserOkei: Единица измерения товара, введенная вручную . Если заполнено в принимаемом документе, то считается, что внешняя система явно указала этот блок, содержимое контролируется на присутствие в справочнике "Справочник: Единицы измерения потребительских единиц измерения лекарственных препаратов по ОКЕИ" (nsiDrugOKEI). Для групп взаимозаменяемости (блок drugInterchangeInfo) всегда игнорируется при приеме, автоматически заполняется при передаче по справочнику "Лекарственные препараты"
 	ManualUserOkei *base.Okeiref `xml:"manualUserOKEI,omitempty"`
@@ -2686,6 +2767,39 @@ type TradeInfo2 struct {
 	DrugChangeInfo *DrugChangeInfoType `xml:"drugChangeInfo,omitempty"`
 }
 
+// MedicamentalFormInfo6: Лекарственная форма
+type MedicamentalFormInfo6 struct {
+	XMLName xml.Name `xml:"medicamentalFormInfo"`
+
+	// MedicamentalFormName: Наименование лекарственной формы. Игнорируется, начиная с даты в настройке ПРИЗ_Н_0112
+	MedicamentalFormName *base.DrugNameType `xml:"medicamentalFormName,omitempty"`
+
+	// MedicamentalForm: Лекарственная форма по справочнику "Справочник: Лекарственные формы" (nsiFarmMedicamentalForm) Заполняется, начиная с даты в настройке ПРИЗ_Н_0112
+	MedicamentalForm *base.MedicamentalFormRef `xml:"medicamentalForm,omitempty"`
+}
+
+// DosageInfo6: Дозировка
+type DosageInfo6 struct {
+	XMLName xml.Name `xml:"dosageInfo"`
+
+	// DosageGrlsvalue: Полная форма дозировки
+	DosageGrlsvalue base.DrugNameType `xml:",any"`
+}
+
+// PackagingInfo6: Сведения об упаковке. В случае заполнения блока mustSpecifyDrugPackage при приеме контролируется заполненность блока packagingInfo во всех вариантах поставки лекарственных препаратов
+type PackagingInfo6 struct {
+	XMLName xml.Name `xml:"packagingInfo,omitempty"`
+
+	// Packaging1Quantity: Количество лекарственных форм в первичной упаковке
+	Packaging1Quantity *base.DrugPackaging1QuantityType `xml:"packaging1Quantity,omitempty"`
+
+	// Packaging2Quantity: Количество первичных упаковок во вторичной (потребительской) упаковке
+	Packaging2Quantity *base.DrugPackaging2QuantityType `xml:"packaging2Quantity,omitempty"`
+
+	// SumaryPackagingQuantity: Количество потребительских единиц в потребительской упаковке. Если заполнены поле packaging1Quantity и поле packaging2Quantity, то игнорируется при приеме, автоматически рассчитывается как произведение packaging1Quantity*packaging2Quantity. Иначе принимается из пакета. Всегда принимается и сохраняется, если явно указано в пакете для извещений, первая версия которых размещена до выхода версии 10.3, независимо от разрешения ручного ввода
+	SumaryPackagingQuantity *base.DrugSumaryPackagingQuantityType `xml:"sumaryPackagingQuantity,omitempty"`
+}
+
 // DrugsInfoDrugInfo4: Сведения о варианте поставки лекарственного препарата. Может быть указан только один вариант поставки (один лекарственный препарат). Если необходимо указать несколько вариантов поставки, то заполняется блок drugInterchangeTextFormInfo ("Сведения о лекарственных препаратах с учетом взаимозаменяемости не по справочнику "Группы взаимозаменяемости лекарственных препаратов") Если заполнен блок «По решению заказчика (организации, осуществляющей определение поставщика для заказчика)» (modificationInfo/reasonInfo/responsibleDecisionInfo), то игнорируется при приеме и заполняется из предыдущей версии извещения за исключением: o поля «Уникальный идентификатор лекарственного препарата в извещении-приглашении» (sid) o поля «Внешний идентификатор лекарственного препарата в извещении-приглашении» (externalSid) o поля «Количество (объем) закупаемого лекарственного препарата» (drugQuantity); o поля «Референтная цена по справочнику "Лекарственные препараты"» (averagePriceValue); o поля «Сумма выплат по референтной цене (всего)» (averagePriceTotal)
 type DrugsInfoDrugInfo4 struct {
 	XMLName xml.Name `xml:"drugInfo"`
@@ -2710,6 +2824,21 @@ type DrugsInfoDrugInfo4 struct {
 
 	// BasicUnit: Признак основного варианта поставки. При приеме контролируется обязательность заполнения поля только для одного значения блока drugInfo в составе двух блоков objectInfoUsingReferenceInfo и objectInfoUsingTextForm
 	BasicUnit *bool `xml:"basicUnit,omitempty"`
+
+	// MedicamentalFormInfo47: Лекарственная форма
+	MedicamentalFormInfo MedicamentalFormInfo47 `xml:"medicamentalFormInfo"`
+
+	// DosageInfo47: Дозировка
+	DosageInfo DosageInfo47 `xml:"dosageInfo"`
+
+	// PackagingInfo45: Сведения об упаковке. В случае заполнения блока mustSpecifyDrugPackage при приеме контролируется заполненность блока packagingInfo во всех вариантах поставки лекарственных препаратов
+	PackagingInfo *PackagingInfo45 `xml:"packagingInfo,omitempty"`
+
+	// ManualUserOkei: Единица измерения товара. При приеме содержимое контролируется на присутствие в справочнике "Справочник: Единицы измерения потребительских единиц измерения лекарственных препаратов по ОКЕИ" (nsiDrugOKEI)
+	ManualUserOkei base.Okeiref `xml:"manualUserOKEI"`
+
+	// DrugChangeInfo: Информация указываемая при ручном изменении лекарственного препарата. При приеме контролируется обязательность заполнения в случае указания лекарственной формы, дозировки, упаковки, единицы измерения в текстовой форме. Начиная с версии 10.1 контролируется обязательность указания причины корректировки сведений о лекарственных препаратах
+	DrugChangeInfo *DrugChangeInfoType `xml:"drugChangeInfo,omitempty"`
 }
 
 // ObjectInfoUsingTextFormDrugsInfo1: Сведения о вариантах поставки лекарственных препаратов. Может быть указан только один вариант поставки (один лекарственный препарат). Если необходимо указать несколько вариантов поставки, то заполняется блок drugInterchangeTextFormInfo ("Сведения о лекарственных препаратах с учетом взаимозаменяемости не по справочнику "Группы взаимозаменяемости лекарственных препаратов")
@@ -2838,16 +2967,16 @@ type DrugPurchaseObjectInfo2 struct {
 	PositionPrice *base.MoneyType `xml:"positionPrice,omitempty"`
 }
 
-// MedicamentalFormInfo4: Лекарственная форма. Игнорируется при приеме, автоматически заполняется при передаче из справочника "Лекарственные препараты" (nsiFarmDrugDictionary)
-type MedicamentalFormInfo4 struct {
+// MedicamentalFormInfo7: Лекарственная форма. Игнорируется при приеме, автоматически заполняется при передаче из справочника "Лекарственные препараты" (nsiFarmDrugDictionary)
+type MedicamentalFormInfo7 struct {
 	XMLName xml.Name `xml:"medicamentalFormInfo,omitempty"`
 
 	// MedicamentalFormName: Наименование лекарственной формы по справочнику "Лекарственные препараты" (nsiFarmDrugDictionary) (поле MNNInfo/oos:medicamentalFormInfo/medicamentalFormName документа nsiFarmDrugsDictionary)
 	MedicamentalFormName base.DrugNameType `xml:",any"`
 }
 
-// DosageInfo4: Дозировка
-type DosageInfo4 struct {
+// DosageInfo7: Дозировка
+type DosageInfo7 struct {
 	XMLName xml.Name `xml:"dosageInfo,omitempty"`
 
 	// DosageName: Наименование единицы измерения дозировки
@@ -2874,8 +3003,8 @@ type TradeNameInfoEditedTradeInfo struct {
 	TradeName base.DrugNameType `xml:"tradeName"`
 }
 
-// MedicamentalFormInfo5: Лекарственная форма. Игнорируется при приеме, автоматически заполняется при передаче из справочника "Лекарственные препараты" (блок MNNInfo/medicamentalFormInfo документа nsiFarmDrugDictionary)
-type MedicamentalFormInfo5 struct {
+// MedicamentalFormInfo8: Лекарственная форма. Игнорируется при приеме, автоматически заполняется при передаче из справочника "Лекарственные препараты" (блок MNNInfo/medicamentalFormInfo документа nsiFarmDrugDictionary)
+type MedicamentalFormInfo8 struct {
 	XMLName xml.Name `xml:"medicamentalFormInfo,omitempty"`
 
 	// MedicamentalFormName: Наименование лекарственной формы
@@ -2890,8 +3019,8 @@ type TradeNameInfoEditedMedicamentalFormInfo struct {
 	MedicamentalFormName base.DrugNameType `xml:",any"`
 }
 
-// DosageInfo5: Дозировка. Игнорируется при приеме, автоматически заполняется при передаче из справочника "Лекарственные препараты" (блок MNNInfo/dosagesInfo документа nsiFarmDrugDictionary)
-type DosageInfo5 struct {
+// DosageInfo8: Дозировка. Игнорируется при приеме, автоматически заполняется при передаче из справочника "Лекарственные препараты" (блок MNNInfo/dosagesInfo документа nsiFarmDrugDictionary)
+type DosageInfo8 struct {
 	XMLName xml.Name `xml:"dosageInfo,omitempty"`
 
 	// DosageName: Наименование единицы измерения дозировки
@@ -2923,8 +3052,8 @@ type PackagingInfoPrimaryPackagingInfo struct {
 	PrimaryPackagingName *base.DrugNameType `xml:",any,omitempty"`
 }
 
-// PackagingInfo4: Сведения об упаковке. Игнорируется при приеме, заполняется при передаче из справочника ЕСКЛП (nsiFarmDrugsDictionary)
-type PackagingInfo4 struct {
+// PackagingInfo7: Сведения об упаковке. Игнорируется при приеме, заполняется при передаче из справочника ЕСКЛП (nsiFarmDrugsDictionary)
+type PackagingInfo7 struct {
 	XMLName xml.Name `xml:"packagingInfo,omitempty"`
 
 	// PackagingInfoPrimaryPackagingInfo: Вид первичной упаковки. Игнорируется при приеме, заполняется при передаче из справочника nsiFarmDrugDictionary
@@ -2951,8 +3080,8 @@ type PackagingInfoPrimaryPackagingInfo1 struct {
 	PrimaryPackagingName base.DrugNameType `xml:",any"`
 }
 
-// PackagingInfo5: Сведения об упаковке
-type PackagingInfo5 struct {
+// PackagingInfo8: Сведения об упаковке
+type PackagingInfo8 struct {
 	XMLName xml.Name `xml:"packagingInfo"`
 
 	// PackagingInfoPrimaryPackagingInfo: Сведения о первичной упаковке
@@ -2978,8 +3107,8 @@ type PackagingInfo5 struct {
 type TradeNameInfoEditedPackagingsInfo struct {
 	XMLName xml.Name `xml:"editedPackagingsInfo"`
 
-	// PackagingInfo5: Сведения об упаковке
-	PackagingInfo PackagingInfo5 `xml:",any"`
+	// PackagingInfo8: Сведения об упаковке
+	PackagingInfo PackagingInfo8 `xml:",any"`
 }
 
 // TradeNameInfoManufacturerInfo: Производитель лекарственного препарата. Игнорируется при приеме, автоматически заполняется при передаче из справочника "Лекарственные препараты" (блок MNNInfo\positionsTradeName\positionTradeName\manufacturerInfo документа nsiFarmDrugDictionary)
@@ -3065,20 +3194,20 @@ type TradeNamesInfoTradeNameInfo struct {
 	// EditedCertificateKeeperName: Наименование держателя или владельца регистрационного удостоверения. Изменено вручную
 	EditedCertificateKeeperName *base.DrugNameType `xml:"editedCertificateKeeperName,omitempty"`
 
-	// MedicamentalFormInfo5: Лекарственная форма. Игнорируется при приеме, автоматически заполняется при передаче из справочника "Лекарственные препараты" (блок MNNInfo/medicamentalFormInfo документа nsiFarmDrugDictionary)
-	MedicamentalFormInfo *MedicamentalFormInfo5 `xml:"medicamentalFormInfo,omitempty"`
+	// MedicamentalFormInfo8: Лекарственная форма. Игнорируется при приеме, автоматически заполняется при передаче из справочника "Лекарственные препараты" (блок MNNInfo/medicamentalFormInfo документа nsiFarmDrugDictionary)
+	MedicamentalFormInfo *MedicamentalFormInfo8 `xml:"medicamentalFormInfo,omitempty"`
 
 	// TradeNameInfoEditedMedicamentalFormInfo: Лекарственная форма. Изменено вручную
 	EditedMedicamentalFormInfo *TradeNameInfoEditedMedicamentalFormInfo `xml:"editedMedicamentalFormInfo,omitempty"`
 
-	// DosageInfo5: Дозировка. Игнорируется при приеме, автоматически заполняется при передаче из справочника "Лекарственные препараты" (блок MNNInfo/dosagesInfo документа nsiFarmDrugDictionary)
-	DosageInfo *DosageInfo5 `xml:"dosageInfo,omitempty"`
+	// DosageInfo8: Дозировка. Игнорируется при приеме, автоматически заполняется при передаче из справочника "Лекарственные препараты" (блок MNNInfo/dosagesInfo документа nsiFarmDrugDictionary)
+	DosageInfo *DosageInfo8 `xml:"dosageInfo,omitempty"`
 
 	// TradeNameInfoEditedDosageInfo: Дозировка. Изменено вручную
 	EditedDosageInfo *TradeNameInfoEditedDosageInfo `xml:"editedDosageInfo,omitempty"`
 
-	// PackagingInfo4: Сведения об упаковке. Игнорируется при приеме, заполняется при передаче из справочника ЕСКЛП (nsiFarmDrugsDictionary)
-	PackagingInfo *PackagingInfo4 `xml:"packagingInfo,omitempty"`
+	// PackagingInfo7: Сведения об упаковке. Игнорируется при приеме, заполняется при передаче из справочника ЕСКЛП (nsiFarmDrugsDictionary)
+	PackagingInfo *PackagingInfo7 `xml:"packagingInfo,omitempty"`
 
 	// TradeNameInfoEditedPackagingsInfo: Сведения об упаковках. Изменено вручную
 	EditedPackagingsInfo *TradeNameInfoEditedPackagingsInfo `xml:"editedPackagingsInfo,omitempty"`
@@ -3114,11 +3243,11 @@ type Mnninfo3 struct {
 	// Ktru: Классификация по КТРУ
 	Ktru *base.Ktruref `xml:"KTRU,omitempty"`
 
-	// MedicamentalFormInfo4: Лекарственная форма. Игнорируется при приеме, автоматически заполняется при передаче из справочника "Лекарственные препараты" (nsiFarmDrugDictionary)
-	MedicamentalFormInfo *MedicamentalFormInfo4 `xml:"medicamentalFormInfo,omitempty"`
+	// MedicamentalFormInfo7: Лекарственная форма. Игнорируется при приеме, автоматически заполняется при передаче из справочника "Лекарственные препараты" (nsiFarmDrugDictionary)
+	MedicamentalFormInfo *MedicamentalFormInfo7 `xml:"medicamentalFormInfo,omitempty"`
 
-	// DosageInfo4: Дозировка
-	DosageInfo *DosageInfo4 `xml:"dosageInfo,omitempty"`
+	// DosageInfo7: Дозировка
+	DosageInfo *DosageInfo7 `xml:"dosageInfo,omitempty"`
 
 	// Okeiinfo: Единица измерения
 	Okeiinfo *base.Okeiref `xml:"OKEIInfo,omitempty"`
@@ -3301,8 +3430,8 @@ type TradeInfo3 struct {
 	TradeName base.DrugNameType `xml:",any"`
 }
 
-// MedicamentalFormInfo6: Лекарственная форма в текстовой форме
-type MedicamentalFormInfo6 struct {
+// MedicamentalFormInfo9: Лекарственная форма в текстовой форме
+type MedicamentalFormInfo9 struct {
 	XMLName xml.Name `xml:"medicamentalFormInfo,omitempty"`
 
 	// MedicamentalFormName: Наименование лекарственной формы
@@ -3312,8 +3441,8 @@ type MedicamentalFormInfo6 struct {
 	MedicamentalForm *base.MedicamentalFormRef `xml:"medicamentalForm,omitempty"`
 }
 
-// DosageInfo6: Дозировка в текстовой форме
-type DosageInfo6 struct {
+// DosageInfo9: Дозировка в текстовой форме
+type DosageInfo9 struct {
 	XMLName xml.Name `xml:"dosageInfo,omitempty"`
 
 	// DosageGrlsvalue: Полная форма дозировки
@@ -3331,8 +3460,8 @@ type Mnninfo4 struct {
 	DrugChangeInfo DrugChangeInfoType `xml:"drugChangeInfo"`
 }
 
-// MedicamentalFormInfo7: Лекарственная форма в текстовой форме
-type MedicamentalFormInfo7 struct {
+// MedicamentalFormInfo10: Лекарственная форма в текстовой форме
+type MedicamentalFormInfo10 struct {
 	XMLName xml.Name `xml:"medicamentalFormInfo,omitempty"`
 
 	// MedicamentalFormName: Наименование лекарственной формы
@@ -3342,8 +3471,8 @@ type MedicamentalFormInfo7 struct {
 	MedicamentalForm *base.MedicamentalFormRef `xml:"medicamentalForm,omitempty"`
 }
 
-// DosageInfo7: Дозировка в текстовой форме
-type DosageInfo7 struct {
+// DosageInfo10: Дозировка в текстовой форме
+type DosageInfo10 struct {
 	XMLName xml.Name `xml:"dosageInfo,omitempty"`
 
 	// DosageGrlsvalue: Полная форма дозировки
@@ -4276,16 +4405,16 @@ type PurchaseObject4 struct {
 	Ktru *PurchaseObject16Ktru `xml:"KTRU,omitempty"`
 }
 
-// MedicamentalFormInfo8: Лекарственная форма. Игнорируется при приеме, автоматически заполняется при передаче по справочнику "Лекарственные препараты"
-type MedicamentalFormInfo8 struct {
+// MedicamentalFormInfo11: Лекарственная форма. Игнорируется при приеме, автоматически заполняется при передаче по справочнику "Лекарственные препараты"
+type MedicamentalFormInfo11 struct {
 	XMLName xml.Name `xml:"medicamentalFormInfo,omitempty"`
 
 	// MedicamentalFormName: Наименование лекарственной формы по справочнику "Лекарственные препараты" (nsiFarmDrugDictionary) (поле MNNsInfo\MNNInfo\medicamentalFormInfo\medicamentalFormName)
 	MedicamentalFormName base.DrugNameType `xml:",any"`
 }
 
-// DosageInfo8: Дозировка. Игнорируется при приеме, автоматически заполняется при передаче по справочнику "Лекарственные препараты"
-type DosageInfo8 struct {
+// DosageInfo11: Дозировка. Игнорируется при приеме, автоматически заполняется при передаче по справочнику "Лекарственные препараты"
+type DosageInfo11 struct {
 	XMLName xml.Name `xml:"dosageInfo,omitempty"`
 
 	// DosageGrlsvalue: Полная форма дозировки по справочнику "Лекарственные препараты" (nsiFarmDrugDictionary) (поле MNNsInfo\MNNInfo\dosagesInfo\dosageInfo\dosageGRLSValue )
@@ -4298,8 +4427,8 @@ type DosageInfo8 struct {
 	DosageUserName *base.DrugNameType `xml:"dosageUserName,omitempty"`
 }
 
-// PackagingInfo6: Сведения об упаковке. В случае заполнения блока mustSpecifyDrugPackage при приеме контролируется заполненность блока packagingInfo во всех вариантах поставки лекарственных препаратов
-type PackagingInfo6 struct {
+// PackagingInfo9: Сведения об упаковке. В случае заполнения блока mustSpecifyDrugPackage при приеме контролируется заполненность блока packagingInfo во всех вариантах поставки лекарственных препаратов
+type PackagingInfo9 struct {
 	XMLName xml.Name `xml:"packagingInfo,omitempty"`
 
 	// PositionTradeNameExternalCode: Уникальный внешний код лекарственного препарата по справочнику "Лекарственные препараты (поле MNNInfo\positionsTradeName\positionTradeName\positionTradeNameExternalCode документа nsiFarmDrugDictionary). При приеме контролируется наличие в справочнике "Лекарственные препараты" ЕИС лекарственного препарата с таким кодом и принадлежность лекарственного препарата с указанным кодом к МНН с кодом, указанным в поле MNNInfo
@@ -4349,14 +4478,14 @@ type DrugInfo4 struct {
 	// Ktru: Классификация по КТРУ. Блок всегда игнорируется при приеме, автоматически заполняется при передаче, если: • МНН указан из справочника ЕСКЛП. Не используется до выхода версии ЕИС 13.2
 	Ktru *base.Ktruref `xml:"KTRU,omitempty"`
 
-	// MedicamentalFormInfo26: Лекарственная форма. Игнорируется при приеме, автоматически заполняется при передаче по справочнику "Лекарственные препараты"
-	MedicamentalFormInfo *MedicamentalFormInfo26 `xml:"medicamentalFormInfo,omitempty"`
+	// MedicamentalFormInfo46: Лекарственная форма. Игнорируется при приеме, автоматически заполняется при передаче по справочнику "Лекарственные препараты"
+	MedicamentalFormInfo *MedicamentalFormInfo46 `xml:"medicamentalFormInfo,omitempty"`
 
-	// DosageInfo26: Дозировка. Игнорируется при приеме, автоматически заполняется при передаче по справочнику "Лекарственные препараты"
-	DosageInfo *DosageInfo26 `xml:"dosageInfo,omitempty"`
+	// DosageInfo46: Дозировка. Игнорируется при приеме, автоматически заполняется при передаче по справочнику "Лекарственные препараты"
+	DosageInfo *DosageInfo46 `xml:"dosageInfo,omitempty"`
 
-	// PackagingInfo24: Сведения об упаковке. В случае заполнения блока mustSpecifyDrugPackage при приеме контролируется заполненность блока packagingInfo во всех вариантах поставки лекарственных препаратов
-	PackagingInfo *PackagingInfo24 `xml:"packagingInfo,omitempty"`
+	// PackagingInfo44: Сведения об упаковке. В случае заполнения блока mustSpecifyDrugPackage при приеме контролируется заполненность блока packagingInfo во всех вариантах поставки лекарственных препаратов
+	PackagingInfo *PackagingInfo44 `xml:"packagingInfo,omitempty"`
 
 	// ManualUserOkei: Единица измерения товара, введенная вручную . Если заполнено в принимаемом документе, то считается, что внешняя система явно указала этот блок, содержимое контролируется на присутствие в справочнике "Справочник: Единицы измерения потребительских единиц измерения лекарственных препаратов по ОКЕИ" (nsiDrugOKEI). Для групп взаимозаменяемости (блок drugInterchangeInfo) всегда игнорируется при приеме, автоматически заполняется при передаче по справочнику "Лекарственные препараты"
 	ManualUserOkei *base.Okeiref `xml:"manualUserOKEI,omitempty"`
@@ -4428,6 +4557,39 @@ type TradeInfo4 struct {
 	DrugChangeInfo *DrugChangeInfoType `xml:"drugChangeInfo,omitempty"`
 }
 
+// MedicamentalFormInfo12: Лекарственная форма
+type MedicamentalFormInfo12 struct {
+	XMLName xml.Name `xml:"medicamentalFormInfo"`
+
+	// MedicamentalFormName: Наименование лекарственной формы. Игнорируется, начиная с даты в настройке ПРИЗ_Н_0112
+	MedicamentalFormName *base.DrugNameType `xml:"medicamentalFormName,omitempty"`
+
+	// MedicamentalForm: Лекарственная форма по справочнику "Справочник: Лекарственные формы" (nsiFarmMedicamentalForm) Заполняется, начиная с даты в настройке ПРИЗ_Н_0112
+	MedicamentalForm *base.MedicamentalFormRef `xml:"medicamentalForm,omitempty"`
+}
+
+// DosageInfo12: Дозировка
+type DosageInfo12 struct {
+	XMLName xml.Name `xml:"dosageInfo"`
+
+	// DosageGrlsvalue: Полная форма дозировки
+	DosageGrlsvalue base.DrugNameType `xml:",any"`
+}
+
+// PackagingInfo10: Сведения об упаковке. В случае заполнения блока mustSpecifyDrugPackage при приеме контролируется заполненность блока packagingInfo во всех вариантах поставки лекарственных препаратов
+type PackagingInfo10 struct {
+	XMLName xml.Name `xml:"packagingInfo,omitempty"`
+
+	// Packaging1Quantity: Количество лекарственных форм в первичной упаковке
+	Packaging1Quantity *base.DrugPackaging1QuantityType `xml:"packaging1Quantity,omitempty"`
+
+	// Packaging2Quantity: Количество первичных упаковок во вторичной (потребительской) упаковке
+	Packaging2Quantity *base.DrugPackaging2QuantityType `xml:"packaging2Quantity,omitempty"`
+
+	// SumaryPackagingQuantity: Количество потребительских единиц в потребительской упаковке. Если заполнены поле packaging1Quantity и поле packaging2Quantity, то игнорируется при приеме, автоматически рассчитывается как произведение packaging1Quantity*packaging2Quantity. Иначе принимается из пакета. Всегда принимается и сохраняется, если явно указано в пакете для извещений, первая версия которых размещена до выхода версии 10.3, независимо от разрешения ручного ввода
+	SumaryPackagingQuantity *base.DrugSumaryPackagingQuantityType `xml:"sumaryPackagingQuantity,omitempty"`
+}
+
 // DrugInfo5: Сведения о варианте поставки лекарственного препарата. Может быть указан только один вариант поставки (один лекарственный препарат). Если необходимо указать несколько вариантов поставки, то заполняется блок drugInterchangeTextFormInfo ("Сведения о лекарственных препаратах с учетом взаимозаменяемости не по справочнику "Группы взаимозаменяемости лекарственных препаратов") Если заполнен блок «По решению заказчика (организации, осуществляющей определение поставщика для заказчика)» (modificationInfo/reasonInfo/responsibleDecisionInfo), то игнорируется при приеме и заполняется из предыдущей версии извещения за исключением: o поля «Уникальный идентификатор лекарственного препарата в извещении-приглашении» (sid) o поля «Внешний идентификатор лекарственного препарата в извещении-приглашении» (externalSid) o поля «Количество (объем) закупаемого лекарственного препарата» (drugQuantity); o поля «Референтная цена по справочнику "Лекарственные препараты"» (averagePriceValue); o поля «Сумма выплат по референтной цене (всего)» (averagePriceTotal)
 type DrugInfo5 struct {
 	XMLName xml.Name `xml:"drugInfo,omitempty"`
@@ -4452,6 +4614,21 @@ type DrugInfo5 struct {
 
 	// BasicUnit: Признак основного варианта поставки. При приеме контролируется обязательность заполнения поля только для одного значения блока drugInfo в составе двух блоков objectInfoUsingReferenceInfo и objectInfoUsingTextForm
 	BasicUnit *bool `xml:"basicUnit,omitempty"`
+
+	// MedicamentalFormInfo47: Лекарственная форма
+	MedicamentalFormInfo MedicamentalFormInfo47 `xml:"medicamentalFormInfo"`
+
+	// DosageInfo47: Дозировка
+	DosageInfo DosageInfo47 `xml:"dosageInfo"`
+
+	// PackagingInfo45: Сведения об упаковке. В случае заполнения блока mustSpecifyDrugPackage при приеме контролируется заполненность блока packagingInfo во всех вариантах поставки лекарственных препаратов
+	PackagingInfo *PackagingInfo45 `xml:"packagingInfo,omitempty"`
+
+	// ManualUserOkei: Единица измерения товара. При приеме содержимое контролируется на присутствие в справочнике "Справочник: Единицы измерения потребительских единиц измерения лекарственных препаратов по ОКЕИ" (nsiDrugOKEI)
+	ManualUserOkei base.Okeiref `xml:"manualUserOKEI"`
+
+	// DrugChangeInfo: Информация указываемая при ручном изменении лекарственного препарата. При приеме контролируется обязательность заполнения в случае указания лекарственной формы, дозировки, упаковки, единицы измерения в текстовой форме. Начиная с версии 10.1 контролируется обязательность указания причины корректировки сведений о лекарственных препаратах
+	DrugChangeInfo *DrugChangeInfoType `xml:"drugChangeInfo,omitempty"`
 }
 
 // DrugPurchaseObjectInfoObjectInfoUsingTextFormDrugsInfo: Сведения о вариантах поставки лекарственных препаратов
@@ -4765,16 +4942,16 @@ type PurchaseObject5 struct {
 	Ktru *PurchaseObject16Ktru `xml:"KTRU,omitempty"`
 }
 
-// MedicamentalFormInfo9: Лекарственная форма. Игнорируется при приеме, автоматически заполняется при передаче по справочнику "Лекарственные препараты"
-type MedicamentalFormInfo9 struct {
+// MedicamentalFormInfo13: Лекарственная форма. Игнорируется при приеме, автоматически заполняется при передаче по справочнику "Лекарственные препараты"
+type MedicamentalFormInfo13 struct {
 	XMLName xml.Name `xml:"medicamentalFormInfo,omitempty"`
 
 	// MedicamentalFormName: Наименование лекарственной формы по справочнику "Лекарственные препараты" (nsiFarmDrugDictionary) (поле MNNsInfo\MNNInfo\medicamentalFormInfo\medicamentalFormName)
 	MedicamentalFormName base.DrugNameType `xml:",any"`
 }
 
-// DosageInfo9: Дозировка. Игнорируется при приеме, автоматически заполняется при передаче по справочнику "Лекарственные препараты"
-type DosageInfo9 struct {
+// DosageInfo13: Дозировка. Игнорируется при приеме, автоматически заполняется при передаче по справочнику "Лекарственные препараты"
+type DosageInfo13 struct {
 	XMLName xml.Name `xml:"dosageInfo,omitempty"`
 
 	// DosageGrlsvalue: Полная форма дозировки по справочнику "Лекарственные препараты" (nsiFarmDrugDictionary) (поле MNNsInfo\MNNInfo\dosagesInfo\dosageInfo\dosageGRLSValue )
@@ -4787,8 +4964,8 @@ type DosageInfo9 struct {
 	DosageUserName *base.DrugNameType `xml:"dosageUserName,omitempty"`
 }
 
-// PackagingInfo7: Сведения об упаковке. В случае заполнения блока mustSpecifyDrugPackage при приеме контролируется заполненность блока packagingInfo во всех вариантах поставки лекарственных препаратов
-type PackagingInfo7 struct {
+// PackagingInfo11: Сведения об упаковке. В случае заполнения блока mustSpecifyDrugPackage при приеме контролируется заполненность блока packagingInfo во всех вариантах поставки лекарственных препаратов
+type PackagingInfo11 struct {
 	XMLName xml.Name `xml:"packagingInfo,omitempty"`
 
 	// PositionTradeNameExternalCode: Уникальный внешний код лекарственного препарата по справочнику "Лекарственные препараты (поле MNNInfo\positionsTradeName\positionTradeName\positionTradeNameExternalCode документа nsiFarmDrugDictionary). При приеме контролируется наличие в справочнике "Лекарственные препараты" ЕИС лекарственного препарата с таким кодом и принадлежность лекарственного препарата с указанным кодом к МНН с кодом, указанным в поле MNNInfo
@@ -4838,14 +5015,14 @@ type DrugInfo6 struct {
 	// Ktru: Классификация по КТРУ. Блок всегда игнорируется при приеме, автоматически заполняется при передаче, если: • МНН указан из справочника ЕСКЛП. Не используется до выхода версии ЕИС 13.2
 	Ktru *base.Ktruref `xml:"KTRU,omitempty"`
 
-	// MedicamentalFormInfo26: Лекарственная форма. Игнорируется при приеме, автоматически заполняется при передаче по справочнику "Лекарственные препараты"
-	MedicamentalFormInfo *MedicamentalFormInfo26 `xml:"medicamentalFormInfo,omitempty"`
+	// MedicamentalFormInfo46: Лекарственная форма. Игнорируется при приеме, автоматически заполняется при передаче по справочнику "Лекарственные препараты"
+	MedicamentalFormInfo *MedicamentalFormInfo46 `xml:"medicamentalFormInfo,omitempty"`
 
-	// DosageInfo26: Дозировка. Игнорируется при приеме, автоматически заполняется при передаче по справочнику "Лекарственные препараты"
-	DosageInfo *DosageInfo26 `xml:"dosageInfo,omitempty"`
+	// DosageInfo46: Дозировка. Игнорируется при приеме, автоматически заполняется при передаче по справочнику "Лекарственные препараты"
+	DosageInfo *DosageInfo46 `xml:"dosageInfo,omitempty"`
 
-	// PackagingInfo24: Сведения об упаковке. В случае заполнения блока mustSpecifyDrugPackage при приеме контролируется заполненность блока packagingInfo во всех вариантах поставки лекарственных препаратов
-	PackagingInfo *PackagingInfo24 `xml:"packagingInfo,omitempty"`
+	// PackagingInfo44: Сведения об упаковке. В случае заполнения блока mustSpecifyDrugPackage при приеме контролируется заполненность блока packagingInfo во всех вариантах поставки лекарственных препаратов
+	PackagingInfo *PackagingInfo44 `xml:"packagingInfo,omitempty"`
 
 	// ManualUserOkei: Единица измерения товара, введенная вручную . Если заполнено в принимаемом документе, то считается, что внешняя система явно указала этот блок, содержимое контролируется на присутствие в справочнике "Справочник: Единицы измерения потребительских единиц измерения лекарственных препаратов по ОКЕИ" (nsiDrugOKEI). Для групп взаимозаменяемости (блок drugInterchangeInfo) всегда игнорируется при приеме, автоматически заполняется при передаче по справочнику "Лекарственные препараты"
 	ManualUserOkei *base.Okeiref `xml:"manualUserOKEI,omitempty"`
@@ -4917,6 +5094,39 @@ type TradeInfo5 struct {
 	DrugChangeInfo *DrugChangeInfoType `xml:"drugChangeInfo,omitempty"`
 }
 
+// MedicamentalFormInfo14: Лекарственная форма
+type MedicamentalFormInfo14 struct {
+	XMLName xml.Name `xml:"medicamentalFormInfo"`
+
+	// MedicamentalFormName: Наименование лекарственной формы. Игнорируется, начиная с даты в настройке ПРИЗ_Н_0112
+	MedicamentalFormName *base.DrugNameType `xml:"medicamentalFormName,omitempty"`
+
+	// MedicamentalForm: Лекарственная форма по справочнику "Справочник: Лекарственные формы" (nsiFarmMedicamentalForm) Заполняется, начиная с даты в настройке ПРИЗ_Н_0112
+	MedicamentalForm *base.MedicamentalFormRef `xml:"medicamentalForm,omitempty"`
+}
+
+// DosageInfo14: Дозировка
+type DosageInfo14 struct {
+	XMLName xml.Name `xml:"dosageInfo"`
+
+	// DosageGrlsvalue: Полная форма дозировки
+	DosageGrlsvalue base.DrugNameType `xml:",any"`
+}
+
+// PackagingInfo12: Сведения об упаковке. В случае заполнения блока mustSpecifyDrugPackage при приеме контролируется заполненность блока packagingInfo во всех вариантах поставки лекарственных препаратов
+type PackagingInfo12 struct {
+	XMLName xml.Name `xml:"packagingInfo,omitempty"`
+
+	// Packaging1Quantity: Количество лекарственных форм в первичной упаковке
+	Packaging1Quantity *base.DrugPackaging1QuantityType `xml:"packaging1Quantity,omitempty"`
+
+	// Packaging2Quantity: Количество первичных упаковок во вторичной (потребительской) упаковке
+	Packaging2Quantity *base.DrugPackaging2QuantityType `xml:"packaging2Quantity,omitempty"`
+
+	// SumaryPackagingQuantity: Количество потребительских единиц в потребительской упаковке. Если заполнены поле packaging1Quantity и поле packaging2Quantity, то игнорируется при приеме, автоматически рассчитывается как произведение packaging1Quantity*packaging2Quantity. Иначе принимается из пакета. Всегда принимается и сохраняется, если явно указано в пакете для извещений, первая версия которых размещена до выхода версии 10.3, независимо от разрешения ручного ввода
+	SumaryPackagingQuantity *base.DrugSumaryPackagingQuantityType `xml:"sumaryPackagingQuantity,omitempty"`
+}
+
 // DrugInfo7: Сведения о варианте поставки лекарственного препарата. Может быть указан только один вариант поставки (один лекарственный препарат). Если необходимо указать несколько вариантов поставки, то заполняется блок drugInterchangeTextFormInfo ("Сведения о лекарственных препаратах с учетом взаимозаменяемости не по справочнику "Группы взаимозаменяемости лекарственных препаратов") Если заполнен блок «По решению заказчика (организации, осуществляющей определение поставщика для заказчика)» (modificationInfo/reasonInfo/responsibleDecisionInfo), то игнорируется при приеме и заполняется из предыдущей версии извещения за исключением: o поля «Уникальный идентификатор лекарственного препарата в извещении-приглашении» (sid) o поля «Внешний идентификатор лекарственного препарата в извещении-приглашении» (externalSid) o поля «Количество (объем) закупаемого лекарственного препарата» (drugQuantity); o поля «Референтная цена по справочнику "Лекарственные препараты"» (averagePriceValue); o поля «Сумма выплат по референтной цене (всего)» (averagePriceTotal)
 type DrugInfo7 struct {
 	XMLName xml.Name `xml:"drugInfo,omitempty"`
@@ -4941,6 +5151,21 @@ type DrugInfo7 struct {
 
 	// BasicUnit: Признак основного варианта поставки. При приеме контролируется обязательность заполнения поля только для одного значения блока drugInfo в составе двух блоков objectInfoUsingReferenceInfo и objectInfoUsingTextForm
 	BasicUnit *bool `xml:"basicUnit,omitempty"`
+
+	// MedicamentalFormInfo47: Лекарственная форма
+	MedicamentalFormInfo MedicamentalFormInfo47 `xml:"medicamentalFormInfo"`
+
+	// DosageInfo47: Дозировка
+	DosageInfo DosageInfo47 `xml:"dosageInfo"`
+
+	// PackagingInfo45: Сведения об упаковке. В случае заполнения блока mustSpecifyDrugPackage при приеме контролируется заполненность блока packagingInfo во всех вариантах поставки лекарственных препаратов
+	PackagingInfo *PackagingInfo45 `xml:"packagingInfo,omitempty"`
+
+	// ManualUserOkei: Единица измерения товара. При приеме содержимое контролируется на присутствие в справочнике "Справочник: Единицы измерения потребительских единиц измерения лекарственных препаратов по ОКЕИ" (nsiDrugOKEI)
+	ManualUserOkei base.Okeiref `xml:"manualUserOKEI"`
+
+	// DrugChangeInfo: Информация указываемая при ручном изменении лекарственного препарата. При приеме контролируется обязательность заполнения в случае указания лекарственной формы, дозировки, упаковки, единицы измерения в текстовой форме. Начиная с версии 10.1 контролируется обязательность указания причины корректировки сведений о лекарственных препаратах
+	DrugChangeInfo *DrugChangeInfoType `xml:"drugChangeInfo,omitempty"`
 }
 
 // DrugPurchaseObjectInfoObjectInfoUsingTextFormDrugsInfo1: Сведения о вариантах поставки лекарственных препаратов
@@ -5254,16 +5479,16 @@ type PurchaseObject6 struct {
 	Ktru *PurchaseObject16Ktru `xml:"KTRU,omitempty"`
 }
 
-// MedicamentalFormInfo10: Лекарственная форма. Игнорируется при приеме, автоматически заполняется при передаче по справочнику "Лекарственные препараты"
-type MedicamentalFormInfo10 struct {
+// MedicamentalFormInfo15: Лекарственная форма. Игнорируется при приеме, автоматически заполняется при передаче по справочнику "Лекарственные препараты"
+type MedicamentalFormInfo15 struct {
 	XMLName xml.Name `xml:"medicamentalFormInfo,omitempty"`
 
 	// MedicamentalFormName: Наименование лекарственной формы по справочнику "Лекарственные препараты" (nsiFarmDrugDictionary) (поле MNNsInfo\MNNInfo\medicamentalFormInfo\medicamentalFormName)
 	MedicamentalFormName base.DrugNameType `xml:",any"`
 }
 
-// DosageInfo10: Дозировка. Игнорируется при приеме, автоматически заполняется при передаче по справочнику "Лекарственные препараты"
-type DosageInfo10 struct {
+// DosageInfo15: Дозировка. Игнорируется при приеме, автоматически заполняется при передаче по справочнику "Лекарственные препараты"
+type DosageInfo15 struct {
 	XMLName xml.Name `xml:"dosageInfo,omitempty"`
 
 	// DosageGrlsvalue: Полная форма дозировки по справочнику "Лекарственные препараты" (nsiFarmDrugDictionary) (поле MNNsInfo\MNNInfo\dosagesInfo\dosageInfo\dosageGRLSValue )
@@ -5276,8 +5501,8 @@ type DosageInfo10 struct {
 	DosageUserName *base.DrugNameType `xml:"dosageUserName,omitempty"`
 }
 
-// PackagingInfo8: Сведения об упаковке. В случае заполнения блока mustSpecifyDrugPackage при приеме контролируется заполненность блока packagingInfo во всех вариантах поставки лекарственных препаратов
-type PackagingInfo8 struct {
+// PackagingInfo13: Сведения об упаковке. В случае заполнения блока mustSpecifyDrugPackage при приеме контролируется заполненность блока packagingInfo во всех вариантах поставки лекарственных препаратов
+type PackagingInfo13 struct {
 	XMLName xml.Name `xml:"packagingInfo,omitempty"`
 
 	// PositionTradeNameExternalCode: Уникальный внешний код лекарственного препарата по справочнику "Лекарственные препараты (поле MNNInfo\positionsTradeName\positionTradeName\positionTradeNameExternalCode документа nsiFarmDrugDictionary). При приеме контролируется наличие в справочнике "Лекарственные препараты" ЕИС лекарственного препарата с таким кодом и принадлежность лекарственного препарата с указанным кодом к МНН с кодом, указанным в поле MNNInfo
@@ -5327,14 +5552,14 @@ type DrugInfo8 struct {
 	// Ktru: Классификация по КТРУ. Блок всегда игнорируется при приеме, автоматически заполняется при передаче, если: • МНН указан из справочника ЕСКЛП. Не используется до выхода версии ЕИС 13.2
 	Ktru *base.Ktruref `xml:"KTRU,omitempty"`
 
-	// MedicamentalFormInfo26: Лекарственная форма. Игнорируется при приеме, автоматически заполняется при передаче по справочнику "Лекарственные препараты"
-	MedicamentalFormInfo *MedicamentalFormInfo26 `xml:"medicamentalFormInfo,omitempty"`
+	// MedicamentalFormInfo46: Лекарственная форма. Игнорируется при приеме, автоматически заполняется при передаче по справочнику "Лекарственные препараты"
+	MedicamentalFormInfo *MedicamentalFormInfo46 `xml:"medicamentalFormInfo,omitempty"`
 
-	// DosageInfo26: Дозировка. Игнорируется при приеме, автоматически заполняется при передаче по справочнику "Лекарственные препараты"
-	DosageInfo *DosageInfo26 `xml:"dosageInfo,omitempty"`
+	// DosageInfo46: Дозировка. Игнорируется при приеме, автоматически заполняется при передаче по справочнику "Лекарственные препараты"
+	DosageInfo *DosageInfo46 `xml:"dosageInfo,omitempty"`
 
-	// PackagingInfo24: Сведения об упаковке. В случае заполнения блока mustSpecifyDrugPackage при приеме контролируется заполненность блока packagingInfo во всех вариантах поставки лекарственных препаратов
-	PackagingInfo *PackagingInfo24 `xml:"packagingInfo,omitempty"`
+	// PackagingInfo44: Сведения об упаковке. В случае заполнения блока mustSpecifyDrugPackage при приеме контролируется заполненность блока packagingInfo во всех вариантах поставки лекарственных препаратов
+	PackagingInfo *PackagingInfo44 `xml:"packagingInfo,omitempty"`
 
 	// ManualUserOkei: Единица измерения товара, введенная вручную . Если заполнено в принимаемом документе, то считается, что внешняя система явно указала этот блок, содержимое контролируется на присутствие в справочнике "Справочник: Единицы измерения потребительских единиц измерения лекарственных препаратов по ОКЕИ" (nsiDrugOKEI). Для групп взаимозаменяемости (блок drugInterchangeInfo) всегда игнорируется при приеме, автоматически заполняется при передаче по справочнику "Лекарственные препараты"
 	ManualUserOkei *base.Okeiref `xml:"manualUserOKEI,omitempty"`
@@ -5406,6 +5631,39 @@ type TradeInfo6 struct {
 	DrugChangeInfo *DrugChangeInfoType `xml:"drugChangeInfo,omitempty"`
 }
 
+// MedicamentalFormInfo16: Лекарственная форма
+type MedicamentalFormInfo16 struct {
+	XMLName xml.Name `xml:"medicamentalFormInfo"`
+
+	// MedicamentalFormName: Наименование лекарственной формы. Игнорируется, начиная с даты в настройке ПРИЗ_Н_0112
+	MedicamentalFormName *base.DrugNameType `xml:"medicamentalFormName,omitempty"`
+
+	// MedicamentalForm: Лекарственная форма по справочнику "Справочник: Лекарственные формы" (nsiFarmMedicamentalForm) Заполняется, начиная с даты в настройке ПРИЗ_Н_0112
+	MedicamentalForm *base.MedicamentalFormRef `xml:"medicamentalForm,omitempty"`
+}
+
+// DosageInfo16: Дозировка
+type DosageInfo16 struct {
+	XMLName xml.Name `xml:"dosageInfo"`
+
+	// DosageGrlsvalue: Полная форма дозировки
+	DosageGrlsvalue base.DrugNameType `xml:",any"`
+}
+
+// PackagingInfo14: Сведения об упаковке. В случае заполнения блока mustSpecifyDrugPackage при приеме контролируется заполненность блока packagingInfo во всех вариантах поставки лекарственных препаратов
+type PackagingInfo14 struct {
+	XMLName xml.Name `xml:"packagingInfo,omitempty"`
+
+	// Packaging1Quantity: Количество лекарственных форм в первичной упаковке
+	Packaging1Quantity *base.DrugPackaging1QuantityType `xml:"packaging1Quantity,omitempty"`
+
+	// Packaging2Quantity: Количество первичных упаковок во вторичной (потребительской) упаковке
+	Packaging2Quantity *base.DrugPackaging2QuantityType `xml:"packaging2Quantity,omitempty"`
+
+	// SumaryPackagingQuantity: Количество потребительских единиц в потребительской упаковке. Если заполнены поле packaging1Quantity и поле packaging2Quantity, то игнорируется при приеме, автоматически рассчитывается как произведение packaging1Quantity*packaging2Quantity. Иначе принимается из пакета. Всегда принимается и сохраняется, если явно указано в пакете для извещений, первая версия которых размещена до выхода версии 10.3, независимо от разрешения ручного ввода
+	SumaryPackagingQuantity *base.DrugSumaryPackagingQuantityType `xml:"sumaryPackagingQuantity,omitempty"`
+}
+
 // DrugInfo9: Сведения о варианте поставки лекарственного препарата. Может быть указан только один вариант поставки (один лекарственный препарат). Если необходимо указать несколько вариантов поставки, то заполняется блок drugInterchangeTextFormInfo ("Сведения о лекарственных препаратах с учетом взаимозаменяемости не по справочнику "Группы взаимозаменяемости лекарственных препаратов") Если заполнен блок «По решению заказчика (организации, осуществляющей определение поставщика для заказчика)» (modificationInfo/reasonInfo/responsibleDecisionInfo), то игнорируется при приеме и заполняется из предыдущей версии извещения за исключением: o поля «Уникальный идентификатор лекарственного препарата в извещении-приглашении» (sid) o поля «Внешний идентификатор лекарственного препарата в извещении-приглашении» (externalSid) o поля «Количество (объем) закупаемого лекарственного препарата» (drugQuantity); o поля «Референтная цена по справочнику "Лекарственные препараты"» (averagePriceValue); o поля «Сумма выплат по референтной цене (всего)» (averagePriceTotal)
 type DrugInfo9 struct {
 	XMLName xml.Name `xml:"drugInfo,omitempty"`
@@ -5430,6 +5688,21 @@ type DrugInfo9 struct {
 
 	// BasicUnit: Признак основного варианта поставки. При приеме контролируется обязательность заполнения поля только для одного значения блока drugInfo в составе двух блоков objectInfoUsingReferenceInfo и objectInfoUsingTextForm
 	BasicUnit *bool `xml:"basicUnit,omitempty"`
+
+	// MedicamentalFormInfo47: Лекарственная форма
+	MedicamentalFormInfo MedicamentalFormInfo47 `xml:"medicamentalFormInfo"`
+
+	// DosageInfo47: Дозировка
+	DosageInfo DosageInfo47 `xml:"dosageInfo"`
+
+	// PackagingInfo45: Сведения об упаковке. В случае заполнения блока mustSpecifyDrugPackage при приеме контролируется заполненность блока packagingInfo во всех вариантах поставки лекарственных препаратов
+	PackagingInfo *PackagingInfo45 `xml:"packagingInfo,omitempty"`
+
+	// ManualUserOkei: Единица измерения товара. При приеме содержимое контролируется на присутствие в справочнике "Справочник: Единицы измерения потребительских единиц измерения лекарственных препаратов по ОКЕИ" (nsiDrugOKEI)
+	ManualUserOkei base.Okeiref `xml:"manualUserOKEI"`
+
+	// DrugChangeInfo: Информация указываемая при ручном изменении лекарственного препарата. При приеме контролируется обязательность заполнения в случае указания лекарственной формы, дозировки, упаковки, единицы измерения в текстовой форме. Начиная с версии 10.1 контролируется обязательность указания причины корректировки сведений о лекарственных препаратах
+	DrugChangeInfo *DrugChangeInfoType `xml:"drugChangeInfo,omitempty"`
 }
 
 // DrugPurchaseObjectInfo3ObjectInfoUsingTextFormDrugsInfo: Сведения о вариантах поставки лекарственных препаратов
@@ -5743,16 +6016,16 @@ type PurchaseObject7 struct {
 	Ktru *PurchaseObject16Ktru `xml:"KTRU,omitempty"`
 }
 
-// MedicamentalFormInfo11: Лекарственная форма. Игнорируется при приеме, автоматически заполняется при передаче по справочнику "Лекарственные препараты"
-type MedicamentalFormInfo11 struct {
+// MedicamentalFormInfo17: Лекарственная форма. Игнорируется при приеме, автоматически заполняется при передаче по справочнику "Лекарственные препараты"
+type MedicamentalFormInfo17 struct {
 	XMLName xml.Name `xml:"medicamentalFormInfo,omitempty"`
 
 	// MedicamentalFormName: Наименование лекарственной формы по справочнику "Лекарственные препараты" (nsiFarmDrugDictionary) (поле MNNsInfo\MNNInfo\medicamentalFormInfo\medicamentalFormName)
 	MedicamentalFormName base.DrugNameType `xml:",any"`
 }
 
-// DosageInfo11: Дозировка. Игнорируется при приеме, автоматически заполняется при передаче по справочнику "Лекарственные препараты"
-type DosageInfo11 struct {
+// DosageInfo17: Дозировка. Игнорируется при приеме, автоматически заполняется при передаче по справочнику "Лекарственные препараты"
+type DosageInfo17 struct {
 	XMLName xml.Name `xml:"dosageInfo,omitempty"`
 
 	// DosageGrlsvalue: Полная форма дозировки по справочнику "Лекарственные препараты" (nsiFarmDrugDictionary) (поле MNNsInfo\MNNInfo\dosagesInfo\dosageInfo\dosageGRLSValue )
@@ -5765,8 +6038,8 @@ type DosageInfo11 struct {
 	DosageUserName *base.DrugNameType `xml:"dosageUserName,omitempty"`
 }
 
-// PackagingInfo9: Сведения об упаковке. В случае заполнения блока mustSpecifyDrugPackage при приеме контролируется заполненность блока packagingInfo во всех вариантах поставки лекарственных препаратов
-type PackagingInfo9 struct {
+// PackagingInfo15: Сведения об упаковке. В случае заполнения блока mustSpecifyDrugPackage при приеме контролируется заполненность блока packagingInfo во всех вариантах поставки лекарственных препаратов
+type PackagingInfo15 struct {
 	XMLName xml.Name `xml:"packagingInfo,omitempty"`
 
 	// PositionTradeNameExternalCode: Уникальный внешний код лекарственного препарата по справочнику "Лекарственные препараты (поле MNNInfo\positionsTradeName\positionTradeName\positionTradeNameExternalCode документа nsiFarmDrugDictionary). При приеме контролируется наличие в справочнике "Лекарственные препараты" ЕИС лекарственного препарата с таким кодом и принадлежность лекарственного препарата с указанным кодом к МНН с кодом, указанным в поле MNNInfo
@@ -5816,14 +6089,14 @@ type DrugInfo10 struct {
 	// Ktru: Классификация по КТРУ. Блок всегда игнорируется при приеме, автоматически заполняется при передаче, если: • МНН указан из справочника ЕСКЛП. Не используется до выхода версии ЕИС 13.2
 	Ktru *base.Ktruref `xml:"KTRU,omitempty"`
 
-	// MedicamentalFormInfo26: Лекарственная форма. Игнорируется при приеме, автоматически заполняется при передаче по справочнику "Лекарственные препараты"
-	MedicamentalFormInfo *MedicamentalFormInfo26 `xml:"medicamentalFormInfo,omitempty"`
+	// MedicamentalFormInfo46: Лекарственная форма. Игнорируется при приеме, автоматически заполняется при передаче по справочнику "Лекарственные препараты"
+	MedicamentalFormInfo *MedicamentalFormInfo46 `xml:"medicamentalFormInfo,omitempty"`
 
-	// DosageInfo26: Дозировка. Игнорируется при приеме, автоматически заполняется при передаче по справочнику "Лекарственные препараты"
-	DosageInfo *DosageInfo26 `xml:"dosageInfo,omitempty"`
+	// DosageInfo46: Дозировка. Игнорируется при приеме, автоматически заполняется при передаче по справочнику "Лекарственные препараты"
+	DosageInfo *DosageInfo46 `xml:"dosageInfo,omitempty"`
 
-	// PackagingInfo24: Сведения об упаковке. В случае заполнения блока mustSpecifyDrugPackage при приеме контролируется заполненность блока packagingInfo во всех вариантах поставки лекарственных препаратов
-	PackagingInfo *PackagingInfo24 `xml:"packagingInfo,omitempty"`
+	// PackagingInfo44: Сведения об упаковке. В случае заполнения блока mustSpecifyDrugPackage при приеме контролируется заполненность блока packagingInfo во всех вариантах поставки лекарственных препаратов
+	PackagingInfo *PackagingInfo44 `xml:"packagingInfo,omitempty"`
 
 	// ManualUserOkei: Единица измерения товара, введенная вручную . Если заполнено в принимаемом документе, то считается, что внешняя система явно указала этот блок, содержимое контролируется на присутствие в справочнике "Справочник: Единицы измерения потребительских единиц измерения лекарственных препаратов по ОКЕИ" (nsiDrugOKEI). Для групп взаимозаменяемости (блок drugInterchangeInfo) всегда игнорируется при приеме, автоматически заполняется при передаче по справочнику "Лекарственные препараты"
 	ManualUserOkei *base.Okeiref `xml:"manualUserOKEI,omitempty"`
@@ -5895,6 +6168,39 @@ type TradeInfo7 struct {
 	DrugChangeInfo *DrugChangeInfoType `xml:"drugChangeInfo,omitempty"`
 }
 
+// MedicamentalFormInfo18: Лекарственная форма
+type MedicamentalFormInfo18 struct {
+	XMLName xml.Name `xml:"medicamentalFormInfo"`
+
+	// MedicamentalFormName: Наименование лекарственной формы. Игнорируется, начиная с даты в настройке ПРИЗ_Н_0112
+	MedicamentalFormName *base.DrugNameType `xml:"medicamentalFormName,omitempty"`
+
+	// MedicamentalForm: Лекарственная форма по справочнику "Справочник: Лекарственные формы" (nsiFarmMedicamentalForm) Заполняется, начиная с даты в настройке ПРИЗ_Н_0112
+	MedicamentalForm *base.MedicamentalFormRef `xml:"medicamentalForm,omitempty"`
+}
+
+// DosageInfo18: Дозировка
+type DosageInfo18 struct {
+	XMLName xml.Name `xml:"dosageInfo"`
+
+	// DosageGrlsvalue: Полная форма дозировки
+	DosageGrlsvalue base.DrugNameType `xml:",any"`
+}
+
+// PackagingInfo16: Сведения об упаковке. В случае заполнения блока mustSpecifyDrugPackage при приеме контролируется заполненность блока packagingInfo во всех вариантах поставки лекарственных препаратов
+type PackagingInfo16 struct {
+	XMLName xml.Name `xml:"packagingInfo,omitempty"`
+
+	// Packaging1Quantity: Количество лекарственных форм в первичной упаковке
+	Packaging1Quantity *base.DrugPackaging1QuantityType `xml:"packaging1Quantity,omitempty"`
+
+	// Packaging2Quantity: Количество первичных упаковок во вторичной (потребительской) упаковке
+	Packaging2Quantity *base.DrugPackaging2QuantityType `xml:"packaging2Quantity,omitempty"`
+
+	// SumaryPackagingQuantity: Количество потребительских единиц в потребительской упаковке. Если заполнены поле packaging1Quantity и поле packaging2Quantity, то игнорируется при приеме, автоматически рассчитывается как произведение packaging1Quantity*packaging2Quantity. Иначе принимается из пакета. Всегда принимается и сохраняется, если явно указано в пакете для извещений, первая версия которых размещена до выхода версии 10.3, независимо от разрешения ручного ввода
+	SumaryPackagingQuantity *base.DrugSumaryPackagingQuantityType `xml:"sumaryPackagingQuantity,omitempty"`
+}
+
 // DrugInfo11: Сведения о варианте поставки лекарственного препарата. Может быть указан только один вариант поставки (один лекарственный препарат). Если необходимо указать несколько вариантов поставки, то заполняется блок drugInterchangeTextFormInfo ("Сведения о лекарственных препаратах с учетом взаимозаменяемости не по справочнику "Группы взаимозаменяемости лекарственных препаратов") Если заполнен блок «По решению заказчика (организации, осуществляющей определение поставщика для заказчика)» (modificationInfo/reasonInfo/responsibleDecisionInfo), то игнорируется при приеме и заполняется из предыдущей версии извещения за исключением: o поля «Уникальный идентификатор лекарственного препарата в извещении-приглашении» (sid) o поля «Внешний идентификатор лекарственного препарата в извещении-приглашении» (externalSid) o поля «Количество (объем) закупаемого лекарственного препарата» (drugQuantity); o поля «Референтная цена по справочнику "Лекарственные препараты"» (averagePriceValue); o поля «Сумма выплат по референтной цене (всего)» (averagePriceTotal)
 type DrugInfo11 struct {
 	XMLName xml.Name `xml:"drugInfo,omitempty"`
@@ -5919,6 +6225,21 @@ type DrugInfo11 struct {
 
 	// BasicUnit: Признак основного варианта поставки. При приеме контролируется обязательность заполнения поля только для одного значения блока drugInfo в составе двух блоков objectInfoUsingReferenceInfo и objectInfoUsingTextForm
 	BasicUnit *bool `xml:"basicUnit,omitempty"`
+
+	// MedicamentalFormInfo47: Лекарственная форма
+	MedicamentalFormInfo MedicamentalFormInfo47 `xml:"medicamentalFormInfo"`
+
+	// DosageInfo47: Дозировка
+	DosageInfo DosageInfo47 `xml:"dosageInfo"`
+
+	// PackagingInfo45: Сведения об упаковке. В случае заполнения блока mustSpecifyDrugPackage при приеме контролируется заполненность блока packagingInfo во всех вариантах поставки лекарственных препаратов
+	PackagingInfo *PackagingInfo45 `xml:"packagingInfo,omitempty"`
+
+	// ManualUserOkei: Единица измерения товара. При приеме содержимое контролируется на присутствие в справочнике "Справочник: Единицы измерения потребительских единиц измерения лекарственных препаратов по ОКЕИ" (nsiDrugOKEI)
+	ManualUserOkei base.Okeiref `xml:"manualUserOKEI"`
+
+	// DrugChangeInfo: Информация указываемая при ручном изменении лекарственного препарата. При приеме контролируется обязательность заполнения в случае указания лекарственной формы, дозировки, упаковки, единицы измерения в текстовой форме. Начиная с версии 10.1 контролируется обязательность указания причины корректировки сведений о лекарственных препаратах
+	DrugChangeInfo *DrugChangeInfoType `xml:"drugChangeInfo,omitempty"`
 }
 
 // DrugPurchaseObjectInfo4ObjectInfoUsingTextFormDrugsInfo: Сведения о вариантах поставки лекарственных препаратов
@@ -6232,16 +6553,16 @@ type PurchaseObject8 struct {
 	Ktru *PurchaseObject16Ktru `xml:"KTRU,omitempty"`
 }
 
-// MedicamentalFormInfo12: Лекарственная форма. Игнорируется при приеме, автоматически заполняется при передаче по справочнику "Лекарственные препараты"
-type MedicamentalFormInfo12 struct {
+// MedicamentalFormInfo19: Лекарственная форма. Игнорируется при приеме, автоматически заполняется при передаче по справочнику "Лекарственные препараты"
+type MedicamentalFormInfo19 struct {
 	XMLName xml.Name `xml:"medicamentalFormInfo,omitempty"`
 
 	// MedicamentalFormName: Наименование лекарственной формы по справочнику "Лекарственные препараты" (nsiFarmDrugDictionary) (поле MNNsInfo\MNNInfo\medicamentalFormInfo\medicamentalFormName)
 	MedicamentalFormName base.DrugNameType `xml:",any"`
 }
 
-// DosageInfo12: Дозировка. Игнорируется при приеме, автоматически заполняется при передаче по справочнику "Лекарственные препараты"
-type DosageInfo12 struct {
+// DosageInfo19: Дозировка. Игнорируется при приеме, автоматически заполняется при передаче по справочнику "Лекарственные препараты"
+type DosageInfo19 struct {
 	XMLName xml.Name `xml:"dosageInfo,omitempty"`
 
 	// DosageGrlsvalue: Полная форма дозировки по справочнику "Лекарственные препараты" (nsiFarmDrugDictionary) (поле MNNsInfo\MNNInfo\dosagesInfo\dosageInfo\dosageGRLSValue )
@@ -6254,8 +6575,8 @@ type DosageInfo12 struct {
 	DosageUserName *base.DrugNameType `xml:"dosageUserName,omitempty"`
 }
 
-// PackagingInfo10: Сведения об упаковке. В случае заполнения блока mustSpecifyDrugPackage при приеме контролируется заполненность блока packagingInfo во всех вариантах поставки лекарственных препаратов
-type PackagingInfo10 struct {
+// PackagingInfo17: Сведения об упаковке. В случае заполнения блока mustSpecifyDrugPackage при приеме контролируется заполненность блока packagingInfo во всех вариантах поставки лекарственных препаратов
+type PackagingInfo17 struct {
 	XMLName xml.Name `xml:"packagingInfo,omitempty"`
 
 	// PositionTradeNameExternalCode: Уникальный внешний код лекарственного препарата по справочнику "Лекарственные препараты (поле MNNInfo\positionsTradeName\positionTradeName\positionTradeNameExternalCode документа nsiFarmDrugDictionary). При приеме контролируется наличие в справочнике "Лекарственные препараты" ЕИС лекарственного препарата с таким кодом и принадлежность лекарственного препарата с указанным кодом к МНН с кодом, указанным в поле MNNInfo
@@ -6305,14 +6626,14 @@ type DrugInfo12 struct {
 	// Ktru: Классификация по КТРУ. Блок всегда игнорируется при приеме, автоматически заполняется при передаче, если: • МНН указан из справочника ЕСКЛП. Не используется до выхода версии ЕИС 13.2
 	Ktru *base.Ktruref `xml:"KTRU,omitempty"`
 
-	// MedicamentalFormInfo26: Лекарственная форма. Игнорируется при приеме, автоматически заполняется при передаче по справочнику "Лекарственные препараты"
-	MedicamentalFormInfo *MedicamentalFormInfo26 `xml:"medicamentalFormInfo,omitempty"`
+	// MedicamentalFormInfo46: Лекарственная форма. Игнорируется при приеме, автоматически заполняется при передаче по справочнику "Лекарственные препараты"
+	MedicamentalFormInfo *MedicamentalFormInfo46 `xml:"medicamentalFormInfo,omitempty"`
 
-	// DosageInfo26: Дозировка. Игнорируется при приеме, автоматически заполняется при передаче по справочнику "Лекарственные препараты"
-	DosageInfo *DosageInfo26 `xml:"dosageInfo,omitempty"`
+	// DosageInfo46: Дозировка. Игнорируется при приеме, автоматически заполняется при передаче по справочнику "Лекарственные препараты"
+	DosageInfo *DosageInfo46 `xml:"dosageInfo,omitempty"`
 
-	// PackagingInfo24: Сведения об упаковке. В случае заполнения блока mustSpecifyDrugPackage при приеме контролируется заполненность блока packagingInfo во всех вариантах поставки лекарственных препаратов
-	PackagingInfo *PackagingInfo24 `xml:"packagingInfo,omitempty"`
+	// PackagingInfo44: Сведения об упаковке. В случае заполнения блока mustSpecifyDrugPackage при приеме контролируется заполненность блока packagingInfo во всех вариантах поставки лекарственных препаратов
+	PackagingInfo *PackagingInfo44 `xml:"packagingInfo,omitempty"`
 
 	// ManualUserOkei: Единица измерения товара, введенная вручную . Если заполнено в принимаемом документе, то считается, что внешняя система явно указала этот блок, содержимое контролируется на присутствие в справочнике "Справочник: Единицы измерения потребительских единиц измерения лекарственных препаратов по ОКЕИ" (nsiDrugOKEI). Для групп взаимозаменяемости (блок drugInterchangeInfo) всегда игнорируется при приеме, автоматически заполняется при передаче по справочнику "Лекарственные препараты"
 	ManualUserOkei *base.Okeiref `xml:"manualUserOKEI,omitempty"`
@@ -6384,6 +6705,39 @@ type TradeInfo8 struct {
 	DrugChangeInfo *DrugChangeInfoType `xml:"drugChangeInfo,omitempty"`
 }
 
+// MedicamentalFormInfo20: Лекарственная форма
+type MedicamentalFormInfo20 struct {
+	XMLName xml.Name `xml:"medicamentalFormInfo"`
+
+	// MedicamentalFormName: Наименование лекарственной формы. Игнорируется, начиная с даты в настройке ПРИЗ_Н_0112
+	MedicamentalFormName *base.DrugNameType `xml:"medicamentalFormName,omitempty"`
+
+	// MedicamentalForm: Лекарственная форма по справочнику "Справочник: Лекарственные формы" (nsiFarmMedicamentalForm) Заполняется, начиная с даты в настройке ПРИЗ_Н_0112
+	MedicamentalForm *base.MedicamentalFormRef `xml:"medicamentalForm,omitempty"`
+}
+
+// DosageInfo20: Дозировка
+type DosageInfo20 struct {
+	XMLName xml.Name `xml:"dosageInfo"`
+
+	// DosageGrlsvalue: Полная форма дозировки
+	DosageGrlsvalue base.DrugNameType `xml:",any"`
+}
+
+// PackagingInfo18: Сведения об упаковке. В случае заполнения блока mustSpecifyDrugPackage при приеме контролируется заполненность блока packagingInfo во всех вариантах поставки лекарственных препаратов
+type PackagingInfo18 struct {
+	XMLName xml.Name `xml:"packagingInfo,omitempty"`
+
+	// Packaging1Quantity: Количество лекарственных форм в первичной упаковке
+	Packaging1Quantity *base.DrugPackaging1QuantityType `xml:"packaging1Quantity,omitempty"`
+
+	// Packaging2Quantity: Количество первичных упаковок во вторичной (потребительской) упаковке
+	Packaging2Quantity *base.DrugPackaging2QuantityType `xml:"packaging2Quantity,omitempty"`
+
+	// SumaryPackagingQuantity: Количество потребительских единиц в потребительской упаковке. Если заполнены поле packaging1Quantity и поле packaging2Quantity, то игнорируется при приеме, автоматически рассчитывается как произведение packaging1Quantity*packaging2Quantity. Иначе принимается из пакета. Всегда принимается и сохраняется, если явно указано в пакете для извещений, первая версия которых размещена до выхода версии 10.3, независимо от разрешения ручного ввода
+	SumaryPackagingQuantity *base.DrugSumaryPackagingQuantityType `xml:"sumaryPackagingQuantity,omitempty"`
+}
+
 // DrugInfo13: Сведения о варианте поставки лекарственного препарата. Может быть указан только один вариант поставки (один лекарственный препарат). Если необходимо указать несколько вариантов поставки, то заполняется блок drugInterchangeTextFormInfo ("Сведения о лекарственных препаратах с учетом взаимозаменяемости не по справочнику "Группы взаимозаменяемости лекарственных препаратов") Если заполнен блок «По решению заказчика (организации, осуществляющей определение поставщика для заказчика)» (modificationInfo/reasonInfo/responsibleDecisionInfo), то игнорируется при приеме и заполняется из предыдущей версии извещения за исключением: o поля «Уникальный идентификатор лекарственного препарата в извещении-приглашении» (sid) o поля «Внешний идентификатор лекарственного препарата в извещении-приглашении» (externalSid) o поля «Количество (объем) закупаемого лекарственного препарата» (drugQuantity); o поля «Референтная цена по справочнику "Лекарственные препараты"» (averagePriceValue); o поля «Сумма выплат по референтной цене (всего)» (averagePriceTotal)
 type DrugInfo13 struct {
 	XMLName xml.Name `xml:"drugInfo,omitempty"`
@@ -6408,6 +6762,21 @@ type DrugInfo13 struct {
 
 	// BasicUnit: Признак основного варианта поставки. При приеме контролируется обязательность заполнения поля только для одного значения блока drugInfo в составе двух блоков objectInfoUsingReferenceInfo и objectInfoUsingTextForm
 	BasicUnit *bool `xml:"basicUnit,omitempty"`
+
+	// MedicamentalFormInfo47: Лекарственная форма
+	MedicamentalFormInfo MedicamentalFormInfo47 `xml:"medicamentalFormInfo"`
+
+	// DosageInfo47: Дозировка
+	DosageInfo DosageInfo47 `xml:"dosageInfo"`
+
+	// PackagingInfo45: Сведения об упаковке. В случае заполнения блока mustSpecifyDrugPackage при приеме контролируется заполненность блока packagingInfo во всех вариантах поставки лекарственных препаратов
+	PackagingInfo *PackagingInfo45 `xml:"packagingInfo,omitempty"`
+
+	// ManualUserOkei: Единица измерения товара. При приеме содержимое контролируется на присутствие в справочнике "Справочник: Единицы измерения потребительских единиц измерения лекарственных препаратов по ОКЕИ" (nsiDrugOKEI)
+	ManualUserOkei base.Okeiref `xml:"manualUserOKEI"`
+
+	// DrugChangeInfo: Информация указываемая при ручном изменении лекарственного препарата. При приеме контролируется обязательность заполнения в случае указания лекарственной формы, дозировки, упаковки, единицы измерения в текстовой форме. Начиная с версии 10.1 контролируется обязательность указания причины корректировки сведений о лекарственных препаратах
+	DrugChangeInfo *DrugChangeInfoType `xml:"drugChangeInfo,omitempty"`
 }
 
 // DrugPurchaseObjectInfo5ObjectInfoUsingTextFormDrugsInfo: Сведения о вариантах поставки лекарственных препаратов
@@ -6721,16 +7090,16 @@ type PurchaseObject9 struct {
 	Ktru *PurchaseObject16Ktru `xml:"KTRU,omitempty"`
 }
 
-// MedicamentalFormInfo13: Лекарственная форма. Игнорируется при приеме, автоматически заполняется при передаче по справочнику "Лекарственные препараты"
-type MedicamentalFormInfo13 struct {
+// MedicamentalFormInfo21: Лекарственная форма. Игнорируется при приеме, автоматически заполняется при передаче по справочнику "Лекарственные препараты"
+type MedicamentalFormInfo21 struct {
 	XMLName xml.Name `xml:"medicamentalFormInfo,omitempty"`
 
 	// MedicamentalFormName: Наименование лекарственной формы по справочнику "Лекарственные препараты" (nsiFarmDrugDictionary) (поле MNNsInfo\MNNInfo\medicamentalFormInfo\medicamentalFormName)
 	MedicamentalFormName base.DrugNameType `xml:",any"`
 }
 
-// DosageInfo13: Дозировка. Игнорируется при приеме, автоматически заполняется при передаче по справочнику "Лекарственные препараты"
-type DosageInfo13 struct {
+// DosageInfo21: Дозировка. Игнорируется при приеме, автоматически заполняется при передаче по справочнику "Лекарственные препараты"
+type DosageInfo21 struct {
 	XMLName xml.Name `xml:"dosageInfo,omitempty"`
 
 	// DosageGrlsvalue: Полная форма дозировки по справочнику "Лекарственные препараты" (nsiFarmDrugDictionary) (поле MNNsInfo\MNNInfo\dosagesInfo\dosageInfo\dosageGRLSValue )
@@ -6743,8 +7112,8 @@ type DosageInfo13 struct {
 	DosageUserName *base.DrugNameType `xml:"dosageUserName,omitempty"`
 }
 
-// PackagingInfo11: Сведения об упаковке. В случае заполнения блока mustSpecifyDrugPackage при приеме контролируется заполненность блока packagingInfo во всех вариантах поставки лекарственных препаратов
-type PackagingInfo11 struct {
+// PackagingInfo19: Сведения об упаковке. В случае заполнения блока mustSpecifyDrugPackage при приеме контролируется заполненность блока packagingInfo во всех вариантах поставки лекарственных препаратов
+type PackagingInfo19 struct {
 	XMLName xml.Name `xml:"packagingInfo,omitempty"`
 
 	// PositionTradeNameExternalCode: Уникальный внешний код лекарственного препарата по справочнику "Лекарственные препараты (поле MNNInfo\positionsTradeName\positionTradeName\positionTradeNameExternalCode документа nsiFarmDrugDictionary). При приеме контролируется наличие в справочнике "Лекарственные препараты" ЕИС лекарственного препарата с таким кодом и принадлежность лекарственного препарата с указанным кодом к МНН с кодом, указанным в поле MNNInfo
@@ -6794,14 +7163,14 @@ type DrugInfo14 struct {
 	// Ktru: Классификация по КТРУ. Блок всегда игнорируется при приеме, автоматически заполняется при передаче, если: • МНН указан из справочника ЕСКЛП. Не используется до выхода версии ЕИС 13.2
 	Ktru *base.Ktruref `xml:"KTRU,omitempty"`
 
-	// MedicamentalFormInfo26: Лекарственная форма. Игнорируется при приеме, автоматически заполняется при передаче по справочнику "Лекарственные препараты"
-	MedicamentalFormInfo *MedicamentalFormInfo26 `xml:"medicamentalFormInfo,omitempty"`
+	// MedicamentalFormInfo46: Лекарственная форма. Игнорируется при приеме, автоматически заполняется при передаче по справочнику "Лекарственные препараты"
+	MedicamentalFormInfo *MedicamentalFormInfo46 `xml:"medicamentalFormInfo,omitempty"`
 
-	// DosageInfo26: Дозировка. Игнорируется при приеме, автоматически заполняется при передаче по справочнику "Лекарственные препараты"
-	DosageInfo *DosageInfo26 `xml:"dosageInfo,omitempty"`
+	// DosageInfo46: Дозировка. Игнорируется при приеме, автоматически заполняется при передаче по справочнику "Лекарственные препараты"
+	DosageInfo *DosageInfo46 `xml:"dosageInfo,omitempty"`
 
-	// PackagingInfo24: Сведения об упаковке. В случае заполнения блока mustSpecifyDrugPackage при приеме контролируется заполненность блока packagingInfo во всех вариантах поставки лекарственных препаратов
-	PackagingInfo *PackagingInfo24 `xml:"packagingInfo,omitempty"`
+	// PackagingInfo44: Сведения об упаковке. В случае заполнения блока mustSpecifyDrugPackage при приеме контролируется заполненность блока packagingInfo во всех вариантах поставки лекарственных препаратов
+	PackagingInfo *PackagingInfo44 `xml:"packagingInfo,omitempty"`
 
 	// ManualUserOkei: Единица измерения товара, введенная вручную . Если заполнено в принимаемом документе, то считается, что внешняя система явно указала этот блок, содержимое контролируется на присутствие в справочнике "Справочник: Единицы измерения потребительских единиц измерения лекарственных препаратов по ОКЕИ" (nsiDrugOKEI). Для групп взаимозаменяемости (блок drugInterchangeInfo) всегда игнорируется при приеме, автоматически заполняется при передаче по справочнику "Лекарственные препараты"
 	ManualUserOkei *base.Okeiref `xml:"manualUserOKEI,omitempty"`
@@ -6873,6 +7242,39 @@ type TradeInfo9 struct {
 	DrugChangeInfo *DrugChangeInfoType `xml:"drugChangeInfo,omitempty"`
 }
 
+// MedicamentalFormInfo22: Лекарственная форма
+type MedicamentalFormInfo22 struct {
+	XMLName xml.Name `xml:"medicamentalFormInfo"`
+
+	// MedicamentalFormName: Наименование лекарственной формы. Игнорируется, начиная с даты в настройке ПРИЗ_Н_0112
+	MedicamentalFormName *base.DrugNameType `xml:"medicamentalFormName,omitempty"`
+
+	// MedicamentalForm: Лекарственная форма по справочнику "Справочник: Лекарственные формы" (nsiFarmMedicamentalForm) Заполняется, начиная с даты в настройке ПРИЗ_Н_0112
+	MedicamentalForm *base.MedicamentalFormRef `xml:"medicamentalForm,omitempty"`
+}
+
+// DosageInfo22: Дозировка
+type DosageInfo22 struct {
+	XMLName xml.Name `xml:"dosageInfo"`
+
+	// DosageGrlsvalue: Полная форма дозировки
+	DosageGrlsvalue base.DrugNameType `xml:",any"`
+}
+
+// PackagingInfo20: Сведения об упаковке. В случае заполнения блока mustSpecifyDrugPackage при приеме контролируется заполненность блока packagingInfo во всех вариантах поставки лекарственных препаратов
+type PackagingInfo20 struct {
+	XMLName xml.Name `xml:"packagingInfo,omitempty"`
+
+	// Packaging1Quantity: Количество лекарственных форм в первичной упаковке
+	Packaging1Quantity *base.DrugPackaging1QuantityType `xml:"packaging1Quantity,omitempty"`
+
+	// Packaging2Quantity: Количество первичных упаковок во вторичной (потребительской) упаковке
+	Packaging2Quantity *base.DrugPackaging2QuantityType `xml:"packaging2Quantity,omitempty"`
+
+	// SumaryPackagingQuantity: Количество потребительских единиц в потребительской упаковке. Если заполнены поле packaging1Quantity и поле packaging2Quantity, то игнорируется при приеме, автоматически рассчитывается как произведение packaging1Quantity*packaging2Quantity. Иначе принимается из пакета. Всегда принимается и сохраняется, если явно указано в пакете для извещений, первая версия которых размещена до выхода версии 10.3, независимо от разрешения ручного ввода
+	SumaryPackagingQuantity *base.DrugSumaryPackagingQuantityType `xml:"sumaryPackagingQuantity,omitempty"`
+}
+
 // DrugInfo15: Сведения о варианте поставки лекарственного препарата. Может быть указан только один вариант поставки (один лекарственный препарат). Если необходимо указать несколько вариантов поставки, то заполняется блок drugInterchangeTextFormInfo ("Сведения о лекарственных препаратах с учетом взаимозаменяемости не по справочнику "Группы взаимозаменяемости лекарственных препаратов") Если заполнен блок «По решению заказчика (организации, осуществляющей определение поставщика для заказчика)» (modificationInfo/reasonInfo/responsibleDecisionInfo), то игнорируется при приеме и заполняется из предыдущей версии извещения за исключением: o поля «Уникальный идентификатор лекарственного препарата в извещении-приглашении» (sid) o поля «Внешний идентификатор лекарственного препарата в извещении-приглашении» (externalSid) o поля «Количество (объем) закупаемого лекарственного препарата» (drugQuantity); o поля «Референтная цена по справочнику "Лекарственные препараты"» (averagePriceValue); o поля «Сумма выплат по референтной цене (всего)» (averagePriceTotal)
 type DrugInfo15 struct {
 	XMLName xml.Name `xml:"drugInfo,omitempty"`
@@ -6897,6 +7299,21 @@ type DrugInfo15 struct {
 
 	// BasicUnit: Признак основного варианта поставки. При приеме контролируется обязательность заполнения поля только для одного значения блока drugInfo в составе двух блоков objectInfoUsingReferenceInfo и objectInfoUsingTextForm
 	BasicUnit *bool `xml:"basicUnit,omitempty"`
+
+	// MedicamentalFormInfo47: Лекарственная форма
+	MedicamentalFormInfo MedicamentalFormInfo47 `xml:"medicamentalFormInfo"`
+
+	// DosageInfo47: Дозировка
+	DosageInfo DosageInfo47 `xml:"dosageInfo"`
+
+	// PackagingInfo45: Сведения об упаковке. В случае заполнения блока mustSpecifyDrugPackage при приеме контролируется заполненность блока packagingInfo во всех вариантах поставки лекарственных препаратов
+	PackagingInfo *PackagingInfo45 `xml:"packagingInfo,omitempty"`
+
+	// ManualUserOkei: Единица измерения товара. При приеме содержимое контролируется на присутствие в справочнике "Справочник: Единицы измерения потребительских единиц измерения лекарственных препаратов по ОКЕИ" (nsiDrugOKEI)
+	ManualUserOkei base.Okeiref `xml:"manualUserOKEI"`
+
+	// DrugChangeInfo: Информация указываемая при ручном изменении лекарственного препарата. При приеме контролируется обязательность заполнения в случае указания лекарственной формы, дозировки, упаковки, единицы измерения в текстовой форме. Начиная с версии 10.1 контролируется обязательность указания причины корректировки сведений о лекарственных препаратах
+	DrugChangeInfo *DrugChangeInfoType `xml:"drugChangeInfo,omitempty"`
 }
 
 // DrugPurchaseObjectInfo6ObjectInfoUsingTextFormDrugsInfo: Сведения о вариантах поставки лекарственных препаратов
@@ -7210,16 +7627,16 @@ type PurchaseObject10 struct {
 	Ktru *PurchaseObject16Ktru `xml:"KTRU,omitempty"`
 }
 
-// MedicamentalFormInfo14: Лекарственная форма. Игнорируется при приеме, автоматически заполняется при передаче по справочнику "Лекарственные препараты"
-type MedicamentalFormInfo14 struct {
+// MedicamentalFormInfo23: Лекарственная форма. Игнорируется при приеме, автоматически заполняется при передаче по справочнику "Лекарственные препараты"
+type MedicamentalFormInfo23 struct {
 	XMLName xml.Name `xml:"medicamentalFormInfo,omitempty"`
 
 	// MedicamentalFormName: Наименование лекарственной формы по справочнику "Лекарственные препараты" (nsiFarmDrugDictionary) (поле MNNsInfo\MNNInfo\medicamentalFormInfo\medicamentalFormName)
 	MedicamentalFormName base.DrugNameType `xml:",any"`
 }
 
-// DosageInfo14: Дозировка. Игнорируется при приеме, автоматически заполняется при передаче по справочнику "Лекарственные препараты"
-type DosageInfo14 struct {
+// DosageInfo23: Дозировка. Игнорируется при приеме, автоматически заполняется при передаче по справочнику "Лекарственные препараты"
+type DosageInfo23 struct {
 	XMLName xml.Name `xml:"dosageInfo,omitempty"`
 
 	// DosageGrlsvalue: Полная форма дозировки по справочнику "Лекарственные препараты" (nsiFarmDrugDictionary) (поле MNNsInfo\MNNInfo\dosagesInfo\dosageInfo\dosageGRLSValue )
@@ -7232,8 +7649,8 @@ type DosageInfo14 struct {
 	DosageUserName *base.DrugNameType `xml:"dosageUserName,omitempty"`
 }
 
-// PackagingInfo12: Сведения об упаковке. В случае заполнения блока mustSpecifyDrugPackage при приеме контролируется заполненность блока packagingInfo во всех вариантах поставки лекарственных препаратов
-type PackagingInfo12 struct {
+// PackagingInfo21: Сведения об упаковке. В случае заполнения блока mustSpecifyDrugPackage при приеме контролируется заполненность блока packagingInfo во всех вариантах поставки лекарственных препаратов
+type PackagingInfo21 struct {
 	XMLName xml.Name `xml:"packagingInfo,omitempty"`
 
 	// PositionTradeNameExternalCode: Уникальный внешний код лекарственного препарата по справочнику "Лекарственные препараты (поле MNNInfo\positionsTradeName\positionTradeName\positionTradeNameExternalCode документа nsiFarmDrugDictionary). При приеме контролируется наличие в справочнике "Лекарственные препараты" ЕИС лекарственного препарата с таким кодом и принадлежность лекарственного препарата с указанным кодом к МНН с кодом, указанным в поле MNNInfo
@@ -7283,14 +7700,14 @@ type DrugInfo16 struct {
 	// Ktru: Классификация по КТРУ. Блок всегда игнорируется при приеме, автоматически заполняется при передаче, если: • МНН указан из справочника ЕСКЛП. Не используется до выхода версии ЕИС 13.2
 	Ktru *base.Ktruref `xml:"KTRU,omitempty"`
 
-	// MedicamentalFormInfo26: Лекарственная форма. Игнорируется при приеме, автоматически заполняется при передаче по справочнику "Лекарственные препараты"
-	MedicamentalFormInfo *MedicamentalFormInfo26 `xml:"medicamentalFormInfo,omitempty"`
+	// MedicamentalFormInfo46: Лекарственная форма. Игнорируется при приеме, автоматически заполняется при передаче по справочнику "Лекарственные препараты"
+	MedicamentalFormInfo *MedicamentalFormInfo46 `xml:"medicamentalFormInfo,omitempty"`
 
-	// DosageInfo26: Дозировка. Игнорируется при приеме, автоматически заполняется при передаче по справочнику "Лекарственные препараты"
-	DosageInfo *DosageInfo26 `xml:"dosageInfo,omitempty"`
+	// DosageInfo46: Дозировка. Игнорируется при приеме, автоматически заполняется при передаче по справочнику "Лекарственные препараты"
+	DosageInfo *DosageInfo46 `xml:"dosageInfo,omitempty"`
 
-	// PackagingInfo24: Сведения об упаковке. В случае заполнения блока mustSpecifyDrugPackage при приеме контролируется заполненность блока packagingInfo во всех вариантах поставки лекарственных препаратов
-	PackagingInfo *PackagingInfo24 `xml:"packagingInfo,omitempty"`
+	// PackagingInfo44: Сведения об упаковке. В случае заполнения блока mustSpecifyDrugPackage при приеме контролируется заполненность блока packagingInfo во всех вариантах поставки лекарственных препаратов
+	PackagingInfo *PackagingInfo44 `xml:"packagingInfo,omitempty"`
 
 	// ManualUserOkei: Единица измерения товара, введенная вручную . Если заполнено в принимаемом документе, то считается, что внешняя система явно указала этот блок, содержимое контролируется на присутствие в справочнике "Справочник: Единицы измерения потребительских единиц измерения лекарственных препаратов по ОКЕИ" (nsiDrugOKEI). Для групп взаимозаменяемости (блок drugInterchangeInfo) всегда игнорируется при приеме, автоматически заполняется при передаче по справочнику "Лекарственные препараты"
 	ManualUserOkei *base.Okeiref `xml:"manualUserOKEI,omitempty"`
@@ -7362,6 +7779,39 @@ type TradeInfo10 struct {
 	DrugChangeInfo *DrugChangeInfoType `xml:"drugChangeInfo,omitempty"`
 }
 
+// MedicamentalFormInfo24: Лекарственная форма
+type MedicamentalFormInfo24 struct {
+	XMLName xml.Name `xml:"medicamentalFormInfo"`
+
+	// MedicamentalFormName: Наименование лекарственной формы. Игнорируется, начиная с даты в настройке ПРИЗ_Н_0112
+	MedicamentalFormName *base.DrugNameType `xml:"medicamentalFormName,omitempty"`
+
+	// MedicamentalForm: Лекарственная форма по справочнику "Справочник: Лекарственные формы" (nsiFarmMedicamentalForm) Заполняется, начиная с даты в настройке ПРИЗ_Н_0112
+	MedicamentalForm *base.MedicamentalFormRef `xml:"medicamentalForm,omitempty"`
+}
+
+// DosageInfo24: Дозировка
+type DosageInfo24 struct {
+	XMLName xml.Name `xml:"dosageInfo"`
+
+	// DosageGrlsvalue: Полная форма дозировки
+	DosageGrlsvalue base.DrugNameType `xml:",any"`
+}
+
+// PackagingInfo22: Сведения об упаковке. В случае заполнения блока mustSpecifyDrugPackage при приеме контролируется заполненность блока packagingInfo во всех вариантах поставки лекарственных препаратов
+type PackagingInfo22 struct {
+	XMLName xml.Name `xml:"packagingInfo,omitempty"`
+
+	// Packaging1Quantity: Количество лекарственных форм в первичной упаковке
+	Packaging1Quantity *base.DrugPackaging1QuantityType `xml:"packaging1Quantity,omitempty"`
+
+	// Packaging2Quantity: Количество первичных упаковок во вторичной (потребительской) упаковке
+	Packaging2Quantity *base.DrugPackaging2QuantityType `xml:"packaging2Quantity,omitempty"`
+
+	// SumaryPackagingQuantity: Количество потребительских единиц в потребительской упаковке. Если заполнены поле packaging1Quantity и поле packaging2Quantity, то игнорируется при приеме, автоматически рассчитывается как произведение packaging1Quantity*packaging2Quantity. Иначе принимается из пакета. Всегда принимается и сохраняется, если явно указано в пакете для извещений, первая версия которых размещена до выхода версии 10.3, независимо от разрешения ручного ввода
+	SumaryPackagingQuantity *base.DrugSumaryPackagingQuantityType `xml:"sumaryPackagingQuantity,omitempty"`
+}
+
 // DrugInfo17: Сведения о варианте поставки лекарственного препарата. Может быть указан только один вариант поставки (один лекарственный препарат). Если необходимо указать несколько вариантов поставки, то заполняется блок drugInterchangeTextFormInfo ("Сведения о лекарственных препаратах с учетом взаимозаменяемости не по справочнику "Группы взаимозаменяемости лекарственных препаратов") Если заполнен блок «По решению заказчика (организации, осуществляющей определение поставщика для заказчика)» (modificationInfo/reasonInfo/responsibleDecisionInfo), то игнорируется при приеме и заполняется из предыдущей версии извещения за исключением: o поля «Уникальный идентификатор лекарственного препарата в извещении-приглашении» (sid) o поля «Внешний идентификатор лекарственного препарата в извещении-приглашении» (externalSid) o поля «Количество (объем) закупаемого лекарственного препарата» (drugQuantity); o поля «Референтная цена по справочнику "Лекарственные препараты"» (averagePriceValue); o поля «Сумма выплат по референтной цене (всего)» (averagePriceTotal)
 type DrugInfo17 struct {
 	XMLName xml.Name `xml:"drugInfo,omitempty"`
@@ -7386,6 +7836,21 @@ type DrugInfo17 struct {
 
 	// BasicUnit: Признак основного варианта поставки. При приеме контролируется обязательность заполнения поля только для одного значения блока drugInfo в составе двух блоков objectInfoUsingReferenceInfo и objectInfoUsingTextForm
 	BasicUnit *bool `xml:"basicUnit,omitempty"`
+
+	// MedicamentalFormInfo47: Лекарственная форма
+	MedicamentalFormInfo MedicamentalFormInfo47 `xml:"medicamentalFormInfo"`
+
+	// DosageInfo47: Дозировка
+	DosageInfo DosageInfo47 `xml:"dosageInfo"`
+
+	// PackagingInfo45: Сведения об упаковке. В случае заполнения блока mustSpecifyDrugPackage при приеме контролируется заполненность блока packagingInfo во всех вариантах поставки лекарственных препаратов
+	PackagingInfo *PackagingInfo45 `xml:"packagingInfo,omitempty"`
+
+	// ManualUserOkei: Единица измерения товара. При приеме содержимое контролируется на присутствие в справочнике "Справочник: Единицы измерения потребительских единиц измерения лекарственных препаратов по ОКЕИ" (nsiDrugOKEI)
+	ManualUserOkei base.Okeiref `xml:"manualUserOKEI"`
+
+	// DrugChangeInfo: Информация указываемая при ручном изменении лекарственного препарата. При приеме контролируется обязательность заполнения в случае указания лекарственной формы, дозировки, упаковки, единицы измерения в текстовой форме. Начиная с версии 10.1 контролируется обязательность указания причины корректировки сведений о лекарственных препаратах
+	DrugChangeInfo *DrugChangeInfoType `xml:"drugChangeInfo,omitempty"`
 }
 
 // DrugPurchaseObjectInfo7ObjectInfoUsingTextFormDrugsInfo: Сведения о вариантах поставки лекарственных препаратов
@@ -7699,16 +8164,16 @@ type PurchaseObject11 struct {
 	Ktru *PurchaseObject16Ktru `xml:"KTRU,omitempty"`
 }
 
-// MedicamentalFormInfo15: Лекарственная форма. Игнорируется при приеме, автоматически заполняется при передаче по справочнику "Лекарственные препараты"
-type MedicamentalFormInfo15 struct {
+// MedicamentalFormInfo25: Лекарственная форма. Игнорируется при приеме, автоматически заполняется при передаче по справочнику "Лекарственные препараты"
+type MedicamentalFormInfo25 struct {
 	XMLName xml.Name `xml:"medicamentalFormInfo,omitempty"`
 
 	// MedicamentalFormName: Наименование лекарственной формы по справочнику "Лекарственные препараты" (nsiFarmDrugDictionary) (поле MNNsInfo\MNNInfo\medicamentalFormInfo\medicamentalFormName)
 	MedicamentalFormName base.DrugNameType `xml:",any"`
 }
 
-// DosageInfo15: Дозировка. Игнорируется при приеме, автоматически заполняется при передаче по справочнику "Лекарственные препараты"
-type DosageInfo15 struct {
+// DosageInfo25: Дозировка. Игнорируется при приеме, автоматически заполняется при передаче по справочнику "Лекарственные препараты"
+type DosageInfo25 struct {
 	XMLName xml.Name `xml:"dosageInfo,omitempty"`
 
 	// DosageGrlsvalue: Полная форма дозировки по справочнику "Лекарственные препараты" (nsiFarmDrugDictionary) (поле MNNsInfo\MNNInfo\dosagesInfo\dosageInfo\dosageGRLSValue )
@@ -7721,8 +8186,8 @@ type DosageInfo15 struct {
 	DosageUserName *base.DrugNameType `xml:"dosageUserName,omitempty"`
 }
 
-// PackagingInfo13: Сведения об упаковке. В случае заполнения блока mustSpecifyDrugPackage при приеме контролируется заполненность блока packagingInfo во всех вариантах поставки лекарственных препаратов
-type PackagingInfo13 struct {
+// PackagingInfo23: Сведения об упаковке. В случае заполнения блока mustSpecifyDrugPackage при приеме контролируется заполненность блока packagingInfo во всех вариантах поставки лекарственных препаратов
+type PackagingInfo23 struct {
 	XMLName xml.Name `xml:"packagingInfo,omitempty"`
 
 	// PositionTradeNameExternalCode: Уникальный внешний код лекарственного препарата по справочнику "Лекарственные препараты (поле MNNInfo\positionsTradeName\positionTradeName\positionTradeNameExternalCode документа nsiFarmDrugDictionary). При приеме контролируется наличие в справочнике "Лекарственные препараты" ЕИС лекарственного препарата с таким кодом и принадлежность лекарственного препарата с указанным кодом к МНН с кодом, указанным в поле MNNInfo
@@ -7772,14 +8237,14 @@ type DrugInfo18 struct {
 	// Ktru: Классификация по КТРУ. Блок всегда игнорируется при приеме, автоматически заполняется при передаче, если: • МНН указан из справочника ЕСКЛП. Не используется до выхода версии ЕИС 13.2
 	Ktru *base.Ktruref `xml:"KTRU,omitempty"`
 
-	// MedicamentalFormInfo26: Лекарственная форма. Игнорируется при приеме, автоматически заполняется при передаче по справочнику "Лекарственные препараты"
-	MedicamentalFormInfo *MedicamentalFormInfo26 `xml:"medicamentalFormInfo,omitempty"`
+	// MedicamentalFormInfo46: Лекарственная форма. Игнорируется при приеме, автоматически заполняется при передаче по справочнику "Лекарственные препараты"
+	MedicamentalFormInfo *MedicamentalFormInfo46 `xml:"medicamentalFormInfo,omitempty"`
 
-	// DosageInfo26: Дозировка. Игнорируется при приеме, автоматически заполняется при передаче по справочнику "Лекарственные препараты"
-	DosageInfo *DosageInfo26 `xml:"dosageInfo,omitempty"`
+	// DosageInfo46: Дозировка. Игнорируется при приеме, автоматически заполняется при передаче по справочнику "Лекарственные препараты"
+	DosageInfo *DosageInfo46 `xml:"dosageInfo,omitempty"`
 
-	// PackagingInfo24: Сведения об упаковке. В случае заполнения блока mustSpecifyDrugPackage при приеме контролируется заполненность блока packagingInfo во всех вариантах поставки лекарственных препаратов
-	PackagingInfo *PackagingInfo24 `xml:"packagingInfo,omitempty"`
+	// PackagingInfo44: Сведения об упаковке. В случае заполнения блока mustSpecifyDrugPackage при приеме контролируется заполненность блока packagingInfo во всех вариантах поставки лекарственных препаратов
+	PackagingInfo *PackagingInfo44 `xml:"packagingInfo,omitempty"`
 
 	// ManualUserOkei: Единица измерения товара, введенная вручную . Если заполнено в принимаемом документе, то считается, что внешняя система явно указала этот блок, содержимое контролируется на присутствие в справочнике "Справочник: Единицы измерения потребительских единиц измерения лекарственных препаратов по ОКЕИ" (nsiDrugOKEI). Для групп взаимозаменяемости (блок drugInterchangeInfo) всегда игнорируется при приеме, автоматически заполняется при передаче по справочнику "Лекарственные препараты"
 	ManualUserOkei *base.Okeiref `xml:"manualUserOKEI,omitempty"`
@@ -7851,6 +8316,39 @@ type TradeInfo11 struct {
 	DrugChangeInfo *DrugChangeInfoType `xml:"drugChangeInfo,omitempty"`
 }
 
+// MedicamentalFormInfo26: Лекарственная форма
+type MedicamentalFormInfo26 struct {
+	XMLName xml.Name `xml:"medicamentalFormInfo"`
+
+	// MedicamentalFormName: Наименование лекарственной формы. Игнорируется, начиная с даты в настройке ПРИЗ_Н_0112
+	MedicamentalFormName *base.DrugNameType `xml:"medicamentalFormName,omitempty"`
+
+	// MedicamentalForm: Лекарственная форма по справочнику "Справочник: Лекарственные формы" (nsiFarmMedicamentalForm) Заполняется, начиная с даты в настройке ПРИЗ_Н_0112
+	MedicamentalForm *base.MedicamentalFormRef `xml:"medicamentalForm,omitempty"`
+}
+
+// DosageInfo26: Дозировка
+type DosageInfo26 struct {
+	XMLName xml.Name `xml:"dosageInfo"`
+
+	// DosageGrlsvalue: Полная форма дозировки
+	DosageGrlsvalue base.DrugNameType `xml:",any"`
+}
+
+// PackagingInfo24: Сведения об упаковке. В случае заполнения блока mustSpecifyDrugPackage при приеме контролируется заполненность блока packagingInfo во всех вариантах поставки лекарственных препаратов
+type PackagingInfo24 struct {
+	XMLName xml.Name `xml:"packagingInfo,omitempty"`
+
+	// Packaging1Quantity: Количество лекарственных форм в первичной упаковке
+	Packaging1Quantity *base.DrugPackaging1QuantityType `xml:"packaging1Quantity,omitempty"`
+
+	// Packaging2Quantity: Количество первичных упаковок во вторичной (потребительской) упаковке
+	Packaging2Quantity *base.DrugPackaging2QuantityType `xml:"packaging2Quantity,omitempty"`
+
+	// SumaryPackagingQuantity: Количество потребительских единиц в потребительской упаковке. Если заполнены поле packaging1Quantity и поле packaging2Quantity, то игнорируется при приеме, автоматически рассчитывается как произведение packaging1Quantity*packaging2Quantity. Иначе принимается из пакета. Всегда принимается и сохраняется, если явно указано в пакете для извещений, первая версия которых размещена до выхода версии 10.3, независимо от разрешения ручного ввода
+	SumaryPackagingQuantity *base.DrugSumaryPackagingQuantityType `xml:"sumaryPackagingQuantity,omitempty"`
+}
+
 // DrugInfo19: Сведения о варианте поставки лекарственного препарата. Может быть указан только один вариант поставки (один лекарственный препарат). Если необходимо указать несколько вариантов поставки, то заполняется блок drugInterchangeTextFormInfo ("Сведения о лекарственных препаратах с учетом взаимозаменяемости не по справочнику "Группы взаимозаменяемости лекарственных препаратов") Если заполнен блок «По решению заказчика (организации, осуществляющей определение поставщика для заказчика)» (modificationInfo/reasonInfo/responsibleDecisionInfo), то игнорируется при приеме и заполняется из предыдущей версии извещения за исключением: o поля «Уникальный идентификатор лекарственного препарата в извещении-приглашении» (sid) o поля «Внешний идентификатор лекарственного препарата в извещении-приглашении» (externalSid) o поля «Количество (объем) закупаемого лекарственного препарата» (drugQuantity); o поля «Референтная цена по справочнику "Лекарственные препараты"» (averagePriceValue); o поля «Сумма выплат по референтной цене (всего)» (averagePriceTotal)
 type DrugInfo19 struct {
 	XMLName xml.Name `xml:"drugInfo,omitempty"`
@@ -7875,6 +8373,21 @@ type DrugInfo19 struct {
 
 	// BasicUnit: Признак основного варианта поставки. При приеме контролируется обязательность заполнения поля только для одного значения блока drugInfo в составе двух блоков objectInfoUsingReferenceInfo и objectInfoUsingTextForm
 	BasicUnit *bool `xml:"basicUnit,omitempty"`
+
+	// MedicamentalFormInfo47: Лекарственная форма
+	MedicamentalFormInfo MedicamentalFormInfo47 `xml:"medicamentalFormInfo"`
+
+	// DosageInfo47: Дозировка
+	DosageInfo DosageInfo47 `xml:"dosageInfo"`
+
+	// PackagingInfo45: Сведения об упаковке. В случае заполнения блока mustSpecifyDrugPackage при приеме контролируется заполненность блока packagingInfo во всех вариантах поставки лекарственных препаратов
+	PackagingInfo *PackagingInfo45 `xml:"packagingInfo,omitempty"`
+
+	// ManualUserOkei: Единица измерения товара. При приеме содержимое контролируется на присутствие в справочнике "Справочник: Единицы измерения потребительских единиц измерения лекарственных препаратов по ОКЕИ" (nsiDrugOKEI)
+	ManualUserOkei base.Okeiref `xml:"manualUserOKEI"`
+
+	// DrugChangeInfo: Информация указываемая при ручном изменении лекарственного препарата. При приеме контролируется обязательность заполнения в случае указания лекарственной формы, дозировки, упаковки, единицы измерения в текстовой форме. Начиная с версии 10.1 контролируется обязательность указания причины корректировки сведений о лекарственных препаратах
+	DrugChangeInfo *DrugChangeInfoType `xml:"drugChangeInfo,omitempty"`
 }
 
 // DrugPurchaseObjectInfo8ObjectInfoUsingTextFormDrugsInfo: Сведения о вариантах поставки лекарственных препаратов
@@ -8188,16 +8701,16 @@ type PurchaseObject12 struct {
 	Ktru *PurchaseObject16Ktru `xml:"KTRU,omitempty"`
 }
 
-// MedicamentalFormInfo16: Лекарственная форма. Игнорируется при приеме, автоматически заполняется при передаче по справочнику "Лекарственные препараты"
-type MedicamentalFormInfo16 struct {
+// MedicamentalFormInfo27: Лекарственная форма. Игнорируется при приеме, автоматически заполняется при передаче по справочнику "Лекарственные препараты"
+type MedicamentalFormInfo27 struct {
 	XMLName xml.Name `xml:"medicamentalFormInfo,omitempty"`
 
 	// MedicamentalFormName: Наименование лекарственной формы по справочнику "Лекарственные препараты" (nsiFarmDrugDictionary) (поле MNNsInfo\MNNInfo\medicamentalFormInfo\medicamentalFormName)
 	MedicamentalFormName base.DrugNameType `xml:",any"`
 }
 
-// DosageInfo16: Дозировка. Игнорируется при приеме, автоматически заполняется при передаче по справочнику "Лекарственные препараты"
-type DosageInfo16 struct {
+// DosageInfo27: Дозировка. Игнорируется при приеме, автоматически заполняется при передаче по справочнику "Лекарственные препараты"
+type DosageInfo27 struct {
 	XMLName xml.Name `xml:"dosageInfo,omitempty"`
 
 	// DosageGrlsvalue: Полная форма дозировки по справочнику "Лекарственные препараты" (nsiFarmDrugDictionary) (поле MNNsInfo\MNNInfo\dosagesInfo\dosageInfo\dosageGRLSValue )
@@ -8210,8 +8723,8 @@ type DosageInfo16 struct {
 	DosageUserName *base.DrugNameType `xml:"dosageUserName,omitempty"`
 }
 
-// PackagingInfo14: Сведения об упаковке. В случае заполнения блока mustSpecifyDrugPackage при приеме контролируется заполненность блока packagingInfo во всех вариантах поставки лекарственных препаратов
-type PackagingInfo14 struct {
+// PackagingInfo25: Сведения об упаковке. В случае заполнения блока mustSpecifyDrugPackage при приеме контролируется заполненность блока packagingInfo во всех вариантах поставки лекарственных препаратов
+type PackagingInfo25 struct {
 	XMLName xml.Name `xml:"packagingInfo,omitempty"`
 
 	// PositionTradeNameExternalCode: Уникальный внешний код лекарственного препарата по справочнику "Лекарственные препараты (поле MNNInfo\positionsTradeName\positionTradeName\positionTradeNameExternalCode документа nsiFarmDrugDictionary). При приеме контролируется наличие в справочнике "Лекарственные препараты" ЕИС лекарственного препарата с таким кодом и принадлежность лекарственного препарата с указанным кодом к МНН с кодом, указанным в поле MNNInfo
@@ -8261,14 +8774,14 @@ type DrugInfo20 struct {
 	// Ktru: Классификация по КТРУ. Блок всегда игнорируется при приеме, автоматически заполняется при передаче, если: • МНН указан из справочника ЕСКЛП. Не используется до выхода версии ЕИС 13.2
 	Ktru *base.Ktruref `xml:"KTRU,omitempty"`
 
-	// MedicamentalFormInfo26: Лекарственная форма. Игнорируется при приеме, автоматически заполняется при передаче по справочнику "Лекарственные препараты"
-	MedicamentalFormInfo *MedicamentalFormInfo26 `xml:"medicamentalFormInfo,omitempty"`
+	// MedicamentalFormInfo46: Лекарственная форма. Игнорируется при приеме, автоматически заполняется при передаче по справочнику "Лекарственные препараты"
+	MedicamentalFormInfo *MedicamentalFormInfo46 `xml:"medicamentalFormInfo,omitempty"`
 
-	// DosageInfo26: Дозировка. Игнорируется при приеме, автоматически заполняется при передаче по справочнику "Лекарственные препараты"
-	DosageInfo *DosageInfo26 `xml:"dosageInfo,omitempty"`
+	// DosageInfo46: Дозировка. Игнорируется при приеме, автоматически заполняется при передаче по справочнику "Лекарственные препараты"
+	DosageInfo *DosageInfo46 `xml:"dosageInfo,omitempty"`
 
-	// PackagingInfo24: Сведения об упаковке. В случае заполнения блока mustSpecifyDrugPackage при приеме контролируется заполненность блока packagingInfo во всех вариантах поставки лекарственных препаратов
-	PackagingInfo *PackagingInfo24 `xml:"packagingInfo,omitempty"`
+	// PackagingInfo44: Сведения об упаковке. В случае заполнения блока mustSpecifyDrugPackage при приеме контролируется заполненность блока packagingInfo во всех вариантах поставки лекарственных препаратов
+	PackagingInfo *PackagingInfo44 `xml:"packagingInfo,omitempty"`
 
 	// ManualUserOkei: Единица измерения товара, введенная вручную . Если заполнено в принимаемом документе, то считается, что внешняя система явно указала этот блок, содержимое контролируется на присутствие в справочнике "Справочник: Единицы измерения потребительских единиц измерения лекарственных препаратов по ОКЕИ" (nsiDrugOKEI). Для групп взаимозаменяемости (блок drugInterchangeInfo) всегда игнорируется при приеме, автоматически заполняется при передаче по справочнику "Лекарственные препараты"
 	ManualUserOkei *base.Okeiref `xml:"manualUserOKEI,omitempty"`
@@ -8340,6 +8853,39 @@ type TradeInfo12 struct {
 	DrugChangeInfo *DrugChangeInfoType `xml:"drugChangeInfo,omitempty"`
 }
 
+// MedicamentalFormInfo28: Лекарственная форма
+type MedicamentalFormInfo28 struct {
+	XMLName xml.Name `xml:"medicamentalFormInfo"`
+
+	// MedicamentalFormName: Наименование лекарственной формы. Игнорируется, начиная с даты в настройке ПРИЗ_Н_0112
+	MedicamentalFormName *base.DrugNameType `xml:"medicamentalFormName,omitempty"`
+
+	// MedicamentalForm: Лекарственная форма по справочнику "Справочник: Лекарственные формы" (nsiFarmMedicamentalForm) Заполняется, начиная с даты в настройке ПРИЗ_Н_0112
+	MedicamentalForm *base.MedicamentalFormRef `xml:"medicamentalForm,omitempty"`
+}
+
+// DosageInfo28: Дозировка
+type DosageInfo28 struct {
+	XMLName xml.Name `xml:"dosageInfo"`
+
+	// DosageGrlsvalue: Полная форма дозировки
+	DosageGrlsvalue base.DrugNameType `xml:",any"`
+}
+
+// PackagingInfo26: Сведения об упаковке. В случае заполнения блока mustSpecifyDrugPackage при приеме контролируется заполненность блока packagingInfo во всех вариантах поставки лекарственных препаратов
+type PackagingInfo26 struct {
+	XMLName xml.Name `xml:"packagingInfo,omitempty"`
+
+	// Packaging1Quantity: Количество лекарственных форм в первичной упаковке
+	Packaging1Quantity *base.DrugPackaging1QuantityType `xml:"packaging1Quantity,omitempty"`
+
+	// Packaging2Quantity: Количество первичных упаковок во вторичной (потребительской) упаковке
+	Packaging2Quantity *base.DrugPackaging2QuantityType `xml:"packaging2Quantity,omitempty"`
+
+	// SumaryPackagingQuantity: Количество потребительских единиц в потребительской упаковке. Если заполнены поле packaging1Quantity и поле packaging2Quantity, то игнорируется при приеме, автоматически рассчитывается как произведение packaging1Quantity*packaging2Quantity. Иначе принимается из пакета. Всегда принимается и сохраняется, если явно указано в пакете для извещений, первая версия которых размещена до выхода версии 10.3, независимо от разрешения ручного ввода
+	SumaryPackagingQuantity *base.DrugSumaryPackagingQuantityType `xml:"sumaryPackagingQuantity,omitempty"`
+}
+
 // DrugInfo21: Сведения о варианте поставки лекарственного препарата. Может быть указан только один вариант поставки (один лекарственный препарат). Если необходимо указать несколько вариантов поставки, то заполняется блок drugInterchangeTextFormInfo ("Сведения о лекарственных препаратах с учетом взаимозаменяемости не по справочнику "Группы взаимозаменяемости лекарственных препаратов") Если заполнен блок «По решению заказчика (организации, осуществляющей определение поставщика для заказчика)» (modificationInfo/reasonInfo/responsibleDecisionInfo), то игнорируется при приеме и заполняется из предыдущей версии извещения за исключением: o поля «Уникальный идентификатор лекарственного препарата в извещении-приглашении» (sid) o поля «Внешний идентификатор лекарственного препарата в извещении-приглашении» (externalSid) o поля «Количество (объем) закупаемого лекарственного препарата» (drugQuantity); o поля «Референтная цена по справочнику "Лекарственные препараты"» (averagePriceValue); o поля «Сумма выплат по референтной цене (всего)» (averagePriceTotal)
 type DrugInfo21 struct {
 	XMLName xml.Name `xml:"drugInfo,omitempty"`
@@ -8364,6 +8910,21 @@ type DrugInfo21 struct {
 
 	// BasicUnit: Признак основного варианта поставки. При приеме контролируется обязательность заполнения поля только для одного значения блока drugInfo в составе двух блоков objectInfoUsingReferenceInfo и objectInfoUsingTextForm
 	BasicUnit *bool `xml:"basicUnit,omitempty"`
+
+	// MedicamentalFormInfo47: Лекарственная форма
+	MedicamentalFormInfo MedicamentalFormInfo47 `xml:"medicamentalFormInfo"`
+
+	// DosageInfo47: Дозировка
+	DosageInfo DosageInfo47 `xml:"dosageInfo"`
+
+	// PackagingInfo45: Сведения об упаковке. В случае заполнения блока mustSpecifyDrugPackage при приеме контролируется заполненность блока packagingInfo во всех вариантах поставки лекарственных препаратов
+	PackagingInfo *PackagingInfo45 `xml:"packagingInfo,omitempty"`
+
+	// ManualUserOkei: Единица измерения товара. При приеме содержимое контролируется на присутствие в справочнике "Справочник: Единицы измерения потребительских единиц измерения лекарственных препаратов по ОКЕИ" (nsiDrugOKEI)
+	ManualUserOkei base.Okeiref `xml:"manualUserOKEI"`
+
+	// DrugChangeInfo: Информация указываемая при ручном изменении лекарственного препарата. При приеме контролируется обязательность заполнения в случае указания лекарственной формы, дозировки, упаковки, единицы измерения в текстовой форме. Начиная с версии 10.1 контролируется обязательность указания причины корректировки сведений о лекарственных препаратах
+	DrugChangeInfo *DrugChangeInfoType `xml:"drugChangeInfo,omitempty"`
 }
 
 // DrugPurchaseObjectInfo9ObjectInfoUsingTextFormDrugsInfo: Сведения о вариантах поставки лекарственных препаратов
@@ -8677,16 +9238,16 @@ type PurchaseObject13 struct {
 	Ktru *PurchaseObject16Ktru `xml:"KTRU,omitempty"`
 }
 
-// MedicamentalFormInfo17: Лекарственная форма. Игнорируется при приеме, автоматически заполняется при передаче по справочнику "Лекарственные препараты"
-type MedicamentalFormInfo17 struct {
+// MedicamentalFormInfo29: Лекарственная форма. Игнорируется при приеме, автоматически заполняется при передаче по справочнику "Лекарственные препараты"
+type MedicamentalFormInfo29 struct {
 	XMLName xml.Name `xml:"medicamentalFormInfo,omitempty"`
 
 	// MedicamentalFormName: Наименование лекарственной формы по справочнику "Лекарственные препараты" (nsiFarmDrugDictionary) (поле MNNsInfo\MNNInfo\medicamentalFormInfo\medicamentalFormName)
 	MedicamentalFormName base.DrugNameType `xml:",any"`
 }
 
-// DosageInfo17: Дозировка. Игнорируется при приеме, автоматически заполняется при передаче по справочнику "Лекарственные препараты"
-type DosageInfo17 struct {
+// DosageInfo29: Дозировка. Игнорируется при приеме, автоматически заполняется при передаче по справочнику "Лекарственные препараты"
+type DosageInfo29 struct {
 	XMLName xml.Name `xml:"dosageInfo,omitempty"`
 
 	// DosageGrlsvalue: Полная форма дозировки по справочнику "Лекарственные препараты" (nsiFarmDrugDictionary) (поле MNNsInfo\MNNInfo\dosagesInfo\dosageInfo\dosageGRLSValue )
@@ -8699,8 +9260,8 @@ type DosageInfo17 struct {
 	DosageUserName *base.DrugNameType `xml:"dosageUserName,omitempty"`
 }
 
-// PackagingInfo15: Сведения об упаковке. В случае заполнения блока mustSpecifyDrugPackage при приеме контролируется заполненность блока packagingInfo во всех вариантах поставки лекарственных препаратов
-type PackagingInfo15 struct {
+// PackagingInfo27: Сведения об упаковке. В случае заполнения блока mustSpecifyDrugPackage при приеме контролируется заполненность блока packagingInfo во всех вариантах поставки лекарственных препаратов
+type PackagingInfo27 struct {
 	XMLName xml.Name `xml:"packagingInfo,omitempty"`
 
 	// PositionTradeNameExternalCode: Уникальный внешний код лекарственного препарата по справочнику "Лекарственные препараты (поле MNNInfo\positionsTradeName\positionTradeName\positionTradeNameExternalCode документа nsiFarmDrugDictionary). При приеме контролируется наличие в справочнике "Лекарственные препараты" ЕИС лекарственного препарата с таким кодом и принадлежность лекарственного препарата с указанным кодом к МНН с кодом, указанным в поле MNNInfo
@@ -8750,14 +9311,14 @@ type DrugInfo22 struct {
 	// Ktru: Классификация по КТРУ. Блок всегда игнорируется при приеме, автоматически заполняется при передаче, если: • МНН указан из справочника ЕСКЛП. Не используется до выхода версии ЕИС 13.2
 	Ktru *base.Ktruref `xml:"KTRU,omitempty"`
 
-	// MedicamentalFormInfo26: Лекарственная форма. Игнорируется при приеме, автоматически заполняется при передаче по справочнику "Лекарственные препараты"
-	MedicamentalFormInfo *MedicamentalFormInfo26 `xml:"medicamentalFormInfo,omitempty"`
+	// MedicamentalFormInfo46: Лекарственная форма. Игнорируется при приеме, автоматически заполняется при передаче по справочнику "Лекарственные препараты"
+	MedicamentalFormInfo *MedicamentalFormInfo46 `xml:"medicamentalFormInfo,omitempty"`
 
-	// DosageInfo26: Дозировка. Игнорируется при приеме, автоматически заполняется при передаче по справочнику "Лекарственные препараты"
-	DosageInfo *DosageInfo26 `xml:"dosageInfo,omitempty"`
+	// DosageInfo46: Дозировка. Игнорируется при приеме, автоматически заполняется при передаче по справочнику "Лекарственные препараты"
+	DosageInfo *DosageInfo46 `xml:"dosageInfo,omitempty"`
 
-	// PackagingInfo24: Сведения об упаковке. В случае заполнения блока mustSpecifyDrugPackage при приеме контролируется заполненность блока packagingInfo во всех вариантах поставки лекарственных препаратов
-	PackagingInfo *PackagingInfo24 `xml:"packagingInfo,omitempty"`
+	// PackagingInfo44: Сведения об упаковке. В случае заполнения блока mustSpecifyDrugPackage при приеме контролируется заполненность блока packagingInfo во всех вариантах поставки лекарственных препаратов
+	PackagingInfo *PackagingInfo44 `xml:"packagingInfo,omitempty"`
 
 	// ManualUserOkei: Единица измерения товара, введенная вручную . Если заполнено в принимаемом документе, то считается, что внешняя система явно указала этот блок, содержимое контролируется на присутствие в справочнике "Справочник: Единицы измерения потребительских единиц измерения лекарственных препаратов по ОКЕИ" (nsiDrugOKEI). Для групп взаимозаменяемости (блок drugInterchangeInfo) всегда игнорируется при приеме, автоматически заполняется при передаче по справочнику "Лекарственные препараты"
 	ManualUserOkei *base.Okeiref `xml:"manualUserOKEI,omitempty"`
@@ -8829,6 +9390,39 @@ type TradeInfo13 struct {
 	DrugChangeInfo *DrugChangeInfoType `xml:"drugChangeInfo,omitempty"`
 }
 
+// MedicamentalFormInfo30: Лекарственная форма
+type MedicamentalFormInfo30 struct {
+	XMLName xml.Name `xml:"medicamentalFormInfo"`
+
+	// MedicamentalFormName: Наименование лекарственной формы. Игнорируется, начиная с даты в настройке ПРИЗ_Н_0112
+	MedicamentalFormName *base.DrugNameType `xml:"medicamentalFormName,omitempty"`
+
+	// MedicamentalForm: Лекарственная форма по справочнику "Справочник: Лекарственные формы" (nsiFarmMedicamentalForm) Заполняется, начиная с даты в настройке ПРИЗ_Н_0112
+	MedicamentalForm *base.MedicamentalFormRef `xml:"medicamentalForm,omitempty"`
+}
+
+// DosageInfo30: Дозировка
+type DosageInfo30 struct {
+	XMLName xml.Name `xml:"dosageInfo"`
+
+	// DosageGrlsvalue: Полная форма дозировки
+	DosageGrlsvalue base.DrugNameType `xml:",any"`
+}
+
+// PackagingInfo28: Сведения об упаковке. В случае заполнения блока mustSpecifyDrugPackage при приеме контролируется заполненность блока packagingInfo во всех вариантах поставки лекарственных препаратов
+type PackagingInfo28 struct {
+	XMLName xml.Name `xml:"packagingInfo,omitempty"`
+
+	// Packaging1Quantity: Количество лекарственных форм в первичной упаковке
+	Packaging1Quantity *base.DrugPackaging1QuantityType `xml:"packaging1Quantity,omitempty"`
+
+	// Packaging2Quantity: Количество первичных упаковок во вторичной (потребительской) упаковке
+	Packaging2Quantity *base.DrugPackaging2QuantityType `xml:"packaging2Quantity,omitempty"`
+
+	// SumaryPackagingQuantity: Количество потребительских единиц в потребительской упаковке. Если заполнены поле packaging1Quantity и поле packaging2Quantity, то игнорируется при приеме, автоматически рассчитывается как произведение packaging1Quantity*packaging2Quantity. Иначе принимается из пакета. Всегда принимается и сохраняется, если явно указано в пакете для извещений, первая версия которых размещена до выхода версии 10.3, независимо от разрешения ручного ввода
+	SumaryPackagingQuantity *base.DrugSumaryPackagingQuantityType `xml:"sumaryPackagingQuantity,omitempty"`
+}
+
 // DrugInfo23: Сведения о варианте поставки лекарственного препарата. Может быть указан только один вариант поставки (один лекарственный препарат). Если необходимо указать несколько вариантов поставки, то заполняется блок drugInterchangeTextFormInfo ("Сведения о лекарственных препаратах с учетом взаимозаменяемости не по справочнику "Группы взаимозаменяемости лекарственных препаратов") Если заполнен блок «По решению заказчика (организации, осуществляющей определение поставщика для заказчика)» (modificationInfo/reasonInfo/responsibleDecisionInfo), то игнорируется при приеме и заполняется из предыдущей версии извещения за исключением: o поля «Уникальный идентификатор лекарственного препарата в извещении-приглашении» (sid) o поля «Внешний идентификатор лекарственного препарата в извещении-приглашении» (externalSid) o поля «Количество (объем) закупаемого лекарственного препарата» (drugQuantity); o поля «Референтная цена по справочнику "Лекарственные препараты"» (averagePriceValue); o поля «Сумма выплат по референтной цене (всего)» (averagePriceTotal)
 type DrugInfo23 struct {
 	XMLName xml.Name `xml:"drugInfo,omitempty"`
@@ -8853,6 +9447,21 @@ type DrugInfo23 struct {
 
 	// BasicUnit: Признак основного варианта поставки. При приеме контролируется обязательность заполнения поля только для одного значения блока drugInfo в составе двух блоков objectInfoUsingReferenceInfo и objectInfoUsingTextForm
 	BasicUnit *bool `xml:"basicUnit,omitempty"`
+
+	// MedicamentalFormInfo47: Лекарственная форма
+	MedicamentalFormInfo MedicamentalFormInfo47 `xml:"medicamentalFormInfo"`
+
+	// DosageInfo47: Дозировка
+	DosageInfo DosageInfo47 `xml:"dosageInfo"`
+
+	// PackagingInfo45: Сведения об упаковке. В случае заполнения блока mustSpecifyDrugPackage при приеме контролируется заполненность блока packagingInfo во всех вариантах поставки лекарственных препаратов
+	PackagingInfo *PackagingInfo45 `xml:"packagingInfo,omitempty"`
+
+	// ManualUserOkei: Единица измерения товара. При приеме содержимое контролируется на присутствие в справочнике "Справочник: Единицы измерения потребительских единиц измерения лекарственных препаратов по ОКЕИ" (nsiDrugOKEI)
+	ManualUserOkei base.Okeiref `xml:"manualUserOKEI"`
+
+	// DrugChangeInfo: Информация указываемая при ручном изменении лекарственного препарата. При приеме контролируется обязательность заполнения в случае указания лекарственной формы, дозировки, упаковки, единицы измерения в текстовой форме. Начиная с версии 10.1 контролируется обязательность указания причины корректировки сведений о лекарственных препаратах
+	DrugChangeInfo *DrugChangeInfoType `xml:"drugChangeInfo,omitempty"`
 }
 
 // DrugPurchaseObjectInfo10ObjectInfoUsingTextFormDrugsInfo: Сведения о вариантах поставки лекарственных препаратов
@@ -9166,16 +9775,16 @@ type PurchaseObject14 struct {
 	Ktru *PurchaseObject16Ktru `xml:"KTRU,omitempty"`
 }
 
-// MedicamentalFormInfo18: Лекарственная форма. Игнорируется при приеме, автоматически заполняется при передаче по справочнику "Лекарственные препараты"
-type MedicamentalFormInfo18 struct {
+// MedicamentalFormInfo31: Лекарственная форма. Игнорируется при приеме, автоматически заполняется при передаче по справочнику "Лекарственные препараты"
+type MedicamentalFormInfo31 struct {
 	XMLName xml.Name `xml:"medicamentalFormInfo,omitempty"`
 
 	// MedicamentalFormName: Наименование лекарственной формы по справочнику "Лекарственные препараты" (nsiFarmDrugDictionary) (поле MNNsInfo\MNNInfo\medicamentalFormInfo\medicamentalFormName)
 	MedicamentalFormName base.DrugNameType `xml:",any"`
 }
 
-// DosageInfo18: Дозировка. Игнорируется при приеме, автоматически заполняется при передаче по справочнику "Лекарственные препараты"
-type DosageInfo18 struct {
+// DosageInfo31: Дозировка. Игнорируется при приеме, автоматически заполняется при передаче по справочнику "Лекарственные препараты"
+type DosageInfo31 struct {
 	XMLName xml.Name `xml:"dosageInfo,omitempty"`
 
 	// DosageGrlsvalue: Полная форма дозировки по справочнику "Лекарственные препараты" (nsiFarmDrugDictionary) (поле MNNsInfo\MNNInfo\dosagesInfo\dosageInfo\dosageGRLSValue )
@@ -9188,8 +9797,8 @@ type DosageInfo18 struct {
 	DosageUserName *base.DrugNameType `xml:"dosageUserName,omitempty"`
 }
 
-// PackagingInfo16: Сведения об упаковке. В случае заполнения блока mustSpecifyDrugPackage при приеме контролируется заполненность блока packagingInfo во всех вариантах поставки лекарственных препаратов
-type PackagingInfo16 struct {
+// PackagingInfo29: Сведения об упаковке. В случае заполнения блока mustSpecifyDrugPackage при приеме контролируется заполненность блока packagingInfo во всех вариантах поставки лекарственных препаратов
+type PackagingInfo29 struct {
 	XMLName xml.Name `xml:"packagingInfo,omitempty"`
 
 	// PositionTradeNameExternalCode: Уникальный внешний код лекарственного препарата по справочнику "Лекарственные препараты (поле MNNInfo\positionsTradeName\positionTradeName\positionTradeNameExternalCode документа nsiFarmDrugDictionary). При приеме контролируется наличие в справочнике "Лекарственные препараты" ЕИС лекарственного препарата с таким кодом и принадлежность лекарственного препарата с указанным кодом к МНН с кодом, указанным в поле MNNInfo
@@ -9239,14 +9848,14 @@ type DrugInfo24 struct {
 	// Ktru: Классификация по КТРУ. Блок всегда игнорируется при приеме, автоматически заполняется при передаче, если: • МНН указан из справочника ЕСКЛП. Не используется до выхода версии ЕИС 13.2
 	Ktru *base.Ktruref `xml:"KTRU,omitempty"`
 
-	// MedicamentalFormInfo26: Лекарственная форма. Игнорируется при приеме, автоматически заполняется при передаче по справочнику "Лекарственные препараты"
-	MedicamentalFormInfo *MedicamentalFormInfo26 `xml:"medicamentalFormInfo,omitempty"`
+	// MedicamentalFormInfo46: Лекарственная форма. Игнорируется при приеме, автоматически заполняется при передаче по справочнику "Лекарственные препараты"
+	MedicamentalFormInfo *MedicamentalFormInfo46 `xml:"medicamentalFormInfo,omitempty"`
 
-	// DosageInfo26: Дозировка. Игнорируется при приеме, автоматически заполняется при передаче по справочнику "Лекарственные препараты"
-	DosageInfo *DosageInfo26 `xml:"dosageInfo,omitempty"`
+	// DosageInfo46: Дозировка. Игнорируется при приеме, автоматически заполняется при передаче по справочнику "Лекарственные препараты"
+	DosageInfo *DosageInfo46 `xml:"dosageInfo,omitempty"`
 
-	// PackagingInfo24: Сведения об упаковке. В случае заполнения блока mustSpecifyDrugPackage при приеме контролируется заполненность блока packagingInfo во всех вариантах поставки лекарственных препаратов
-	PackagingInfo *PackagingInfo24 `xml:"packagingInfo,omitempty"`
+	// PackagingInfo44: Сведения об упаковке. В случае заполнения блока mustSpecifyDrugPackage при приеме контролируется заполненность блока packagingInfo во всех вариантах поставки лекарственных препаратов
+	PackagingInfo *PackagingInfo44 `xml:"packagingInfo,omitempty"`
 
 	// ManualUserOkei: Единица измерения товара, введенная вручную . Если заполнено в принимаемом документе, то считается, что внешняя система явно указала этот блок, содержимое контролируется на присутствие в справочнике "Справочник: Единицы измерения потребительских единиц измерения лекарственных препаратов по ОКЕИ" (nsiDrugOKEI). Для групп взаимозаменяемости (блок drugInterchangeInfo) всегда игнорируется при приеме, автоматически заполняется при передаче по справочнику "Лекарственные препараты"
 	ManualUserOkei *base.Okeiref `xml:"manualUserOKEI,omitempty"`
@@ -9318,6 +9927,39 @@ type TradeInfo14 struct {
 	DrugChangeInfo *DrugChangeInfoType `xml:"drugChangeInfo,omitempty"`
 }
 
+// MedicamentalFormInfo32: Лекарственная форма
+type MedicamentalFormInfo32 struct {
+	XMLName xml.Name `xml:"medicamentalFormInfo"`
+
+	// MedicamentalFormName: Наименование лекарственной формы. Игнорируется, начиная с даты в настройке ПРИЗ_Н_0112
+	MedicamentalFormName *base.DrugNameType `xml:"medicamentalFormName,omitempty"`
+
+	// MedicamentalForm: Лекарственная форма по справочнику "Справочник: Лекарственные формы" (nsiFarmMedicamentalForm) Заполняется, начиная с даты в настройке ПРИЗ_Н_0112
+	MedicamentalForm *base.MedicamentalFormRef `xml:"medicamentalForm,omitempty"`
+}
+
+// DosageInfo32: Дозировка
+type DosageInfo32 struct {
+	XMLName xml.Name `xml:"dosageInfo"`
+
+	// DosageGrlsvalue: Полная форма дозировки
+	DosageGrlsvalue base.DrugNameType `xml:",any"`
+}
+
+// PackagingInfo30: Сведения об упаковке. В случае заполнения блока mustSpecifyDrugPackage при приеме контролируется заполненность блока packagingInfo во всех вариантах поставки лекарственных препаратов
+type PackagingInfo30 struct {
+	XMLName xml.Name `xml:"packagingInfo,omitempty"`
+
+	// Packaging1Quantity: Количество лекарственных форм в первичной упаковке
+	Packaging1Quantity *base.DrugPackaging1QuantityType `xml:"packaging1Quantity,omitempty"`
+
+	// Packaging2Quantity: Количество первичных упаковок во вторичной (потребительской) упаковке
+	Packaging2Quantity *base.DrugPackaging2QuantityType `xml:"packaging2Quantity,omitempty"`
+
+	// SumaryPackagingQuantity: Количество потребительских единиц в потребительской упаковке. Если заполнены поле packaging1Quantity и поле packaging2Quantity, то игнорируется при приеме, автоматически рассчитывается как произведение packaging1Quantity*packaging2Quantity. Иначе принимается из пакета. Всегда принимается и сохраняется, если явно указано в пакете для извещений, первая версия которых размещена до выхода версии 10.3, независимо от разрешения ручного ввода
+	SumaryPackagingQuantity *base.DrugSumaryPackagingQuantityType `xml:"sumaryPackagingQuantity,omitempty"`
+}
+
 // DrugInfo25: Сведения о варианте поставки лекарственного препарата. Может быть указан только один вариант поставки (один лекарственный препарат). Если необходимо указать несколько вариантов поставки, то заполняется блок drugInterchangeTextFormInfo ("Сведения о лекарственных препаратах с учетом взаимозаменяемости не по справочнику "Группы взаимозаменяемости лекарственных препаратов") Если заполнен блок «По решению заказчика (организации, осуществляющей определение поставщика для заказчика)» (modificationInfo/reasonInfo/responsibleDecisionInfo), то игнорируется при приеме и заполняется из предыдущей версии извещения за исключением: o поля «Уникальный идентификатор лекарственного препарата в извещении-приглашении» (sid) o поля «Внешний идентификатор лекарственного препарата в извещении-приглашении» (externalSid) o поля «Количество (объем) закупаемого лекарственного препарата» (drugQuantity); o поля «Референтная цена по справочнику "Лекарственные препараты"» (averagePriceValue); o поля «Сумма выплат по референтной цене (всего)» (averagePriceTotal)
 type DrugInfo25 struct {
 	XMLName xml.Name `xml:"drugInfo,omitempty"`
@@ -9342,6 +9984,21 @@ type DrugInfo25 struct {
 
 	// BasicUnit: Признак основного варианта поставки. При приеме контролируется обязательность заполнения поля только для одного значения блока drugInfo в составе двух блоков objectInfoUsingReferenceInfo и objectInfoUsingTextForm
 	BasicUnit *bool `xml:"basicUnit,omitempty"`
+
+	// MedicamentalFormInfo47: Лекарственная форма
+	MedicamentalFormInfo MedicamentalFormInfo47 `xml:"medicamentalFormInfo"`
+
+	// DosageInfo47: Дозировка
+	DosageInfo DosageInfo47 `xml:"dosageInfo"`
+
+	// PackagingInfo45: Сведения об упаковке. В случае заполнения блока mustSpecifyDrugPackage при приеме контролируется заполненность блока packagingInfo во всех вариантах поставки лекарственных препаратов
+	PackagingInfo *PackagingInfo45 `xml:"packagingInfo,omitempty"`
+
+	// ManualUserOkei: Единица измерения товара. При приеме содержимое контролируется на присутствие в справочнике "Справочник: Единицы измерения потребительских единиц измерения лекарственных препаратов по ОКЕИ" (nsiDrugOKEI)
+	ManualUserOkei base.Okeiref `xml:"manualUserOKEI"`
+
+	// DrugChangeInfo: Информация указываемая при ручном изменении лекарственного препарата. При приеме контролируется обязательность заполнения в случае указания лекарственной формы, дозировки, упаковки, единицы измерения в текстовой форме. Начиная с версии 10.1 контролируется обязательность указания причины корректировки сведений о лекарственных препаратах
+	DrugChangeInfo *DrugChangeInfoType `xml:"drugChangeInfo,omitempty"`
 }
 
 // DrugPurchaseObjectInfo11ObjectInfoUsingTextFormDrugsInfo: Сведения о вариантах поставки лекарственных препаратов
@@ -9655,16 +10312,16 @@ type PurchaseObject15 struct {
 	Ktru *PurchaseObject16Ktru `xml:"KTRU,omitempty"`
 }
 
-// MedicamentalFormInfo19: Лекарственная форма. Игнорируется при приеме, автоматически заполняется при передаче по справочнику "Лекарственные препараты"
-type MedicamentalFormInfo19 struct {
+// MedicamentalFormInfo33: Лекарственная форма. Игнорируется при приеме, автоматически заполняется при передаче по справочнику "Лекарственные препараты"
+type MedicamentalFormInfo33 struct {
 	XMLName xml.Name `xml:"medicamentalFormInfo,omitempty"`
 
 	// MedicamentalFormName: Наименование лекарственной формы по справочнику "Лекарственные препараты" (nsiFarmDrugDictionary) (поле MNNsInfo\MNNInfo\medicamentalFormInfo\medicamentalFormName)
 	MedicamentalFormName base.DrugNameType `xml:",any"`
 }
 
-// DosageInfo19: Дозировка. Игнорируется при приеме, автоматически заполняется при передаче по справочнику "Лекарственные препараты"
-type DosageInfo19 struct {
+// DosageInfo33: Дозировка. Игнорируется при приеме, автоматически заполняется при передаче по справочнику "Лекарственные препараты"
+type DosageInfo33 struct {
 	XMLName xml.Name `xml:"dosageInfo,omitempty"`
 
 	// DosageGrlsvalue: Полная форма дозировки по справочнику "Лекарственные препараты" (nsiFarmDrugDictionary) (поле MNNsInfo\MNNInfo\dosagesInfo\dosageInfo\dosageGRLSValue )
@@ -9677,8 +10334,8 @@ type DosageInfo19 struct {
 	DosageUserName *base.DrugNameType `xml:"dosageUserName,omitempty"`
 }
 
-// PackagingInfo17: Сведения об упаковке. В случае заполнения блока mustSpecifyDrugPackage при приеме контролируется заполненность блока packagingInfo во всех вариантах поставки лекарственных препаратов
-type PackagingInfo17 struct {
+// PackagingInfo31: Сведения об упаковке. В случае заполнения блока mustSpecifyDrugPackage при приеме контролируется заполненность блока packagingInfo во всех вариантах поставки лекарственных препаратов
+type PackagingInfo31 struct {
 	XMLName xml.Name `xml:"packagingInfo,omitempty"`
 
 	// PositionTradeNameExternalCode: Уникальный внешний код лекарственного препарата по справочнику "Лекарственные препараты (поле MNNInfo\positionsTradeName\positionTradeName\positionTradeNameExternalCode документа nsiFarmDrugDictionary). При приеме контролируется наличие в справочнике "Лекарственные препараты" ЕИС лекарственного препарата с таким кодом и принадлежность лекарственного препарата с указанным кодом к МНН с кодом, указанным в поле MNNInfo
@@ -9728,14 +10385,14 @@ type DrugInfo26 struct {
 	// Ktru: Классификация по КТРУ. Блок всегда игнорируется при приеме, автоматически заполняется при передаче, если: • МНН указан из справочника ЕСКЛП. Не используется до выхода версии ЕИС 13.2
 	Ktru *base.Ktruref `xml:"KTRU,omitempty"`
 
-	// MedicamentalFormInfo26: Лекарственная форма. Игнорируется при приеме, автоматически заполняется при передаче по справочнику "Лекарственные препараты"
-	MedicamentalFormInfo *MedicamentalFormInfo26 `xml:"medicamentalFormInfo,omitempty"`
+	// MedicamentalFormInfo46: Лекарственная форма. Игнорируется при приеме, автоматически заполняется при передаче по справочнику "Лекарственные препараты"
+	MedicamentalFormInfo *MedicamentalFormInfo46 `xml:"medicamentalFormInfo,omitempty"`
 
-	// DosageInfo26: Дозировка. Игнорируется при приеме, автоматически заполняется при передаче по справочнику "Лекарственные препараты"
-	DosageInfo *DosageInfo26 `xml:"dosageInfo,omitempty"`
+	// DosageInfo46: Дозировка. Игнорируется при приеме, автоматически заполняется при передаче по справочнику "Лекарственные препараты"
+	DosageInfo *DosageInfo46 `xml:"dosageInfo,omitempty"`
 
-	// PackagingInfo24: Сведения об упаковке. В случае заполнения блока mustSpecifyDrugPackage при приеме контролируется заполненность блока packagingInfo во всех вариантах поставки лекарственных препаратов
-	PackagingInfo *PackagingInfo24 `xml:"packagingInfo,omitempty"`
+	// PackagingInfo44: Сведения об упаковке. В случае заполнения блока mustSpecifyDrugPackage при приеме контролируется заполненность блока packagingInfo во всех вариантах поставки лекарственных препаратов
+	PackagingInfo *PackagingInfo44 `xml:"packagingInfo,omitempty"`
 
 	// ManualUserOkei: Единица измерения товара, введенная вручную . Если заполнено в принимаемом документе, то считается, что внешняя система явно указала этот блок, содержимое контролируется на присутствие в справочнике "Справочник: Единицы измерения потребительских единиц измерения лекарственных препаратов по ОКЕИ" (nsiDrugOKEI). Для групп взаимозаменяемости (блок drugInterchangeInfo) всегда игнорируется при приеме, автоматически заполняется при передаче по справочнику "Лекарственные препараты"
 	ManualUserOkei *base.Okeiref `xml:"manualUserOKEI,omitempty"`
@@ -9807,6 +10464,39 @@ type TradeInfo15 struct {
 	DrugChangeInfo *DrugChangeInfoType `xml:"drugChangeInfo,omitempty"`
 }
 
+// MedicamentalFormInfo34: Лекарственная форма
+type MedicamentalFormInfo34 struct {
+	XMLName xml.Name `xml:"medicamentalFormInfo"`
+
+	// MedicamentalFormName: Наименование лекарственной формы. Игнорируется, начиная с даты в настройке ПРИЗ_Н_0112
+	MedicamentalFormName *base.DrugNameType `xml:"medicamentalFormName,omitempty"`
+
+	// MedicamentalForm: Лекарственная форма по справочнику "Справочник: Лекарственные формы" (nsiFarmMedicamentalForm) Заполняется, начиная с даты в настройке ПРИЗ_Н_0112
+	MedicamentalForm *base.MedicamentalFormRef `xml:"medicamentalForm,omitempty"`
+}
+
+// DosageInfo34: Дозировка
+type DosageInfo34 struct {
+	XMLName xml.Name `xml:"dosageInfo"`
+
+	// DosageGrlsvalue: Полная форма дозировки
+	DosageGrlsvalue base.DrugNameType `xml:",any"`
+}
+
+// PackagingInfo32: Сведения об упаковке. В случае заполнения блока mustSpecifyDrugPackage при приеме контролируется заполненность блока packagingInfo во всех вариантах поставки лекарственных препаратов
+type PackagingInfo32 struct {
+	XMLName xml.Name `xml:"packagingInfo,omitempty"`
+
+	// Packaging1Quantity: Количество лекарственных форм в первичной упаковке
+	Packaging1Quantity *base.DrugPackaging1QuantityType `xml:"packaging1Quantity,omitempty"`
+
+	// Packaging2Quantity: Количество первичных упаковок во вторичной (потребительской) упаковке
+	Packaging2Quantity *base.DrugPackaging2QuantityType `xml:"packaging2Quantity,omitempty"`
+
+	// SumaryPackagingQuantity: Количество потребительских единиц в потребительской упаковке. Если заполнены поле packaging1Quantity и поле packaging2Quantity, то игнорируется при приеме, автоматически рассчитывается как произведение packaging1Quantity*packaging2Quantity. Иначе принимается из пакета. Всегда принимается и сохраняется, если явно указано в пакете для извещений, первая версия которых размещена до выхода версии 10.3, независимо от разрешения ручного ввода
+	SumaryPackagingQuantity *base.DrugSumaryPackagingQuantityType `xml:"sumaryPackagingQuantity,omitempty"`
+}
+
 // DrugInfo27: Сведения о варианте поставки лекарственного препарата. Может быть указан только один вариант поставки (один лекарственный препарат). Если необходимо указать несколько вариантов поставки, то заполняется блок drugInterchangeTextFormInfo ("Сведения о лекарственных препаратах с учетом взаимозаменяемости не по справочнику "Группы взаимозаменяемости лекарственных препаратов") Если заполнен блок «По решению заказчика (организации, осуществляющей определение поставщика для заказчика)» (modificationInfo/reasonInfo/responsibleDecisionInfo), то игнорируется при приеме и заполняется из предыдущей версии извещения за исключением: o поля «Уникальный идентификатор лекарственного препарата в извещении-приглашении» (sid) o поля «Внешний идентификатор лекарственного препарата в извещении-приглашении» (externalSid) o поля «Количество (объем) закупаемого лекарственного препарата» (drugQuantity); o поля «Референтная цена по справочнику "Лекарственные препараты"» (averagePriceValue); o поля «Сумма выплат по референтной цене (всего)» (averagePriceTotal)
 type DrugInfo27 struct {
 	XMLName xml.Name `xml:"drugInfo,omitempty"`
@@ -9831,6 +10521,21 @@ type DrugInfo27 struct {
 
 	// BasicUnit: Признак основного варианта поставки. При приеме контролируется обязательность заполнения поля только для одного значения блока drugInfo в составе двух блоков objectInfoUsingReferenceInfo и objectInfoUsingTextForm
 	BasicUnit *bool `xml:"basicUnit,omitempty"`
+
+	// MedicamentalFormInfo47: Лекарственная форма
+	MedicamentalFormInfo MedicamentalFormInfo47 `xml:"medicamentalFormInfo"`
+
+	// DosageInfo47: Дозировка
+	DosageInfo DosageInfo47 `xml:"dosageInfo"`
+
+	// PackagingInfo45: Сведения об упаковке. В случае заполнения блока mustSpecifyDrugPackage при приеме контролируется заполненность блока packagingInfo во всех вариантах поставки лекарственных препаратов
+	PackagingInfo *PackagingInfo45 `xml:"packagingInfo,omitempty"`
+
+	// ManualUserOkei: Единица измерения товара. При приеме содержимое контролируется на присутствие в справочнике "Справочник: Единицы измерения потребительских единиц измерения лекарственных препаратов по ОКЕИ" (nsiDrugOKEI)
+	ManualUserOkei base.Okeiref `xml:"manualUserOKEI"`
+
+	// DrugChangeInfo: Информация указываемая при ручном изменении лекарственного препарата. При приеме контролируется обязательность заполнения в случае указания лекарственной формы, дозировки, упаковки, единицы измерения в текстовой форме. Начиная с версии 10.1 контролируется обязательность указания причины корректировки сведений о лекарственных препаратах
+	DrugChangeInfo *DrugChangeInfoType `xml:"drugChangeInfo,omitempty"`
 }
 
 // DrugPurchaseObjectInfo12ObjectInfoUsingTextFormDrugsInfo: Сведения о вариантах поставки лекарственных препаратов
@@ -10144,16 +10849,16 @@ type PurchaseObject16 struct {
 	Ktru *PurchaseObject16Ktru `xml:"KTRU,omitempty"`
 }
 
-// MedicamentalFormInfo20: Лекарственная форма. Игнорируется при приеме, автоматически заполняется при передаче по справочнику "Лекарственные препараты"
-type MedicamentalFormInfo20 struct {
+// MedicamentalFormInfo35: Лекарственная форма. Игнорируется при приеме, автоматически заполняется при передаче по справочнику "Лекарственные препараты"
+type MedicamentalFormInfo35 struct {
 	XMLName xml.Name `xml:"medicamentalFormInfo,omitempty"`
 
 	// MedicamentalFormName: Наименование лекарственной формы по справочнику "Лекарственные препараты" (nsiFarmDrugDictionary) (поле MNNsInfo\MNNInfo\medicamentalFormInfo\medicamentalFormName)
 	MedicamentalFormName base.DrugNameType `xml:",any"`
 }
 
-// DosageInfo20: Дозировка. Игнорируется при приеме, автоматически заполняется при передаче по справочнику "Лекарственные препараты"
-type DosageInfo20 struct {
+// DosageInfo35: Дозировка. Игнорируется при приеме, автоматически заполняется при передаче по справочнику "Лекарственные препараты"
+type DosageInfo35 struct {
 	XMLName xml.Name `xml:"dosageInfo,omitempty"`
 
 	// DosageGrlsvalue: Полная форма дозировки по справочнику "Лекарственные препараты" (nsiFarmDrugDictionary) (поле MNNsInfo\MNNInfo\dosagesInfo\dosageInfo\dosageGRLSValue )
@@ -10166,8 +10871,8 @@ type DosageInfo20 struct {
 	DosageUserName *base.DrugNameType `xml:"dosageUserName,omitempty"`
 }
 
-// PackagingInfo18: Сведения об упаковке. В случае заполнения блока mustSpecifyDrugPackage при приеме контролируется заполненность блока packagingInfo во всех вариантах поставки лекарственных препаратов
-type PackagingInfo18 struct {
+// PackagingInfo33: Сведения об упаковке. В случае заполнения блока mustSpecifyDrugPackage при приеме контролируется заполненность блока packagingInfo во всех вариантах поставки лекарственных препаратов
+type PackagingInfo33 struct {
 	XMLName xml.Name `xml:"packagingInfo,omitempty"`
 
 	// PositionTradeNameExternalCode: Уникальный внешний код лекарственного препарата по справочнику "Лекарственные препараты (поле MNNInfo\positionsTradeName\positionTradeName\positionTradeNameExternalCode документа nsiFarmDrugDictionary). При приеме контролируется наличие в справочнике "Лекарственные препараты" ЕИС лекарственного препарата с таким кодом и принадлежность лекарственного препарата с указанным кодом к МНН с кодом, указанным в поле MNNInfo
@@ -10217,14 +10922,14 @@ type DrugInfo28 struct {
 	// Ktru: Классификация по КТРУ. Блок всегда игнорируется при приеме, автоматически заполняется при передаче, если: • МНН указан из справочника ЕСКЛП. Не используется до выхода версии ЕИС 13.2
 	Ktru *base.Ktruref `xml:"KTRU,omitempty"`
 
-	// MedicamentalFormInfo26: Лекарственная форма. Игнорируется при приеме, автоматически заполняется при передаче по справочнику "Лекарственные препараты"
-	MedicamentalFormInfo *MedicamentalFormInfo26 `xml:"medicamentalFormInfo,omitempty"`
+	// MedicamentalFormInfo46: Лекарственная форма. Игнорируется при приеме, автоматически заполняется при передаче по справочнику "Лекарственные препараты"
+	MedicamentalFormInfo *MedicamentalFormInfo46 `xml:"medicamentalFormInfo,omitempty"`
 
-	// DosageInfo26: Дозировка. Игнорируется при приеме, автоматически заполняется при передаче по справочнику "Лекарственные препараты"
-	DosageInfo *DosageInfo26 `xml:"dosageInfo,omitempty"`
+	// DosageInfo46: Дозировка. Игнорируется при приеме, автоматически заполняется при передаче по справочнику "Лекарственные препараты"
+	DosageInfo *DosageInfo46 `xml:"dosageInfo,omitempty"`
 
-	// PackagingInfo24: Сведения об упаковке. В случае заполнения блока mustSpecifyDrugPackage при приеме контролируется заполненность блока packagingInfo во всех вариантах поставки лекарственных препаратов
-	PackagingInfo *PackagingInfo24 `xml:"packagingInfo,omitempty"`
+	// PackagingInfo44: Сведения об упаковке. В случае заполнения блока mustSpecifyDrugPackage при приеме контролируется заполненность блока packagingInfo во всех вариантах поставки лекарственных препаратов
+	PackagingInfo *PackagingInfo44 `xml:"packagingInfo,omitempty"`
 
 	// ManualUserOkei: Единица измерения товара, введенная вручную . Если заполнено в принимаемом документе, то считается, что внешняя система явно указала этот блок, содержимое контролируется на присутствие в справочнике "Справочник: Единицы измерения потребительских единиц измерения лекарственных препаратов по ОКЕИ" (nsiDrugOKEI). Для групп взаимозаменяемости (блок drugInterchangeInfo) всегда игнорируется при приеме, автоматически заполняется при передаче по справочнику "Лекарственные препараты"
 	ManualUserOkei *base.Okeiref `xml:"manualUserOKEI,omitempty"`
@@ -10296,6 +11001,39 @@ type TradeInfo16 struct {
 	DrugChangeInfo *DrugChangeInfoType `xml:"drugChangeInfo,omitempty"`
 }
 
+// MedicamentalFormInfo36: Лекарственная форма
+type MedicamentalFormInfo36 struct {
+	XMLName xml.Name `xml:"medicamentalFormInfo"`
+
+	// MedicamentalFormName: Наименование лекарственной формы. Игнорируется, начиная с даты в настройке ПРИЗ_Н_0112
+	MedicamentalFormName *base.DrugNameType `xml:"medicamentalFormName,omitempty"`
+
+	// MedicamentalForm: Лекарственная форма по справочнику "Справочник: Лекарственные формы" (nsiFarmMedicamentalForm) Заполняется, начиная с даты в настройке ПРИЗ_Н_0112
+	MedicamentalForm *base.MedicamentalFormRef `xml:"medicamentalForm,omitempty"`
+}
+
+// DosageInfo36: Дозировка
+type DosageInfo36 struct {
+	XMLName xml.Name `xml:"dosageInfo"`
+
+	// DosageGrlsvalue: Полная форма дозировки
+	DosageGrlsvalue base.DrugNameType `xml:",any"`
+}
+
+// PackagingInfo34: Сведения об упаковке. В случае заполнения блока mustSpecifyDrugPackage при приеме контролируется заполненность блока packagingInfo во всех вариантах поставки лекарственных препаратов
+type PackagingInfo34 struct {
+	XMLName xml.Name `xml:"packagingInfo,omitempty"`
+
+	// Packaging1Quantity: Количество лекарственных форм в первичной упаковке
+	Packaging1Quantity *base.DrugPackaging1QuantityType `xml:"packaging1Quantity,omitempty"`
+
+	// Packaging2Quantity: Количество первичных упаковок во вторичной (потребительской) упаковке
+	Packaging2Quantity *base.DrugPackaging2QuantityType `xml:"packaging2Quantity,omitempty"`
+
+	// SumaryPackagingQuantity: Количество потребительских единиц в потребительской упаковке. Если заполнены поле packaging1Quantity и поле packaging2Quantity, то игнорируется при приеме, автоматически рассчитывается как произведение packaging1Quantity*packaging2Quantity. Иначе принимается из пакета. Всегда принимается и сохраняется, если явно указано в пакете для извещений, первая версия которых размещена до выхода версии 10.3, независимо от разрешения ручного ввода
+	SumaryPackagingQuantity *base.DrugSumaryPackagingQuantityType `xml:"sumaryPackagingQuantity,omitempty"`
+}
+
 // DrugInfo29: Сведения о варианте поставки лекарственного препарата. Может быть указан только один вариант поставки (один лекарственный препарат). Если необходимо указать несколько вариантов поставки, то заполняется блок drugInterchangeTextFormInfo ("Сведения о лекарственных препаратах с учетом взаимозаменяемости не по справочнику "Группы взаимозаменяемости лекарственных препаратов") Если заполнен блок «По решению заказчика (организации, осуществляющей определение поставщика для заказчика)» (modificationInfo/reasonInfo/responsibleDecisionInfo), то игнорируется при приеме и заполняется из предыдущей версии извещения за исключением: o поля «Уникальный идентификатор лекарственного препарата в извещении-приглашении» (sid) o поля «Внешний идентификатор лекарственного препарата в извещении-приглашении» (externalSid) o поля «Количество (объем) закупаемого лекарственного препарата» (drugQuantity); o поля «Референтная цена по справочнику "Лекарственные препараты"» (averagePriceValue); o поля «Сумма выплат по референтной цене (всего)» (averagePriceTotal)
 type DrugInfo29 struct {
 	XMLName xml.Name `xml:"drugInfo,omitempty"`
@@ -10320,6 +11058,21 @@ type DrugInfo29 struct {
 
 	// BasicUnit: Признак основного варианта поставки. При приеме контролируется обязательность заполнения поля только для одного значения блока drugInfo в составе двух блоков objectInfoUsingReferenceInfo и objectInfoUsingTextForm
 	BasicUnit *bool `xml:"basicUnit,omitempty"`
+
+	// MedicamentalFormInfo47: Лекарственная форма
+	MedicamentalFormInfo MedicamentalFormInfo47 `xml:"medicamentalFormInfo"`
+
+	// DosageInfo47: Дозировка
+	DosageInfo DosageInfo47 `xml:"dosageInfo"`
+
+	// PackagingInfo45: Сведения об упаковке. В случае заполнения блока mustSpecifyDrugPackage при приеме контролируется заполненность блока packagingInfo во всех вариантах поставки лекарственных препаратов
+	PackagingInfo *PackagingInfo45 `xml:"packagingInfo,omitempty"`
+
+	// ManualUserOkei: Единица измерения товара. При приеме содержимое контролируется на присутствие в справочнике "Справочник: Единицы измерения потребительских единиц измерения лекарственных препаратов по ОКЕИ" (nsiDrugOKEI)
+	ManualUserOkei base.Okeiref `xml:"manualUserOKEI"`
+
+	// DrugChangeInfo: Информация указываемая при ручном изменении лекарственного препарата. При приеме контролируется обязательность заполнения в случае указания лекарственной формы, дозировки, упаковки, единицы измерения в текстовой форме. Начиная с версии 10.1 контролируется обязательность указания причины корректировки сведений о лекарственных препаратах
+	DrugChangeInfo *DrugChangeInfoType `xml:"drugChangeInfo,omitempty"`
 }
 
 // DrugPurchaseObjectInfo13ObjectInfoUsingTextFormDrugsInfo: Сведения о вариантах поставки лекарственных препаратов
@@ -10448,16 +11201,16 @@ type DrugPurchaseObjectInfo15 struct {
 	PositionPrice *base.MoneyType `xml:"positionPrice,omitempty"`
 }
 
-// MedicamentalFormInfo21: Лекарственная форма. Игнорируется при приеме, автоматически заполняется при передаче по справочнику "Лекарственные препараты"
-type MedicamentalFormInfo21 struct {
+// MedicamentalFormInfo37: Лекарственная форма. Игнорируется при приеме, автоматически заполняется при передаче по справочнику "Лекарственные препараты"
+type MedicamentalFormInfo37 struct {
 	XMLName xml.Name `xml:"medicamentalFormInfo,omitempty"`
 
 	// MedicamentalFormName: Наименование лекарственной формы по справочнику "Лекарственные препараты" (nsiFarmDrugDictionary) (поле MNNsInfo\MNNInfo\medicamentalFormInfo\medicamentalFormName)
 	MedicamentalFormName base.DrugNameType `xml:",any"`
 }
 
-// DosageInfo21: Дозировка. Игнорируется при приеме, автоматически заполняется при передаче по справочнику "Лекарственные препараты"
-type DosageInfo21 struct {
+// DosageInfo37: Дозировка. Игнорируется при приеме, автоматически заполняется при передаче по справочнику "Лекарственные препараты"
+type DosageInfo37 struct {
 	XMLName xml.Name `xml:"dosageInfo,omitempty"`
 
 	// DosageGrlsvalue: Полная форма дозировки по справочнику "Лекарственные препараты" (nsiFarmDrugDictionary) (поле MNNsInfo\MNNInfo\dosagesInfo\dosageInfo\dosageGRLSValue )
@@ -10470,8 +11223,8 @@ type DosageInfo21 struct {
 	DosageUserName *base.DrugNameType `xml:"dosageUserName,omitempty"`
 }
 
-// PackagingInfo19: Сведения об упаковке. В случае заполнения блока mustSpecifyDrugPackage при приеме контролируется заполненность блока packagingInfo во всех вариантах поставки лекарственных препаратов
-type PackagingInfo19 struct {
+// PackagingInfo35: Сведения об упаковке. В случае заполнения блока mustSpecifyDrugPackage при приеме контролируется заполненность блока packagingInfo во всех вариантах поставки лекарственных препаратов
+type PackagingInfo35 struct {
 	XMLName xml.Name `xml:"packagingInfo,omitempty"`
 
 	// PositionTradeNameExternalCode: Уникальный внешний код лекарственного препарата по справочнику "Лекарственные препараты (поле MNNInfo\positionsTradeName\positionTradeName\positionTradeNameExternalCode документа nsiFarmDrugDictionary). При приеме контролируется наличие в справочнике "Лекарственные препараты" ЕИС лекарственного препарата с таким кодом и принадлежность лекарственного препарата с указанным кодом к МНН с кодом, указанным в поле MNNInfo
@@ -10521,14 +11274,14 @@ type DrugInfo30 struct {
 	// Ktru: Классификация по КТРУ. Блок всегда игнорируется при приеме, автоматически заполняется при передаче, если: • МНН указан из справочника ЕСКЛП. Не используется до выхода версии ЕИС 13.2
 	Ktru *base.Ktruref `xml:"KTRU,omitempty"`
 
-	// MedicamentalFormInfo26: Лекарственная форма. Игнорируется при приеме, автоматически заполняется при передаче по справочнику "Лекарственные препараты"
-	MedicamentalFormInfo *MedicamentalFormInfo26 `xml:"medicamentalFormInfo,omitempty"`
+	// MedicamentalFormInfo46: Лекарственная форма. Игнорируется при приеме, автоматически заполняется при передаче по справочнику "Лекарственные препараты"
+	MedicamentalFormInfo *MedicamentalFormInfo46 `xml:"medicamentalFormInfo,omitempty"`
 
-	// DosageInfo26: Дозировка. Игнорируется при приеме, автоматически заполняется при передаче по справочнику "Лекарственные препараты"
-	DosageInfo *DosageInfo26 `xml:"dosageInfo,omitempty"`
+	// DosageInfo46: Дозировка. Игнорируется при приеме, автоматически заполняется при передаче по справочнику "Лекарственные препараты"
+	DosageInfo *DosageInfo46 `xml:"dosageInfo,omitempty"`
 
-	// PackagingInfo24: Сведения об упаковке. В случае заполнения блока mustSpecifyDrugPackage при приеме контролируется заполненность блока packagingInfo во всех вариантах поставки лекарственных препаратов
-	PackagingInfo *PackagingInfo24 `xml:"packagingInfo,omitempty"`
+	// PackagingInfo44: Сведения об упаковке. В случае заполнения блока mustSpecifyDrugPackage при приеме контролируется заполненность блока packagingInfo во всех вариантах поставки лекарственных препаратов
+	PackagingInfo *PackagingInfo44 `xml:"packagingInfo,omitempty"`
 
 	// ManualUserOkei: Единица измерения товара, введенная вручную . Если заполнено в принимаемом документе, то считается, что внешняя система явно указала этот блок, содержимое контролируется на присутствие в справочнике "Справочник: Единицы измерения потребительских единиц измерения лекарственных препаратов по ОКЕИ" (nsiDrugOKEI). Для групп взаимозаменяемости (блок drugInterchangeInfo) всегда игнорируется при приеме, автоматически заполняется при передаче по справочнику "Лекарственные препараты"
 	ManualUserOkei *base.Okeiref `xml:"manualUserOKEI,omitempty"`
@@ -10600,6 +11353,39 @@ type TradeInfo17 struct {
 	DrugChangeInfo *DrugChangeInfoType `xml:"drugChangeInfo,omitempty"`
 }
 
+// MedicamentalFormInfo38: Лекарственная форма
+type MedicamentalFormInfo38 struct {
+	XMLName xml.Name `xml:"medicamentalFormInfo"`
+
+	// MedicamentalFormName: Наименование лекарственной формы. Игнорируется, начиная с даты в настройке ПРИЗ_Н_0112
+	MedicamentalFormName *base.DrugNameType `xml:"medicamentalFormName,omitempty"`
+
+	// MedicamentalForm: Лекарственная форма по справочнику "Справочник: Лекарственные формы" (nsiFarmMedicamentalForm) Заполняется, начиная с даты в настройке ПРИЗ_Н_0112
+	MedicamentalForm *base.MedicamentalFormRef `xml:"medicamentalForm,omitempty"`
+}
+
+// DosageInfo38: Дозировка
+type DosageInfo38 struct {
+	XMLName xml.Name `xml:"dosageInfo"`
+
+	// DosageGrlsvalue: Полная форма дозировки
+	DosageGrlsvalue base.DrugNameType `xml:",any"`
+}
+
+// PackagingInfo36: Сведения об упаковке. В случае заполнения блока mustSpecifyDrugPackage при приеме контролируется заполненность блока packagingInfo во всех вариантах поставки лекарственных препаратов
+type PackagingInfo36 struct {
+	XMLName xml.Name `xml:"packagingInfo,omitempty"`
+
+	// Packaging1Quantity: Количество лекарственных форм в первичной упаковке
+	Packaging1Quantity *base.DrugPackaging1QuantityType `xml:"packaging1Quantity,omitempty"`
+
+	// Packaging2Quantity: Количество первичных упаковок во вторичной (потребительской) упаковке
+	Packaging2Quantity *base.DrugPackaging2QuantityType `xml:"packaging2Quantity,omitempty"`
+
+	// SumaryPackagingQuantity: Количество потребительских единиц в потребительской упаковке. Если заполнены поле packaging1Quantity и поле packaging2Quantity, то игнорируется при приеме, автоматически рассчитывается как произведение packaging1Quantity*packaging2Quantity. Иначе принимается из пакета. Всегда принимается и сохраняется, если явно указано в пакете для извещений, первая версия которых размещена до выхода версии 10.3, независимо от разрешения ручного ввода
+	SumaryPackagingQuantity *base.DrugSumaryPackagingQuantityType `xml:"sumaryPackagingQuantity,omitempty"`
+}
+
 // DrugInfo31: Сведения о варианте поставки лекарственного препарата. Может быть указан только один вариант поставки (один лекарственный препарат). Если необходимо указать несколько вариантов поставки, то заполняется блок drugInterchangeTextFormInfo ("Сведения о лекарственных препаратах с учетом взаимозаменяемости не по справочнику "Группы взаимозаменяемости лекарственных препаратов") Если заполнен блок «По решению заказчика (организации, осуществляющей определение поставщика для заказчика)» (modificationInfo/reasonInfo/responsibleDecisionInfo), то игнорируется при приеме и заполняется из предыдущей версии извещения за исключением: o поля «Уникальный идентификатор лекарственного препарата в извещении-приглашении» (sid) o поля «Внешний идентификатор лекарственного препарата в извещении-приглашении» (externalSid) o поля «Количество (объем) закупаемого лекарственного препарата» (drugQuantity); o поля «Референтная цена по справочнику "Лекарственные препараты"» (averagePriceValue); o поля «Сумма выплат по референтной цене (всего)» (averagePriceTotal)
 type DrugInfo31 struct {
 	XMLName xml.Name `xml:"drugInfo,omitempty"`
@@ -10624,6 +11410,21 @@ type DrugInfo31 struct {
 
 	// BasicUnit: Признак основного варианта поставки. При приеме контролируется обязательность заполнения поля только для одного значения блока drugInfo в составе двух блоков objectInfoUsingReferenceInfo и objectInfoUsingTextForm
 	BasicUnit *bool `xml:"basicUnit,omitempty"`
+
+	// MedicamentalFormInfo47: Лекарственная форма
+	MedicamentalFormInfo MedicamentalFormInfo47 `xml:"medicamentalFormInfo"`
+
+	// DosageInfo47: Дозировка
+	DosageInfo DosageInfo47 `xml:"dosageInfo"`
+
+	// PackagingInfo45: Сведения об упаковке. В случае заполнения блока mustSpecifyDrugPackage при приеме контролируется заполненность блока packagingInfo во всех вариантах поставки лекарственных препаратов
+	PackagingInfo *PackagingInfo45 `xml:"packagingInfo,omitempty"`
+
+	// ManualUserOkei: Единица измерения товара. При приеме содержимое контролируется на присутствие в справочнике "Справочник: Единицы измерения потребительских единиц измерения лекарственных препаратов по ОКЕИ" (nsiDrugOKEI)
+	ManualUserOkei base.Okeiref `xml:"manualUserOKEI"`
+
+	// DrugChangeInfo: Информация указываемая при ручном изменении лекарственного препарата. При приеме контролируется обязательность заполнения в случае указания лекарственной формы, дозировки, упаковки, единицы измерения в текстовой форме. Начиная с версии 10.1 контролируется обязательность указания причины корректировки сведений о лекарственных препаратах
+	DrugChangeInfo *DrugChangeInfoType `xml:"drugChangeInfo,omitempty"`
 }
 
 // DrugPurchaseObjectInfo14ObjectInfoUsingTextFormDrugsInfo: Сведения о вариантах поставки лекарственных препаратов
@@ -11220,16 +12021,16 @@ type IndividualPersonForeignStateInfo2 struct {
 	PlaceOfStayInRfinfo *IndividualPersonForeignStateInfo10PlaceOfStayInRfinfo `xml:"placeOfStayInRFInfo,omitempty"`
 }
 
-// MedicamentalFormInfo22: Лекарственная форма. Игнорируется при приеме, автоматически заполняется при передаче по справочнику "Лекарственные препараты"
-type MedicamentalFormInfo22 struct {
+// MedicamentalFormInfo39: Лекарственная форма. Игнорируется при приеме, автоматически заполняется при передаче по справочнику "Лекарственные препараты"
+type MedicamentalFormInfo39 struct {
 	XMLName xml.Name `xml:"medicamentalFormInfo,omitempty"`
 
 	// MedicamentalFormName: Наименование лекарственной формы по справочнику "Лекарственные препараты" (nsiFarmDrugDictionary) (поле MNNsInfo\MNNInfo\medicamentalFormInfo\medicamentalFormName)
 	MedicamentalFormName base.DrugNameType `xml:",any"`
 }
 
-// DosageInfo22: Дозировка. Игнорируется при приеме, автоматически заполняется при передаче по справочнику "Лекарственные препараты"
-type DosageInfo22 struct {
+// DosageInfo39: Дозировка. Игнорируется при приеме, автоматически заполняется при передаче по справочнику "Лекарственные препараты"
+type DosageInfo39 struct {
 	XMLName xml.Name `xml:"dosageInfo,omitempty"`
 
 	// DosageGrlsvalue: Полная форма дозировки по справочнику "Лекарственные препараты" (nsiFarmDrugDictionary) (поле MNNsInfo\MNNInfo\dosagesInfo\dosageInfo\dosageGRLSValue )
@@ -11242,8 +12043,8 @@ type DosageInfo22 struct {
 	DosageUserName *base.DrugNameType `xml:"dosageUserName,omitempty"`
 }
 
-// PackagingInfo20: Сведения об упаковке. В случае заполнения блока mustSpecifyDrugPackage при приеме контролируется заполненность блока packagingInfo во всех вариантах поставки лекарственных препаратов
-type PackagingInfo20 struct {
+// PackagingInfo37: Сведения об упаковке. В случае заполнения блока mustSpecifyDrugPackage при приеме контролируется заполненность блока packagingInfo во всех вариантах поставки лекарственных препаратов
+type PackagingInfo37 struct {
 	XMLName xml.Name `xml:"packagingInfo,omitempty"`
 
 	// PositionTradeNameExternalCode: Уникальный внешний код лекарственного препарата по справочнику "Лекарственные препараты (поле MNNInfo\positionsTradeName\positionTradeName\positionTradeNameExternalCode документа nsiFarmDrugDictionary). При приеме контролируется наличие в справочнике "Лекарственные препараты" ЕИС лекарственного препарата с таким кодом и принадлежность лекарственного препарата с указанным кодом к МНН с кодом, указанным в поле MNNInfo
@@ -11293,14 +12094,14 @@ type DrugInfo32 struct {
 	// Ktru: Классификация по КТРУ. Блок всегда игнорируется при приеме, автоматически заполняется при передаче, если: • МНН указан из справочника ЕСКЛП. Не используется до выхода версии ЕИС 13.2
 	Ktru *base.Ktruref `xml:"KTRU,omitempty"`
 
-	// MedicamentalFormInfo26: Лекарственная форма. Игнорируется при приеме, автоматически заполняется при передаче по справочнику "Лекарственные препараты"
-	MedicamentalFormInfo *MedicamentalFormInfo26 `xml:"medicamentalFormInfo,omitempty"`
+	// MedicamentalFormInfo46: Лекарственная форма. Игнорируется при приеме, автоматически заполняется при передаче по справочнику "Лекарственные препараты"
+	MedicamentalFormInfo *MedicamentalFormInfo46 `xml:"medicamentalFormInfo,omitempty"`
 
-	// DosageInfo26: Дозировка. Игнорируется при приеме, автоматически заполняется при передаче по справочнику "Лекарственные препараты"
-	DosageInfo *DosageInfo26 `xml:"dosageInfo,omitempty"`
+	// DosageInfo46: Дозировка. Игнорируется при приеме, автоматически заполняется при передаче по справочнику "Лекарственные препараты"
+	DosageInfo *DosageInfo46 `xml:"dosageInfo,omitempty"`
 
-	// PackagingInfo24: Сведения об упаковке. В случае заполнения блока mustSpecifyDrugPackage при приеме контролируется заполненность блока packagingInfo во всех вариантах поставки лекарственных препаратов
-	PackagingInfo *PackagingInfo24 `xml:"packagingInfo,omitempty"`
+	// PackagingInfo44: Сведения об упаковке. В случае заполнения блока mustSpecifyDrugPackage при приеме контролируется заполненность блока packagingInfo во всех вариантах поставки лекарственных препаратов
+	PackagingInfo *PackagingInfo44 `xml:"packagingInfo,omitempty"`
 
 	// ManualUserOkei: Единица измерения товара, введенная вручную . Если заполнено в принимаемом документе, то считается, что внешняя система явно указала этот блок, содержимое контролируется на присутствие в справочнике "Справочник: Единицы измерения потребительских единиц измерения лекарственных препаратов по ОКЕИ" (nsiDrugOKEI). Для групп взаимозаменяемости (блок drugInterchangeInfo) всегда игнорируется при приеме, автоматически заполняется при передаче по справочнику "Лекарственные препараты"
 	ManualUserOkei *base.Okeiref `xml:"manualUserOKEI,omitempty"`
@@ -11372,6 +12173,39 @@ type TradeInfo18 struct {
 	DrugChangeInfo *DrugChangeInfoType `xml:"drugChangeInfo,omitempty"`
 }
 
+// MedicamentalFormInfo40: Лекарственная форма
+type MedicamentalFormInfo40 struct {
+	XMLName xml.Name `xml:"medicamentalFormInfo"`
+
+	// MedicamentalFormName: Наименование лекарственной формы. Игнорируется, начиная с даты в настройке ПРИЗ_Н_0112
+	MedicamentalFormName *base.DrugNameType `xml:"medicamentalFormName,omitempty"`
+
+	// MedicamentalForm: Лекарственная форма по справочнику "Справочник: Лекарственные формы" (nsiFarmMedicamentalForm) Заполняется, начиная с даты в настройке ПРИЗ_Н_0112
+	MedicamentalForm *base.MedicamentalFormRef `xml:"medicamentalForm,omitempty"`
+}
+
+// DosageInfo40: Дозировка
+type DosageInfo40 struct {
+	XMLName xml.Name `xml:"dosageInfo"`
+
+	// DosageGrlsvalue: Полная форма дозировки
+	DosageGrlsvalue base.DrugNameType `xml:",any"`
+}
+
+// PackagingInfo38: Сведения об упаковке. В случае заполнения блока mustSpecifyDrugPackage при приеме контролируется заполненность блока packagingInfo во всех вариантах поставки лекарственных препаратов
+type PackagingInfo38 struct {
+	XMLName xml.Name `xml:"packagingInfo,omitempty"`
+
+	// Packaging1Quantity: Количество лекарственных форм в первичной упаковке
+	Packaging1Quantity *base.DrugPackaging1QuantityType `xml:"packaging1Quantity,omitempty"`
+
+	// Packaging2Quantity: Количество первичных упаковок во вторичной (потребительской) упаковке
+	Packaging2Quantity *base.DrugPackaging2QuantityType `xml:"packaging2Quantity,omitempty"`
+
+	// SumaryPackagingQuantity: Количество потребительских единиц в потребительской упаковке. Если заполнены поле packaging1Quantity и поле packaging2Quantity, то игнорируется при приеме, автоматически рассчитывается как произведение packaging1Quantity*packaging2Quantity. Иначе принимается из пакета. Всегда принимается и сохраняется, если явно указано в пакете для извещений, первая версия которых размещена до выхода версии 10.3, независимо от разрешения ручного ввода
+	SumaryPackagingQuantity *base.DrugSumaryPackagingQuantityType `xml:"sumaryPackagingQuantity,omitempty"`
+}
+
 // DrugInfo33: Сведения о варианте поставки лекарственного препарата. Может быть указан только один вариант поставки (один лекарственный препарат). Если необходимо указать несколько вариантов поставки, то заполняется блок drugInterchangeTextFormInfo ("Сведения о лекарственных препаратах с учетом взаимозаменяемости не по справочнику "Группы взаимозаменяемости лекарственных препаратов") Если заполнен блок «По решению заказчика (организации, осуществляющей определение поставщика для заказчика)» (modificationInfo/reasonInfo/responsibleDecisionInfo), то игнорируется при приеме и заполняется из предыдущей версии извещения за исключением: o поля «Уникальный идентификатор лекарственного препарата в извещении-приглашении» (sid) o поля «Внешний идентификатор лекарственного препарата в извещении-приглашении» (externalSid) o поля «Количество (объем) закупаемого лекарственного препарата» (drugQuantity); o поля «Референтная цена по справочнику "Лекарственные препараты"» (averagePriceValue); o поля «Сумма выплат по референтной цене (всего)» (averagePriceTotal)
 type DrugInfo33 struct {
 	XMLName xml.Name `xml:"drugInfo,omitempty"`
@@ -11396,6 +12230,21 @@ type DrugInfo33 struct {
 
 	// BasicUnit: Признак основного варианта поставки. При приеме контролируется обязательность заполнения поля только для одного значения блока drugInfo в составе двух блоков objectInfoUsingReferenceInfo и objectInfoUsingTextForm
 	BasicUnit *bool `xml:"basicUnit,omitempty"`
+
+	// MedicamentalFormInfo47: Лекарственная форма
+	MedicamentalFormInfo MedicamentalFormInfo47 `xml:"medicamentalFormInfo"`
+
+	// DosageInfo47: Дозировка
+	DosageInfo DosageInfo47 `xml:"dosageInfo"`
+
+	// PackagingInfo45: Сведения об упаковке. В случае заполнения блока mustSpecifyDrugPackage при приеме контролируется заполненность блока packagingInfo во всех вариантах поставки лекарственных препаратов
+	PackagingInfo *PackagingInfo45 `xml:"packagingInfo,omitempty"`
+
+	// ManualUserOkei: Единица измерения товара. При приеме содержимое контролируется на присутствие в справочнике "Справочник: Единицы измерения потребительских единиц измерения лекарственных препаратов по ОКЕИ" (nsiDrugOKEI)
+	ManualUserOkei base.Okeiref `xml:"manualUserOKEI"`
+
+	// DrugChangeInfo: Информация указываемая при ручном изменении лекарственного препарата. При приеме контролируется обязательность заполнения в случае указания лекарственной формы, дозировки, упаковки, единицы измерения в текстовой форме. Начиная с версии 10.1 контролируется обязательность указания причины корректировки сведений о лекарственных препаратах
+	DrugChangeInfo *DrugChangeInfoType `xml:"drugChangeInfo,omitempty"`
 }
 
 // DrugPurchaseObjectInfo15ObjectInfoUsingTextFormDrugsInfo: Сведения о вариантах поставки лекарственных препаратов
@@ -12230,16 +13079,16 @@ type IndividualPersonForeignStateInfo4 struct {
 	PlaceOfStayInRfinfo *IndividualPersonForeignStateInfo10PlaceOfStayInRfinfo `xml:"placeOfStayInRFInfo,omitempty"`
 }
 
-// MedicamentalFormInfo23: Лекарственная форма. Игнорируется при приеме, автоматически заполняется при передаче по справочнику "Лекарственные препараты"
-type MedicamentalFormInfo23 struct {
+// MedicamentalFormInfo41: Лекарственная форма. Игнорируется при приеме, автоматически заполняется при передаче по справочнику "Лекарственные препараты"
+type MedicamentalFormInfo41 struct {
 	XMLName xml.Name `xml:"medicamentalFormInfo,omitempty"`
 
 	// MedicamentalFormName: Наименование лекарственной формы по справочнику "Лекарственные препараты" (nsiFarmDrugDictionary) (поле MNNsInfo\MNNInfo\medicamentalFormInfo\medicamentalFormName)
 	MedicamentalFormName base.DrugNameType `xml:",any"`
 }
 
-// DosageInfo23: Дозировка. Игнорируется при приеме, автоматически заполняется при передаче по справочнику "Лекарственные препараты"
-type DosageInfo23 struct {
+// DosageInfo41: Дозировка. Игнорируется при приеме, автоматически заполняется при передаче по справочнику "Лекарственные препараты"
+type DosageInfo41 struct {
 	XMLName xml.Name `xml:"dosageInfo,omitempty"`
 
 	// DosageGrlsvalue: Полная форма дозировки по справочнику "Лекарственные препараты" (nsiFarmDrugDictionary) (поле MNNsInfo\MNNInfo\dosagesInfo\dosageInfo\dosageGRLSValue )
@@ -12252,8 +13101,8 @@ type DosageInfo23 struct {
 	DosageUserName *base.DrugNameType `xml:"dosageUserName,omitempty"`
 }
 
-// PackagingInfo21: Сведения об упаковке. В случае заполнения блока mustSpecifyDrugPackage при приеме контролируется заполненность блока packagingInfo во всех вариантах поставки лекарственных препаратов
-type PackagingInfo21 struct {
+// PackagingInfo39: Сведения об упаковке. В случае заполнения блока mustSpecifyDrugPackage при приеме контролируется заполненность блока packagingInfo во всех вариантах поставки лекарственных препаратов
+type PackagingInfo39 struct {
 	XMLName xml.Name `xml:"packagingInfo,omitempty"`
 
 	// PositionTradeNameExternalCode: Уникальный внешний код лекарственного препарата по справочнику "Лекарственные препараты (поле MNNInfo\positionsTradeName\positionTradeName\positionTradeNameExternalCode документа nsiFarmDrugDictionary). При приеме контролируется наличие в справочнике "Лекарственные препараты" ЕИС лекарственного препарата с таким кодом и принадлежность лекарственного препарата с указанным кодом к МНН с кодом, указанным в поле MNNInfo
@@ -12303,14 +13152,14 @@ type DrugInfo34 struct {
 	// Ktru: Классификация по КТРУ. Блок всегда игнорируется при приеме, автоматически заполняется при передаче, если: • МНН указан из справочника ЕСКЛП. Не используется до выхода версии ЕИС 13.2
 	Ktru *base.Ktruref `xml:"KTRU,omitempty"`
 
-	// MedicamentalFormInfo26: Лекарственная форма. Игнорируется при приеме, автоматически заполняется при передаче по справочнику "Лекарственные препараты"
-	MedicamentalFormInfo *MedicamentalFormInfo26 `xml:"medicamentalFormInfo,omitempty"`
+	// MedicamentalFormInfo46: Лекарственная форма. Игнорируется при приеме, автоматически заполняется при передаче по справочнику "Лекарственные препараты"
+	MedicamentalFormInfo *MedicamentalFormInfo46 `xml:"medicamentalFormInfo,omitempty"`
 
-	// DosageInfo26: Дозировка. Игнорируется при приеме, автоматически заполняется при передаче по справочнику "Лекарственные препараты"
-	DosageInfo *DosageInfo26 `xml:"dosageInfo,omitempty"`
+	// DosageInfo46: Дозировка. Игнорируется при приеме, автоматически заполняется при передаче по справочнику "Лекарственные препараты"
+	DosageInfo *DosageInfo46 `xml:"dosageInfo,omitempty"`
 
-	// PackagingInfo24: Сведения об упаковке. В случае заполнения блока mustSpecifyDrugPackage при приеме контролируется заполненность блока packagingInfo во всех вариантах поставки лекарственных препаратов
-	PackagingInfo *PackagingInfo24 `xml:"packagingInfo,omitempty"`
+	// PackagingInfo44: Сведения об упаковке. В случае заполнения блока mustSpecifyDrugPackage при приеме контролируется заполненность блока packagingInfo во всех вариантах поставки лекарственных препаратов
+	PackagingInfo *PackagingInfo44 `xml:"packagingInfo,omitempty"`
 
 	// ManualUserOkei: Единица измерения товара, введенная вручную . Если заполнено в принимаемом документе, то считается, что внешняя система явно указала этот блок, содержимое контролируется на присутствие в справочнике "Справочник: Единицы измерения потребительских единиц измерения лекарственных препаратов по ОКЕИ" (nsiDrugOKEI). Для групп взаимозаменяемости (блок drugInterchangeInfo) всегда игнорируется при приеме, автоматически заполняется при передаче по справочнику "Лекарственные препараты"
 	ManualUserOkei *base.Okeiref `xml:"manualUserOKEI,omitempty"`
@@ -12382,6 +13231,39 @@ type TradeInfo19 struct {
 	DrugChangeInfo *DrugChangeInfoType `xml:"drugChangeInfo,omitempty"`
 }
 
+// MedicamentalFormInfo42: Лекарственная форма
+type MedicamentalFormInfo42 struct {
+	XMLName xml.Name `xml:"medicamentalFormInfo"`
+
+	// MedicamentalFormName: Наименование лекарственной формы. Игнорируется, начиная с даты в настройке ПРИЗ_Н_0112
+	MedicamentalFormName *base.DrugNameType `xml:"medicamentalFormName,omitempty"`
+
+	// MedicamentalForm: Лекарственная форма по справочнику "Справочник: Лекарственные формы" (nsiFarmMedicamentalForm) Заполняется, начиная с даты в настройке ПРИЗ_Н_0112
+	MedicamentalForm *base.MedicamentalFormRef `xml:"medicamentalForm,omitempty"`
+}
+
+// DosageInfo42: Дозировка
+type DosageInfo42 struct {
+	XMLName xml.Name `xml:"dosageInfo"`
+
+	// DosageGrlsvalue: Полная форма дозировки
+	DosageGrlsvalue base.DrugNameType `xml:",any"`
+}
+
+// PackagingInfo40: Сведения об упаковке. В случае заполнения блока mustSpecifyDrugPackage при приеме контролируется заполненность блока packagingInfo во всех вариантах поставки лекарственных препаратов
+type PackagingInfo40 struct {
+	XMLName xml.Name `xml:"packagingInfo,omitempty"`
+
+	// Packaging1Quantity: Количество лекарственных форм в первичной упаковке
+	Packaging1Quantity *base.DrugPackaging1QuantityType `xml:"packaging1Quantity,omitempty"`
+
+	// Packaging2Quantity: Количество первичных упаковок во вторичной (потребительской) упаковке
+	Packaging2Quantity *base.DrugPackaging2QuantityType `xml:"packaging2Quantity,omitempty"`
+
+	// SumaryPackagingQuantity: Количество потребительских единиц в потребительской упаковке. Если заполнены поле packaging1Quantity и поле packaging2Quantity, то игнорируется при приеме, автоматически рассчитывается как произведение packaging1Quantity*packaging2Quantity. Иначе принимается из пакета. Всегда принимается и сохраняется, если явно указано в пакете для извещений, первая версия которых размещена до выхода версии 10.3, независимо от разрешения ручного ввода
+	SumaryPackagingQuantity *base.DrugSumaryPackagingQuantityType `xml:"sumaryPackagingQuantity,omitempty"`
+}
+
 // DrugInfo35: Сведения о варианте поставки лекарственного препарата. Может быть указан только один вариант поставки (один лекарственный препарат). Если необходимо указать несколько вариантов поставки, то заполняется блок drugInterchangeTextFormInfo ("Сведения о лекарственных препаратах с учетом взаимозаменяемости не по справочнику "Группы взаимозаменяемости лекарственных препаратов") Если заполнен блок «По решению заказчика (организации, осуществляющей определение поставщика для заказчика)» (modificationInfo/reasonInfo/responsibleDecisionInfo), то игнорируется при приеме и заполняется из предыдущей версии извещения за исключением: o поля «Уникальный идентификатор лекарственного препарата в извещении-приглашении» (sid) o поля «Внешний идентификатор лекарственного препарата в извещении-приглашении» (externalSid) o поля «Количество (объем) закупаемого лекарственного препарата» (drugQuantity); o поля «Референтная цена по справочнику "Лекарственные препараты"» (averagePriceValue); o поля «Сумма выплат по референтной цене (всего)» (averagePriceTotal)
 type DrugInfo35 struct {
 	XMLName xml.Name `xml:"drugInfo,omitempty"`
@@ -12406,6 +13288,21 @@ type DrugInfo35 struct {
 
 	// BasicUnit: Признак основного варианта поставки. При приеме контролируется обязательность заполнения поля только для одного значения блока drugInfo в составе двух блоков objectInfoUsingReferenceInfo и objectInfoUsingTextForm
 	BasicUnit *bool `xml:"basicUnit,omitempty"`
+
+	// MedicamentalFormInfo47: Лекарственная форма
+	MedicamentalFormInfo MedicamentalFormInfo47 `xml:"medicamentalFormInfo"`
+
+	// DosageInfo47: Дозировка
+	DosageInfo DosageInfo47 `xml:"dosageInfo"`
+
+	// PackagingInfo45: Сведения об упаковке. В случае заполнения блока mustSpecifyDrugPackage при приеме контролируется заполненность блока packagingInfo во всех вариантах поставки лекарственных препаратов
+	PackagingInfo *PackagingInfo45 `xml:"packagingInfo,omitempty"`
+
+	// ManualUserOkei: Единица измерения товара. При приеме содержимое контролируется на присутствие в справочнике "Справочник: Единицы измерения потребительских единиц измерения лекарственных препаратов по ОКЕИ" (nsiDrugOKEI)
+	ManualUserOkei base.Okeiref `xml:"manualUserOKEI"`
+
+	// DrugChangeInfo: Информация указываемая при ручном изменении лекарственного препарата. При приеме контролируется обязательность заполнения в случае указания лекарственной формы, дозировки, упаковки, единицы измерения в текстовой форме. Начиная с версии 10.1 контролируется обязательность указания причины корректировки сведений о лекарственных препаратах
+	DrugChangeInfo *DrugChangeInfoType `xml:"drugChangeInfo,omitempty"`
 }
 
 // DrugPurchaseObjectInfo16ObjectInfoUsingTextFormDrugsInfo: Сведения о вариантах поставки лекарственных препаратов
@@ -13187,16 +14084,16 @@ type PurchaseObject20 struct {
 	Ktru *PurchaseObject16Ktru `xml:"KTRU,omitempty"`
 }
 
-// MedicamentalFormInfo24: Лекарственная форма. Игнорируется при приеме, автоматически заполняется при передаче по справочнику "Лекарственные препараты"
-type MedicamentalFormInfo24 struct {
+// MedicamentalFormInfo43: Лекарственная форма. Игнорируется при приеме, автоматически заполняется при передаче по справочнику "Лекарственные препараты"
+type MedicamentalFormInfo43 struct {
 	XMLName xml.Name `xml:"medicamentalFormInfo,omitempty"`
 
 	// MedicamentalFormName: Наименование лекарственной формы по справочнику "Лекарственные препараты" (nsiFarmDrugDictionary) (поле MNNsInfo\MNNInfo\medicamentalFormInfo\medicamentalFormName)
 	MedicamentalFormName base.DrugNameType `xml:",any"`
 }
 
-// DosageInfo24: Дозировка. Игнорируется при приеме, автоматически заполняется при передаче по справочнику "Лекарственные препараты"
-type DosageInfo24 struct {
+// DosageInfo43: Дозировка. Игнорируется при приеме, автоматически заполняется при передаче по справочнику "Лекарственные препараты"
+type DosageInfo43 struct {
 	XMLName xml.Name `xml:"dosageInfo,omitempty"`
 
 	// DosageGrlsvalue: Полная форма дозировки по справочнику "Лекарственные препараты" (nsiFarmDrugDictionary) (поле MNNsInfo\MNNInfo\dosagesInfo\dosageInfo\dosageGRLSValue )
@@ -13209,8 +14106,8 @@ type DosageInfo24 struct {
 	DosageUserName *base.DrugNameType `xml:"dosageUserName,omitempty"`
 }
 
-// PackagingInfo22: Сведения об упаковке. В случае заполнения блока mustSpecifyDrugPackage при приеме контролируется заполненность блока packagingInfo во всех вариантах поставки лекарственных препаратов
-type PackagingInfo22 struct {
+// PackagingInfo41: Сведения об упаковке. В случае заполнения блока mustSpecifyDrugPackage при приеме контролируется заполненность блока packagingInfo во всех вариантах поставки лекарственных препаратов
+type PackagingInfo41 struct {
 	XMLName xml.Name `xml:"packagingInfo,omitempty"`
 
 	// PositionTradeNameExternalCode: Уникальный внешний код лекарственного препарата по справочнику "Лекарственные препараты (поле MNNInfo\positionsTradeName\positionTradeName\positionTradeNameExternalCode документа nsiFarmDrugDictionary). При приеме контролируется наличие в справочнике "Лекарственные препараты" ЕИС лекарственного препарата с таким кодом и принадлежность лекарственного препарата с указанным кодом к МНН с кодом, указанным в поле MNNInfo
@@ -13260,14 +14157,14 @@ type DrugInfo36 struct {
 	// Ktru: Классификация по КТРУ. Блок всегда игнорируется при приеме, автоматически заполняется при передаче, если: • МНН указан из справочника ЕСКЛП. Не используется до выхода версии ЕИС 13.2
 	Ktru *base.Ktruref `xml:"KTRU,omitempty"`
 
-	// MedicamentalFormInfo26: Лекарственная форма. Игнорируется при приеме, автоматически заполняется при передаче по справочнику "Лекарственные препараты"
-	MedicamentalFormInfo *MedicamentalFormInfo26 `xml:"medicamentalFormInfo,omitempty"`
+	// MedicamentalFormInfo46: Лекарственная форма. Игнорируется при приеме, автоматически заполняется при передаче по справочнику "Лекарственные препараты"
+	MedicamentalFormInfo *MedicamentalFormInfo46 `xml:"medicamentalFormInfo,omitempty"`
 
-	// DosageInfo26: Дозировка. Игнорируется при приеме, автоматически заполняется при передаче по справочнику "Лекарственные препараты"
-	DosageInfo *DosageInfo26 `xml:"dosageInfo,omitempty"`
+	// DosageInfo46: Дозировка. Игнорируется при приеме, автоматически заполняется при передаче по справочнику "Лекарственные препараты"
+	DosageInfo *DosageInfo46 `xml:"dosageInfo,omitempty"`
 
-	// PackagingInfo24: Сведения об упаковке. В случае заполнения блока mustSpecifyDrugPackage при приеме контролируется заполненность блока packagingInfo во всех вариантах поставки лекарственных препаратов
-	PackagingInfo *PackagingInfo24 `xml:"packagingInfo,omitempty"`
+	// PackagingInfo44: Сведения об упаковке. В случае заполнения блока mustSpecifyDrugPackage при приеме контролируется заполненность блока packagingInfo во всех вариантах поставки лекарственных препаратов
+	PackagingInfo *PackagingInfo44 `xml:"packagingInfo,omitempty"`
 
 	// ManualUserOkei: Единица измерения товара, введенная вручную . Если заполнено в принимаемом документе, то считается, что внешняя система явно указала этот блок, содержимое контролируется на присутствие в справочнике "Справочник: Единицы измерения потребительских единиц измерения лекарственных препаратов по ОКЕИ" (nsiDrugOKEI). Для групп взаимозаменяемости (блок drugInterchangeInfo) всегда игнорируется при приеме, автоматически заполняется при передаче по справочнику "Лекарственные препараты"
 	ManualUserOkei *base.Okeiref `xml:"manualUserOKEI,omitempty"`
@@ -13645,16 +14542,16 @@ type IndividualPersonForeignStateInfo6 struct {
 	PlaceOfStayInRfinfo *IndividualPersonForeignStateInfo10PlaceOfStayInRfinfo `xml:"placeOfStayInRFInfo,omitempty"`
 }
 
-// MedicamentalFormInfo25: Лекарственная форма. Игнорируется при приеме, автоматически заполняется при передаче по справочнику "Лекарственные препараты"
-type MedicamentalFormInfo25 struct {
+// MedicamentalFormInfo44: Лекарственная форма. Игнорируется при приеме, автоматически заполняется при передаче по справочнику "Лекарственные препараты"
+type MedicamentalFormInfo44 struct {
 	XMLName xml.Name `xml:"medicamentalFormInfo,omitempty"`
 
 	// MedicamentalFormName: Наименование лекарственной формы по справочнику "Лекарственные препараты" (nsiFarmDrugDictionary) (поле MNNsInfo\MNNInfo\medicamentalFormInfo\medicamentalFormName)
 	MedicamentalFormName base.DrugNameType `xml:",any"`
 }
 
-// DosageInfo25: Дозировка. Игнорируется при приеме, автоматически заполняется при передаче по справочнику "Лекарственные препараты"
-type DosageInfo25 struct {
+// DosageInfo44: Дозировка. Игнорируется при приеме, автоматически заполняется при передаче по справочнику "Лекарственные препараты"
+type DosageInfo44 struct {
 	XMLName xml.Name `xml:"dosageInfo,omitempty"`
 
 	// DosageGrlsvalue: Полная форма дозировки по справочнику "Лекарственные препараты" (nsiFarmDrugDictionary) (поле MNNsInfo\MNNInfo\dosagesInfo\dosageInfo\dosageGRLSValue )
@@ -13667,8 +14564,8 @@ type DosageInfo25 struct {
 	DosageUserName *base.DrugNameType `xml:"dosageUserName,omitempty"`
 }
 
-// PackagingInfo23: Сведения об упаковке. В случае заполнения блока mustSpecifyDrugPackage при приеме контролируется заполненность блока packagingInfo во всех вариантах поставки лекарственных препаратов
-type PackagingInfo23 struct {
+// PackagingInfo42: Сведения об упаковке. В случае заполнения блока mustSpecifyDrugPackage при приеме контролируется заполненность блока packagingInfo во всех вариантах поставки лекарственных препаратов
+type PackagingInfo42 struct {
 	XMLName xml.Name `xml:"packagingInfo,omitempty"`
 
 	// PositionTradeNameExternalCode: Уникальный внешний код лекарственного препарата по справочнику "Лекарственные препараты (поле MNNInfo\positionsTradeName\positionTradeName\positionTradeNameExternalCode документа nsiFarmDrugDictionary). При приеме контролируется наличие в справочнике "Лекарственные препараты" ЕИС лекарственного препарата с таким кодом и принадлежность лекарственного препарата с указанным кодом к МНН с кодом, указанным в поле MNNInfo
@@ -13718,14 +14615,14 @@ type DrugInfo37 struct {
 	// Ktru: Классификация по КТРУ. Блок всегда игнорируется при приеме, автоматически заполняется при передаче, если: • МНН указан из справочника ЕСКЛП. Не используется до выхода версии ЕИС 13.2
 	Ktru *base.Ktruref `xml:"KTRU,omitempty"`
 
-	// MedicamentalFormInfo26: Лекарственная форма. Игнорируется при приеме, автоматически заполняется при передаче по справочнику "Лекарственные препараты"
-	MedicamentalFormInfo *MedicamentalFormInfo26 `xml:"medicamentalFormInfo,omitempty"`
+	// MedicamentalFormInfo46: Лекарственная форма. Игнорируется при приеме, автоматически заполняется при передаче по справочнику "Лекарственные препараты"
+	MedicamentalFormInfo *MedicamentalFormInfo46 `xml:"medicamentalFormInfo,omitempty"`
 
-	// DosageInfo26: Дозировка. Игнорируется при приеме, автоматически заполняется при передаче по справочнику "Лекарственные препараты"
-	DosageInfo *DosageInfo26 `xml:"dosageInfo,omitempty"`
+	// DosageInfo46: Дозировка. Игнорируется при приеме, автоматически заполняется при передаче по справочнику "Лекарственные препараты"
+	DosageInfo *DosageInfo46 `xml:"dosageInfo,omitempty"`
 
-	// PackagingInfo24: Сведения об упаковке. В случае заполнения блока mustSpecifyDrugPackage при приеме контролируется заполненность блока packagingInfo во всех вариантах поставки лекарственных препаратов
-	PackagingInfo *PackagingInfo24 `xml:"packagingInfo,omitempty"`
+	// PackagingInfo44: Сведения об упаковке. В случае заполнения блока mustSpecifyDrugPackage при приеме контролируется заполненность блока packagingInfo во всех вариантах поставки лекарственных препаратов
+	PackagingInfo *PackagingInfo44 `xml:"packagingInfo,omitempty"`
 
 	// ManualUserOkei: Единица измерения товара, введенная вручную . Если заполнено в принимаемом документе, то считается, что внешняя система явно указала этот блок, содержимое контролируется на присутствие в справочнике "Справочник: Единицы измерения потребительских единиц измерения лекарственных препаратов по ОКЕИ" (nsiDrugOKEI). Для групп взаимозаменяемости (блок drugInterchangeInfo) всегда игнорируется при приеме, автоматически заполняется при передаче по справочнику "Лекарственные препараты"
 	ManualUserOkei *base.Okeiref `xml:"manualUserOKEI,omitempty"`
@@ -13797,6 +14694,39 @@ type TradeInfo20 struct {
 	DrugChangeInfo *DrugChangeInfoType `xml:"drugChangeInfo,omitempty"`
 }
 
+// MedicamentalFormInfo45: Лекарственная форма
+type MedicamentalFormInfo45 struct {
+	XMLName xml.Name `xml:"medicamentalFormInfo"`
+
+	// MedicamentalFormName: Наименование лекарственной формы. Игнорируется, начиная с даты в настройке ПРИЗ_Н_0112
+	MedicamentalFormName *base.DrugNameType `xml:"medicamentalFormName,omitempty"`
+
+	// MedicamentalForm: Лекарственная форма по справочнику "Справочник: Лекарственные формы" (nsiFarmMedicamentalForm) Заполняется, начиная с даты в настройке ПРИЗ_Н_0112
+	MedicamentalForm *base.MedicamentalFormRef `xml:"medicamentalForm,omitempty"`
+}
+
+// DosageInfo45: Дозировка
+type DosageInfo45 struct {
+	XMLName xml.Name `xml:"dosageInfo"`
+
+	// DosageGrlsvalue: Полная форма дозировки
+	DosageGrlsvalue base.DrugNameType `xml:",any"`
+}
+
+// PackagingInfo43: Сведения об упаковке. В случае заполнения блока mustSpecifyDrugPackage при приеме контролируется заполненность блока packagingInfo во всех вариантах поставки лекарственных препаратов
+type PackagingInfo43 struct {
+	XMLName xml.Name `xml:"packagingInfo,omitempty"`
+
+	// Packaging1Quantity: Количество лекарственных форм в первичной упаковке
+	Packaging1Quantity *base.DrugPackaging1QuantityType `xml:"packaging1Quantity,omitempty"`
+
+	// Packaging2Quantity: Количество первичных упаковок во вторичной (потребительской) упаковке
+	Packaging2Quantity *base.DrugPackaging2QuantityType `xml:"packaging2Quantity,omitempty"`
+
+	// SumaryPackagingQuantity: Количество потребительских единиц в потребительской упаковке. Если заполнены поле packaging1Quantity и поле packaging2Quantity, то игнорируется при приеме, автоматически рассчитывается как произведение packaging1Quantity*packaging2Quantity. Иначе принимается из пакета. Всегда принимается и сохраняется, если явно указано в пакете для извещений, первая версия которых размещена до выхода версии 10.3, независимо от разрешения ручного ввода
+	SumaryPackagingQuantity *base.DrugSumaryPackagingQuantityType `xml:"sumaryPackagingQuantity,omitempty"`
+}
+
 // DrugInfo38: Сведения о варианте поставки лекарственного препарата. Может быть указан только один вариант поставки (один лекарственный препарат). Если необходимо указать несколько вариантов поставки, то заполняется блок drugInterchangeTextFormInfo ("Сведения о лекарственных препаратах с учетом взаимозаменяемости не по справочнику "Группы взаимозаменяемости лекарственных препаратов") Если заполнен блок «По решению заказчика (организации, осуществляющей определение поставщика для заказчика)» (modificationInfo/reasonInfo/responsibleDecisionInfo), то игнорируется при приеме и заполняется из предыдущей версии извещения за исключением: o поля «Уникальный идентификатор лекарственного препарата в извещении-приглашении» (sid) o поля «Внешний идентификатор лекарственного препарата в извещении-приглашении» (externalSid) o поля «Количество (объем) закупаемого лекарственного препарата» (drugQuantity); o поля «Референтная цена по справочнику "Лекарственные препараты"» (averagePriceValue); o поля «Сумма выплат по референтной цене (всего)» (averagePriceTotal)
 type DrugInfo38 struct {
 	XMLName xml.Name `xml:"drugInfo,omitempty"`
@@ -13821,6 +14751,21 @@ type DrugInfo38 struct {
 
 	// BasicUnit: Признак основного варианта поставки. При приеме контролируется обязательность заполнения поля только для одного значения блока drugInfo в составе двух блоков objectInfoUsingReferenceInfo и objectInfoUsingTextForm
 	BasicUnit *bool `xml:"basicUnit,omitempty"`
+
+	// MedicamentalFormInfo47: Лекарственная форма
+	MedicamentalFormInfo MedicamentalFormInfo47 `xml:"medicamentalFormInfo"`
+
+	// DosageInfo47: Дозировка
+	DosageInfo DosageInfo47 `xml:"dosageInfo"`
+
+	// PackagingInfo45: Сведения об упаковке. В случае заполнения блока mustSpecifyDrugPackage при приеме контролируется заполненность блока packagingInfo во всех вариантах поставки лекарственных препаратов
+	PackagingInfo *PackagingInfo45 `xml:"packagingInfo,omitempty"`
+
+	// ManualUserOkei: Единица измерения товара. При приеме содержимое контролируется на присутствие в справочнике "Справочник: Единицы измерения потребительских единиц измерения лекарственных препаратов по ОКЕИ" (nsiDrugOKEI)
+	ManualUserOkei base.Okeiref `xml:"manualUserOKEI"`
+
+	// DrugChangeInfo: Информация указываемая при ручном изменении лекарственного препарата. При приеме контролируется обязательность заполнения в случае указания лекарственной формы, дозировки, упаковки, единицы измерения в текстовой форме. Начиная с версии 10.1 контролируется обязательность указания причины корректировки сведений о лекарственных препаратах
+	DrugChangeInfo *DrugChangeInfoType `xml:"drugChangeInfo,omitempty"`
 }
 
 // DrugPurchaseObjectInfoObjectInfoUsingTextFormDrugsInfo2: Сведения о вариантах поставки лекарственных препаратов. Может быть указан только один вариант поставки (один лекарственный препарат). Если необходимо указать несколько вариантов поставки, то заполняется блок drugInterchangeTextFormInfo ("Сведения о лекарственных препаратах с учетом взаимозаменяемости не по справочнику "Группы взаимозаменяемости лекарственных препаратов")
@@ -14658,16 +15603,16 @@ type IndividualPersonForeignStateInfo8 struct {
 	PlaceOfStayInRfinfo *IndividualPersonForeignStateInfo10PlaceOfStayInRfinfo `xml:"placeOfStayInRFInfo,omitempty"`
 }
 
-// MedicamentalFormInfo26: Лекарственная форма. Игнорируется при приеме, автоматически заполняется при передаче по справочнику "Лекарственные препараты"
-type MedicamentalFormInfo26 struct {
+// MedicamentalFormInfo46: Лекарственная форма. Игнорируется при приеме, автоматически заполняется при передаче по справочнику "Лекарственные препараты"
+type MedicamentalFormInfo46 struct {
 	XMLName xml.Name `xml:"medicamentalFormInfo,omitempty"`
 
 	// MedicamentalFormName: Наименование лекарственной формы по справочнику "Лекарственные препараты" (nsiFarmDrugDictionary) (поле MNNsInfo\MNNInfo\medicamentalFormInfo\medicamentalFormName)
 	MedicamentalFormName base.DrugNameType `xml:",any"`
 }
 
-// DosageInfo26: Дозировка. Игнорируется при приеме, автоматически заполняется при передаче по справочнику "Лекарственные препараты"
-type DosageInfo26 struct {
+// DosageInfo46: Дозировка. Игнорируется при приеме, автоматически заполняется при передаче по справочнику "Лекарственные препараты"
+type DosageInfo46 struct {
 	XMLName xml.Name `xml:"dosageInfo,omitempty"`
 
 	// DosageGrlsvalue: Полная форма дозировки по справочнику "Лекарственные препараты" (nsiFarmDrugDictionary) (поле MNNsInfo\MNNInfo\dosagesInfo\dosageInfo\dosageGRLSValue )
@@ -14680,8 +15625,8 @@ type DosageInfo26 struct {
 	DosageUserName *base.DrugNameType `xml:"dosageUserName,omitempty"`
 }
 
-// PackagingInfo24: Сведения об упаковке. В случае заполнения блока mustSpecifyDrugPackage при приеме контролируется заполненность блока packagingInfo во всех вариантах поставки лекарственных препаратов
-type PackagingInfo24 struct {
+// PackagingInfo44: Сведения об упаковке. В случае заполнения блока mustSpecifyDrugPackage при приеме контролируется заполненность блока packagingInfo во всех вариантах поставки лекарственных препаратов
+type PackagingInfo44 struct {
 	XMLName xml.Name `xml:"packagingInfo,omitempty"`
 
 	// PositionTradeNameExternalCode: Уникальный внешний код лекарственного препарата по справочнику "Лекарственные препараты (поле MNNInfo\positionsTradeName\positionTradeName\positionTradeNameExternalCode документа nsiFarmDrugDictionary). При приеме контролируется наличие в справочнике "Лекарственные препараты" ЕИС лекарственного препарата с таким кодом и принадлежность лекарственного препарата с указанным кодом к МНН с кодом, указанным в поле MNNInfo
@@ -14731,14 +15676,14 @@ type DrugInfo39 struct {
 	// Ktru: Классификация по КТРУ. Блок всегда игнорируется при приеме, автоматически заполняется при передаче, если: • МНН указан из справочника ЕСКЛП. Не используется до выхода версии ЕИС 13.2
 	Ktru *base.Ktruref `xml:"KTRU,omitempty"`
 
-	// MedicamentalFormInfo26: Лекарственная форма. Игнорируется при приеме, автоматически заполняется при передаче по справочнику "Лекарственные препараты"
-	MedicamentalFormInfo *MedicamentalFormInfo26 `xml:"medicamentalFormInfo,omitempty"`
+	// MedicamentalFormInfo46: Лекарственная форма. Игнорируется при приеме, автоматически заполняется при передаче по справочнику "Лекарственные препараты"
+	MedicamentalFormInfo *MedicamentalFormInfo46 `xml:"medicamentalFormInfo,omitempty"`
 
-	// DosageInfo26: Дозировка. Игнорируется при приеме, автоматически заполняется при передаче по справочнику "Лекарственные препараты"
-	DosageInfo *DosageInfo26 `xml:"dosageInfo,omitempty"`
+	// DosageInfo46: Дозировка. Игнорируется при приеме, автоматически заполняется при передаче по справочнику "Лекарственные препараты"
+	DosageInfo *DosageInfo46 `xml:"dosageInfo,omitempty"`
 
-	// PackagingInfo24: Сведения об упаковке. В случае заполнения блока mustSpecifyDrugPackage при приеме контролируется заполненность блока packagingInfo во всех вариантах поставки лекарственных препаратов
-	PackagingInfo *PackagingInfo24 `xml:"packagingInfo,omitempty"`
+	// PackagingInfo44: Сведения об упаковке. В случае заполнения блока mustSpecifyDrugPackage при приеме контролируется заполненность блока packagingInfo во всех вариантах поставки лекарственных препаратов
+	PackagingInfo *PackagingInfo44 `xml:"packagingInfo,omitempty"`
 
 	// ManualUserOkei: Единица измерения товара, введенная вручную . Если заполнено в принимаемом документе, то считается, что внешняя система явно указала этот блок, содержимое контролируется на присутствие в справочнике "Справочник: Единицы измерения потребительских единиц измерения лекарственных препаратов по ОКЕИ" (nsiDrugOKEI). Для групп взаимозаменяемости (блок drugInterchangeInfo) всегда игнорируется при приеме, автоматически заполняется при передаче по справочнику "Лекарственные препараты"
 	ManualUserOkei *base.Okeiref `xml:"manualUserOKEI,omitempty"`
@@ -14810,6 +15755,39 @@ type TradeInfo21 struct {
 	DrugChangeInfo *DrugChangeInfoType `xml:"drugChangeInfo,omitempty"`
 }
 
+// MedicamentalFormInfo47: Лекарственная форма
+type MedicamentalFormInfo47 struct {
+	XMLName xml.Name `xml:"medicamentalFormInfo"`
+
+	// MedicamentalFormName: Наименование лекарственной формы. Игнорируется, начиная с даты в настройке ПРИЗ_Н_0112
+	MedicamentalFormName *base.DrugNameType `xml:"medicamentalFormName,omitempty"`
+
+	// MedicamentalForm: Лекарственная форма по справочнику "Справочник: Лекарственные формы" (nsiFarmMedicamentalForm) Заполняется, начиная с даты в настройке ПРИЗ_Н_0112
+	MedicamentalForm *base.MedicamentalFormRef `xml:"medicamentalForm,omitempty"`
+}
+
+// DosageInfo47: Дозировка
+type DosageInfo47 struct {
+	XMLName xml.Name `xml:"dosageInfo"`
+
+	// DosageGrlsvalue: Полная форма дозировки
+	DosageGrlsvalue base.DrugNameType `xml:",any"`
+}
+
+// PackagingInfo45: Сведения об упаковке. В случае заполнения блока mustSpecifyDrugPackage при приеме контролируется заполненность блока packagingInfo во всех вариантах поставки лекарственных препаратов
+type PackagingInfo45 struct {
+	XMLName xml.Name `xml:"packagingInfo,omitempty"`
+
+	// Packaging1Quantity: Количество лекарственных форм в первичной упаковке
+	Packaging1Quantity *base.DrugPackaging1QuantityType `xml:"packaging1Quantity,omitempty"`
+
+	// Packaging2Quantity: Количество первичных упаковок во вторичной (потребительской) упаковке
+	Packaging2Quantity *base.DrugPackaging2QuantityType `xml:"packaging2Quantity,omitempty"`
+
+	// SumaryPackagingQuantity: Количество потребительских единиц в потребительской упаковке. Если заполнены поле packaging1Quantity и поле packaging2Quantity, то игнорируется при приеме, автоматически рассчитывается как произведение packaging1Quantity*packaging2Quantity. Иначе принимается из пакета. Всегда принимается и сохраняется, если явно указано в пакете для извещений, первая версия которых размещена до выхода версии 10.3, независимо от разрешения ручного ввода
+	SumaryPackagingQuantity *base.DrugSumaryPackagingQuantityType `xml:"sumaryPackagingQuantity,omitempty"`
+}
+
 // DrugInfo40: Сведения о варианте поставки лекарственного препарата. Может быть указан только один вариант поставки (один лекарственный препарат). Если необходимо указать несколько вариантов поставки, то заполняется блок drugInterchangeTextFormInfo ("Сведения о лекарственных препаратах с учетом взаимозаменяемости не по справочнику "Группы взаимозаменяемости лекарственных препаратов") Если заполнен блок «По решению заказчика (организации, осуществляющей определение поставщика для заказчика)» (modificationInfo/reasonInfo/responsibleDecisionInfo), то игнорируется при приеме и заполняется из предыдущей версии извещения за исключением: o поля «Уникальный идентификатор лекарственного препарата в извещении-приглашении» (sid) o поля «Внешний идентификатор лекарственного препарата в извещении-приглашении» (externalSid) o поля «Количество (объем) закупаемого лекарственного препарата» (drugQuantity); o поля «Референтная цена по справочнику "Лекарственные препараты"» (averagePriceValue); o поля «Сумма выплат по референтной цене (всего)» (averagePriceTotal)
 type DrugInfo40 struct {
 	XMLName xml.Name `xml:"drugInfo,omitempty"`
@@ -14834,6 +15812,21 @@ type DrugInfo40 struct {
 
 	// BasicUnit: Признак основного варианта поставки. При приеме контролируется обязательность заполнения поля только для одного значения блока drugInfo в составе двух блоков objectInfoUsingReferenceInfo и objectInfoUsingTextForm
 	BasicUnit *bool `xml:"basicUnit,omitempty"`
+
+	// MedicamentalFormInfo47: Лекарственная форма
+	MedicamentalFormInfo MedicamentalFormInfo47 `xml:"medicamentalFormInfo"`
+
+	// DosageInfo47: Дозировка
+	DosageInfo DosageInfo47 `xml:"dosageInfo"`
+
+	// PackagingInfo45: Сведения об упаковке. В случае заполнения блока mustSpecifyDrugPackage при приеме контролируется заполненность блока packagingInfo во всех вариантах поставки лекарственных препаратов
+	PackagingInfo *PackagingInfo45 `xml:"packagingInfo,omitempty"`
+
+	// ManualUserOkei: Единица измерения товара. При приеме содержимое контролируется на присутствие в справочнике "Справочник: Единицы измерения потребительских единиц измерения лекарственных препаратов по ОКЕИ" (nsiDrugOKEI)
+	ManualUserOkei base.Okeiref `xml:"manualUserOKEI"`
+
+	// DrugChangeInfo: Информация указываемая при ручном изменении лекарственного препарата. При приеме контролируется обязательность заполнения в случае указания лекарственной формы, дозировки, упаковки, единицы измерения в текстовой форме. Начиная с версии 10.1 контролируется обязательность указания причины корректировки сведений о лекарственных препаратах
+	DrugChangeInfo *DrugChangeInfoType `xml:"drugChangeInfo,omitempty"`
 }
 
 // DrugPurchaseObjectInfo2ObjectInfoUsingTextFormDrugsInfo: Сведения о вариантах поставки лекарственных препаратов. Может быть указан только один вариант поставки (один лекарственный препарат). Если необходимо указать несколько вариантов поставки, то заполняется блок drugInterchangeTextFormInfo ("Сведения о лекарственных препаратах с учетом взаимозаменяемости не по справочнику "Группы взаимозаменяемости лекарственных препаратов")
@@ -17735,11 +18728,35 @@ type NsiUrdocTypesRef struct {
 // ValueRangeType: Тип: Диапазон значений
 type ValueRangeType struct {
 	XMLName xml.Name
+
+	// MinMathNotation: Математическое обозначение отношения к минимальному значению диапазона. Контролируется обязательность заполнения, если заполнено поле min (для извещений и протоколов)
+	MinMathNotation *base.KtruMinMathNotationType `xml:"minMathNotation,omitempty"`
+
+	// Min: Минимальное значение диапазона
+	Min *base.DecimalKtrucharacteristicValue18P11Type `xml:"min,omitempty"`
+
+	// MaxMathNotation: Математическое обозначение отношения к максимальному значению диапазона. Контролируется обязательность заполнения, если заполнено поле max (для извещений и протоколов)
+	MaxMathNotation *base.KtruMaxMathNotationType `xml:"maxMathNotation,omitempty"`
+
+	// Max: Максимальное значение диапазона
+	Max *base.DecimalKtrucharacteristicValue18P11Type `xml:"max,omitempty"`
 }
 
 // ValueRangeReferenceType: Тип: Диапазон значений для характеристик, которые имеют связь со справочными характеристиками
 type ValueRangeReferenceType struct {
 	XMLName xml.Name
+
+	// MinMathNotation: Математическое обозначение отношения к минимальному значению диапазона
+	MinMathNotation *base.KtruMinMathNotationType `xml:"minMathNotation,omitempty"`
+
+	// Min: Минимальное значение диапазона
+	Min *base.DecimalKtrucharacteristicValueType `xml:"min,omitempty"`
+
+	// MaxMathNotation: Математическое обозначение отношения к максимальному значению диапазона
+	MaxMathNotation *base.KtruMaxMathNotationType `xml:"maxMathNotation,omitempty"`
+
+	// Max: Максимальное значение диапазона
+	Max *base.DecimalKtrucharacteristicValueType `xml:"max,omitempty"`
 }
 
 // Control99CustomerInfoType: Тип: Сведения о заказчике в ПЗ/ПГ для контроля по 99 статье
@@ -18012,14 +19029,14 @@ type DrugInfoType struct {
 	// Ktru: Классификация по КТРУ. Блок всегда игнорируется при приеме, автоматически заполняется при передаче, если: • МНН указан из справочника ЕСКЛП. Не используется до выхода версии ЕИС 13.2
 	Ktru *base.Ktruref `xml:"KTRU,omitempty"`
 
-	// MedicamentalFormInfo26: Лекарственная форма. Игнорируется при приеме, автоматически заполняется при передаче по справочнику "Лекарственные препараты"
-	MedicamentalFormInfo *MedicamentalFormInfo26 `xml:"medicamentalFormInfo,omitempty"`
+	// MedicamentalFormInfo46: Лекарственная форма. Игнорируется при приеме, автоматически заполняется при передаче по справочнику "Лекарственные препараты"
+	MedicamentalFormInfo *MedicamentalFormInfo46 `xml:"medicamentalFormInfo,omitempty"`
 
-	// DosageInfo26: Дозировка. Игнорируется при приеме, автоматически заполняется при передаче по справочнику "Лекарственные препараты"
-	DosageInfo *DosageInfo26 `xml:"dosageInfo,omitempty"`
+	// DosageInfo46: Дозировка. Игнорируется при приеме, автоматически заполняется при передаче по справочнику "Лекарственные препараты"
+	DosageInfo *DosageInfo46 `xml:"dosageInfo,omitempty"`
 
-	// PackagingInfo24: Сведения об упаковке. В случае заполнения блока mustSpecifyDrugPackage при приеме контролируется заполненность блока packagingInfo во всех вариантах поставки лекарственных препаратов
-	PackagingInfo *PackagingInfo24 `xml:"packagingInfo,omitempty"`
+	// PackagingInfo44: Сведения об упаковке. В случае заполнения блока mustSpecifyDrugPackage при приеме контролируется заполненность блока packagingInfo во всех вариантах поставки лекарственных препаратов
+	PackagingInfo *PackagingInfo44 `xml:"packagingInfo,omitempty"`
 
 	// ManualUserOkei: Единица измерения товара, введенная вручную . Если заполнено в принимаемом документе, то считается, что внешняя система явно указала этот блок, содержимое контролируется на присутствие в справочнике "Справочник: Единицы измерения потребительских единиц измерения лекарственных препаратов по ОКЕИ" (nsiDrugOKEI). Для групп взаимозаменяемости (блок drugInterchangeInfo) всегда игнорируется при приеме, автоматически заполняется при передаче по справочнику "Лекарственные препараты"
 	ManualUserOkei *base.Okeiref `xml:"manualUserOKEI,omitempty"`
@@ -18049,6 +19066,21 @@ type DrugInfoUsingTextFormType struct {
 
 	// BasicUnit: Признак основного варианта поставки. При приеме контролируется обязательность заполнения поля только для одного значения блока drugInfo в составе двух блоков objectInfoUsingReferenceInfo и objectInfoUsingTextForm
 	BasicUnit *bool `xml:"basicUnit,omitempty"`
+
+	// MedicamentalFormInfo47: Лекарственная форма
+	MedicamentalFormInfo MedicamentalFormInfo47 `xml:"medicamentalFormInfo"`
+
+	// DosageInfo47: Дозировка
+	DosageInfo DosageInfo47 `xml:"dosageInfo"`
+
+	// PackagingInfo45: Сведения об упаковке. В случае заполнения блока mustSpecifyDrugPackage при приеме контролируется заполненность блока packagingInfo во всех вариантах поставки лекарственных препаратов
+	PackagingInfo *PackagingInfo45 `xml:"packagingInfo,omitempty"`
+
+	// ManualUserOkei: Единица измерения товара. При приеме содержимое контролируется на присутствие в справочнике "Справочник: Единицы измерения потребительских единиц измерения лекарственных препаратов по ОКЕИ" (nsiDrugOKEI)
+	ManualUserOkei base.Okeiref `xml:"manualUserOKEI"`
+
+	// DrugChangeInfo: Информация указываемая при ручном изменении лекарственного препарата. При приеме контролируется обязательность заполнения в случае указания лекарственной формы, дозировки, упаковки, единицы измерения в текстовой форме. Начиная с версии 10.1 контролируется обязательность указания причины корректировки сведений о лекарственных препаратах
+	DrugChangeInfo *DrugChangeInfoType `xml:"drugChangeInfo,omitempty"`
 }
 
 // PurchaseDrugObjectsInfoType: Тип: Сведения об объектах закупки в том случае, когда объектами закупки являются лекарственные препараты (ПРИЗ)
@@ -18245,11 +19277,11 @@ type TradeNameInfoType struct {
 	// CertificateKeeperName: Наименование держателя или владельца регистрационного удостоверения
 	CertificateKeeperName *base.DrugNameType `xml:"certificateKeeperName,omitempty"`
 
-	// MedicamentalFormInfo6: Лекарственная форма в текстовой форме
-	MedicamentalFormInfo *MedicamentalFormInfo6 `xml:"medicamentalFormInfo,omitempty"`
+	// MedicamentalFormInfo9: Лекарственная форма в текстовой форме
+	MedicamentalFormInfo *MedicamentalFormInfo9 `xml:"medicamentalFormInfo,omitempty"`
 
-	// DosageInfo6: Дозировка в текстовой форме
-	DosageInfo *DosageInfo6 `xml:"dosageInfo,omitempty"`
+	// DosageInfo9: Дозировка в текстовой форме
+	DosageInfo *DosageInfo9 `xml:"dosageInfo,omitempty"`
 
 	// PackagingInfo: Сведения об упаковке
 	PackagingInfo *PackagingInfoType `xml:"packagingInfo,omitempty"`
@@ -18308,11 +19340,11 @@ type MnninfoUsingTextFormType struct {
 	// Okeiinfo: Единица измерения
 	Okeiinfo *base.Okeiref `xml:"OKEIInfo,omitempty"`
 
-	// MedicamentalFormInfo7: Лекарственная форма в текстовой форме
-	MedicamentalFormInfo *MedicamentalFormInfo7 `xml:"medicamentalFormInfo,omitempty"`
+	// MedicamentalFormInfo10: Лекарственная форма в текстовой форме
+	MedicamentalFormInfo *MedicamentalFormInfo10 `xml:"medicamentalFormInfo,omitempty"`
 
-	// DosageInfo7: Дозировка в текстовой форме
-	DosageInfo *DosageInfo7 `xml:"dosageInfo,omitempty"`
+	// DosageInfo10: Дозировка в текстовой форме
+	DosageInfo *DosageInfo10 `xml:"dosageInfo,omitempty"`
 
 	// DrugQuantity: Количество (объем) закупаемого лекарственного препарата
 	DrugQuantity *base.Quantity18P11Type `xml:"drugQuantity,omitempty"`

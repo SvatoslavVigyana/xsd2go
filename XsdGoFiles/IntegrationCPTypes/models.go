@@ -5416,6 +5416,14 @@ type CustomerMainOrgInfo struct {
 	Kpp *Kpp1 `xml:"KPP,omitempty"`
 }
 
+// CustomerAccountsDetailsInfo: Платежные реквизиты заказчика
+type CustomerAccountsDetailsInfo struct {
+	XMLName xml.Name `xml:"customerAccountsDetailsInfo,omitempty"`
+
+	// CustomerAccountDetailsInfo: Реквизиты счета заказчика
+	CustomerAccountDetailsInfo []cmn.AccountDetailsForDeltaType `xml:",any"`
+}
+
 // PriceType: Способ указания цены контракта. Допустимые значения: P - цена контракта; MP - максимальное значение цены контракта; ОР - ориентировочное значение цены контракта. Заполняется, если указан признак "Проект доп.соглашения формируется в структурированном виде" (isStructuredForm)
 type PriceType struct {
 	XMLName xml.Name `xml:"priceType,omitempty"`
@@ -6147,6 +6155,35 @@ type ByKladrinfoNoKladrForRegionSettlementInfo2 struct {
 	Settlement *NoKladrForRegionSettlementInfoSettlement `xml:"settlement,omitempty"`
 }
 
+// KladrinfoKladrCode: Код КЛАДР
+type KladrinfoKladrCode struct {
+	XMLName xml.Name `xml:"kladrCode,omitempty"`
+
+	Text string `xml:",chardata"`
+}
+
+// ByKladrinfoKladrinfo2: Код КЛАДР - если поставка в РФ
+type ByKladrinfoKladrinfo2 struct {
+	XMLName xml.Name `xml:"KLADRInfo,omitempty"`
+
+	// KladrinfoKladrCode: Код КЛАДР
+	KladrCode *KladrinfoKladrCode `xml:"kladrCode,omitempty"`
+
+	// FullName: Полное наименование
+	FullName *base.KladrTextType `xml:"fullName,omitempty"`
+}
+
+// ByKladrinfoCountryInfo: Код страны в ОКСМ - если поставка не в РФ. При приеме содержимое контролируется на присутствие в справочнике "Общероссийский классификатор стран мира (ОКСМ)" (nsiOKSM)
+type ByKladrinfoCountryInfo struct {
+	XMLName xml.Name `xml:"countryInfo,omitempty"`
+
+	// CountryCode: Цифровой код страны
+	CountryCode *base.CountryCodeType `xml:"countryCode,omitempty"`
+
+	// CountryFullName: Полное наименование страны. Игнорируется при приеме. При передаче заполняется значением из справочника "Общероссийский классификатор стран мира (ОКСМ)" (nsiOKSM)
+	CountryFullName *base.Text200Type `xml:"countryFullName,omitempty"`
+}
+
 // DeliveryPlaceInfoByKladrinfo2: Место поставки товара, выполнения работы или оказания услуги по справочнику КЛАДР. Заполняется, если способ ОППИ отличен «Закупка товара у единственного поставщика на сумму, предусмотренную частью 12 статьи 93 Закона № 44-ФЗ»
 type DeliveryPlaceInfoByKladrinfo2 struct {
 	XMLName xml.Name `xml:"byKLADRInfo,omitempty"`
@@ -6162,6 +6199,12 @@ type DeliveryPlaceInfoByKladrinfo2 struct {
 
 	// ByKladrinfoNoKladrForRegionSettlementInfo: КЛАДР не используется для задания района/города и населенного пункта
 	NoKladrForRegionSettlementInfo *ByKladrinfoNoKladrForRegionSettlementInfo `xml:"noKladrForRegionSettlementInfo,omitempty"`
+
+	// ByKladrinfoKladrinfo: Код КЛАДР - если поставка в РФ
+	Kladrinfo *ByKladrinfoKladrinfo `xml:"KLADRInfo,omitempty"`
+
+	// ByKladrinfoCountryInfo: Код страны в ОКСМ - если поставка не в РФ. При приеме содержимое контролируется на присутствие в справочнике "Общероссийский классификатор стран мира (ОКСМ)" (nsiOKSM)
+	CountryInfo *ByKladrinfoCountryInfo `xml:"countryInfo,omitempty"`
 }
 
 // CountryInfoCountryCode: Цифровой код страны
@@ -6444,12 +6487,128 @@ type WarrantyInfoIsNonWarranty struct {
 	Text string `xml:",chardata"`
 }
 
+// WarrantyInfoWarrantyServiceRequirement: Информация о требованиях к гарантийному обслуживанию товаров
+type WarrantyInfoWarrantyServiceRequirement struct {
+	XMLName xml.Name `xml:"warrantyServiceRequirement,omitempty"`
+
+	FieldCode string `xml:"fieldCode,attr,omitempty"`
+
+	// FieldName: 1 - изменено
+	FieldName string `xml:"fieldName,attr,omitempty"`
+
+	Text string `xml:",chardata"`
+}
+
+// WarrantyInfoManufacturersWarrantyRequirement: Требования к гарантии производителя товара
+type WarrantyInfoManufacturersWarrantyRequirement struct {
+	XMLName xml.Name `xml:"manufacturersWarrantyRequirement,omitempty"`
+
+	FieldCode string `xml:"fieldCode,attr,omitempty"`
+
+	// FieldName: 1 - изменено
+	FieldName string `xml:"fieldName,attr,omitempty"`
+
+	Text string `xml:",chardata"`
+}
+
+// WarrantyInfoWarrantyTerm: Срок, на который предоставляется гарантия и (или) требования к объему предоставления гарантий качества товара, работы, услуги
+type WarrantyInfoWarrantyTerm struct {
+	XMLName xml.Name `xml:"warrantyTerm,omitempty"`
+
+	FieldCode string `xml:"fieldCode,attr,omitempty"`
+
+	// FieldName: 1 - изменено
+	FieldName string `xml:"fieldName,attr,omitempty"`
+
+	Text string `xml:",chardata"`
+}
+
+// ProvisionWarrantyInfoPart: Размер обеспечения исполнения гарантийных обязательств в %
+type ProvisionWarrantyInfoPart struct {
+	XMLName xml.Name `xml:"part,omitempty"`
+
+	FieldCode string `xml:"fieldCode,attr,omitempty"`
+
+	// FieldName: 1 - изменено
+	FieldName string `xml:"fieldName,attr,omitempty"`
+
+	Text string `xml:",chardata"`
+}
+
+// ProvisionWarrantyInfoAmount: Размер обеспечения, который должен предоставить поставщик (подрядчик, исполнитель)
+type ProvisionWarrantyInfoAmount struct {
+	XMLName xml.Name `xml:"amount,omitempty"`
+
+	FieldCode string `xml:"fieldCode,attr,omitempty"`
+
+	// FieldName: 1 - изменено
+	FieldName string `xml:"fieldName,attr,omitempty"`
+
+	Text string `xml:",chardata"`
+}
+
+// ProvisionWarrantyInfoProcedureInfo: Порядок предоставления обеспечения гарантийных обязательств, требования к обеспечению
+type ProvisionWarrantyInfoProcedureInfo struct {
+	XMLName xml.Name `xml:"procedureInfo,omitempty"`
+
+	FieldCode string `xml:"fieldCode,attr,omitempty"`
+
+	// FieldName: 1 - изменено
+	FieldName string `xml:"fieldName,attr,omitempty"`
+
+	Text string `xml:",chardata"`
+}
+
+// WarrantyInfoProvisionWarrantyInfo2: Обеспечение гарантийных обязательств
+type WarrantyInfoProvisionWarrantyInfo2 struct {
+	XMLName xml.Name `xml:"provisionWarrantyInfo,omitempty"`
+
+	// ProvisionWarrantyInfoPart: Размер обеспечения исполнения гарантийных обязательств в %
+	Part *ProvisionWarrantyInfoPart `xml:"part,omitempty"`
+
+	// ProvisionWarrantyInfoAmount: Размер обеспечения, который должен предоставить поставщик (подрядчик, исполнитель)
+	Amount *ProvisionWarrantyInfoAmount `xml:"amount,omitempty"`
+
+	// ProvisionWarrantyInfoProcedureInfo: Порядок предоставления обеспечения гарантийных обязательств, требования к обеспечению
+	ProcedureInfo *ProvisionWarrantyInfoProcedureInfo `xml:"procedureInfo,omitempty"`
+
+	// AccountInfo: Платежные реквизиты
+	AccountInfo *cmn.DlPaymentPropertysType `xml:"accountInfo,omitempty"`
+}
+
+// WarrantyInfoIsNonProvisionWarranty: Не требуется обеспечение исполнения обязательств по предоставленной гарантии качества товаров, работ, услуг
+type WarrantyInfoIsNonProvisionWarranty struct {
+	XMLName xml.Name `xml:"isNonProvisionWarranty,omitempty"`
+
+	FieldCode string `xml:"fieldCode,attr,omitempty"`
+
+	// FieldName: 1 - изменено
+	FieldName string `xml:"fieldName,attr,omitempty"`
+
+	Text string `xml:",chardata"`
+}
+
 // WarrantyInfo: Информация о гарантии качества товара, работы, услуги
 type WarrantyInfo struct {
 	XMLName xml.Name `xml:"warrantyInfo,omitempty"`
 
 	// WarrantyInfoIsNonWarranty: Не требуется гарантия качества товара, работы, услуги
-	IsNonWarranty *WarrantyInfoIsNonWarranty `xml:",any,omitempty"`
+	IsNonWarranty *WarrantyInfoIsNonWarranty `xml:"isNonWarranty,omitempty"`
+
+	// WarrantyInfoWarrantyServiceRequirement: Информация о требованиях к гарантийному обслуживанию товаров
+	WarrantyServiceRequirement *WarrantyInfoWarrantyServiceRequirement `xml:"warrantyServiceRequirement,omitempty"`
+
+	// WarrantyInfoManufacturersWarrantyRequirement: Требования к гарантии производителя товара
+	ManufacturersWarrantyRequirement *WarrantyInfoManufacturersWarrantyRequirement `xml:"manufacturersWarrantyRequirement,omitempty"`
+
+	// WarrantyInfoWarrantyTerm: Срок, на который предоставляется гарантия и (или) требования к объему предоставления гарантий качества товара, работы, услуги
+	WarrantyTerm *WarrantyInfoWarrantyTerm `xml:"warrantyTerm,omitempty"`
+
+	// WarrantyInfoProvisionWarrantyInfo: Обеспечение гарантийных обязательств
+	ProvisionWarrantyInfo *WarrantyInfoProvisionWarrantyInfo `xml:"provisionWarrantyInfo,omitempty"`
+
+	// WarrantyInfoIsNonProvisionWarranty: Не требуется обеспечение исполнения обязательств по предоставленной гарантии качества товаров, работ, услуг
+	IsNonProvisionWarranty *WarrantyInfoIsNonProvisionWarranty `xml:"isNonProvisionWarranty,omitempty"`
 }
 
 // SubcontractorsAttractionConditionsInfoIsSubcontractorsAttractionCondition: Предъявляется требование о привлечении к исполнению контракта субподрядчиков, соисполнителей из числа субъектов малого предпринимательства, социально ориентированных некоммерческих организаций в соответствии с ч. 5 ст. 30 Закона № 44 ФЗ
@@ -6914,6 +7073,53 @@ type PaymentKbkinfoPaymentYearsInfo struct {
 	PaymentYearInfo []PaymentYearsInfoPaymentYearInfo `xml:",any"`
 }
 
+// PaymentKbkinfoKbk: Код бюджетной классификации
+type PaymentKbkinfoKbk struct {
+	XMLName xml.Name `xml:"KBK,omitempty"`
+
+	FieldCode string `xml:"fieldCode,attr,omitempty"`
+
+	// FieldName: 1 - изменено
+	FieldName string `xml:"fieldName,attr,omitempty"`
+
+	Text string `xml:",chardata"`
+}
+
+// KokscodeInfoCode1: Код по справочнику "Классификатор объектов капитального строительства" (КОКС) (nsiKOKS)
+type KokscodeInfoCode1 struct {
+	XMLName xml.Name `xml:"code"`
+
+	FieldCode string `xml:"fieldCode,attr,omitempty"`
+
+	// FieldName: 1 - изменено
+	FieldName string `xml:"fieldName,attr,omitempty"`
+
+	Text string `xml:",chardata"`
+}
+
+// KokscodeInfoName1: Наименование. Значение игнорируется при приеме, автоматически заполняется при передаче из справочника "Классификатор объектов капитального строительства" (КОКС) (nsiKOKS)
+type KokscodeInfoName1 struct {
+	XMLName xml.Name `xml:"name,omitempty"`
+
+	FieldCode string `xml:"fieldCode,attr,omitempty"`
+
+	// FieldName: 1 - изменено
+	FieldName string `xml:"fieldName,attr,omitempty"`
+
+	Text string `xml:",chardata"`
+}
+
+// PaymentKbkinfoKokscodeInfo: Код ОКС/ОНИ (КОКС)
+type PaymentKbkinfoKokscodeInfo struct {
+	XMLName xml.Name `xml:"KOKSCodeInfo,omitempty"`
+
+	// KokscodeInfoCode: Код по справочнику "Классификатор объектов капитального строительства" (КОКС) (nsiKOKS)
+	Code KokscodeInfoCode `xml:"code"`
+
+	// KokscodeInfoName: Наименование. Значение игнорируется при приеме, автоматически заполняется при передаче из справочника "Классификатор объектов капитального строительства" (КОКС) (nsiKOKS)
+	Name *KokscodeInfoName `xml:"name,omitempty"`
+}
+
 // PaymentInfoPaymentKbkinfo: График платежей по коду бюджетной классийикации и коду ОКС/ОНИ
 type PaymentInfoPaymentKbkinfo struct {
 	XMLName xml.Name `xml:"paymentKBKInfo,omitempty"`
@@ -6923,6 +7129,12 @@ type PaymentInfoPaymentKbkinfo struct {
 
 	// PaymentKbkinfoPaymentYearsInfo: Сумма платежей в разбивке по годам
 	PaymentYearsInfo *PaymentKbkinfoPaymentYearsInfo `xml:"paymentYearsInfo,omitempty"`
+
+	// PaymentKbkinfoKbk: Код бюджетной классификации
+	Kbk *PaymentKbkinfoKbk `xml:"KBK,omitempty"`
+
+	// PaymentKbkinfoKokscodeInfo: Код ОКС/ОНИ (КОКС)
+	KokscodeInfo *PaymentKbkinfoKokscodeInfo `xml:"KOKSCodeInfo,omitempty"`
 }
 
 // PaymentKvrinfoIsAdvancePayment: Авансовый платеж
@@ -6980,6 +7192,29 @@ type PaymentKvrinfoPaymentYearsInfo struct {
 	PaymentYearInfo []PaymentYearsInfoPaymentYearInfo `xml:",any"`
 }
 
+// PaymentKvrinfoKvr: Код вида расходов
+type PaymentKvrinfoKvr struct {
+	XMLName xml.Name `xml:"KVR,omitempty"`
+
+	FieldCode string `xml:"fieldCode,attr,omitempty"`
+
+	// FieldName: 1 - изменено
+	FieldName string `xml:"fieldName,attr,omitempty"`
+
+	Text string `xml:",chardata"`
+}
+
+// PaymentKvrinfoReceiptCode: Код поступлений
+type PaymentKvrinfoReceiptCode struct {
+	XMLName xml.Name `xml:"receiptCode,omitempty"`
+
+	// Code: Код поступлений
+	Code base.Text2Type `xml:"code"`
+
+	// Name: Наименование поступлений. Игнорируется при приеме. При передаче заполняется значением из справочника "Коды поступлений для АУ/БУ" (nsiReceiptCodes)
+	Name *base.Text300Type `xml:"name,omitempty"`
+}
+
 // PaymentInfoPaymentKvrinfo: График платежей по коду вида расхода и коду поступлений
 type PaymentInfoPaymentKvrinfo struct {
 	XMLName xml.Name `xml:"paymentKVRInfo,omitempty"`
@@ -6989,6 +7224,12 @@ type PaymentInfoPaymentKvrinfo struct {
 
 	// PaymentKvrinfoPaymentYearsInfo: Сумма платежей в разбивке по годам
 	PaymentYearsInfo *PaymentKvrinfoPaymentYearsInfo `xml:"paymentYearsInfo,omitempty"`
+
+	// PaymentKvrinfoKvr: Код вида расходов
+	Kvr *PaymentKvrinfoKvr `xml:"KVR,omitempty"`
+
+	// PaymentKvrinfoReceiptCode: Код поступлений
+	ReceiptCode *PaymentKvrinfoReceiptCode `xml:"receiptCode,omitempty"`
 }
 
 // PaymentTargetArticleInfoTargetArticle: Целевая статья
@@ -9276,6 +9517,102 @@ type IndicatorsInfo1 struct {
 	IndicatorInfo []DlIndicatorInfoType `xml:",any"`
 }
 
+// MinMathNotation: Математическое обозначение отношения к минимальному значению диапазона. Контролируется обязательность заполнения, если заполнено поле min (для извещений и протоколов)
+type MinMathNotation struct {
+	XMLName xml.Name `xml:"minMathNotation,omitempty"`
+
+	FieldCode string `xml:"fieldCode,attr,omitempty"`
+
+	// FieldName: 1 - изменено
+	FieldName string `xml:"fieldName,attr,omitempty"`
+
+	Text string `xml:",chardata"`
+}
+
+// Min: Минимальное значение диапазона
+type Min struct {
+	XMLName xml.Name `xml:"min,omitempty"`
+
+	FieldCode string `xml:"fieldCode,attr,omitempty"`
+
+	// FieldName: 1 - изменено
+	FieldName string `xml:"fieldName,attr,omitempty"`
+
+	Text string `xml:",chardata"`
+}
+
+// MaxMathNotation: Математическое обозначение отношения к максимальному значению диапазона. Контролируется обязательность заполнения, если заполнено поле max (для извещений и протоколов)
+type MaxMathNotation struct {
+	XMLName xml.Name `xml:"maxMathNotation,omitempty"`
+
+	FieldCode string `xml:"fieldCode,attr,omitempty"`
+
+	// FieldName: 1 - изменено
+	FieldName string `xml:"fieldName,attr,omitempty"`
+
+	Text string `xml:",chardata"`
+}
+
+// Max: Максимальное значение диапазона
+type Max struct {
+	XMLName xml.Name `xml:"max,omitempty"`
+
+	FieldCode string `xml:"fieldCode,attr,omitempty"`
+
+	// FieldName: 1 - изменено
+	FieldName string `xml:"fieldName,attr,omitempty"`
+
+	Text string `xml:",chardata"`
+}
+
+// MinMathNotation1: Математическое обозначение отношения к минимальному значению диапазона. Контролируется обязательность заполнения, если заполнено поле min (для извещений и протоколов)
+type MinMathNotation1 struct {
+	XMLName xml.Name `xml:"minMathNotation,omitempty"`
+
+	FieldCode string `xml:"fieldCode,attr,omitempty"`
+
+	// FieldName: 1 - изменено
+	FieldName string `xml:"fieldName,attr,omitempty"`
+
+	Text string `xml:",chardata"`
+}
+
+// Min1: Минимальное значение диапазона
+type Min1 struct {
+	XMLName xml.Name `xml:"min,omitempty"`
+
+	FieldCode string `xml:"fieldCode,attr,omitempty"`
+
+	// FieldName: 1 - изменено
+	FieldName string `xml:"fieldName,attr,omitempty"`
+
+	Text string `xml:",chardata"`
+}
+
+// MaxMathNotation1: Математическое обозначение отношения к максимальному значению диапазона. Контролируется обязательность заполнения, если заполнено поле max (для извещений и протоколов)
+type MaxMathNotation1 struct {
+	XMLName xml.Name `xml:"maxMathNotation,omitempty"`
+
+	FieldCode string `xml:"fieldCode,attr,omitempty"`
+
+	// FieldName: 1 - изменено
+	FieldName string `xml:"fieldName,attr,omitempty"`
+
+	Text string `xml:",chardata"`
+}
+
+// Max1: Максимальное значение диапазона
+type Max1 struct {
+	XMLName xml.Name `xml:"max,omitempty"`
+
+	FieldCode string `xml:"fieldCode,attr,omitempty"`
+
+	// FieldName: 1 - изменено
+	FieldName string `xml:"fieldName,attr,omitempty"`
+
+	Text string `xml:",chardata"`
+}
+
 // QualityDescription: Текстовое описание значения качественной характеристики
 type QualityDescription struct {
 	XMLName xml.Name `xml:"qualityDescription,omitempty"`
@@ -10630,6 +10967,21 @@ type IsZnvlp struct {
 	Text string `xml:",chardata"`
 }
 
+// TradeNamesInfo: Торговые наименования, сформированные с использованием справочной информации
+type TradeNamesInfo struct {
+	XMLName xml.Name `xml:"tradeNamesInfo,omitempty"`
+
+	// TradeNameInfo: Торговое наименование (ТН)
+	TradeNameInfo []DlTradeNameInfoType `xml:",any"`
+}
+
+// TradeNamesInfoUsingTextForm: Торговые наименования, сформированные в текстовой форме
+type TradeNamesInfoUsingTextForm struct {
+	XMLName xml.Name `xml:"tradeNamesInfoUsingTextForm,omitempty"`
+
+	TradeNameInfo []DlTradeNamesInfoUsingTextFormType `xml:",any"`
+}
+
 // MnninfoMnnname: Наименование МНН
 type MnninfoMnnname struct {
 	XMLName xml.Name `xml:"MNNName,omitempty"`
@@ -10873,8 +11225,8 @@ type BasicUnit struct {
 	Text string `xml:",chardata"`
 }
 
-// TradeNamesInfoUsingTextForm: Торговые наименования, сформированные в текстовой форме
-type TradeNamesInfoUsingTextForm struct {
+// TradeNamesInfoUsingTextForm1: Торговые наименования, сформированные в текстовой форме
+type TradeNamesInfoUsingTextForm1 struct {
 	XMLName xml.Name `xml:"tradeNamesInfoUsingTextForm,omitempty"`
 
 	TradeNameInfo []DlTradeNamesInfoUsingTextFormType `xml:",any"`
@@ -12897,6 +13249,12 @@ type CustomerInfoDeltaType struct {
 
 	// CustomerMainOrgInfo: Информация о головной организации заказчика Заполняется, если указан признак "Проект доп.соглашения формируется в структурированном виде" (isStructuredForm)
 	CustomerMainOrgInfo *CustomerMainOrgInfo `xml:"customerMainOrgInfo,omitempty"`
+
+	// CustomerAccountsDetailsInfo: Платежные реквизиты заказчика
+	CustomerAccountsDetailsInfo *CustomerAccountsDetailsInfo `xml:"customerAccountsDetailsInfo,omitempty"`
+
+	// SeparateDepartmentAccountDetails: Реквизиты счетов обособленного подразделения
+	SeparateDepartmentAccountDetails *cmn.SeparateDepartmentAccountsDetailsWithoutOblType `xml:"separateDepartmentAccountDetails,omitempty"`
 }
 
 // ContractPriceInfoDeltaType: Тип: Цена контракта для дельты электронного доп соглашения
@@ -13173,11 +13531,35 @@ type DlOkeiinfoType struct {
 // DlValueRangeType: Тип: Диапазон значений (дельта)
 type DlValueRangeType struct {
 	XMLName xml.Name
+
+	// MinMathNotation: Математическое обозначение отношения к минимальному значению диапазона. Контролируется обязательность заполнения, если заполнено поле min (для извещений и протоколов)
+	MinMathNotation *MinMathNotation `xml:"minMathNotation,omitempty"`
+
+	// Min: Минимальное значение диапазона
+	Min *Min `xml:"min,omitempty"`
+
+	// MaxMathNotation: Математическое обозначение отношения к максимальному значению диапазона. Контролируется обязательность заполнения, если заполнено поле max (для извещений и протоколов)
+	MaxMathNotation *MaxMathNotation `xml:"maxMathNotation,omitempty"`
+
+	// Max: Максимальное значение диапазона
+	Max *Max `xml:"max,omitempty"`
 }
 
 // DlOutValueRangeType: Тип: Внешний диапазон значений (дельта)
 type DlOutValueRangeType struct {
 	XMLName xml.Name
+
+	// MinMathNotation1: Математическое обозначение отношения к минимальному значению диапазона. Контролируется обязательность заполнения, если заполнено поле min (для извещений и протоколов)
+	MinMathNotation *MinMathNotation1 `xml:"minMathNotation,omitempty"`
+
+	// Min1: Минимальное значение диапазона
+	Min *Min1 `xml:"min,omitempty"`
+
+	// MaxMathNotation1: Математическое обозначение отношения к максимальному значению диапазона. Контролируется обязательность заполнения, если заполнено поле max (для извещений и протоколов)
+	MaxMathNotation *MaxMathNotation1 `xml:"maxMathNotation,omitempty"`
+
+	// Max1: Максимальное значение диапазона
+	Max *Max1 `xml:"max,omitempty"`
 }
 
 // DlCharacteristicsUsingTextFormValueType: Тип: Допустимое значение характеристики в текстовой форме (дельта)
@@ -13515,6 +13897,12 @@ type DlMnninfoType struct {
 
 	// IsZnvlp: Признак включения в реестр жизненно необходимые и важнейших лекарственных препаратов (ЖНВЛП)
 	IsZnvlp *IsZnvlp `xml:"isZNVLP,omitempty"`
+
+	// TradeNamesInfo: Торговые наименования, сформированные с использованием справочной информации
+	TradeNamesInfo *TradeNamesInfo `xml:"tradeNamesInfo,omitempty"`
+
+	// TradeNamesInfoUsingTextForm: Торговые наименования, сформированные в текстовой форме
+	TradeNamesInfoUsingTextForm *TradeNamesInfoUsingTextForm `xml:"tradeNamesInfoUsingTextForm,omitempty"`
 }
 
 // DlMnninfoUsingTextFormType: Тип: Международное, группировочное или химическое наименование лекарственного препарата (МНН), сформированное в текстовой форме (дельта)
@@ -13557,8 +13945,8 @@ type DlMnninfoUsingTextFormType struct {
 	// BasicUnit: Признак основного варианта поставки
 	BasicUnit *BasicUnit `xml:"basicUnit,omitempty"`
 
-	// TradeNamesInfoUsingTextForm: Торговые наименования, сформированные в текстовой форме
-	TradeNamesInfoUsingTextForm *TradeNamesInfoUsingTextForm `xml:"tradeNamesInfoUsingTextForm,omitempty"`
+	// TradeNamesInfoUsingTextForm1: Торговые наименования, сформированные в текстовой форме
+	TradeNamesInfoUsingTextForm *TradeNamesInfoUsingTextForm1 `xml:"tradeNamesInfoUsingTextForm,omitempty"`
 }
 
 // FileType: Тип: Файл. Базовый тип
